@@ -22,4 +22,5 @@ venv/
 dist/
 
 # Test session outputs (optional - uncomment if you don't want to commit test runs)
+test-runs
 test-runs/
