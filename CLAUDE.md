@@ -36,11 +36,20 @@ idea-symphony/
     │   ├── the-visionary.md
     │   ├── the-pragmatist.md
     │   └── ...                 # 15 total, prefixed with "the-"
+    ├── prompts/                # Phase prompts (extracted from SKILL.md)
+    │   ├── phase2-question-generation-generic.md
+    │   ├── phase2-question-generation-persona.md
+    │   ├── phase2-question-synthesis.md
+    │   ├── phase3-brainstorm-generic.md
+    │   ├── phase3-brainstorm-persona.md
+    │   ├── phase4-synthesis-low.md
+    │   └── phase4-synthesis.md
     └── templates.md            # Document templates
 ```
 
 When editing the skill:
-- SKILL.md contains workflow overview and subagent prompts
+- SKILL.md contains workflow orchestration and phase routing logic
+- Phase prompts live in `references/prompts/phase*.md`
 - Individual persona prompts live in `references/personas/the-[persona-name].md`
 - Document templates live in `references/templates.md`
 
@@ -66,12 +75,23 @@ references/
   personas/
     the-visionary.md
     ...
+  prompts/
+    phase2-question-generation-generic.md
+    phase2-question-generation-persona.md
+    phase2-question-synthesis.md
+    phase3-brainstorm-generic.md
+    phase3-brainstorm-persona.md
+    phase4-synthesis-low.md
+    phase4-synthesis.md
 ```
 
 ## Terminology
 
 - **Topic cluster** — A thematic grouping of brainstorming questions
-- **Effort level** — User-selected setting (low/medium/high) that determines participant count; defaults to medium
+- **Effort level** — User-selected setting that determines session structure; defaults to medium
+  - **Low**: Rapid generic brainstorming without persona system (5-10 min)
+  - **Medium**: 2 question personas, 3 brainstorming personas per topic (~15-20 min)
+  - **High**: 3 question personas, 5 brainstorming personas per topic (~30 min)
 
 ## Testing
 

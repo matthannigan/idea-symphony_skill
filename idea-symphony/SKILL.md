@@ -56,8 +56,8 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 [project-name_YYYY-MM-DD]/
 ├── context/                    # (optional) User-submitted files
 ├── questions/
-│   ├── by-persona/             # One file per question-generating persona
-│   │   ├── the-questioner.md
+│   ├── by-persona/             # Medium/high: One file per question-generating persona
+│   │   ├── the-questioner.md   # (empty for low effort)
 │   │   ├── the-analyst.md
 │   │   └── ...
 │   └── by-topic/               # Numbered files preserve topic order
@@ -66,15 +66,16 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 │       └── ...
 ├── responses/
 │   └── [NN_topic]/             # Numbered directories match topic order
-│       ├── the-visionary.md
+│       ├── generic-response.md # Low effort: single generic file
+│       ├── the-visionary.md    # Medium/high: multiple persona files
 │       ├── the-pragmatist.md
 │       └── ...
 ├── synthesis/
-│   ├── attributed/             # Full responses with persona attributions
+│   ├── attributed/             # Medium/high only: Full responses with persona attributions
 │   │   ├── 01_operations_attributed.md
 │   │   └── ...
-│   ├── 01_operations_summary.md
-│   ├── 01_operations_synthesis.md
+│   ├── 01_operations_summary.md      # All effort levels
+│   ├── 01_operations_synthesis.md    # Medium/high only
 │   └── ...
 ├── REQUEST.md                  # User request summary
 ├── PLAN.md                     # Session config and status
@@ -83,17 +84,23 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 └── BRAINSTORM.md               # Final output and session index
 ```
 
-**Topic ordering:** Step 2.2 establishes a logical topic order. Numeric prefixes (`01_`, `02_`, etc.) preserve this order through all subsequent phases. Within each topic, `_summary` sorts before `_synthesis` alphabetically.
+**Topic ordering:** Phase 2 establishes a logical topic order. Numeric prefixes (`01_`, `02_`, etc.) preserve this order through all subsequent phases. Within each topic, `_summary` sorts before `_synthesis` alphabetically.
+
+**Low effort differences:** No by-persona/ files, responses use generic-response.md, synthesis/ contains only summary files (no attributed/ or _synthesis files).
 
 ## Effort Levels
 
-| Effort | Phase 2 (Questions) | Phase 3 (Brainstorming) |
-|--------|---------------------|-------------------------|
-| low    | 2 personas          | 3 personas per cluster  |
-| medium | 3 personas          | 5 personas per cluster  |
-| high   | 4 personas          | 7 personas per cluster  |
+| Effort | Phase 2 (Questions) | Phase 3 (Brainstorming) | Phase 4 (Synthesis) |
+|--------|---------------------|-------------------------|---------------------|
+| low    | 1 generic prompt    | 1 generic response per topic | Summary only |
+| medium | 3 personas          | 3 personas per topic    | Full synthesis |
+| high   | 5 personas          | 5 personas per topic    | Full synthesis |
 
 **Default to medium** if user doesn't specify.
+
+**Low effort approach:** Uses context isolation (separate subagents per topic) but skips the persona system entirely. Single generic question generation creates 15-20 questions in 3-5 clusters. Single generic brainstorming response per cluster provides 3-5 responses per question. Summary-only synthesis skips attribution. Target runtime: 5-10 minutes vs. 30 minutes for medium.
+
+**Medium/high effort approach:** Uses persona system with multiple perspectives. Full synthesis includes attribution and comprehensive consolidation.
 
 ## Workflow
 
@@ -110,95 +117,138 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 
 ### Phase 2: Question Generation
 
-#### Step 2.1: Generate Questions (Parallel Subagents)
+**For LOW effort:** Proceed to Phase 2A: Generic Question Generation
 
-Spawn 2-4 parallel subagents based on effort level. **Always include The Questioner.**
+**For MEDIUM or HIGH effort:** Proceed to Phase 2B: Persona-Based Question Generation
 
-Select additional personas **only from the Available Personas table**:
-- low: +1 from [The Analyst, The First Principles Thinker, The Devil's Advocate, The Audience Advocate]
-- medium: +2 from the above
-- high: +3 from the above
+---
 
-**Subagent Prompt:**
+#### Phase 2A: Generic Question Generation (Low Effort Only)
 
-```
-You are [PERSONA NAME], generating probing questions for a brainstorming session.
+Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-generation-generic.md`.
 
-1. Read [skill]/references/personas/[persona-name].md and adopt the persona described
-2. Read [session]/REQUEST.md for the user's brainstorming request and examine any additional files mentioned
-
-Generate 10-15 probing questions that should be answered to develop this idea more fully.
-
-Format requirements:
-- Use Markdown headings to group related questions topically
-- Format each question as: **Short question summary**: Longer question description with context
-- Put your persona name at the top of the document
-- Do not add preamble, commentary, or follow-up inquiries
-
-Save your response to: [session]/questions/by-persona/questions_[persona-name].md
-```
+The subagent will:
+1. Read REQUEST.md for the brainstorming topic
+2. Generate 15-20 questions organized into 3-5 topical clusters
+3. Save outputs to QUESTIONS.md and questions/by-topic/[NN]_[topic].md files
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
-#### Step 2.2: Synthesize Questions (Single Subagent)
-
-Spawn 1 subagent to consolidate questions into topic clusters.
-
-**Subagent Prompt:**
-
-```
-Synthesize questions from multiple participants into a consolidated, organized list of questions.
-
-1. Read [session]/REQUEST.md for the original brainstorming request
-2. Read all files in [session]/questions/by-persona/
-
-Synthesize these into a consolidated, organized list:
-1. Eliminate duplicate or highly similar questions
-2. Group remaining questions under relevant topical headings
-3. Arrange topics in a logical flow (foundational → strategic → operational)
-4. Each group should contain approximately 5 questions (4 at a minimum, 8 maximum)
-   - If question count exceeds 8, break up the group into 2 or more groups
-   - If question count fails to reach at least 4, combine the questions with another group
-5. Ensure coverage across strategic, tactical, creative, and analytical dimensions
-
-Format:
-- Use Markdown headings for topic groups
-- Format each question as: **Short question summary**: Longer question description
-- Do not add preamble or follow-up inquiries
-
-Output:
-1. Save complete list to: [session]/QUESTIONS.md
-   - Topics should appear in the logical order you've determined
-2. Save each topic group as a numbered file: [session]/questions/by-topic/[NN]_[topic-name].md
-   - Use two-digit prefix matching topic order (01_, 02_, 03_, etc.)
-   - Example: 01_operations.md, 02_community-engagement.md, 03_sustainability.md
-```
-
-**Subagent Model:** Claude Opus or Gemini Pro (prefer thorough thoughtful, response)
-
-#### Step 2.3: Validate Phase 2 Outputs (Quality Gate)
-
-Before proceeding, verify all expected files are present:
-
-1. **Verify `questions/by-persona/` file count:**
-   - Expected: 2 (low), 3 (medium), or 4 (high) `.md` files
-   - If count doesn't match: Use Glob to search session directory for missing persona files, move to correct location
-
-2. **Verify `questions/by-topic/` file count:**
-   - Expected: Number of topic clusters created in Step 2.2
-   - If count doesn't match: Use Glob to search session directory for missing topic files, move to correct location
-
-3. **Verify `QUESTIONS.md` exists**
-
-If files are missing and cannot be found after search, log the issue in PLAN.md Notes section and proceed (don't block the session on missing files from failed subagents).
+**Quality Gate:** Before proceeding, verify:
+- `QUESTIONS.md` exists
+- `questions/by-topic/` contains 3-5 numbered `.md` files
+- If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with Phase 2 complete status and list of topic clusters.
 
-### Phase 3: Multi-Persona Brainstorming
+Skip to Phase 3A.
+
+---
+
+#### Phase 2B: Persona-Based Question Generation (Medium/High Effort)
+
+**Step 2B.1: Generate Questions (Parallel Subagents)**
+
+Spawn 3 or 5 parallel subagents based on effort level. Select unique personas for each subagent:
+- medium effort: The Questioner, The Analyst, The Audience Advocate
+- high effort: The Questioner, The Analyst, The Audience Advocate, The Devil's Advocate, The First Principles Thinker
+
+For each subagent, use prompt from `[skill]/references/prompts/phase2-question-generation-persona.md`.
+
+Each subagent will:
+1. Read REQUEST.md for the brainstorming topic
+2. Generate 15-20 questions organized into 3-5 topical clusters
+3. Save output to `[session]/questions/by-persona/questions_[persona-name].md`
+
+**Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
+
+**Step 2B.2: Synthesize Questions (Single Subagent)**
+
+Spawn 1 subagent to consolidate persona questions into topic clusters.
+
+**Target output based on effort level:**
+- **Medium effort**: 20-35 questions across 4-7 topic clusters (~5 questions per topic)
+- **High effort**: 35-50 questions across 6-9 topic clusters (~6-7 questions per topic)
+  - Aim for upper end of range (45-50 questions)
+  - Include 2-3 unique questions per topic that challenge assumptions
+
+**Synthesis instructions for subagent:**
+
+1. Read all persona question files and REQUEST.md
+2. Track convergence: Note which personas asked similar questions
+3. Use convergence as quality signal:
+   - **Convergent questions** (multiple personas): Always include - signals importance
+   - **Complementary questions** (similar themes): Consolidate into one well-framed question
+   - **Unique questions** (one persona):
+     - Medium: Include if revealing blind spots or covering missing dimensions
+     - High: More liberally include (2-3 per topic) to explore speculative territory
+4. Create topic clusters:
+   - Arrange in logical flow (foundational → strategic → operational)
+   - Medium: 4-7 topics with ~5 questions each (range 4-7)
+   - High: 6-9 topics with ~6-7 questions each (range 5-8)
+5. Output files:
+   - QUESTIONS.md (master list with YAML frontmatter, numbered questions)
+   - questions/by-topic/[NN]_[topic-slug].md (one per cluster)
+
+**Subagent Model:** Claude Opus or Gemini Pro (prefer thorough thoughtful response)
+
+**Step 2B.3: Quality Gate**
+
+Before proceeding, verify:
+
+1. **`questions/by-persona/` file count:**
+   - Expected: 3 (medium) or 5 (high) `.md` files
+   - If count doesn't match: Use Glob to search, move to correct location
+
+2. **`questions/by-topic/` file count:**
+   - Expected: Number of topic clusters created in Step 2B.2
+   - If count doesn't match: Use Glob to search, move to correct location
+
+3. **`QUESTIONS.md` exists**
+
+If files missing after search, log in PLAN.md Notes and proceed (don't block on failed subagents).
+
+Update `PLAN.md` with Phase 2 complete status and list of topic clusters.
+
+Proceed to Phase 3B.
+
+### Phase 3: Multi-Perspective Brainstorming
+
+**For LOW effort:** Proceed to Phase 3A: Generic Brainstorming
+
+**For MEDIUM or HIGH effort:** Proceed to Phase 3B: Persona-Based Brainstorming
+
+---
+
+#### Phase 3A: Generic Brainstorming (Low Effort Only)
 
 Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
 
-For each topic cluster, spawn parallel subagents (3/5/7 based on effort).
+For each topic cluster, spawn 1 subagent using prompt from `[skill]/references/prompts/phase3-brainstorm-generic.md`.
+
+The subagent will:
+1. Read the topic's question file
+2. Provide 3-5 responses per question
+3. Save output to responses/[NN]_[topic]/generic-response.md
+
+**Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
+
+**Quality Gate:** Before proceeding, verify:
+- `responses/[NN]_[topic]/` exists for each topic
+- Each topic directory contains `generic-response.md`
+- If files missing after Glob search, log in PLAN.md Notes and proceed
+
+Update `PLAN.md` with Phase 3 complete status.
+
+Skip to Phase 4A.
+
+---
+
+#### Phase 3B: Persona-Based Brainstorming (Medium/High Effort)
+
+Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
+
+For each topic cluster, spawn parallel subagents (3 for medium, 5 for high) using prompt from `[skill]/references/prompts/phase3-brainstorm-persona.md`.
 
 **Select personas only from the Available Personas table.** Match personas to topic needs:
 - Technical topics → The Technical Expert, The Analyst, The First Principles Thinker
@@ -208,151 +258,79 @@ For each topic cluster, spawn parallel subagents (3/5/7 based on effort).
 
 See [personas.md](references/personas.md) for additional selection guidance.
 
-**Subagent prompt:**
+**Subagent Model:** Claude Haiku or Gemini Flash (prefer fast response, volume over depth)
 
-```
-You are [PERSONA NAME], a coach assisting in refining an idea through structured brainstorming.
-
-1. Read [skill]/references/personas/[persona-name].md and adopt the persona described
-2. Read [session]/REQUEST.md for background on the idea being brainstormed and examine any additional files mentioned
-3. Read [session]/questions/by-topic/[NN]_[topic].md for the questions to respond to
-4. DO NOT read any other responses in [session]/responses; you must respond independently using only the context provided above.
-
-For each question, provide 3-5 unique, detailed responses. Make responses:
-- Specific and concrete (not generic advice)
-- Actionable where appropriate
-- True to your persona's perspective
-
-Format your response using this EXACT structure:
-
-# [Topic Name] - [Your Persona Name]
-
-## [Question 1 Short Summary]
-
-* **Response summary.** Detailed response text with specifics, examples, or reasoning.
-* **Response summary.** Detailed response text with specifics, examples, or reasoning.
-* **Response summary.** Detailed response text with specifics, examples, or reasoning.
-
-## [Question 2 Short Summary]
-
-* **Response summary.** Detailed response text with specifics, examples, or reasoning.
-...
-
-Rules:
-- Use Title Case for all headings
-- No numbering, dividers, or sub-headers beyond what's shown above
-- One ## heading per question, matching the question's short summary
-
-Save to: [session]/responses/[NN]_[topic]/[persona-name].md
-```
-
-**Subagent Model:** Claude Haiku or Gemini Flash (prefer a fast response, volume over depth)
-
-#### Step 3.2: Validate Phase 3 Outputs (Quality Gate)
-
-Before proceeding, verify all expected files are present:
+**Quality Gate:** Before proceeding, verify:
 
 For each topic directory in `responses/`:
+- **File count in `responses/[NN]_[topic]/`:**
+  - Expected: 3 (medium) or 5 (high) `.md` files per topic
+  - If count doesn't match: Use Glob to search, move to correct location
 
-1. **Verify file count in `responses/[NN]_[topic]/`:**
-   - Expected: 3 (low), 5 (medium), or 7 (high) `.md` files per topic
-   - If count doesn't match: Use Glob to search session directory for missing persona response files, move to correct location
-
-If files are missing and cannot be found after search, log the issue in PLAN.md Notes section and proceed (don't block the session on missing files from failed subagents).
+If files missing after search, log in PLAN.md Notes and proceed (don't block on failed subagents).
 
 Update `PLAN.md` with Phase 3 complete status.
 
+Proceed to Phase 4B.
+
 ### Phase 4: Response Synthesis
 
-Spawn parallel subagents (1 per topic cluster) to synthesize responses.
+**For LOW effort:** Proceed to Phase 4A: Summary Generation
 
-**Subagent prompt:**
-
-````
-You are a skilled facilitator synthesizing a brainstorming session.
-
-1. Read [session]/REQUEST.md for the original brainstorming request and examine any additional files mentioned
-2. Read [session]/questions/by-topic/[NN]_[topic].md for the questions in this topic cluster
-3. Read all files in [session]/responses/[NN]_[topic]/ for participant responses
-
-Create THREE output documents:
+**For MEDIUM or HIGH effort:** Proceed to Phase 4B: Full Synthesis
 
 ---
 
-## Document 1: `[session]/synthesis/attributed/[NN]_[topic].md`
+#### Phase 4A: Summary Generation (Low Effort Only)
 
-Structure:
-```
-# Brainstorming Synthesis: [Topic] - With Attribution
+Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/references/prompts/phase4-synthesis-low.md`.
 
-## Synthesized Insights by Question
-
-### [Short Question Summary]
-
-[Longer question description]
-
-[For each question, consolidate similar responses into unified points.]
-[Order by consensus - most agreement first, unique ideas last.]
-[Preserve important details while eliminating redundancy.]
-
-Format each synthesized response as:
-* **Short synthesized response summary.** Detailed synthesized response text.
-
-Then include originals as sub-bullets with attribution:
-  * **Original short summary.** Original detailed text. *[Persona Name]*
-```
-
----
-
-## Document 2: `[session]/synthesis/[NN]_[topic]_synthesis.md`
-
-Same as Document 1, but remove the sub-bullets with attribution. Only synthesized content remains.
-
----
-
-## Document 3: `[session]/synthesis/[NN]_[topic]_summary.md`
-
-Structure:
-```
-# Brainstorming Session: [Topic] - Summary
-
-## Executive Summary
-[3-5 paragraphs of most important insights]
-
-## Key Themes
-[Bulleted list of major themes across all questions]
-
-## Recommended Next Steps
-[Top 10 action items based on strongest ideas]
-```
-
----
-
-Guidelines:
-- Preserve unique ideas even if only one participant mentioned them
-- Order consolidated points by consensus level
-- Maintain **Summary.** Detail format
-- Synthesized version should be readable standalone
-````
+Each subagent will:
+1. Read the topic's question and response files
+2. Create concise summary with key themes and recommended actions
+3. Save output to synthesis/[NN]_[topic]_summary.md
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
-#### Step 4.2: Validate Phase 4 Outputs (Quality Gate)
-
-Before proceeding, verify all expected files are present:
-
-1. **Verify `synthesis/attributed/` file count:**
-   - Expected: 1 `[NN]_[topic].md` file per topic (matches number of topics in `questions/by-topic/`)
-   - If count doesn't match: Use Glob to search session directory for missing attributed files, move to correct location
-
-2. **Verify `synthesis/` file count (excluding `attributed/` subdirectory):**
-   - Expected: 2 files per topic (`[NN]_[topic]_summary.md` and `[NN]_[topic]_synthesis.md`)
-   - Total expected: 2 × number of topics
-   - If count doesn't match: Use Glob to search session directory for missing summary/synthesis files, move to correct location
-
-If files are missing and cannot be found after search, log the issue in PLAN.md Notes section and proceed (don't block the session on missing files from failed subagents).
+**Quality Gate:** Before proceeding, verify:
+- `synthesis/` directory exists
+- One `[NN]_[topic]_summary.md` file per topic
+- NO attributed/ subdirectory or _synthesis.md files (low effort only)
+- If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with Phase 4 complete status.
+
+Proceed to Phase 5.
+
+---
+
+#### Phase 4B: Full Synthesis (Medium/High Effort)
+
+Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/references/prompts/phase4-synthesis.md`.
+
+Each subagent will create THREE output documents:
+1. synthesis/attributed/[NN]_[topic].md (with persona attribution)
+2. synthesis/[NN]_[topic]_synthesis.md (synthesized without attribution)
+3. synthesis/[NN]_[topic]_summary.md (executive summary)
+
+**Subagent Model:** Claude Opus or Gemini Pro (prefer thorough thoughtful response)
+
+**Quality Gate:** Before proceeding, verify:
+
+1. **`synthesis/attributed/` file count:**
+   - Expected: 1 `[NN]_[topic].md` file per topic
+   - If count doesn't match: Use Glob to search, move to correct location
+
+2. **`synthesis/` file count (excluding attributed/ subdirectory):**
+   - Expected: 2 files per topic (`[NN]_[topic]_summary.md` and `[NN]_[topic]_synthesis.md`)
+   - Total expected: 2 × number of topics
+   - If count doesn't match: Use Glob to search, move to correct location
+
+If files missing after search, log in PLAN.md Notes and proceed (don't block on failed subagents).
+
+Update `PLAN.md` with Phase 4 complete status.
+
+Proceed to Phase 5.
 
 ### Phase 5: Final Output (Orchestrator)
 
@@ -391,17 +369,23 @@ Update `PLAN.md` with Phase 5 complete status.
 If asked to continue a previous session:
 
 1. Read `PLAN.md` to determine session state
-2. Check status fields for last completed phase
+2. Check effort level and last completed phase
 3. Verify output files exist for completed phases
 4. Resume from next incomplete phase
 
 | PLAN.md Status | Files Present | Action |
 |----------------|---------------|--------|
-| Phase 2: complete | `QUESTIONS.md` exists | Resume at Phase 3 |
-| Phase 3: complete | `responses/` directories populated | Resume at Phase 4 |
+| Phase 2: complete | `QUESTIONS.md` exists | Resume at Phase 3A (low) or 3B (med/high) |
+| Phase 3: complete | `responses/` directories populated | Resume at Phase 4A (low) or 4B (med/high) |
 | Phase 4: complete | `synthesis/` files exist | Resume at Phase 5 |
-| Phase 2: in-progress | Partial `questions/by-persona/` | Re-run Phase 2 |
+| Phase 2: in-progress | Partial questions files | Re-run Phase 2A or 2B |
 | Any failure noted | — | Address issue, retry |
+
+**Backwards compatibility:** If PLAN.md lacks effort level field (old session), check file structure:
+- If `questions/by-persona/` is empty → treat as low effort
+- If `questions/by-persona/` has 2 files → treat as medium (old "low")
+- If `questions/by-persona/` has 3 files → treat as high (old "medium")
+- If `questions/by-persona/` has 4+ files → treat as high (old "high" eliminated)
 
 Present resume status to user before continuing.
 
@@ -427,10 +411,13 @@ The orchestrator provides:
 | Task | Model | Rationale |
 |------|-------|-----------|
 | Orchestration | Sonnet | Balance of speed and quality |
-| Question generation | Sonnet | Balance of speed and quality |
+| Question generation (low) | Sonnet | Comprehensive coverage needed |
+| Question generation (med/high) | Sonnet | Balance of speed and quality |
 | Question synthesis | Opus | Judgment for deduplication |
-| Brainstorming responses | Haiku | Volume over depth |
-| Response synthesis | Opus | Critical consolidation |
+| Brainstorming (low) | Sonnet | Balance quality with speed |
+| Brainstorming (med/high) | Haiku | Volume over depth |
+| Synthesis (low) | Sonnet | User-facing summaries |
+| Synthesis (med/high) | Opus | Critical consolidation |
 | Final summary | Sonnet | User-facing deliverable |
 
 ## References

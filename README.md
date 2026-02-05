@@ -11,7 +11,10 @@ Idea Symphony transforms Claude from a single-perspective assistant into a simul
 - **15 distinct brainstorming personas** (Visionary, Pragmatist, Devil's Advocate, Analyst, etc.)
 - **Isolated context windows** for genuine perspective independence
 - **Complete paper trail** of all intermediate outputs
-- **Configurable effort levels** (low/medium/high) to control session depth
+- **Configurable effort levels**:
+  - **Low**: Rapid generic brainstorming (5-10 min) without persona system
+  - **Medium**: 2 question personas, 3 brainstorming personas per topic (~15-20 min)
+  - **High**: 3 question personas, 5 brainstorming personas per topic (~30 min)
 - **Session resume capability** for interrupted brainstorms
 - **Context-efficient architecture** — subagents read their own files, keeping orchestrator lean
 
@@ -24,6 +27,7 @@ idea-symphony_skill/
 │   └── references/
 │       ├── personas.md     # Persona index and selection guidance
 │       ├── personas/       # Individual persona prompts (the-visionary.md, etc.)
+│       ├── prompts/        # Phase prompts (extracted from SKILL.md)
 │       └── templates.md    # Document templates
 ├── docs/                   # Design documents
 │   ├── briefing.md         # Comprehensive skill specification
@@ -68,20 +72,24 @@ All intermediate outputs are saved to disk for review and traceability.
 ```
 [project-name_YYYY-MM-DD]/
 ├── questions/
-│   ├── by-persona/         # Raw questions from each persona
+│   ├── by-persona/         # Raw questions from each persona (medium/high only)
 │   ├── by-topic/           # Consolidated questions by topic cluster
 │   └── QUESTIONS.md        # All questions in one document
 ├── responses/
 │   └── [NN]_[topic]/       # Responses organized by topic
+│       ├── generic-response.md      # Low effort: single generic file
+│       └── the-[persona].md         # Medium/high: multiple persona files
 ├── synthesis/
-│   ├── attributed/         # Full synthesis with persona attribution
-│   ├── *_summary.md        # Executive summaries per topic
-│   ├── *_synthesis.md      # Merged insights per topic
+│   ├── attributed/         # Medium/high only: Full synthesis with persona attribution
+│   ├── *_summary.md        # Executive summaries per topic (all effort levels)
+│   ├── *_synthesis.md      # Medium/high only: Merged insights per topic
 │   └── SYNTHESIS.md        # Complete synthesis document
 ├── REQUEST.md              # Original request summary
 ├── PLAN.md                 # Session configuration and status
 └── BRAINSTORM.md           # Final output and session index
 ```
+
+**Note:** Low effort sessions skip the persona system for faster execution, resulting in simpler file structure (no by-persona/ files, single generic-response.md per topic, summary-only synthesis).
 
 ## License
 
