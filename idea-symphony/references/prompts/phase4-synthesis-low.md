@@ -15,10 +15,16 @@ Read the brainstorming responses for this topic cluster and create a concise, ac
 Create `synthesis/[NN]_[topic-slug]_summary.md`:
 
 ```markdown
-# Summary: [Topic Cluster Name]
+---
+project-name: "[Project Name]"
+session-dir: "[session]"
+date: {YYYY-MM-DD}
+effort: "low"
+stage: "Phase 4: Summary Generation"
+topic-cluster: "[NN]_[topic-slug]"
+---
 
-Topic cluster: [NN]_[topic-slug]
-Generated: {DATE}
+# Summary: [Topic Cluster Name]
 
 ---
 

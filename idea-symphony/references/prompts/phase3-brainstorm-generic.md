@@ -27,28 +27,41 @@ Across your 3-5 responses per question, vary:
 - **Timeframe**: Immediate actions vs. long-term investments
 - **Focus**: Process/systems vs. people/culture vs. technology/tools
 
-## Output Format
+## Output
 
-Create `responses/[NN]_[topic-slug]/generic-response.md`:
+Format requirements:
+- Use Markdown with ## headings for each question
+- Use ### subheadings for each response (Response A, Response B, etc.)
+- No additional dividers or formatting beyond what's shown below
+
+Create one output:
+
+### responses/[NN]_[topic-slug]/generic-response.md
 
 ```markdown
-# Brainstorming Responses: [Topic Cluster Name]
+---
+project-name: "[Project Name]"
+session-dir: "[session]"
+date: {YYYY-MM-DD}
+effort: "low"
+stage: "Phase 3: Generic Brainstorming"
+topic-cluster: "[NN]_[topic-slug]"
+---
 
-Topic cluster: [NN]_[topic-slug]
-Generated: {DATE}
+# Brainstorming Responses: [Topic Cluster Name]
 
 ---
 
 ## Question 1: [Full question text]
 
 ### Response A
-[Detailed response with specific suggestions]
+[Detailed response with specific suggestions, examples, and reasoning. Aim for 50-150 words.]
 
 ### Response B
-[Detailed response with different angle]
+[Detailed response with different angle. Aim for 50-150 words.]
 
 ### Response C
-[Detailed response with another approach]
+[Detailed response with another approach. Aim for 50-150 words.]
 
 [Optional: Response D, Response E for particularly rich questions]
 
@@ -57,13 +70,13 @@ Generated: {DATE}
 ## Question 2: [Full question text]
 
 ### Response A
-[Detailed response]
+[Detailed response. Aim for 50-150 words.]
 
 ### Response B
-[Detailed response]
+[Detailed response. Aim for 50-150 words.]
 
 ### Response C
-[Detailed response]
+[Detailed response. Aim for 50-150 words.]
 
 ---
 

@@ -90,17 +90,24 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 
 ## Effort Levels
 
-| Effort | Phase 2 (Questions) | Phase 3 (Brainstorming) | Phase 4 (Synthesis) |
-|--------|---------------------|-------------------------|---------------------|
-| low    | 1 generic prompt    | 1 generic response per topic | Summary only |
-| medium | 3 personas          | 3 personas per topic    | Full synthesis |
-| high   | 5 personas          | 5 personas per topic    | Full synthesis |
+| Effort | Phase 2 (Questions) | Phase 3 (Brainstorming) | Phase 4 (Synthesis) | Best For |
+|--------|---------------------|-------------------------|---------------------|----------|
+| low    | 1 generic prompt    | 1 generic response per topic | Summary only | **Tactical**: Concrete planning, implementation steps, quick decisions |
+| medium | 3 personas          | 3 personas per topic    | Full synthesis | **Strategic**: Framework development, complex decisions, design choices |
+| high   | 5 personas          | 5 personas per topic    | Full synthesis | **Philosophical**: Foundational thinking, high-stakes decisions, research |
 
 **Default to medium** if user doesn't specify.
 
-**Low effort approach:** Uses context isolation (separate subagents per topic) but skips the persona system entirely. Single generic question generation creates 15-20 questions in 3-5 clusters. Single generic brainstorming response per cluster provides 3-5 responses per question. Summary-only synthesis skips attribution. Target runtime: 5-10 minutes vs. 30 minutes for medium.
+**Output character by effort level:**
+- **Low:** Practical, actionable, immediately implementable (costs, materials, times)
+- **Medium:** Strategic, framework-oriented, systems-thinking (principles, trade-offs, design patterns)
+- **High:** Philosophical, assumption-challenging, theory-informed (foundational questions, research-backed)
 
-**Medium/high effort approach:** Uses persona system with multiple perspectives. Full synthesis includes attribution and comprehensive consolidation.
+**Low effort approach:** Uses context isolation (separate subagents per topic) but skips the persona system entirely. Single generic question generation creates 15-20 questions in 3-5 clusters. Single generic brainstorming response per cluster provides 3-5 responses per question. Summary-only synthesis skips attribution. Target runtime: 5-10 minutes vs. 15-20 minutes for medium, 30-45 minutes for high.
+
+**Medium/high effort approach:** Uses persona system with multiple perspectives. Full synthesis includes attribution and comprehensive consolidation. Medium effort (3 personas) creates cognitive diversity; high effort (5 personas) enables convergence documentation and worldview diversity.
+
+**Detailed guidance:** See `[skill]/references/effort-level-guidance.md` for use case examples and decision criteria.
 
 ## Workflow
 
@@ -110,8 +117,118 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 2. Ask user to confirm project name (e.g., "Community Garden" or "Habit Tracker")
 3. Confirm session directory location (default: `./[project-name_YYYY-MM-DD]/`)
 4. Create `REQUEST.md` summarizing the request (see [templates.md](references/templates.md))
-5. Ask user for effort level (low/medium/high) — default to medium
+5. **Determine effort level:**
+
+   **If user specified effort level explicitly** → use that level, skip analysis
+
+   **If user didn't specify** → analyze request and suggest appropriate level:
+
+   **Step 5.1: Detect Strong Triggers (analyze user's request text)**
+
+   **HIGH effort triggers** (if ANY match, strongly suggest HIGH):
+   - High-stakes keywords: "career change", "major decision", "life transition", "considering whether to", "should I even"
+   - Research/analysis keywords: "comprehensive analysis", "cross-cutting", "lessons learned", "patterns across", "common failures", "best practices across"
+   - Foundational keywords: "purpose", "assumptions", "foundational", "philosophy", "why should I", "what if I'm wrong", "challenge my thinking"
+   - Large scope indicators: "20+ years", "dozens of", "comprehensive review", "entire organization", "complete overhaul"
+   - Exploration keywords: "exploring whether", "examining if", "reconsidering", "rethinking"
+
+   **LOW effort triggers** (if ANY match, strongly suggest LOW):
+   - Tactical keywords: "checklist", "packing list", "step-by-step", "step by step", "how to implement", "shopping list", "todo list", "guide to"
+   - Material keywords: "what do I need", "specific items", "budget breakdown", "timeline", "schedule"
+   - Concrete deliverables: "create a [specific thing]", "organize my [thing]", "plan [specific event]"
+   - Implementation phrases: "how do I", "what are the steps", "walk me through", "show me how"
+
+   **MEDIUM effort triggers** (if no strong HIGH/LOW triggers, look for these):
+   - Strategic keywords: "strategy", "framework", "approach", "design decision", "which option", "compare approaches"
+   - Trade-off keywords: "pros and cons", "evaluate options", "weigh alternatives", "different approaches"
+   - System keywords: "workflow", "process design", "system", "organizational"
+   - Planning keywords: "develop", "create strategy", "plan approach"
+
+   **Step 5.2: Assess Confidence and Present Suggestion**
+
+   **If strong HIGH trigger detected:**
+   ```
+   Based on your request, I recommend HIGH EFFORT for this session.
+
+   Rationale: [Specific trigger explanation - e.g., "Career changes are high-stakes
+   decisions requiring foundational examination of assumptions and long-term implications."]
+
+   HIGH EFFORT will provide:
+   - 5 diverse perspectives with convergence documentation
+   - Philosophical depth and assumption-challenging
+   - 40-60 questions across 6-9 foundational topic areas
+   - Research-informed recommendations
+   - Time: ~45-60 minutes
+
+   Would you like to proceed with HIGH effort, or prefer a different level?
+   ```
+
+   **If strong LOW trigger detected:**
+   ```
+   Based on your request, I recommend LOW EFFORT for this session.
+
+   Rationale: [Specific trigger explanation - e.g., "You need a practical checklist
+   with specific items and logistics—tactical implementation guidance."]
+
+   LOW EFFORT will provide:
+   - Concrete, actionable recommendations with costs/times/materials
+   - 15-20 practical questions across 3-5 topic categories
+   - 3-5 specific responses per question
+   - Summary-only synthesis focused on immediate actions
+   - Time: ~10-15 minutes
+
+   Would you like to proceed with LOW effort, or prefer a different level?
+   ```
+
+   **If MEDIUM triggers detected (or no strong triggers):**
+   ```
+   Based on your request, I recommend MEDIUM EFFORT for this session.
+
+   Rationale: [Explanation - e.g., "Strategic planning benefits from multiple
+   perspectives exploring trade-offs and design patterns."]
+
+   MEDIUM EFFORT will provide:
+   - 3 diverse perspectives with strategic frameworks
+   - 25-35 questions across 4-7 topic areas
+   - Framework development and systems thinking
+   - Full synthesis with attribution
+   - Time: ~20-30 minutes
+
+   Would you like to proceed with MEDIUM effort, or prefer a different level?
+   ```
+
+   **If request is ambiguous** (contains conflicting signals or unclear intent):
+   ```
+   I can help with [topic]. To determine the best approach, what would be most
+   helpful right now?
+
+   1. Specific implementation steps and practical guidance (LOW effort - 10-15 min)
+   2. Strategic framework and approach development (MEDIUM effort - 20-30 min)
+   3. Deep exploration of purpose, assumptions, and foundations (HIGH effort - 45-60 min)
+   ```
+
+   **Step 5.3: Handle User Response**
+
+   - If user confirms suggestion → proceed with that effort level
+   - If user asks for different level → use their preference
+   - If user asks for more detail → read `[skill]/references/effort-level-guidance.md` and present relevant sections
+   - If user is uncertain → present the ambiguous case question above
+   - Default to medium only if all else fails
 6. Create `PLAN.md` documenting configuration (see [templates.md](references/templates.md))
+
+**Quick Reference: Example Patterns by Effort Level**
+
+| Request Pattern | Suggested Level | Rationale |
+|----------------|----------------|-----------|
+| "Create a packing list for..." | LOW | Concrete checklist with specific items |
+| "Plan a birthday party for..." | LOW | Tactical event planning with materials/costs |
+| "Help me with my newsletter" | MEDIUM | Ambiguous - ask clarifying question |
+| "Design a content strategy for..." | MEDIUM | Strategic framework development |
+| "Develop a product feature for..." | MEDIUM | Design decisions with trade-offs |
+| "I'm considering a career change" | HIGH | High-stakes, foundational decision |
+| "Review [comprehensive dataset] and identify patterns..." | HIGH | Research-level analysis |
+| "Challenge my assumptions about..." | HIGH | Explicit assumption examination |
+| "Should I even [major decision]..." | HIGH | Foundational exploration |
 
 **Orchestrator Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
@@ -127,10 +244,20 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 
 Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-generation-generic.md`.
 
-The subagent will:
-1. Read REQUEST.md for the brainstorming topic
+**Instructions for subagent:**
+
+1. Read `[session]/REQUEST.md` for the brainstorming topic and context
 2. Generate 15-20 questions organized into 3-5 topical clusters
-3. Save outputs to QUESTIONS.md and questions/by-topic/[NN]_[topic].md files
+3. Ensure questions span these dimensions:
+   - Strategic: Long-term vision, goals, impact
+   - Tactical: Implementation, logistics, resources
+   - Creative: Innovative approaches, alternatives
+   - Analytical: Risks, trade-offs, metrics
+   - Human-centered: Stakeholder needs, user experience
+4. Use YAML frontmatter in all output files
+5. Create two outputs:
+   - `QUESTIONS.md` (master file with all questions in numbered clusters)
+   - `questions/by-topic/[NN]_[topic-slug].md` (one file per cluster)
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
@@ -155,10 +282,16 @@ Spawn 3 or 5 parallel subagents based on effort level. Select unique personas fo
 
 For each subagent, use prompt from `[skill]/references/prompts/phase2-question-generation-persona.md`.
 
-Each subagent will:
-1. Read REQUEST.md for the brainstorming topic
-2. Generate 15-20 questions organized into 3-5 topical clusters
-3. Save output to `[session]/questions/by-persona/questions_[persona-name].md`
+**Instructions for each subagent:**
+
+1. Read `[skill]/references/personas/[persona-name].md` and adopt the persona
+2. Read `[session]/REQUEST.md` for the brainstorming topic and context
+3. Generate 15-20 questions from your persona's perspective, organized into 3-5 topical clusters
+4. Ensure questions span strategic, tactical, creative, analytical, and human-centered dimensions
+5. Use YAML frontmatter in output (include persona name, date, effort level)
+6. Save to `[session]/questions/by-persona/[persona-name].md`
+
+**Key point:** Each persona works independently without seeing other personas' questions. This isolation ensures genuine diversity.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
@@ -226,10 +359,20 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 For each topic cluster, spawn 1 subagent using prompt from `[skill]/references/prompts/phase3-brainstorm-generic.md`.
 
-The subagent will:
-1. Read the topic's question file
-2. Provide 3-5 responses per question
-3. Save output to responses/[NN]_[topic]/generic-response.md
+**Instructions for each subagent:**
+
+1. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for the questions to answer
+2. Read `[session]/REQUEST.md` for context (if needed)
+3. For each question, provide 3-5 distinct, substantive responses (50-150 words each)
+4. Vary your approach across responses:
+   - Scale: Small quick wins vs. larger transformative approaches
+   - Risk profile: Conservative vs. experimental
+   - Timeframe: Immediate vs. long-term
+   - Focus: Process vs. people vs. technology
+5. Use YAML frontmatter in output (include topic cluster, date, effort level)
+6. Save to `[session]/responses/[NN]_[topic-slug]/generic-response.md`
+
+**Key point:** Focus on specific, actionable responses with concrete details and reasoning.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
@@ -258,6 +401,20 @@ For each topic cluster, spawn parallel subagents (3 for medium, 5 for high) usin
 
 See [personas.md](references/personas.md) for additional selection guidance.
 
+**Instructions for each subagent:**
+
+1. Read `[skill]/references/personas/[persona-name].md` and fully adopt the persona
+2. Read `[session]/REQUEST.md` for background context
+3. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for the questions to answer
+4. **Do NOT read other responses** in `[session]/responses/[NN]_[topic-slug]/` — respond independently
+5. For each question, provide 3-5 unique responses from your persona's perspective (50-150 words each)
+6. Vary responses across scope, risk tolerance, timeframe, and stakeholders
+7. Stay authentic to your persona's priorities and thinking style
+8. Use YAML frontmatter in output (include persona, topic cluster, date, effort level)
+9. Save to `[session]/responses/[NN]_[topic-slug]/[persona-name].md`
+
+**Key point:** Context isolation is critical. Each persona must respond independently without seeing other personas' responses. This ensures genuine diversity rather than consensus-seeking.
+
 **Subagent Model:** Claude Haiku or Gemini Flash (prefer fast response, volume over depth)
 
 **Quality Gate:** Before proceeding, verify:
@@ -285,10 +442,20 @@ Proceed to Phase 4B.
 
 Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/references/prompts/phase4-synthesis-low.md`.
 
-Each subagent will:
-1. Read the topic's question and response files
-2. Create concise summary with key themes and recommended actions
-3. Save output to synthesis/[NN]_[topic]_summary.md
+**Instructions for each subagent:**
+
+1. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for questions
+2. Read `[session]/responses/[NN]_[topic-slug]/generic-response.md` for responses
+3. Create concise, actionable summary that distills key insights:
+   - **Executive Summary**: 2-3 paragraphs capturing essence of topic exploration
+   - **Key Themes**: 3-5 recurring themes with 2-3 sentences each
+   - **Recommended Actions**: 4-8 action items organized by timeframe (immediate, near-term, long-term)
+   - **Key Considerations**: Opportunities, risks/challenges, and trade-offs
+4. Extract patterns across responses, prioritize actionability
+5. Use YAML frontmatter in output (include topic cluster, date, effort level)
+6. Save to `[session]/synthesis/[NN]_[topic-slug]_summary.md`
+
+**Key point:** This is summary-only synthesis (no attribution or full synthesis documents). Focus on integrated insights, not repetition. Aim for 500-800 words.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro (prefer balanced response)
 
@@ -308,10 +475,28 @@ Proceed to Phase 5.
 
 Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/references/prompts/phase4-synthesis.md`.
 
-Each subagent will create THREE output documents:
-1. synthesis/attributed/[NN]_[topic].md (with persona attribution)
-2. synthesis/[NN]_[topic]_synthesis.md (synthesized without attribution)
-3. synthesis/[NN]_[topic]_summary.md (executive summary)
+**Instructions for each subagent:**
+
+1. Read `[session]/REQUEST.md` for original brainstorming context
+2. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for questions
+3. Read all files in `[session]/responses/[NN]_[topic-slug]/` for persona responses
+4. Track convergence: Note which personas gave similar responses
+5. Use convergence as quality signal:
+   - **Convergent responses** (multiple personas): Always include — signals importance
+   - **Complementary responses** (different angles on related themes): Consolidate coherently
+   - **Unique responses** (one persona): Include if revealing blind spots or adding essential dimensions
+6. For each question, consolidate responses:
+   - Group responses by theme
+   - Order by consensus level (most convergent first)
+   - Synthesize into unified points that capture essence without losing details
+   - Preserve original responses with persona attribution
+7. Create THREE output documents:
+   - **Document 1**: `synthesis/attributed/[NN]_[topic-slug].md` — Full synthesis with persona attribution (synthesized points as bullets, original responses as sub-bullets with *—Persona Name*)
+   - **Document 2**: `synthesis/[NN]_[topic-slug]_synthesis.md` — Same as Document 1 but remove all sub-bullets and attribution (synthesized points only)
+   - **Document 3**: `synthesis/[NN]_[topic-slug]_summary.md` — Executive summary with key themes, recommended actions (by timeframe), and key considerations
+8. Use YAML frontmatter in all outputs (include topic cluster, synthesis-type, date, effort level)
+
+**Key point:** Use convergence to identify important insights. Preserve unique perspectives even if only one persona mentioned them. Attribution document shows transparency; synthesis document shows integration; summary shows strategic value.
 
 **Subagent Model:** Claude Opus or Gemini Pro (prefer thorough thoughtful response)
 
