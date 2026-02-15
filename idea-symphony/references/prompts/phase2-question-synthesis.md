@@ -12,6 +12,7 @@ Synthesize questions from multiple participants into a consolidated, organized l
 
 1. Read [session]/REQUEST.md for the original brainstorming request
 2. Read all files in [session]/questions/by-persona/
+3. Check if [session]/USER-QUESTIONS.md exists (use Glob). If it does, read it. These are questions the user specifically wants answered. Treat them as a mandatory additional input alongside persona files. When a synthesized question incorporates a user-provided question, append `[User Q]` to the question text so user questions remain traceable through synthesis.
 
 **Target output:**
 - **Medium effort**: 20-35 questions across 4-7 topic clusters (~5 questions per topic)
@@ -25,6 +26,9 @@ Synthesize questions from multiple participants into a consolidated, organized l
 3. **Unique questions** (one persona only):
    - **Medium effort**: Include if they reveal blind spots, challenge assumptions, or cover essential dimensions missing from convergent questions
    - **High effort**: More liberally include unique questions (2-3 per topic) that challenge assumptions, reveal blind spots, or explore speculative territory beyond consensus, even if raised by only 1-2 personas
+4. **User-provided questions** (from USER-QUESTIONS.md) — handle differently based on convergence:
+   - **Convergent with personas** (a persona asked essentially the same thing): Consolidate freely into a single synthesized question, same as you would for complementary persona questions. Mark the result with `[User Q]`. Do NOT keep as a separate entry alongside the similar persona question.
+   - **Non-convergent** (no persona asked anything similar): Preserve verbatim or with minimal refinement in the most relevant topic cluster, marked with `[User Q]`. These represent unique user knowledge the personas missed — never drop them to meet count targets.
 
 **Synthesis process:**
 1. Track convergence by noting which persona(s) raised each theme

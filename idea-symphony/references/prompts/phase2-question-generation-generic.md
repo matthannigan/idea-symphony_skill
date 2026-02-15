@@ -106,6 +106,16 @@ stage: "Phase 2: Question Generation"
 - Master file: `QUESTIONS.md`
 - Topic files: `questions/by-topic/01_[slug].md` through `0N_[slug].md`
 
+## User-Provided Questions
+
+Check if `USER-QUESTIONS.md` exists in the session directory (use Glob). If it exists, read it. These are questions the user specifically wants the brainstorming process to answer.
+
+**You MUST preserve these questions in your output.** Append `[User Q]` to any question that preserves or incorporates a user-provided question, so they remain traceable. If preserving user questions causes total count to exceed 20, that's acceptable — do not drop user questions to meet count targets.
+
+**Handle based on overlap with your generated questions:**
+- **Overlapping**: If a user question covers the same ground as one of your generated questions, consolidate them into a single question. Mark the result with `[User Q]`. Do NOT keep both as separate entries.
+- **Non-overlapping**: If a user question doesn't overlap with any of your generated questions, preserve it verbatim or with minimal refinement — it represents unique user knowledge that your analysis missed.
+
 ## Important Notes
 
 - Read the user's request from `REQUEST.md` in the brainstorm session directory

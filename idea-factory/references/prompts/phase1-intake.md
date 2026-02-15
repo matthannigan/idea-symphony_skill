@@ -60,7 +60,27 @@ Does this scope look right? You can adjust focus areas — for example,
 detail on [topic]."
 ```
 
-### Step 4: Determine Effort Level
+### Step 4: Ask About Output Format
+
+Ask the user what format they'd like for the final deliverable:
+
+```
+What format would you like for the action plan?
+
+1. **Recommendations** — Strategic analysis with actionable recommendations, alternatives, and trade-offs (best for new topics)
+2. **Revised document** — A rewritten version of an existing document implementing improvements (best when you have a document to revise)
+3. **Both** — Recommendations document + a best-crack revised document
+```
+
+If the user doesn't have a preference, suggest based on context:
+- If there's an existing document to revise → suggest "Revised document" or "Both"
+- If working from a brainstorming session on a new topic → suggest "Recommendations"
+
+Record the preference for inclusion in SCOPE.md.
+
+**Note:** This preference is captured for now. All sessions currently produce the standard ACTION-PLAN.md recommendations format — Phase 4 handling of revised documents is planned but not yet implemented.
+
+### Step 5: Determine Effort Level
 
 If the user hasn't specified an effort level, suggest one based on the scope:
 
@@ -70,9 +90,9 @@ If the user hasn't specified an effort level, suggest one based on the scope:
 
 Present the suggestion with rationale. Default to medium if unclear.
 
-### Step 5: Create Output Files
+### Step 6: Create Output Files
 
-After user confirms scope and effort level:
+After user confirms scope, output format, and effort level:
 
 1. Create `{{session_path}}/FACTORY-PLAN.md` using the template from `[skill]/references/templates.md`
 2. Create `{{session_path}}/SCOPE.md` using the template from `[skill]/references/templates.md`

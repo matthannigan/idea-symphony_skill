@@ -179,6 +179,12 @@ symphony_session: [path to Symphony session directory]
 - [Recommendation 1]
 - [Recommendation 2]
 
+## Output Format
+
+- **Format:** [Recommendations / Revised Document / Both]
+- **Source document:** [path to document being revised, or "N/A — new topic"]
+- **Notes:** [Any user preferences about tone, audience, structure]
+
 ## Scope Confirmation
 
 [Summary of what the action plan will cover, as confirmed by user]

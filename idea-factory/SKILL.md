@@ -96,9 +96,15 @@ This creates "debate" through independent development + synthesis reconciliation
    - **Brainstorming highlights** — Top insights, key tensions, strongest recommendations
 4. Present scope summary to user for confirmation
 5. User can adjust scope (focus areas, exclusions)
-6. Determine effort level (user-specified or suggest based on scope)
-7. Create session directory: `[project-name]_factory_[YYYY-MM-DD]/`
-8. Create `SCOPE.md` and `FACTORY-PLAN.md`
+6. **Ask about desired output format:**
+   - **Recommendations** (default for new topics): Strategic analysis listing what to do — actionable recommendations with alternatives and trade-offs
+   - **Revised document**: A rewritten version of an existing document implementing improvements (when user has a document to revise)
+   - **Both**: Recommendations document + best-crack revised document
+   - If user doesn't have a preference, suggest based on whether they have an existing document to revise (revised document/both) or are working from a brainstorming session on a new topic (recommendations)
+   - **Note:** This preference is captured in SCOPE.md for now. Phase 4 handling of different output formats is planned but not yet implemented — all sessions currently produce the standard ACTION-PLAN.md recommendations format.
+7. Determine effort level (user-specified or suggest based on scope)
+8. Create session directory: `[project-name]_factory_[YYYY-MM-DD]/`
+9. Create `SCOPE.md` (include output format preference) and `FACTORY-PLAN.md`
 
 **Quality Gate:**
 - `SCOPE.md` exists with all required sections

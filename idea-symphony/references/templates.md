@@ -22,6 +22,18 @@ Templates for the intermediate documents created during an Idea Symphony brainst
 [YYYY-MM-DD]
 ```
 
+## USER-QUESTIONS.md (Optional)
+
+```markdown
+# User-Defined Questions
+
+Questions the user wants the brainstorming process to answer.
+
+1. [Question text]
+2. [Question text]
+...
+```
+
 ## PLAN.md
 
 ```markdown
@@ -56,6 +68,7 @@ Orchestrator consolidates all outputs.
 
 - **Phase 1 (Context Gathering):** ✅ Complete
   - [note user uploads copied or "no user files submitted"]
+  - User-defined questions: [Yes (N questions) / No]
 
 - **Phase 2 (Question Generation):** ✅ Complete
   - [N] consolidated questions across [N] topic clusters.

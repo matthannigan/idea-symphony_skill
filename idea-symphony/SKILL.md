@@ -78,6 +78,7 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 │   ├── 01_operations_synthesis.md    # Medium/high only
 │   └── ...
 ├── REQUEST.md                  # User request summary
+├── USER-QUESTIONS.md            # (optional) User-provided questions to answer
 ├── PLAN.md                     # Session config and status
 ├── QUESTIONS.md                # All questions consolidated (canonical order)
 ├── SYNTHESIS.md                # All summaries + syntheses (in topic order)
@@ -117,13 +118,18 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 2. Ask user to confirm project name (e.g., "Community Garden" or "Habit Tracker")
 3. Confirm session directory location (default: `./[project-name_YYYY-MM-DD]/`)
 4. Create `REQUEST.md` summarizing the request (see [templates.md](references/templates.md))
-5. **Determine effort level:**
+5. **Ask about user-defined questions:**
+   - Ask: "Do you have specific questions you want the brainstorming process to answer? These will be preserved through all phases."
+   - If yes: Capture the questions and save as `USER-QUESTIONS.md` in the session directory (see [templates.md](references/templates.md))
+   - If no: Proceed without creating the file
+   - **Design note:** USER-QUESTIONS.md is kept separate from REQUEST.md to avoid influencing persona-based question generators in medium/high effort. Persona generators should NOT see user questions — only the generic generator (low effort) and the synthesizer (medium/high) read this file.
+6. **Determine effort level:**
 
    **If user specified effort level explicitly** → use that level, skip analysis
 
    **If user didn't specify** → analyze request and suggest appropriate level:
 
-   **Step 5.1: Detect Strong Triggers (analyze user's request text)**
+   **Step 6.1: Detect Strong Triggers (analyze user's request text)**
 
    **HIGH effort triggers** (if ANY match, strongly suggest HIGH):
    - High-stakes keywords: "career change", "major decision", "life transition", "considering whether to", "should I even"
@@ -144,7 +150,7 @@ Persona files are located at `[skill]/references/personas/[filename]`.
    - System keywords: "workflow", "process design", "system", "organizational"
    - Planning keywords: "develop", "create strategy", "plan approach"
 
-   **Step 5.2: Assess Confidence and Present Suggestion**
+   **Step 6.2: Assess Confidence and Present Suggestion**
 
    **If strong HIGH trigger detected:**
    ```
@@ -207,14 +213,14 @@ Persona files are located at `[skill]/references/personas/[filename]`.
    3. Deep exploration of purpose, assumptions, and foundations (HIGH effort - 45-60 min)
    ```
 
-   **Step 5.3: Handle User Response**
+   **Step 6.3: Handle User Response**
 
    - If user confirms suggestion → proceed with that effort level
    - If user asks for different level → use their preference
    - If user asks for more detail → read `[skill]/references/effort-level-guidance.md` and present relevant sections
    - If user is uncertain → present the ambiguous case question above
    - Default to medium only if all else fails
-6. Create `PLAN.md` documenting configuration (see [templates.md](references/templates.md))
+7. Create `PLAN.md` documenting configuration (see [templates.md](references/templates.md))
 
 **Quick Reference: Example Patterns by Effort Level**
 
@@ -247,15 +253,16 @@ Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-g
 **Instructions for subagent:**
 
 1. Read `[session]/REQUEST.md` for the brainstorming topic and context
-2. Generate 15-20 questions organized into 3-5 topical clusters
-3. Ensure questions span these dimensions:
+2. Check if `[session]/USER-QUESTIONS.md` exists (use Glob). If it exists, read it — these are questions the user specifically wants answered. Preserve their intent, expand/refine them, and integrate them into topic clusters. Mark any question that preserves or incorporates a user-provided question by appending `[User Q]` to the question text. User questions should appear in final output even if total count exceeds the 15-20 target.
+3. Generate 15-20 questions organized into 3-5 topical clusters (plus any user-provided questions)
+4. Ensure questions span these dimensions:
    - Strategic: Long-term vision, goals, impact
    - Tactical: Implementation, logistics, resources
    - Creative: Innovative approaches, alternatives
    - Analytical: Risks, trade-offs, metrics
    - Human-centered: Stakeholder needs, user experience
-4. Use YAML frontmatter in all output files
-5. Create two outputs:
+5. Use YAML frontmatter in all output files
+6. Create two outputs:
    - `QUESTIONS.md` (master file with all questions in numbered clusters)
    - `questions/by-topic/[NN]_[topic-slug].md` (one file per cluster)
 
@@ -264,6 +271,7 @@ Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-g
 **Quality Gate:** Before proceeding, verify:
 - `QUESTIONS.md` exists
 - `questions/by-topic/` contains 3-5 numbered `.md` files
+- If `USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` and compare against the number of questions in `USER-QUESTIONS.md`. If any are missing, log which user questions lack a corresponding marker and re-examine.
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with Phase 2 complete status and list of topic clusters.
@@ -308,18 +316,22 @@ Spawn 1 subagent to consolidate persona questions into topic clusters.
 **Synthesis instructions for subagent:**
 
 1. Read all persona question files and REQUEST.md
-2. Track convergence: Note which personas asked similar questions
-3. Use convergence as quality signal:
+2. Check if `[session]/USER-QUESTIONS.md` exists (use Glob). If it exists, read it and treat user questions as a mandatory "+1" input alongside persona files. Append `[User Q]` to any synthesized question that incorporates a user-provided question. If user questions cause total count to exceed target ranges, that is acceptable — never drop user questions to meet count targets.
+3. Track convergence: Note which personas asked similar questions
+4. Use convergence as quality signal:
    - **Convergent questions** (multiple personas): Always include - signals importance
    - **Complementary questions** (similar themes): Consolidate into one well-framed question
    - **Unique questions** (one persona):
      - Medium: Include if revealing blind spots or covering missing dimensions
      - High: More liberally include (2-3 per topic) to explore speculative territory
-4. Create topic clusters:
+   - **User-provided questions** — handle differently based on convergence:
+     - **Convergent with personas**: Consolidate freely into the synthesized question (same as complementary questions). Mark the result with `[User Q]`. Do NOT keep as a separate entry.
+     - **Non-convergent** (no persona asked anything similar): Preserve verbatim or with minimal refinement in the most relevant topic cluster. These represent unique user knowledge the personas missed — never drop them.
+5. Create topic clusters:
    - Arrange in logical flow (foundational → strategic → operational)
    - Medium: 4-7 topics with ~5 questions each (range 4-7)
    - High: 6-9 topics with ~6-7 questions each (range 5-8)
-5. Output files:
+6. Output files:
    - QUESTIONS.md (master list with YAML frontmatter, numbered questions)
    - questions/by-topic/[NN]_[topic-slug].md (one per cluster)
 
@@ -338,6 +350,11 @@ Before proceeding, verify:
    - If count doesn't match: Use Glob to search, move to correct location
 
 3. **`QUESTIONS.md` exists**
+
+4. **User questions preserved** (if `USER-QUESTIONS.md` exists):
+   - Count the number of `[User Q]` markers in `QUESTIONS.md`
+   - Compare against the number of questions in `USER-QUESTIONS.md`
+   - If any are missing, log which user questions lack a corresponding `[User Q]` marker and re-examine — either add the missing questions or confirm they were consolidated into an existing question (and add the marker)
 
 If files missing after search, log in PLAN.md Notes and proceed (don't block on failed subagents).
 
