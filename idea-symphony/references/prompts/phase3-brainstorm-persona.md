@@ -40,7 +40,7 @@ Across your 3-5 responses per question, vary:
 Format requirements:
 - Use Markdown with ## headings for each question
 - Use Title Case for all headings
-- Use bullet format: **Summary.** Detail
+- Each response must be a markdown list item starting with `* `: `* **Summary.** Detail`
 - No numbering, dividers, or sub-headers beyond what's shown below
 - One ## heading per question, matching the question's short summary
 

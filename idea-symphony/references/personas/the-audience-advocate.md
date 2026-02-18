@@ -14,7 +14,11 @@ When participating in the brainstorming session:
 - Identify potential gaps between intention and actual community needs
 - Consider the dignity and agency of those being served
 - Think about power dynamics and who has voice in the process
-- Use phrases like "From the community's perspective..." or "The people we serve might experience this as..."
+- Go beyond identifying what users need — explore what they *experience*:
+  - Use empathy mapping: what do they think, feel, say, and do in the moments that matter?
+  - Map emotional journeys: where do people feel frustration, confusion, relief, or delight?
+  - Surface unarticulated needs: what do people struggle with but never complain about because they don't realize it could be different?
+- Use phrases like "From the community's perspective..." or "The people we serve might experience this as..." or "What they say they want vs. what they actually do suggests..."
 
 Avoid:
 - Making assumptions about the audience without evidence or community input
@@ -25,7 +29,7 @@ Avoid:
 Example contributions:
 - "While this approach is efficient for us, community members might find it inaccessible because..."
 - "We need to consider how this would work for people who lack reliable internet/transportation/childcare..."
-- "Based on community feedback, the key challenge isn't X but rather Y. How might we address that?"
+- "Think about the emotional journey here: a first-time user walks in feeling X, encounters Y, and we want them to leave feeling Z. Right now, step Y is where we lose them."
+- "People won't tell us this is a problem because they've never experienced an alternative — but if you map what they actually do vs. what we designed for, there's a gap they've silently worked around."
 - "This assumes participants have a certain level of education/literacy/resources. What about those who don't?"
 - "Are we designing this with the community or for the community? How can we ensure their voices shape this initiative?"
-- "This could inadvertently stigmatize or create barriers for the very people most in need of support."

@@ -1,0 +1,66 @@
+============================================
+CLUSTER COMPARISON — CROSS-PERSONA ANALYSIS
+Generated: 2026-02-16 13:39
+============================================
+
+=== CLUSTER STATISTICS ===
+topic|cluster|files|total_kb|avg_kb|min_kb|max_kb
+space-party|01_theme-and-experience|18|101.5|5.6|4.2|6.9
+space-party|02_activities-and-engagement|18|101.5|5.6|4.1|7.1
+space-party|03_logistics-and-safety|18|101.0|5.6|3.8|7.2
+space-party|04_inclusion-and-community|18|84.6|4.7|3.1|6.1
+tool-library|01_mission-and-model|18|119.1|6.6|3.3|9.9
+tool-library|02_operations-and-systems|18|118.1|6.5|2.9|10.8
+tool-library|03_equity-and-access|18|117.0|6.5|2.9|10.6
+tool-library|04_sustainability-and-growth|18|101.8|5.6|2.5|8.4
+habit-tracker|01_product-vision-and-differentiation|18|104.8|5.8|4.5|7.3
+habit-tracker|02_user-experience-and-engagement|18|100.3|5.5|4.2|7.4
+habit-tracker|03_technical-architecture|18|102.4|5.6|4.2|7.3
+habit-tracker|04_business-and-sustainability|18|85.3|4.7|3.5|5.9
+
+=== TOPIC-LEVEL TOTALS ===
+topic|files|total_kb|avg_file_kb
+space-party|72|388.8|5.4
+tool-library|72|456.1|6.3
+habit-tracker|72|392.9|5.4
+
+=== QUESTIONS PER CLUSTER VS OUTPUT SIZE ===
+topic|cluster|question_count|avg_response_kb|kb_per_question
+space-party|01_theme-and-experience|5|5.6|1.12
+space-party|02_activities-and-engagement|5|5.6|1.12
+space-party|03_logistics-and-safety|5|5.6|1.12
+space-party|04_inclusion-and-community|4|4.7|1.17
+tool-library|01_mission-and-model|5|6.6|1.32
+tool-library|02_operations-and-systems|5|6.5|1.31
+tool-library|03_equity-and-access|5|6.5|1.30
+tool-library|04_sustainability-and-growth|4|5.6|1.41
+habit-tracker|01_product-vision-and-differentiation|5|5.8|1.16
+habit-tracker|02_user-experience-and-engagement|5|5.5|1.11
+habit-tracker|03_technical-architecture|5|5.6|1.13
+habit-tracker|04_business-and-sustainability|4|4.7|1.18
+
+=== TOP 10 LARGEST RESPONSE FILES ===
+file|bytes|kb
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-storyteller.md|11153|10.8
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-storyteller.md|10906|10.6
+persona-eval-tool-library_2026-02-15/responses/01_mission-and-model/the-storyteller.md|10202|9.9
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-visionary.md|9429|9.2
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-technical-expert.md|9322|9.1
+persona-eval-tool-library_2026-02-15/responses/01_mission-and-model/the-visionary.md|9299|9.0
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-analogist.md|9292|9.0
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-visionary.md|9171|8.9
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-technical-expert.md|9149|8.9
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-analogist.md|8752|8.5
+
+=== TOP 10 SMALLEST RESPONSE FILES ===
+file|bytes|kb
+persona-eval-tool-library_2026-02-15/responses/04_sustainability-and-growth/the-questioner.md|2579|2.5
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-questioner.md|3004|2.9
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-questioner.md|3052|2.9
+persona-eval-space-party_2026-02-15/responses/04_inclusion-and-community/the-constraint-flipper.md|3274|3.1
+persona-eval-space-party_2026-02-15/responses/04_inclusion-and-community/the-provocateur.md|3311|3.2
+persona-eval-tool-library_2026-02-15/responses/01_mission-and-model/the-questioner.md|3434|3.3
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-questioner.md|3654|3.5
+persona-eval-tool-library_2026-02-15/responses/04_sustainability-and-growth/the-audience-advocate.md|3804|3.7
+persona-eval-space-party_2026-02-15/responses/03_logistics-and-safety/the-constraint-flipper.md|3924|3.8
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-pragmatist.md|3939|3.8

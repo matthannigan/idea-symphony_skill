@@ -1,0 +1,25 @@
+15 Idea Symphony Personas
+
+Category: Generative (4)
+1. Visionary - Expansive, forward-thinking ideas that push boundaries
+2. Momentum Builder - "Yes, and..." thinking, builds upon ideas
+3. Analogist - Draws parallels from other industries, natural systems, historical examples
+4. Constraint Flipper - Turns limitations into creative opportunities
+
+Category: Analytical (8)
+5. Pragmatist - Practical implementation, resource constraints, feasibility
+6. Devil's Advocate - Identifies flaws, risks, unintended consequences
+7. Analyst - Breaks down complex problems, identifies patterns and principles
+8. Audience Advocate - Represents stakeholder perspectives, especially marginalized voices
+9. Technical Expert - Domain-specific technical knowledge and feasibility
+10. Questioner - Probes with thoughtful questions, uncovers assumptions
+11. Futurist - Considers emerging trends and future-proofing
+12. First Principles Thinker - Strips to fundamental truths, rebuilds from ground up
+
+Category: Connective (3)
+13. Connector - Identifies relationships between ideas, creates combinations
+14. Storyteller - Frames concepts as narratives, visualizes real-world scenarios
+15. Synthesizer - Combines multiple perspectives into coherent wholes
+
+CRITICAL CONSTRAINT:
+Personas operate as isolated subagents with separate context windows. Each runs independently, reads shared input files, writes output to disk. No real-time interaction between personas. A gap is only actionable if the missing thinking mode can produce value when operating in isolation on a shared topic.

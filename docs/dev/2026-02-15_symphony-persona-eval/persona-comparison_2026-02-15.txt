@@ -1,0 +1,67 @@
+============================================
+PERSONA COMPARISON — CROSS-TOPIC CONSISTENCY
+Generated: 2026-02-16 13:39
+============================================
+
+=== PERSONA SUMMARY (bytes) ===
+persona|files|mean|min|max|range|cv%
+the-storyteller|12|7808|5587|11153|5566|23.8
+the-visionary|12|7503|6072|9429|3357|14.8
+the-momentum-builder|12|6600|5185|7492|2307|10.6
+the-analyst|12|6392|4816|8035|3219|14.6
+the-technical-expert|12|6321|4326|9322|4996|26.5
+the-first-principles-thinker|12|6144|4385|7409|3024|15.4
+the-analogist|12|5955|4105|9292|5187|31.7
+the-synthesizer|12|5921|4374|6833|2459|10.9
+the-devils-advocate|12|5891|4549|7039|2490|11.8
+the-provocateur|12|5755|3311|7650|4339|24.3
+the-empath|12|5676|4355|6841|2486|13.5
+the-futurist|12|5563|4479|6875|2396|14.1
+the-audience-advocate|12|5430|3804|6659|2855|14.2
+the-simplifier|12|5373|4328|6704|2376|12.5
+the-constraint-flipper|12|5043|3274|6923|3649|21.7
+the-connector|12|5004|3980|5816|1836|11.4
+the-questioner|12|4677|2579|7317|4738|34.3
+the-pragmatist|12|4575|3939|5270|1331|8.3
+
+=== PER-PERSONA BY TOPIC (avg bytes per topic) ===
+persona|space-party|tool-library|habit-tracker|spread
+the-storyteller|6963|10233|6229|4004
+the-analogist|4619|8554|4692|3935
+the-questioner|6756|3017|4257|3739
+the-technical-expert|5026|8584|5353|3558
+the-provocateur|4055|6050|7161|3106
+the-constraint-flipper|3980|6350|4798|2370
+the-visionary|6812|8875|6823|2063
+the-analyst|6030|7522|5624|1898
+the-first-principles-thinker|6713|6799|4919|1880
+the-audience-advocate|5486|4650|6154|1504
+the-futurist|4867|6364|5458|1497
+the-momentum-builder|6663|7300|5836|1464
+the-empath|6348|5783|4898|1450
+the-simplifier|4939|5157|6023|1084
+the-synthesizer|5312|6183|6269|957
+the-devils-advocate|5624|5549|6501|952
+the-connector|4623|5418|4971|795
+the-pragmatist|4726|4384|4616|342
+
+=== CONSISTENCY RANKING (lowest CV% = most consistent) ===
+persona|cv%|interpretation
+the-pragmatist|8.3|highly consistent
+the-momentum-builder|10.6|highly consistent
+the-synthesizer|10.9|highly consistent
+the-connector|11.4|highly consistent
+the-devils-advocate|11.8|highly consistent
+the-simplifier|12.5|highly consistent
+the-empath|13.5|highly consistent
+the-futurist|14.1|highly consistent
+the-audience-advocate|14.2|highly consistent
+the-analyst|14.6|highly consistent
+the-visionary|14.8|highly consistent
+the-first-principles-thinker|15.4|moderately consistent
+the-constraint-flipper|21.7|moderately consistent
+the-storyteller|23.8|moderately consistent
+the-provocateur|24.3|moderately consistent
+the-technical-expert|26.5|moderately consistent
+the-analogist|31.7|high variance
+the-questioner|34.3|high variance

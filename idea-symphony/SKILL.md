@@ -32,21 +32,28 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 
 | Persona | File | Best For |
 |---------|------|----------|
-| The Visionary | `the-visionary.md` | Future possibilities, transformation |
-| The Pragmatist | `the-pragmatist.md` | Feasibility, implementation |
-| The Devil's Advocate | `the-devils-advocate.md` | Risk identification, challenges |
-| The Connector | `the-connector.md` | Relationships between ideas |
+| The Accountant | `the-accountant.md` | Financial clarity, cost modeling, economic sustainability |
 | The Analyst | `the-analyst.md` | Data, patterns, systematic breakdown |
+| The Analogist | `the-analogist.md` | Cross-domain patterns |
+| The Audience Advocate | `the-audience-advocate.md` | End-user perspective, empathy mapping |
+| The Connector | `the-connector.md` | Cross-domain bridging, structural parallels |
+| The Constraint Flipper | `the-constraint-flipper.md` | Limitations → opportunities |
+| The Devil's Advocate | `the-devils-advocate.md` | Risk identification, challenges, mitigations |
+| The Empath | `the-empath.md` | Emotional resonance, gut-feeling reasoning |
+| The First Principles Thinker | `the-first-principles-thinker.md` | Deconstruction to fundamentals |
+| The Futurist | `the-futurist.md` | Trend-grounded analysis, strategic positioning |
+| The Lawyer | `the-lawyer.md` | Regulatory frameworks, compliance, legal |
+| The Momentum Builder | `the-momentum-builder.md` | Progressive elaboration, forward building |
+| The Politician | `the-politician.md` | Stakeholder politics, coalition building, power dynamics |
+| The Pragmatist | `the-pragmatist.md` | Feasibility, implementation |
+| The Provocateur | `the-provocateur.md` | Absurdist provocation, lateral thinking |
+| The Questioner | `the-questioner.md` | Deep probing, assumptions |
+| The Simplifier | `the-simplifier.md` | Subtractive thinking, removing complexity |
 | The Storyteller | `the-storyteller.md` | Narrative, user journeys |
 | The Synthesizer | `the-synthesizer.md` | Consolidation, theme extraction |
-| The Momentum Builder | `the-momentum-builder.md` | "Yes, and..." expansion |
-| The Audience Advocate | `the-audience-advocate.md` | End-user perspective |
+| The Systems Thinker | `the-systems-thinker.md` | Feedback loops, second-order consequences |
 | The Technical Expert | `the-technical-expert.md` | Technical feasibility |
-| The Analogist | `the-analogist.md` | Cross-domain patterns |
-| The Questioner | `the-questioner.md` | Deep probing, assumptions |
-| The Constraint Flipper | `the-constraint-flipper.md` | Limitations → opportunities |
-| The Futurist | `the-futurist.md` | Trends, future-proofing |
-| The First Principles Thinker | `the-first-principles-thinker.md` | Deconstruction to fundamentals |
+| The Visionary | `the-visionary.md` | Paradigm shifts, transformative reimagination |
 
 Persona files are located at `[skill]/references/personas/[filename]`.
 
@@ -410,13 +417,28 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 For each topic cluster, spawn parallel subagents (3 for medium, 5 for high) using prompt from `[skill]/references/prompts/phase3-brainstorm-persona.md`.
 
-**Select personas only from the Available Personas table.** Match personas to topic needs:
-- Technical topics → The Technical Expert, The Analyst, The First Principles Thinker
-- User-facing topics → The Audience Advocate, The Storyteller, The Questioner
-- Strategic topics → The Visionary, The Futurist, The Devil's Advocate
-- Implementation topics → The Pragmatist, The Constraint Flipper, The Momentum Builder
+**Select personas only from the Available Personas table.** Match personas to topic needs using cluster awareness:
 
-See [personas.md](references/personas.md) for additional selection guidance.
+**Persona clusters** (selecting within a cluster gives complementary perspectives):
+- **Human-centered triad:** Empath (emotional resonance), Audience Advocate (stakeholder needs), Storyteller (lived experience)
+- **Challenge triad:** Provocateur (absurdist provocation), Constraint Flipper (pragmatic reframing), Devil's Advocate (critical analysis)
+- **Forward-looking pair:** Visionary (paradigm shifts), Futurist (trend-grounded positioning)
+- **Analytical core:** First Principles Thinker, Technical Expert, Pragmatist
+- **System dynamics:** Systems Thinker, Connector
+
+**Topic-aware selection:**
+- Technical topics → Technical Expert, First Principles Thinker, Systems Thinker, Simplifier
+- User-facing topics → Audience Advocate, Storyteller, Empath
+- Strategic topics → Visionary, Futurist, Devil's Advocate, Systems Thinker
+- Implementation topics → Pragmatist, Constraint Flipper, Momentum Builder
+- Regulated domains → Lawyer, Devil's Advocate, Pragmatist
+
+**Topic sensitivity notes:**
+- Provocateur produces more on technical topics; use on whimsical topics to provoke in the *opposite* direction (add gravity)
+- Simplifier finds more subtractive material on product-design topics
+- Analytical convergence is highest on technical topics — avoid stacking too many analytical personas on these
+
+See [personas.md](references/personas.md) for additional selection guidance and recommended combinations.
 
 **Instructions for each subagent:**
 
@@ -625,5 +647,5 @@ The orchestrator provides:
 ## References
 
 - [references/personas.md](references/personas.md) — Guidance for persona usage
-- [references/personas/*.md](references/personas/*.md) — Full system prompts for all 15 personas
+- [references/personas/*.md](references/personas/*.md) — Full system prompts for all 20 personas
 - [references/templates.md](references/templates.md) — Document templates (REQUEST.md, PLAN.md, BRAINSTORM.md, synthesis files)
