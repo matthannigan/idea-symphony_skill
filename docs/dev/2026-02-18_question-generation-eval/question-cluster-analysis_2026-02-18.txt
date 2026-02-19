@@ -1,0 +1,634 @@
+============================================
+CLUSTER ANALYSIS — TOPIC CLUSTER COMPARISON
+Generated: 2026-02-18 23:54
+============================================
+
+=== PER-FILE CLUSTER LISTING ===
+
+--- space-party | the-accountant ---
+  Budget Allocation & Cost Structure: 4 questions
+  Food, Cake & Catering Economics: 3 questions
+  Decorations: DIY vs. Purchased: 3 questions
+  Activities, Entertainment & Equipment: 3 questions
+  Time, Opportunity Cost & Parental ROI: 4 questions
+
+--- space-party | the-analogist ---
+  Journey and Progression Structures: 4 questions
+  Natural Systems and Biological Analogies: 4 questions
+  Historical and Cultural Models: 4 questions
+  Cross-Industry Innovations: 4 questions
+  Technology and Systems Metaphors: 5 questions
+
+--- space-party | the-analyst ---
+  Activity Structure & Flow: 5 questions
+  Resource Allocation & Constraints: 5 questions
+  Risk Assessment & Contingency Planning: 5 questions
+  Outcome Measurement & Success Criteria: 5 questions
+  Space Theme Execution: 6 questions
+
+--- space-party | the-audience-advocate ---
+  Emotional Experience & Wonder: 4 questions
+  Accessibility & Inclusion: 4 questions
+  Parent & Family Experience: 4 questions
+  Age-Appropriateness & Development: 4 questions
+  Safety, Comfort & Practical Needs: 5 questions
+
+--- space-party | the-connector ---
+  Activity Flow as Narrative Arc: 4 questions
+  Sensory Cross-Modalities: 4 questions
+  Borrowed Frameworks from Other Domains: 4 questions
+  Constraints as Creative Levers: 4 questions
+  Social Dynamics and Group Architecture: 5 questions
+
+--- space-party | the-constraint-flipper ---
+  Space Within Constraints: 5 questions
+  Turning Age Into Advantage: 4 questions
+  Reframing Resource Limitations: 4 questions
+  Group Size as Design Driver: 3 questions
+  The Day-After Opportunity: 4 questions
+
+--- space-party | the-devils-advocate ---
+  Developmental Appropriateness & Engagement Risks: 5 questions
+  Safety & Physical Space Constraints: 5 questions
+  Parental & Family Dynamics: 5 questions
+  Budget, Effort & Realistic Execution: 5 questions
+  Post-Party & Unintended Consequences: 6 questions
+
+--- space-party | the-empath ---
+  The Birthday Girl's Emotional Experience: 4 questions
+  The Social & Emotional Dynamics of 11 Five-Year-Olds: 4 questions
+  The Parents' Emotional Labor & Experience: 2 questions
+  The Emotional Life of Space & Wonder: 3 questions
+  Meaning, Memory & Ritual: 3 questions
+
+--- space-party | the-first-principles-thinker ---
+  The Fundamental Nature of Children's Play: 3 questions
+  Deconstructing Party Logistics: 3 questions
+  Rethinking Physical Environment: 3 questions
+  The Economics of Celebration: 3 questions
+  Human Behavior and Group Dynamics: 4 questions
+
+--- space-party | the-futurist ---
+  Immersive Entertainment & Experience Trends: 4 questions
+  Educational Integration & Learning Trends: 4 questions
+  Sustainable Event Planning & Material Trends: 4 questions
+  Social Connection & Community Trends: 4 questions
+  Digital Legacy & Memory Preservation Trends: 5 questions
+
+--- space-party | the-lawyer ---
+  Liability and Waiver Considerations: 3 questions
+  Food Safety and Allergen Management: 3 questions
+  Contracts and Vendor Agreements: 3 questions
+  Privacy and Photo/Video Considerations: 3 questions
+  Music, Intellectual Property, and Licensed Content: 2 questions
+  Regulatory Considerations for Specific Activities: 3 questions
+  Financial Transactions and Gift Considerations: 3 questions
+  Communication and Expectation Setting: 4 questions
+
+--- space-party | the-momentum-builder ---
+  Building Transformative Experiences: 4 questions
+  Growing Engagement Through Participation: 4 questions
+  Expanding the Circle: Community and Legacy: 4 questions
+  Logistics as Launch Platform: 5 questions
+
+--- space-party | the-politician ---
+  Decision Authority & Parental Dynamics: 3 questions
+  Guest Coalition Management: 3 questions
+  Resource Negotiation & Budget Governance: 3 questions
+  Opposition Anticipation & Contingency Planning: 3 questions
+  Coalition-Building Through Shared Experience: 4 questions
+
+--- space-party | the-pragmatist ---
+  Budget & Resource Allocation: 3 questions
+  Venue & Setup Logistics: 3 questions
+  Activity Feasibility & Management: 4 questions
+  Food & Timing Considerations: 3 questions
+  Parental Management & Communication: 5 questions
+
+--- space-party | the-provocateur ---
+  The Children as Aliens: Inverting Power and Perspective: 4 questions
+  Constraint as Engine: Abundance and Scarcity Provocations: 4 questions
+  Time and Sequence: Breaking the Linear Party Model: 4 questions
+  The Absence of Adults: Radical Autonomy: 3 questions
+  Space as Empty: The Anti-Theme Provocation: 5 questions
+
+--- space-party | the-questioner ---
+  The Birthday Child's Experience & Expectations: 5 questions
+  Age-Appropriate Engagement & Attention Spans: 5 questions
+  Logistics, Constraints & Real-World Trade-offs: 5 questions
+  Social Dynamics & Inclusion: 5 questions
+  Creativity, Innovation & Alternative Approaches: 6 questions
+
+--- space-party | the-simplifier ---
+  What Actually Matters to Five-Year-Olds?: 4 questions
+  Cutting the Logistics Burden: 5 questions
+  Eliminating Entire Categories of Work: 5 questions
+  Questioning the Whole Enterprise: 6 questions
+
+--- space-party | the-storyteller ---
+  Arrival & First Impressions: 3 questions
+  The Hero's Journey Through Activities: 3 questions
+  Characters & Roles: 3 questions
+  Sensory World-Building: 3 questions
+  Emotional Peaks & Meaningful Moments: 4 questions
+
+--- space-party | the-synthesizer ---
+  Narrative Arc & Experience Flow: 4 questions
+  Integrating Activity, Decoration, and Logistics: 4 questions
+  Balancing Wonder with Age-Appropriateness: 4 questions
+  Parent Experience & Practical Execution: 4 questions
+  Integration Across Planning Dimensions: 5 questions
+
+--- space-party | the-systems-thinker ---
+  Energy Flow & Pacing Dynamics: 4 questions
+  Parent-Child Interaction Systems: 3 questions
+  Resource & Material Flow: 3 questions
+  Social Dynamics & Inclusion: 3 questions
+  Food, Sensory & Biological Systems: 3 questions
+  Memory & Narrative Systems: 3 questions
+  Risk & Contingency Systems: 4 questions
+
+--- space-party | the-technical-expert ---
+  Space Simulation & Immersion Technology: 3 questions
+  Activity Engineering & Execution: 4 questions
+  Audiovisual & Sensory Systems: 3 questions
+  Food Service & Presentation: 2 questions
+  Logistics & Risk Management: 5 questions
+
+--- space-party | the-visionary ---
+  Transformative Experience Design: 4 questions
+  Redefining "Space" as a Theme: 4 questions
+  Rethinking Participation and Agency: 4 questions
+  Reframing Logistics as Experience: 4 questions
+  The Architecture of Wonder: 5 questions
+
+--- tool-library | the-accountant ---
+  Financial Sustainability & Revenue Models: 3 questions
+  Capital Costs & Asset Management: 3 questions
+  Operating Economics & Cost Structure: 3 questions
+  Risk Economics & Loss Prevention: 3 questions
+  Scaling Economics & Long-Term Viability: 4 questions
+
+--- tool-library | the-analogist ---
+  Library and Knowledge Systems Models: 4 questions
+  Biological and Natural Systems: 4 questions
+  Hospitality and Service Industry Patterns: 4 questions
+  Historical and Cultural Models: 4 questions
+  Manufacturing and Maintenance Systems: 5 questions
+
+--- tool-library | the-analyst ---
+  Usage Analytics and Demand Patterns: 4 questions
+  Financial Sustainability and Resource Allocation: 4 questions
+  Operational Efficiency and Risk Management: 4 questions
+  Spatial Optimization and Inventory Architecture: 4 questions
+  Success Indicators and Decision Frameworks: 5 questions
+
+--- tool-library | the-audience-advocate ---
+  Who Are We Really Serving?: 4 questions
+  The Lived Experience of Borrowing: 4 questions
+  Participation Beyond Borrowing: 3 questions
+  Sustainability and Stewardship: 3 questions
+  Measuring What Matters: 4 questions
+
+--- tool-library | the-connector ---
+  Social Infrastructure & Network Effects: 4 questions
+  Cross-Domain Design Principles: 4 questions
+  Hidden Structural Parallels: 4 questions
+  Behavioral Science & Motivation: 4 questions
+  Systems Thinking & Feedback Loops: 5 questions
+
+--- tool-library | the-constraint-flipper ---
+  Embracing Space Limitations as a Design Feature: 3 questions
+  Turning Resource Scarcity into Community Ownership: 3 questions
+  Converting Liability Concerns into Educational Opportunities: 3 questions
+  Transforming Geographic Boundaries into Community Cohesion: 3 questions
+  Reframing Sustainability Challenges into Community Innovation: 4 questions
+
+--- tool-library | the-devils-advocate ---
+  Sustainability & Financial Viability: 3 questions
+  Risk Management & Liability: 3 questions
+  Operational & Implementation Challenges: 3 questions
+  Equity & Access Barriers: 3 questions
+  Community Dynamics & Adoption: 4 questions
+
+--- tool-library | the-empath ---
+  Trust and Belonging: 4 questions
+  Safety, Risk, and Fear: 4 questions
+  Connection and Joy: 4 questions
+  Sustainability and Emotional Investment: 4 questions
+  Human Relationships and Power: 5 questions
+
+--- tool-library | the-first-principles-thinker ---
+  The Core Problem and Fundamental Purpose: 4 questions
+  The Nature of Tools and Their Use: 4 questions
+  Trust, Accountability, and Human Behavior: 4 questions
+  Space, Time, and Resource Constraints: 4 questions
+  Organizational Identity and Viability: 4 questions
+
+--- tool-library | the-futurist ---
+  Platform & Access Models: 4 questions
+  Demographic & Community Shifts: 4 questions
+  Economic & Funding Models: 4 questions
+  Technology & Operations: 4 questions
+  Risk & Resilience: 5 questions
+
+--- tool-library | the-lawyer ---
+  Liability and Risk Management: 3 questions
+  Organizational Structure and Governance: 3 questions
+  Regulatory Compliance and Zoning: 3 questions
+  Data Privacy and Member Information: 3 questions
+  Contracts and Vendor Relationships: 3 questions
+  Employment and Volunteer Law: 3 questions
+  Accessibility and Equity Compliance: 4 questions
+
+--- tool-library | the-momentum-builder ---
+  Launch Momentum & Early Wins: 4 questions
+  Expanding the Core Concept: 4 questions
+  Sustainable Growth Systems: 4 questions
+  Community-Centric Design: 4 questions
+  Ambitious Future Visioning: 5 questions
+
+--- tool-library | the-politician ---
+  Coalition-Building and Stakeholder Sequencing: 4 questions
+  Power Dynamics and Governance Design: 4 questions
+  Opposition and Risk Mitigation: 4 questions
+  Sustainability and Resource Politics: 4 questions
+  Community Trust and Legitimacy: 5 questions
+
+--- tool-library | the-pragmatist ---
+  Membership & Access Systems: 4 questions
+  Inventory & Space Planning: 4 questions
+  Operations & Volunteer Capacity: 4 questions
+  Financial Sustainability: 3 questions
+  Risk & Liability Management: 4 questions
+
+--- tool-library | the-provocateur ---
+  The Anti-Library: What If Tools Were Never Returned?: 3 questions
+  Inverting the Physical Space: No-Shelf Library: 3 questions
+  The Wrong Problem: Challenging Core Assumptions: 3 questions
+  Impossible Timeframes and Scale Provocations: 3 questions
+  Breaking Tool and User Categories: 3 questions
+  Trust, Risk, and Liability Provocations: 3 questions
+  Economic and Ownership Reversals: 3 questions
+  Failure Scenarios and Dark Provocations: 4 questions
+
+--- tool-library | the-questioner ---
+  Assumptions & Fundamental Purpose: 4 questions
+  Access, Equity & Inclusion: 5 questions
+  The Physical Space & Its Limitations: 3 questions
+  Operations, Logistics & Systems: 5 questions
+  Business Models & Resource Flows: 4 questions
+  Community Building & Social Impact: 4 questions
+  Future-Proofing & Adaptation: 5 questions
+
+--- tool-library | the-simplifier ---
+  The Minimal Viable Library: 4 questions
+  Eliminating Entire Categories of Work: 4 questions
+  The Anti-Complexity Questions: 4 questions
+  The Questions That Unmake Assumptions: 4 questions
+  The Radical Subtraction Test: 4 questions
+
+--- tool-library | the-storyteller ---
+  The First Visit Narrative: 3 questions
+  The Human Moments of Connection: 3 questions
+  The Challenges and Crises Narrative: 3 questions
+  The Community Character and Diversity: 3 questions
+  The Legacy and Evolution Story: 4 questions
+
+--- tool-library | the-synthesizer ---
+  Integration Models & Governance Frameworks: 3 questions
+  Space, Inventory & Operational Integration: 3 questions
+  Community Engagement & Risk Integration: 3 questions
+  Financial Integration & Resource Flows: 3 questions
+  Synthesis: Adaptive Community Systems: 5 questions
+
+--- tool-library | the-systems-thinker ---
+  Membership & Access Dynamics: 3 questions
+  Inventory & Resource Flows: 3 questions
+  Volunteer Capacity & Organizational Sustainability: 3 questions
+  Community Impact & Feedback Effects: 3 questions
+  Risk Management & Adaptive Capacity: 4 questions
+
+--- tool-library | the-technical-expert ---
+  Inventory Management Systems: 3 questions
+  Access Control & Member Management: 3 questions
+  Physical Infrastructure & Security: 3 questions
+  Safety & Liability Systems: 3 questions
+  Integration & Sustainability: 4 questions
+
+--- tool-library | the-visionary ---
+  Redefining Resource Access: 4 questions
+  Trust and Community Architecture: 4 questions
+  Temporal and Spatial Reimagining: 4 questions
+  Emergent Value and Measurement: 4 questions
+  Existential Paradigm Questions: 4 questions
+
+--- habit-tracker | the-accountant ---
+  Revenue Model and Monetization Strategy: 3 questions
+  Cost Structure and Unit Economics: 3 questions
+  Competitive Differentiation Economics: 3 questions
+  Financial Sustainability and Growth: 3 questions
+  Data Privacy and Trust Economics: 4 questions
+
+--- habit-tracker | the-analogist ---
+  Learning from Physical Fitness Training: 4 questions
+  Insights from Behavioral Economics and Game Design: 4 questions
+  Parallels from Nature and Biology: 4 questions
+  Lessons from Community and Social Systems: 4 questions
+  Inspiration from Product Design and Architecture: 5 questions
+
+--- habit-tracker | the-analyst ---
+  User Engagement & Behavior Analysis: 3 questions
+  Competitive Differentiation Analysis: 3 questions
+  Data Architecture & Measurement Framework: 3 questions
+  Monetization & Sustainability Strategy: 3 questions
+  Technical Architecture & Risk Assessment: 4 questions
+
+--- habit-tracker | the-audience-advocate ---
+  Understanding the Lives and Contexts of Potential Users: 5 questions
+  Designing for Diverse Abilities and Accessibility: 5 questions
+  Motivation, Shame, and Sustainable Engagement: 5 questions
+  Privacy, Trust, and Ethical Data Practices: 5 questions
+  Differentiation Through Genuine User Understanding: 6 questions
+
+--- habit-tracker | the-connector ---
+  Cross-Domain Inspiration: What Can Habit Tracking Learn From...?: 5 questions
+  Structural Parallels: Hidden Connections Between Challenges: 5 questions
+  Bridging Domains: Unexpected Combinations: 5 questions
+  Systems Thinking: Seeing the Larger Patterns: 5 questions
+  Recombinant Innovation: New From Existing Elements: 6 questions
+
+--- habit-tracker | the-constraint-flipper ---
+  The Solo Developer Constraint as Differentiator: 3 questions
+  Embracing Technical Limitations: 3 questions
+  Monetization Through Constraint Creativity: 3 questions
+  User Experience Constraints as Features: 3 questions
+  Privacy and Data as Strategic Advantages: 4 questions
+
+--- habit-tracker | the-devils-advocate ---
+  The Skeptic's Lens: Differentiation and Market Reality: 4 questions
+  Design Flaws and Failure Modes: 4 questions
+  Technical and Architectural Vulnerabilities: 4 questions
+  User Psychology and Adoption Barriers: 4 questions
+  Monetization and Sustainability Risks: 4 questions
+  Privacy and Trust Concerns: 3 questions
+  Competitive Blind Spots: 4 questions
+
+--- habit-tracker | the-empath ---
+  The Emotional Life of Habit Formation: 4 questions
+  Motivation, Shame, and the Self: 4 questions
+  Connection and Isolation: 4 questions
+  Trust, Vulnerability, and Data: 4 questions
+  The Quiet Moments: 5 questions
+
+--- habit-tracker | the-first-principles-thinker ---
+  What Is a Habit, Fundamentally?: 3 questions
+  The Core Mechanism of Behavior Change: 3 questions
+  Rethinking the Competitive Frame: 3 questions
+  The Nature of Engagement and Retention: 3 questions
+  Technical and Architectural Fundamentals: 3 questions
+  Monetization and Value Exchange: 4 questions
+
+--- habit-tracker | the-futurist ---
+  The Post-App Future: Engagement Beyond the Screen: 3 questions
+  The AI Copilot Era: Adaptive Intelligence and Personalization: 3 questions
+  Privacy, Sovereignty, and the Data Trust Shift: 3 questions
+  Market Evolution and Category Convergence: 3 questions
+  Behavioral Science and the Motivation Paradigm Shift: 3 questions
+  Technological Infrastructure and Forward Compatibility: 4 questions
+
+--- habit-tracker | the-lawyer ---
+  Data Protection & Privacy Framework: 4 questions
+  Liability, Terms & User Agreements: 4 questions
+  Compliance Architecture & Third-Party Services: 4 questions
+  Intellectual Property & Competitive Positioning: 4 questions
+  Monetization & Commercial Compliance: 5 questions
+
+--- habit-tracker | the-momentum-builder ---
+  Progressive Growth & Streak Mechanics: 3 questions
+  From First Check to Identity Transformation: 3 questions
+  Social Momentum & Collective Energy: 3 questions
+  Anti-Fragility: Getting Stronger Through Disruption: 3 questions
+  Design Momentum: Building Toward Ambition: 4 questions
+
+--- habit-tracker | the-politician ---
+  Market Position and Competition Strategy: 3 questions
+  User Trust and Privacy Governance: 3 questions
+  Motivation Design and Ethical Engagement: 3 questions
+  Stakeholder Dynamics and Coalition Building: 3 questions
+  Implementation Strategy and Resource Dynamics: 5 questions
+
+--- habit-tracker | the-pragmatist ---
+  MVP Scope and Feature Prioritization: 5 questions
+  Technical Architecture and Implementation: 5 questions
+  Data Models and Habit Science Implementation: 5 questions
+  User Acquisition, Monetization, and Sustainability: 5 questions
+  Development Workflow and Risk Mitigation: 6 questions
+
+--- habit-tracker | the-provocateur ---
+  The Premise of Tracking Itself: 1 questions
+  The Assumptions About "Good" Habits: 2 questions
+  The Engagement and Retention Paradigm: 3 questions
+  The Competitive Landscape Problem: 0 questions
+  The Business Model and User Trust: 0 questions
+  The Technical Architecture Question: 3 questions
+
+--- habit-tracker | the-questioner ---
+  Understanding the Why Behind Habit-Tracking: 5 questions
+  Differentiation and Market Positioning: 4 questions
+  Behavioral Science and Engagement Design: 5 questions
+  Privacy, Trust, and User Relationship: 5 questions
+  Technical Architecture and Implementation: 6 questions
+
+--- habit-tracker | the-simplifier ---
+  Core Feature Reduction: 4 questions
+  Eliminating User Friction: 4 questions
+  Cutting Categories of Work: 4 questions
+  Radical Scope Constraints: 4 questions
+  Questioning Assumptions: 5 questions
+
+--- habit-tracker | the-storyteller ---
+  The Journey From Intention to Action: 4 questions
+  Characters and Their arcs: 4 questions
+  Emotional Design and Motivation: 4 questions
+  Design That Feels Human: 4 questions
+  Long-Term Engagement and Life Integration: 5 questions
+
+--- habit-tracker | the-synthesizer ---
+  User Motivation & Engagement Integration: 4 questions
+  Competitive Positioning & Differentiation: 4 questions
+  Behavioral Science Integration: 4 questions
+  Technical Architecture & Data Strategy: 4 questions
+  Business Model & User Trust Alignment: 4 questions
+  Phase 2 Integration Framework: 3 questions
+
+--- habit-tracker | the-systems-thinker ---
+  Feedback Loops & Motivation Dynamics: 3 questions
+  System Architecture & Technical Leverage Points: 3 questions
+  Market Position & Competitive Dynamics: 3 questions
+  User Behavior & Adaptive Responses: 3 questions
+  Failure Modes & Resilience: 4 questions
+
+--- habit-tracker | the-technical-expert ---
+  Architecture & Technology Stack: 4 questions
+  Data, Privacy & Security: 3 questions
+  Performance, Reliability & Scalability: 4 questions
+  Integration & Extensibility: 3 questions
+  Development Workflow & Deployment: 4 questions
+
+--- habit-tracker | the-visionary ---
+  Rethinking the Fundamental Paradigm: 4 questions
+  Human Motivation and Emotional Design: 4 questions
+  Novel Interaction Models: 4 questions
+  Technology Without Categories: 3 questions
+  Ethics and Long-term Impact: 4 questions
+
+=== CLUSTER NAME KEYWORD FREQUENCY (per topic) ===
+
+--- space-party ---
+keyword|count
+experience|11
+logistics|8
+dynamics|8
+systems|7
+space|7
+emotional|6
+trends|5
+social|5
+resource|5
+management|5
+food|5
+flow|5
+constraints|5
+considerations|5
+activity|5
+wonder|4
+sensory|4
+planning|4
+parental|4
+execution|4
+
+--- tool-library ---
+keyword|count
+community|13
+risk|11
+systems|10
+sustainability|10
+resource|8
+management|8
+models|7
+access|7
+space|6
+liability|6
+trust|5
+inventory|5
+integration|5
+financial|5
+library|4
+into|4
+design|4
+volunteer|3
+viability|3
+questions|3
+
+--- habit-tracker ---
+keyword|count
+user|13
+data|10
+architecture|10
+trust|9
+technical|9
+privacy|9
+engagement|9
+design|9
+motivation|8
+competitive|8
+monetization|7
+differentiation|6
+strategy|5
+market|5
+integration|5
+habit|5
+sustainability|4
+science|4
+implementation|4
+economics|4
+
+=== QUESTIONS PER CLUSTER DISTRIBUTION ===
+q_per_cluster|cluster_count
+0|2
+1|1
+2|4
+3|121
+4|153
+5|57
+6|8
+
+=== CLUSTER BALANCE (min/max questions per cluster in each file) ===
+topic|persona|clusters|min_q|max_q|range|balance_ratio
+space-party|the-accountant|5|3|4|1|.75
+space-party|the-analogist|5|4|5|1|.80
+space-party|the-analyst|5|5|6|1|.83
+space-party|the-audience-advocate|5|4|5|1|.80
+space-party|the-connector|5|4|5|1|.80
+space-party|the-constraint-flipper|5|3|5|2|.60
+space-party|the-devils-advocate|5|5|6|1|.83
+space-party|the-empath|5|2|4|2|.50
+space-party|the-first-principles-thinker|5|3|4|1|.75
+space-party|the-futurist|5|4|5|1|.80
+space-party|the-lawyer|8|2|4|2|.50
+space-party|the-momentum-builder|4|4|5|1|.80
+space-party|the-politician|5|3|4|1|.75
+space-party|the-pragmatist|5|3|5|2|.60
+space-party|the-provocateur|5|3|5|2|.60
+space-party|the-questioner|5|5|6|1|.83
+space-party|the-simplifier|4|4|6|2|.66
+space-party|the-storyteller|5|3|4|1|.75
+space-party|the-synthesizer|5|4|5|1|.80
+space-party|the-systems-thinker|7|3|4|1|.75
+space-party|the-technical-expert|5|2|5|3|.40
+space-party|the-visionary|5|4|5|1|.80
+tool-library|the-accountant|5|3|4|1|.75
+tool-library|the-analogist|5|4|5|1|.80
+tool-library|the-analyst|5|4|5|1|.80
+tool-library|the-audience-advocate|5|3|4|1|.75
+tool-library|the-connector|5|4|5|1|.80
+tool-library|the-constraint-flipper|5|3|4|1|.75
+tool-library|the-devils-advocate|5|3|4|1|.75
+tool-library|the-empath|5|4|5|1|.80
+tool-library|the-first-principles-thinker|5|4|4|0|1.00
+tool-library|the-futurist|5|4|5|1|.80
+tool-library|the-lawyer|7|3|4|1|.75
+tool-library|the-momentum-builder|5|4|5|1|.80
+tool-library|the-politician|5|4|5|1|.80
+tool-library|the-pragmatist|5|3|4|1|.75
+tool-library|the-provocateur|8|3|4|1|.75
+tool-library|the-questioner|7|3|5|2|.60
+tool-library|the-simplifier|5|4|4|0|1.00
+tool-library|the-storyteller|5|3|4|1|.75
+tool-library|the-synthesizer|5|3|5|2|.60
+tool-library|the-systems-thinker|5|3|4|1|.75
+tool-library|the-technical-expert|5|3|4|1|.75
+tool-library|the-visionary|5|4|4|0|1.00
+habit-tracker|the-accountant|5|3|4|1|.75
+habit-tracker|the-analogist|5|4|5|1|.80
+habit-tracker|the-analyst|5|3|4|1|.75
+habit-tracker|the-audience-advocate|5|5|6|1|.83
+habit-tracker|the-connector|5|5|6|1|.83
+habit-tracker|the-constraint-flipper|5|3|4|1|.75
+habit-tracker|the-devils-advocate|7|3|4|1|.75
+habit-tracker|the-empath|5|4|5|1|.80
+habit-tracker|the-first-principles-thinker|6|3|4|1|.75
+habit-tracker|the-futurist|6|3|4|1|.75
+habit-tracker|the-lawyer|5|4|5|1|.80
+habit-tracker|the-momentum-builder|5|3|4|1|.75
+habit-tracker|the-politician|5|3|5|2|.60
+habit-tracker|the-pragmatist|5|5|6|1|.83
+habit-tracker|the-provocateur|6|0|3|3|0
+habit-tracker|the-questioner|5|4|6|2|.66
+habit-tracker|the-simplifier|5|4|5|1|.80
+habit-tracker|the-storyteller|5|4|5|1|.80
+habit-tracker|the-synthesizer|6|3|4|1|.75
+habit-tracker|the-systems-thinker|5|3|4|1|.75
+habit-tracker|the-technical-expert|5|3|4|1|.75
+habit-tracker|the-visionary|5|3|4|1|.75
