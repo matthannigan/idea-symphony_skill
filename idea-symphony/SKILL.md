@@ -50,7 +50,7 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 | The Questioner | `the-questioner.md` | Deep probing, assumptions *(Phase 2 only)* |
 | The Simplifier | `the-simplifier.md` | Subtractive thinking, removing complexity |
 | The Storyteller | `the-storyteller.md` | Narrative, user journeys |
-| The Synthesizer | `the-synthesizer.md` | Consolidation, theme extraction *(Phase 2 only)* |
+| The Synthesizer | `the-synthesizer.md` | Consolidation, theme extraction *(Unused; Phase 4?)* |
 | The Systems Thinker | `the-systems-thinker.md` | Feedback loops, second-order consequences |
 | The Technical Expert | `the-technical-expert.md` | Technical feasibility |
 | The Visionary | `the-visionary.md` | Paradigm shifts, transformative reimagination |
