@@ -180,24 +180,50 @@ Run all four scripts on the 66 question files. Review quantitative baselines to:
 
 See results in [2026-02-19_question-generation-research-analysis-stepA.md](./2026-02-19_question-generation-research-analysis-stepA.md)
 
-### Step B: Run External Research Prompt - in progress
+### Step B: Run External Research Prompt - ✅ Complete
 
-### Step C: Design Targeted Investigations
+Prompt: [2026-02-18_question-generation-research-external-research-prompt.md](./2026-02-18_question-generation-research-external-research-prompt.md)
 
-Using quantitative data, external research findings, and the research questions above, define specific read-and-compare investigations. Each investigation is scoped for a single subagent's context window.
+See results:
+- Synthesis: [question-generation-ext-research_synthesis.md](./2026-02-18_question-generation-eval/question-generation-ext-research_synthesis.md)
+- Gemini: [question-generation-ext-research_gemini.md](./2026-02-18_question-generation-eval/question-generation-ext-research_gemini.md)
+- Manus: [question-generation-ext-research_manus.md](./2026-02-18_question-generation-eval/question-generation-ext-research_manus.md)
+- Perplexity: [question-generation-ext-research_perplexity.md](./2026-02-18_question-generation-eval/question-generation-ext-research_perplexity.md)
 
-**Pre-planned investigation categories** (specific investigations designed after Step A data):
+### Step C: Design Targeted Investigations - ✅ Complete
 
-| Category | Research Question | Approach |
-|----------|------------------|----------|
-| **Distinctiveness** | Do personas generate different questions? | Pairwise comparison of suspected overlap clusters (same as Phase 3 B1-B6 pattern) |
-| **Dimension coverage** | Which dimensions do personas favor? | Per-persona classification of questions by dimension (strategic/tactical/creative/analytical/human-centered) |
-| **Cluster divergence** | Do personas produce different topic structures? | Compare cluster names and themes across personas for same topic |
-| **Cross-phase convergence** | Do personas ask questions they can answer? | Compare persona's Phase 2B questions against Phase 3 responses — measure thematic overlap |
-| **Analytical bias** | Does the current set produce narrower territory? | Compare combined question territory of current set vs. alternative sets |
-| **Retired persona fitness** | Do Questioner/Analyst excel at question generation? | Direct quality comparison against other personas |
+10 investigations designed, each scoped for a single subagent context window. All investigations cover all 3 topics equally.
 
-**Prioritization:** Use quantitative data to deprioritize investigations where the numbers already tell a clear story (e.g., if a persona's question count is consistently at the floor, low question generation fitness is established without deep reading).
+Task files: `docs/dev/2026-02-18_question-generation-eval/targeted-investigations/tasks/`
+
+**Pairwise Distinctiveness (6 question files each):**
+
+| # | Task File | Personas | ~KB | RQs |
+|---|-----------|----------|-----|-----|
+| I01 | [01_analytical-probing-overlap.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/01_analytical-probing-overlap.md) | Questioner vs FPT | 39 | RQ1, RQ5, RQ7 |
+| I02 | [02_analytical-framing-overlap.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/02_analytical-framing-overlap.md) | Analyst vs Devil's Advocate | 44 | RQ1, RQ5, RQ7 |
+| I03 | [03_generative-territory.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/03_generative-territory.md) | Provocateur vs Visionary | 48 | RQ1, RQ5 |
+| I04 | [04_human-centered-territory.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/04_human-centered-territory.md) | Audience Advocate vs Empath | 48 | RQ1, RQ5 |
+
+**Group Analysis:**
+
+| # | Task File | Personas | ~KB | RQs |
+|---|-----------|----------|-----|-----|
+| I05 | [05_distinctive-cluster-framers.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/05_distinctive-cluster-framers.md) | Analogist, Constraint Flipper, Storyteller | 62 | RQ1, RQ5 |
+| I06 | [06_dimension-audit.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/06_dimension-audit.md) | All 5 current Phase 2B personas | 109 | RQ2, RQ6 |
+
+**Cross-Phase Convergence (question files + Phase 3 responses):**
+
+| # | Task File | Persona | Hypothesis | ~KB | RQs |
+|---|-----------|---------|------------|-----|-----|
+| I07 | [07_cross-phase-visionary.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/07_cross-phase-visionary.md) | Visionary | High convergence | 94 | RQ4 |
+| I08 | [08_cross-phase-provocateur.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/08_cross-phase-provocateur.md) | Provocateur | Low convergence | 108 | RQ4 |
+| I09 | [09_cross-phase-empath.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/09_cross-phase-empath.md) | Empath | Low convergence | 90 | RQ4 |
+| I10 | [10_cross-phase-pragmatist.md](./2026-02-18_question-generation-eval/targeted-investigations/tasks/10_cross-phase-pragmatist.md) | Pragmatist | High convergence (calibration) | 73 | RQ4 |
+
+**RQ coverage:** RQ1 (01-05), RQ2 (06), RQ3 (all, cross-topic patterns), RQ4 (07-10), RQ5 (01-05), RQ6 (06), RQ7 (01-02)
+
+**Deprioritized:** Dedicated topic sensitivity investigation (Step A shows weak signal); dedicated retired persona investigation (folded into I01, I02).
 
 ### Step D: Run Investigations
 
