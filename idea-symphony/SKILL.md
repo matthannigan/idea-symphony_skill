@@ -33,7 +33,7 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 | Persona | File | Best For |
 |---------|------|----------|
 | The Accountant | `the-accountant.md` | Financial clarity, cost modeling, economic sustainability |
-| The Analyst | `the-analyst.md` | Data, patterns, systematic breakdown |
+| The Analyst | `the-analyst.md` | Data, patterns, systematic breakdown *(Phase 2 only)* |
 | The Analogist | `the-analogist.md` | Cross-domain patterns |
 | The Audience Advocate | `the-audience-advocate.md` | End-user perspective, empathy mapping |
 | The Connector | `the-connector.md` | Cross-domain bridging, structural parallels |
@@ -47,10 +47,10 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 | The Politician | `the-politician.md` | Stakeholder politics, coalition building, power dynamics |
 | The Pragmatist | `the-pragmatist.md` | Feasibility, implementation |
 | The Provocateur | `the-provocateur.md` | Absurdist provocation, lateral thinking |
-| The Questioner | `the-questioner.md` | Deep probing, assumptions |
+| The Questioner | `the-questioner.md` | Deep probing, assumptions *(Phase 2 only)* |
 | The Simplifier | `the-simplifier.md` | Subtractive thinking, removing complexity |
 | The Storyteller | `the-storyteller.md` | Narrative, user journeys |
-| The Synthesizer | `the-synthesizer.md` | Consolidation, theme extraction |
+| The Synthesizer | `the-synthesizer.md` | Consolidation, theme extraction *(Phase 2 only)* |
 | The Systems Thinker | `the-systems-thinker.md` | Feedback loops, second-order consequences |
 | The Technical Expert | `the-technical-expert.md` | Technical feasibility |
 | The Visionary | `the-visionary.md` | Paradigm shifts, transformative reimagination |
@@ -84,6 +84,7 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 │   ├── 01_operations_summary.md      # All effort levels
 │   ├── 01_operations_synthesis.md    # Medium/high only
 │   └── ...
+├── persona-selections.md       # Medium/high: Per-topic persona assignments (from Phase 2C)
 ├── REQUEST.md                  # User request summary
 ├── USER-QUESTIONS.md            # (optional) User-provided questions to answer
 ├── PLAN.md                     # Session config and status
@@ -101,8 +102,8 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 | Effort | Phase 2 (Questions) | Phase 3 (Brainstorming) | Phase 4 (Synthesis) | Best For |
 |--------|---------------------|-------------------------|---------------------|----------|
 | low    | 1 generic prompt    | 1 generic response per topic | Summary only | **Tactical**: Concrete planning, implementation steps, quick decisions |
-| medium | 3 personas          | 3 personas per topic    | Full synthesis | **Strategic**: Framework development, complex decisions, design choices |
-| high   | 5 personas          | 5 personas per topic    | Full synthesis | **Philosophical**: Foundational thinking, high-stakes decisions, research |
+| medium | 3 personas          | 4 personas per topic    | Full synthesis | **Strategic**: Framework development, complex decisions, design choices |
+| high   | 5 personas          | 7 personas per topic    | Full synthesis | **Philosophical**: Foundational thinking, high-stakes decisions, research |
 
 **Default to medium** if user doesn't specify.
 
@@ -113,7 +114,7 @@ Persona files are located at `[skill]/references/personas/[filename]`.
 
 **Low effort approach:** Uses context isolation (separate subagents per topic) but skips the persona system entirely. Single generic question generation creates 15-20 questions in 3-5 clusters. Single generic brainstorming response per cluster provides 3-5 responses per question. Summary-only synthesis skips attribution. Target runtime: 5-10 minutes vs. 15-20 minutes for medium, 30-45 minutes for high.
 
-**Medium/high effort approach:** Uses persona system with multiple perspectives. Full synthesis includes attribution and comprehensive consolidation. Medium effort (3 personas) creates cognitive diversity; high effort (5 personas) enables convergence documentation and worldview diversity.
+**Medium/high effort approach:** Uses persona system with multiple perspectives. Full synthesis includes attribution and comprehensive consolidation. Medium effort (4 personas per topic) creates cognitive diversity with core + topic-matched perspectives; high effort (7 personas per topic) enables convergence documentation with completed persona clusters.
 
 **Detailed guidance:** See `[skill]/references/effort-level-guidance.md` for use case examples and decision criteria.
 
@@ -295,6 +296,8 @@ Spawn 3 or 5 parallel subagents based on effort level. Select unique personas fo
 - medium effort: The Questioner, The Analyst, The Audience Advocate
 - high effort: The Questioner, The Analyst, The Audience Advocate, The Devil's Advocate, The First Principles Thinker
 
+**Note:** The Questioner, Analyst, and Synthesizer are Phase 2-only personas — they excel at question generation but are retired from Phase 3 brainstorming. Phase 2C will not select them for brainstorming.
+
 For each subagent, use prompt from `[skill]/references/prompts/phase2-question-generation-persona.md`.
 
 **Instructions for each subagent:**
@@ -367,6 +370,77 @@ If files missing after search, log in PLAN.md Notes and proceed (don't block on 
 
 Update `PLAN.md` with Phase 2 complete status and list of topic clusters.
 
+Proceed to Phase 2C.
+
+---
+
+#### Phase 2C: Persona Selection (Medium/High Effort)
+
+Spawn 1 Opus subagent to select personas for each topic cluster based on the concentric circles model.
+
+**Instructions for subagent:**
+
+1. Read `[session]/QUESTIONS.md` for topic clusters and their questions
+2. Read `[session]/REQUEST.md` for brainstorming context
+3. Read `[skill]/references/persona-selection-guide.md` for the complete selection methodology (concentric circles model, topic affinity matrix, cluster relationships, exclusion rules)
+4. For each topic cluster:
+   a. Classify the topic type (technical, user-facing, strategic, implementation, regulated, financial, creative, governance, novel/ambiguous)
+   b. Apply the selection algorithm from the guide:
+      - **Medium effort (4 per topic):** Core (Devil's Advocate + Pragmatist) + 2 topic-matched from Inner Ring
+      - **High effort (7 per topic):** Core (2) + Inner Ring (2) + Middle Ring cluster completers (3)
+   c. Document rationale for each selection
+   d. Document why specialized lenses (Lawyer, Accountant, Politician) were included or excluded
+   e. Verify: no more than 3 personas from the same cluster family per topic
+5. Create `[session]/persona-selections.md` with detailed output:
+
+```markdown
+---
+phase: 2C
+date: [YYYY-MM-DD]
+effort_level: [medium/high]
+---
+# Persona Selections
+
+## Selection Summary
+
+| Topic | Personas |
+|-------|----------|
+| 01 [Topic Name] | DA★, Pragmatist★, [Persona], [Persona] |
+| 02 [Topic Name] | DA★, Pragmatist★, [Persona], [Persona] |
+
+## Detailed Selections
+
+### 01 [Topic Name]
+
+**Topic Classification:** [type]
+
+**Selected Personas:**
+1. **Devil's Advocate** ★ (core) — Critical analysis across all topics
+2. **Pragmatist** ★ (core) — Feasibility grounding
+3. **[Persona]** (inner ring) — [Rationale tied to this topic]
+4. **[Persona]** (inner ring) — [Rationale tied to this topic]
+[5-7 for high effort, with ring designation]
+
+**Cluster Coverage:** [Which clusters are represented]
+**Exclusion Reasoning:** [Why specialized lenses or other personas were NOT selected]
+```
+
+6. Update the Phase 2C section in `[session]/PLAN.md` with the summary table
+
+**Subagent Model:** Claude Opus (judgment-intensive selection)
+
+**Configurable Approval Pause:**
+
+After persona selection completes, check `PLAN.md` for the `persona-selection-review` field:
+- **`auto`** (default): Proceed to Phase 3 immediately
+- **`pause`**: Present persona selections to the user with the summary table. Wait for confirmation or overrides before proceeding. If user modifies selections, update `persona-selections.md` accordingly.
+
+**Quality Gate:** Before proceeding, verify:
+- `persona-selections.md` exists
+- Each topic has exactly 4 (medium) or 7 (high) personas assigned
+- Devil's Advocate and Pragmatist are included for every topic
+- No retired personas (Questioner, Analyst, Synthesizer) are selected
+
 Proceed to Phase 3B.
 
 ### Phase 3: Multi-Perspective Brainstorming
@@ -415,30 +489,16 @@ Skip to Phase 4A.
 
 Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
 
-For each topic cluster, spawn parallel subagents (3 for medium, 5 for high) using prompt from `[skill]/references/prompts/phase3-brainstorm-persona.md`.
+Read `[session]/persona-selections.md` (generated in Phase 2C) to get per-topic persona assignments.
 
-**Select personas only from the Available Personas table.** Match personas to topic needs using cluster awareness:
+For each topic cluster, spawn parallel subagents (4 for medium, 7 for high) using prompt from `[skill]/references/prompts/phase3-brainstorm-persona.md`. Use the personas assigned to that topic in `persona-selections.md`.
 
-**Persona clusters** (selecting within a cluster gives complementary perspectives):
-- **Human-centered triad:** Empath (emotional resonance), Audience Advocate (stakeholder needs), Storyteller (lived experience)
-- **Challenge triad:** Provocateur (absurdist provocation), Constraint Flipper (pragmatic reframing), Devil's Advocate (critical analysis)
-- **Forward-looking pair:** Visionary (paradigm shifts), Futurist (trend-grounded positioning)
-- **Analytical core:** First Principles Thinker, Technical Expert, Pragmatist
-- **System dynamics:** Systems Thinker, Connector
+**Do NOT select personas inline.** All persona selection is handled by Phase 2C using the concentric circles model. See `[skill]/references/persona-selection-guide.md` for the full methodology.
 
-**Topic-aware selection:**
-- Technical topics → Technical Expert, First Principles Thinker, Systems Thinker, Simplifier
-- User-facing topics → Audience Advocate, Storyteller, Empath
-- Strategic topics → Visionary, Futurist, Devil's Advocate, Systems Thinker
-- Implementation topics → Pragmatist, Constraint Flipper, Momentum Builder
-- Regulated domains → Lawyer, Devil's Advocate, Pragmatist
-
-**Topic sensitivity notes:**
-- Provocateur produces more on technical topics; use on whimsical topics to provoke in the *opposite* direction (add gravity)
+**Topic sensitivity reminders** (for quality review, not selection):
+- Provocateur produces more on technical topics; on whimsical topics it provokes in the *opposite* direction (adds gravity)
 - Simplifier finds more subtractive material on product-design topics
-- Analytical convergence is highest on technical topics — avoid stacking too many analytical personas on these
-
-See [personas.md](references/personas.md) for additional selection guidance and recommended combinations.
+- Analytical convergence is highest on technical topics — if multiple analytical personas are assigned, verify their outputs are sufficiently differentiated
 
 **Instructions for each subagent:**
 
@@ -460,7 +520,7 @@ See [personas.md](references/personas.md) for additional selection guidance and 
 
 For each topic directory in `responses/`:
 - **File count in `responses/[NN]_[topic]/`:**
-  - Expected: 3 (medium) or 5 (high) `.md` files per topic
+  - Expected: 4 (medium) or 7 (high) `.md` files per topic
   - If count doesn't match: Use Glob to search, move to correct location
 
 If files missing after search, log in PLAN.md Notes and proceed (don't block on failed subagents).
@@ -599,7 +659,8 @@ If asked to continue a previous session:
 
 | PLAN.md Status | Files Present | Action |
 |----------------|---------------|--------|
-| Phase 2: complete | `QUESTIONS.md` exists | Resume at Phase 3A (low) or 3B (med/high) |
+| Phase 2: complete | `QUESTIONS.md` exists, no `persona-selections.md` | Resume at Phase 2C (med/high) or Phase 3A (low) |
+| Phase 2C: complete | `persona-selections.md` exists | Resume at Phase 3B (med/high) |
 | Phase 3: complete | `responses/` directories populated | Resume at Phase 4A (low) or 4B (med/high) |
 | Phase 4: complete | `synthesis/` files exist | Resume at Phase 5 |
 | Phase 2: in-progress | Partial questions files | Re-run Phase 2A or 2B |
@@ -638,6 +699,7 @@ The orchestrator provides:
 | Question generation (low) | Sonnet | Comprehensive coverage needed |
 | Question generation (med/high) | Sonnet | Balance of speed and quality |
 | Question synthesis | Opus | Judgment for deduplication |
+| Persona selection (med/high) | Opus | Judgment-intensive topic classification and selection |
 | Brainstorming (low) | Sonnet | Balance quality with speed |
 | Brainstorming (med/high) | Haiku | Volume over depth |
 | Synthesis (low) | Sonnet | User-facing summaries |
@@ -646,6 +708,7 @@ The orchestrator provides:
 
 ## References
 
-- [references/personas.md](references/personas.md) — Guidance for persona usage
-- [references/personas/*.md](references/personas/*.md) — Full system prompts for all 20 personas
+- [references/personas.md](references/personas.md) — Persona index and Phase 2 selection guidance
+- [references/persona-selection-guide.md](references/persona-selection-guide.md) — Phase 3 persona selection methodology (concentric circles model, topic affinity matrix, cluster relationships)
+- [references/personas/*.md](references/personas/*.md) — Full system prompts for all 22 personas
 - [references/templates.md](references/templates.md) — Document templates (REQUEST.md, PLAN.md, BRAINSTORM.md, synthesis files)

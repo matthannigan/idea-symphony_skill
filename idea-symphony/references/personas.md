@@ -42,41 +42,15 @@ Always include **The Questioner**. Add 1-3 more from:
 
 **Note:** The Questioner excels at question generation but is not recommended for Phase 3 brainstorming, where its output tends toward restating ideas as questions rather than generating distinct content.
 
-### Phase 3: Brainstorming Responses
+### Phase 2C/3: Brainstorming Persona Selection
 
-Select 3-7 based on topic needs. Use cluster awareness to build complementary teams:
+Phase 3 persona selection is handled automatically by **Phase 2C** using the concentric circles model. An Opus subagent classifies each topic cluster and selects personas per topic (4 for medium, 7 for high effort).
 
-**Persona Clusters:**
+See **[persona-selection-guide.md](persona-selection-guide.md)** for the full methodology:
+- Concentric circles model (core → inner ring → middle ring → outer ring)
+- Topic affinity matrix with strong/good/caution fit per topic type
+- Validated persona clusters and anti-pattern examples
+- Selection algorithms for medium and high effort
+- Exclusion rules for specialized lenses (Lawyer, Accountant, Politician)
 
-| Cluster | Personas | Strength |
-|---------|----------|----------|
-| Human-centered triad | Empath, Audience Advocate, Storyteller | Emotional resonance + stakeholder needs + lived experience |
-| Challenge triad | Provocateur, Constraint Flipper, Devil's Advocate | Absurdist provocation + pragmatic reframing + critical analysis |
-| Forward-looking pair | Visionary, Futurist | Paradigm shifts + trend-grounded positioning |
-| Analytical core | First Principles Thinker, Technical Expert, Pragmatist | Fundamentals + feasibility + implementation |
-| System dynamics | Systems Thinker, Connector | Feedback loops + cross-domain bridging |
-
-**Topic-Sensitivity Notes:**
-- **Technical/product topics:** Provocateur produces more here; Simplifier finds more subtractive material; analytical convergence is highest (avoid stacking too many analytical personas)
-- **Creative/social topics:** More room for differentiation across all personas; human-centered triad is particularly strong
-- **Regulated domains:** Include The Lawyer; pair with Devil's Advocate for comprehensive risk coverage
-- **Whimsical topics:** Provocateur works best when provoking in the *opposite* direction (adding gravity to fun topics)
-
-**Topic-Aware Selection Guidance:**
-- Technical topics → Technical Expert, First Principles Thinker, Systems Thinker, Simplifier
-- User-facing topics → Audience Advocate, Storyteller, Empath
-- Strategic topics → Visionary, Futurist, Devil's Advocate, Systems Thinker
-- Implementation topics → Pragmatist, Constraint Flipper, Momentum Builder
-- Regulated domains → Lawyer, Devil's Advocate, Pragmatist
-
-### Recommended Combinations
-
-**Innovation Focus:** The Visionary, The Provocateur, The Connector, The Devil's Advocate, The Futurist
-
-**Implementation Focus:** The Pragmatist, The Technical Expert, The Systems Thinker, The Constraint Flipper, The First Principles Thinker
-
-**User-Centered Focus:** The Audience Advocate, The Storyteller, The Empath, The Devil's Advocate, The Simplifier
-
-**Balanced General Session:** The Visionary, The Pragmatist, The Devil's Advocate, The Audience Advocate, The Empath
-
-**Comprehensive (High Effort):** The Visionary, The Pragmatist, The Devil's Advocate, The Audience Advocate, The Systems Thinker
+**Retired from Phase 3:** The Questioner, The Analyst, and The Synthesizer are Phase 2-only personas. They are not available for Phase 3 brainstorming selection.

@@ -42,6 +42,7 @@ Questions the user wants the brainstorming process to answer.
 **Project:** [Project Name]
 **Date:** [YYYY-MM-DD]
 **Effort Level:** [low/medium/high]
+**Persona Selection Review:** [auto/pause] *(default: auto)*
 **Session Directory:** [path]
 
 ## Configuration
@@ -50,8 +51,16 @@ Questions the user wants the brainstorming process to answer.
 - **The Questioner** — Core question generator, always included
 - **[Persona Name]** — [Brief rationale for selection]
 
+### Phase 2C: Persona Selection ([N] personas per topic)
+See [persona-selections.md](persona-selections.md) for detailed rationale.
+
+| Topic | Personas |
+|-------|----------|
+| 01 [Topic Name] | DA★, Pragmatist★, [Persona], [Persona] |
+| 02 [Topic Name] | DA★, Pragmatist★, [Persona], [Persona] |
+
 ### Phase 3: Brainstorming ([N] personas per topic)
-To be determined based on topic clusters identified in Phase 2.
+Personas assigned per topic in Phase 2C above.
 
 ### Phase 4: Response Synthesis
 1 subagent per topic cluster.
@@ -72,6 +81,9 @@ Orchestrator consolidates all outputs.
 
 - **Phase 2 (Question Generation):** ✅ Complete
   - [N] consolidated questions across [N] topic clusters.
+
+- **Phase 2C (Persona Selection):** ✅ Complete
+  - [N] personas per topic assigned. See [persona-selections.md](persona-selections.md).
 
 - **Phase 3 (Multi-Persona Brainstorming):** In progress
   - Topic 1 ([Topic Name]): ✅ Complete
