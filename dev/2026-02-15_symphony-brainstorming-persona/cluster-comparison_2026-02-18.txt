@@ -1,0 +1,66 @@
+============================================
+CLUSTER COMPARISON — CROSS-PERSONA ANALYSIS
+Generated: 2026-02-18 12:25
+============================================
+
+=== CLUSTER STATISTICS ===
+topic|cluster|files|total_kb|avg_kb|min_kb|max_kb
+space-party|01_theme-and-experience|22|145.4|6.6|4.3|11.0
+space-party|02_activities-and-engagement|22|140.0|6.3|4.1|8.6
+space-party|03_logistics-and-safety|22|143.7|6.5|3.8|13.5
+space-party|04_inclusion-and-community|22|118.9|5.4|3.1|10.2
+tool-library|01_mission-and-model|22|161.7|7.3|3.3|12.0
+tool-library|02_operations-and-systems|22|162.7|7.3|2.9|14.1
+tool-library|03_equity-and-access|22|161.2|7.3|2.9|13.3
+tool-library|04_sustainability-and-growth|22|129.1|5.8|2.5|8.5
+habit-tracker|01_product-vision-and-differentiation|22|146.8|6.6|4.5|13.6
+habit-tracker|02_user-experience-and-engagement|22|135.1|6.1|4.2|9.9
+habit-tracker|03_technical-architecture|22|137.3|6.2|4.2|13.1
+habit-tracker|04_business-and-sustainability|22|119.8|5.4|3.5|9.0
+
+=== TOPIC-LEVEL TOTALS ===
+topic|files|total_kb|avg_file_kb
+space-party|88|548.2|6.2
+tool-library|88|614.8|6.9
+habit-tracker|88|539.1|6.1
+
+=== QUESTIONS PER CLUSTER VS OUTPUT SIZE ===
+topic|cluster|question_count|avg_response_kb|kb_per_question
+space-party|01_theme-and-experience|5|6.6|1.32
+space-party|02_activities-and-engagement|5|6.3|1.27
+space-party|03_logistics-and-safety|5|6.5|1.30
+space-party|04_inclusion-and-community|4|5.4|1.35
+tool-library|01_mission-and-model|5|7.3|1.47
+tool-library|02_operations-and-systems|5|7.3|1.47
+tool-library|03_equity-and-access|5|7.3|1.46
+tool-library|04_sustainability-and-growth|4|5.8|1.46
+habit-tracker|01_product-vision-and-differentiation|5|6.6|1.33
+habit-tracker|02_user-experience-and-engagement|5|6.1|1.22
+habit-tracker|03_technical-architecture|5|6.2|1.24
+habit-tracker|04_business-and-sustainability|4|5.4|1.36
+
+=== TOP 10 LARGEST RESPONSE FILES ===
+file|bytes|kb
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-systems-thinker.md|14444|14.1
+persona-eval-habit-tracker_2026-02-15/responses/01_product-vision-and-differentiation/the-systems-thinker.md|13976|13.6
+persona-eval-space-party_2026-02-15/responses/03_logistics-and-safety/the-accountant.md|13882|13.5
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-systems-thinker.md|13629|13.3
+persona-eval-habit-tracker_2026-02-15/responses/03_technical-architecture/the-politician.md|13477|13.1
+persona-eval-tool-library_2026-02-15/responses/01_mission-and-model/the-systems-thinker.md|12346|12.0
+persona-eval-space-party_2026-02-15/responses/01_theme-and-experience/the-accountant.md|11296|11.0
+persona-eval-space-party_2026-02-15/responses/01_theme-and-experience/the-momentum-builder.md|11155|10.8
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-storyteller.md|11153|10.8
+persona-eval-space-party_2026-02-15/responses/03_logistics-and-safety/the-systems-thinker.md|11053|10.7
+
+=== TOP 10 SMALLEST RESPONSE FILES ===
+file|bytes|kb
+persona-eval-tool-library_2026-02-15/responses/04_sustainability-and-growth/the-questioner.md|2579|2.5
+persona-eval-tool-library_2026-02-15/responses/02_operations-and-systems/the-questioner.md|3004|2.9
+persona-eval-tool-library_2026-02-15/responses/03_equity-and-access/the-questioner.md|3052|2.9
+persona-eval-space-party_2026-02-15/responses/04_inclusion-and-community/the-constraint-flipper.md|3274|3.1
+persona-eval-tool-library_2026-02-15/responses/01_mission-and-model/the-questioner.md|3434|3.3
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-questioner.md|3654|3.5
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-futurist.md|3900|3.8
+persona-eval-space-party_2026-02-15/responses/03_logistics-and-safety/the-constraint-flipper.md|3924|3.8
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-pragmatist.md|3939|3.8
+persona-eval-habit-tracker_2026-02-15/responses/04_business-and-sustainability/the-analogist.md|4105|4.0

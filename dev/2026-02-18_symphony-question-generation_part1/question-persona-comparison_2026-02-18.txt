@@ -1,0 +1,79 @@
+============================================
+QUESTION GENERATION — CROSS-TOPIC CONSISTENCY
+Generated: 2026-02-18 23:54
+============================================
+
+=== PERSONA SUMMARY (bytes) ===
+persona|files|mean|min|max|range|cv%
+the-lawyer|3|11253|8830|13607|4777|17.3
+the-systems-thinker|3|10575|10242|10774|532|2.2
+the-momentum-builder|3|9004|7072|11820|4748|22.6
+the-audience-advocate|3|8775|6983|10548|3565|16.5
+the-provocateur|3|8668|6959|10422|3463|16.3
+the-connector|3|8422|6754|9463|2709|14.1
+the-politician|3|7862|5371|11087|5716|30.3
+the-futurist|3|7537|7296|8012|716|4.4
+the-storyteller|3|7504|6249|9178|2929|16.4
+the-analogist|3|7465|6444|8267|1823|10.1
+the-devils-advocate|3|7452|5724|9606|3882|21.6
+the-empath|3|7447|7307|7575|268|1.4
+the-visionary|3|7234|5744|8669|2925|16.5
+the-analyst|3|7141|6153|7667|1514|9.7
+the-accountant|3|6983|5806|7942|2136|12.6
+the-first-principles-thinker|3|6636|5614|7778|2164|13.3
+the-questioner|3|6455|6238|6671|433|2.7
+the-pragmatist|3|6005|5367|6694|1327|9.0
+the-simplifier|3|5938|5355|6501|1146|7.8
+the-technical-expert|3|5780|5097|6478|1381|9.7
+the-constraint-flipper|3|5764|5463|5974|511|3.7
+the-synthesizer|3|5634|5384|5881|497|3.5
+
+=== PER-PERSONA BY TOPIC (bytes) ===
+persona|space-party|tool-library|habit-tracker|spread
+the-politician|5371|11087|7129|5716
+the-lawyer|8830|11323|13607|4777
+the-momentum-builder|8120|7072|11820|4748
+the-devils-advocate|7027|5724|9606|3882
+the-audience-advocate|6983|10548|8796|3565
+the-provocateur|6959|10422|8625|3463
+the-storyteller|6249|9178|7086|2929
+the-visionary|7290|8669|5744|2925
+the-connector|6754|9050|9463|2709
+the-first-principles-thinker|5614|6517|7778|2164
+the-accountant|7203|7942|5806|2136
+the-analogist|6444|7686|8267|1823
+the-analyst|7605|7667|6153|1514
+the-technical-expert|5765|6478|5097|1381
+the-pragmatist|5955|5367|6694|1327
+the-simplifier|5355|5959|6501|1146
+the-futurist|8012|7305|7296|716
+the-systems-thinker|10242|10774|10710|532
+the-constraint-flipper|5974|5463|5855|511
+the-synthesizer|5384|5881|5637|497
+the-questioner|6671|6456|6238|433
+the-empath|7460|7307|7575|268
+
+=== CONSISTENCY RANKING (lowest CV% = most consistent) ===
+persona|cv%|interpretation
+the-empath|1.4|highly consistent
+the-systems-thinker|2.2|highly consistent
+the-questioner|2.7|highly consistent
+the-synthesizer|3.5|highly consistent
+the-constraint-flipper|3.7|highly consistent
+the-futurist|4.4|highly consistent
+the-simplifier|7.8|highly consistent
+the-pragmatist|9.0|highly consistent
+the-analyst|9.7|highly consistent
+the-technical-expert|9.7|highly consistent
+the-analogist|10.1|highly consistent
+the-accountant|12.6|highly consistent
+the-first-principles-thinker|13.3|highly consistent
+the-connector|14.1|highly consistent
+the-provocateur|16.3|moderately consistent
+the-storyteller|16.4|moderately consistent
+the-audience-advocate|16.5|moderately consistent
+the-visionary|16.5|moderately consistent
+the-lawyer|17.3|moderately consistent
+the-devils-advocate|21.6|moderately consistent
+the-momentum-builder|22.6|moderately consistent
+the-politician|30.3|high variance
