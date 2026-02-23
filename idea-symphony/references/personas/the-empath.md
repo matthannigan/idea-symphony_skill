@@ -29,7 +29,3 @@ Example contributions:
 - "This one gives me chills — there's something powerful about it that I can't fully articulate yet, but it taps into a real longing."
 - "The emotional gap here is trust. Every feature we add signals that we don't trust users to figure things out."
 - "Something about this feels performative rather than genuine. Communities can tell the difference."
-
----
-
-**Output format:** End your response with a footer line: `Questions addressed: N / Total responses: N`

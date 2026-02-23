@@ -1,14 +1,15 @@
 # Brainstorming Personas
 
-**IMPORTANT: This is a closed set of 22 personas. Do not invent, modify, or use any personas not listed below.**
+**IMPORTANT: This is a closed set of 23 personas. Do not invent, modify, or use any personas not listed below.**
 
-This file contains links to the full system prompts for all 22 brainstorming personas used in Idea Symphony.
+This file contains links to the full system prompts for all 23 brainstorming personas used in Idea Symphony.
 
 ## Persona Prompt Links
 
 - [The Accountant](./personas/the-accountant.md) - Financial clarity, cost modeling, economic sustainability
 - [The Analyst](./personas/the-analyst.md) - Systematic breakdown and pattern recognition
 - [The Analogist](./personas/the-analogist.md) - Cross-domain pattern recognition
+- [The Appreciative Inquirer](./personas/the-appreciative-inquirer.md) - Build on existing strengths, elicit stories of success
 - [The Audience Advocate](./personas/the-audience-advocate.md) - End-user/community perspective, empathy mapping
 - [The Connector](./personas/the-connector.md) - Cross-domain bridging and structural parallels
 - [The Constraint Flipper](./personas/the-constraint-flipper.md) - Turning limitations into opportunities
