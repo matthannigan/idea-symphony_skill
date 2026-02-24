@@ -6,7 +6,7 @@ This document provides the orchestrator with structured guidance for selecting q
 
 ## Tier 1 Question Personas (10)
 
-Phase 2B draws from a pool of 10 personas validated for question generation. 
+Phase 2B draws from a pool of 10 personas validated for question generation. These personas are at the core of all Idea Symphony question generation. While other personas are also sometimes additive, most Idea Symphony brainstorms will be driven by questions created by these personas.
 
 ### Per-Persona Guidance
 
@@ -50,7 +50,7 @@ Personas are organized into three categories based on how their question quality
 
 ---
 
-## Tier 2 Question Personas (5)
+## Tier 2 Question Personas (4)
 
 These personas are not typically included by default in medium effort question generations. Based on selection guidance TBD and decision-making TBD on effort settings, their questions may be added into high effort question generations to bring in new approaches or compliment Tier 1 perspectives.
 
@@ -63,7 +63,7 @@ These personas are not typically included by default in medium effort question g
 
 ---
 
-## Tier 3 Question Personas (5)
+## Tier 3 Question Personas (6)
 
 These personas are not typically included by default in any question generations. Based on selection guidance TBD, like Tier 1 Perspective personas, their questions may appended to medium and high effort question generations when the orchestrator identifies a specific need to include domain-specific questions.
 
@@ -134,7 +134,7 @@ Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles
 
 ### Tier 3 Question Personas (Mixed Methods)
 
-Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Simplifier**, **Technical Expert**) generate TBD questions each in Phase 2B, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See [R6: Tier 3 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/tasks/R6_tier3-volume-quality.md) for pending investigation.
+Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Simplifier**, **Technical Expert**) generate TBD questions each in Phase 2B, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See [R6: Tier 3 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/tasks/R6_tier3-volume-quality.md) for pending investigation.
 
 **Connector** is a special case handled separately from the other Tier 3 personas. If selected by the orchestrator, it is a **replacement for Analogist** in the Tier 1 Perspective Personas and would inherit the Append treatment from D1. See [R7: Connector Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/tasks/R7_connector-volume-quality.md) for pending investigation.
 
