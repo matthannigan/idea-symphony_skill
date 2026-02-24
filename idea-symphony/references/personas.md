@@ -47,7 +47,7 @@ Always include **The Questioner**. Add 1-3 more from:
 
 Phase 3 persona selection is handled automatically by **Phase 2C** using the concentric circles model. An Opus subagent classifies each topic cluster and selects personas per topic (4 for medium, 7 for high effort).
 
-See **[persona-selection-guide.md](persona-selection-guide.md)** for the full methodology:
+See **[persona-selection-guide_Phase2C.md](persona-selection-guide_Phase2C.md)** for the full methodology:
 - Concentric circles model (core → inner ring → middle ring → outer ring)
 - Topic affinity matrix with strong/good/caution fit per topic type
 - Validated persona clusters and anti-pattern examples

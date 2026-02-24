@@ -18,7 +18,7 @@ Phase 2B uses **fixed persona assignments** with no topic-aware selection:
 | Medium (3) | The Questioner, The Analyst, The Audience Advocate |
 | High (5) | + The Devil's Advocate, The First Principles Thinker |
 
-This is the only phase in Idea Symphony where persona selection is hardcoded. Phase 3 uses the concentric circles model with topic-aware selection (persona-selection-guide.md). Phase 2B was designed early and has not been revisited since the extensive Phase 3 persona evaluation.
+This is the only phase in Idea Symphony where persona selection is hardcoded. Phase 3 uses the concentric circles model with topic-aware selection (persona-selection-guide_Phase2C.md). Phase 2B was designed early and has not been revisited since the extensive Phase 3 persona evaluation.
 
 ### Analytical Bias Hypothesis
 

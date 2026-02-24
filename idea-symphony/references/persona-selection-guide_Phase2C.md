@@ -1,4 +1,4 @@
-# Persona Selection Guide
+# Persona Selection Guide (Phase 2C)
 
 This document provides the orchestrator (and human reviewers) with structured guidance for selecting personas per topic cluster in Phase 2C.
 

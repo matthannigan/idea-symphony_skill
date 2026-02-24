@@ -382,7 +382,7 @@ Spawn 1 Opus subagent to select personas for each topic cluster based on the con
 
 1. Read `[session]/QUESTIONS.md` for topic clusters and their questions
 2. Read `[session]/REQUEST.md` for brainstorming context
-3. Read `[skill]/references/persona-selection-guide.md` for the complete selection methodology (concentric circles model, topic affinity matrix, cluster relationships, exclusion rules)
+3. Read `[skill]/references/persona-selection-guide_Phase2C.md` for the complete selection methodology (concentric circles model, topic affinity matrix, cluster relationships, exclusion rules)
 4. For each topic cluster:
    a. Classify the topic type (technical, user-facing, strategic, implementation, regulated, financial, creative, governance, novel/ambiguous)
    b. Apply the selection algorithm from the guide:
@@ -493,7 +493,7 @@ Read `[session]/persona-selections.md` (generated in Phase 2C) to get per-topic 
 
 For each topic cluster, spawn parallel subagents (4 for medium, 7 for high) using prompt from `[skill]/references/prompts/phase3-brainstorm-persona.md`. Use the personas assigned to that topic in `persona-selections.md`.
 
-**Do NOT select personas inline.** All persona selection is handled by Phase 2C using the concentric circles model. See `[skill]/references/persona-selection-guide.md` for the full methodology.
+**Do NOT select personas inline.** All persona selection is handled by Phase 2C using the concentric circles model. See `[skill]/references/persona-selection-guide_Phase2C.md` for the full methodology.
 
 **Topic sensitivity reminders** (for quality review, not selection):
 - Provocateur produces more on technical topics; on whimsical topics it provokes in the *opposite* direction (adds gravity)
@@ -709,6 +709,6 @@ The orchestrator provides:
 ## References
 
 - [references/personas.md](references/personas.md) — Persona index and Phase 2 selection guidance
-- [references/persona-selection-guide.md](references/persona-selection-guide.md) — Phase 3 persona selection methodology (concentric circles model, topic affinity matrix, cluster relationships)
+- [references/persona-selection-guide_Phase2C.md](references/persona-selection-guide_Phase2C.md) — Phase 3 persona selection methodology (concentric circles model, topic affinity matrix, cluster relationships)
 - [references/personas/*.md](references/personas/*.md) — Full system prompts for all 22 personas
 - [references/templates.md](references/templates.md) — Document templates (REQUEST.md, PLAN.md, BRAINSTORM.md, synthesis files)
