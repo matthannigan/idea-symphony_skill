@@ -6,6 +6,7 @@
 - Phase 2 question generation test runs across four volume levels (5, 5-10, 10-15, 15-20)
 - Three topics: space-party, tool-library, habit-tracker
 - Ten Tier 1 personas: Questioner, Analyst, Devil's Advocate, Storyteller, Analogist, Appreciative Inquirer, Provocateur, Visionary, Audience Advocate, Systems Thinker
+- Initial findings in `dev/2026-02-21_symphony-question-generation_part2/findings/V1_per-persona-volume-quality.md`
 
 ---
 
@@ -207,6 +208,31 @@ Per-persona assessment document including:
 ## Evidence and Reasoning
 
 [Detailed citations from source files showing specific examples of quality differences, dimension shifts, redundancy patterns]
+
+---
+
+## Comparison with Initial Investigation (V1_per-persona-volume-quality.md)
+
+[How these findings compare to the initial 3-volume per persona investigation]
+
+### 1. The Nature of "Low Volume" (Truncation vs. Distillation)
+[Initial investigation concluded that low volumes (05-10) represent a highly valuable "distillation", where the LLM synthesizes multiple concepts into dense, multi-part questions.]
+[Does this finding still hold? Is the 5-question limit an even better distillation or does the LLM fall back on generic or highly-compounded questions that won't produce good Phase 3 Brainstorming?]
+
+### 2. High-Volume Caps for Analytical Personas
+[Initial investigation suggested that "Analytical/Coverage" personas (like the Analyst and Questioner) thrive at high volumes and should comfortably target **15-20+ questions**.]
+[Does this finding still hold? Or, after re-running test data with the prompt refinements, for `15-20` now we see more evidence of "false precision" or padding just to hit the numerical quota?]
+
+### 3. A More Standardized "Sweet Spot"
+[Initial investigation recommended complex, persona-specific volume groupings depending on the effort tier (e.g., 5-10 for Perspective personas, 10-15 for Structural, 15-20+ for Analytical).]
+[Does this finding still hold? Or, after re-running test data with the prompt refinements, has a different recommendation emerged?]
+
+### 4. The "Append vs. Synthesize" Revelation
+[Initial investigation focused purely on generating the questions in a vacuum.]
+[Take 2 factors in the downstream effect on Phase 2C (Synthesis) for highly distinctive personas. Should any of these be capped at 5-10 questions so their questions can be directly appended rather than synthesized?]
+
+### N. Additional Comparative Findings
+...
 
 ---
 
