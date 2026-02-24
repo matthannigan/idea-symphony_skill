@@ -1,62 +1,81 @@
 # Phase 2B Investigation Methodology — Volume, Roster, and Effort Optimization
 
 **Date:** 2026-02-21
-**Last updated:** 2026-02-21 (post-V1/R1/R2/R3 decisions)
+**Last updated:** 2026-02-24 (post-D1/D2/V1-take2 decisions, R5-R7 tasks added)
 **Parent:** `docs/dev/2026-02-19_question-generation-research-part2.md`
 **Decisions incorporated:**
 - `docs/dev/2026-02-20_question-generation-open-questions-responses.md`
-- V1 findings: persona-specific volume caps
+- V1 findings: persona-specific volume caps (initial + take 2 refinement)
 - R1 decision: promote Audience Advocate
 - R2 decision: promote Systems Thinker
 - R3 decision: enhance Analyst prompt for financial coverage (no Accountant at Tier 1)
+- D1 decision: Perspective persona append strategy (generate 5-8, round-robin cluster selection)
+- D2 decision: Analytical and Structural effort-level volume mapping
 
 **Prerequisite data:**
 - Existing: 23 persona files x 3 topics @ 15-20 questions (`test-runs/symphony-phase2-questions-persona-eval/*_q15-20/`)
 - Generated: 12 persona files (8 original Tier 1 + 4 promotion candidates) x 3 topics @ 5-10 questions (I-DG1)
 - Generated: 12 persona files (8 original Tier 1 + 4 promotion candidates) x 3 topics @ 10-15 questions (I-DG2)
+- Generated: 10 Tier 1 persona files x 3 topics @ 5 questions (V1 take 2 data)
 
 ---
 
 ## Executive Summary
 
-Phase 2B research has produced a validated Tier 1 roster of **10 question-generation personas** and established that **persona-specific volume caps** are optimal rather than uniform question counts. Four early investigations (V1, R1, R2, R3) have resolved Decision Gate 2 and partially resolved Decision Gate 1, significantly reshaping the remaining investigation sequence.
+Phase 2B research has produced a validated Tier 1 roster of **10 question-generation personas**, established **persona-specific volume caps** with effort-level mappings, and formalized the **Append vs Synthesize** split for Phase 2C question handling. The core Tier 1 effort configuration is now decided. Remaining work focuses on Tier 2/3 persona optimization, Analyst refinement, and integration readiness.
 
 **Key decisions made:**
-1. **Persona-specific volumes** (V1): Perspective personas (5-10), structural personas (10-15), analytical personas (15-20) — uniform volume targets produce filler for focused personas and truncation for comprehensive ones
+1. **Persona-specific volumes** (V1, V1 take 2): Three volume categories with refined ranges — Perspective (5-8), Structural (8-12), Analytical (12-15/20). Uniform volume targets produce filler for focused personas and truncation for comprehensive ones.
 2. **Audience Advocate promoted** (R1): 1.35 efficiency ratio, 60% selflessness, cross-volume stable, fills structural equity niche
 3. **Systems Thinker promoted** (R2): 8/8 criteria winner, fills Systems dimension gap (6.5% → ~16%), 56-60% unique territory
 4. **No Accountant at Tier 1** (R3): Financial gap is real but topic-dependent; addressed by enhancing The Analyst's prompt with a financial sub-lens rather than adding a specialist persona
-5. **V2 superseded** (V1 consequence): Aggregate coverage comparison at uniform volumes is moot since the optimal design uses persona-specific volumes
+5. **Perspective personas: Append in Phase 2C** (D1): Generate 5-8 questions, append subset by round-robin cluster selection (3/5/all by effort). Distinctive framing (provocation, metaphor, narrative, paradigm challenge) would be diluted by synthesis.
+6. **Analytical/Structural effort mapping formalized** (D2): Per-persona volume ranges by effort level, respecting 8-question compounding floor and filler onset ceilings. Structural personas split into two sub-groups by recommended range.
+7. **V2 superseded** (V1 consequence): Aggregate coverage comparison at uniform volumes is moot since the optimal design uses persona-specific volumes
+8. **V3 superseded** (D1/D2 consequence): Volume × persona count trade-off is resolved — all 10 Tier 1 personas participate at all effort levels with per-persona volume ranges
+9. **E1/E2 superseded** (D1/D2 consequence): Effort configurations for Tier 1 are formalized in D1/D2. Low effort uses full roster at reduced volumes, not a generic prompt. Remaining effort mapping for Tier 2/3 addressed by R5, R6, R7.
 
-**Remaining investigations:** 8 tasks across volume validation, Analyst refinement, effort mapping, and integration readiness.
+**Remaining investigations:** A1 (Analyst refinement), R5-R7 (Tier 2/3 volume optimization), P1/C1/S1 (integration readiness).
 
 **Tier 1 Personas (10):**
 
-| Persona | Question-Mode Cluster | Volume Category | Optimal Range |
-|---------|----------------------|-----------------|---------------|
-| The Questioner | Analytical Probing | Analytical | 15-20 |
-| The Analyst | Analytical Probing | Analytical | 15-20 |
-| The Devil's Advocate | Analytical Probing | Structural | 10-15 |
-| The Storyteller | Human-Centered/Narrative | Perspective | 5-10 |
-| The Analogist | Generative Disruptors | Perspective | 5-10 |
-| The Appreciative Inquirer | Generative Disruptors | Perspective | 5-10 |
-| The Provocateur | Generative Disruptors | Perspective | 5-10 |
-| The Visionary | Generative Disruptors | Perspective | 5-10 |
-| The Audience Advocate | Human-Centered/Narrative | Structural | 10-15 |
-| The Systems Thinker | Systems/Strategic | Structural | 10-15 |
+| Persona | Volume Category | Optimal Range | Phase 2C Method |
+|---------|-----------------|---------------|-----------------|
+| The Questioner | Analytical | 10-20 | Synthesis |
+| The Analyst | Analytical | 8-15 | Synthesis |
+| The Devil's Advocate | Structural | 8-15 | Synthesis |
+| The Appreciative Inquirer | Structural | 8-15 | Synthesis |
+| The Audience Advocate | Structural | 8-15 | Synthesis |
+| The Systems Thinker | Structural | 8-15 | Synthesis |
+| The Provocateur | Perspective | 5-8 | Append |
+| The Analogist | Perspective | 5-8 | Append |
+| The Visionary | Perspective | 5-8 | Append |
+| The Storyteller | Perspective | 5-8 | Append |
 
-**Volume categories (from V1):**
-- **Perspective** (5-10): Personas that apply a specific lens; higher volumes produce filler and dilute impact
-- **Structural** (10-15): Personas that map systems, barriers, or risks; need enough runway to cover facets without becoming pedantic
-- **Analytical** (15-20): Comprehensive coverage-driven personas; leverage volume for granular, exhaustive exploration
+**Volume categories (from V1 take 2):**
+- **Perspective** (5-8): Personas that apply a specific lens with distinctive framing; higher volumes produce filler and formulaic voice. Questions appended directly in Phase 2C.
+- **Structural** (8-12): Personas that map systems, barriers, or risks through a framework; need enough runway to cover facets without becoming pedantic. Split into two sub-groups: Devil's Advocate/Appreciative Inquirer (8-12 recommended) and Audience Advocate/Systems Thinker (10-15 recommended).
+- **Analytical** (12-15/20): Comprehensive coverage-driven personas; leverage volume for granular, exhaustive exploration. Questioner uniquely benefits from 15-20 (<5% filler).
 
-**Tier 2 Specialist Personas (available at high effort, topic-dependent selection):**
+**Tier 2 Personas (high effort only, synthesized):**
 
-| Persona | Trigger Keywords | Notes |
-|---------|-----------------|-------|
-| The Accountant | business, nonprofit, budget, startup, pricing, revenue | Complements Analyst with quantified financial modeling; see R3 |
-| The Empath | personal, emotional, experience, wellbeing, care | Strong emotional excavation; overlaps with Storyteller/AI at lower volumes; see R1 |
-| The First Principles Thinker | fundamental, rethink, from-scratch, core-assumptions | Distinct cognitive mode but overlaps Questioner/Analyst territory; see R2 |
+| Persona | Notes |
+|---------|-------|
+| The Constraint Flipper | Perspective-like inversion operation but exhaustible; volume/quality TBD (R5) |
+| The Empath | Structural-like emotional excavation; overlaps Storyteller/AI at lower volumes; see R1 |
+| The First Principles Thinker | Analytical-like ontological questioning; overlaps Questioner territory; see R2 |
+| The Futurist | Structural-like trend extrapolation; ~29% temporal lens anti-pattern rate; volume/quality TBD (R5) |
+
+**Tier 3 Personas (medium/high effort, orchestrator-selected):**
+
+| Persona | Notes |
+|---------|-------|
+| The Accountant | Complements Analyst with quantified financial modeling; see R3. Volume/method TBD (R6) |
+| The Connector | Special case — replaces Analogist when selected; inherits Append treatment. Volume/quality TBD (R7) |
+| The Lawyer | Extreme Black Hat; heavy legal framing. Volume/method TBD (R6) |
+| The Politician | Governance/coalition; high topic sensitivity (CV~30.3%). Volume/method TBD (R6) |
+| The Simplifier | Convergent/subtractive; may be excluded from Phase 2B entirely. Viability TBD (R6) |
+| The Technical Expert | Architecture/dependencies; reinforces existing paradigms. Volume/method TBD (R6) |
 
 ---
 
@@ -66,14 +85,17 @@ Continuing from prior research (RQ1-RQ7):
 
 | ID | Question | Status | Resolution |
 |----|----------|--------|------------|
-| RQ8 | **Volume optimization:** Does reducing per-persona question count degrade quality? | **Partially resolved** (V1) | Persona-specific volumes are optimal. Low volume = distillation for perspective personas, truncation for analytical personas. Remaining: validate persona-specific aggregate via V3. |
+| RQ8 | **Volume optimization:** Does reducing per-persona question count degrade quality? | **Resolved** (V1, V1 take 2, D1, D2) | Persona-specific volumes with effort-level mappings. 8-question compounding floor. Perspective (5-8), Structural (8-12), Analytical (12-15/20). |
 | RQ9 | **Roster promotions:** Which promotion candidates earn Tier 1 slots? | **Resolved** (R1, R2) | Audience Advocate and Systems Thinker promoted. Empath and FPT to Tier 2. |
-| RQ10 | **Accountant coverage:** Is a financial specialist needed at medium effort? | **Resolved** (R3) | No. Enhance Analyst prompt for financial sub-lens. Accountant available at Tier 2 for high effort. |
-| RQ11 | **Effort-volume mapping:** What are the optimal (persona count, volume) combinations? | Open | Now informed by persona-specific volume categories. Addressed in E1. |
-| RQ12 | **Low effort architecture:** Min tier vs revised generic prompt? | Open | Addressed in E2. |
+| RQ10 | **Accountant coverage:** Is a financial specialist needed at medium effort? | **Resolved** (R3) | No. Enhance Analyst prompt for financial sub-lens. Accountant available at Tier 3 for topic-gated selection. |
+| RQ11 | **Effort-volume mapping:** What are the optimal (persona count, volume) combinations? | **Resolved for Tier 1** (D1, D2) | Full 10-persona roster at all effort levels with per-persona volume ranges. Tier 2/3 mappings pending (R5, R6, R7). |
+| RQ12 | **Low effort architecture:** Min tier vs revised generic prompt? | **Resolved** (D1, D2) | Low effort uses full Tier 1 roster at reduced volumes, not a generic prompt or subset. |
 | RQ13 | **Pre-clustering impact:** Do per-persona clusters help or hinder synthesis? | Open | Addressed in C1. |
 | RQ14 | **Provocateur integration:** Are provocative questions constructively disruptive in Phase 3? | Open | Addressed in P1. |
-| RQ15 | **Analyst financial enhancement:** Does prompt refinement improve financial coverage without diluting other analytical dimensions? | **New** | Addressed in A1 (new investigation). |
+| RQ15 | **Analyst financial enhancement:** Does prompt refinement improve financial coverage without diluting other analytical dimensions? | Open | Addressed in A1. |
+| RQ16 | **Tier 2 volume optimization:** What are the optimal volume ranges and Phase 2C methods for Tier 2 personas at high effort? | **New** | Addressed in R5. |
+| RQ17 | **Tier 3 volume optimization:** What are the optimal volume ranges and Phase 2C methods for Tier 3 personas? Is the Simplifier viable for Phase 2B? | **New** | Addressed in R6. |
+| RQ18 | **Connector as Analogist replacement:** Does the Connector function effectively at 5-8 questions with Append treatment? What topic characteristics trigger the swap? | **New** | Addressed in R7. |
 
 ---
 
@@ -86,14 +108,32 @@ Continuing from prior research (RQ1-RQ7):
 | I-DG1 | Generate q05-10 data for 12 personas | Done | `test-runs/symphony-phase2-questions-persona-eval/*_q05-10/` |
 | I-DG2 | Generate q10-15 data for 12 personas | Done | `test-runs/symphony-phase2-questions-persona-eval/*_q10-15/` |
 
-### Phase 2: Volume Optimization — PARTIALLY COMPLETED
+### Phase 2: Volume Optimization — COMPLETED
 
 | ID | Task | Status | Output |
 |----|------|--------|--------|
 | I-V1 | Per-persona quality comparison across volumes | **Done** | `findings/V1_per-persona-volume-quality.md` |
-| I-V2 | Aggregate coverage comparison | **Superseded by V1** | V1 established persona-specific volumes, making uniform aggregate comparison moot. Residual coverage metrics folded into V3. |
+| I-V1 (take 2) | Extended to 4 volume tiers (5, 5-10, 10-15, 15-20) with refined prompts | **Done** | `findings/V1_per-persona-volume-quality_take2.md` |
+| I-V2 | Aggregate coverage comparison | **Superseded by V1** | V1 established persona-specific volumes, making uniform aggregate comparison moot. |
+| I-V3 | Volume x persona count trade-off | **Superseded by D1/D2** | D1 and D2 formalize effort-level volume mappings for all Tier 1 personas. The trade-off question is resolved: all 10 personas participate at all effort levels with per-persona volume ranges. |
 
 **V1 Key Finding:** The "Persona-Volume Fit" dynamic. Low volumes (5-10) produce high-quality distillation for perspective personas (Visionary, Analogist, Provocateur, Storyteller) but truncation for analytical personas (Questioner, Analyst). Uniform volume targets are suboptimal — different personas need different ranges.
+
+**V1 Take 2 Key Findings:**
+- The 5-question floor produces compound "research brief" questions, not tighter distillation. 8 questions is the practical minimum for standard question generation.
+- Refined volume ranges tightened downward: Perspective (5-8), Structural (8-12), Analytical (12-15, Questioner up to 20).
+- Perspective personas should be Appended in Phase 2C rather than Synthesized — their distinctive framing is diluted by synthesis.
+
+### Phase 2B Decisions — COMPLETED
+
+| ID | Decision | Status | Output |
+|----|----------|--------|--------|
+| I-D1 | Perspective persona append strategy | **Decided** | `findings/D1_perspective-persona-append-strategy.md` |
+| I-D2 | Analytical/Structural effort-level volume mapping | **Decided** | `findings/D2_analytical-structural-effort-mapping.md` |
+
+**D1 Decision:** Perspective personas generate 5-8 questions regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection: 3 per persona (low), 5 per persona (medium), all (high). Generate-then-select is preferred over prompt-engineering for exact counts to avoid the compounding effect at low volumes.
+
+**D2 Decision:** Analytical and Structural personas use per-persona volume ranges by effort level, with floors at 8 (above compounding threshold) and ceilings near filler onset. Structural personas split into two sub-groups: Devil's Advocate/Appreciative Inquirer (8-12 base) and Audience Advocate/Systems Thinker (8-15 base).
 
 ### Phase 3: Roster Composition — COMPLETED
 
@@ -122,38 +162,29 @@ Continuing from prior research (RQ1-RQ7):
 - Financial gap is topic-dependent: adequate for personal topics (18%), moderate for community topics (26%), substantial for business topics (11%)
 - Accountant too specialized for default Tier 1 — would be irrelevant for many brainstorming topics
 - Analyst already reaches strategic financial framing; prompt enhancement can push toward quantified reasoning
-- Accountant's domain knowledge (benchmarks, depreciation, insurance) available at Tier 2 for high effort
+- Accountant's domain knowledge (benchmarks, depreciation, insurance) available at Tier 3 for topic-gated selection
+
+### Phase 4: Effort Level Mapping (Tier 1) — COMPLETED
+
+| ID | Task | Status | Resolution |
+|----|------|--------|------------|
+| I-E1 | Define effort configurations | **Superseded by D1/D2** | Tier 1 effort configurations formalized in D1 (Perspective) and D2 (Analytical/Structural). All 10 personas participate at all effort levels with per-persona volume ranges. |
+| I-E2 | Low effort approach evaluation | **Superseded by D1/D2** | Low effort uses full Tier 1 roster at reduced volumes. The generic-prompt alternative is not pursued. |
 
 ### Decision Gates — Status
 
 | Gate | Status | Decision |
 |------|--------|----------|
-| Decision Gate 1 (volume range) | **Partially resolved** | Persona-specific volumes established. Remaining: validate aggregate coverage with mixed volumes via V3; finalize effort-level volume assignments in E1. |
+| Decision Gate 1 (volume range) | **Resolved for Tier 1** | Persona-specific volumes with effort-level mappings formalized in D1 and D2. Tier 2/3 volume ranges pending (R5, R6, R7). |
 | Decision Gate 2 (roster composition) | **Resolved** | 10-persona Tier 1 roster. AA and ST promoted. No Accountant at Tier 1. Analyst prompt to be enhanced for financial sub-lens. |
-| Decision Gate 3 (effort levels) | Open | Depends on V3, A1, E1, E2. |
+| Decision Gate 3 (effort levels — Tier 1) | **Resolved** | Tier 1 effort configurations decided in D1/D2. Low/medium/high all use full roster with different volume ranges. |
+| Decision Gate 4 (effort levels — Tier 2/3) | **New — Open** | Depends on R5 (Tier 2), R6 (Tier 3 excluding Connector), R7 (Connector). |
 
 ---
 
 ## Remaining Investigation Sequence
 
-### Phase 2 (continued): Volume Validation
-
-| ID | Task | RQs | Input | Priority |
-|----|------|-----|-------|----------|
-| I-V3 | Volume x persona count trade-off (revised) | RQ8, RQ11 | Persona-specific volume data; compare 10 personas at optimal volumes vs 5 personas at 15-20 | High |
-
-**I-V3 revision notes:** Original framing was "8×5-10 vs 5×15-20 at ~constant total question count." Now revised to compare:
-- **Config A:** 10 personas at persona-specific volumes (4 perspective × 7-8 avg + 4 structural × 12-13 avg + 2 analytical × 17-18 avg = ~116 total questions)
-- **Config B:** 5 personas at 15-20 each (~85 total questions)
-- **Config C:** 10 personas at uniform 10-15 each (~120 total questions, for comparison with persona-specific approach)
-
-This also absorbs V2's residual analytical goals: aggregate coverage metrics, cross-persona redundancy rates, and convergence signals — now measured across the persona-specific configuration rather than uniform volumes.
-
-**Task file:** `tasks/V3_volume-count-tradeoff.md` (needs revision to reflect new configs)
-
----
-
-### Phase 2.5 (new): Analyst Refinement
+### Analyst Refinement
 
 **Purpose:** Enhance The Analyst's prompt to improve financial coverage without diluting its core analytical breadth, then regenerate test data to validate the refinement.
 
@@ -178,49 +209,39 @@ This also absorbs V2's residual analytical goals: aggregate coverage metrics, cr
 - **Failure:** Financial questions feel forced, or core analytical territory shrinks significantly
 - **Partial:** Financial coverage improves for business topics but not for personal/community topics (acceptable — financial dimensions are topic-dependent)
 
-**Task file:** `tasks/A1_analyst-refinement.md` (new)
+**Task file:** `tasks/A1_analyst-refinement.md`
 
 ---
 
-### Phase 4: Effort Level Mapping (depends on V3, A1)
+### Tier 2/3 Volume Optimization
 
-**Purpose:** Define the (persona count, question volume) configuration for each effort level.
+**Purpose:** Establish volume ranges and Phase 2C methods for non-Tier-1 personas.
 
 | ID | Task | RQs | Input | Priority |
 |----|------|-----|-------|----------|
-| I-E1 | Define effort configurations | RQ11, RQ12 | V1 volume categories, V3 trade-off findings, A1 Analyst validation, accumulated roster decisions | High |
-| I-E2 | Low effort approach evaluation | RQ12 | Existing generic prompt output + Tier 1 subset q-data | Medium |
+| I-R5 | Tier 2 per-persona volume-quality assessment | RQ16 | V1 take 2 methodology, D2 synthesis context | Medium |
+| I-R6 | Tier 3 per-persona volume-quality assessment (excl. Connector) | RQ17 | V1 take 2 methodology, D2 synthesis context | Low |
+| I-R7 | Connector volume-quality and Analogist comparison | RQ18 | D1 Append strategy, V1 take 2 Analogist baseline | Low |
 
-**I-E1** is primarily a design/synthesis task. Updated draft configuration incorporating V1 volume categories:
+**I-R5** tests Constraint Flipper, Empath, First Principles Thinker, and Futurist at 3 volume levels across 3 topics. Key questions: volume-quality curve, category assignment (Perspective/Structural/Analytical), and confirmation that synthesis is the correct Phase 2C method. The Constraint Flipper's inversion operation is the primary candidate for Append treatment if any Tier 2 persona warrants it.
 
-| Effort | Persona Count | Volume Strategy | Estimated Total Qs | Model |
-|--------|--------------|-----------------|---------------------|-------|
-| Low | TBD (3-4 or generic) | TBD | TBD | TBD |
-| Medium | 10 (full Tier 1) | Persona-specific: perspective 5-10, structural 10-15, analytical 15-20 | ~105-140 | Haiku |
-| High | 10 Tier 1 + 2-3 Tier 2 specialists | Persona-specific + specialist volumes | ~130-180 | Haiku |
+**I-R6** tests Accountant, Lawyer, Politician, Simplifier, and Technical Expert. All five are expected to be Synthesis candidates. Includes a viability assessment for the Simplifier — may be excluded from Phase 2B entirely. Notes that standard test topics may not adequately exercise topic-gated personas; a 4th topic may be needed.
 
-**Open design questions for E1:**
-- Should medium effort use the full 10-persona roster or a subset? (V3 may inform this)
-- For high effort, should Tier 2 specialists get the same volume as their category peers, or dedicated ranges?
-- Should the volume ranges scale between effort levels (e.g., medium perspective = 5-8, high perspective = 8-10)?
+**I-R7** tests the Connector as an Analogist replacement. Investigates sub-mode distribution (import vs isomorphism vs recombination) at 5-8 questions, cluster structure separation, and head-to-head comparison with Analogist. Requires a new cross-domain test topic that would naturally trigger the Analogist/Connector swap.
 
-**I-E2** evaluates two low-effort approaches:
-1. **"Min" tier:** 3-4 Tier 1 personas as subagents (true isolation, persona-specific volumes)
-2. **Revised generic prompt:** Single prompt incorporating Tier 1 dimensions (no isolation, faster)
+**Task files:** `tasks/R5_tier2-volume-quality.md`, `tasks/R6_tier3-volume-quality.md`, `tasks/R7_connector-volume-quality.md`
 
-For option 1, we can simulate by selecting 3-4 personas from existing q05-10 data without new generation.
+#### Decision Gate 4
 
-**Task files:** `tasks/E1_effort-configuration.md`, `tasks/E2_low-effort-approach.md`
-
-#### Decision Gate 3
-
-After Phase 4, decide:
-- **Final effort level definitions** (feeds into SKILL.md updates)
-- **Low effort architecture** (min tier vs revised generic prompt)
+After R5, R6, and R7, decide:
+- **Tier 2 volume ranges and Phase 2C methods** for high effort
+- **Tier 3 volume ranges, Phase 2C methods, and selection criteria** for medium/high effort
+- **Connector swap criteria** (topic characteristics that trigger Analogist replacement)
+- **Simplifier viability** (keep in Tier 3 or exclude from Phase 2B)
 
 ---
 
-### Phase 5: Integration Readiness (can proceed in parallel with Phase 4)
+### Integration Readiness (can proceed in parallel)
 
 **Purpose:** Evaluate how the new roster integrates with Phase 3 and synthesis.
 
@@ -243,40 +264,45 @@ After Phase 4, decide:
 ## Revised Sequencing Diagram
 
 ```
-    COMPLETED                           REMAINING
-    ─────────                           ─────────
+    COMPLETED                              REMAINING
+    ─────────                              ─────────
 
     Phase 1: Data Gen ✓
     I-DG1: q05-10 ✓
     I-DG2: q10-15 ✓
 
-    Phase 2: Volume Opt                 Phase 2 (cont.)
-    I-V1: Per-persona ✓ ──────────────► I-V3: Volume x count trade-off
-    I-V2: Superseded                        (revised for persona-specific volumes)
-                                                │
-    Phase 3: Roster ✓                           │
-    I-R1: AA promoted ✓                         │
-    I-R2: ST promoted ✓                Phase 2.5: Analyst Refinement
-    I-R3: Analyst enhance ✓ ──────────► I-A1: Refine prompt, regen data, validate
-    I-R4: Superseded                        │
-                                            │
-                                            v
-                                    Phase 4: Effort Mapping
-                                    I-E1: Define configurations
-                                    I-E2: Low effort approach
-                                            │
-                                            v
-                                    Decision Gate 3
-                                    (effort levels)
-                                            │
-                                            v
-                                    Phase 5: Integration Readiness
-                                    I-P1: Provocateur integration
-                                    I-C1: Clustering vs flat
-                                    I-S1: Synthesis gap analysis
+    Phase 2: Volume Opt ✓
+    I-V1: Per-persona ✓
+    I-V1 take 2: Refined ✓
+    I-V2: Superseded
+    I-V3: Superseded (by D1/D2)
 
-    Note: Phase 5 can run in parallel with Phase 4.
-          V3 and A1 can run in parallel with each other.
+    Phase 2B: Decisions ✓
+    I-D1: Perspective append ✓
+    I-D2: Analytical/Structural ✓
+
+    Phase 3: Roster ✓                   Analyst Refinement
+    I-R1: AA promoted ✓                 I-A1: Refine prompt, regen, validate
+    I-R2: ST promoted ✓
+    I-R3: Analyst enhance ✓             Tier 2/3 Volume Optimization
+    I-R4: Superseded                    I-R5: Tier 2 volume-quality ──────┐
+                                        I-R6: Tier 3 volume-quality ──────┤
+    Phase 4 (Tier 1): Effort ✓          I-R7: Connector volume-quality ───┤
+    I-E1: Superseded (by D1/D2)                                           │
+    I-E2: Superseded (by D1/D2)                                           v
+                                                                  Decision Gate 4
+                                                                 (Tier 2/3 effort)
+
+                                        Integration Readiness
+                                        I-P1: Provocateur integration
+                                        I-C1: Clustering vs flat
+                                        I-S1: Synthesis gap analysis
+
+    Notes:
+    - A1 is independent; can run anytime.
+    - R5, R6, R7 can run in parallel with each other.
+    - R6 recommended after R5 (findings may inform criteria).
+    - Integration Readiness can run in parallel with everything.
 ```
 
 ---
@@ -290,11 +316,11 @@ Each investigation produces a findings document with:
 - Open questions or caveats
 
 ### Final Deliverables (after all gates)
-1. **Phase 2B Persona Selection Guide** — analogous to Phase 3's `persona-selection-guide.md`; includes Tier 1 roster, Tier 2 specialists, volume categories, and selection logic
-2. **Effort Level Configuration Table** — personas x volume x model for low/medium/high
+1. **Phase 2B Persona Selection Guide** — in progress at `idea-symphony/references/persona-selection-guide_Phase2B.md`; includes Tier 1/2/3 rosters, volume categories, effort-level mapping, selection logic, and Phase 2C downstream implications
+2. **Effort Level Configuration Table** — Tier 1 complete (in selection guide); Tier 2/3 pending R5-R7
 3. **Revised Analyst Persona Prompt** — enhanced with financial sub-lens (A1 output)
-4. **Synthesis Prompt Revision Specification** — documented requirements for deferred implementation
-5. **Question-Mode Cluster Definitions** — formalized for SKILL.md if validated
+4. **Synthesis Prompt Revision Specification** — documented requirements for deferred implementation (S1)
+5. **Connector Swap Criteria** — topic characteristics for Analogist/Connector selection (R7 output)
 
 ---
 
@@ -320,15 +346,19 @@ All task files are in `dev/2026-02-21_symphony-question-generation_part2/tasks/`
 | 1 | `DG1_data-generation-q05-10.md` | I-DG1: Generate q05-10 data | Done |
 | 1 | `DG2_data-generation-q10-15.md` | I-DG2: Generate q10-15 data | Done |
 | 2 | `V1_per-persona-volume-quality.md` | I-V1: Per-persona quality across volumes | Done |
+| 2 | `V1_per-persona-volume-quality_take2.md` | I-V1 take 2: Extended 4-tier analysis | Done |
 | 2 | `V2_aggregate-coverage.md` | I-V2: Aggregate coverage comparison | Superseded |
-| 2 | `V3_volume-count-tradeoff.md` | I-V3: Volume x persona count trade-off | **Needs revision** |
-| 2.5 | `A1_analyst-refinement.md` | I-A1: Analyst prompt refinement and validation | **New — to create** |
+| 2 | `V3_volume-count-tradeoff.md` | I-V3: Volume x persona count trade-off | Superseded (by D1/D2) |
+| 2.5 | `A1_analyst-refinement.md` | I-A1: Analyst prompt refinement and validation | Pending |
 | 3 | `R1_audience-advocate-vs-empath.md` | I-R1: Audience Advocate vs Empath | Done |
 | 3 | `R2_systems-thinker-vs-fpt.md` | I-R2: Systems Thinker vs First Principles Thinker | Done |
 | 3 | `R3_accountant-financial-coverage.md` | I-R3: Accountant financial coverage | Done |
 | 3 | `R4_marginal-persona-value.md` | I-R4: Marginal value of 9th/10th persona | Superseded |
-| 4 | `E1_effort-configuration.md` | I-E1: Define effort configurations | Pending |
-| 4 | `E2_low-effort-approach.md` | I-E2: Low effort approach evaluation | Pending |
+| 4 | `E1_effort-configuration.md` | I-E1: Define effort configurations | Superseded (by D1/D2) |
+| 4 | `E2_low-effort-approach.md` | I-E2: Low effort approach evaluation | Superseded (by D1/D2) |
+| 4 | `R5_tier2-volume-quality.md` | I-R5: Tier 2 volume-quality assessment | **Pending** |
+| 4 | `R6_tier3-volume-quality.md` | I-R6: Tier 3 volume-quality assessment (excl. Connector) | **Pending** |
+| 4 | `R7_connector-volume-quality.md` | I-R7: Connector volume-quality and Analogist comparison | **Pending** |
 | 5 | `P1_provocateur-integration.md` | I-P1: Provocateur integration assessment | Pending |
 | 5 | `C1_clustering-vs-flat.md` | I-C1: Pre-clustering vs flat list comparison | Pending |
 
@@ -339,6 +369,11 @@ All findings files are in `dev/2026-02-21_symphony-question-generation_part2/fin
 | File | Investigation | Key Finding |
 |------|--------------|-------------|
 | `V1_per-persona-volume-quality.md` | I-V1 | Persona-specific volume caps; 3 volume categories |
+| `V1_per-persona-volume-quality_take2.md` | I-V1 take 2 | Refined ranges (5-8/8-12/12-15); 8-question compounding floor; Append vs Synthesize split |
+| `V1_per-persona-volume-quality_take2_gemini.md` | I-V1 take 2 (Gemini) | Cross-model validation of V1 take 2 findings |
+| `D1_perspective-persona-append-strategy.md` | I-D1 | Generate 5-8, append by round-robin cluster selection (3/5/all by effort) |
+| `D2_analytical-structural-effort-mapping.md` | I-D2 | Per-persona volume ranges by effort level; Structural sub-grouping |
 | `R1_audience-advocate-vs-empath_claude.md` | I-R1 | Promote AA (1.35 efficiency, 60% selfless, cross-volume stable) |
+| `R1_audience-advocate-vs-empath_gemini.md` | I-R1 (Gemini) | Cross-model validation of R1 findings |
 | `R2_systems-thinker-vs-fpt.md` | I-R2 | Promote ST (8/8 criteria, fills Systems gap, 56-60% unique) |
-| `R3_accountant-financial-coverage.md` | I-R3 | Enhance Analyst; Accountant to Tier 2 (topic-dependent gap) |
+| `R3_accountant-financial-coverage.md` | I-R3 | Enhance Analyst; Accountant to Tier 3 (topic-dependent gap) |
