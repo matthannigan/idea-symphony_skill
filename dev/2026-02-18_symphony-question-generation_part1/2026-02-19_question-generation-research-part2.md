@@ -205,7 +205,7 @@ External research identified several gaps in the current persona roster. These s
 
 ## 3. Phase 2B Persona Selection Guide — Readiness Assessment
 
-The Phase 3 persona selection guide (`idea-symphony/references/persona-selection-guide.md`) provides a validated model: concentric rings by effort level, validated clusters, topic affinity matrix, anti-patterns, and selection algorithms.
+The Phase 3 persona selection guide (`idea-symphony/references/persona-selection-guide_Phase2C.md`) provides a validated model: concentric rings by effort level, validated clusters, topic affinity matrix, anti-patterns, and selection algorithms.
 
 ### Current Readiness: ~60%
 
