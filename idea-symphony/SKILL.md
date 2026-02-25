@@ -35,6 +35,7 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 | The Accountant | `the-accountant.md` | Financial clarity, cost modeling, economic sustainability |
 | The Analyst | `the-analyst.md` | Data, patterns, systematic breakdown *(Phase 2 only)* |
 | The Analogist | `the-analogist.md` | Cross-domain patterns |
+| The Appreciative Inquirer | `the-appreciative-inquirer.md` | Build on existing strengths, elicit stories of success |
 | The Audience Advocate | `the-audience-advocate.md` | End-user perspective, empathy mapping |
 | The Connector | `the-connector.md` | Cross-domain bridging, structural parallels |
 | The Constraint Flipper | `the-constraint-flipper.md` | Limitations → opportunities |

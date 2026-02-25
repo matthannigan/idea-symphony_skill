@@ -6,6 +6,8 @@
 - V1 per-persona volume-quality (take 2) — establishes methodology and comparison framework
 - Phase 2B persona selection guide — Tier 2 persona guidance and notes
 - D2 Tier 1 Analytical/Structural effort mapping — establishes the synthesis context these personas feed into
+- 4 Tier 2 persona merged test data files — `test-runs/symphony-phase2-questions-persona-eval/_merged/PERSONA_ALL_{persona}_2026-02-24.md`
+- All topic requests — `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md`
 
 ---
 
@@ -43,58 +45,173 @@ The Simplifier was originally in Tier 2 but has been moved to Tier 3 based on th
 
 **Research questions addressed:** RQ12a-d
 
-**Prerequisite data generation:** Test data must be generated for each Tier 2 persona across the same three topics (habit-tracker, space-party, tool-library) at 3 volume levels:
+**Execution model:** 4 parallel Opus subagents (one per persona), each producing a per-persona assessment. An orchestrator synthesis step compiles the 4 reports and answers the cross-persona research questions (RQ12b category patterns, RQ12d synthesis vs append).
+
+### Test Data
+
+Test data has been generated for each Tier 2 persona across all 10 topics at 3 volume levels:
 - 5-8 questions (Perspective-range test)
 - 8-12 questions (Structural-range test)
 - 10-15 questions (Analytical-range test)
 
-Use the same generative prompt structure as V1 take 2 (documented in `tasks/V1_per-persona-volume-quality_take2.md`).
+Data was generated using the same generative prompt structure as V1 take 2 (documented in `tasks/V1_per-persona-volume-quality_take2.md`).
 
-**Personas to analyze:**
-1. Constraint Flipper
-2. Empath
-3. First Principles Thinker
-4. Futurist
+### Subagent Design
 
-**Comparison criteria:**
+Each subagent receives:
 
-1. **Volume-quality curve:** For each persona, assess question quality across the three volume levels. Identify the filler onset point and optimal range.
+1. **REQUESTS_ALL.md** (~17K) — All 10 topic descriptions for context
+2. **PERSONA_ALL_{persona}_2026-02-24.md** (~125-153K) — All test runs for that persona across all topics at all volume levels
+3. **Selection guide excerpt** — The relevant per-persona guidance and notes from the persona selection guide
 
-2. **Category assignment:** Does the persona behave like a Perspective (best at 5-8, distinctive voice), Structural (best at 8-12, framework-driven), or Analytical (best at 10-15+, breadth-seeking) persona?
+Total input per subagent: ~140-170K, well within context.
 
-3. **Overlap with Tier 1:** Measure thematic convergence with Tier 1 personas at the recommended volume. Specifically:
-   - Constraint Flipper vs Provocateur (both challenge assumptions via inversion)
-   - Empath vs Storyteller and Audience Advocate (all human-centered)
-   - First Principles Thinker vs Questioner (both analytical assumption-challengers)
-   - Futurist vs Visionary (both forward-looking)
+### Personas and Their Test Data
 
-4. **Synthesis vs Append determination:** For each persona, assess whether questions have distinctive framing that would be diluted by synthesis (→ Append) or high thematic overlap with other personas that benefits from cross-referencing (→ Synthesis).
+| # | Persona | Likely Category | PERSONA_ALL Size | Volume Levels | Runs |
+|:---|:---|:---|:---|:---|:---|
+| 1 | Constraint Flipper | Perspective-like | 137K | q05-08 (×10), q08-12 (×10), q10-15 (×5) | 25 |
+| 2 | Empath | Structural-like | 125K | q05-08 (×10), q08-12 (×10), q10-15 (×5) | 25 |
+| 3 | First Principles Thinker | Analytical-like | 138K | q05-08 (×10), q08-12 (×10), q10-15 (×4) | 24 |
+| 4 | Futurist | Structural-like | 153K | q05-08 (×10), q08-12 (×10), q10-15 (×4) | 24 |
 
-5. **Anti-pattern detection:** Specifically for Futurist, measure the temporal lens anti-pattern rate at each volume level. Does lower volume reduce the rate?
+### Subagent Prompt
 
-6. **Cross-topic consistency:** Do findings hold across all three topics or vary by topic type?
+Spawn a subagent (**Opus model**, `general-purpose` type) with the following self-contained prompt:
 
-**Expected output:**
+````
+You are conducting a volume-quality assessment for a Phase 2B question-generation persona to determine its optimal volume range, category assignment, and Phase 2C method.
 
-Per-persona assessment following the V1 take 2 format:
-- Volume-quality curve with filler onset threshold
+## Your Persona: {persona_name}
+
+## Task
+
+Read the following files:
+1. `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` — descriptions of all 10 test topics
+2. `test-runs/symphony-phase2-questions-persona-eval/_merged/PERSONA_ALL_{persona}_2026-02-24.md` — all question generation test runs for {persona_name}
+3. The selection guide excerpt below for {persona_name}
+
+Then produce a per-persona volume-quality assessment.
+
+## Selection Guide Excerpt for {persona_name}
+
+{paste the relevant row from the "What We Know from the Selection Guide" table and the per-persona guidance from persona-selection-guide_Phase2B.md}
+
+## Assessment Criteria
+
+1. **Volume-quality curve:** For each of the three volume levels (5-8, 8-12, 10-15), assess question quality — are questions focused, open-ended, specific, and non-redundant? Identify the filler onset point and optimal range.
+
+2. **Category assignment:** Does the persona behave like a Perspective (best at 5-8, distinctive voice that becomes formulaic at higher volumes), Structural (best at 8-12, framework-driven with natural cluster structure), or Analytical (best at 10-15+, breadth-seeking with systematic coverage)? Base this on observed behavior, not the "likely category" from the selection guide.
+
+3. **Overlap with Tier 1:** Measure thematic convergence with the persona's Tier 1 counterpart(s):
+{persona-specific overlap pairs — see comparison criteria below}
+
+4. **Synthesis vs Append determination:** Does the persona produce questions with distinctive framing that would be diluted by synthesis (→ Append) or high thematic overlap with other personas that benefits from cross-referencing (→ Synthesis)?
+
+5. **Filler detection:** At the highest volume level tested, estimate what percentage of questions are redundant, low-value, or duplicative. What characterizes the filler (thematic repetition, dimensional drift, granularity inflation, formulaic voice)?
+
+6. **Cross-topic consistency:** Do findings hold across all 10 topics or vary by topic type? Are there topic types where this persona is notably stronger or weaker?
+
+{FOR FUTURIST ONLY — include this additional section:}
+
+7. **Anti-pattern detection:** Measure the temporal lens anti-pattern rate at each volume level — questions that are standard planning questions with trend decoration bolted on. Does lower volume reduce the rate?
+
+## Comparison Pairs
+
+- Constraint Flipper ↔ Provocateur (both challenge assumptions via inversion)
+- Empath ↔ Storyteller and Audience Advocate (all human-centered)
+- First Principles Thinker ↔ Questioner (both analytical assumption-challengers)
+- Futurist ↔ Visionary (both forward-looking)
+
+## Output Format
+
+```markdown
+# R5 Assessment: {persona_name}
+
+**Likely Category (from selection guide):** {category}
+**Assessed Category:** {Perspective | Structural | Analytical}
+**Recommended Volume Range:** {range}
+**Filler Onset:** ~{N} questions
+**Phase 2C Method:** {Synthesis | Append}
+
+## Volume-Quality Curve
+
+### 5-8 Questions
+{Assessment}
+
+### 8-12 Questions
+{Assessment}
+
+### 10-15 Questions
+{Assessment}
+
+## Category Assignment Rationale
+
+{Why this category fits based on observed behavior}
+
+## Tier 1 Overlap Assessment
+
+{Thematic convergence with counterpart persona(s)}
+
+## Synthesis vs Append Determination
+
+{Rationale for Phase 2C method recommendation}
+
+## Cross-Topic Consistency
+
+{Topic-dependent variations, if any}
+
+{FOR FUTURIST ONLY:}
+## Anti-Pattern Assessment
+
+{Temporal lens anti-pattern rate by volume level}
+
+## Summary Recommendation
+
+{Concise recommendation: volume range, category, Phase 2C method, any caveats}
+```
+
+Save your output to: dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality_{persona_name}.md
+````
+
+### Batching Strategy
+
+All 4 subagents can run in a single parallel batch (below the 5-concurrent limit).
+
+### Orchestrator Synthesis
+
+After all 4 subagent reports return, the orchestrator compiles:
+
+1. **Summary table** with category assignments, volume ranges, filler onsets, and Phase 2C methods for all 4 personas
+2. **Cross-persona patterns** — do Tier 2 personas follow the same Perspective/Structural/Analytical patterns as Tier 1? (RQ12b)
+3. **Append candidates** — is the Constraint Flipper confirmed as Append, and are any others? (RQ12d)
+4. **Recommended Effort Level Mapping entries** for Tier 2 personas at high effort
+
+### Expected Output
+
+**Per-persona:** 4 assessment reports (one per subagent), each containing:
 - Category assignment (Perspective / Structural / Analytical)
-- Overlap assessment with Tier 1 counterparts
-- Phase 2C method recommendation (Synthesis / Append)
+- Volume-quality curve with filler onset threshold
 - Recommended volume range for high effort
+- Phase 2C method recommendation (Synthesis / Append)
+- Overlap assessment with Tier 1 counterparts
 - Cross-topic consistency notes
 
-**Priority:** Medium — Tier 2 personas only participate at high effort, so this is not blocking medium-effort implementation. However, it should complete before high-effort configuration is finalized.
+**Compiled output file:** `dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md`
 
-**Output file:** `dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md`
+The compiled document should contain:
+1. Summary table with all 4 persona assessments
+2. Summary of each subagent's report
+3. Cross-persona analysis answering RQ12b and RQ12d
+4. Recommended Effort Level Mapping entries for Tier 2
 
 ---
 
 ## Dependency Notes
 
-- **Depends on:** V1 take 2 methodology (for prompt structure and comparison framework), D2 (for understanding synthesis input context)
+- **Depends on:** V1 take 2 methodology (for comparison framework), D2 (for understanding synthesis input context)
 - **Blocks:** Final high-effort configuration, Effort Level Mapping completion for Tier 2
-- **Data generation:** Requires 12 new test runs (4 personas × 3 topics) at each of 3 volume levels = 36 subagent runs
+- **Data generation:** Not required — all test data already generated (24-25 runs per persona across 10 topics at 3 volume levels)
 
 ## Priority
 
