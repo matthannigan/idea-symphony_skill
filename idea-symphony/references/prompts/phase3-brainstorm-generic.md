@@ -1,6 +1,6 @@
-# Phase 3: Generic Brainstorming
+# Phase 3 (min workflow): Generic Brainstorming
 
-**For LOW effort only** — This prompt generates brainstorming responses without using the persona system.
+**For `min` effort only** — This prompt generates brainstorming responses without using the persona system.
 
 ---
 
@@ -43,7 +43,7 @@ Create one output:
 project-name: "[Project Name]"
 session-dir: "[session]"
 date: {YYYY-MM-DD}
-effort: "low"
+effort: "min"
 stage: "Phase 3: Generic Brainstorming"
 topic-cluster: "[NN]_[topic-slug]"
 ---

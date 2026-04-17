@@ -14,7 +14,7 @@ Consolidate diverse brainstorming responses into three synthesis documents for a
 
 1. **Read context**: Read `[session]/REQUEST.md` for the original brainstorming request and examine any additional files mentioned
 2. **Read questions**: Read `[session]/questions/by-topic/[NN]_[topic].md` for the questions in this topic cluster
-3. **Read all responses**: Read all files in `[session]/responses/[NN]_[topic]/` for participant responses (3 personas for medium, 5 for high)
+3. **Read all responses**: Read all files in `[session]/responses/[NN]_[topic]/` for participant responses (4 personas for medium, 7 for high)
 4. **Track convergence**: Note which personas gave similar responses — convergence signals importance
 5. **Consolidate responses**: For each question, group similar responses and preserve unique insights
 6. **Create three documents**: Attributed version, synthesis-only version, and executive summary

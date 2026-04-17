@@ -1,6 +1,6 @@
-# Phase 2: Persona-Based Question Generation
+# Phase 2 Step 2.2: Persona-Based Question Generation
 
-**For MEDIUM and HIGH effort only** — This prompt generates questions using the persona system.
+**For `low`/`medium`/`high` effort** — This prompt generates questions using the persona system.
 
 ---
 
@@ -12,7 +12,7 @@ Read `[skill]/references/personas/[persona-name].md` and adopt the persona descr
 
 ## Your Task
 
-Generate 15-20 open-ended questions that explore this topic from multiple angles. Organize questions into 3-5 thematic clusters.
+Generate open-ended questions within the volume range specified for your persona in the PLAN.md roster plan. Organize questions into 3-5 thematic clusters.
 
 ## Coverage Requirements
 
@@ -48,8 +48,8 @@ Create one output:
 project-name: "[Project Name]"
 session-dir: "[session]"
 date: {YYYY-MM-DD}
-effort: "[medium/high]"
-stage: "Phase 2B: Persona-Based Question Generation"
+effort: "[low|medium|high]"
+stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
 persona: "[Persona Name]"
 ---
 
@@ -85,5 +85,5 @@ Save your response to: [session]/questions/by-persona/[persona-name].md
 
 - Read the user's request from `REQUEST.md` in the brainstorm session directory
 - Use Glob/Read tools to access files (do not expect content to be provided)
-- Aim for balanced distribution across clusters (3-5 questions each)
-- Prioritize depth over breadth — better to have 15 excellent questions than 20 mediocre ones
+- Aim for balanced distribution across 3-5 clusters
+- Prioritize depth over breadth — a smaller set of excellent questions beats a larger set of mediocre ones

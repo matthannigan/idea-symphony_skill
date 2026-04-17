@@ -1,6 +1,6 @@
 # Phase 3: Persona-Based Brainstorming
 
-**For MEDIUM and HIGH effort only** — This prompt generates brainstorming responses using the persona system.
+**For `low`/`medium`/`high` effort** — This prompt generates brainstorming responses using the persona system.
 
 ---
 
@@ -53,7 +53,7 @@ Create one output:
 project-name: "[Project Name]"
 session-dir: "[session]"
 date: {YYYY-MM-DD}
-effort: "[medium/high]"
+effort: "[low|medium|high]"
 stage: "Phase 3: Multi-Perspective Brainstorming"
 topic-cluster: "[NN]_[topic-slug]"
 persona: "[Persona Name]"

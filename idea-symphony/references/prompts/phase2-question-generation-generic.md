@@ -1,6 +1,6 @@
-# Phase 2: Generic Question Generation
+# Phase 2 (min workflow): Generic Question Generation
 
-**For LOW effort only** — This prompt generates questions without using the persona system.
+**For `min` effort only** — This prompt generates questions without using the persona system.
 
 ---
 
@@ -43,8 +43,8 @@ Create two outputs:
 project-name: "[Project Name]"
 session-dir: "[session]"
 date: {YYYY-MM-DD}
-effort: "low"
-stage: "Phase 2: Question Generation"
+effort: "min"
+stage: "Phase 2: Generic Question Generation"
 ---
 
 # Brainstorming Questions: [Project Name]
@@ -80,8 +80,8 @@ For each cluster, create `questions/by-topic/[NN]_[topic-slug].md`:
 project-name: "[Project Name]"
 session-dir: "[session]"
 date: {YYYY-MM-DD}
-effort: "[medium/high]"
-stage: "Phase 2: Question Generation"
+effort: "min"
+stage: "Phase 2: Generic Question Generation"
 ---
 
 # Topic Cluster [NN]: [Descriptive Name]
