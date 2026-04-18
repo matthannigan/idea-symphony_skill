@@ -84,7 +84,7 @@ You are executing a Phase 2C synthesis run as part of PC1 Condition A (separate 
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — input questions
 - `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split (reference per prompt)
-- `dev/2026-02-21_symphony-question-generation_part2/findings/D1_dimension-append-rules.md` — append rules (reference per prompt)
+- `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — append rules (reference per prompt)
 
 ## Prompt
 
@@ -159,7 +159,7 @@ You are executing Condition B for PC1 — a consolidated architecture where a si
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — input questions
 - `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split
 - `idea-symphony/references/persona-selection-guide_Phase2C.md` — brainstorming persona selection rubric (concentric circles)
-- `dev/2026-02-21_symphony-question-generation_part2/findings/D1_dimension-append-rules.md` — append rules
+- `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — append rules
 
 ## Two-Part Task
 
@@ -242,6 +242,44 @@ For each condition, score the 9 synthesis outputs against BL1 baselines using th
 - Convergence utilization
 - Unique question survival
 
+### Scoring Calibration (BL1-derived, mirrors SP1 scoring)
+
+Apply these rules globally when computing every metric. They exist because BL1 surfaced systematic effects that would otherwise mis-attribute errors; using them keeps PC1 A-vs-B comparisons comparable to SP1's iter-over-iter comparisons.
+
+- **T1. Preserve-all-distinct CGs:** a variant that merges a "Preserve all distinct" CG scores −0.5, not −1.0. Document each preserve-distinct CG merged.
+- **T2. ST archetype tiered:** exact archetype phrase verbatim = 1.0; paraphrase keeping the concept but dropping the name = 0.5; concept lost = 0.0.
+- **T3. Register vs. topical:** persona representation has two axes — topical coverage AND register preservation. A condition that topically covers but strips the register (strengths-based AI, structural-equity AA, named-archetype ST, emotional-interior Empath, dollar-specific Accountant, named-statute Lawyer, engineering-specific TE, political-analytical Politician) still fails SQ3 on the register axis. Report both.
+- **T4. M ± 2–3 tolerance:** baseline target M is a point estimate within a ±2–3 question range. Score output count against the B3 range, not the point target.
+- **T5. Cluster-boundary ambiguity:** score cluster-set quality (thematic coherence per cluster, coverage of input territory), not exact-match to baseline cluster count.
+- **T6. Append-register overlap with Synthesize is not duplication.** Conditions that drop Append questions on duplication grounds fail Append fidelity (SQ4) for the dropped question.
+- **T7. Convergence-normalized compaction:** compute compaction / density in addition to raw. The normalized ratio (~4.0–4.2 in BL1) is the more stable cross-cell comparator. Report both raw and normalized.
+- **T8. Topic-typed dimension bands** (subset topics in PC1's default 9-cell subset):
+  - Event/community-nonprofit (tool-library): Strategic 18–30%, Human-centered 25–35%
+  - Social-program/relational (school-consolidation): Strategic 21–38%, Human-centered 30–37%
+  - Technical-regulated-product (mobile-app): Strategic 20–32%, Human-centered 22–30%
+  - Synthesize-only Creative 0–13% is acceptable (Append drives Creative). Tolerance: ±5 pp per dimension = material deviation; ±3 pp = on target. (Extend to the business/commercial/regulated, event/community-nonprofit, social-program/relational, and technical-regulated-product bands if PC1 expands to a borderline-case superset.)
+
+### D1-Bound "Do Not Penalize" List (BL1 §7.2)
+
+The following Append-stream drop patterns are D1-bound (caused by D1 round-robin rules), not synthesis-prompt-bound. Flag them in error analysis but do NOT subtract from either condition's Append fidelity:
+
+- Storyteller Cluster-D drop at low effort on tool-library
+- Visionary paradigm-framing drops at medium effort (mobile-app Q5/Q6)
+- Connector Cluster-C overweight drops at low/medium effort on inter-domain topics (mobile-app, school-consolidation)
+- Politician interleaving-vs-segregation at medium effort on tool-library and school-consolidation (PC1 presentation-design scope, not consolidation-decision scope)
+
+### GT1 Watchlist Dual Diagnostic
+
+Subset cells **tool-library/medium** and **school-consolidation/medium** are on the GT1 watchlist. If either condition scores anomalously low on one of these cells compared to its sibling cells (same topic, other efforts; or same effort, other topics), flag "watchlist cell — composition sensitivity may be confounding the consolidation signal." Do not adjust the score, but include the flag in Part 3's decision rationale.
+
+### R11 Source-Bound ST Archetype Handling (from SP1 iter3)
+
+On cells where the Systems Thinker source section uses equivalent systems vocabulary (keystone features, death spiral, balancing loops, reinforcing loops, leverage points, etc.) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, Success-to-the-Successful, Tragedy-of-the-Commons, Limits-to-Growth, Eroding-Goals), preserving ≥1 such distinctive systems-vocabulary phrase verbatim counts as meeting the ST-archetype floor. Apply this consistently to both conditions — any asymmetric application would bias the A-vs-B delta.
+
+### Independent Synth-Count Enumeration (required)
+
+Do NOT trust subagent self-reports of M_synth (the number of synthesized questions). SP1 iter3 found self-report drift up to ~24% (mobile-app/high reported M=44, actual M≈58). For every run in both conditions, enumerate synthesized questions by directly counting `^\d+\.` (numbered list items) within the Synthesize section of the output file. Report the actual count and flag any ≥10% drift vs. the subagent's self-reported count. Compaction ratio (the primary A-vs-B discriminator) must be computed from the enumerated count.
+
 Compute aggregate means per condition. Then compute A-vs-B deltas:
 
 | Metric | Condition A Mean | Condition B Mean | B-A Delta | Delta % |
@@ -275,11 +313,20 @@ Aggregate per condition:
 
 Apply methodology's decision criteria:
 
-- **Consolidate (Condition B)** if: synthesis quality delta ≤ 5% on all key metrics AND persona recommendation quality comparable or better in B
-- **Keep separate (Condition A)** if: synthesis quality delta > 10% on any key metric OR persona recommendation quality meaningfully worse in B
-- **Expand test set** if: borderline (5–10%) delta — schedule additional topic runs per `discussion-questions-responses.md` Q13. Produce a **ranked expansion list** of the remaining 7 topics, ordered by the biggest A-vs-B single-metric deltas observed on the initial 9 (priority-ordering — most discriminating topics first).
+- **Consolidate (Condition B)** if: synthesis quality delta ≤ 5% on all key metrics AND all hard floors pass on every Condition B run (see below) AND persona recommendation quality comparable or better in B
+- **Keep separate (Condition A)** if: synthesis quality delta > 10% on any key metric OR any hard floor fails on any Condition B run OR persona recommendation quality meaningfully worse in B
+- **Expand test set** if: borderline (5–10%) delta with no hard-floor failures — schedule additional topic runs per `discussion-questions-responses.md` Q13. Produce a **ranked expansion list** of the remaining 7 topics, ordered by the biggest A-vs-B single-metric deltas observed on the initial 9 (priority-ordering — most discriminating topics first).
 
-Document the decision and cite the specific metrics that drove it.
+### Hard Floors (from SP1 Step 5; apply to each Condition B run individually)
+
+These are 100%-of-runs thresholds inherited from SP1. A single failure on any floor on any Condition B run disqualifies consolidation regardless of aggregate delta — the floors are the load-bearing quality guarantees, and aggregate means can mask a single-cell voice collapse.
+
+- **AI orphan-register floor:** every Condition B run has ≥1 Appreciative Inquirer orphan-register question preserved as standalone (≥3 at high effort).
+- **ST-archetype floor:** every Condition B run has ≥1 Systems Thinker named archetype preserved verbatim OR, where the source is R11 source-bound, ≥1 distinctive systems-vocabulary phrase preserved verbatim (≥3 at high effort).
+- **Per-persona representation minimum:** no Synthesize-group persona falls below its BL1 minimum on any Condition B run.
+- **Preservation rate:** every Condition B run scores ≥ 0.85 on question preservation.
+
+Document the decision and cite the specific metrics that drove it. If a hard floor caused disqualification, name the specific run and floor.
 
 ## Part 4: Integration Implications (if consolidating)
 
@@ -290,6 +337,7 @@ If the decision is to consolidate, enumerate the SKILL.md changes required:
 - Any changes to `references/prompts/` structure
 - Any changes to `persona-selection-guide_Phase2C.md` (inline vs. referenced)
 - Any documentation updates needed
+- **Prompt-size check:** the consolidated prompt will carry the SP1 refined synthesis prompt (~22 KB) plus `persona-selection-guide_Phase2C.md` inline or referenced. Note the combined consolidated-prompt size, confirm it fits within the single-subagent context budget with room for the test file + outputs, and flag if the guide should remain referenced (Read-on-demand) rather than inlined.
 
 If the decision is to keep separate, enumerate minor integration improvements (e.g., better handoff from synthesis to persona selection subagent — e.g., passing cluster structure forward).
 
