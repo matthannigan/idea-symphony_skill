@@ -65,7 +65,7 @@ From Phase 2B findings and BL1 baselines:
 
 ### Step 1: Variant Authoring
 
-Author the three variant prompts as files. Default: author inside this task, living next to the test harness (per `discussion-questions.md` Q8).
+Author the three variant prompts as files. Location: inside this task, living next to the test harness (per `discussion-questions-responses.md` Q8).
 
 Each variant prompt must include:
 
@@ -86,11 +86,11 @@ These are inputs to the generation subagents in Step 2 and are preserved as arti
 
 ### Step 2: Generation (9-file subset, 27 runs)
 
-Run each variant against the 9-file subset recommended by BL1 (3 topics × 3 effort levels). Default subset selection per `discussion-questions.md` Q9 is BL1's recommendation; accept the default unless BL1 flags a conflict.
+Run each variant against the 9-file subset. Default subset (per `discussion-questions-responses.md` Q9): **tool-library (physical), mobile-app (digital), school-consolidation (social)** × three effort levels = 9 files. This is the maximum-diversity triple. BL1's cross-topic synthesis may override with rationale; otherwise accept the default.
 
-Total generation runs: 3 variants × 9 files = 27 runs.
+Total generation runs: 3 variants × 9 files = **27 runs at 1× sampling**.
 
-Sample count per variant-run: 1× default; 3× under `discussion-questions.md` Q11 override (would triple to 81 runs).
+Sample count per variant-run: 1× for initial variant comparison, with targeted 3× re-runs on "suspect" winner cells in Step 4.5 (per `discussion-questions-responses.md` Q12) — NOT 3× globally.
 
 ### Step 3: Per-Variant Scoring
 
@@ -100,18 +100,36 @@ Per-variant scoring subagent computes the 8 metrics from methodology.md for all 
 
 Compiled findings identify the winning variant, systematic error patterns per variant, and refinement seeds for Step 5.
 
+### Step 4.5: Stability Re-runs on Suspect Winner Cells
+
+After cross-variant synthesis identifies the winner, re-run the winner **2× additional times** on each "suspect" cell. Produces a variance report on the winner before refinement starts — prevents Step 5 from iterating on noise.
+
+**"Suspect" definition:**
+- Any run in the winning variant where the variant fails ≥ 3 of 8 thresholds despite winning in aggregate, OR
+- Any cell where winner's aggregate score is within 5 percentage points of a losing variant's score on the same cell (couldn't reliably discriminate)
+
+**Output:** `findings/SP1_winner-stability.md` — per-suspect-cell variance table (3 runs per cell: metric means, standard deviation, min/max). Cells where all 3 runs pass thresholds consistently are "stable"; cells where runs oscillate across the threshold are "unstable" and flagged for SP1 refinement attention in Step 5.
+
+**Cost:** 5–10 suspect cells × 2 additional runs = 10–20 extra generation runs + 1 re-scoring pass.
+
 ### Step 5: Refinement Iteration Loop
 
-Starting from the winner + cross-variant error patterns, iterate: propose refinement → re-run on expanded test set → re-score → decide continue/stop. Budget: 3 iterations (pending `discussion-questions.md` Q11 override).
+Starting from the winner + cross-variant error patterns + stability report, iterate: propose refinement → re-run on expanded test set → re-score → decide continue/stop.
 
-Stop criteria (to be pinned in `discussion-questions.md` Q10; default shown):
+**Iteration budget:** 3 iterations, extendable to 4 if at least two thresholds are within 5 percentage points of passing on iteration 3 (per `discussion-questions-responses.md` Q11). Extension signal means "prompt refinement is converging, one more pass likely closes the gap" — otherwise the escalation is a guide-level edit proposal, not further iteration.
+
+**Stop criteria (all must hold):**
 - Question preservation rate ≥ 85%
 - Cluster alignment ≥ 80%
 - Persona representation: no Synthesize-group persona below its BL1 minimum in > 10% of runs
 - Append fidelity ≥ 85%
-- No systematic dimension imbalance (> 15% deviation from target bands)
+- No systematic dimension imbalance (> 15% deviation from BL1 target bands)
 
-If thresholds unmet after 3 iterations, accept-with-caveats (option b from 2B PR1 precedent) or escalate to guide-level edit (option c).
+**Stability rider:** Each threshold must hold on **≥ 80% of runs within the expanded (18-file) subset**, not just aggregate mean. Prevents a variant that aces most topics and tanks one from passing.
+
+**Regression guard:** If any metric worsens by more than 5 percentage points vs. the previous iteration, the iteration is a failure — roll back the refinement and try a different direction with remaining budget. (See Refinement Iteration Subagent Prompt Step E.)
+
+**Escalation Path:** If iteration 3 (or iteration 4 under extension) still fails multiple thresholds, do NOT continue iterating. Escalate to a guide-level edit proposal — candidate guide being `idea-symphony/references/persona-selection-guide_Phase2B.md` (Synthesize/Append split) or `idea-symphony/references/prompts/phase2-question-synthesis.md` structure. Guide edits are a separate scope from SP1 prompt refinement.
 
 ### Generation Subagent Prompt
 
@@ -269,7 +287,7 @@ Document:
    - Specific prompt-level changes that would fix the highest-impact errors
    - Whether to borrow structural elements from non-winning variants (e.g., "winner is S-V2 but should adopt S-V3's dimension balance check")
    - Open questions to resolve before iteration starts
-8. **Open questions bubbling up** — errors that trace to the current synthesis prompt, persona selection guide, or append rules being ambiguous (candidates to resolve in guide edits per `discussion-questions.md` Q10)
+8. **Open questions bubbling up** — errors that trace to the current synthesis prompt, persona selection guide, or append rules being ambiguous (candidates to resolve in guide edits per the Step 5 Escalation Path)
 
 ## Constraints
 
@@ -314,7 +332,7 @@ Use the Step 3 scoring subagent harness (same 8 metrics, same baselines). Save s
 
 ### Step E: Stop / Continue Decision
 
-Compare metrics to stop criteria (pinned in `discussion-questions.md` Q10). Document in Section 3:
+Compare metrics to stop criteria (pinned in `discussion-questions-responses.md` Q10 and Step 5 above). Document in Section 3:
 
 - Thresholds met? Y/N per metric
 - Regression? Did any metric worsen vs. iteration {N-1}?
@@ -341,12 +359,14 @@ If this iteration is terminal, copy `SP1_refined-synthesis-prompt_iter{N}.md` to
    - Can be organized by-variant (complete S-V1 before S-V2) or interleaved; by-variant is cleaner for debugging
 3. **Scoring (Step 3, 3 parallel subagents):** After all 27 generation runs complete.
 4. **Cross-variant synthesis (Step 4, 1 subagent):** After all 3 scoring subagents return.
+4.5. **Stability re-runs (Step 4.5, parallel in batches of 5):** 10–20 additional generation runs on suspect cells + 1 re-scoring pass. Runs only on the winner.
 5. **Refinement iteration (Step 5):** Each iteration requires:
    - 1 refinement-design subagent (propose refinements + produce prompt)
    - 18 generation subagents (in batches of 5 → ~4 batches)
    - 1 scoring subagent
    - 1 decision/stop subagent (can fold into the refinement-design subagent)
    - Total per iteration: ~21 subagent calls
+   - Max iterations: 3 (extendable to 4 under Step 5 extension rule)
 
 ### Expected Output
 
@@ -354,7 +374,9 @@ If this iteration is terminal, copy `SP1_refined-synthesis-prompt_iter{N}.md` to
 - **Raw runs (Step 2):** `findings/SP1_runs/{variant}/{topic}_{effort}.md` × 27
 - **Per-variant scoring:** `findings/SP1_synthesis-prompt-testing_{variant-short}.md` × 3
 - **Cross-variant compiled findings:** `findings/SP1_synthesis-prompt-testing.md`
-- **Iteration logs:** `findings/SP1_synthesis-refinement_iter{N}.md` × 1–3
+- **Stability re-runs (Step 4.5):** `findings/SP1_runs/{winner-variant}/stability/{topic}_{effort}_run{2,3}.md` — 10–20 additional files
+- **Stability report:** `findings/SP1_winner-stability.md`
+- **Iteration logs:** `findings/SP1_synthesis-refinement_iter{N}.md` × 1–4 (3 default, extendable to 4)
 - **Per-iteration refined prompts:** `findings/SP1_refined-synthesis-prompt_iter{N}.md`
 - **Per-iteration raw runs:** `findings/SP1_runs/iter{N}/{topic}_{effort}.md`
 - **Final refined prompt:** `findings/SP1_refined-synthesis-prompt.md` (copy of final iteration's prompt)
@@ -366,7 +388,7 @@ If this iteration is terminal, copy `SP1_refined-synthesis-prompt_iter{N}.md` to
 - **Depends on:** TDA1 complete (30 test files) and BL1 complete (baselines + benchmarks + subset recommendation). BL1's cross-topic synthesis in particular is load-bearing for S-V3 authoring and scoring thresholds.
 - **Blocks:** PC1 (needs final refined synthesis prompt).
 - **Data generation:** New synthesis outputs produced per run. Raw outputs preserved under `findings/SP1_runs/` for audit.
-- **Parallelism:** Independent of Phase 2B investigation. Highest-variance task in Phase 2C — iteration budget and stop criteria should be pinned in `discussion-questions.md` Q10/Q11 before Step 5 starts.
+- **Parallelism:** Independent of Phase 2B investigation. Highest-variance task in Phase 2C — iteration budget and stop criteria are pinned in `discussion-questions-responses.md` Q10/Q11 (no further gating needed before Step 5 starts).
 
 ## Priority
 

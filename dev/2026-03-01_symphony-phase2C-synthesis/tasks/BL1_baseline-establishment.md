@@ -61,45 +61,45 @@ From methodology.md's Analysis Dimensions:
 
 **Research questions addressed:** RQ-BL1a–f (methodology SQ1, SQ2, SQ3, SQ4)
 
-**Execution model:** Fan-out by topic. 10 Opus subagents in parallel, each handling one topic across all three effort levels (low/medium/high). Each per-topic subagent produces the four baseline artifacts (clusters, convergence, target, append-target) for its topic. A cross-topic orchestrator synthesis subagent then compiles patterns and folds the C1 comparison.
+**Execution model:** Fan-out by cell. **30 Opus subagents in parallel**, each handling one (topic, effort) cell in isolation. Each per-cell subagent produces the four baseline artifacts (clusters, convergence, target, append-target) for its single cell. A cross-topic orchestrator synthesis subagent then compiles patterns across both the topic and effort dimensions, folds the C1 comparison, and aggregates cross-effort evolution.
 
-Per-topic is the default (per methodology's feasibility note); per-file (30 subagents) is reserved as a discussion-question escalation.
+Per-cell granularity is the decided default (per `discussion-questions-responses.md` Q4) — each baseline is uncontaminated by cross-effort assumptions, preserving the possibility that effort levels produce fundamentally different cluster structures rather than just volume growth.
 
 ### Test Data
 
-TDA1's 30 assembled test files. Each per-topic subagent reads its 3 files (low/medium/high for its topic), the append rules (D1), and the dimension coverage (D2).
+TDA1's 30 assembled test files. Each per-cell subagent reads its single (topic, effort) file, the append rules (D1), and the dimension coverage (D2).
 
 ### Subagent Design
 
-**Per-topic baseline subagent (10 subagents, one per topic):**
+**Per-cell baseline subagent (30 subagents, one per topic-effort cell):**
 
-Each reads 3 test files + D1 + D2 + the relevant section of the persona selection guide (Synthesize/Append split), and produces four artifact types × 3 effort levels = 12 baseline artifacts per topic (or optionally bundled into effort-level sections within a single file per artifact type — see `discussion-questions.md` Q5).
+Each reads 1 test file + D1 + D2 + the relevant section of the persona selection guide (Synthesize/Append split), and produces four baseline artifacts for its single cell.
 
 **Cross-topic synthesis subagent (1 subagent):**
 
-Reads all 10 per-topic findings + all 120-or-40 baseline artifacts and compiles cross-cutting patterns, dimension benchmarks, C1 recommendation, and SP1 readiness notes.
+Reads all 30 per-cell findings + all 120 baseline artifacts and compiles cross-cutting patterns across both the topic and effort dimensions, dimension benchmarks, C1 recommendation (with cross-effort pattern check), and SP1 readiness notes.
 
-### Per-Topic Subagent Prompt
+### Per-Cell Subagent Prompt
 
-Spawn each per-topic subagent (**Opus model**, `general-purpose` type) with the following self-contained prompt. `{TOPIC_NAME}` is substituted per subagent (habit-tracker, space-party, tool-library, food-truck, property-management, youth-mentorship, school-consolidation, mobile-app, wearable-device, career-change).
+Spawn each per-cell subagent (**Opus model**, `general-purpose` type) with the following self-contained prompt. `{TOPIC_NAME}` is substituted per subagent (habit-tracker, space-party, tool-library, food-truck, property-management, youth-mentorship, school-consolidation, mobile-app, wearable-device, career-change) and `{EFFORT}` is substituted with one of (low, medium, high).
 
 ````
-You are establishing ideal-synthesis baselines for the Phase 2C synthesis investigation. You are handling one topic, {TOPIC_NAME}, across three effort levels (low, medium, high). Your output is the scoring reference for SP1 — if your baselines are wrong, SP1's variant scoring is wrong.
+You are establishing an ideal-synthesis baseline for the Phase 2C synthesis investigation. You are handling one (topic, effort) cell — {TOPIC_NAME} at {EFFORT} effort — in isolation. Your output is the scoring reference for SP1 — if your baseline is wrong, SP1's variant scoring is wrong.
 
 ## Task
 
 Read the following files in full:
 
 1. `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` — especially Phase 2 Baseline Establishment (B1–B4) and Analysis Dimensions.
-2. `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_low.md`, `{TOPIC_NAME}_medium.md`, `{TOPIC_NAME}_high.md` — the three assembled test files for your topic.
-3. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — any shortfall/handoff notes affecting your topic.
+2. `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — the assembled test file for your cell.
+3. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — any shortfall/handoff notes affecting your cell. Check the GT1 watchlist (Section 5); if your cell is on the watchlist, record this and treat Tier 3 / Connector-Analogist composition as canonical-but-revisable.
 4. `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split for each persona (determines which questions go through synthesis vs. append).
 5. `dev/2026-02-21_symphony-question-generation_part2/findings/D1_dimension-append-rules.md` — round-robin append selection rules.
 6. `dev/2026-02-21_symphony-question-generation_part2/findings/D2_dimension-coverage.md` — Strategic / Tactical / Creative / Analytical / Human-centered dimension categories and per-persona primary affinities.
 
-## Deliverables (per effort level: low, medium, high)
+## Deliverables (single effort level: {EFFORT})
 
-For each of your three test files, produce four artifacts:
+For your single test file, produce four artifacts:
 
 ### B1 Artifact: Thematic Clusters
 
@@ -184,9 +184,11 @@ Structure:
 # {TOPIC_NAME} — {EFFORT} — Synthesis Target
 
 **Input question count:** N
-**Expected synthesis output count:** M (range {M_low}–{M_high})
-**Expected compaction ratio:** N/M = {ratio}
-**Expected cluster count in output:** C (matches B1)
+**Expected synthesis output count:** M (range {M_low}–{M_high}, target {M_target})
+**Expected compaction ratio:** N/M = {ratio} (range {ratio_low}–{ratio_high}, target {ratio_target})
+**Expected cluster count in output:** C (range {C_low}–{C_high}, target {C_target}, matches B1)
+
+**Scoring convention:** Target is the point estimate used for headline scoring. Range defines the pass/fail band. Outside-range results are scored with severity proportional to distance from the nearest band edge.
 
 ## Target Output Structure
 
@@ -256,19 +258,19 @@ How appended questions are integrated with synthesized clusters — tagged as [P
 Any Append-group questions that should NOT appear in the output (beyond the quota, or low-quality outliers).
 ```
 
-## Summary Finding (Topic-Level)
+## Summary Finding (Cell-Level)
 
-After producing all 12 artifacts for your topic, write a summary at:
-`dev/2026-03-01_symphony-phase2C-synthesis/findings/BL1_baseline-establishment_{TOPIC_NAME}.md`
+After producing all 4 artifacts for your cell, write a summary at:
+`dev/2026-03-01_symphony-phase2C-synthesis/findings/BL1_baseline-establishment_{TOPIC_NAME}_{EFFORT}.md`
 
 Document:
 
-1. **Cross-effort comparison** — how do clusters evolve across low → medium → high? Do new clusters emerge or existing ones expand?
-2. **Convergence density by effort** — does convergence density increase with persona count (more personas → more overlap) or decrease (more personas → more distinct voices)?
-3. **Persona representation challenges** — any persona whose voice is particularly hard to preserve? Flag for SP1 attention.
-4. **Append mechanics observations** — does round-robin feel natural for this topic's cluster set, or does it produce awkward pairings? Flag for SP1 and PC1.
-5. **C1 recommendation (per-topic)** — does per-persona vs. flat pooling matter for this topic? Subagent's recommendation.
-6. **Open concerns for cross-topic synthesis** — anything the topic-level analysis can't resolve (e.g., "is 30% convergence density high or normal?") — the cross-topic subagent will aggregate.
+1. **Cell characterization** — how many clusters, how dense is convergence, what's the Synthesize/Append split for this cell specifically?
+2. **Persona representation challenges** — any persona whose voice is particularly hard to preserve in this cell? Flag for SP1 attention.
+3. **Append mechanics observations** — does round-robin feel natural for this cell's cluster set, or does it produce awkward pairings? Flag for SP1 and PC1.
+4. **C1 recommendation (per-cell)** — does per-persona vs. flat pooling matter for this cell? Subagent's recommendation.
+5. **GT1 watchlist status** — if this cell is on TDA1's GT1 watchlist, document the composition confidence and flag for cross-topic review.
+6. **Open concerns for cross-topic synthesis** — anything the cell-level analysis can't resolve (e.g., "is 30% convergence density high or normal?", "does this cluster structure differ from the same topic at a different effort level?") — the cross-topic subagent will aggregate across both cells of the same topic (cross-effort patterns) and across topics.
 
 ## Constraints
 
@@ -281,19 +283,19 @@ Document:
 
 ### Cross-Topic Synthesis Subagent Prompt
 
-After all 10 per-topic subagents complete, spawn one cross-topic orchestrator synthesis subagent (**Opus model**, `general-purpose` type):
+After all 30 per-cell subagents complete, spawn one cross-topic orchestrator synthesis subagent (**Opus model**, `general-purpose` type):
 
 ````
-You are compiling cross-topic baseline patterns for the Phase 2C synthesis investigation. The 10 per-topic baseline subagents have completed; your job is to aggregate patterns, establish dimension benchmarks, produce the C1 recommendation, and prepare handoff notes for SP1.
+You are compiling cross-cell baseline patterns for the Phase 2C synthesis investigation. The 30 per-cell baseline subagents have completed; your job is to aggregate patterns across both the topic and effort dimensions, establish dimension benchmarks, produce the C1 recommendation (including cross-effort pattern check), and prepare handoff notes for SP1.
 
 ## Task
 
 Read:
 
 1. `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md`
-2. `dev/2026-03-01_symphony-phase2C-synthesis/findings/BL1_baseline-establishment_*.md` — all 10 per-topic summaries
-3. All 120-or-40 files under `dev/2026-03-01_symphony-phase2C-synthesis/baselines/` — for spot-checking and aggregation
-4. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — for shortfall weighting
+2. `dev/2026-03-01_symphony-phase2C-synthesis/findings/BL1_baseline-establishment_*_*.md` — all 30 per-cell summaries
+3. All 120 files under `dev/2026-03-01_symphony-phase2C-synthesis/baselines/` — for spot-checking and aggregation
+4. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — for shortfall weighting and GT1 watchlist cross-reference
 
 ## Deliverable
 
@@ -324,9 +326,16 @@ Document:
    - Personas with systematically low representation (e.g., because their voice is too niche) — flag as SP1 attention areas
 
 6. **C1 Recommendation (Clustering vs. Flat)**
-   - Aggregate the per-topic C1 recommendations
+   - Aggregate the per-cell C1 recommendations
    - Decide: should SP1 variants receive questions grouped by persona, flat, or either?
    - Rationale + any topic-dependent caveats
+   - **Cross-effort pattern check:** does the C1 recommendation differ at low vs. high effort? If flat pooling helps more at high effort because more personas create more cross-persona convergence (or vice versa), document that. SP1 variants may need effort-level-conditional input formatting.
+
+6a. **Cross-effort evolution by topic**
+   - For each of the 10 topics, compare the three cells (low/medium/high) side-by-side along cluster count, convergence density, and dimension balance.
+   - Do new clusters emerge as effort rises, or do existing clusters expand?
+   - Does any topic exhibit a *structural shift* between effort levels (not just volume growth)? Flag those topics — SP1 cannot assume effort is "just more of the same" for them.
+   - Does convergence density monotonically increase with persona count, or does it saturate / invert at high effort?
 
 7. **Append mechanics aggregate**
    - Does round-robin produce natural Append selections across all 30 files, or only on certain topic types?
@@ -335,7 +344,7 @@ Document:
 8. **SP1 readiness and subset recommendations**
    - Are there topics that are unusually difficult to synthesize? Exclude from SP1's initial 9-file subset?
    - Are there topics that are representatively diverse (good candidates for SP1's 9-file subset)?
-   - Which 3 topics should SP1 use for its initial subset per `discussion-questions.md` Q9?
+   - Confirm or override SP1's default subset (tool-library, mobile-app, school-consolidation) per `discussion-questions-responses.md` Q9. If BL1 recommends a different triple, state rationale.
 
 9. **Open concerns forwarded to SP1**
    - Any scoring ambiguities that SP1's scoring subagent needs to adjudicate (e.g., "preserve all distinct" convergences may not be reliably scorable)
@@ -344,30 +353,30 @@ Document:
 
 - Produce quantitative benchmarks wherever possible — means, medians, ranges. SP1 scoring depends on these being numerical.
 - Cite specific baseline files when a pattern is topic-specific (`baselines/property-management_high_clusters.md`).
-- Do not override per-topic subagent conclusions; aggregate and resolve conflicts, but flag conflicts you can't resolve.
+- Do not override per-cell subagent conclusions; aggregate and resolve conflicts, but flag conflicts you can't resolve.
 - The C1 recommendation is load-bearing for SP1 prompt design — spend effort on it.
 ````
 
 ### Batching Strategy
 
-1. **Per-topic subagents (10 parallel):** Launch in batches subject to the 5-concurrent limit → 2 batches of 5. Each subagent takes ~30–60 minutes given 3 files × 4 artifact types.
-2. **Cross-topic synthesis (1 subagent):** After all 10 per-topic subagents complete.
+1. **Per-cell subagents (30 parallel):** Launch in batches subject to the 5-concurrent limit → 6 batches of 5. Each subagent takes ~15–25 minutes given 1 file × 4 artifact types (lighter than the per-topic approach since no cross-effort work inside the subagent).
+2. **Cross-topic synthesis (1 subagent):** After all 30 per-cell subagents complete. Heavier than the per-topic version — must aggregate across both topic and effort dimensions.
 
 ### Expected Output
 
-- **Per-topic summaries:** `findings/BL1_baseline-establishment_{TOPIC_NAME}.md` × 10
-- **Baseline artifacts:** `baselines/{TOPIC_NAME}_{EFFORT}_{clusters,convergence,target,append-target}.md` — 120 files if per-file granularity, 40 if per-topic (see `discussion-questions.md` Q5)
+- **Per-cell summaries:** `findings/BL1_baseline-establishment_{TOPIC_NAME}_{EFFORT}.md` × 30
+- **Baseline artifacts:** `baselines/{TOPIC_NAME}_{EFFORT}_{clusters,convergence,target,append-target}.md` — **120 files** (30 cells × 4 artifact types)
 - **Cross-topic compiled findings:** `findings/BL1_baseline-establishment.md`
 
 ---
 
 ## Dependency Notes
 
-- **Depends on:** TDA1 complete (30 test files + shortfall log). TDA1's shortfall log affects per-topic subagent confidence weighting — subagents should down-weight baselines for topic-effort cells flagged as shortfall in TDA1.
+- **Depends on:** TDA1 complete (30 test files + shortfall log). TDA1's shortfall log affects per-cell subagent confidence weighting — subagents should down-weight baselines for their cell if it is flagged as shortfall in TDA1. TDA1's GT1 watchlist (5 cells) should be cross-referenced: subagents handling a watchlist cell note that status in their cell summary.
 - **Blocks:** SP1 (scoring reference); PC1 (also uses these baselines transitively via SP1's refined prompt).
 - **Data generation:** None required. All inputs are existing files.
 - **Parallelism:** Independent of Phase 2B investigation. No cross-investigation coordination needed after TDA1's 2B-side dependency is resolved.
 
 ## Priority
 
-**High** — Hard blocker for SP1. The quality of SP1's results is bounded by the quality of BL1's baselines. Higher latency than TDA1 (10 parallel subagents × ~45 min + cross-topic pass) but still achievable in a single working session.
+**High** — Hard blocker for SP1. The quality of SP1's results is bounded by the quality of BL1's baselines. Higher latency than TDA1 (30 parallel subagents in 6 batches of 5 × ~20 min per batch + cross-topic pass) but still achievable in a single working session.

@@ -50,7 +50,7 @@ From methodology.md and SKILL.md:
 
 **Execution model:** Two condition tracks run in parallel on the same 9-file subset. Scoring subagent compares A vs. B on synthesis quality and persona-recommendation quality. Decision subagent applies methodology's decision criteria.
 
-Default subset: the same 9-file subset SP1 used for initial variant testing (3 topics × 3 effort levels). Under methodology's borderline rule, if A-vs-B synthesis quality falls in the 5–10% band, expand to additional topics before deciding (see `discussion-questions.md` Q13 for how many to add).
+Default subset: the same 9-file subset SP1 used for initial variant testing (3 topics × 3 effort levels — tool-library, mobile-app, school-consolidation). Under methodology's borderline rule, if A-vs-B synthesis quality falls in the 5–10% band, expand to the remaining 7 topics × 3 efforts = 21 additional cells in priority order with early-stop at 18 total, per `discussion-questions-responses.md` Q13.
 
 ### Test Data
 
@@ -67,7 +67,7 @@ Outputs: `findings/PC1_runs/condition-a/{topic}_{effort}_synthesis.md` + `{topic
 
 **Condition B generation (1 subagent per test file):**
 
-Single consolidated subagent: receives SP1 refined prompt + persona-selection-guide_Phase2C.md + test file; produces BOTH synthesized questions AND persona recommendations in one pass. Output order: synthesis first, persona selection grounded in synthesis output second (per `discussion-questions.md` Q14 default).
+Single consolidated subagent: receives SP1 refined prompt + persona-selection-guide_Phase2C.md + test file; produces BOTH synthesized questions AND persona recommendations in one pass. Output order: synthesis first, persona selection grounded in synthesis output second (per `discussion-questions-responses.md` Q14).
 
 Output: `findings/PC1_runs/condition-b/{topic}_{effort}.md` (single file with both sections)
 
@@ -277,7 +277,7 @@ Apply methodology's decision criteria:
 
 - **Consolidate (Condition B)** if: synthesis quality delta ≤ 5% on all key metrics AND persona recommendation quality comparable or better in B
 - **Keep separate (Condition A)** if: synthesis quality delta > 10% on any key metric OR persona recommendation quality meaningfully worse in B
-- **Expand test set** if: borderline (5–10%) delta — schedule additional topic runs per `discussion-questions.md` Q13
+- **Expand test set** if: borderline (5–10%) delta — schedule additional topic runs per `discussion-questions-responses.md` Q13. Produce a **ranked expansion list** of the remaining 7 topics, ordered by the biggest A-vs-B single-metric deltas observed on the initial 9 (priority-ordering — most discriminating topics first).
 
 Document the decision and cite the specific metrics that drove it.
 
@@ -332,7 +332,18 @@ Structure:
 
 ### Borderline Case Handling (if triggered)
 
-If the decision subagent flags "Expand Test Set," a follow-on round runs on additional topics (default: the remaining 7 topics from the 10-topic pool × 3 effort levels = 21 files, subject to `discussion-questions.md` Q13). Re-scoring uses the same harness and re-applies decision criteria on the expanded dataset.
+If the decision subagent flags "Expand Test Set," a follow-on round runs on the remaining 7 topics × 3 effort levels = **21 additional files** (completes the 30-file matrix). Per `discussion-questions-responses.md` Q13, the expansion runs in **priority order** with an **early-stop rule**:
+
+**Priority order:** Start with the topics that showed the biggest A-vs-B single-metric deltas on the initial 9. These are the most discriminating cells for the borderline decision. Fill the remaining topics afterward. The decision subagent produces a ranked list of expansion topics as part of its Expand Test Set output.
+
+**Early-stop rule:** After at least 18 of the 30 total cells have been scored (initial 9 + any 9 expansion cells, in priority order), check whether the aggregate A-vs-B delta has crossed out of the 5–10% borderline band:
+- Delta ≤ 5% on all key metrics → **stop and consolidate** (Condition B)
+- Delta > 10% on any key metric → **stop and keep separate** (Condition A)
+- Still in 5–10% band → continue expansion until all 21 additional cells are scored
+
+This saves ~12 runs when the borderline was noise rather than a real effect.
+
+**Expansion execution:** Batched the same way as initial Condition A and B generation (batches of 5). Re-scoring uses the same harness and re-applies decision criteria on the expanded dataset at the early-stop check and at completion.
 
 ### Batching Strategy
 

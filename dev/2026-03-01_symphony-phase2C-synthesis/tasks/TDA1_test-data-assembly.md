@@ -44,7 +44,7 @@ From methodology.md's Assembly Rules:
 | **High** | All 10 Tier 1 at high volumes; all 4 Tier 2 at high volumes; 0–2 Tier 3 per GT1; Connector/Analogist per GT1 |
 
 Volume-slicing rules (from methodology):
-- Source > target ceiling → truncate to ceiling (take first N questions; see discussion-questions.md Q2)
+- Source > target ceiling → truncate to ceiling (take first N questions in source order; per `discussion-questions-responses.md` Q2)
 - Source < target floor → use full file, note shortfall
 - Prefer `q10-15` source for Structural/Analytical personas, `q05-10` source for Perspective personas
 
@@ -213,6 +213,15 @@ Then aggregate:
 - **Shortfall summary:** how many of the 30 files have shortfalls? Which personas are systemically short? (Flag for BL1 weighting.)
 - **Volume category distribution:** how many slots drew from each of q05-10 / q10-15 / q15-20 source files?
 
+Add a **Systemic Shortfall Summary** subsection — a persona-level aggregation, NOT just per-cell:
+
+| Persona | Cells Short of Floor | Cells Affected | Pattern Notes |
+|---|---|---|---|
+| [Persona A] | N of 30 | [topic-effort list] | [e.g., "consistent across effort levels" / "only at high effort" / "specific topic domains"] |
+| … | … | … | … |
+
+For any persona short on ≥ 3 of 30 cells, flag as "systemic" and propagate to Deliverable 5 Section 3 as a "BL1 weighting recommendation" — BL1 should treat per-persona representation minimums for that persona as advisory floors rather than hard scoring thresholds.
+
 ## Deliverable 5: Summary Findings
 
 Save to: `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md`
@@ -221,16 +230,16 @@ Document:
 
 1. **Summary table** — 30 rows with topic, effort, persona count, question count, Synthesize/Append split, shortfall flag
 2. **Assembly decisions** — rationale for each slicing choice class; any judgment calls made where methodology was ambiguous
-3. **Shortfall log** — every shortfall with persona, topic, effort, expected range, actual count, proposed mitigation (BL1 weighting or regenerate)
+3. **Shortfall log** — every shortfall with persona, topic, effort, expected range, actual count, proposed mitigation (BL1 weighting or regenerate). Include the Systemic Shortfall Summary table from Deliverable 4 and, for each systemic persona, an explicit "BL1 weighting recommendation" line (advisory floor rather than hard threshold).
 4. **Missing-data log** — any slots with no source file; required action before BL1 can run
-5. **GT1 dependency status** — confirmation that GT1 ground truth was canonical (or provisional — note which cells are at risk of re-assembly if GT1 changes)
-6. **Handoff notes for BL1** — per-topic notes on any test files BL1 should treat with caution (shortfalls, missing data, unusual distributions)
+5. **GT1 dependency status** — record GT1 as canonical at Rev 3 (2026-04-18) per `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/GT1_ground-truth-assignments.md`. Then enumerate the 5 Medium-confidence GT1 cells as a **BL1 watchlist** (not provisional, just cells that were most revisable during GT1's walkthrough): tool-library medium, food-truck high, property-management high, youth-mentorship high, school-consolidation medium. Framing for BL1: "These cells are canonical but were the most revisable during GT1's walkthrough. Treat their Tier 3 / Connector-Analogist composition as stable, but if SP1 later produces anomalously poor scores on these specific cells, re-check GT1 before blaming the synthesis prompt."
+6. **Handoff notes for BL1** — per-topic notes on any test files BL1 should treat with caution (shortfalls, missing data, unusual distributions, GT1 watchlist cells)
 
 ## Constraints
 
 - Do not generate new questions. Only use existing source data.
 - Do not rewrite, merge, or deduplicate questions — preserve source content verbatim.
-- If the GT1 ground truth file is not yet present or not yet marked canonical, flag this in Deliverable 5 and proceed using the current GT1 best-guess; mark affected cells for re-assembly per `discussion-questions.md` Q1.
+- GT1 is canonical at Rev 3 (2026-04-18) per `discussion-questions-responses.md` Q1 — read the canonical file directly and record the status in Deliverable 5 Section 5. No provisional-flagging needed.
 - If a required source file is missing, flag it in Deliverable 5 and leave its slot empty (with a `MISSING:` note in the test file) rather than fabricating data.
 - Assembly decisions must be reproducible from Deliverable 2 alone — someone re-running with the same source should produce byte-identical test files.
 ````
@@ -262,9 +271,10 @@ Until canonical, BL1 should treat test-data inputs as provisional.
 
 ## Dependency Notes
 
-- **Depends on:** Phase 2B GT1 ground truth (`dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md`) — at least provisionally. Finalized persona selection guide + R5/R6/R7/V1/D1/D2 findings (all complete as of Phase 2B). Source data in `test-runs/symphony-phase2-questions-persona-eval/` (complete).
+- **Depends on:** Phase 2B GT1 ground truth (`dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md`) — **canonical at Rev 3 (2026-04-18)**; TDA1 can read directly. Finalized persona selection guide + R5/R6/R7/V1/D1/D2 findings (all complete as of Phase 2B). Source data in `test-runs/symphony-phase2-questions-persona-eval/` (complete).
 - **Blocks:** BL1 (needs 30 test files), SP1 (needs 30 test files + BL1 baselines), PC1 (needs 30 test files + SP1 refined prompt).
-- **Cross-investigation:** TDA1 is the Phase 2C-side partner of the Phase 2B GT1 side-channel dependency. GT1's "Handoff notes for A1 (Phase 2C)" section should identify any cells TDA1 should treat as preliminary.
+- **Cross-investigation:** TDA1 is the Phase 2C-side partner of the Phase 2B GT1 side-channel dependency. GT1's "Handoff notes for A1 (Phase 2C)" identifies 5 Medium-confidence cells; TDA1 surfaces these as a BL1 watchlist per Deliverable 5 Section 5.
+- **P1 watch-item:** P1 (Provocateur integration) is independent of Phase 2C and does not block TDA1. However, if P1 reclassifies Provocateur from Append → Synthesize, any TDA1 cells including Provocateur would need re-assembly. Passive watch-item only — do not block.
 - **Data generation:** None required. This is a data-preparation task only.
 
 ## Priority
