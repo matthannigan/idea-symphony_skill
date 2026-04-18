@@ -70,6 +70,12 @@ Notes: [free-form, for genuinely ambiguous cases only — must NOT replace struc
 
 From the persona selection guide, the Effort Level Mapping tables specify volume ranges per persona per effort level. Those ranges must be faithfully populated in the Tier 1 and Tier 2 tables.
 
+### Known Accuracy Residual from PR1 (informational, not a PI1 failure)
+
+Per `findings/PR1_prompt-refinement.md`, PR1's final prompt has **one documented accuracy residual**: **mobile-app high** selects `Accountant: none` where GT1 expects `Accountant: moderate` under the R6 calibration principle. PR1 intentionally did not resolve this cell — any prompt rule strict enough to include mobile-app H at moderate also re-regresses habit-tracker H (Rev 2 Decision 6A trap). Resolution requires a guide edit to `persona-selection-guide_Phase2B.md`, not a prompt edit; that guide edit is out of scope for PR1 and PI1.
+
+**Implication for PI1:** When the validation subagent spot-checks outputs against ground truth, it will see this mismatch on mobile-app high. It is **not** a format failure, **not** a PR1 regression, and **not** a PI1 finding — it is the explicit, documented Gap 2 residual. PI1's accuracy scope is format consistency, not selection correctness. Note the residual in the PI1 report for completeness and move on.
+
 ### Research Questions
 
 - **RQ-PI1a (OQ5):** Does the final refined prompt produce PLAN.md roster sections that consistently match the canonical format across all 20 topic-effort combinations?
@@ -113,7 +119,7 @@ You are executing a consistency-validation test run for the Phase 2B orchestrato
 
 ## Inputs You Have Access To
 
-- `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` — extract only the {TOPIC_NAME} request block.
+- `test-runs/symphony-phase2-questions-persona-eval/{TOPIC_NAME}/REQUEST.md` — the per-topic REQUEST file; read its entire body as the REQUEST. (Matches the path structure PR1 used successfully — simpler than extracting a block from `REQUESTS_ALL.md`.)
 - `idea-symphony/references/persona-selection-guide_Phase2B.md` — reference material. Access only if the prompt directs you to.
 
 ## Final Refined Prompt
@@ -196,7 +202,7 @@ Structure:
 {format compliance rate, per-item compliance, volume accuracy}
 
 ## Per-Run Validation Table
-{one row per run with columns: topic, effort, items 1–7, overall}
+{one row per run with columns: topic, effort, items 1–8, overall}
 
 ## Systematic Deviations
 {enumerated with fix recommendations}
@@ -218,7 +224,7 @@ After the validation subagent returns, produce three integration artifacts:
 
 1. **`findings/PI1_plan-md-template.md`** — the canonical PLAN.md roster section template, finalized based on validation results. Drop-in ready for SKILL.md or a referenced prompt file. Includes placeholder text showing the expected output for each section.
 
-2. **`findings/PI1_format-checker.md`** — a reusable format checklist (the 7 items above, plus any additions from the validation step) that future test runs can use to self-verify PLAN.md output.
+2. **`findings/PI1_format-checker.md`** — a reusable format checklist (the 8 items above, plus any additions from the validation step) that future test runs can use to self-verify PLAN.md output.
 
 3. **Integration recommendation section** (appended to `findings/PI1_plan-md-integration.md`) — recommends whether the final orchestrator instructions should live:
    - Embedded directly in SKILL.md (compact, single-source, but bloats SKILL.md toward its 500-line soft cap),
