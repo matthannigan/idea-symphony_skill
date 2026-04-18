@@ -5,10 +5,10 @@
 **Inputs:**
 - Parent methodology — `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` (Phase 2 Baseline Establishment, B1–B4 tasks, Analysis Dimensions)
 - TDA1 assembled test files — `dev/2026-03-01_symphony-phase2C-synthesis/test-data/[topic-slug]_[effort].md` (30 files, output of TDA1)
-- TDA1 summary — `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` (shortfall log + handoff notes)
+- TDA1 summary — `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` (Canonical; 0 shortfalls, 0 missing slots, 0 systemic personas; GT1 watchlist + per-cell handoff notes)
 - Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Synthesize/Append split; dimension assignments per persona)
-- Append rules — `dev/2026-02-21_symphony-question-generation_part2/findings/D1_dimension-append-rules.md` (round-robin append selection logic)
-- Dimension coverage — `dev/2026-02-21_symphony-question-generation_part2/findings/D2_dimension-coverage.md` (Strategic/Tactical/Creative/Analytical/Human-centered dimension categories)
+- Append rules — `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` (round-robin append selection logic)
+- Dimension coverage — `dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md` (Strategic/Tactical/Creative/Analytical/Human-centered dimension categories)
 
 ---
 
@@ -92,10 +92,10 @@ Read the following files in full:
 
 1. `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` — especially Phase 2 Baseline Establishment (B1–B4) and Analysis Dimensions.
 2. `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — the assembled test file for your cell.
-3. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — any shortfall/handoff notes affecting your cell. Check the GT1 watchlist (Section 5); if your cell is on the watchlist, record this and treat Tier 3 / Connector-Analogist composition as canonical-but-revisable.
+3. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — handoff notes for your cell. TDA1 has zero shortfalls and zero missing slots, so most cells need no special treatment. Two exceptions: (a) if your cell is on the GT1 watchlist (findings §5.1), record this and treat Tier 3 / Connector-Analogist composition as canonical-but-revisable; (b) if your cell is tool-library/medium, note that its Politician questions came from the pilot-era 2026-02-18 generation rather than the 2026-02-24 sweep — this is an upstream-vintage divergence, not a content shortfall, but flag if you observe anything anomalous.
 4. `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split for each persona (determines which questions go through synthesis vs. append).
-5. `dev/2026-02-21_symphony-question-generation_part2/findings/D1_dimension-append-rules.md` — round-robin append selection rules.
-6. `dev/2026-02-21_symphony-question-generation_part2/findings/D2_dimension-coverage.md` — Strategic / Tactical / Creative / Analytical / Human-centered dimension categories and per-persona primary affinities.
+5. `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — round-robin append selection rules.
+6. `dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md` — Strategic / Tactical / Creative / Analytical / Human-centered dimension categories and per-persona primary affinities.
 
 ## Deliverables (single effort level: {EFFORT})
 
@@ -372,7 +372,7 @@ Document:
 
 ## Dependency Notes
 
-- **Depends on:** TDA1 complete (30 test files + shortfall log). TDA1's shortfall log affects per-cell subagent confidence weighting — subagents should down-weight baselines for their cell if it is flagged as shortfall in TDA1. TDA1's GT1 watchlist (5 cells) should be cross-referenced: subagents handling a watchlist cell note that status in their cell summary.
+- **Depends on:** TDA1 complete (30 test files, canonical, zero shortfalls). TDA1's GT1 watchlist (5 cells) should be cross-referenced: subagents handling a watchlist cell note that status in their cell summary. One source-vintage divergence: tool-library/medium Politician questions are from pilot-era 2026-02-18 rather than the 2026-02-24 regeneration sweep; flag only if content anomalies appear.
 - **Blocks:** SP1 (scoring reference); PC1 (also uses these baselines transitively via SP1's refined prompt).
 - **Data generation:** None required. All inputs are existing files.
 - **Parallelism:** Independent of Phase 2B investigation. No cross-investigation coordination needed after TDA1's 2B-side dependency is resolved.
