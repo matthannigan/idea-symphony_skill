@@ -7,9 +7,50 @@
 - Ground truth — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md` (canonical answer key)
 - GT1 findings — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/GT1_ground-truth-assignments.md` (ambiguity list, traps, guide gaps)
 - O1 compiled findings — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/O1_orchestrator-prompt-variant-testing.md` (winning variant, error patterns, refinement seeds)
-- O1 per-variant reports — `findings/O1_orchestrator-prompt-variant-testing_{variant}.md` (detailed error analysis)
-- O1 winning variant prompt — `findings/O1_prompts/{winner}.md` (starting point for iteration)
+- O1 per-variant reports — `findings/O1_orchestrator-prompt-variant-testing_{reference-only | embedded-triggers | structured-checklist}.md` (detailed error analysis; the winning variant's report is `structured-checklist`)
+- O1 winning variant prompt — `findings/O1_prompts/O-V3_structured-checklist.md` (starting point for iteration 1)
 - Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (may be edited in-scope per discussion-questions.md Q10)
+
+---
+
+## O1 Results Snapshot (post-hoc addendum, 2026-04-18)
+
+O1 is complete. This section pins the concrete instantiation so iteration 1 can start without re-deriving state from the synthesis document.
+
+- **Winning variant:** O-V3_structured-checklist
+- **Starting prompt (iteration 1 input):** `findings/O1_prompts/O-V3_structured-checklist.md`
+- **Starting scoring report:** `findings/O1_orchestrator-prompt-variant-testing_structured-checklist.md`
+- **Cross-variant synthesis:** `findings/O1_orchestrator-prompt-variant-testing.md`
+- **Baseline aggregate metrics (O-V3 against GT1 Canonical Rev 3):**
+  - Overall grade distribution: 15 Correct / 5 Partially Correct / 0 Incorrect (75% fully correct)
+  - Tier 3 accuracy: 80% strict, 93% on unambiguous cells
+  - Connector/Analogist accuracy: 80% (8/10)
+  - False positive rate: 5% (1 cell) / False negative rate: 5% (1 cell)
+  - Threshold sensitivity: 87.5%
+  - Rationale specificity: 90% / Volume accuracy: 100% / Format compliance: 100%
+
+### P0 Refinement Seed Backlog (from O1 synthesis §5, priority order)
+
+1. **P0a — Accountant calibration-principle moderate bar.** Encode "mentioned concern vs. core decision dimension" counter-guardrail. Targets: mobile-app H FN (all 3 variants), career-change H FN (O-V2), habit-tracker H FP (O-V1, O-V2).
+2. **P0b — Connector swap criterion sharpening.** Include social-systems interoperability and multi-stakeholder structural isomorphism with youth-mentorship and mobile-app as explicit positive examples. Targets: 3/3-variant youth-mentorship miss, O-V1/O-V2 mobile-app medium miss, O-V1 wearable-device miss.
+3. **P0c — Unified trap anti-pattern callout section.** Cover the 6–7 GT1-documented traps (career-change Lawyer, mobile-app TE, habit-tracker TE/Accountant, tool-library Lawyer, food-truck Lawyer, space-party). Eliminates the one FP each variant still carries.
+
+Optional borrow-from-other-variants (per synthesis): O-V1's rationale-specificity language (100% vs. O-V3's 90%) and its food-truck Lawyer discrimination are worth lifting; neither is a P0 item.
+
+### Gap 2 Contingency (calibration-principle)
+
+Two cells — **mobile-app high** and **career-change high** — are ground-truthed as Accountant-moderate under the R6 calibration principle ("calibrate your financial depth to the economic complexity of the context"). This interpretation is not explicit in the current `persona-selection-guide_Phase2B.md` — it lives in the Accountant persona text but not in the Tier 3 trigger definitions. All three O1 variants missed mobile-app H; O-V1 and O-V3 missed career-change H.
+
+PR1 iteration 1 or 2 is expected to confront this directly. Two paths:
+
+- **Prompt-only path:** Iter1 rewrites the Accountant moderate-trigger language inside the prompt to encode calibration ("personal-finance with specific dollar content + runway math fire at moderate; bullet-list monetization mentions do not"). This is the preferred first attempt per the task's "prompt is the primary lever" rule.
+- **Guide-edit path:** If iter1's prompt-only fix regresses other cells or fails to land the two target cells, iter2 proposes a guide edit to `findings/PR1_proposed-guide-edits.md` raising the calibration principle into the Tier 3 trigger definitions proper. The user applies the guide edit between iterations; iter3 re-runs the O-V1 baseline + refined prompt (see §Step 2 clarification).
+
+Accept that these two cells' accuracy is contingent on this path — if PR1 defers Gap 2 entirely, both cells flip back to "None" under the strict pre-calibration reading and overall Tier 3 accuracy shifts accordingly.
+
+### Tool-Library Cell Reuse (note for regeneration)
+
+O1's `findings/O1_runs/{variant}/tool-library_{effort}.md` files were sourced from the pilot stage (identical variant × topic × effort input). This is a cost-saving reuse, not a shortcut in scoring rigor. PR1 iterations regenerate all 20 cells including tool-library, so this reuse does not propagate into PR1.
 
 ---
 
@@ -88,7 +129,7 @@ You are executing one iteration of prompt refinement for the Phase 2B orchestrat
 ## Iteration Number: {N}
 ## Starting Prompt: {starting_prompt_path}
 
-At iteration 1, the starting prompt is the winning variant from O1 (e.g., `findings/O1_prompts/O-V3_structured-checklist.md`).
+At iteration 1, the starting prompt is the winning variant from O1: `findings/O1_prompts/O-V3_structured-checklist.md`.
 At iteration 2+, the starting prompt is the refined prompt from the previous iteration (`findings/PR1_refined-orchestrator-prompt_iter{N-1}.md`).
 
 ## Task
@@ -99,7 +140,7 @@ Read:
 1. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md`
 2. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/GT1_ground-truth-assignments.md`
 3. Previous iteration's scoring report:
-   - Iteration 1: `findings/O1_orchestrator-prompt-variant-testing_{winner}.md`
+   - Iteration 1: `findings/O1_orchestrator-prompt-variant-testing_structured-checklist.md` (O-V3's O1 scoring report)
    - Iteration 2+: `findings/PR1_prompt-refinement_iter{N-1}.md`
 4. The starting prompt: {starting_prompt_path}
 5. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` — accuracy targets and stop criteria
@@ -116,7 +157,7 @@ If — and only if — you diagnose that the error is not fixable at the prompt 
 
 - **Proposals go to a companion file:** `findings/PR1_proposed-guide-edits.md` (single file accumulating across iterations, not `_iter{N}.md`). Each proposal names the cell(s) it fixes, the diagnosis ("prompt cannot fix this — underlying trigger language is ambiguous"), and the exact diff against `idea-symphony/references/persona-selection-guide_Phase2B.md`.
 - **Do NOT edit the guide file in-place within this subagent.** Applying a guide edit is a separate user-approved step outside this subagent's scope.
-- **If a guide edit is applied** (by the user between iterations), the next iteration MUST re-run the O-V1 baseline on all 20 cells to demonstrate no regression on previously-correct cells. This is the cost of touching a shared artifact that R5/R6/R7/R8 depend on.
+- **If a guide edit is applied** (by the user between iterations), the next iteration MUST re-run the **original O-V1 reference-only prompt** (unmodified `findings/O1_prompts/O-V1_reference-only.md`, NOT the iteration's refined prompt) against the **modified guide** on all 20 cells. O-V1 is chosen because it is the only variant that reads the guide in full — it is the natural check that the guide edit produces the intended behavior without breaking previously-correct cells. Save to `findings/PR1_runs/iter{N}_guide-baseline/{topic}_{effort}.md` and score alongside the iteration's refined-prompt runs. If the baseline shows regressions on previously-correct O-V1 cells, the guide edit is unsound and must be revised or rolled back. This is the cost of touching a shared artifact that R5/R6/R7/R8 depend on.
 - **Silent in-place guide edits are disallowed.**
 
 Save the refined prompt to: `findings/PR1_refined-orchestrator-prompt_iter{N}.md`.
