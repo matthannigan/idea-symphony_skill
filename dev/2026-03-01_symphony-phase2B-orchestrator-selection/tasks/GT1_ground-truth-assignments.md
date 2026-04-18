@@ -123,6 +123,36 @@ Read the following files in full:
 
 Save to: `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md`
 
+### File Header Requirements
+
+The output file MUST open with the following header block before any topic sections:
+
+```markdown
+---
+**Status:** Provisional
+---
+
+## Confidence Criteria
+
+**High confidence:** [define what qualifies — e.g., unambiguous keyword+context match, all Phase 2B findings converge on this call, no reasonable disagreement]
+**Medium confidence:** [define — e.g., trigger is present but context softens it, or findings are silent on this edge case]
+**Low confidence:** [define — e.g., reasonable experts would disagree, or the call rests on an interpretation of topic intent not explicit in REQUEST]
+
+## Trigger-Strength Criteria
+
+**Strong trigger:** [define]
+**Moderate trigger:** [define]
+**None:** [define]
+```
+
+The confidence-criteria block prevents calibration drift across 20 cells — downstream scoring depends on consistent H/M/L judgments.
+
+The trigger-strength criteria block feeds the structured rationale schema used by PI1 (PLAN.md requires `Trigger strength: [strong | moderate | none]` per Tier 3 decision).
+
+The `Status: Provisional` line is flipped to `Status: Canonical` only by the human review step (see "Human Review Step" below). Phase 2C's A1 data assembly may proceed against the Provisional version; if review changes any cell, A1 rebuilds the affected test files.
+
+### Per-Topic Sections
+
 For each of the 10 topics (habit-tracker, space-party, tool-library, food-truck, property-management, youth-mentorship, school-consolidation, mobile-app, wearable-device, career-change), produce a section using the template from methodology.md:
 
 ```markdown
@@ -162,10 +192,12 @@ Document:
 
 1. **Summary table** — 10 topics × 2 effort levels, showing Tier 3 selections and Connector/Analogist decision for each cell, plus a confidence column.
 2. **Confidence distribution** — how many cells are High/Medium/Low confidence? Which persona judgments cluster at lower confidence?
-3. **Ambiguous cases** — for each ambiguous cell, describe both plausible answers and recommend how scoring should handle them (options from methodology.md: exclude from denominator, accept either answer, score only rationale presence).
-4. **False-positive traps identified** — which topics are traps, for which personas, and what prompt-design implication does each trap have for PR1?
-5. **Guide gaps flagged** — any Tier 3 selection where the guide's trigger language is itself ambiguous enough that a reasonable orchestrator could get it wrong. These are candidates for PR1 to fix in the prompt or to escalate as guide edits.
-6. **Handoff notes for A1 (Phase 2C)** — per methodology.md's Parallelism note, A1 needs this ground truth to assemble its 30 test files. Identify any cells A1 should treat as preliminary pending human adjudication.
+3. **Ambiguous cases** — for each ambiguous cell, describe both plausible answers. **Scoring rule is fixed (not your call):** ambiguous cells are scored as "acceptable either way" per `discussion-questions-responses.md` Q2 (option b). Your job is only to identify and justify the ambiguity, not recommend a scoring approach.
+4. **Ambiguity rate check** — compute the % of 20 cells flagged ambiguous. If >30%, flag this as a finding: "Test set too soft — too many ambiguous cells for reliable variant discrimination." This is a hard check, not a judgment call.
+5. **Threshold-sensitive cells** — enumerate every topic where the correct Tier 3 selection differs between medium and high effort. These are the cells O1/PR1 use to validate threshold discipline. If fewer than 3 such cells exist across the 20, flag this as a finding: "Test set underweights threshold-sensitivity validation."
+6. **False-positive traps identified** — which topics are traps, for which personas, and what prompt-design implication does each trap have for PR1?
+7. **Guide gaps flagged** — any Tier 3 selection where the guide's trigger language is itself ambiguous enough that a reasonable orchestrator could get it wrong. These are candidates for PR1 to fix in the prompt or to escalate as guide edits (per `discussion-questions-responses.md` Q10, guide edits are allowed as proposals only).
+8. **Handoff notes for A1 (Phase 2C)** — per methodology.md's Parallelism note, A1 needs this ground truth to assemble its 30 test files. A1 is authorized to start assembly against the Provisional ground truth; identify any cells A1 should treat as highest-risk of flipping during human review (those are the cells most likely to need rebuild).
 
 ## Constraints
 
@@ -183,11 +215,17 @@ Single subagent, single run. No parallelism.
 
 After the subagent returns, the user (or a review pass) should:
 
-1. Spot-check 3–4 ground-truth cells against the REQUEST content
-2. Decide how to score the ambiguous cases identified in the analysis companion (refer to `discussion-questions.md` Q2 and Q9)
-3. Mark the file canonical by updating a "Status: Canonical / Provisional" line at the top
+1. Spot-check 3–4 ground-truth cells against the REQUEST content, prioritizing cells flagged as ambiguous or Low confidence
+2. Verify the subagent-authored confidence criteria and trigger-strength criteria blocks read sensibly — adjust if they're too permissive or too strict
+3. Review any flagged findings (>30% ambiguity, <3 threshold-sensitive cells) and decide whether to proceed as-is or escalate
+4. Flip the top-of-file `Status: Provisional` line to `Status: Canonical`
 
-Until the file is marked canonical, downstream tasks (O1, PR1, PI1) should treat it as provisional input.
+Ambiguous-case scoring is already decided (option b — accept either answer) per `discussion-questions-responses.md` Q2; review does not re-open that question.
+
+Downstream tasks and parallelism:
+- **A1 (Phase 2C) may proceed** against the Provisional file per Q13 decision. If review changes any cell, notify A1 so it can rebuild the affected test files.
+- **O1 may start on Provisional ground truth** but its findings remain provisional until GT1 is Canonical.
+- **PR1 requires Canonical ground truth** — iterating against a moving target is explicitly out of scope.
 
 ### Expected Output
 

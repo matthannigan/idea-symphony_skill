@@ -16,18 +16,18 @@
 
 ### Context
 
-PR1 produces a final refined orchestrator prompt that meets the accuracy thresholds. PI1 does two things:
+PR1 produces a final refined orchestrator prompt that meets the accuracy thresholds. PI1 does two things **in a single pass** per `discussion-questions-responses.md` Q11 — the methodology.md Phase 4 sketch is treated as **provisional**, not final:
 
-1. **Finalize the PLAN.md roster section format** — methodology.md's Phase 4 section proposes a format (effort level, Tier 1 table, Tier 2 table, Tier 3 table, Selection Rationale). PI1 either validates the proposed format as-is or proposes refinements based on what the PR1 outputs actually look like in practice.
-2. **Validate consistent output** — re-run PR1's final prompt on all 20 topic-effort combinations and verify that every output matches the canonical PLAN.md format structurally (all required tables present, all required rationale fields populated, format-checker passes).
+1. **Finalize the PLAN.md roster section format** — the methodology.md sketch is a starting point, not a final schema. PI1 identifies fields that are inconsistently populated or ambiguous across the 20 validation runs, proposes schema refinements, and locks a final format template. This is design + validation folded into one pass, not a separate design step.
+2. **Validate consistent output** — re-run PR1's final prompt on all 20 topic-effort combinations and verify every output matches the finalized format structurally (all required tables present, all required rationale fields populated, format-checker passes).
 
 This is the handoff step: the end artifact is a prompt + format template ready to drop into the Idea Symphony skill.
 
 ### What We Know
 
-From methodology.md Phase 4:
+From methodology.md Phase 4 (treated as **provisional** per Q11):
 
-**Proposed PLAN.md Roster Section:**
+**Starting-point PLAN.md Roster Section:**
 
 ```markdown
 ## Phase 2B: Question Generation Roster
@@ -52,6 +52,21 @@ From methodology.md Phase 4:
 **Connector/Analogist decision:** [decision + rationale]
 **Tier 3 selections:** [rationale for each, or rationale for no selection]
 ```
+
+Per Q12, the Selection Rationale section uses **structured fields**, not free-form prose. The finalized schema locked by PI1 must require the following fields per Tier 3 decision:
+
+```
+Tier 3 selections:
+  - Persona: [Accountant | Lawyer | Politician | Technical Expert]
+    Trigger strength: [strong | moderate | none]
+    Topic citation: "[direct quote or close paraphrase from REQUEST.md]"
+    Decision: [include | exclude]
+Connector/Analogist decision: [Analogist | Connector]
+  Swap rationale: [brief, grounded in REQUEST content]
+Notes: [free-form, for genuinely ambiguous cases only — must NOT replace structured claims]
+```
+
+**Trigger-strength calibration:** The schema uses 3 levels (strong / moderate / none). If PI1 validation surfaces ≥2 cells where output consistently resists clean bucketing into these 3 levels, extend the schema to 4 levels by adding `moderate-weak`. Do not add the 4th level pre-emptively.
 
 From the persona selection guide, the Effort Level Mapping tables specify volume ranges per persona per effort level. Those ranges must be faithfully populated in the Tier 1 and Tier 2 tables.
 
@@ -136,8 +151,11 @@ For each of the 20 runs, verify:
 3. **Tier 1 table:** present, all 10 Tier 1 personas listed (or 9 + Connector when swapped), Category column correct, Volume Range column matches Effort Level Mapping for the target effort
 4. **Tier 2 table:** present at high effort with all 4 Tier 2 personas; explicitly marked "N/A — medium effort" at medium
 5. **Tier 3 table:** present, with selected personas and rationale OR explicit "None selected — [rationale]"
-6. **Selection Rationale section:** present with both "Connector/Analogist decision" and "Tier 3 selections" sub-fields
-7. **Volume Range accuracy:** each persona's volume range matches the Effort Level Mapping table for that effort level
+6. **Selection Rationale — structured fields (per Q12):** for every Tier 3 persona decision, verify `Persona:`, `Trigger strength:` (one of strong/moderate/none, or moderate-weak if the 4-level extension was adopted), `Topic citation:` (non-empty, quoting REQUEST content), `Decision:` (include/exclude) are all present. For the Connector/Analogist line, verify `Connector/Analogist decision:` and `Swap rationale:` are both populated.
+7. **Notes field usage:** the `Notes:` field is permitted but must not replace the structured fields. Flag any run where Notes contains rationale that should have been in `Topic citation:` or `Swap rationale:`.
+8. **Volume Range accuracy:** each persona's volume range matches the Effort Level Mapping table for that effort level
+
+The 8 items above supersede the 7-item checklist originally sketched in methodology.md — item 6 is split into "presence" and "structured field population," and item 7 (Notes usage) is added.
 
 ## Per-Run Validation Output
 
@@ -145,8 +163,10 @@ For each run, mark each checklist item as: Pass / Fail / Partial. For fails/part
 
 ## Aggregate Metrics
 
-- **Format compliance rate:** % of runs passing all 7 checklist items
+- **Format compliance rate:** % of runs passing all 8 checklist items
 - **Per-item compliance:** % of runs passing each checklist item individually (identifies systematic omissions)
+- **Structured-field population rate:** % of Tier 3 decisions with all 4 fields (Persona, Trigger strength, Topic citation, Decision) populated
+- **Trigger-strength distribution:** counts of `strong` / `moderate` / `none` (and `moderate-weak` if adopted) across all Tier 3 decisions — used to decide whether 4-level extension is warranted (threshold: ≥2 cells where bucketing is forced into an awkward level)
 - **Volume accuracy rate:** % of persona-volume assignments matching the Effort Level Mapping
 
 ## Systematic vs. Random Deviations
@@ -159,7 +179,8 @@ For each run, mark each checklist item as: Pass / Fail / Partial. For fails/part
 Based on what the prompt actually produces:
 
 - Are any template sections under-specified (consistent variations suggest ambiguity in the template)?
-- Should "Selection Rationale" require a specific field structure (see discussion-questions.md Q12)?
+- Does the 3-level trigger-strength scheme (strong/moderate/none) need extension to 4 levels (adding `moderate-weak`)? Per Q12, adopt the 4th level only if ≥2 cells show awkward forced bucketing.
+- Is the `Notes:` escape valve being used appropriately (only for genuinely ambiguous cases) or is it leaking rationale that belongs in the structured fields?
 - Are there additional fields worth adding (e.g., "Confidence" per selection)?
 
 ## Output

@@ -74,7 +74,9 @@ Based on methodology.md and the structure of the three variants:
 
 ### Iteration Budget
 
-Plan for **up to 4 iterations**. Each iteration re-runs all 20 generation calls and one scoring pass — this is the same scale as one O1 variant track, so budget per iteration is bounded. After 4 iterations, if thresholds aren't met, escalate per Stop Criteria below.
+**Hard cap of 4 iterations** per `discussion-questions-responses.md` Q9. Each iteration re-runs all 20 generation calls and one scoring pass — this is the same scale as one O1 variant track, so budget per iteration is bounded. PR1 stops iterating on the prompt at 4 iterations regardless of whether thresholds were reached.
+
+After 4 iterations, if thresholds aren't met, the Stop Criteria below govern what happens next. Option (c) from Q9 — human-in-the-loop at orchestration time — is explicitly **out of scope** for this investigation.
 
 ### Refinement Subagent Prompt
 
@@ -108,10 +110,16 @@ Identify the SINGLE highest-impact error pattern still present. "Highest impact"
 
 Propose a MINIMAL prompt-level change targeting the chosen error pattern. Minimal means: shortest text addition or edit that plausibly addresses the pattern without regressing other metrics.
 
-If you believe the error is not fixable at the prompt level (e.g., the persona selection guide itself has ambiguous language that any prompt would inherit), propose a guide-level edit instead. Guide edits are in-scope per discussion-questions.md Q10 — but document them separately and explicitly.
+**Prompt is the primary lever.** Prefer prompt-only fixes when they would plausibly work. Do NOT escalate to guide edits just because they'd be shorter.
 
-Save the refined prompt to: `findings/PR1_refined-orchestrator-prompt_iter{N}.md`
-If a guide edit is also proposed, save a diff-style description to: `findings/PR1_guide-edit-proposals_iter{N}.md` — do NOT edit the guide file itself in this task; that is a separate user-approved step.
+If — and only if — you diagnose that the error is not fixable at the prompt level (the persona selection guide itself has ambiguous trigger language that any prompt would inherit), propose a guide-level edit per `discussion-questions-responses.md` Q10. Guide edits follow these strict rules:
+
+- **Proposals go to a companion file:** `findings/PR1_proposed-guide-edits.md` (single file accumulating across iterations, not `_iter{N}.md`). Each proposal names the cell(s) it fixes, the diagnosis ("prompt cannot fix this — underlying trigger language is ambiguous"), and the exact diff against `idea-symphony/references/persona-selection-guide_Phase2B.md`.
+- **Do NOT edit the guide file in-place within this subagent.** Applying a guide edit is a separate user-approved step outside this subagent's scope.
+- **If a guide edit is applied** (by the user between iterations), the next iteration MUST re-run the O-V1 baseline on all 20 cells to demonstrate no regression on previously-correct cells. This is the cost of touching a shared artifact that R5/R6/R7/R8 depend on.
+- **Silent in-place guide edits are disallowed.**
+
+Save the refined prompt to: `findings/PR1_refined-orchestrator-prompt_iter{N}.md`.
 
 ### Step 3: Re-Run All 20 Tests
 
@@ -121,13 +129,18 @@ Run in batches of 5 concurrent subagents.
 
 ### Step 4: Score and Decide
 
-Spawn a scoring subagent (same scoring prompt as O1, with the refined prompt's outputs as input). Save report to: `findings/PR1_prompt-refinement_iter{N}.md`
+Spawn a scoring subagent (same scoring prompt as O1, with the refined prompt's outputs as input). The scoring subagent MUST additionally compute a **confidence-weighted error breakdown** per `discussion-questions-responses.md` Q9: group each error by the GT1 confidence (High / Medium / Low) of the cell it lands on. This drives the triage rule below.
+
+Save report to: `findings/PR1_prompt-refinement_iter{N}.md`.
 
 Using the methodology.md accuracy targets, decide:
 
 - **Thresholds met** (Tier 3 ≥ 80%, Connector/Analogist ≥ 90%, no systematic FP/FN patterns) → recommend stop; this iteration's refined prompt is the final output.
-- **Thresholds not met AND iteration budget remaining** → recommend continue; start iteration {N+1} from this iteration's refined prompt.
-- **Thresholds not met AND iteration budget exhausted** → escalate per Stop Criteria (see task file).
+- **Thresholds not met AND iteration budget remaining (iterations < 4)** → recommend continue; start iteration {N+1} from this iteration's refined prompt.
+- **Thresholds not met AND iteration budget exhausted (iteration 4 complete)** → apply the **root-cause triage rule** per Q9:
+  - If residual errors are concentrated on GT1-Low/Medium confidence cells → the ceiling reflects genuine topic ambiguity. Accept the current state, document limitations, proceed to PI1.
+  - If residual errors are concentrated on GT1-High confidence cells → the guide itself is likely underspecified. Unlock a **single guide-edit iteration** (proposals written to `findings/PR1_proposed-guide-edits.md` per Step 2 rules; user applies between iterations; iteration 5 re-runs O-V1 baseline + scoring to verify no regression). If that iteration still doesn't reach threshold, accept the result and proceed to PI1 with documented limitations.
+  - "Concentrated" = ≥60% of residual errors in the named confidence band.
 - **Regression vs. previous iteration** (accuracy dropped) → recommend rollback to the previous iteration's prompt and pick a different refinement lever.
 
 ### Output (for this iteration)
@@ -182,24 +195,24 @@ with the structure:
 Accept the refined prompt as final when any of the following holds:
 
 1. **Target met:** Tier 3 ≥ 80%, Connector/Analogist ≥ 90%, no systematic FP/FN patterns.
-2. **Plateau:** Two consecutive iterations produce <2 percentage-point total improvement. Accept current state, document residuals as limitations.
-3. **Iteration budget exhausted** (4 iterations complete): escalate to user per discussion-questions.md Q9. Options include accepting current state, editing the persona selection guide, or adding a human-in-the-loop orchestrator check.
-4. **Regression with no recovery:** If iterations enter a cycle (refinement A raises metric X, refinement B raises metric Y while regressing X), document the tradeoff surface and escalate.
+2. **Plateau:** Two consecutive iterations produce <2 percentage-point total improvement. Accept current state, document residuals as limitations, proceed to PI1.
+3. **Iteration budget exhausted** (4 iterations complete): apply the Q9 root-cause triage rule in Step 4 above. Low/Medium-concentrated residuals → accept and proceed. High-concentrated residuals → one guide-edit iteration is unlocked. Either path ends at PI1; human-in-the-loop at orchestration time is out of scope.
+4. **Regression with no recovery:** If iterations enter a cycle (refinement A raises metric X, refinement B raises metric Y while regressing X), document the tradeoff surface, accept the best-balanced iteration, proceed to PI1.
 
 ### Expected Output
 
-- Per-iteration findings: `findings/PR1_prompt-refinement_iter{N}.md` (1 per iteration, up to 4)
+- Per-iteration findings: `findings/PR1_prompt-refinement_iter{N}.md` (1 per iteration, up to 4, plus optional iter5 if Q9 guide-edit path is unlocked)
 - Per-iteration raw runs: `findings/PR1_runs/iter{N}/{topic}_{effort}.md` (20 per iteration)
 - Per-iteration refined prompts: `findings/PR1_refined-orchestrator-prompt_iter{N}.md` (1 per iteration)
-- Optional guide-edit proposals: `findings/PR1_guide-edit-proposals_iter{N}.md` (0 or more)
+- **Guide-edit proposals:** `findings/PR1_proposed-guide-edits.md` (single file accumulating across iterations; 0 or more proposals; applied only by user between iterations)
 - **Final refined prompt:** `findings/PR1_refined-orchestrator-prompt.md` (copy of the final accepted iteration's prompt; this is the handoff to PI1)
-- **Compiled iteration log:** `findings/PR1_prompt-refinement.md` (final accuracy benchmarks, iteration summary, residual limitations, any applied guide edits)
+- **Compiled iteration log:** `findings/PR1_prompt-refinement.md` (final accuracy benchmarks, iteration summary, confidence-weighted residual error breakdown, residual limitations, any applied guide edits)
 
 ---
 
 ## Dependency Notes
 
-- **Depends on:** O1 complete with a winning variant identified and refinement seeds documented; GT1 canonical (not provisional — PR1's iterations must be scored against stable ground truth to avoid moving-target noise).
+- **Depends on:** O1 complete with a winning variant identified and refinement seeds documented; GT1 **Canonical** (not Provisional — per Q13, PR1 requires stable ground truth; iterating against a moving target is explicitly out of scope).
 - **Blocks:** PI1 (needs final refined prompt).
 - **Data generation:** None required.
 - **Sequencing:** Iterations run sequentially. Within an iteration, the 20 generation runs are parallelizable in batches of 5.

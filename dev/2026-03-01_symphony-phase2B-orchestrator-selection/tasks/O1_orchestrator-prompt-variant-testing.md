@@ -58,25 +58,40 @@ From the persona selection guide and prior findings:
 
 **Research questions addressed:** RQ-O1a–f (OQ1–OQ5 from methodology.md)
 
-**Execution model:** Three parallel variant tracks. Each track runs its target orchestrator prompt against 10 topics × 2 effort levels = 20 runs, producing a PLAN.md roster section per run. Each track then runs a per-variant scoring subagent that reads all 20 outputs + ground truth and produces a scored report. Finally, an orchestrator synthesis compiles cross-variant comparison.
+**Execution model:** Four sequential stages: (1) author the three variant prompts; (2) **pilot** each variant on a single unambiguous topic to catch structural bugs before committing to 60 runs; (3) three parallel variant tracks, each running 10 topics × 2 effort levels = 20 runs, followed by a per-variant scoring subagent; (4) cross-variant synthesis.
 
-Total: 60 generation runs + 3 scoring runs + 1 synthesis run.
+Total: 6 pilot runs + 60 generation runs + 3 scoring runs + 1 synthesis run. **Targeted re-runs** (2 additional runs per suspect cell) may add ~10–30 runs based on O1's error patterns.
 
-### Prompt Variant Authoring
+### Pilot Stage (before the 60-run commitment)
 
-Before running the 60 generation calls, author the exact prompt text for each variant. Each variant prompt must include:
+Per `discussion-questions-responses.md` Q5, run a 6-run pilot before scaling to 60:
+
+- **Pilot topic:** `tool-library` — Politician is expected at strong strength for both medium and high effort (unambiguous, stable prior).
+- **Pilot scope:** 3 variants × 2 effort levels = 6 runs. Use the same generation harness as the full run.
+- **Pilot gate:** For each variant, check that the output:
+  1. Selects Politician at both medium and high effort, OR clearly fails to in a diagnosable way (not malformed output)
+  2. Produces a structurally valid PLAN.md roster section (all required tables present)
+  3. Does not fall for an obvious false-positive trap (e.g., selecting Technical Expert for tool-library)
+- **Decision rule:** If any variant fails all three pilot checks, reshape the variant prompt before committing its 20 full runs. If all three variants pass the pilot, proceed to the full 60.
+- **Pilot artifacts:** Save pilot outputs to `findings/O1_pilot/{variant}/{topic}_{effort}.md` and a pilot summary to `findings/O1_pilot_summary.md`.
+
+The pilot is not scored against ground truth at the full metrics level — it is a structural sanity check that catches obviously-broken prompts cheaply.
+
+### Prompt Variant Authoring (Stage 1)
+
+Per `discussion-questions-responses.md` Q4, variant prompts are authored inside O1 as the first stage — not in a separate prep file. Before the pilot or full runs, author the exact prompt text for each variant. Each variant prompt must include:
 
 - A brief role/objective preamble
 - The effort level and REQUEST.md content (topic) as variable inputs
-- Instructions to produce a PLAN.md roster section using the format in methodology.md's Phase 4 section
-- Variant-specific guidance according to the table above
+- Instructions to produce a PLAN.md roster section using the format in methodology.md's Phase 4 section, including the **structured rationale schema** (per Q12): `Trigger strength: [strong | moderate | none]`, `Topic citation: "..."`, `Decision: [include | exclude]` per Tier 3 persona decision; `Swap rationale:` for Connector/Analogist; `Notes:` as a free-form escape valve for ambiguous cases only
+- Variant-specific guidance according to the variants table above
 
 Save prompt text to:
 - `findings/O1_prompts/O-V1_reference-only.md`
 - `findings/O1_prompts/O-V2_embedded-triggers.md`
 - `findings/O1_prompts/O-V3_structured-checklist.md`
 
-These are inputs to the generation subagents below, and are preserved as artifacts for PR1 to iterate from.
+These are inputs to the pilot and full generation subagents below, and are preserved as artifacts for PR1 to iterate from.
 
 ### Test Data
 
@@ -222,12 +237,15 @@ Use this structure:
 ### Batching Strategy
 
 1. **Prompt authoring (sequential, human-led or single subagent):** Author O-V1, O-V2, O-V3 prompt files.
-2. **Generation (parallel in batches of 5):**
+2. **Pilot (parallel, 6 runs):** 3 variants × tool-library × 2 efforts. Single batch of 5 + 1. Gate: any variant failing the pilot structural checks gets reshaped before its 20 full runs.
+3. **Generation (parallel in batches of 5):**
    - Total 60 generation subagents (3 variants × 10 topics × 2 efforts)
    - Run as 12 batches of 5 (subject to the 5-concurrent limit)
    - Can be organized by-variant (20 runs for O-V1, then O-V2, then O-V3) or interleaved; by-variant is cleaner for debugging
-3. **Scoring (3 parallel scoring subagents, one per variant)** — after all generation runs for a variant complete.
-4. **Cross-variant synthesis (1 orchestrator pass)** — after all three scoring subagents return.
+   - **Completion policy (per Q14):** complete all 60 runs even if systematic guide issues surface mid-run. Do not stop the whole investigation. **Exception:** if a single variant produces completely malformed output on its first several cells (e.g., no PLAN.md structure at all), stop *that variant only* and flag it; continue the other two variants. Systematic prompt-vs-guide issues are documented in the cross-variant synthesis and land in PR1 (which has the Q10 guide-edit escape hatch).
+4. **Scoring (3 parallel scoring subagents, one per variant)** — after all generation runs for a variant complete. Ambiguous cells are scored "acceptable either way" per Q2.
+5. **Targeted re-runs (per Q6):** after scoring, identify suspect cells — any cell where (a) the variant picked a Tier 3 persona that ground truth flags as a false-positive trap, or (b) the variant missed a High-confidence ground-truth selection. Re-run those specific cells 2 additional times to distinguish systematic error from non-deterministic noise. Save to `findings/O1_runs/{variant}/rerun/{topic}_{effort}_{run2|run3}.md`. The scoring subagent re-scores with the combined run set and reports per-cell stability.
+6. **Cross-variant synthesis (1 orchestrator pass)** — after all three scoring subagents (including re-runs) return.
 
 ### Cross-Variant Synthesis
 
@@ -246,7 +264,9 @@ The compiled document should contain:
 ### Expected Output
 
 - **Prompt artifacts:** `findings/O1_prompts/O-V1_reference-only.md`, `findings/O1_prompts/O-V2_embedded-triggers.md`, `findings/O1_prompts/O-V3_structured-checklist.md`
+- **Pilot artifacts:** `findings/O1_pilot/{variant}/tool-library_{effort}.md` (6 files) + `findings/O1_pilot_summary.md`
 - **Raw runs:** `findings/O1_runs/{variant}/{topic}_{effort}.md` (60 files total)
+- **Re-run artifacts (suspect cells only):** `findings/O1_runs/{variant}/rerun/{topic}_{effort}_{run2|run3}.md` (count varies by error pattern)
 - **Per-variant scoring reports:**
   - `findings/O1_orchestrator-prompt-variant-testing_reference-only.md`
   - `findings/O1_orchestrator-prompt-variant-testing_embedded-triggers.md`
@@ -257,7 +277,7 @@ The compiled document should contain:
 
 ## Dependency Notes
 
-- **Depends on:** GT1 complete and ground truth marked canonical (or at least provisional with scoring guidance for ambiguous cells). O1 can start on provisional ground truth but its findings remain provisional until ground truth is canonical.
+- **Depends on:** GT1 complete with ground truth at `Status: Provisional` or `Status: Canonical`. Per Q13, O1 may start on Provisional ground truth; if review flips any cell, the affected scoring entries are revised (the generation outputs themselves do not need to be re-run, since ambiguous-case scoring is "acceptable either way" per Q2). O1 findings remain provisional until GT1 is Canonical.
 - **Blocks:** PR1 (needs winning variant and error patterns); PI1 (needs final refined prompt from PR1).
 - **Data generation:** None required.
 - **Parallelism:** O1 runs independently of Phase 2C investigation tasks. Its outputs do not feed Phase 2C.
