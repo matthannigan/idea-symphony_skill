@@ -333,6 +333,23 @@ For each investigation, define success as:
 
 ---
 
+## Idea Factory: Pending Implementation
+
+### Phase 4 output-format handling
+
+**Problem:** Factory Phase 1 asks the user to pick an output format (Recommendations / Revised Document / Both) and records the preference in `SCOPE.md`. Phase 4 does not yet branch on this preference — every session currently produces the standard ACTION-PLAN.md recommendations format regardless of what the user selected.
+
+**Investigation:**
+- [ ] Decide the shape of the "Revised Document" output (does it replace ACTION-PLAN.md, sit alongside it, or live in a separate file?)
+- [ ] Define "Both" semantics — two deliverables or one combined document?
+- [ ] Update `idea-factory/prompts/phase4-integration.md` to branch on `SCOPE.md`'s output-format field
+- [ ] Add a new template under `idea-factory/templates/` for the Revised Document variant
+- [ ] Update Phase 1 messaging in SKILL.md once implementation lands (currently the user is asked without the preference being honored)
+
+**Origin:** Flagged during the 2026-04-19 SKILL.md cleanup as time-sensitive content that shouldn't live in SKILL.md. See `dev/2026-04-19_skill-cleanup.md` §3.1.
+
+---
+
 ## Notes
 
 - Prioritize based on: Frequency of issue (appeared in multiple test runs) × Impact on user utility × Ease of implementation

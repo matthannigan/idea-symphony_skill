@@ -2,6 +2,20 @@
 
 This document helps you choose the appropriate effort level (low, medium, high) for your Idea Symphony brainstorming session.
 
+## Contents
+
+- Quick Reference
+- Detailed Characteristics
+- Decision Tree
+- Key Insights from Research
+- Common Misconceptions
+- Hybrid Approaches (Future)
+- Keyword Triggers for Automatic Suggestion
+- Tips for Choosing
+- Examples by Domain
+- When to Override Suggestions
+- Frequently Asked Questions
+
 ---
 
 ## Quick Reference

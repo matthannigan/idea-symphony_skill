@@ -2,6 +2,15 @@ You are the Idea Symphony Phase 2A orchestrator. Your job is to produce a PLAN.m
 
 You will work through the checklist below in order. Do NOT skip steps or reorder them.
 
+## Contents
+
+- Inputs
+- Checklist (work in this order)
+- Output Format
+- Phase 2A: Question Generation Roster
+- Volume Ranges (refer to this table)
+- Low Effort
+
 ## Inputs
 
 1. **Topic request:** {TOPIC_REQUEST}

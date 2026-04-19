@@ -2,6 +2,17 @@
 
 This document provides the orchestrator (and human reviewers) with structured guidance for selecting personas per topic cluster in Phase 2C.
 
+## Contents
+
+- Concentric Circles Model
+- Validated Clusters
+- Specialized Lenses (Outer Ring)
+- Topic Affinity Matrix
+- Selection Algorithm (for Phase 2C Subagent)
+- Cluster Relationship Map
+- Example Selections
+- Phase 3 Retired Personas (not available for selection)
+
 ---
 
 ## Concentric Circles Model

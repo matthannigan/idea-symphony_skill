@@ -70,43 +70,22 @@ Idea Symphony uses a **tiered roster** of question-generation personas and a **c
 
 ## Directory Structure
 
+Session top-level:
+
 ```
 [project-name_YYYY-MM-DD]/
-├── context/                    # (optional) User-submitted files
-├── questions/
-│   ├── by-persona/             # low/medium/high: One file per question-generating persona
-│   │   ├── the-questioner.md   # (10-19 files depending on effort and selections)
-│   │   ├── the-analyst.md
-│   │   └── ...
-│   └── by-topic/               # Numbered files preserve topic order
-│       ├── 01_operations.md
-│       ├── 02_community-engagement.md
-│       └── ...
-├── responses/
-│   └── [NN_topic]/             # Numbered directories match topic order
-│       ├── the-devils-advocate.md  # low: 2 persona files
-│       ├── the-pragmatist.md       # medium: 4 persona files
-│       ├── the-visionary.md        # high: 7 persona files
-│       └── ...
-├── synthesis/
-│   ├── attributed/             # medium/high only
-│   │   ├── 01_operations_attributed.md
-│   │   └── ...
-│   ├── 01_operations_summary.md      # All effort levels
-│   ├── 01_operations_synthesis.md    # medium/high only
-│   └── ...
-├── persona-selections.md       # medium/high: Per-topic persona assignments
-├── REQUEST.md                  # User request summary
-├── USER-QUESTIONS.md           # (optional) User-provided questions to answer
-├── PLAN.md                     # Session config, roster plan, and status
-├── QUESTIONS.md                # All questions consolidated (canonical order)
-├── SYNTHESIS.md                # All summaries + syntheses (in topic order)
-└── BRAINSTORM.md               # Final output and session index
+├── context/          # (optional) User-submitted files
+├── questions/        # Phase 2 outputs (by-persona/ and by-topic/)
+├── responses/        # Phase 3 outputs (per-topic directories, one file per persona)
+├── synthesis/        # Phase 4 outputs (summaries; attributed/ at medium/high)
+├── REQUEST.md        # User request summary
+├── PLAN.md           # Session config, roster plan, status
+├── QUESTIONS.md      # All questions consolidated (canonical order)
+├── SYNTHESIS.md      # All summaries + syntheses (in topic order)
+└── BRAINSTORM.md     # Final output and session index
 ```
 
-**Topic ordering:** Phase 2 establishes a logical topic order. Numeric prefixes (`01_`, `02_`, etc.) preserve this order through all subsequent phases.
-
-**`min` differences:** No `by-persona/` or `persona-selections.md`. Responses use `generic-response.md`. Synthesis contains only summary files. See [min effort workflow](prompts/min-effort-workflow.md).
+**Full layout, per-phase file naming, and `min` effort differences:** See [SESSION-STRUCTURE.md](SESSION-STRUCTURE.md).
 
 ## Effort Levels
 
@@ -145,7 +124,7 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
    - Ask: "Do you have specific questions you want the brainstorming process to answer? These will be preserved through all phases."
    - If yes: Save as `USER-QUESTIONS.md` (see [templates/user-questions.md](templates/user-questions.md))
    - If no: Proceed without creating the file
-   - **Design note:** USER-QUESTIONS.md is kept separate from REQUEST.md to avoid influencing persona-based question generators. Persona generators should NOT see user questions — only the generic generator (`min`) and the synthesizer (`low`/`medium`/`high`) read this file.
+   - **Rule:** Persona generators (Phase 2 Step 2.2) must not read USER-QUESTIONS.md. Only the `min` generic generator and the Phase 2C synthesizer may consume it. (Rationale in CLAUDE.md.)
 6. **Determine effort level:**
    - If user specified → use that level
    - If not → detect triggers and suggest. See [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) for the full detection logic.
@@ -192,35 +171,13 @@ If any element is missing, re-run Step 2.1 rather than proceeding.
 
 #### Step 2.2: Generate Questions (Parallel Subagents)
 
-Spawn parallel subagents per the roster plan — one per persona.
-
-For each subagent, use prompt from `[skill]/prompts/phase2B_question-gen_by-persona.md`.
-
-**Instructions for each subagent:**
-
-1. Read `[skill]/personas/[persona-name].md` and adopt the persona
-2. Read `[session]/REQUEST.md` for the brainstorming topic and context
-3. Generate questions within the volume range specified in the roster plan, organized into 3-5 topical clusters
-4. Ensure questions span strategic, tactical, creative, analytical, and human-centered dimensions
-5. Read the persona file's YAML frontmatter to obtain the persona's static
-   `category` and `stream` values. These are load-bearing for Step 2.3
-   routing and MUST be propagated into the output file's frontmatter.
-6. Use YAML frontmatter in output with these fields:
-   - `persona: [Persona Name]`
-   - `category: [analytical|structural|perspective|specialist]` (from persona file)
-   - `stream: [synthesize|append]` (from persona file)
-   - `volume: N` (target volume from Step 2.1 roster)
-   - `effort: [low|medium|high]`
-   - `date: YYYY-MM-DD`
-7. Save to `[session]/questions/by-persona/[persona-name].md`
-
-**Key point:** Each persona works independently. This isolation ensures genuine diversity.
+Spawn parallel subagents per the roster plan — one per persona — using the prompt at `[skill]/prompts/phase2B_question-gen_by-persona.md`. Subagent instructions, coverage requirements, and output schema live in the prompt file.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro
 
 **Quality Gate:** Before proceeding, verify:
 - `[session]/questions/by-persona/` file count matches roster plan
-- Each file's YAML frontmatter includes `stream` and `category` fields
+- Each file's YAML frontmatter includes `stream` and `category` fields (the prompt requires subagents to copy these from the persona file's frontmatter; they drive Step 2.3 routing)
 - If count doesn't match: Use Glob to search, move to correct location
 - If frontmatter is missing, re-run that persona's subagent
 - If files missing after search, log in PLAN.md Notes and proceed
@@ -259,32 +216,10 @@ Spawn 1 subagent to consolidate per-persona questions into topic clusters using 
 
 **Post-synthesis shell step — split QUESTIONS.md into by-topic files:**
 
-After the subagent returns, run this awk command to produce per-cluster files for Phase 3 consumption:
+After the subagent returns, run the utility script:
 
 ```bash
-cd [session] && mkdir -p questions/by-topic && awk '
-  /^## Topic Cluster [0-9]+:/ {
-    if (file) close(file)
-    s = substr($0, 18)
-    colon = index(s, ":")
-    num = substr(s, 1, colon - 1) + 0
-    name = substr(s, colon + 2)
-    slug = tolower(name)
-    gsub(/[^a-z0-9]+/, "-", slug)
-    sub(/^-+/, "", slug); sub(/-+$/, "", slug)
-    file = sprintf("questions/by-topic/%02d_%s.md", num, slug)
-    print "---\ncluster: " num "\nname: " name "\n---\n" > file
-    next
-  }
-  /^## Additional Questions/ {
-    if (file) close(file)
-    file = "questions/by-topic/99_additional.md"
-    print "---\ncluster: 99\nname: Additional Questions\n---\n" > file
-    next
-  }
-  /^## / && file { close(file); file = "" }
-  file { print >> file }
-' QUESTIONS.md
+scripts/split-questions.sh [session]
 ```
 
 This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md.
@@ -351,25 +286,11 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 **For `medium`/`high`:** Read `[session]/persona-selections.md` for per-topic persona assignments.
 
-For each topic cluster, spawn parallel subagents using prompt from `[skill]/prompts/phase3_brainstorm_by-persona.md`.
+For each topic cluster, spawn parallel subagents using the prompt at `[skill]/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
 
 - **`low`:** 2 subagents (Devil's Advocate + Pragmatist)
 - **`medium`:** 4 subagents per `persona-selections.md`
 - **`high`:** 7 subagents per `persona-selections.md`
-
-**Instructions for each subagent:**
-
-1. Read `[skill]/personas/[persona-name].md` and fully adopt the persona
-2. Read `[session]/REQUEST.md` for background context
-3. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for the questions to answer
-4. **Do NOT read other responses** — respond independently
-5. For each question, provide 3-5 unique responses from your persona's perspective (50-150 words each)
-6. Vary responses across scope, risk tolerance, timeframe, and stakeholders
-7. Stay authentic to your persona's priorities and thinking style
-8. Use YAML frontmatter in output (include persona, topic cluster, date, effort level)
-9. Save to `[session]/responses/[NN]_[topic-slug]/[persona-name].md`
-
-**Key point:** Context isolation is critical. Each persona must respond independently.
 
 **Subagent Model:** Claude Haiku or Gemini Flash (volume over depth)
 
@@ -386,41 +307,13 @@ Update `PLAN.md` with Phase 3 complete status.
 
 #### Summary Generation (`low` effort only)
 
-Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/prompts/phase4_summary-only_low-effort.md`.
-
-**Instructions for each subagent:**
-
-1. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for questions
-2. Read all files in `[session]/responses/[NN]_[topic-slug]/` for responses
-3. Create concise, actionable summary:
-   - Executive Summary (2-3 paragraphs)
-   - Key Themes (3-5 themes, 2-3 sentences each)
-   - Recommended Actions (4-8 items by timeframe)
-   - Key Considerations (opportunities, risks, trade-offs)
-4. Use YAML frontmatter; save to `[session]/synthesis/[NN]_[topic-slug]_summary.md`
-
-**Key point:** Summary-only synthesis. No attribution or full synthesis documents. 500-800 words.
+Spawn parallel subagents (1 per topic cluster) using the prompt at `[skill]/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro
 
 #### Full Synthesis (`medium`/`high` effort)
 
-Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/prompts/phase4_full-synthesis.md`.
-
-**Instructions for each subagent:**
-
-1. Read `[session]/REQUEST.md` for original brainstorming context
-2. Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for questions
-3. Read all files in `[session]/responses/[NN]_[topic-slug]/` for persona responses
-4. Track convergence: Note which personas gave similar responses
-5. Use convergence as quality signal:
-   - **Convergent** (multiple personas): Always include — signals importance
-   - **Complementary** (different angles): Consolidate coherently
-   - **Unique** (one persona): Include if revealing blind spots
-6. Create THREE output documents:
-   - `synthesis/attributed/[NN]_[topic-slug].md` — Full synthesis with persona attribution
-   - `synthesis/[NN]_[topic-slug]_synthesis.md` — Synthesized points only (no attribution)
-   - `synthesis/[NN]_[topic-slug]_summary.md` — Executive summary with themes, actions, considerations
+Spawn parallel subagents (1 per topic cluster) using the prompt at `[skill]/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
 **Subagent Model:** Claude Opus or Gemini Pro (judgment-intensive)
 
@@ -494,15 +387,6 @@ If a subagent fails:
 3. If still failing, continue with available outputs and note the gap
 4. Never block the entire session on a single subagent failure
 
-## Subagent File Access
-
-Subagents (using `general-purpose` type) have full file access. Instead of the orchestrator reading files and embedding content in prompts, instruct subagents to read files themselves. This keeps orchestrator context minimal.
-
-The orchestrator provides:
-1. File paths to read (inputs from prior phases)
-2. Instructions for the task
-3. File paths to write (outputs)
-
 ## Model Selection
 
 | Task | Model | Rationale |
@@ -517,12 +401,11 @@ The orchestrator provides:
 | Full synthesis (`medium`/`high`) | Opus | Critical consolidation |
 | Final output | Sonnet | User-facing deliverable |
 
-## References
+## Reference directories
 
-- [personas/*.md](personas/) — Full system prompts for all personas
-- [templates/](templates/) — Document templates for REQUEST.md, USER-QUESTIONS.md, PLAN.md, BRAINSTORM.md, and synthesis files (index in [templates/index.md](templates/index.md))
-- [guidance/phase1_effort-level.md](guidance/phase1_effort-level.md) — Detailed effort level selection guidance
-- [guidance/phase2A_question-gen-personas.md](guidance/phase2A_question-gen-personas.md) — Question generation roster (tiers, volumes, effort mapping, Tier 3 triggers)
-- [guidance/phase2D_brainstorming-personas.md](guidance/phase2D_brainstorming-personas.md) — Brainstorming persona selection (concentric circles model, topic affinity, clusters)
-- [prompts/min-effort-workflow.md](prompts/min-effort-workflow.md) — Complete `min` effort workflow
-- [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) — Effort level detection triggers
+- [personas/](personas/) — Persona system prompts (23 total)
+- [prompts/](prompts/) — Phase-specific subagent prompts
+- [guidance/](guidance/) — Selection guides for personas and effort levels
+- [templates/](templates/) — Document templates (see [templates/index.md](templates/index.md))
+- [scripts/](scripts/) — Utility scripts
+- [SESSION-STRUCTURE.md](SESSION-STRUCTURE.md) — Full session directory layout

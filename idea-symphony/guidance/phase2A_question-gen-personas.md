@@ -2,6 +2,17 @@
 
 This document provides the orchestrator with structured guidance for selecting question-generation personas and setting per-persona volume targets in Phase 2A.
 
+## Contents
+
+- Tier 1 Question Personas (10)
+- Tier 2 Question Personas (4)
+- Tier 3 Question Personas (5)
+- Personas Excluded from Question Generation (4)
+- Effort Level Mapping
+- Topic Affinity Hints
+- Phase 2C Downstream Implications
+- Quality Degradation Patterns
+
 ---
 
 ## Tier 1 Question Personas (10)
@@ -118,7 +129,7 @@ These personas should not be included in any question generations.
 
 ### Tier 1 Analytical Personas (Synthesized)
 
-Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
+Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See **D2: Analytical and Structural Effort Mapping** (dev notes in repo, not in packaged skill) for full rationale.
 
 | Persona | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
@@ -131,7 +142,7 @@ Analytical personas (**Questioner**, **Analyst**) generate a variable number of 
 
 ### Tier 1 Structural Personas (Synthesized)
 
-Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
+Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See **D2: Analytical and Structural Effort Mapping** (dev notes in repo, not in packaged skill) for full rationale.
 
 | Personas | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
@@ -147,7 +158,7 @@ Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thin
 
 ### Tier 1 Perspective Personas (Appended)
 
-Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2A regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts. See [D1: Perspective Persona Append Strategy](../../dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md) for full analysis.
+Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2A regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts. See **D1: Perspective Persona Append Strategy** (dev notes in repo, not in packaged skill) for full analysis.
 
 | Personas | Effort | Generate | Phase 2C Method | Append per Persona | Selection Method |
 |:---|:---|:---|:---|:---|:---|
@@ -157,7 +168,7 @@ Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storytell
 
 ### Tier 2 Question Personas (Mixed Methods)
 
-Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2A only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs. See [R5: Tier 2 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md) for full analysis.
+Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2A only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs. See **R5: Tier 2 Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
 
 | Persona | Tier | Effort | Generate | Phase 2C Method | Append per Persona | Notes |
 |:---|:---|:---|:---|:---|:---|:---|
@@ -168,7 +179,7 @@ Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles
 
 ### Tier 3 Question Personas (Mixed Methods)
 
-Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2A, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See [R6: Tier 3 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R6_tier3-volume-quality.md) for full analysis.
+Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2A, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See **R6: Tier 3 Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
 
 | Persona | Effort | Generate | Phase 2C Method | Selection Trigger | Notes |
 |:---|:---|:---|:---|:---|:---|
@@ -184,7 +195,7 @@ Effort level controls **persona count** (selection threshold strictness), not **
 | **Medium** | Strong trigger only | 0-1 | 8-10 (8-12 Accountant) |
 | **High** | Moderate+ trigger | 0-2 | 8-10 (8-12 Accountant) |
 
-**Connector** is a special case handled separately from the other Tier 3 personas. When selected by the orchestrator, it **replaces the Analogist** in the Tier 1 Perspective slot and inherits the 5-8 questions Append treatment. See [R7: Connector Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R7_connector-volume-quality.md) for full analysis.
+**Connector** is a special case handled separately from the other Tier 3 personas. When selected by the orchestrator, it **replaces the Analogist** in the Tier 1 Perspective slot and inherits the 5-8 questions Append treatment. See **R7: Connector Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
 
 **Swap Analogist → Connector when:**
 - The topic requires bridging, merging, or reconciling distinct systems that constrain each other

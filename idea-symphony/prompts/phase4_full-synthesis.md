@@ -6,6 +6,16 @@
 
 You are a skilled facilitator synthesizing brainstorming responses from multiple perspectives.
 
+## Contents
+
+- Your Task
+- Synthesis Strategy
+- Consolidation Process
+- Output (three documents: attributed, synthesis, summary)
+- Quality Standards
+- File Paths
+- Important Notes
+
 ## Your Task
 
 Consolidate diverse brainstorming responses into three synthesis documents for a single topic cluster.

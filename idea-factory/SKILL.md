@@ -44,21 +44,14 @@ This creates "debate" through independent development + synthesis reconciliation
 
 ```
 [project-name]_factory_[YYYY-MM-DD]/
-├── FACTORY-PLAN.md                 # Session config & status
-├── SCOPE.md                        # Phase 1: What to plan vs. what's context
-├── OUTLINE.md                      # Phase 2: Structural outline
-├── personas/                       # Phase 2: Auto-generated persona definitions
-│   ├── [persona-slug].md
-│   └── ...
-├── drafts/                         # Phase 3A: Per-persona section drafts (medium/high only)
-│   └── [NN]_[section-slug]/
-│       ├── [persona-slug].md
-│       └── ...
-├── sections/                       # Phase 3B: Synthesized section files (or Phase 3-Low: direct drafts)
-│   ├── 01_[section-slug].md
-│   └── ...
-├── ACTION-PLAN.md                  # Phase 4: The deliverable
-└── FACTORY-SESSION.md              # Phase 4: Session report with file index
+├── FACTORY-PLAN.md      # Session config & status
+├── SCOPE.md             # Phase 1: What to plan vs. what's context
+├── OUTLINE.md           # Phase 2A: Structural outline
+├── personas/            # Phase 2B: Auto-generated persona definitions
+├── drafts/              # Phase 3A: Per-persona section drafts (medium/high only)
+├── sections/            # Phase 3B output (medium/high) or Phase 3-Low direct output
+├── ACTION-PLAN.md       # Phase 4: The deliverable
+└── FACTORY-SESSION.md   # Phase 4: Session report with file index
 ```
 
 **Note:** Low effort sessions have no `drafts/` directory — the single persona writes directly to `sections/`.
@@ -101,7 +94,6 @@ This creates "debate" through independent development + synthesis reconciliation
    - **Revised document**: A rewritten version of an existing document implementing improvements (when user has a document to revise)
    - **Both**: Recommendations document + best-crack revised document
    - If user doesn't have a preference, suggest based on whether they have an existing document to revise (revised document/both) or are working from a brainstorming session on a new topic (recommendations)
-   - **Note:** This preference is captured in SCOPE.md for now. Phase 4 handling of different output formats is planned but not yet implemented — all sessions currently produce the standard ACTION-PLAN.md recommendations format.
 7. Determine effort level (user-specified or suggest based on scope)
 8. Create session directory: `[project-name]_factory_[YYYY-MM-DD]/`
 9. Create `SCOPE.md` (include output format preference) and `FACTORY-PLAN.md`
@@ -157,31 +149,21 @@ Update `FACTORY-PLAN.md` with Phase 2 complete.
 
 ### Phase 3: Section Development (Subagents)
 
+**Prompts:**
+- Phase 3-Low and Phase 3A: `[skill]/prompts/phase3-section-draft.md` (conditional on effort level)
+- Phase 3B: `[skill]/prompts/phase3-section-synthesis.md`
+
 **Routing by effort level:**
 - **Low effort → Phase 3-Low** (single persona, direct section output, no synthesis)
 - **Medium/High effort → Phase 3A + 3B** (multi-persona drafts + synthesis)
 
 #### Phase 3-Low: Direct Section Drafts (Low Effort Only)
 
-For each outline section, spawn **1 subagent** using the single persona to write section recommendations directly.
+Spawn **1 subagent per outline section** in parallel using the prompt at `[skill]/prompts/phase3-section-draft.md`. The prompt's `effort_low` branch handles persona adoption, Symphony file access with context-window warnings, evaluation-not-generation framing, and the low-effort section format.
 
-**CRITICAL: Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt.**
+**CRITICAL:** Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt.
 
-**Instructions for subagent:**
-
-1. **Read your persona definition:** `personas/[persona-slug].md`
-2. **Read project context:** `SCOPE.md` and `OUTLINE.md`
-3. **Read Symphony brainstorming outputs:**
-   - `[symphony-path]/BRAINSTORM.md` — Overview of all topics and insights
-   - `[symphony-path]/synthesis/[NN]_[topic]_summary.md` — Only summaries relevant to your section (as listed in OUTLINE.md)
-   - **Context window warning:** Each summary is 11-17K tokens. Only read what's relevant.
-4. **EVALUATE and SYNTHESIZE existing brainstorming, not generate new ideas.** Ground every recommendation in specific Symphony insights.
-
-**Output file:** `sections/[NN]_[section-slug].md` (writes directly to sections/, no drafts/ directory)
-
-**Use the low-effort section format** (from `[skill]/templates.md`): simplified structure without Key Debate Points or Synthesis Notes. Since there's only one persona, focus on clear recommendations and practical alternatives rather than representing perspective tension.
-
-Spawn section drafters in parallel (one per section).
+**Output file:** `sections/[NN]_[section-slug].md` (writes directly to `sections/`, no `drafts/` directory). Format: [templates/section-low.md](templates/section-low.md).
 
 **Drafter Model:** Sonnet
 
@@ -196,86 +178,11 @@ Update `FACTORY-PLAN.md` with Phase 3 complete. **Skip Phase 3B entirely.**
 
 #### Step 3A: Independent Drafts (Medium/High Effort)
 
-For each outline section, spawn subagents for each assigned persona to draft recommendations.
+For each outline section, spawn subagents for each assigned persona using the prompt at `[skill]/prompts/phase3-section-draft.md`. The prompt handles persona adoption, Symphony file access (with context-window warnings and optional deeper-dive rules), evaluation-vs-generation framing, and effort-level draft depth (medium 3-4 paragraphs + 2 alternatives; high 4-5 paragraphs + 3-5 alternatives).
 
-**CRITICAL: Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt. The Symphony session contains the source material that subagents must evaluate.**
+**CRITICAL:** Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt. The Symphony session contains the source material that subagents must evaluate.
 
-**Instructions for subagent:**
-
-1. **Read your persona definition:** `personas/[persona-slug].md`
-   - Adopt this persona's perspective fully
-   - Your recommendations should reflect this persona's priorities and concerns
-
-2. **Read project context files:**
-   - `SCOPE.md` — What the plan covers vs. what's background context
-   - `OUTLINE.md` — Section structure, decision points, and which Symphony topics map to your section
-
-3. **Read Symphony brainstorming outputs — THIS IS YOUR SOURCE MATERIAL:**
-   - Start with: `[symphony-path]/BRAINSTORM.md` — Overview of all brainstorming topics and key insights
-   - Then read: `[symphony-path]/synthesis/[NN]_[topic]_summary.md` — Read ONLY the summary files that OUTLINE.md lists as inputs for your assigned section
-   - **Context window warning:** Each summary is 11-17K tokens. Only read summaries relevant to your section.
-   - **Optional deeper dive:** If you need more detail on a specific decision point, read ONE synthesis file: `[symphony-path]/synthesis/[NN]_[topic]_synthesis.md` (24-34K tokens each). Only do this when the summary isn't detailed enough to inform a specific recommendation.
-
-4. **Your task is to EVALUATE and SYNTHESIZE existing brainstorming, not generate new ideas:**
-   - The brainstorming phase already happened — ideas, perspectives, and tensions are documented in the Symphony session
-   - Your job: INTERPRET those insights through your persona's lens
-   - Identify which brainstorming recommendations align with your persona's priorities
-   - Assess trade-offs and alternatives that emerged from brainstorming
-   - Ground every recommendation in specific Symphony insights — cite topics, personas, or specific observations
-   - Be specific and actionable
-
-**Draft structure based on effort level:**
-
-- **Medium effort:**
-  - Core recommendation (3-4 paragraphs with rationale, grounded in brainstorming)
-  - 2 alternative approaches with clear trade-offs
-  - Basic scaling guidance (minimal vs expanded resources)
-
-- **High effort:**
-  - Comprehensive recommendation (4-5 paragraphs with detailed reasoning)
-  - 3-5 alternative approaches including edge cases
-  - Detailed scaling tiers with explicit resource requirements
-
-**Output file:** `drafts/[NN]_[section-slug]/[persona-slug].md`
-
-**Required output format:**
-
-```markdown
----
-section: [number]
-title: [section title]
-persona: [persona name]
-date: [date]
----
-
-# [Section Title] — [Persona Name] Draft
-
-## Core Recommendation
-
-[Your best answer for this section — specific, actionable, grounded in Symphony insights. Length depends on effort level: 2-3 paragraphs (low), 3-4 paragraphs (medium), 4-5 paragraphs (high).]
-
-## Alternative Approaches
-
-### Alternative A: [Name]
-
-[Description of alternative approach]
-
-**Trade-offs:** [What you gain vs. what you lose with this approach]
-**Best when:** [Conditions that favor this alternative]
-
-### Alternative B: [Name]
-
-[Description and trade-offs. Continue for more alternatives based on effort level.]
-
-## Scaling Notes
-
-**Minimal resources:** [How this recommendation scales down for constrained resources]
-**Expanded resources:** [What becomes possible with more resources]
-
-## Grounding in Brainstorming
-
-[List 3-5 specific insights from the Symphony session that inform your recommendations. Reference topics by name (e.g., "Topic 03: Accessibility Concerns noted that...") or cite specific persona observations. This section demonstrates you've read and evaluated the brainstorming outputs.]
-```
+**Output file:** `drafts/[NN]_[section-slug]/[persona-slug].md`. Format: [templates/draft-section.md](templates/draft-section.md).
 
 Spawn drafters in parallel groups of 3-6 (group by section to manage context window).
 
@@ -289,79 +196,9 @@ Spawn drafters in parallel groups of 3-6 (group by section to manage context win
 
 #### Step 3B: Section Synthesis
 
-For each section, spawn a synthesis subagent to reconcile persona perspectives into a final section file.
+For each section, spawn a synthesis subagent using the prompt at `[skill]/prompts/phase3-section-synthesis.md`. The prompt's 6-step process covers draft analysis, convergence/tension/unique-insight identification, core recommendation synthesis, alternative extraction, scaling reconciliation, and debate-point documentation.
 
-**Instructions for synthesis subagent:**
-
-1. **Read all persona drafts for this section:** `drafts/[NN]_[section-slug]/[persona-slug].md`
-   - You'll have 2-5 drafts depending on effort level and persona assignments
-   - Each draft represents an independent interpretation of the Symphony brainstorming
-
-2. **Identify convergence and divergence:**
-   - **Convergence:** What do multiple personas agree on? Convergent recommendations have strong support.
-   - **Tensions:** Where do personas genuinely disagree? These represent real trade-offs.
-   - **Unique insights:** What did only one persona recommend? May represent valuable edge cases or specialized expertise.
-
-3. **Synthesize final section recommendations:**
-   - **Core recommendation:** Weight toward convergent views (multiple personas agree)
-   - **Alternative approaches:** Pull from divergent recommendations (personas disagreed or offered different paths)
-   - **Scaling notes:** Synthesize across personas — how do recommendations change with resources?
-   - **Key debate points:** Document where personas disagreed and why — these are decision points for the user
-
-4. **Maintain traceability:**
-   - Reference which personas supported which recommendations
-   - Note when a recommendation comes from convergence vs. a single unique perspective
-   - Preserve the reasoning behind disagreements
-
-**Output file:** `sections/[NN]_[section-slug].md`
-
-**Required output format:**
-
-```markdown
----
-section: [number]
-title: [section title]
-personas_consulted: [list of persona names]
-convergence_level: [high/medium/low - how much personas agreed]
-date: [date]
----
-
-# [Section Title]
-
-## Core Recommendation
-
-[Final recommendation weighted toward convergent views. If multiple personas independently recommended similar approaches, that's a strong signal. 3-5 paragraphs with clear rationale.]
-
-**Persona support:** [Note which personas converged on this approach]
-
-## Alternative Approaches
-
-### Alternative A: [Name]
-
-[Description of alternative — typically from divergent persona recommendations]
-
-**Trade-offs:** [Gains vs losses]
-**Best when:** [Conditions favoring this alternative]
-**Advocated by:** [Which persona(s) recommended this]
-
-### Alternative B: [Name]
-
-[Continue based on how many genuine alternatives emerged from persona drafts...]
-
-## Scaling Analysis
-
-**Minimal resources:** [How recommendations adapt to constrained resources — synthesized across personas]
-**Core resources:** [Standard implementation]
-**Expanded resources:** [What's possible with more — synthesized across personas]
-
-## Key Debate Points
-
-[Document where personas disagreed and what's at stake. For example: "Democratic Innovation Researcher and Implementation Pragmatist disagreed on sortition purity vs. participant engagement. DIR prioritizes legitimacy through pure randomness; IP prioritizes retention through interest-matching. Trade-off: democratic legitimacy vs. program viability." These are decision points for the user.]
-
-## Synthesis Notes
-
-[Any observations about how personas approached this section differently, what perspectives proved most valuable, or where one persona's unique insight deserves special attention despite not being convergent.]
-```
+**Output file:** `sections/[NN]_[section-slug].md`. Format: [templates/section-medium-high.md](templates/section-medium-high.md).
 
 Spawn synthesis agents in parallel (one per section).
 
@@ -435,12 +272,7 @@ Present resume status to user before continuing.
 | Section synthesis (Phase 3B) | Opus | Critical perspective reconciliation |
 | Final integration (Phase 4) | Opus | Critical synthesis of all work |
 
-## References
+## Reference directories
 
-- [templates.md](templates.md) — Document templates for all outputs
-- [prompts/phase1-intake.md](prompts/phase1-intake.md) — Intake prompt
-- [prompts/phase2-outline.md](prompts/phase2-outline.md) — Outline generation
-- [prompts/phase3-persona-gen.md](prompts/phase3-persona-gen.md) — Persona generation guidance
-- [prompts/phase3-section-draft.md](prompts/phase3-section-draft.md) — Per-persona section drafting
-- [prompts/phase3-section-synthesis.md](prompts/phase3-section-synthesis.md) — Perspective reconciliation
-- [prompts/phase4-integration.md](prompts/phase4-integration.md) — Integration prompt
+- [prompts/](prompts/) — Phase-specific subagent prompts
+- [templates/](templates/) — Document templates (see [templates/index.md](templates/index.md))

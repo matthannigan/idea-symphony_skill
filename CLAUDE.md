@@ -31,11 +31,15 @@ This repo contains three Claude skills:
 
 1. **Subagents with isolated context windows** — Each participant runs as a separate subagent task, NOT as persona-switching within a single conversation. This isolation is essential for genuine perspective diversity.
 
-2. **Subagents read their own files** — The orchestrator provides file paths, not file contents. Subagents use Read/Glob tools to access inputs. This keeps orchestrator context minimal (~20k tokens vs 60-120k+).
+2. **Subagents read their own files** — Orchestrators pass file paths, not file contents. Subagents (spawned with `general-purpose` type) access inputs via Read/Glob and write outputs via Write. The orchestrator provides exactly three things: (1) paths to read, (2) task instructions, (3) paths to write. This keeps orchestrator context minimal (~20k tokens vs 60-120k+).
 
 3. **Complete intermediate outputs** — Every phase saves outputs to disk. This creates a paper trail for debugging, traceability, and session resumption.
 
 4. **Thoroughness over speed** — Quality and diversity matter more than fast completion.
+
+### Idea Symphony Specific
+
+**USER-QUESTIONS.md is isolated from persona-based question generators.** Only the `min`-effort generic generator and the Phase 2C synthesizer (`low`/`medium`/`high`) read this file. Persona generators at Phase 2 Step 2.2 must not see user questions. Rationale: letting user questions leak into persona-specific question generation would bias each persona's angle of inquiry toward the user's framing, defeating the point of spawning diverse persona subagents.
 
 ### Idea Factory Specific
 
@@ -57,9 +61,11 @@ Uses Agent Teams (experimental) for real-time debate. Teammates can message each
 ```
 idea-symphony/
 ├── SKILL.md                    # Main skill file (keep under 500 lines)
+├── SESSION-STRUCTURE.md        # Full session directory layout
 ├── guidance/                   # Selection guides for personas and effort
 ├── personas/                   # Individual persona prompts (23 total, prefixed with "the-")
 ├── prompts/                    # Subagent prompts, organized by phase
+├── scripts/                    # Utility scripts (split-questions.sh)
 └── templates/                  # Document templates
 ```
 
@@ -68,7 +74,7 @@ idea-symphony/
 idea-factory/
 ├── SKILL.md                    # Main skill file
 ├── prompts/                    # Subagent prompts, organized by phase
-└── templates.md                # Document templates (single file)
+└── templates/                  # Document templates (one file per template)
 ```
 
 ### Idea Forge (in development)

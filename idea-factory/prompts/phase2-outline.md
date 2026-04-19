@@ -55,7 +55,7 @@ sections.
 
 ### Save Outline
 
-After user approves, save to `{{session_path}}/OUTLINE.md` using the template from `[skill]/templates.md`.
+After user approves, save to `{{session_path}}/OUTLINE.md` using the template at `[skill]/templates/outline.md`.
 
 ## Part B: Persona Generation
 
@@ -110,7 +110,7 @@ personas, or change section assignments.
 
 ### Save Personas
 
-After user approves, save each persona to `{{session_path}}/personas/[persona-slug].md` using the persona template from `[skill]/templates.md`.
+After user approves, save each persona to `{{session_path}}/personas/[persona-slug].md` using the template at `[skill]/templates/persona.md`.
 
 ### Update Status
 

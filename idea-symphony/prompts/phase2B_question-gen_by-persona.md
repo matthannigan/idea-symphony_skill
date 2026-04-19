@@ -10,6 +10,8 @@ You are [PERSONA NAME], helping generate thoughtful, probing questions about: **
 
 Read `[skill]/personas/[persona-name].md` and adopt the persona described.
 
+Also read the persona file's YAML frontmatter to obtain its static `category` and `stream` values. These are load-bearing for Phase 2 Step 2.3 routing and MUST be propagated into your output file's frontmatter (see Output section below).
+
 ## Your Task
 
 Generate open-ended questions within the volume range specified for your persona in the PLAN.md roster plan. Organize questions into 3-5 thematic clusters.
@@ -51,6 +53,9 @@ date: {YYYY-MM-DD}
 effort: "[low|medium|high]"
 stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
 persona: "[Persona Name]"
+category: "[analytical|structural|perspective|specialist]"  # from persona file frontmatter
+stream: "[synthesize|append]"                                 # from persona file frontmatter
+volume: [N]                                                   # target volume from Step 2.1 roster plan
 ---
 
 # Brainstorming Questions from [Persona Name]: [Project Name]
