@@ -141,20 +141,33 @@ Generate and synthesize brainstorming questions from multiple persona perspectiv
 
 #### Step 2.1: Roster Planning (Orchestrator)
 
-The orchestrator determines which personas generate questions and at what volume, based on effort level and topic characteristics.
+The orchestrator produces a structured roster section in `PLAN.md` identifying Tier 1 personas, Tier 2 additions (high effort), any Tier 3 specialists selected by trigger strength, and the Connector/Analogist decision. Each persona row includes the Synthesize/Append stream assignment used by Step 2.3.
 
-1. Read `[skill]/references/persona-selection-guide_Phase2B.md` for the complete tier structure, volume ranges, and selection triggers
-2. **Tier 1 (always included):** All 10 Tier 1 personas. Assign volume ranges per effort level from the guide's Effort Level Mapping tables.
-3. **Tier 2 (`high` only):** All 4 Tier 2 personas at their specified volumes.
-4. **Tier 3 (orchestrator judgment):** Evaluate each Tier 3 persona's selection trigger against the topic:
-   - **`low`/`medium`:** Include 0-1 Tier 3 persona (strong trigger only)
-   - **`high`:** Include 0-2 Tier 3 personas (moderate+ trigger)
-   - See the guide's Tier 3 section for trigger definitions and thresholds
-5. **Connector/Analogist swap:** Evaluate whether the topic requires inter-domain reconciliation. Default: Analogist. Swap to Connector when bridging distinct systems. See R7 criteria in the guide.
-6. Write roster plan into `PLAN.md`:
-   - List of personas with tier, volume range, and Step 2.3 method (Synthesize or Append)
-   - Rationale for any Tier 3 inclusions
-   - Rationale for Connector/Analogist decision
+**Orchestrator instructions:** Use the prompt at
+`[skill]/references/prompts/phase2b-orchestrator-selection.md`.
+
+**Inputs the orchestrator receives:**
+1. `[session]/REQUEST.md` — the topic body
+2. `{EFFORT_LEVEL}` — `low`, `medium`, or `high` (from Phase 1)
+3. Reference: `[skill]/references/persona-selection-guide_Phase2B.md` —
+   consulted only if the prompt directs
+
+**Output:** the orchestrator appends / replaces the
+`## Phase 2B: Question Generation Roster` section inside `[session]/PLAN.md`.
+No other files are written at this step.
+
+**Orchestrator Model:** Claude Opus (validation was on Opus; the roster decision is
+judgment-intensive).
+
+**Quality Gate:** Before proceeding to Step 2.2, verify `PLAN.md` contains:
+- The `## Phase 2B: Question Generation Roster` header
+- An Effort Level line matching the session's effort level
+- A Tier 1 table with 10 personas (Connector substituted for Analogist if swapped)
+- A Tier 2 table at high effort, or `N/A — medium effort` / `N/A — low effort` otherwise
+- A Tier 3 table OR the correct "None selected — …" sentinel
+- A Selection Rationale block with structured fields (Trigger strength, Topic citation, Decision) for all four Tier 3 candidates and a Connector/Analogist swap rationale
+
+If any element is missing, re-run Step 2.1 rather than proceeding.
 
 #### Step 2.2: Question Generation (Parallel Subagents)
 
@@ -168,8 +181,17 @@ For each subagent, use prompt from `[skill]/references/prompts/phase2-question-g
 2. Read `[session]/REQUEST.md` for the brainstorming topic and context
 3. Generate questions within the volume range specified in the roster plan, organized into 3-5 topical clusters
 4. Ensure questions span strategic, tactical, creative, analytical, and human-centered dimensions
-5. Use YAML frontmatter in output (include persona name, date, effort level, volume target)
-6. Save to `[session]/questions/by-persona/[persona-name].md`
+5. Read the persona file's YAML frontmatter to obtain the persona's static
+   `category` and `stream` values. These are load-bearing for Step 2.3
+   routing and MUST be propagated into the output file's frontmatter.
+6. Use YAML frontmatter in output with these fields:
+   - `persona: [Persona Name]`
+   - `category: [analytical|structural|perspective|specialist]` (from persona file)
+   - `stream: [synthesize|append]` (from persona file)
+   - `volume: N` (target volume from Step 2.1 roster)
+   - `effort: [low|medium|high]`
+   - `date: YYYY-MM-DD`
+7. Save to `[session]/questions/by-persona/[persona-name].md`
 
 **Key point:** Each persona works independently. This isolation ensures genuine diversity.
 
@@ -177,64 +199,89 @@ For each subagent, use prompt from `[skill]/references/prompts/phase2-question-g
 
 **Quality Gate:** Before proceeding, verify:
 - `questions/by-persona/` file count matches roster plan
+- Each file's YAML frontmatter includes `stream` and `category` fields
 - If count doesn't match: Use Glob to search, move to correct location
+- If frontmatter is missing, re-run that persona's subagent
 - If files missing after search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with Phase 2 Step 2 complete status.
 
 #### Step 2.3: Question Synthesis
 
-Spawn 1 subagent to consolidate persona questions into topic clusters, handling Synthesize-group and Append-group personas differently.
+Spawn 1 subagent to consolidate per-persona questions into topic clusters using the Synthesize/Append stream split. The synthesis prompt encodes the cluster targets, compaction ratios, voice-preservation floors, and Append placement rules (all validated in SP1 iter3).
 
-Use prompt from `[skill]/references/prompts/phase2-question-synthesis.md`.
+**Synthesis instructions:** Use the prompt at
+`[skill]/references/prompts/phase2c-synthesis.md`.
 
-**Instructions for subagent:**
+**Inputs the subagent receives:**
+1. `[session]/questions/by-persona/*.md` — all persona files (subagent Globs
+   this directory; each file's frontmatter provides `stream`, `category`,
+   `volume`)
+2. `[session]/REQUEST.md` — topic context
+3. `[session]/PLAN.md` — fallback source for the Phase 2B roster if any
+   persona file is missing stream frontmatter
+4. `[session]/USER-QUESTIONS.md` (if it exists) — user-provided questions
+   treated as a mandatory "+1" input; the subagent marks any synthesized
+   question incorporating a user question with `[User Q]`
 
-1. Read all persona question files from `[session]/questions/by-persona/` and `[session]/REQUEST.md`
-2. Read the roster plan from `[session]/PLAN.md` to identify which personas are Synthesize vs. Append
-3. Check if `[session]/USER-QUESTIONS.md` exists (use Glob). If it exists, read it and treat as mandatory "+1" input. Append `[User Q]` to any question incorporating a user-provided question.
+**Outputs:**
+1. `[session]/QUESTIONS.md` — clustered, numbered question list. Append
+   questions are interleaved verbatim into the topically-closest cluster;
+   orphans (questions with no topical home) appear under a final
+   `## Additional Questions` section. No persona attribution is visible in
+   this file.
+2. `[session]/questions-meta.json` — persona attribution, convergence data,
+   and hard-floor self-check diagnostics. This is the authoritative audit
+   trail for future investigations and skill tests.
 
-**For Synthesize-group personas** (Analytical + Structural categories, plus Empath, FPT, Futurist, Accountant, Lawyer, Technical Expert):
-4. Track convergence: Note which personas asked similar questions
-5. Use convergence as quality signal:
-   - **Convergent** (multiple personas): Always include — signals importance
-   - **Complementary** (similar themes): Consolidate into single well-framed question
-   - **Unique** (one persona): Include if revealing blind spots or essential dimensions; more liberally at `high`
-6. Create topic clusters arranged in logical flow (foundational → strategic → operational)
+**Subagent Model:** Claude Opus (the prompt's R1–R12 discipline rewards careful reasoning; validation was on Opus).
 
-**For Append-group personas**, the selection rule varies per persona:
+**Post-synthesis shell step — split QUESTIONS.md into by-topic files:**
 
-7. Select questions according to the per-persona rules below:
-   - **Tier 1 Perspective** (Provocateur, Analogist/Connector, Visionary, Storyteller) — round-robin cluster selection:
-     - `low`: 3 per persona (one per cluster)
-     - `medium`: 5 per persona (one per cluster, then fill from largest)
-     - `high`: all 5-8 questions (no selection needed)
-   - **Constraint Flipper** (Tier 2, `high` only): 3-5 per persona, round-robin cluster selection
-   - **Politician** (Tier 3 Append, `medium`/`high`): append all 8-10 questions (no selection)
-8. Append selected questions to the most relevant synthesized topic clusters, preserving persona attribution and original framing.
+After the subagent returns, run this awk command to produce per-cluster files for Phase 3 consumption:
 
-**Target output after synthesis + append:**
-- **`low`:** ~32-42 questions across 4-7 topic clusters
-- **`medium`:** ~45-65 questions across 4-7 topic clusters
-- **`high`:** ~55-90 questions across 6-9 topic clusters
+```bash
+cd [session] && mkdir -p questions/by-topic && awk '
+  /^## Topic Cluster [0-9]+:/ {
+    if (file) close(file)
+    s = substr($0, 18)
+    colon = index(s, ":")
+    num = substr(s, 1, colon - 1) + 0
+    name = substr(s, colon + 2)
+    slug = tolower(name)
+    gsub(/[^a-z0-9]+/, "-", slug)
+    sub(/^-+/, "", slug); sub(/-+$/, "", slug)
+    file = sprintf("questions/by-topic/%02d_%s.md", num, slug)
+    print "---\ncluster: " num "\nname: " name "\n---\n" > file
+    next
+  }
+  /^## Additional Questions/ {
+    if (file) close(file)
+    file = "questions/by-topic/99_additional.md"
+    print "---\ncluster: 99\nname: Additional Questions\n---\n" > file
+    next
+  }
+  /^## / && file { close(file); file = "" }
+  file { print >> file }
+' QUESTIONS.md
+```
 
-**User-provided questions:** Handle based on convergence:
-- Convergent with personas: Consolidate into synthesized question, mark `[User Q]`
-- Non-convergent: Preserve verbatim in most relevant cluster, mark `[User Q]`. Never drop.
+Note: the awk above uses BSD-portable `substr`/`index` (the 3-arg `match` with capture array is a gawk-only extension and is NOT used here, so this script runs on default macOS awk as well as gawk).
 
-9. Output files:
-   - `QUESTIONS.md` (master list with YAML frontmatter, numbered questions)
-   - `questions/by-topic/[NN]_[topic-slug].md` (one per cluster)
-
-**Subagent Model:** Claude Opus or Gemini Pro (judgment-intensive)
+This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md.
 
 **Quality Gate:** Before proceeding, verify:
-- `QUESTIONS.md` exists
-- `questions/by-topic/` file count matches cluster count
-- If `USER-QUESTIONS.md` exists: count `[User Q]` markers vs. user question count
-- If files missing, log in PLAN.md Notes and proceed
+- `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
+- `questions-meta.json` exists and parses as valid JSON
+- `questions/by-topic/` contains one file per cluster (plus `99_additional.md` if orphans existed)
+- Self-check values in `questions-meta.json` satisfy the SP1 hard floors:
+  - `ai_orphan_question_numbers` is non-empty (≥3 at high effort)
+  - `st_archetype_question_numbers` is non-empty OR `r11_source_bound_cells` is populated (≥3 at high effort)
+- If `USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` vs. user question count
 
-Update `PLAN.md` with Phase 2 Step 3 complete status and list of topic clusters.
+If any check fails, re-run Step 2.3.
+
+Update `PLAN.md` with Step 2.3 complete status and cluster count.
 
 #### Step 2.4: Persona Selection (`medium`/`high` only)
 
@@ -244,7 +291,11 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
 
 **Instructions for subagent:**
 
-1. Read `[session]/QUESTIONS.md` for topic clusters and their questions
+1. Read `[session]/QUESTIONS.md` for topic clusters and their questions.
+   **Use the cluster labels exactly as produced by Step 2.3 synthesis when
+   assigning personas per cluster** — do not invent alternate cluster names
+   or re-cluster the questions. The persona selection must reference the
+   same clusters that Phase 3 will iterate.
 2. Read `[session]/REQUEST.md` for brainstorming context
 3. Read `[skill]/references/persona-selection-guide_Phase2C.md` for the complete selection methodology
 4. For each topic cluster:
@@ -407,9 +458,9 @@ If asked to continue a previous session:
 
 | PLAN.md Status | Files Present | Action |
 |----------------|---------------|--------|
-| Phase 2 Step 2: complete | `QUESTIONS.md` missing | Resume at Phase 2 Step 3 (Question Synthesis) |
-| Phase 2 Step 3: complete | `persona-selections.md` missing | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
-| Phase 2 Step 4: complete | `persona-selections.md` exists | Resume at Phase 3 |
+| Phase 2 Step 2.2: complete | `questions/by-persona/*.md` exist, `QUESTIONS.md` missing | Resume at Step 2.3 (Synthesis) |
+| Phase 2 Step 2.3: complete | `QUESTIONS.md` + `questions-meta.json` exist, `persona-selections.md` missing | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
+| Phase 2 Step 2.4: complete | `persona-selections.md` exists | Resume at Phase 3 |
 | Phase 3: complete | `responses/` populated | Resume at Phase 4 |
 | Phase 4: complete | `synthesis/` exists | Resume at Phase 5 |
 | Any phase: in-progress | Partial files | Re-run incomplete phase |
