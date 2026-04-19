@@ -124,7 +124,7 @@ Test synthesis prompt variants against the established baselines. Measure how we
 
 ### Starting Point
 
-The current synthesis prompt is at `idea-symphony/references/prompts/phase2-question-synthesis.md`. This was written before the Phase 2B research established the Synthesize/Append split, persona-specific volumes, and tiered roster. It needs revision.
+The current synthesis prompt is at `idea-symphony/prompts/phase2-question-synthesis.md`. This was written before the Phase 2B research established the Synthesize/Append split, persona-specific volumes, and tiered roster. It needs revision.
 
 ### Prompt Variants
 
@@ -241,7 +241,7 @@ Phases 1-3 here run independently of the orchestrator selection research. Phase 
 
 ### Final Deliverables
 
-1. **Revised synthesis prompt** — `idea-symphony/references/prompts/phase2-question-synthesis.md`
+1. **Revised synthesis prompt** — `idea-symphony/prompts/phase2-question-synthesis.md`
 2. **Consolidation decision** — whether persona selection merges into synthesis or stays separate
 3. **Synthesis quality benchmarks** — expected compaction ratios and preservation rates by effort level
 4. **Integration specification** — what changes are needed in SKILL.md to incorporate findings

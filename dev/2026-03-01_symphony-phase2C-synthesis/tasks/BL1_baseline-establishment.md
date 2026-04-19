@@ -6,7 +6,7 @@
 - Parent methodology — `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` (Phase 2 Baseline Establishment, B1–B4 tasks, Analysis Dimensions)
 - TDA1 assembled test files — `dev/2026-03-01_symphony-phase2C-synthesis/test-data/[topic-slug]_[effort].md` (30 files, output of TDA1)
 - TDA1 summary — `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` (Canonical; 0 shortfalls, 0 missing slots, 0 systemic personas; GT1 watchlist + per-cell handoff notes)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Synthesize/Append split; dimension assignments per persona)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (Synthesize/Append split; dimension assignments per persona)
 - Append rules — `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` (round-robin append selection logic)
 - Dimension coverage — `dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md` (Strategic/Tactical/Creative/Analytical/Human-centered dimension categories)
 
@@ -93,7 +93,7 @@ Read the following files in full:
 1. `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` — especially Phase 2 Baseline Establishment (B1–B4) and Analysis Dimensions.
 2. `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — the assembled test file for your cell.
 3. `dev/2026-03-01_symphony-phase2C-synthesis/findings/TDA1_test-data-assembly.md` — handoff notes for your cell. TDA1 has zero shortfalls and zero missing slots, so most cells need no special treatment. Two exceptions: (a) if your cell is on the GT1 watchlist (findings §5.1), record this and treat Tier 3 / Connector-Analogist composition as canonical-but-revisable; (b) if your cell is tool-library/medium, note that its Politician questions came from the pilot-era 2026-02-18 generation rather than the 2026-02-24 sweep — this is an upstream-vintage divergence, not a content shortfall, but flag if you observe anything anomalous.
-4. `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split for each persona (determines which questions go through synthesis vs. append).
+4. `idea-symphony/guidance/phase2A_question-gen-personas.md` — Synthesize/Append split for each persona (determines which questions go through synthesis vs. append).
 5. `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — round-robin append selection rules.
 6. `dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md` — Strategic / Tactical / Creative / Analytical / Human-centered dimension categories and per-persona primary affinities.
 

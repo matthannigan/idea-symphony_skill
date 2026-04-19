@@ -82,7 +82,7 @@ Or add to your settings.json:
 
 ### Phase 1: Intake & Scope Definition (Orchestrator)
 
-**Prompt:** `[skill]/references/prompts/phase1-intake.md`
+**Prompt:** `[skill]/prompts/phase1-intake.md`
 
 1. User provides path to a completed Idea Symphony session directory
 2. Read Symphony outputs: `REQUEST.md`, `PLAN.md`, `QUESTIONS.md`, `BRAINSTORM.md`
@@ -107,7 +107,7 @@ Or add to your settings.json:
 
 ### Phase 2: Outline & Persona Generation (Orchestrator)
 
-**Prompt:** `[skill]/references/prompts/phase2-outline.md`
+**Prompt:** `[skill]/prompts/phase2-outline.md`
 
 #### Step 2A: Structural Outline
 
@@ -122,7 +122,7 @@ Or add to your settings.json:
 
 #### Step 2B: Persona Generation
 
-**Guidance:** `[skill]/references/prompts/phase3-persona-gen.md`
+**Guidance:** `[skill]/prompts/phase3-persona-gen.md`
 
 1. Based on outline sections and effort level, determine team size
 2. Auto-generate project-specific personas — each with:
@@ -145,7 +145,7 @@ Update `FORGE-PLAN.md` with Phase 2 complete.
 
 ### Phase 3: Team Debate (Agent Teams)
 
-**Spawn template:** `[skill]/references/prompts/phase3-spawn.md`
+**Spawn template:** `[skill]/prompts/phase3-spawn.md`
 
 This phase uses Agent Teams for inter-agent debate. The orchestrator acts as team lead in delegate mode.
 
@@ -157,7 +157,7 @@ This phase uses Agent Teams for inter-agent debate. The orchestrator acts as tea
 
 #### Step 3.2: Spawn Teammates
 
-For each persona, spawn a teammate using the spawn template from `[skill]/references/prompts/phase3-spawn.md`. Fill in:
+For each persona, spawn a teammate using the spawn template from `[skill]/prompts/phase3-spawn.md`. Fill in:
 - Persona definition (path to their persona file)
 - Full outline (path to OUTLINE.md)
 - Source material paths (Symphony output files)
@@ -198,7 +198,7 @@ Update `FORGE-PLAN.md` with Phase 3 complete.
 
 ### Phase 4: Integration (Orchestrator or Subagent)
 
-**Prompt:** `[skill]/references/prompts/phase4-integration.md`
+**Prompt:** `[skill]/prompts/phase4-integration.md`
 
 1. Read all section files from `sections/`
 2. Create `ACTION-PLAN.md`:
@@ -254,9 +254,9 @@ Present resume status to user before continuing.
 
 ## References
 
-- [references/templates.md](references/templates.md) — Document templates for all outputs
-- [references/prompts/phase1-intake.md](references/prompts/phase1-intake.md) — Intake prompt
-- [references/prompts/phase2-outline.md](references/prompts/phase2-outline.md) — Outline generation
-- [references/prompts/phase3-persona-gen.md](references/prompts/phase3-persona-gen.md) — Persona generation guidance
-- [references/prompts/phase3-spawn.md](references/prompts/phase3-spawn.md) — Teammate spawn template
-- [references/prompts/phase4-integration.md](references/prompts/phase4-integration.md) — Integration prompt
+- [templates/index.md](templates/index.md) — Document templates for all outputs
+- [prompts/phase1-intake.md](prompts/phase1-intake.md) — Intake prompt
+- [prompts/phase2-outline.md](prompts/phase2-outline.md) — Outline generation
+- [prompts/phase3-persona-gen.md](prompts/phase3-persona-gen.md) — Persona generation guidance
+- [prompts/phase3-spawn.md](prompts/phase3-spawn.md) — Teammate spawn template
+- [prompts/phase4-integration.md](prompts/phase4-integration.md) — Integration prompt

@@ -57,44 +57,35 @@ Uses Agent Teams (experimental) for real-time debate. Teammates can message each
 ```
 idea-symphony/
 ├── SKILL.md                    # Main skill file (keep under 500 lines)
-└── references/
-    ├── personas.md             # Index and selection guidance
-    ├── personas/               # Individual persona prompts
-    │   ├── the-visionary.md
-    │   ├── the-pragmatist.md
-    │   └── ...                 # 15 total, prefixed with "the-"
-    ├── prompts/                # Phase prompts (extracted from SKILL.md)
-    │   ├── phase2-question-generation-generic.md
-    │   ├── phase2-question-generation-persona.md
-    │   ├── phase2-question-synthesis.md
-    │   ├── phase3-brainstorm-generic.md
-    │   ├── phase3-brainstorm-persona.md
-    │   ├── phase4-synthesis-low.md
-    │   └── phase4-synthesis.md
-    └── templates.md            # Document templates
+├── guidance/                   # Selection guides for personas and effort
+├── personas/                   # Individual persona prompts (23 total, prefixed with "the-")
+├── prompts/                    # Subagent prompts, organized by phase
+└── templates/                  # Document templates
 ```
 
 ### Idea Factory
 ```
 idea-factory/
 ├── SKILL.md                    # Main skill file
+├── prompts/                    # Subagent prompts, organized by phase
+└── templates.md                # Document templates (single file)
+```
+
+### Idea Forge (in development)
+```
+idea-forge/
+├── SKILL.md                    # Main skill file
 └── references/
     ├── prompts/                # Phase prompts
-    │   ├── phase1-intake.md
-    │   ├── phase2-outline.md
-    │   ├── phase3-persona-gen.md
-    │   ├── phase3-section-draft.md
-    │   ├── phase3-section-synthesis.md
-    │   └── phase4-integration.md
     └── templates.md            # Document templates
 ```
 
 When editing skills:
 - SKILL.md contains workflow orchestration and phase routing logic
-- Phase prompts live in `references/prompts/phase*.md`
-- Symphony persona prompts live in `references/personas/the-[persona-name].md`
+- Phase prompts live in `prompts/phase*.md`
+- Symphony persona prompts live in `personas/the-[persona-name].md`
 - Factory personas are auto-generated per session (no fixed library)
-- Document templates live in `references/templates.md`
+- Document templates live in `templates/*.md`
 
 ## Packaging
 

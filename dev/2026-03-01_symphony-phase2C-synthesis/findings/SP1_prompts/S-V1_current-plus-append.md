@@ -2,7 +2,7 @@
 
 **Hypothesis:** The current Phase 2 synthesis prompt is close enough; add minimal Append handling and it will work. Lowest-change option.
 
-**Base:** `idea-symphony/references/prompts/phase2-question-synthesis.md` (verbatim, with only the minimum adjustments required by the test-harness context — a single pre-assembled input file rather than a session directory — and a new Append-handling section at the end).
+**Base:** `idea-symphony/prompts/phase2-question-synthesis.md` (verbatim, with only the minimum adjustments required by the test-harness context — a single pre-assembled input file rather than a session directory — and a new Append-handling section at the end).
 
 ---
 

@@ -36,7 +36,7 @@ Three new personas were created based on convergent findings from the external f
 | **The Simplifier** | Subtractive thinking (additive bias) | Defaults to removal; distinct from First Principles Thinker (deconstruct to rebuild) and Pragmatist (feasibility) |
 | **The Provocateur** | Provocative/absurdist thinking (Lateral Thinking) | Introduces impossible premises; distinct from Devil's Advocate (critiques proposals) and Constraint Flipper (inverts real constraints) |
 
-Prompt files: `idea-symphony/references/personas/the-empath.md`, `the-simplifier.md`, `the-provocateur.md`
+Prompt files: `idea-symphony/personas/the-empath.md`, `the-simplifier.md`, `the-provocateur.md`
 
 ---
 
@@ -190,7 +190,7 @@ Notes: [Specific observations and evidence]
 | 1b | Run all 15 original personas through Phase 3 brainstorming (45 runs, Haiku, batches of 5) | Done | 180 response files (15 personas x 4 clusters x 3 topics) |
 | 1c | Run 3 new candidate personas through Phase 3 brainstorming (9 runs, Haiku, batches of 5) | Done | 36 response files (3 personas x 4 clusters x 3 topics) |
 | 4a | External framework research (Manus + Gemini, 10 frameworks) | Done | `frameworks-research-synthesis.md` |
-| 4b | New candidate persona creation (Empath, Simplifier, Provocateur) | Done | 3 persona files in `idea-symphony/references/personas/` |
+| 4b | New candidate persona creation (Empath, Simplifier, Provocateur) | Done | 3 persona files in `idea-symphony/personas/` |
 
 ### Remaining Steps — Analysis Sequence
 

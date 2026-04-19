@@ -71,9 +71,9 @@ When authoring the task files, the self-contained subagent prompts need to refer
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` — parent methodology, inputs for every task
 - `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md` — required by TDA1 to determine Tier 3 / Connector-Analogist composition per topic-effort
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — tier/volume/Synthesize-Append mapping; required by TDA1 and BL1
-- `idea-symphony/references/persona-selection-guide_Phase2C.md` — brainstorming persona selection rubric; required by PC1
-- `idea-symphony/references/prompts/phase2-question-synthesis.md` — the current synthesis prompt; base for S-V1
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — tier/volume/Synthesize-Append mapping; required by TDA1 and BL1
+- `idea-symphony/guidance/phase2D_brainstorming-personas.md` — brainstorming persona selection rubric; required by PC1
+- `idea-symphony/prompts/phase2-question-synthesis.md` — the current synthesis prompt; base for S-V1
 - `test-runs/symphony-phase2-questions-persona-eval/` — source directory for all persona-generated questions at `_q05-10/`, `_q10-15/`, `_q15-20/` volume tiers
 - `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` — the 10 topic descriptions
 - `dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md`, `R6_tier3-volume-quality.md`, `R7_connector-volume-quality.md` — prior volume/tier decisions TDA1 must respect

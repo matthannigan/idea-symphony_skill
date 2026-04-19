@@ -1,6 +1,6 @@
 # Phase 4: Summary Generation (low effort)
 
-**For `low` effort only** — This prompt consolidates responses from The Devil's Advocate and The Pragmatist into a summary that preserves their productive tension (risk vs. feasibility). For `min` effort (single-voice summarization), see [phase4-synthesis-min.md](phase4-synthesis-min.md). For `medium`/`high` (full multi-persona synthesis with attribution), see [phase4-synthesis.md](phase4-synthesis.md).
+**For `low` effort only** — This prompt consolidates responses from The Devil's Advocate and The Pragmatist into a summary that preserves their productive tension (risk vs. feasibility). For `min` effort (single-voice summarization), see [phase4_summary-only_min-effort.md](phase4_summary-only_min-effort.md). For `medium`/`high` (full multi-persona synthesis with attribution), see [phase4_full-synthesis.md](phase4_full-synthesis.md).
 
 ---
 

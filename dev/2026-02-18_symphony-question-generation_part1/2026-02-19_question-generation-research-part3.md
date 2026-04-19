@@ -14,7 +14,7 @@ Before running I11 (Appreciative Inquirer validation) and regenerating test data
 
 ## 1. Shared Prompt Template Gaps
 
-**File:** `idea-symphony/references/prompts/phase2-question-generation-persona.md`
+**File:** `idea-symphony/prompts/phase2B_question-gen_by-persona.md`
 
 ### 1.1 Coverage Dimensions Are Incomplete
 
@@ -61,7 +61,7 @@ Before running I11 (Appreciative Inquirer validation) and regenerating test data
 
 ## 2. Per-Persona Prompt Considerations
 
-These apply to individual persona prompt files in `idea-symphony/references/personas/`, not the shared template.
+These apply to individual persona prompt files in `idea-symphony/personas/`, not the shared template.
 
 ### 2.1 Framing Guards for Generative Personas
 
@@ -97,7 +97,7 @@ This reinforces the division of labor without changing the persona's core identi
 
 ### 3.1 The Appreciative Inquirer Prompt Asymmetry
 
-The new Appreciative Inquirer persona prompt (`idea-symphony/references/personas/the-appreciative-inquirer.md`) includes two instructions that no other persona prompt contains:
+The new Appreciative Inquirer persona prompt (`idea-symphony/personas/the-appreciative-inquirer.md`) includes two instructions that no other persona prompt contains:
 
 1. **Selflessness instruction (line 28):** "Questions that only you could answer — generate questions that open territory for the full roster of Phase 3 personas"
 2. **Framing guard (line 25):** "Deficit framing — don't ask 'What's wrong?' or 'What are the risks?' (other personas handle this)"

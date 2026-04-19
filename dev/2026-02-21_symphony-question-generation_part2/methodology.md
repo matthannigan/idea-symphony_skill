@@ -343,7 +343,7 @@ Each investigation produces a findings document with:
 - Open questions or caveats
 
 ### Final Deliverables (after all gates)
-1. **Phase 2B Persona Selection Guide** — **COMPLETE** at `idea-symphony/references/persona-selection-guide_Phase2B.md`; includes Tier 1/2/3 rosters, volume categories, effort-level mapping, selection logic, Phase 2C downstream implications, and topic affinity hints
+1. **Phase 2B Persona Selection Guide** — **COMPLETE** at `idea-symphony/guidance/phase2A_question-gen-personas.md`; includes Tier 1/2/3 rosters, volume categories, effort-level mapping, selection logic, Phase 2C downstream implications, and topic affinity hints
 2. **Effort Level Configuration Table** — **COMPLETE** (in selection guide); all tiers decided
 3. **Revised Analyst Persona Prompt** — **COMPLETE**; enhanced with financial sub-lens, validated by A1 and R8
 4. **Connector Swap Criteria** — **COMPLETE** (in selection guide and R7 findings)

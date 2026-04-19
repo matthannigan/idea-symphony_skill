@@ -4,7 +4,7 @@
 **Parent:** `dev/2026-02-21_symphony-question-generation_part2/methodology.md`
 **Inputs:**
 - Test script: `test-runs/symphony-phase2-questions-persona-eval/question-generation-tests_2026-02-21_q05-10.md`
-- Persona prompts (Tier 1): `idea-symphony/references/personas/the-questioner.md`, `the-analyst.md`, `the-devils-advocate.md`, `the-storyteller.md`, `the-analogist.md`, `the-appreciative-inquirer.md`, `the-provocateur.md`, `the-visionary.md`
+- Persona prompts (Tier 1): `idea-symphony/personas/the-questioner.md`, `the-analyst.md`, `the-devils-advocate.md`, `the-storyteller.md`, `the-analogist.md`, `the-appreciative-inquirer.md`, `the-provocateur.md`, `the-visionary.md`
 - Persona prompts (promotion candidates): `the-audience-advocate.md`, `the-empath.md`, `the-systems-thinker.md`, `the-first-principles-thinker.md`
 
 ---

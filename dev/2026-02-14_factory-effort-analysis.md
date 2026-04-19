@@ -224,7 +224,7 @@ The final deliverable is 6% smaller despite richer intermediate work. Integratio
 
 ### R1: Fix Low-Effort Persona Naming (Bug Fix)
 
-**File:** `idea-factory/references/prompts/phase3-persona-gen.md`
+**File:** `idea-factory/prompts/phase3-persona-gen.md`
 
 Add explicit enforcement at the top of the low-effort guidance block:
 
@@ -237,7 +237,7 @@ Good: "Civic Innovation Program Director" / "Community Program Design Specialist
 
 ### R2: Scale Draft Depth with Effort Level (Prompt Enhancement)
 
-**File:** `idea-factory/references/prompts/phase3-section-draft.md`
+**File:** `idea-factory/prompts/phase3-section-draft.md`
 
 Replace the generic high-effort guidance with more specific depth markers:
 
@@ -256,7 +256,7 @@ Replace the generic high-effort guidance with more specific depth markers:
 
 ### R3: Scale Synthesis Output with Input Volume (Prompt Enhancement)
 
-**File:** `idea-factory/references/prompts/phase3-section-synthesis.md`
+**File:** `idea-factory/prompts/phase3-section-synthesis.md`
 
 Add effort-level-specific output expectations:
 
@@ -273,7 +273,7 @@ Also add: "The synthesis should be proportional to the input volume. More person
 
 ### R4: Scale Integration Output with Effort Level (Prompt Enhancement)
 
-**File:** `idea-factory/references/prompts/phase4-integration.md`
+**File:** `idea-factory/prompts/phase4-integration.md`
 
 Add effort-level awareness:
 

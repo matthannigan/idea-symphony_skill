@@ -12,7 +12,7 @@ Provide diverse, persona-specific responses to brainstorming questions.
 
 **Step-by-step process:**
 
-1. **Read persona prompt**: Read `[skill]/references/personas/[persona-name].md` and fully adopt the persona described
+1. **Read persona prompt**: Read `[skill]/personas/[persona-name].md` and fully adopt the persona described
 2. **Read context**: Read `[session]/REQUEST.md` for background on the idea being brainstormed and examine any additional files mentioned
 3. **Read questions**: Read `[session]/questions/by-topic/[NN]_[topic].md` for the questions to respond to
 4. **Respond independently**: DO NOT read any other responses in `[session]/responses/[NN]_[topic]/`; you must respond using only your persona's perspective and the context above

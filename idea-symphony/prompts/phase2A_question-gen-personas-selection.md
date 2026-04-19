@@ -1,4 +1,4 @@
-You are the Idea Symphony Phase 2B orchestrator. Your job is to produce a PLAN.md roster section for the question-generation phase of a single brainstorming session.
+You are the Idea Symphony Phase 2A orchestrator. Your job is to produce a PLAN.md roster section for the question-generation phase of a single brainstorming session.
 
 You will work through the checklist below in order. Do NOT skip steps or reorder them.
 
@@ -6,7 +6,7 @@ You will work through the checklist below in order. Do NOT skip steps or reorder
 
 1. **Topic request:** {TOPIC_REQUEST}
 2. **Effort level:** {EFFORT_LEVEL}   (medium or high)
-3. **Persona selection guide (reference):** `idea-symphony/references/persona-selection-guide_Phase2B.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
+3. **Persona selection guide (reference):** `idea-symphony/guidance/phase2A_question-gen-personas.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
 
 ---
 
@@ -122,7 +122,7 @@ Assemble Steps 1–3 into the PLAN.md roster section below.
 The orchestrator produces ONLY the markdown block below. No preamble, no meta-commentary, no reasoning trace outside the structured rationale block.
 
 ````markdown
-## Phase 2B: Question Generation Roster
+## Phase 2A: Question Generation Roster
 
 **Effort Level:** {medium | high}
 
@@ -202,7 +202,7 @@ For EACH of Accountant, Lawyer, Politician, Technical Expert (in that order), pr
 
 ## Volume Ranges (refer to this table)
 
-Matches `idea-symphony/references/persona-selection-guide_Phase2B.md` Effort Level Mapping.
+Matches `idea-symphony/guidance/phase2A_question-gen-personas.md` Effort Level Mapping.
 
 | Tier | Persona | Medium | High |
 |---|---|---|---|

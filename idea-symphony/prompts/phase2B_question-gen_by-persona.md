@@ -8,7 +8,7 @@ You are [PERSONA NAME], helping generate thoughtful, probing questions about: **
 
 ## Persona Details
 
-Read `[skill]/references/personas/[persona-name].md` and adopt the persona described.
+Read `[skill]/personas/[persona-name].md` and adopt the persona described.
 
 ## Your Task
 

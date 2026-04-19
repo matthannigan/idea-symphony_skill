@@ -28,7 +28,7 @@ Based on comprehensive analysis of 6 test runs (Feb 1-3, 2026) across multiple p
 **Problem**: 33% of sessions used alternative formats (Factory/Manus archive README, Fred & Andy extreme compression), suggesting the standard template doesn't fit all use cases.
 
 **Investigation**:
-- [ ] Create three BRAINSTORM.md variants in `references/templates.md`:
+- [ ] Create three BRAINSTORM.md variants in `templates/index.md`:
   - **Standard Report** (current): Comprehensive narrative for decision-makers (Pittsburgh, TOL, Civic 250 model)
   - **Executive Brief** (new): Compressed format for time-constrained executives (target: <10 pages, emphasis on Executive Summary + Top 10 Actions)
   - **Research Archive** (new): Navigation-focused format for ongoing reference (Manus model)

@@ -4,7 +4,7 @@
 **Parent:** `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md`
 **Inputs:**
 - Parent methodology — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` (Phase 1 Ground Truth requirements, Expected Trigger Mapping)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Tier 3 guidance, Connector swap criteria, Effort Level Mapping, Topic Affinity Hints)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (Tier 3 guidance, Connector swap criteria, Effort Level Mapping, Topic Affinity Hints)
 - R5 findings — `dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md` (Tier 2 decisions)
 - R6 findings — `dev/2026-02-21_symphony-question-generation_part2/findings/R6_tier3-volume-quality.md` (Tier 3 decisions, Politician Append change, Simplifier exclusion)
 - R7 findings — `dev/2026-02-21_symphony-question-generation_part2/findings/R7_connector-volume-quality.md` (Connector/Analogist swap criteria)
@@ -110,7 +110,7 @@ You are establishing the ground truth answer key for an orchestrator-selection i
 Read the following files in full:
 
 1. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` — the investigation methodology. Read especially the "Expected Assignments" section and the "Ground Truth Structure" template.
-2. `idea-symphony/references/persona-selection-guide_Phase2B.md` — the selection rubric. Pay close attention to:
+2. `idea-symphony/guidance/phase2A_question-gen-personas.md` — the selection rubric. Pay close attention to:
    - Tier 3 guidance table (Accountant, Lawyer, Politician, Technical Expert)
    - Connector guidance and swap criteria (Keep Analogist / Swap to Connector)
    - Effort Level Mapping (medium = 0–1 strong trigger only; high = 0–2 moderate+ trigger)

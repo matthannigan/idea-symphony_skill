@@ -74,8 +74,8 @@ Present the suggestion with rationale. Default to medium if unclear.
 
 After user confirms scope and effort level:
 
-1. Create `{{session_path}}/SCOPE.md` using the template from `[skill]/references/templates.md`
-2. Create `{{session_path}}/FORGE-PLAN.md` using the template from `[skill]/references/templates.md`
+1. Create `{{session_path}}/SCOPE.md` using the template from `[skill]/templates/index.md`
+2. Create `{{session_path}}/FORGE-PLAN.md` using the template from `[skill]/templates/index.md`
 3. Update FORGE-PLAN.md Phase 1 status to complete
 
 ## Quality Gate

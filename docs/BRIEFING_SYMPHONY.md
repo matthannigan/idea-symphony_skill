@@ -282,7 +282,7 @@ Spawn 3 or 5 parallel subagents based on effort level, each with a different per
 - **High:** The Questioner, The Analyst, The Audience Advocate, The Devil's Advocate, The First Principles Thinker
 
 Each subagent:
-1. Reads and adopts their persona from `[skill]/references/personas/[persona-name].md`
+1. Reads and adopts their persona from `[skill]/personas/[persona-name].md`
 2. Reads `[session]/REQUEST.md` for context
 3. Generates 15-20 questions from their perspective, organized into 3-5 topical clusters
 4. Saves to `[session]/questions/by-persona/[persona-name].md`
@@ -475,7 +475,7 @@ Present resume status to user before continuing.
 
 ## The Brainstorming Personas
 
-The skill includes a **closed set of 15 distinct personas**. Do not invent, modify, or use any personas not listed here. Each persona's full system prompt is stored in `references/personas/the-[persona-name].md`.
+The skill includes a **closed set of 15 distinct personas**. Do not invent, modify, or use any personas not listed here. Each persona's full system prompt is stored in `personas/the-[persona-name].md`.
 
 | Persona | Prompt File | Core Function | Best For |
 |---------|-------------|---------------|----------|
@@ -521,7 +521,7 @@ Select 3 or 5 personas based on effort level, matching to topic needs:
 
 ### Persona System Prompt Structure
 
-Each persona prompt (in `references/personas/`) includes:
+Each persona prompt (in `personas/`) includes:
 1. Role declaration
 2. Core characteristics (4-6 bullet points)
 3. Participation guidelines (6-8 specific behaviors)

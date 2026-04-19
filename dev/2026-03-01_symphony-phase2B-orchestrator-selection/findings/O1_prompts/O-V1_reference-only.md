@@ -13,7 +13,7 @@ You are the Idea Symphony Phase 2B orchestrator. Your job is to produce a PLAN.m
 
 1. **Topic request:** {TOPIC_REQUEST}
 2. **Effort level:** {EFFORT_LEVEL}   (medium or high)
-3. **Persona selection guide:** Read `idea-symphony/references/persona-selection-guide_Phase2B.md` in full before writing the roster. It defines the three-tier persona structure, selection triggers, effort-level mapping, and the Connector/Analogist swap criteria.
+3. **Persona selection guide:** Read `idea-symphony/guidance/phase2A_question-gen-personas.md` in full before writing the roster. It defines the three-tier persona structure, selection triggers, effort-level mapping, and the Connector/Analogist swap criteria.
 
 ## Task
 

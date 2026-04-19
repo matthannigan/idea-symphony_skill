@@ -8,7 +8,7 @@
 - SP1 compiled findings — `dev/2026-03-01_symphony-phase2C-synthesis/findings/SP1_synthesis-prompt-testing.md` (for scoring harness reuse)
 - TDA1 assembled test files — `dev/2026-03-01_symphony-phase2C-synthesis/test-data/[topic-slug]_[effort].md`
 - BL1 baselines — `dev/2026-03-01_symphony-phase2C-synthesis/baselines/*` (for scoring Condition A vs. B synthesis quality)
-- Brainstorming persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2C.md` (Condition A's separate subagent reference; Condition B integrates this inline)
+- Brainstorming persona selection guide — `idea-symphony/guidance/phase2D_brainstorming-personas.md` (Condition A's separate subagent reference; Condition B integrates this inline)
 - Current SKILL.md — `idea-symphony/SKILL.md` (Phase 2B Step 2.4 — current separate persona selection architecture; for integration implications)
 
 ---
@@ -83,7 +83,7 @@ You are executing a Phase 2C synthesis run as part of PC1 Condition A (separate 
 ## Inputs
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — input questions
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split (reference per prompt)
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — Synthesize/Append split (reference per prompt)
 - `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — append rules (reference per prompt)
 
 ## Prompt
@@ -109,7 +109,7 @@ You are executing Condition A persona selection for PC1 — the current architec
 ## Inputs
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — the raw test file (you receive the raw questions, not the synthesis output — matches current architecture)
-- `idea-symphony/references/persona-selection-guide_Phase2C.md` — brainstorming persona selection rubric (concentric circles model)
+- `idea-symphony/guidance/phase2D_brainstorming-personas.md` — brainstorming persona selection rubric (concentric circles model)
 
 ## Task
 
@@ -157,8 +157,8 @@ You are executing Condition B for PC1 — a consolidated architecture where a si
 ## Inputs
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — input questions
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split
-- `idea-symphony/references/persona-selection-guide_Phase2C.md` — brainstorming persona selection rubric (concentric circles)
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — Synthesize/Append split
+- `idea-symphony/guidance/phase2D_brainstorming-personas.md` — brainstorming persona selection rubric (concentric circles)
 - `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — append rules
 
 ## Two-Part Task
@@ -334,7 +334,7 @@ If the decision is to consolidate, enumerate the SKILL.md changes required:
 
 - Phase 2B Step 2.3 and Step 2.4 merge into a single step
 - Which subagent invocations change, what the new invocation looks like
-- Any changes to `references/prompts/` structure
+- Any changes to `prompts/` structure
 - Any changes to `persona-selection-guide_Phase2C.md` (inline vs. referenced)
 - Any documentation updates needed
 - **Prompt-size check:** the consolidated prompt will carry the SP1 refined synthesis prompt (~22 KB) plus `persona-selection-guide_Phase2C.md` inline or referenced. Note the combined consolidated-prompt size, confirm it fits within the single-subagent context budget with room for the test file + outputs, and flag if the guide should remain referenced (Read-on-demand) rather than inlined.

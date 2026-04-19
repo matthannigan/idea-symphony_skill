@@ -17,7 +17,7 @@ You will work through the checklist below in order. Do NOT skip steps or reorder
 
 1. **Topic request:** {TOPIC_REQUEST}
 2. **Effort level:** {EFFORT_LEVEL}   (medium or high)
-3. **Persona selection guide (reference):** `idea-symphony/references/persona-selection-guide_Phase2B.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
+3. **Persona selection guide (reference):** `idea-symphony/guidance/phase2A_question-gen-personas.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
 
 ---
 

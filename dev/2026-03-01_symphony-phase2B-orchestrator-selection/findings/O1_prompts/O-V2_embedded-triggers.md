@@ -13,7 +13,7 @@ You are the Idea Symphony Phase 2B orchestrator. Your job is to produce a PLAN.m
 
 1. **Topic request:** {TOPIC_REQUEST}
 2. **Effort level:** {EFFORT_LEVEL}   (medium or high)
-3. **Persona selection guide (reference):** `idea-symphony/references/persona-selection-guide_Phase2B.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. The key selection rules you need are embedded below.
+3. **Persona selection guide (reference):** `idea-symphony/guidance/phase2A_question-gen-personas.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. The key selection rules you need are embedded below.
 
 ## Embedded Selection Rules
 

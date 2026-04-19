@@ -39,7 +39,7 @@ This doc exists so the mapping is recoverable if we ever want to reintroduce the
 - Keep `min`/`low`/`medium`/`high` as the canonical keys everywhere code, prompts, or templates read.
 - Use the sonata names only in user-facing surfaces (README, documentation introductions, possibly session welcome messages).
 - Do not reintroduce the branded effort labels as parallel identifiers in tables; one label per row.
-- The file `idea-symphony/references/prompts/min-workflow.md` was previously named `scherzo.md` — if the branding returns, that's the one filename worth renaming back.
+- The file `idea-symphony/prompts/min-effort-workflow.md` was previously named `scherzo.md` — if the branding returns, that's the one filename worth renaming back.
 
 ---
 

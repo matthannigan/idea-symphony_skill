@@ -106,7 +106,7 @@ If future test runs surface ≥2 cells where bucketing is genuinely forced, revi
 
 ## Effort-Level Volume Ranges (authoritative)
 
-Matches `idea-symphony/references/persona-selection-guide_Phase2B.md` Effort Level Mapping.
+Matches `idea-symphony/guidance/phase2A_question-gen-personas.md` Effort Level Mapping.
 
 | Tier | Persona | Medium | High |
 |---|---|---|---|

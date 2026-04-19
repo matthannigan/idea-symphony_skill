@@ -1155,7 +1155,7 @@ Genuine constraint-inversion is valuable and distinctive. However, three factors
 **Parent task:** `targeted-investigations/tasks/11_appreciative-inquirer-test.md`
 **Research questions:** RQ1 (gap coverage), RQ2 (distinctiveness vs Visionary), RQ3 (distinctiveness vs Empath), RQ4 (AI 4-D coverage), RQ5 (selflessness)
 
-**Note on prompt revision:** The initial run identified that strengths-based framing dropped off in Design and Destiny phases (6% strengths-grounded in those phases vs. ~100% in Discovery). A targeted prompt revision was made to `idea-symphony/references/personas/the-appreciative-inquirer.md`, adding explicit guidance to ground Design questions in discovered strengths and Destiny questions in existing assets. Test data was regenerated. The results below reflect the **post-revision** output. See [Appendix: Prompt Revision Impact](#appendix-prompt-revision-impact) for the before/after comparison.
+**Note on prompt revision:** The initial run identified that strengths-based framing dropped off in Design and Destiny phases (6% strengths-grounded in those phases vs. ~100% in Discovery). A targeted prompt revision was made to `idea-symphony/personas/the-appreciative-inquirer.md`, adding explicit guidance to ground Design questions in discovered strengths and Destiny questions in existing assets. Test data was regenerated. The results below reflect the **post-revision** output. See [Appendix: Prompt Revision Impact](#appendix-prompt-revision-impact) for the before/after comparison.
 
 ---
 
@@ -1604,7 +1604,7 @@ This requires further testing in the end-to-end roster evaluation (P7 from Part 
 
 ### What Changed
 
-A targeted revision to `idea-symphony/references/personas/the-appreciative-inquirer.md` added strengths-grounding guidance to the Design and Destiny phase descriptions:
+A targeted revision to `idea-symphony/personas/the-appreciative-inquirer.md` added strengths-grounding guidance to the Design and Destiny phase descriptions:
 
 - **Design:** Added "ground these in discovered strengths ('Given that X already works well, what structures would amplify it?')"
 - **Destiny:** Added "connect actions to existing assets and capabilities ('Who already has the skills to start this? What resources are already in place?')"

@@ -4,7 +4,7 @@
 **Parent:** `dev/2026-02-21_symphony-question-generation_part2/methodology.md`
 **Inputs:**
 - I-R1 output (Tier 1 persona definition)
-- Existing generic prompt: `idea-symphony/references/prompts/phase2-question-generation-generic.md`
+- Existing generic prompt: `idea-symphony/prompts/phase2B_question-gen_generic.md`
 - Tier 1 subset q05-10 data from all three test topics
 - Existing low-effort test data (if available in `test-runs/`)
 - I-E1 direction on what "low effort" means in terms of persona count/volume
@@ -38,7 +38,7 @@ The core tension: Does isolation at 3-4 personas provide meaningful diversity be
 **Research questions addressed:** RQ12
 
 **Files to analyze / Inputs:**
-- Current generic prompt: `idea-symphony/references/prompts/phase2-question-generation-generic.md` (baseline for comparison)
+- Current generic prompt: `idea-symphony/prompts/phase2B_question-gen_generic.md` (baseline for comparison)
 - Tier 1 output q05-10 data:
   - `test-runs/symphony-phase2-questions-persona-eval/space-party_2026-02-21_q05-10/questions/by-persona/` (all Tier 1 personas)
   - `test-runs/symphony-phase2-questions-persona-eval/tool-library_2026-02-21_q05-10/questions/by-persona/` (all Tier 1 personas)

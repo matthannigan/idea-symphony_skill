@@ -54,7 +54,7 @@ GT1 → O1 → PR1 → PI1
 When authoring the task files, the self-contained subagent prompts need to reference these existing files by path:
 
 - `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` — parent methodology, inputs for every task
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — the selection rubric under test; required input for GT1, O-V1, and O-V2/V3 (as detail reference)
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — the selection rubric under test; required input for GT1, O-V1, and O-V2/V3 (as detail reference)
 - `dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md`, `R6_tier3-volume-quality.md`, `R7_connector-volume-quality.md` — prior findings that ground truth must respect
 - `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` — the 10 test topics (confirmed to exist per R6 task inputs)
 - `dev/2026-02-21_symphony-question-generation_part2/tasks/R6_tier3-volume-quality.md` — structural template to copy; especially the subagent-prompt block format and the "Execution model / Subagent design / Batching strategy / Expected output" shape

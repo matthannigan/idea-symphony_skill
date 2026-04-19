@@ -136,7 +136,7 @@ helpful right now?
 
 - If user confirms suggestion → proceed with that effort level
 - If user asks for different level → use their preference
-- If user asks for more detail → read `[skill]/references/effort-level-guidance.md` and present relevant sections
+- If user asks for more detail → read `[skill]/guidance/phase1_effort-level.md` and present relevant sections
 - If user is uncertain → present the ambiguous case question above
 - Default to `low` if all else fails
 

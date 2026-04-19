@@ -7,8 +7,8 @@
 - Ground truth — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md`
 - PR1 final refined prompt — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/PR1_refined-orchestrator-prompt.md`
 - PR1 compiled log — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/PR1_prompt-refinement.md` (final accuracy benchmarks, residual limitations)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Effort Level Mapping tables — volume ranges by effort)
-- Idea Symphony SKILL — `idea-symphony/SKILL.md` (destination for the final orchestrator instructions) and `idea-symphony/references/prompts/` (alternative destination as a referenced prompt file)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (Effort Level Mapping tables — volume ranges by effort)
+- Idea Symphony SKILL — `idea-symphony/SKILL.md` (destination for the final orchestrator instructions) and `idea-symphony/prompts/` (alternative destination as a referenced prompt file)
 
 ---
 
@@ -81,7 +81,7 @@ Per `findings/PR1_prompt-refinement.md`, PR1's final prompt has **one documented
 - **RQ-PI1a (OQ5):** Does the final refined prompt produce PLAN.md roster sections that consistently match the canonical format across all 20 topic-effort combinations?
 - **RQ-PI1b:** Are any format deviations systematic (e.g., the prompt reliably omits the "Effort Level" header) vs. random? Systematic deviations indicate a prompt fix; random deviations are format-checker concerns.
 - **RQ-PI1c:** Does the proposed format (from methodology.md) need any adjustments based on what the prompt actually produces? E.g., should "Selection Rationale" require a specific field structure or remain free-form (see discussion-questions.md Q12)?
-- **RQ-PI1d:** Where should the final prompt live — embedded in SKILL.md or as a referenced prompt file under `idea-symphony/references/prompts/`?
+- **RQ-PI1d:** Where should the final prompt live — embedded in SKILL.md or as a referenced prompt file under `idea-symphony/prompts/`?
 - **RQ-PI1e:** How should low effort be handled? Methodology.md focuses on medium/high; the PLAN.md format mentions low but no ground truth was established for low. Is a separate low-effort template needed?
 
 ---
@@ -120,7 +120,7 @@ You are executing a consistency-validation test run for the Phase 2B orchestrato
 ## Inputs You Have Access To
 
 - `test-runs/symphony-phase2-questions-persona-eval/{TOPIC_NAME}/REQUEST.md` — the per-topic REQUEST file; read its entire body as the REQUEST. (Matches the path structure PR1 used successfully — simpler than extracting a block from `REQUESTS_ALL.md`.)
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — reference material. Access only if the prompt directs you to.
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — reference material. Access only if the prompt directs you to.
 
 ## Final Refined Prompt
 
@@ -145,7 +145,7 @@ You are validating PLAN.md format consistency for the Phase 2B orchestrator-sele
 Read:
 
 1. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` — Phase 4 Expected PLAN.md Roster Section template
-2. `idea-symphony/references/persona-selection-guide_Phase2B.md` — Effort Level Mapping tables (to verify volume ranges are correctly populated)
+2. `idea-symphony/guidance/phase2A_question-gen-personas.md` — Effort Level Mapping tables (to verify volume ranges are correctly populated)
 3. All 20 outputs under `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/PI1_runs/`
 
 ## Format Checklist
@@ -228,7 +228,7 @@ After the validation subagent returns, produce three integration artifacts:
 
 3. **Integration recommendation section** (appended to `findings/PI1_plan-md-integration.md`) — recommends whether the final orchestrator instructions should live:
    - Embedded directly in SKILL.md (compact, single-source, but bloats SKILL.md toward its 500-line soft cap),
-   - As a referenced file at `idea-symphony/references/prompts/phase2b-orchestrator-selection.md` (mirrors the existing prompt-extraction pattern per CLAUDE.md),
+   - As a referenced file at `idea-symphony/prompts/phase2A_question-gen-personas-selection.md` (mirrors the existing prompt-extraction pattern per CLAUDE.md),
    - Or split (short summary in SKILL.md + detailed instructions in a referenced file).
    Justify the choice based on the prompt's length and reusability.
 

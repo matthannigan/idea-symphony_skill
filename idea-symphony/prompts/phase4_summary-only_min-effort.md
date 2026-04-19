@@ -1,6 +1,6 @@
 # Phase 4: Summary Generation (min effort)
 
-**For `min` effort only** — This prompt creates a summary-only synthesis from the single generic brainstormer response. For `low` effort (two-persona consolidation), see [phase4-synthesis-low.md](phase4-synthesis-low.md). For `medium`/`high`, see [phase4-synthesis.md](phase4-synthesis.md).
+**For `min` effort only** — This prompt creates a summary-only synthesis from the single generic brainstormer response. For `low` effort (two-persona consolidation), see [phase4_summary-only_low-effort.md](phase4_summary-only_low-effort.md). For `medium`/`high`, see [phase4_full-synthesis.md](phase4_full-synthesis.md).
 
 ---
 

@@ -13,7 +13,7 @@ Walkthrough of Section 1 (Summary Table) surfaced the None→Single gap (Section
 Matt cited the Accountant persona's own calibration language as grounds for broadening the moderate-trigger bar:
 
 > *"Calibrate your financial depth to the economic complexity of the context — personal or informal projects (a birthday party, a hobby project) need simple budget math and cost-per-unit thinking; commercial or organizational ventures (a SaaS product, a nonprofit, a community service) warrant deeper modeling of revenue streams, operating costs, and financial sustainability. Match the formality of your financial language to the stakes of the decision — a parent choosing between glow sticks and LED lights needs a price comparison, not an ROI calculation"*
-> — `idea-symphony/references/personas/the-accountant.md`
+> — `idea-symphony/personas/the-accountant.md`
 
 This language encodes calibration as *depth of engagement*, not *threshold of engagement*. The persona treats personal/resource-allocation finance as in-scope (just at lighter depth). The Phase 2B selection guide's current strong-trigger language ("financial structure central: business/nonprofit/budget/startup/pricing/revenue/unit economics/funding mechanisms") is stricter than the persona's own operating instruction — a genuine guide gap.
 

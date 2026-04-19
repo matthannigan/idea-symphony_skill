@@ -18,7 +18,7 @@ Subagents (using `general-purpose` type) have full file access. The orchestrator
 │  ┌─────────────────────────────────────────────────────────────────────────┐   |
 │  │ + User's request (from conversation)                                    │   │
 │  │ + Supporting documents (from conversation)                              │   │
-│  │ + references/personas.md (for persona selection only)                   │   │
+│  │ + personas.md (for persona selection only)                   │   │
 │  │                                                                         │   │
 │  │ WRITES: REQUEST.md, PLAN.md, context/* (if supporting docs)             │   │
 │  └─────────────────────────────────────────────────────────────────────────┘   │
@@ -98,8 +98,8 @@ Subagents (using `general-purpose` type) have full file access. The orchestrator
 │      ORCHESTRATOR READS             │     │       SUBAGENTS READ                  │
 ├─────────────────────────────────────┤     ├───────────────────────────────────────┤
 │ • User input (conversation)         │     │ • REQUEST.md                          │
-│ • references/personas.md (Phase 1   │     │ • context/* (supporting docs)         │
-│   for selection guidance only)      │     │ • references/personas/persona-name.md |
+│ • personas.md (Phase 1   │     │ • context/* (supporting docs)         │
+│   for selection guidance only)      │     │ • personas/persona-name.md |
 │ • Directory listings (for paths)    │     │ • questions/by-persona/*              │
 │ • questions/QUESTIONS.md (Phase 5)  │     │ • questions/by-topic/*                │
 │ • synthesis/*_summary.md (Phase 5)  │     │ • responses/*/*                       │
@@ -146,7 +146,7 @@ Subagents (using `general-purpose` type) have full file access. The orchestrator
                     ┌─────────────────────────────────────────┐
                     │         ORCHESTRATOR READS              │
                     ├─────────────────────────────────────────┤
-                    │ • references/personas.md (Phase 1)      │
+                    │ • personas.md (Phase 1)      │
                     │ • questions/QUESTIONS.md (Phase 5)      │
                     │ • synthesis/*_summary.md (Phase 5)      │
                     │ • PLAN.md (resume only)                 │
@@ -159,7 +159,7 @@ Subagents (using `general-purpose` type) have full file access. The orchestrator
                     ├─────────────────────────────────────────┤
                     │ • REQUEST.md                            │
                     │ • context/*                             │
-                    │ • references/personas/persona-name.md   │
+                    │ • personas/persona-name.md   │
                     │ • questions/by-persona/*                │
                     │ • questions/by-topic/*                  │
                     │ • responses/*/*                         │

@@ -13,7 +13,7 @@
 
 ## Revision Log
 
-**Reading order for cold readers:** Start here → `../findings/GT1_ground-truth-assignments.md` (Section 9 for a walkthrough-conclusion summary; Sections 1–8 for full analysis) → `../GT1-review-notes.md` (Rev 2 decision rationale) → `../../../idea-symphony/references/persona-selection-guide_Phase2B.md` (guide under pressure) → R6/R7 findings for background.
+**Reading order for cold readers:** Start here → `../findings/GT1_ground-truth-assignments.md` (Section 9 for a walkthrough-conclusion summary; Sections 1–8 for full analysis) → `../GT1-review-notes.md` (Rev 2 decision rationale) → `../../../idea-symphony/guidance/phase2A_question-gen-personas.md` (guide under pressure) → R6/R7 findings for background.
 
 **Rev 3 — 2026-04-18 — Canonical. Walkthrough review pass complete.** Human walkthrough of `../findings/GT1_ground-truth-assignments.md` sections 1–9 generated 20+ named decisions (2A-8C, 9A-9D) covering confidence calibration, ambiguity scoring, threshold-sensitivity coverage, trap taxonomy, guide-gap framing, A1 handoff, and documentation polish. Status flipped Provisional → Canonical (Decision 9C). No cell-level answers changed in this pass; all flips happened in Rev 2. Rev 3 records the review outcome: 20 cells + 10 Connector/Analogist decisions are approved for downstream consumption by A1, O1, PR1, PI1. Detailed decision log in `../GT1-review-notes.md` (post-Rev 2 walkthrough retrospective).
 

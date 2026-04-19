@@ -4,7 +4,7 @@
 **Parent:** `dev/2026-02-21_symphony-question-generation_part2/methodology.md`
 **Inputs:**
 - V1 per-persona volume-quality (take 2) findings — `findings/V1_per-persona-volume-quality_take2.md`
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md`
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md`
 - 10 Tier 1 persona merged test data files — `test-runs/symphony-phase2-questions-persona-eval/_merged/PERSONA_ALL_{persona}_2026-02-24.md`
 - All topic requests — `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md`
 

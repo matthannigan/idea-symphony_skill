@@ -42,29 +42,25 @@ This repo contains three Claude skills that work together:
 
 ```
 idea-symphony_skill/
-├── idea-symphony/          # Brainstorming skill
+├── idea-symphony/              # Brainstorming skill
 │   ├── SKILL.md
-│   └── references/
-│       ├── personas.md     # Persona index and selection guidance
-│       ├── personas/       # Individual persona prompts (15 total)
-│       ├── prompts/        # Phase prompts
-│       └── templates.md    # Document templates
-├── idea-factory/           # Action planning skill (subagent pattern)
+│   ├── guidance/               # Selection guides (effort level, persona tiers)
+│   ├── personas/               # Individual persona prompts (23 total, "the-*.md")
+│   ├── prompts/                # Phase prompts (min/phase1–phase4)
+│   └── templates/              # Document templates (with index.md)
+│
+├── idea-factory/               # Action planning skill (subagent pattern)
 │   ├── SKILL.md
-│   └── references/
-│       ├── prompts/        # Phase prompts (intake, outline, persona-gen, drafts, synthesis, integration)
-│       └── templates.md    # Document templates
-├── idea-forge/             # Action planning skill (Agent Teams pattern)
-│   ├── SKILL.md
-│   └── references/
-│       ├── prompts/
-│       └── templates.md
-├── docs/                   # Design documents and research
-│   ├── briefing.md         # Comprehensive skill specification
-│   ├── context-window-audit.md
-│   └── dev/                # Development notes and analysis
-├── test-runs/              # Test session outputs
-└── CLAUDE.md               # Project context for Claude Code
+│   ├── prompts/                # Phase prompts (intake, outline, persona-gen, drafts, synthesis, integration)
+│   └── templates.md            # Document templates (single file)
+│
+├── idea-forge/                 # Action planning skill (Agent Teams pattern / in development)
+│
+├── dev/                        # Development notes and analysis
+├── docs/                       # Design documents and research
+├── test-runs/                  # Test session outputs
+│
+└── CLAUDE.md                   # Project context for Claude Code
 ```
 
 ## Installation

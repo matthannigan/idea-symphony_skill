@@ -318,7 +318,7 @@ Since the verdict is keep separate, Phase 2C Step 2.3 (synthesis subagent) and S
 
 4. **Retain `persona-selection-guide_Phase2C.md` as a separate reference file (not inlined into SKILL.md):** File is 387 lines with rich topic-affinity matrix and cluster-relationship maps. Inlining would bloat SKILL.md substantially. Read-on-demand via Read tool is the correct pattern.
 
-5. **No changes required to `references/prompts/`:** Current prompt directory structure aligns with the two-subagent architecture (`phase2-question-synthesis.md` is the SP1 iter3 final; persona-selection is an inline subagent instruction in SKILL.md Phase 2C Step 2.4 that reads the guide file directly).
+5. **No changes required to `prompts/`:** Current prompt directory structure aligns with the two-subagent architecture (`phase2-question-synthesis.md` is the SP1 iter3 final; persona-selection is an inline subagent instruction in SKILL.md Phase 2C Step 2.4 that reads the guide file directly).
 
 6. **Prompt-size check (informational, since keeping separate):** The hypothetical consolidated prompt (SP1 iter3 ~22KB synthesis prompt + `persona-selection-guide_Phase2C.md` ~17KB) would total ~39KB of prompt content — fits a single-subagent context budget comfortably. Prompt size is not the blocker on consolidation. The blocker is the low-effort rubric-departure failure mode.
 
@@ -364,7 +364,7 @@ Since the verdict is keep separate, Phase 2C Step 2.3 (synthesis subagent) and S
 - SP1 §Final Status threshold methodology: `findings/SP1_synthesis-prompt-testing.md`.
 - Condition A outputs: `findings/PC1_runs/condition-a/{topic}_{effort}_synthesis.md` + `..._personas.md` (18 files).
 - Condition B outputs: `findings/PC1_runs/condition-b/{topic}_{effort}.md` (9 files).
-- Persona selection guide (the authoritative rubric): `idea-symphony/references/persona-selection-guide_Phase2C.md` — "Effort Level Mapping" table, line 46.
+- Persona selection guide (the authoritative rubric): `idea-symphony/guidance/phase2D_brainstorming-personas.md` — "Effort Level Mapping" table, line 46.
 - SKILL.md Phase 2C architecture: `idea-symphony/SKILL.md` Phase 2C section (line 378+).
 
 ---

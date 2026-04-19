@@ -35,7 +35,7 @@
 
 ## Step 1: Question Generation
 
-Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-generation-generic.md`.
+Spawn 1 subagent using prompt from `[skill]/prompts/phase2B_question-gen_generic.md`.
 
 **Instructions for subagent:**
 
@@ -64,7 +64,7 @@ Update `PLAN.md` with question generation complete status.
 
 Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
 
-For each topic cluster, spawn 1 subagent using prompt from `[skill]/references/prompts/phase3-brainstorm-generic.md`.
+For each topic cluster, spawn 1 subagent using prompt from `[skill]/prompts/phase3_brainstorm_generic.md`.
 
 **Instructions for each subagent:**
 
@@ -90,7 +90,7 @@ Update `PLAN.md` with brainstorming complete status.
 
 ## Step 3: Summary Generation
 
-Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/references/prompts/phase4-synthesis-min.md`.
+Spawn parallel subagents (1 per topic cluster) using prompt from `[skill]/prompts/phase4_summary-only_min-effort.md`.
 
 **Instructions for each subagent:**
 

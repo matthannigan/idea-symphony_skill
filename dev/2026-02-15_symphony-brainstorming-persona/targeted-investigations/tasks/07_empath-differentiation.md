@@ -37,7 +37,7 @@ Three new personas were created based on convergent findings from the external f
 | **The Simplifier** | Subtractive thinking (additive bias) | Defaults to removal; distinct from First Principles Thinker (deconstruct to rebuild) and Pragmatist (feasibility) |
 | **The Provocateur** | Provocative/absurdist thinking (Lateral Thinking) | Introduces impossible premises; distinct from Devil's Advocate (critiques proposals) and Constraint Flipper (inverts real constraints) |
 
-Prompt files: `idea-symphony/references/personas/the-empath.md`, `the-simplifier.md`, `the-provocateur.md`
+Prompt files: `idea-symphony/personas/the-empath.md`, `the-simplifier.md`, `the-provocateur.md`
 
 ---
 

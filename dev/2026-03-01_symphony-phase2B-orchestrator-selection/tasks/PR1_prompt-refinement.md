@@ -9,7 +9,7 @@
 - O1 compiled findings — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/O1_orchestrator-prompt-variant-testing.md` (winning variant, error patterns, refinement seeds)
 - O1 per-variant reports — `findings/O1_orchestrator-prompt-variant-testing_{reference-only | embedded-triggers | structured-checklist}.md` (detailed error analysis; the winning variant's report is `structured-checklist`)
 - O1 winning variant prompt — `findings/O1_prompts/O-V3_structured-checklist.md` (starting point for iteration 1)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (may be edited in-scope per discussion-questions.md Q10)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (may be edited in-scope per discussion-questions.md Q10)
 
 ---
 
@@ -155,7 +155,7 @@ Propose a MINIMAL prompt-level change targeting the chosen error pattern. Minima
 
 If — and only if — you diagnose that the error is not fixable at the prompt level (the persona selection guide itself has ambiguous trigger language that any prompt would inherit), propose a guide-level edit per `discussion-questions-responses.md` Q10. Guide edits follow these strict rules:
 
-- **Proposals go to a companion file:** `findings/PR1_proposed-guide-edits.md` (single file accumulating across iterations, not `_iter{N}.md`). Each proposal names the cell(s) it fixes, the diagnosis ("prompt cannot fix this — underlying trigger language is ambiguous"), and the exact diff against `idea-symphony/references/persona-selection-guide_Phase2B.md`.
+- **Proposals go to a companion file:** `findings/PR1_proposed-guide-edits.md` (single file accumulating across iterations, not `_iter{N}.md`). Each proposal names the cell(s) it fixes, the diagnosis ("prompt cannot fix this — underlying trigger language is ambiguous"), and the exact diff against `idea-symphony/guidance/phase2A_question-gen-personas.md`.
 - **Do NOT edit the guide file in-place within this subagent.** Applying a guide edit is a separate user-approved step outside this subagent's scope.
 - **If a guide edit is applied** (by the user between iterations), the next iteration MUST re-run the **original O-V1 reference-only prompt** (unmodified `findings/O1_prompts/O-V1_reference-only.md`, NOT the iteration's refined prompt) against the **modified guide** on all 20 cells. O-V1 is chosen because it is the only variant that reads the guide in full — it is the natural check that the guide edit produces the intended behavior without breaking previously-correct cells. Save to `findings/PR1_runs/iter{N}_guide-baseline/{topic}_{effort}.md` and score alongside the iteration's refined-prompt runs. If the baseline shows regressions on previously-correct O-V1 cells, the guide edit is unsound and must be revised or rolled back. This is the cost of touching a shared artifact that R5/R6/R7/R8 depend on.
 - **Silent in-place guide edits are disallowed.**

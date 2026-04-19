@@ -6,7 +6,7 @@
 - Parent methodology — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/methodology.md` (Phase 2 variant descriptions, evaluation metrics, scoring bands)
 - Ground truth — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md` (canonical answer key, output of GT1)
 - GT1 findings — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/findings/GT1_ground-truth-assignments.md` (ambiguous cases, false-positive traps, guide gaps)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (reference input for O-V1; excerpted into O-V2/V3)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (reference input for O-V1; excerpted into O-V2/V3)
 - All topic requests — `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` (10 individual REQUEST.md files to present to orchestrator runs)
 
 ---
@@ -128,7 +128,7 @@ You are executing a single test run for the Phase 2B orchestrator-selection inve
 ## Inputs You Have Access To
 
 - `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` — contains the target topic. Extract only the {TOPIC_NAME} request block.
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — reference material. Access only if the variant prompt directs you to.
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — reference material. Access only if the variant prompt directs you to.
 
 ## Variant Prompt
 

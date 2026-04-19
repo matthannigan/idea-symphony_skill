@@ -33,7 +33,7 @@ Ship two validated changes to the Idea Symphony skill **by editing `SKILL-draft.
 | D3 | Step 2.3 produces a single `QUESTIONS.md`; a shell post-step splits `## Topic Cluster NN` blocks into `questions/by-topic/[NN]_*.md` for Phase 3 consumption. | User |
 | D4 | Category→Stream mapping lives in the synthesis prompt, not in the PI1 roster template. PI1 template is NOT reopened. | User |
 | D5 | C1 Option 1 (BL1 §6.4 recommended default) — flat-with-tags universally; no effort-conditional input format. Matches what SP1 validated. | User |
-| D6 | Rename `references/prompts/phase2-question-synthesis.md` → `phase2c-synthesis.md`. Body replaced with SP1 iter3 prompt (with D8 + D9 output changes). | User |
+| D6 | Rename `prompts/phase2-question-synthesis.md` → `phase2c-synthesis.md`. Body replaced with SP1 iter3 prompt (with D8 + D9 output changes). | User |
 | D7 | SKILL-draft.md Step 2.4 persona-selection instructions explicitly tell the subagent to use the cluster labels from Step 2.3's `QUESTIONS.md`. | User |
 | D8 | Append questions are interleaved verbatim into the topically-closest cluster. No separate Append section, no persona tags visible in `QUESTIONS.md`. Orphans go into a neutral `## Additional Questions` section at the end. | User |
 | D9 | Persona attribution + convergence metadata moves to a `questions-meta.json` sidecar, not visible in `QUESTIONS.md`. | User |
@@ -49,7 +49,7 @@ Ship two validated changes to the Idea Symphony skill **by editing `SKILL-draft.
 Phase 1 — Context Gathering & effort detection (unchanged)
   ↓
 Phase 2 — Question Generation
-  ├─ min effort     → min-workflow.md (unchanged; skips personas)
+  ├─ min effort     → min-effort-workflow.md (unchanged; skips personas)
   └─ low/med/high   → Step 2.1  Roster planning via orchestrator prompt     [REVISED body]
                       Step 2.2  Parallel question generation                [REVISED: stream frontmatter propagation]
                       Step 2.3  Synthesis (QUESTIONS.md + sidecar)          [REVISED prompt + output format]
@@ -99,7 +99,7 @@ Specialist is split per-persona. Politician is the only Append-stream specialist
 
 ## 6. Reference-file changes
 
-### 6.1 Create `idea-symphony/references/prompts/phase2b-orchestrator-selection.md`
+### 6.1 Create `idea-symphony/prompts/phase2A_question-gen-personas-selection.md`
 
 Four sections, in order:
 
@@ -122,7 +122,7 @@ evaluation still applies. The Synthesize/Append split still applies.
 
 (Note: the validated PR1 prompt was scored on medium/high; low is included in the draft's Step 2.1 flow, so the low-effort behavior here follows the existing guide. This is a known-scope extension and is flagged in §9.)
 
-### 6.2 Create `idea-symphony/references/prompts/phase2c-synthesis.md`
+### 6.2 Create `idea-symphony/prompts/phase2C_question-synthesis.md`
 
 This is `SP1_refined-synthesis-prompt.md` (SP1 iter3, starting at "You are a strategic brainstorming facilitator...") with **three targeted changes** to implement D8 (interleaved output), D9 (meta sidecar), and D4/D5 (Category→Stream mapping):
 
@@ -258,7 +258,7 @@ The sidecar is the authoritative audit trail. Future investigations and skill te
 
 ### 6.3 Update persona files with stream + category frontmatter
 
-Each of these persona files (`idea-symphony/references/personas/the-*.md`) gets new YAML frontmatter at the top. Frontmatter is additive; file body is unchanged.
+Each of these persona files (`idea-symphony/personas/the-*.md`) gets new YAML frontmatter at the top. Frontmatter is additive; file body is unchanged.
 
 **Question-generating personas** (add `stream`, `category`, `phase-role`):
 
@@ -315,7 +315,7 @@ Notes:
 - `phase-role: question-generation-only` marks Phase 2-only personas. They are excluded from Step 2.4 persona selection.
 - The existing `the-analyst.md.bak` legacy backup file can be deleted if confirmed unused; not required by this TDR.
 
-### 6.4 Delete `idea-symphony/references/prompts/phase2-question-synthesis.md`
+### 6.4 Delete `idea-symphony/prompts/phase2-question-synthesis.md`
 
 Fully replaced by `phase2c-synthesis.md` (per D6). Delete after `phase2c-synthesis.md` is created and verified.
 
@@ -335,12 +335,12 @@ Replace the entire body of Step 2.1 (from the paragraph after the step header th
 The orchestrator produces a structured roster section in `PLAN.md` identifying Tier 1 personas, Tier 2 additions (high effort), any Tier 3 specialists selected by trigger strength, and the Connector/Analogist decision. Each persona row includes the Synthesize/Append stream assignment used by Step 2.3.
 
 **Orchestrator instructions:** Use the prompt at
-`[skill]/references/prompts/phase2b-orchestrator-selection.md`.
+`[skill]/prompts/phase2A_question-gen-personas-selection.md`.
 
 **Inputs the orchestrator receives:**
 1. `[session]/REQUEST.md` — the topic body
 2. `{EFFORT_LEVEL}` — `low`, `medium`, or `high` (from Phase 1)
-3. Reference: `[skill]/references/persona-selection-guide_Phase2B.md` —
+3. Reference: `[skill]/guidance/phase2A_question-gen-personas.md` —
    consulted only if the prompt directs
 
 **Output:** the orchestrator appends / replaces the
@@ -416,7 +416,7 @@ Replace the entire body of Step 2.3 (from the paragraph after the step header th
 Spawn 1 subagent to consolidate per-persona questions into topic clusters using the Synthesize/Append stream split. The synthesis prompt encodes the cluster targets, compaction ratios, voice-preservation floors, and Append placement rules (all validated in SP1 iter3).
 
 **Synthesis instructions:** Use the prompt at
-`[skill]/references/prompts/phase2c-synthesis.md`.
+`[skill]/prompts/phase2C_question-synthesis.md`.
 
 **Inputs the subagent receives:**
 1. `[session]/questions/by-persona/*.md` — all persona files (subagent Globs
@@ -523,7 +523,7 @@ In the Session Resume table (SKILL-draft.md ~lines 408–415), update rows to re
 
 ### 7.6 `min` effort — no changes
 
-Step 2.1 through 2.4 do not run at `min` effort — `min` uses `references/prompts/min-workflow.md` per the existing architecture. No integration changes to `min`.
+Step 2.1 through 2.4 do not run at `min` effort — `min` uses `prompts/min-effort-workflow.md` per the existing architecture. No integration changes to `min`.
 
 ---
 
@@ -600,24 +600,24 @@ Items accepted at TDR scope; do not block shipping. Each is a future-investigati
 ## 10. Files touched — summary
 
 ### Created
-- `idea-symphony/references/prompts/phase2b-orchestrator-selection.md`
-- `idea-symphony/references/prompts/phase2c-synthesis.md`
+- `idea-symphony/prompts/phase2A_question-gen-personas-selection.md`
+- `idea-symphony/prompts/phase2C_question-synthesis.md`
 - `dev/2026-04-18_phase2B-2C_integration/TDR.md` (this file)
 - `dev/2026-04-18_phase2B-2C_integration/smoke-test-results.md` (produced during §8.2)
 
 ### Modified
 - `idea-symphony/SKILL-draft.md` — targeted revisions to Steps 2.1, 2.2, 2.3, 2.4 + Session Resume table. No renumbering.
-- `idea-symphony/references/personas/the-*.md` (~23 files total) — add `category` / `stream` / `phase-role` frontmatter (19 question-generating personas get all three; 4 brainstorming-only personas get `phase-role` only)
+- `idea-symphony/personas/the-*.md` (~23 files total) — add `category` / `stream` / `phase-role` frontmatter (19 question-generating personas get all three; 4 brainstorming-only personas get `phase-role` only)
 
 ### Deleted
-- `idea-symphony/references/prompts/phase2-question-synthesis.md` (replaced by phase2c-synthesis.md)
+- `idea-symphony/prompts/phase2-question-synthesis.md` (replaced by phase2c-synthesis.md)
 - `dev/2026-03-01_symphony-phase2B-orchestrator-selection/integration-instructions.md` (superseded by this TDR — delete only after TDR execution completes and smoke test passes)
 
 ### NOT touched
 - `idea-symphony/SKILL.md` — **explicitly excluded per D12.** All integration lands in `SKILL-draft.md`.
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — Gap 2 residual is a separate follow-up
-- `idea-symphony/references/persona-selection-guide_Phase2C.md` — finalized; Step 2.4 reads as-is
-- `idea-symphony/references/prompts/min-workflow.md` — `min` effort unchanged
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — Gap 2 residual is a separate follow-up
+- `idea-symphony/guidance/phase2D_brainstorming-personas.md` — finalized; Step 2.4 reads as-is
+- `idea-symphony/prompts/min-effort-workflow.md` — `min` effort unchanged
 - Investigation `findings/`, `tasks/`, `ground-truth/`, `baselines/`, `test-data/` — paper trail stays in `dev/`
 
 ---

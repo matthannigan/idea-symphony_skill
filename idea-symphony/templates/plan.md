@@ -13,7 +13,7 @@ Session configuration, Phase 2 roster plan, and per-phase status log. Updated th
 
 ## Phase 2 Roster Plan
 
-*(For `min` effort: skip this section — the min workflow uses a single generic question generator. See [references/prompts/min-workflow.md](../prompts/min-workflow.md).)*
+*(For `min` effort: skip this section — the min workflow uses a single generic question generator. See [prompts/min-effort-workflow.md](../prompts/min-effort-workflow.md).)*
 
 ### Tier 1 Personas (always included at `low`/`medium`/`high`)
 

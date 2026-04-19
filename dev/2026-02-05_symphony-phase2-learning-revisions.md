@@ -12,7 +12,7 @@
 The original implementation assumed the orchestrator could reference external prompt files:
 
 ```markdown
-Spawn 1 subagent using prompt from `[skill]/references/prompts/phase2-question-synthesis.md`.
+Spawn 1 subagent using prompt from `[skill]/prompts/phase2-question-synthesis.md`.
 ```
 
 **What actually happened:**

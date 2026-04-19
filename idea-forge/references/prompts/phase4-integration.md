@@ -27,7 +27,7 @@ Read every section file. For each, note:
 
 ### Step 2: Create ACTION-PLAN.md
 
-Use the template from `[skill]/references/templates.md`. Write:
+Use the template from `[skill]/templates/index.md`. Write:
 
 **Executive Summary** (3-5 paragraphs):
 - What this plan achieves
@@ -70,7 +70,7 @@ Before saving, verify:
 
 ### Step 4: Create FORGE-SESSION.md
 
-Use the template from `[skill]/references/templates.md`. Include:
+Use the template from `[skill]/templates/index.md`. Include:
 - Team composition table
 - Session summary (2-3 paragraphs)
 - Complete file index with links

@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-18
 **Cells run:** tool-library / low / medium / high
-**Synthesis prompt under test:** `idea-symphony/references/prompts/phase2c-synthesis.md` (SP1 iter3 + Changes A/B/C from TDR §6.2)
+**Synthesis prompt under test:** `idea-symphony/prompts/phase2C_question-synthesis.md` (SP1 iter3 + Changes A/B/C from TDR §6.2)
 **Verdict:** **PASS** — all three cells satisfy §8.2 hard floors. Integration is cleared for the final two steps of TDR §11 execution order.
 
 ---

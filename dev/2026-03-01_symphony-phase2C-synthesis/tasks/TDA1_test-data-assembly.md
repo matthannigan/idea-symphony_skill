@@ -5,7 +5,7 @@
 **Inputs:**
 - Parent methodology — `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` (Phase 1 Assembly Rules, Source Data, Assembly Process, Volume Slicing)
 - Phase 2B ground truth — `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md` (canonical Tier 3 selections + Connector/Analogist swap per topic-effort)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Tier definitions, per-persona volume ranges, Effort Level Mapping, Synthesize/Append split)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (Tier definitions, per-persona volume ranges, Effort Level Mapping, Synthesize/Append split)
 - All topic requests — `test-runs/symphony-phase2-questions-persona-eval/_merged/REQUESTS_ALL.md` (10 topic descriptions, for cross-reference)
 - Source question data — `test-runs/symphony-phase2-questions-persona-eval/` (per-persona per-topic per-volume-tier generated question files at `*_q05-10/`, `*_q10-15/`, `*_q15-20/`)
 - Prior findings — `dev/2026-02-21_symphony-question-generation_part2/findings/V1_tier1-volume-ranges.md`, `D1_dimension-append-rules.md`, `D2_dimension-coverage.md`, `R5_tier2-volume-quality.md`, `R6_tier3-volume-quality.md`, `R7_connector-volume-quality.md` (volume ranges, append rules, dimension coverage — finalized inputs)
@@ -94,7 +94,7 @@ You are assembling test data for the Phase 2C synthesis investigation. You will 
 Read the following files in full:
 
 1. `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` — especially Phase 1 Assembly Rules, Source Data, Assembly Process (A1–A4), Volume Slicing.
-2. `idea-symphony/references/persona-selection-guide_Phase2B.md` — Tier definitions, per-persona volume ranges per effort level, Effort Level Mapping, Synthesize/Append split.
+2. `idea-symphony/guidance/phase2A_question-gen-personas.md` — Tier definitions, per-persona volume ranges per effort level, Effort Level Mapping, Synthesize/Append split.
 3. `dev/2026-03-01_symphony-phase2B-orchestrator-selection/ground-truth/expected-assignments.md` — canonical Tier 3 selections + Connector/Analogist decision for each of 10 topics at medium and high effort. (At low effort no Tier 3 is included per methodology; Connector/Analogist still applies.)
 4. `dev/2026-02-21_symphony-question-generation_part2/findings/V1_tier1-volume-ranges.md`, `R5_tier2-volume-quality.md`, `R6_tier3-volume-quality.md`, `R7_connector-volume-quality.md`, `D1_dimension-append-rules.md`, `D2_dimension-coverage.md` — finalized volume ranges, append rules, dimension coverage (scan for conclusions only).
 

@@ -91,7 +91,7 @@ When there is no deferral and no ambiguity, the field should read `—` (em dash
 
 Every persona's Volume Range cell (Tier 1, Tier 2, and Tier 3 where applicable) matches the Effort Level Mapping table for the run's target effort.
 
-Authoritative reference: `PI1_plan-md-template.md` § "Effort-Level Volume Ranges (authoritative)" — mirrors `idea-symphony/references/persona-selection-guide_Phase2B.md`.
+Authoritative reference: `PI1_plan-md-template.md` § "Effort-Level Volume Ranges (authoritative)" — mirrors `idea-symphony/guidance/phase2A_question-gen-personas.md`.
 
 - **Pass:** 100% match across all persona rows.
 - **Fail:** Any persona's volume range diverges from the mapping for the run's effort level.

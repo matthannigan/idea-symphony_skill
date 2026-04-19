@@ -84,7 +84,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 ### Phase 1: Intake & Scope Definition (Orchestrator)
 
-**Prompt:** `[skill]/references/prompts/phase1-intake.md`
+**Prompt:** `[skill]/prompts/phase1-intake.md`
 
 1. User provides path to a completed Idea Symphony session directory
 2. Read Symphony outputs: `REQUEST.md`, `PLAN.md`, `QUESTIONS.md`, `BRAINSTORM.md`
@@ -115,7 +115,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 ### Phase 2: Outline & Persona Generation (Orchestrator)
 
-**Prompt:** `[skill]/references/prompts/phase2-outline.md`
+**Prompt:** `[skill]/prompts/phase2-outline.md`
 
 #### Step 2A: Structural Outline
 
@@ -130,7 +130,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 #### Step 2B: Persona Generation
 
-**Guidance:** `[skill]/references/prompts/phase3-persona-gen.md`
+**Guidance:** `[skill]/prompts/phase3-persona-gen.md`
 
 **Low effort:** Generate **1 persona** — a single broad domain expert assigned to **all** sections. Still auto-generated and project-specific, but one practical generalist instead of a tension-based team. Skip the multi-perspective team design; focus on creating one persona with broad coverage across the project domain. **Use a title-based name** (e.g., "Civic Innovation Program Director"), not a personal name.
 
@@ -179,7 +179,7 @@ For each outline section, spawn **1 subagent** using the single persona to write
 
 **Output file:** `sections/[NN]_[section-slug].md` (writes directly to sections/, no drafts/ directory)
 
-**Use the low-effort section format** (from `[skill]/references/templates.md`): simplified structure without Key Debate Points or Synthesis Notes. Since there's only one persona, focus on clear recommendations and practical alternatives rather than representing perspective tension.
+**Use the low-effort section format** (from `[skill]/templates.md`): simplified structure without Key Debate Points or Synthesis Notes. Since there's only one persona, focus on clear recommendations and practical alternatives rather than representing perspective tension.
 
 Spawn section drafters in parallel (one per section).
 
@@ -377,7 +377,7 @@ Update `FACTORY-PLAN.md` with Phase 3 complete.
 
 ### Phase 4: Integration (Orchestrator or Subagent)
 
-**Prompt:** `[skill]/references/prompts/phase4-integration.md`
+**Prompt:** `[skill]/prompts/phase4-integration.md`
 
 1. Read all section files from `sections/`
 2. Create `ACTION-PLAN.md`:
@@ -437,10 +437,10 @@ Present resume status to user before continuing.
 
 ## References
 
-- [references/templates.md](references/templates.md) — Document templates for all outputs
-- [references/prompts/phase1-intake.md](references/prompts/phase1-intake.md) — Intake prompt
-- [references/prompts/phase2-outline.md](references/prompts/phase2-outline.md) — Outline generation
-- [references/prompts/phase3-persona-gen.md](references/prompts/phase3-persona-gen.md) — Persona generation guidance
-- [references/prompts/phase3-section-draft.md](references/prompts/phase3-section-draft.md) — Per-persona section drafting
-- [references/prompts/phase3-section-synthesis.md](references/prompts/phase3-section-synthesis.md) — Perspective reconciliation
-- [references/prompts/phase4-integration.md](references/prompts/phase4-integration.md) — Integration prompt
+- [templates.md](templates.md) — Document templates for all outputs
+- [prompts/phase1-intake.md](prompts/phase1-intake.md) — Intake prompt
+- [prompts/phase2-outline.md](prompts/phase2-outline.md) — Outline generation
+- [prompts/phase3-persona-gen.md](prompts/phase3-persona-gen.md) — Persona generation guidance
+- [prompts/phase3-section-draft.md](prompts/phase3-section-draft.md) — Per-persona section drafting
+- [prompts/phase3-section-synthesis.md](prompts/phase3-section-synthesis.md) — Perspective reconciliation
+- [prompts/phase4-integration.md](prompts/phase4-integration.md) — Integration prompt

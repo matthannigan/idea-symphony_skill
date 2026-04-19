@@ -98,7 +98,7 @@ Following 12 targeted persona investigations (B1-B12) and cross-investigation sy
 
 ### 2a. The Systems Thinker
 **Source:** Gap #1 from B12 — strongest gap signal across entire evaluation
-**File:** `idea-symphony/references/personas/the-systems-thinker.md`
+**File:** `idea-symphony/personas/the-systems-thinker.md`
 **Core mode:** Map dynamic system interactions — reinforcing/balancing feedback loops, second-order consequences, system archetypes, leverage points
 **Differentiation:**
 - vs Analyst: Analyst does structural decomposition (components); Systems Thinker maps how components *interact dynamically over time*
@@ -108,7 +108,7 @@ Following 12 targeted persona investigations (B1-B12) and cross-investigation sy
 
 ### 2b. The Lawyer
 **Source:** Gap #2 from B12 — regulatory/compliance gap essentially uncovered
-**File:** `idea-symphony/references/personas/the-lawyer.md`
+**File:** `idea-symphony/personas/the-lawyer.md`
 **Core mode:** Identify specific regulatory frameworks, legal requirements, compliance obligations, liability exposure, governance mandates
 **Differentiation:**
 - vs Devil's Advocate: DA raises concerns as open questions; Lawyer identifies *specific* regulations and compliance requirements

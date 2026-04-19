@@ -4,7 +4,7 @@
 **Scope:** 20 PLAN.md outputs from `PI1_runs/` (10 topics × {medium, high}) produced by the PR1 iter2 refined orchestrator prompt.
 **Reference documents:**
 - `methodology.md` Phase 4 Expected PLAN.md Roster Section (provisional template)
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` Effort Level Mapping
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` Effort Level Mapping
 - `findings/PR1_refined-orchestrator-prompt.md` Output Format + Volume-range authoritative table
 
 ---
@@ -231,7 +231,7 @@ The PR1 iter2 refined prompt is ready to be promoted to the canonical Phase 2B o
 **Options considered:**
 
 1. **Embed directly in `idea-symphony/SKILL.md`.** Single-file simplicity; nothing to load at runtime.
-2. **Split out as a referenced file at `idea-symphony/references/prompts/phase2b-orchestrator-selection.md`.** Matches the existing prompt-extraction pattern per CLAUDE.md; keeps SKILL.md lean.
+2. **Split out as a referenced file at `idea-symphony/prompts/phase2A_question-gen-personas-selection.md`.** Matches the existing prompt-extraction pattern per CLAUDE.md; keeps SKILL.md lean.
 3. **Hybrid:** short summary + routing in SKILL.md, full prompt + template in a referenced file.
 
 **Recommendation: Option 2 — referenced file.**
@@ -239,11 +239,11 @@ The PR1 iter2 refined prompt is ready to be promoted to the canonical Phase 2B o
 **Rationale:**
 
 - **Size pressure on SKILL.md.** `idea-symphony/SKILL.md` is currently 715 lines (CLAUDE.md sets a 500-line soft cap and asks maintainers to move content to `references/` when approaching 400). The PR1 iter2 prompt is ~190 lines of instruction + ~80 lines of output template + ~20 lines of volume table = ~290 lines. Embedding it would push SKILL.md past 1,000 lines and make it substantially harder to reason about.
-- **Mirrors existing convention.** Phase 2 question-generation prompts already live as standalone files under `references/prompts/` (e.g., `phase2-question-generation-persona.md`, `phase2-question-synthesis.md`). A sibling file `phase2b-orchestrator-selection.md` is the natural home — nothing new to invent.
+- **Mirrors existing convention.** Phase 2 question-generation prompts already live as standalone files under `prompts/` (e.g., `phase2-question-generation-persona.md`, `phase2-question-synthesis.md`). A sibling file `phase2b-orchestrator-selection.md` is the natural home — nothing new to invent.
 - **Reusability.** The prompt + the PLAN.md template together are a drop-in orchestration component. Keeping them in a single referenced file makes the unit of reuse obvious: anyone writing a regression test, a new effort-level variant, or a downstream consumer reads one file.
 - **Hybrid is not worth the duplication.** A short summary in SKILL.md adds ~10 lines but also adds a second copy of the routing rules that can drift from the prompt. Phase 2B's trigger evaluation is not a routing decision SKILL.md needs to explain in advance — it's the work product of the orchestrator step. SKILL.md can simply reference the file at the point where Phase 2B is invoked.
 
-**Proposed filename:** `idea-symphony/references/prompts/phase2b-orchestrator-selection.md`
+**Proposed filename:** `idea-symphony/prompts/phase2A_question-gen-personas-selection.md`
 
 **Proposed file content (assembled from PI1 artifacts):**
 
@@ -256,7 +256,7 @@ The PR1 iter2 refined prompt is ready to be promoted to the canonical Phase 2B o
 
 ```
 For medium/high effort runs, the orchestrator follows the prompt and PLAN.md
-template at `references/prompts/phase2b-orchestrator-selection.md`. Output is
+template at `prompts/phase2A_question-gen-personas-selection.md`. Output is
 the `## Phase 2B: Question Generation Roster` block inserted into the
 session's PLAN.md.
 ```
@@ -273,7 +273,7 @@ Low-effort runs do not invoke the orchestrator (Analogist fixed, no Tier 3 evalu
 
 | Artifact | Source | Destination |
 |---|---|---|
-| Orchestrator prompt body | `findings/PR1_refined-orchestrator-prompt.md` Steps 1–4 + Inputs | `idea-symphony/references/prompts/phase2b-orchestrator-selection.md` |
+| Orchestrator prompt body | `findings/PR1_refined-orchestrator-prompt.md` Steps 1–4 + Inputs | `idea-symphony/prompts/phase2A_question-gen-personas-selection.md` |
 | PLAN.md roster template (medium/high) | `findings/PI1_plan-md-template.md` § Medium/High Effort Template | Same file, "Output Format" section |
 | Effort-Level Volume Ranges table | `findings/PI1_plan-md-template.md` § authoritative table | Same file, "Volume Ranges" section |
 | Format checker (ongoing) | `findings/PI1_format-checker.md` | Keep in `dev/2026-03-01_.../findings/` for reuse by regression tests; not shipped in the skill itself |

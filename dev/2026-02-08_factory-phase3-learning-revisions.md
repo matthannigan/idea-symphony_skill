@@ -16,7 +16,7 @@ Factory Phase 3 exhibited the identical problem we solved in Symphony Phase 2:
 ```markdown
 #### Step 3A: Independent Drafts
 
-**Prompt:** `[skill]/references/prompts/phase3-section-draft.md`
+**Prompt:** `[skill]/prompts/phase3-section-draft.md`
 
 For each outline section:
 1. Identify assigned personas (from persona files)
@@ -196,7 +196,7 @@ This is the **second time** we've encountered and solved this orchestrator patte
 
 **Symptom:**
 ```markdown
-**Prompt:** `[skill]/references/prompts/phase-name.md`
+**Prompt:** `[skill]/prompts/phase-name.md`
 
 For each X:
 1. Spawn subagent that [vague instruction]
@@ -353,7 +353,7 @@ Explicitly stating file sizes (11-17K summaries, 24-34K synthesis) helps:
 
 ### 1. Can We Make Orchestrator Read Reference Files?
 
-**Current assumption:** Orchestrator doesn't read files referenced as `[skill]/references/prompts/file.md`.
+**Current assumption:** Orchestrator doesn't read files referenced as `[skill]/prompts/file.md`.
 
 **Question:** Is there a way to make orchestrator read and use these files?
 
@@ -393,7 +393,7 @@ Explicitly stating file sizes (11-17K summaries, 24-34K synthesis) helps:
 ### Before (Vague Reference)
 
 ```markdown
-**Prompt:** `[skill]/references/prompts/phase3-section-draft.md`
+**Prompt:** `[skill]/prompts/phase3-section-draft.md`
 
 For each outline section:
 1. Identify assigned personas (from persona files)

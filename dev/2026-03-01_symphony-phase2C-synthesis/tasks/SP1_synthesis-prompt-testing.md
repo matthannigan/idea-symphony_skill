@@ -6,8 +6,8 @@
 - Parent methodology — `dev/2026-03-01_symphony-phase2C-synthesis/methodology.md` (Phase 3 Variants table, Testing Protocol, Metrics table, Iteration rules)
 - TDA1 assembled test files — `dev/2026-03-01_symphony-phase2C-synthesis/test-data/[topic-slug]_[effort].md` (30 files)
 - BL1 baselines — `dev/2026-03-01_symphony-phase2C-synthesis/baselines/*` (cluster, convergence, target, append-target artifacts) + `findings/BL1_baseline-establishment.md` (cross-topic benchmarks, C1 recommendation, subset recommendation)
-- Current synthesis prompt — `idea-symphony/references/prompts/phase2-question-synthesis.md` (base for S-V1)
-- Persona selection guide — `idea-symphony/references/persona-selection-guide_Phase2B.md` (Synthesize/Append split; tier definitions — variant prompts excerpt from this)
+- Current synthesis prompt — `idea-symphony/prompts/phase2-question-synthesis.md` (base for S-V1)
+- Persona selection guide — `idea-symphony/guidance/phase2A_question-gen-personas.md` (Synthesize/Append split; tier definitions — variant prompts excerpt from this)
 - Append rules — `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` (round-robin Append selection for S-V2 and S-V3)
 - Dimension coverage — `dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md` (dimension balance for variant guidance)
 
@@ -77,7 +77,7 @@ Each variant prompt must include:
 - Input specification (test file format, what the subagent receives)
 - Output specification (cluster-organized question list, with attribution conventions per D1 integration notes)
 - Variant-specific guidance:
-  - **S-V1:** Start from `idea-symphony/references/prompts/phase2-question-synthesis.md` verbatim. Add a minimal Append-handling section that references D1's round-robin rules. No other restructuring.
+  - **S-V1:** Start from `idea-symphony/prompts/phase2-question-synthesis.md` verbatim. Add a minimal Append-handling section that references D1's round-robin rules. No other restructuring.
   - **S-V2:** Rewrite with two explicit processing sections: "Synthesize Section" (convergence analysis, merger rules, representation requirements) and "Append Section" (round-robin selection, tagging conventions). Define convergence criteria explicitly. Pull selection guide excerpts inline rather than referencing.
   - **S-V3:** Build on S-V2. Add: expected cluster count range by effort level (BL1 §1), expected compaction ratio range by effort level (BL1 §3), persona representation floor requirements (BL1 §5 — including the hard AI-orphan floor and ST-archetype-verbatim floor), dimension balance target bands keyed to topic class (BL1 §4.3), and the BL1 §6 input-presentation recommendation — flat-with-tags pooling plus an explicit low-effort voice-preservation instruction naming the five at-risk voice registers (Appreciative Inquirer strengths-based, Audience Advocate structural-equity, Systems Thinker named archetypes, Empath emotional-interior, Tier 3 specialty vocabulary: Accountant dollar specifics / Lawyer named statutes / Technical Expert engineering specifics / Politician political-analytical vocabulary). Include a "structural check before finalizing output" step that verifies cluster count, compaction, dimension balance, and per-persona minimum representation against the BL1 bands.
 
@@ -138,7 +138,7 @@ Starting from the winner + cross-variant error patterns + stability report, iter
 
 **Structural-shift caveat (BL1 §6a.11):** All three subset topics (tool-library, mobile-app, school-consolidation) exhibit structural shifts between effort levels — new clusters emerging, convergence density inverting, dimension balance swinging — rather than pure volume growth. A refinement that fixes an error at one effort level may not transfer to other efforts on the same topic. When proposing a refinement, check whether the target error pattern appears at a single effort level or across effort levels; prefer refinements that address error patterns spanning at least two effort levels.
 
-**Escalation Path:** If iteration 3 (or iteration 4 under extension) still fails multiple thresholds, do NOT continue iterating. Escalate to a guide-level edit proposal — candidate guide being `idea-symphony/references/persona-selection-guide_Phase2B.md` (Synthesize/Append split) or `idea-symphony/references/prompts/phase2-question-synthesis.md` structure. Guide edits are a separate scope from SP1 prompt refinement.
+**Escalation Path:** If iteration 3 (or iteration 4 under extension) still fails multiple thresholds, do NOT continue iterating. Escalate to a guide-level edit proposal — candidate guide being `idea-symphony/guidance/phase2A_question-gen-personas.md` (Synthesize/Append split) or `idea-symphony/prompts/phase2-question-synthesis.md` structure. Guide edits are a separate scope from SP1 prompt refinement.
 
 ### Generation Subagent Prompt
 
@@ -154,7 +154,7 @@ You are executing a single test run for the Phase 2C synthesis investigation. Yo
 ## Inputs You Have Access To
 
 - `dev/2026-03-01_symphony-phase2C-synthesis/test-data/{TOPIC_NAME}_{EFFORT}.md` — the input questions (persona-grouped with attribution headers)
-- `idea-symphony/references/persona-selection-guide_Phase2B.md` — Synthesize/Append split. Access only if the variant prompt directs you to.
+- `idea-symphony/guidance/phase2A_question-gen-personas.md` — Synthesize/Append split. Access only if the variant prompt directs you to.
 - `dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md` — round-robin rules. Access only if the variant prompt references it.
 
 ## Variant Prompt

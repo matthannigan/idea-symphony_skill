@@ -1,12 +1,12 @@
-# Persona Selection Guide (Phase 2B)
+# Persona Selection Guide (Phase 2A)
 
-This document provides the orchestrator with structured guidance for selecting question-generation personas and setting per-persona volume targets in Phase 2B.
+This document provides the orchestrator with structured guidance for selecting question-generation personas and setting per-persona volume targets in Phase 2A.
 
 ---
 
 ## Tier 1 Question Personas (10)
 
-Phase 2B draws from a pool of 10 personas validated for question generation. These personas are at the core of all Idea Symphony question generation. While other personas are also sometimes additive, most Idea Symphony brainstorms will be driven by questions created by these personas.
+Phase 2A draws from a pool of 10 personas validated for question generation. These personas are at the core of all Idea Symphony question generation. While other personas are also sometimes additive, most Idea Symphony brainstorms will be driven by questions created by these personas.
 
 ### Per-Persona Guidance
 
@@ -86,7 +86,7 @@ These personas should not be included in any question generations.
 | **Momentum Builder** | ~59% generative / 41% convergent question mix. Many questions embed implementation scaffolding — seed idea → elaboration → aspirational extension within a single question, reducing open-endedness. | Without live facilitation, long elaborative questions crowd the question space and bias downstream responses. Phase 3 is the natural home where progressive elaboration is the goal. |
 | **Pragmatist** | Primarily convergent and feasibility-focused; its questions narrow territory. Low-volume, low-variance persona with focus on implementation, MVP, and realistic constraints. | If placed too early or overrepresented, prematurely converges the question space. Better as an answer persona in Phase 3 where it provides counterweight to Visionary and Provocateur. |
 | **Simplifier** | **Fully excluded — no conditional retention.** ~60-65% of questions are convergent evaluations (“What if we removed X?”) that narrow rather than expand the possibility space. Cross-persona viability test on the Simplifier's strongest possible trigger topic (mobile-app) found 0 of 27 questions covering territory unaddressed by other personas. The Constraint Flipper covers simplification territory with a generative rather than convergent orientation (“What if this constraint is an advantage?” vs “What if we removed X?”). | ~50-60% overlap with Analyst (highest of any persona pair). Filler onset at ~9 questions — lowest ceiling of any persona tested. Youth-mentorship safety concern: subtractive lens misapplied to safeguards for vulnerable populations. Redirect strengths to Phase 3 scope assessment. |
-| **Synthesizer** | Primary value is in Phase 4 synthesis rather than initial question generation. Question outputs lean heavily toward meta-process and convergent focusing rather than raw divergence. | Reserve for Phase 4 or special meta-question tasks (e.g., “what are we not asking?”) rather than standard Phase 2B question lists. Could be experimented with as a meta-question subagent to counter anchoring effects from early personas, but this is a distinct architectural role. |
+| **Synthesizer** | Primary value is in Phase 4 synthesis rather than initial question generation. Question outputs lean heavily toward meta-process and convergent focusing rather than raw divergence. | Reserve for Phase 4 or special meta-question tasks (e.g., “what are we not asking?”) rather than standard Phase 2A question lists. Could be experimented with as a meta-question subagent to counter anchoring effects from early personas, but this is a distinct architectural role. |
 
 ---
 
@@ -118,7 +118,7 @@ These personas should not be included in any question generations.
 
 ### Tier 1 Analytical Personas (Synthesized)
 
-Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2B depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
+Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
 
 | Persona | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
@@ -131,7 +131,7 @@ Analytical personas (**Questioner**, **Analyst**) generate a variable number of 
 
 ### Tier 1 Structural Personas (Synthesized)
 
-Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2B depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
+Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See [D2: Analytical and Structural Effort Mapping](../../dev/2026-02-21_symphony-question-generation_part2/findings/D2_analytical-structural-effort-mapping.md) for full rationale.
 
 | Personas | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
@@ -147,7 +147,7 @@ Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thin
 
 ### Tier 1 Perspective Personas (Appended)
 
-Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2B regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts. See [D1: Perspective Persona Append Strategy](../../dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md) for full analysis.
+Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2A regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts. See [D1: Perspective Persona Append Strategy](../../dev/2026-02-21_symphony-question-generation_part2/findings/D1_perspective-persona-append-strategy.md) for full analysis.
 
 | Personas | Effort | Generate | Phase 2C Method | Append per Persona | Selection Method |
 |:---|:---|:---|:---|:---|:---|
@@ -157,7 +157,7 @@ Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storytell
 
 ### Tier 2 Question Personas (Mixed Methods)
 
-Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2B only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs. See [R5: Tier 2 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md) for full analysis.
+Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2A only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs. See [R5: Tier 2 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R5_tier2-volume-quality.md) for full analysis.
 
 | Persona | Tier | Effort | Generate | Phase 2C Method | Append per Persona | Notes |
 |:---|:---|:---|:---|:---|:---|:---|
@@ -168,7 +168,7 @@ Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles
 
 ### Tier 3 Question Personas (Mixed Methods)
 
-Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2B, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See [R6: Tier 3 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R6_tier3-volume-quality.md) for full analysis.
+Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2A, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See [R6: Tier 3 Volume-Quality](../../dev/2026-02-21_symphony-question-generation_part2/findings/R6_tier3-volume-quality.md) for full analysis.
 
 | Persona | Effort | Generate | Phase 2C Method | Selection Trigger | Notes |
 |:---|:---|:---|:---|:---|:---|
@@ -227,7 +227,7 @@ Use these hints when choosing the non-core personas for medium and high effort s
 
 ## Phase 2C Downstream Implications
 
-Phase 2B persona selection affects how questions flow into Phase 2C synthesis. Personas fall into two groups based on how their questions should be handled downstream.
+Phase 2A persona selection affects how questions flow into Phase 2C synthesis. Personas fall into two groups based on how their questions should be handled downstream.
 
 ### Synthesize Group
 
@@ -303,4 +303,4 @@ The minimum useful volume is **8 questions** for standard question generation. B
 ---
 
 **Last Updated:** 2026-02-25
-**Based on:** V1 per-persona volume-quality analysis (take 2), Phase 2B prompt refinement research, external research coverage mapping, targeted investigations I01-I05/I11-I15, head-to-head comparisons R1 (Audience Advocate vs Empath), R2 (Systems Thinker vs FPT), R3 (Accountant financial coverage), D1 (Perspective Persona Append Strategy), D2 (Analytical/Structural Effort Mapping), R5 (Tier 2 Volume-Quality), R6 (Tier 3 Volume-Quality), R7 (Connector vs Analogist Head-to-Head), R8 (Tier 1 Volume-Quality Validation)
+**Based on:** V1 per-persona volume-quality analysis (take 2), Phase 2A prompt refinement research, external research coverage mapping, targeted investigations I01-I05/I11-I15, head-to-head comparisons R1 (Audience Advocate vs Empath), R2 (Systems Thinker vs FPT), R3 (Accountant financial coverage), D1 (Perspective Persona Append Strategy), D2 (Analytical/Structural Effort Mapping), R5 (Tier 2 Volume-Quality), R6 (Tier 3 Volume-Quality), R7 (Connector vs Analogist Head-to-Head), R8 (Tier 1 Volume-Quality Validation)

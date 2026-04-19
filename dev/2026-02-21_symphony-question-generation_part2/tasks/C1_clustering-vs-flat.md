@@ -5,7 +5,7 @@
 **Inputs:**
 - Clustered persona output: `test-runs/symphony-phase2-questions-persona-eval/tool-library_2026-02-21_q15-20/questions/by-persona/` (all Tier 1 personas)
 - Flat-list version (to be derived as part of investigation)
-- Phase 2C synthesis prompt: `idea-symphony/references/prompts/phase2-question-synthesis.md`
+- Phase 2C synthesis prompt: `idea-symphony/prompts/phase2-question-synthesis.md`
 - Phase 2C synthesis outputs for tool-library topic (clustered version)
 
 ---
@@ -44,7 +44,7 @@ The user is willing to drop pre-clustering entirely if evidence shows it doesn't
 **Files to analyze / Inputs:**
 - Clustered version (source data): `test-runs/symphony-phase2-questions-persona-eval/tool-library_2026-02-21_q15-20/questions/by-persona/` (all 8 Tier 1 personas)
 - Flat version (to be created): same questions, `##` headings removed, questions listed under simple persona name headings
-- Phase 2C synthesis prompt: `idea-symphony/references/prompts/phase2-question-synthesis.md` (held constant between conditions)
+- Phase 2C synthesis prompt: `idea-symphony/prompts/phase2-question-synthesis.md` (held constant between conditions)
 - Phase 2C synthesis output (clustered condition): from `test-runs/symphony-phase2-questions-persona-eval/tool-library_2026-02-21_q15-20/synthesis/` or similar path
 - Tool-library topic briefing (for context)
 

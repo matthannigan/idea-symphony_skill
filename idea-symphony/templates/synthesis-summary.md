@@ -112,6 +112,6 @@ At `low` effort the Key Considerations section restructures around the productiv
 
 Each Phase 4 prompt is authoritative for the exact summary shape its subagent should produce — consult the prompt when in doubt:
 
-- [phase4-synthesis-min.md](../prompts/phase4-synthesis-min.md) — `min` effort (single-voice summarization)
-- [phase4-synthesis-low.md](../prompts/phase4-synthesis-low.md) — `low` effort (DA + Pragmatist consolidation, restructured Key Considerations)
-- [phase4-synthesis.md](../prompts/phase4-synthesis.md) — `medium`/`high` (full multi-persona synthesis, richest form)
+- [phase4-synthesis-min.md](../prompts/phase4_summary-only_min-effort.md) — `min` effort (single-voice summarization)
+- [phase4-synthesis-low.md](../prompts/phase4_summary-only_low-effort.md) — `low` effort (DA + Pragmatist consolidation, restructured Key Considerations)
+- [phase4-synthesis.md](../prompts/phase4_full-synthesis.md) — `medium`/`high` (full multi-persona synthesis, richest form)

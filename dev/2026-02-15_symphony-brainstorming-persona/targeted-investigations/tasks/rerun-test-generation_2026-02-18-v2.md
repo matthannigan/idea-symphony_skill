@@ -52,14 +52,14 @@ For each persona (4) x each topic (3) x each topic cluster (4) = **48 subagent r
 
 ### Per-run instructions
 
-Spawn a subagent (Haiku model, `general-purpose` type) with the following prompt structure. Use the Phase 3 brainstorm persona prompt from `idea-symphony/references/prompts/phase3-brainstorm-persona.md`.
+Spawn a subagent (Haiku model, `general-purpose` type) with the following prompt structure. Use the Phase 3 brainstorm persona prompt from `idea-symphony/prompts/phase3_brainstorm_by-persona.md`.
 
 **Subagent prompt template:**
 
 ```
 You are a brainstorming participant. Follow these instructions exactly:
 
-1. Read the persona prompt at: idea-symphony/references/personas/[persona-name].md
+1. Read the persona prompt at: idea-symphony/personas/[persona-name].md
    Fully adopt this persona's perspective, voice, and priorities.
 
 2. Read the project context at: test-runs/persona-eval-[topic]_2026-02-18/REQUEST.md

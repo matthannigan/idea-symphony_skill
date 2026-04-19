@@ -9,7 +9,7 @@
 
 ## Revision Log
 
-**Reading order for cold readers:** Start at the ground-truth file (`../ground-truth/expected-assignments.md`) → return here and read Section 9 (walkthrough-conclusion summary) → Sections 1–8 for detail → `../GT1-review-notes.md` (Rev 2 decision rationale and walkthrough retrospective) → `../../../idea-symphony/references/persona-selection-guide_Phase2B.md` (guide under pressure) → R6/R7 findings for background.
+**Reading order for cold readers:** Start at the ground-truth file (`../ground-truth/expected-assignments.md`) → return here and read Section 9 (walkthrough-conclusion summary) → Sections 1–8 for detail → `../GT1-review-notes.md` (Rev 2 decision rationale and walkthrough retrospective) → `../../../idea-symphony/guidance/phase2A_question-gen-personas.md` (guide under pressure) → R6/R7 findings for background.
 
 **Rev 3 — 2026-04-18 — Canonical. Walkthrough review pass complete.** Human walkthrough of Sections 1–9 generated 20+ named decisions across 9 sections. Section-level changes in Rev 3 (no cell-level answers flipped — all cell flips happened in Rev 2):
 - Section 2: table arithmetic corrected (14H/6M → 15H/5M — underlying counts were always 15/5; Rev 1 table was mis-labeled).
@@ -220,7 +220,7 @@ Candidates for PR1 proposals (via `findings/PR1_proposed-guide-edits.md` per Q10
 
 **Location:** Selection guide Tier 3 Accountant row — "Include only for topics where financial structure is central (business models, funding mechanisms, community budgeting). Topic keywords that increase selection priority: 'business,' 'nonprofit,' 'budget,' 'startup,' 'pricing,' 'revenue.'" — also mirrored in the "Selection Trigger" column of the Tier 3 effort table: "Financial structure central: 'business,' 'nonprofit,' 'budget,' 'startup,' 'pricing,' 'revenue.'"
 
-**Problem:** The Accountant persona file (`idea-symphony/references/personas/the-accountant.md`) instructs the persona to engage at *calibrated depth* across personal, commercial, and organizational contexts:
+**Problem:** The Accountant persona file (`idea-symphony/personas/the-accountant.md`) instructs the persona to engage at *calibrated depth* across personal, commercial, and organizational contexts:
 
 > "Calibrate your financial depth to the economic complexity of the context — personal or informal projects (a birthday party, a hobby project) need simple budget math and cost-per-unit thinking; commercial or organizational ventures (a SaaS product, a nonprofit, a community service) warrant deeper modeling of revenue streams, operating costs, and financial sustainability. Match the formality of your financial language to the stakes of the decision — a parent choosing between glow sticks and LED lights needs a price comparison, not an ROI calculation"
 
