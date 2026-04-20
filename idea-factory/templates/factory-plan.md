@@ -99,7 +99,7 @@ symphony_session: [path to Symphony session directory]
 
 **Independent Drafts:**
 - [N] drafts per section × [M] sections = [total] draft files created
-- Drafts saved to `drafts/[NN]_[section-slug]/[persona-slug].md`
+- Drafts saved to `drafts/{{section_slug}}/{{persona_slug}}.md`
 - [Note any issues, missing drafts, or quality observations]
 
 ### [YYYY-MM-DD] - Phase 3B Complete

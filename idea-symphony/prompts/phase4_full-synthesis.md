@@ -22,9 +22,9 @@ Consolidate diverse brainstorming responses into three synthesis documents for a
 
 **Step-by-step process:**
 
-1. **Read context**: Read `[session]/REQUEST.md` for the original brainstorming request and examine any additional files mentioned
-2. **Read questions**: Read `[session]/questions/by-topic/[NN]_[topic].md` for the questions in this topic cluster
-3. **Read all responses**: Read all files in `[session]/responses/[NN]_[topic]/` for participant responses (4 personas for medium, 7 for high)
+1. **Read context**: Read `{{session}}/REQUEST.md` for the original brainstorming request and examine any additional files mentioned
+2. **Read questions**: Read `{{session}}/questions/by-topic/{{cluster_slug}}.md` for the questions in this topic cluster
+3. **Read all responses**: Read all files in `{{session}}/responses/{{cluster_slug}}/` for participant responses (4 personas for medium, 7 for high)
 4. **Track convergence**: Note which personas gave similar responses — convergence signals importance
 5. **Consolidate responses**: For each question, group similar responses and preserve unique insights
 6. **Create three documents**: Attributed version, synthesis-only version, and executive summary
@@ -62,18 +62,18 @@ Create THREE output documents:
 
 ---
 
-### Document 1: synthesis/attributed/[NN]_[topic].md
+### Document 1: synthesis/attributed/{{cluster_slug}}.md
 
 Full synthesis with persona attribution showing both consolidated insights and original responses.
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[medium/high]"
 stage: "Phase 4: Response Synthesis"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 synthesis-type: "attributed"
 ---
 
@@ -123,18 +123,18 @@ synthesis-type: "attributed"
 
 ---
 
-### Document 2: synthesis/[NN]_[topic]_synthesis.md
+### Document 2: synthesis/{{cluster_slug}}_synthesis.md
 
 Same content as Document 1, but with attribution removed for clean reading.
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[medium/high]"
 stage: "Phase 4: Response Synthesis"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 synthesis-type: "synthesis"
 ---
 
@@ -178,18 +178,18 @@ synthesis-type: "synthesis"
 
 ---
 
-### Document 3: synthesis/[NN]_[topic]_summary.md
+### Document 3: synthesis/{{cluster_slug}}_summary.md
 
 Executive summary distilling the most important insights and actions.
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[medium/high]"
 stage: "Phase 4: Response Synthesis"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"
 ---
 
@@ -295,12 +295,12 @@ Aim for 200-400 words total.]
 
 ## File Paths
 
-- Input (context): `[session]/REQUEST.md`
-- Input (questions): `[session]/questions/by-topic/[NN]_[topic-slug].md`
-- Input (responses): `[session]/responses/[NN]_[topic-slug]/[persona-name].md` (one per persona)
-- Output 1 (attributed): `[session]/synthesis/attributed/[NN]_[topic-slug].md`
-- Output 2 (synthesis): `[session]/synthesis/[NN]_[topic-slug]_synthesis.md`
-- Output 3 (summary): `[session]/synthesis/[NN]_[topic-slug]_summary.md`
+- Input (context): `{{session}}/REQUEST.md`
+- Input (questions): `{{session}}/questions/by-topic/{{cluster_slug}}.md`
+- Input (responses): `{{session}}/responses/{{cluster_slug}}/{{persona_slug}}.md` (one per persona)
+- Output 1 (attributed): `{{session}}/synthesis/attributed/{{cluster_slug}}.md`
+- Output 2 (synthesis): `{{session}}/synthesis/{{cluster_slug}}_synthesis.md`
+- Output 3 (summary): `{{session}}/synthesis/{{cluster_slug}}_summary.md`
 
 ## Important Notes
 

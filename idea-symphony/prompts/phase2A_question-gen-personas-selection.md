@@ -13,8 +13,8 @@ You will work through the checklist below in order. Do NOT skip steps or reorder
 
 ## Inputs
 
-1. **Topic request:** {TOPIC_REQUEST}
-2. **Effort level:** {EFFORT_LEVEL}   (medium or high)
+1. **Topic request:** {{topic_request}}
+2. **Effort level:** {{effort_level}}   (medium or high)
 3. **Persona selection guide (reference):** `idea-symphony/guidance/phase2A_question-gen-personas.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
 
 ---
@@ -113,8 +113,8 @@ Keep **Analogist** when:
 
 Take the Step 1 trigger-strength outputs and apply the effort rule:
 
-- If **{EFFORT_LEVEL} = medium**: include only personas with trigger strength = strong. Ceiling: 0 or 1. If two or more strong triggers exist, choose the one most central to the stated brainstorming goal and put the second in Notes as a deferred alternative.
-- If **{EFFORT_LEVEL} = high**: include personas with trigger strength = strong OR moderate. Ceiling: 0, 1, or 2. If three or more qualify, pick the two most central to the stated brainstorming goal; put the third in Notes.
+- If **{{effort_level}} = medium**: include only personas with trigger strength = strong. Ceiling: 0 or 1. If two or more strong triggers exist, choose the one most central to the stated brainstorming goal and put the second in Notes as a deferred alternative.
+- If **{{effort_level}} = high**: include personas with trigger strength = strong OR moderate. Ceiling: 0, 1, or 2. If three or more qualify, pick the two most central to the stated brainstorming goal; put the third in Notes.
 
 **Output:**
 - Final Tier 3 inclusions: [list or "None"]

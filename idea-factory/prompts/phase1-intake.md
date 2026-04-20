@@ -38,7 +38,7 @@ Determine:
 Present a scope summary for user confirmation:
 
 ```
-I've reviewed the Idea Symphony session for [topic].
+I've reviewed the Idea Symphony session for {{topic}}.
 
 **Original intent:** [1-2 sentences]
 
@@ -57,7 +57,7 @@ I've reviewed the Idea Symphony session for [topic].
 
 Does this scope look right? You can adjust focus areas — for example,
 "focus on logistics and activities, skip operations" or "add more
-detail on [topic]."
+detail on {{topic}}."
 ```
 
 ### Step 4: Ask About Output Format
@@ -94,8 +94,8 @@ Present the suggestion with rationale. Default to medium if unclear.
 
 After user confirms scope, output format, and effort level:
 
-1. Create `{{session_path}}/FACTORY-PLAN.md` using the template at `[skill]/templates/factory-plan.md`
-2. Create `{{session_path}}/SCOPE.md` using the template at `[skill]/templates/scope.md`
+1. Create `{{session_path}}/FACTORY-PLAN.md` using the template at `{{skill}}/templates/factory-plan.md`
+2. Create `{{session_path}}/SCOPE.md` using the template at `{{skill}}/templates/scope.md`
 3. Update FACTORY-PLAN.md Phase 1 status to complete
 
 ## Quality Gate

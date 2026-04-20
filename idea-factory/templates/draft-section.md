@@ -1,6 +1,6 @@
 # Per-Persona Section Draft Template
 
-Independent section draft produced in Phase 3A by each assigned persona. One file per persona per section. Saved to `drafts/[NN]_[section-slug]/[persona-slug].md`. Used only at medium/high effort — low effort skips drafts and writes directly to `sections/`.
+Independent section draft produced in Phase 3A by each assigned persona. One file per persona per section. Saved to `drafts/{{section_slug}}/{{persona_slug}}.md`. Used only at medium/high effort — low effort skips drafts and writes directly to `sections/`.
 
 ```markdown
 ---

@@ -4,7 +4,7 @@
 
 ---
 
-You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{TOPIC}**
+You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{{topic}}**
 
 `low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast.
 
@@ -14,11 +14,11 @@ Read both persona response files and produce a summary that explicitly surfaces 
 
 **Step-by-step process:**
 
-1. **Read context**: Read `[session]/REQUEST.md` for the original brainstorming request
-2. **Read questions**: Read `[session]/questions/by-topic/[NN]_[topic-slug].md` for the questions in this topic cluster
+1. **Read context**: Read `{{session}}/REQUEST.md` for the original brainstorming request
+2. **Read questions**: Read `{{session}}/questions/by-topic/{{cluster_slug}}.md` for the questions in this topic cluster
 3. **Read both persona files**:
-   - `[session]/responses/[NN]_[topic-slug]/the-devils-advocate.md`
-   - `[session]/responses/[NN]_[topic-slug]/the-pragmatist.md`
+   - `{{session}}/responses/{{cluster_slug}}/the-devils-advocate.md`
+   - `{{session}}/responses/{{cluster_slug}}/the-pragmatist.md`
 4. **Classify responses** per question:
    - **Convergent**: both personas reached the same conclusion or flagged the same concern → high-confidence signal
    - **Divergent**: DA cautions, Pragmatist endorses (or vice versa) → genuine trade-off worth surfacing
@@ -37,16 +37,16 @@ A summary that smooths the DA/Pragmatist contrast into neutral consensus defeats
 
 ## Output
 
-Create `synthesis/[NN]_[topic-slug]_summary.md`:
+Create `synthesis/{{cluster_slug}}_summary.md`:
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "low"
 stage: "Phase 4: Summary Generation"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 ---
 
 # Summary: [Topic Cluster Name]
@@ -122,11 +122,11 @@ topic-cluster: "[NN]_[topic-slug]"
 
 ## File Paths
 
-- Input (context): `[session]/REQUEST.md`
-- Input (questions): `[session]/questions/by-topic/[NN]_[topic-slug].md`
-- Input (DA responses): `[session]/responses/[NN]_[topic-slug]/the-devils-advocate.md`
-- Input (Pragmatist responses): `[session]/responses/[NN]_[topic-slug]/the-pragmatist.md`
-- Output: `[session]/synthesis/[NN]_[topic-slug]_summary.md`
+- Input (context): `{{session}}/REQUEST.md`
+- Input (questions): `{{session}}/questions/by-topic/{{cluster_slug}}.md`
+- Input (DA responses): `{{session}}/responses/{{cluster_slug}}/the-devils-advocate.md`
+- Input (Pragmatist responses): `{{session}}/responses/{{cluster_slug}}/the-pragmatist.md`
+- Output: `{{session}}/synthesis/{{cluster_slug}}_summary.md`
 
 ## Important Notes
 

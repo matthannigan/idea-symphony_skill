@@ -10,9 +10,9 @@ You are a strategic brainstorming facilitator. Your job is to consolidate questi
 
 ## Context
 
-The input is the set of per-persona question files at `[session]/questions/by-persona/*.md`. Each file's YAML frontmatter carries `stream: synthesize|append`, `category: analytical|structural|perspective|specialist`, and `volume: N`. Read every file; use the `stream` field to route each persona's questions to Section 1 (Synthesize) or Section 2 (Append) processing below.
+The input is the set of per-persona question files at `{{session}}/questions/by-persona/*.md`. Each file's YAML frontmatter carries `stream: synthesize|append`, `category: analytical|structural|perspective|specialist`, and `volume: N`. Read every file; use the `stream` field to route each persona's questions to Section 1 (Synthesize) or Section 2 (Append) processing below.
 
-If a persona file is missing the `stream` field (e.g., legacy path), first check the Phase 2B roster in `[session]/PLAN.md` for the declared stream. If still not found, apply this canonical mapping from `category`:
+If a persona file is missing the `stream` field (e.g., legacy path), first check the Phase 2B roster in `{{session}}/PLAN.md` for the declared stream. If still not found, apply this canonical mapping from `category`:
 - `analytical` → synthesize
 - `structural` → synthesize
 - `perspective` → append
@@ -197,7 +197,7 @@ Where `Q[N_A]` is the question-number (as it appears in the source persona secti
 
 ## Final Output Structure
 
-Produce a single file at `[session]/QUESTIONS.md` with the structure below. Append-stream questions are INTERLEAVED verbatim into the topically-closest cluster's question list — they are NOT placed in a separate section, and they carry NO persona attribution in the visible output. Persona attribution and convergence metadata is written to a separate `[session]/questions-meta.json` sidecar (see next section).
+Produce a single file at `{{session}}/QUESTIONS.md` with the structure below. Append-stream questions are INTERLEAVED verbatim into the topically-closest cluster's question list — they are NOT placed in a separate section, and they carry NO persona attribution in the visible output. Persona attribution and convergence metadata is written to a separate `{{session}}/questions-meta.json` sidecar (see next section).
 
 ### Cluster placement rule for Append questions
 
@@ -252,7 +252,7 @@ stage: "Phase 2 Step 2.3: Question Synthesis"
 
 ## Metadata Sidecar (`questions-meta.json`)
 
-In addition to `QUESTIONS.md`, produce `[session]/questions-meta.json` with this schema:
+In addition to `QUESTIONS.md`, produce `{{session}}/questions-meta.json` with this schema:
 
 ```json
 {

@@ -4,7 +4,7 @@
 
 ---
 
-You are synthesizing brainstorming responses for a single topic cluster about: **{TOPIC}**
+You are synthesizing brainstorming responses for a single topic cluster about: **{{topic}}**
 
 ## Your Task
 
@@ -12,16 +12,16 @@ Read the generic brainstorming response (which contains 3-5 responses per questi
 
 ## Summary Structure
 
-Create `synthesis/[NN]_[topic-slug]_summary.md`:
+Create `synthesis/{{cluster_slug}}_summary.md`:
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 4: Summary Generation"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 ---
 
 # Summary: [Topic Cluster Name]
@@ -97,8 +97,8 @@ topic-cluster: "[NN]_[topic-slug]"
 
 ## File Paths
 
-- Input: Read from `responses/[NN]_[topic-slug]/generic-response.md`
-- Output: Write to `synthesis/[NN]_[topic-slug]_summary.md`
+- Input: Read from `responses/{{cluster_slug}}/generic-response.md`
+- Output: Write to `synthesis/{{cluster_slug}}_summary.md`
 
 ## Important Notes
 

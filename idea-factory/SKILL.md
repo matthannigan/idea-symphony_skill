@@ -36,6 +36,15 @@ This creates "debate" through independent development + synthesis reconciliation
 
 **Simplified low effort:** Low effort uses a single broad domain expert persona. Phase 3 spawns one subagent per section that writes directly to `sections/` — no `drafts/` directory, no synthesis step.
 
+## Prompt conventions
+
+Prompt files in this skill use two placeholder conventions:
+
+- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session_path}}`, `{{symphony_path}}`, `{{skill}}`, `{{section_slug}}`, `{{cluster_slug}}`, `{{persona_slug}}`.
+- `[Title Case Descriptive Slot]` — **output-template placeholders.** The subagent fills these in when producing its output (YAML frontmatter values, markdown headings, body prose). Examples: `[Section Title]`, `[Persona Title]`, `[Name]`.
+
+If you see a placeholder in a file-system path, shell command, or prompt-instruction context, treat it as a substitution variable. If you see it inside a fenced output template, treat it as a slot to fill during generation.
+
 ## Prerequisites
 
 - A completed Idea Symphony session (with BRAINSTORM.md)
@@ -77,7 +86,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 ### Phase 1: Intake & Scope Definition (Orchestrator)
 
-**Prompt:** `[skill]/prompts/phase1-intake.md`
+**Prompt:** `{{skill}}/prompts/phase1-intake.md`
 
 1. User provides path to a completed Idea Symphony session directory
 2. Read Symphony outputs: `REQUEST.md`, `PLAN.md`, `QUESTIONS.md`, `BRAINSTORM.md`
@@ -107,7 +116,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 ### Phase 2: Outline & Persona Generation (Orchestrator)
 
-**Prompt:** `[skill]/prompts/phase2-outline.md`
+**Prompt:** `{{skill}}/prompts/phase2-outline.md`
 
 #### Step 2A: Structural Outline
 
@@ -122,7 +131,7 @@ This creates "debate" through independent development + synthesis reconciliation
 
 #### Step 2B: Persona Generation
 
-**Guidance:** `[skill]/prompts/phase3-persona-gen.md`
+**Guidance:** `{{skill}}/prompts/phase3-persona-gen.md`
 
 **Low effort:** Generate **1 persona** — a single broad domain expert assigned to **all** sections. Still auto-generated and project-specific, but one practical generalist instead of a tension-based team. Skip the multi-perspective team design; focus on creating one persona with broad coverage across the project domain. **Use a title-based name** (e.g., "Civic Innovation Program Director"), not a personal name.
 
@@ -134,7 +143,7 @@ This creates "debate" through independent development + synthesis reconciliation
    - What they advocate for and push back on
    - Section assignments
 3. Present team composition to user for approval
-4. Save persona files to `personas/[persona-slug].md`
+4. Save persona files to `personas/{{persona_slug}}.md`
 
 **Persona Model:** Sonnet (creative but constrained)
 
@@ -150,8 +159,9 @@ Update `FACTORY-PLAN.md` with Phase 2 complete.
 ### Phase 3: Section Development (Subagents)
 
 **Prompts:**
-- Phase 3-Low and Phase 3A: `[skill]/prompts/phase3-section-draft.md` (conditional on effort level)
-- Phase 3B: `[skill]/prompts/phase3-section-synthesis.md`
+- Phase 3-Low: `{{skill}}/prompts/phase3-section-draft_low.md`
+- Phase 3A: `{{skill}}/prompts/phase3-section-draft_multi.md`
+- Phase 3B: `{{skill}}/prompts/phase3-section-synthesis.md`
 
 **Routing by effort level:**
 - **Low effort → Phase 3-Low** (single persona, direct section output, no synthesis)
@@ -159,11 +169,11 @@ Update `FACTORY-PLAN.md` with Phase 2 complete.
 
 #### Phase 3-Low: Direct Section Drafts (Low Effort Only)
 
-Spawn **1 subagent per outline section** in parallel using the prompt at `[skill]/prompts/phase3-section-draft.md`. The prompt's `effort_low` branch handles persona adoption, Symphony file access with context-window warnings, evaluation-not-generation framing, and the low-effort section format.
+Spawn **1 subagent per outline section** in parallel using the prompt at `{{skill}}/prompts/phase3-section-draft_low.md`. The prompt handles persona adoption, Symphony file access with context-window warnings, evaluation-not-generation framing, and the low-effort section format (single persona, direct to `sections/`, no Key Debate Points or Synthesis Notes).
 
 **CRITICAL:** Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt.
 
-**Output file:** `sections/[NN]_[section-slug].md` (writes directly to `sections/`, no `drafts/` directory). Format: [templates/section-low.md](templates/section-low.md).
+**Output file:** `sections/{{section_slug}}.md` (writes directly to `sections/`, no `drafts/` directory). Format: [templates/section-low.md](templates/section-low.md).
 
 **Drafter Model:** Sonnet
 
@@ -178,27 +188,27 @@ Update `FACTORY-PLAN.md` with Phase 3 complete. **Skip Phase 3B entirely.**
 
 #### Step 3A: Independent Drafts (Medium/High Effort)
 
-For each outline section, spawn subagents for each assigned persona using the prompt at `[skill]/prompts/phase3-section-draft.md`. The prompt handles persona adoption, Symphony file access (with context-window warnings and optional deeper-dive rules), evaluation-vs-generation framing, and effort-level draft depth (medium 3-4 paragraphs + 2 alternatives; high 4-5 paragraphs + 3-5 alternatives).
+For each outline section, spawn subagents for each assigned persona using the prompt at `{{skill}}/prompts/phase3-section-draft_multi.md`. The prompt handles persona adoption, Symphony file access (with context-window warnings and optional deeper-dive rules), context isolation from peer drafts, and effort-level draft depth (medium 3-4 paragraphs + 2 alternatives; high 4-5 paragraphs + 3-5 alternatives).
 
 **CRITICAL:** Subagents must READ Symphony session files directly. Do NOT summarize brainstorming insights in the subagent prompt. The Symphony session contains the source material that subagents must evaluate.
 
-**Output file:** `drafts/[NN]_[section-slug]/[persona-slug].md`. Format: [templates/draft-section.md](templates/draft-section.md).
+**Output file:** `drafts/{{section_slug}}/{{persona_slug}}.md`. Format: [templates/draft-section.md](templates/draft-section.md).
 
 Spawn drafters in parallel groups of 3-6 (group by section to manage context window).
 
 **Drafter Model:** Sonnet (quality reasoning for recommendations)
 
 **Quality Gate:**
-- `drafts/[NN]_[section-slug]/` exists for each section
+- `drafts/{{section_slug}}/` exists for each section
 - Each directory contains one draft file per assigned persona
 - Each draft includes "Grounding in Brainstorming" section with specific Symphony references
 - If any drafts failed, note in FACTORY-PLAN.md and proceed with available drafts
 
 #### Step 3B: Section Synthesis
 
-For each section, spawn a synthesis subagent using the prompt at `[skill]/prompts/phase3-section-synthesis.md`. The prompt's 6-step process covers draft analysis, convergence/tension/unique-insight identification, core recommendation synthesis, alternative extraction, scaling reconciliation, and debate-point documentation.
+For each section, spawn a synthesis subagent using the prompt at `{{skill}}/prompts/phase3-section-synthesis.md`. The prompt's 6-step process covers draft analysis, convergence/tension/unique-insight identification, core recommendation synthesis, alternative extraction, scaling reconciliation, and debate-point documentation.
 
-**Output file:** `sections/[NN]_[section-slug].md`. Format: [templates/section-medium-high.md](templates/section-medium-high.md).
+**Output file:** `sections/{{section_slug}}.md`. Format: [templates/section-medium-high.md](templates/section-medium-high.md).
 
 Spawn synthesis agents in parallel (one per section).
 
@@ -214,7 +224,7 @@ Update `FACTORY-PLAN.md` with Phase 3 complete.
 
 ### Phase 4: Integration (Orchestrator or Subagent)
 
-**Prompt:** `[skill]/prompts/phase4-integration.md`
+**Prompt:** `{{skill}}/prompts/phase4-integration.md`
 
 1. Read all section files from `sections/`
 2. Create `ACTION-PLAN.md`:

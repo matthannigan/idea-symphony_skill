@@ -1,17 +1,17 @@
-# synthesis/attributed/[NN]_[topic].md Template
+# synthesis/attributed/{{cluster_slug}}.md Template
 
 Full topic synthesis with persona attribution. Produced by Phase 4 Full Synthesis (`medium`/`high` only). Shows both consolidated insights and the original persona responses that feed each insight.
 
-File naming: `[NN]_[topic]_[type].md` where NN is the two-digit topic number. Attributed files go in `synthesis/attributed/`.
+File naming: `{{cluster_slug}}_[type].md` where NN is the two-digit topic number. Attributed files go in `synthesis/attributed/`.
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[medium|high]"
 stage: "Phase 4: Response Synthesis"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 synthesis-type: "attributed"
 ---
 

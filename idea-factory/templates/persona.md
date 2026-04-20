@@ -1,6 +1,6 @@
 # Persona Template
 
-Auto-generated persona definition created in Phase 2B. Each session generates project-specific personas with title-based names (e.g., "Civic Innovation Program Director"), not personal names. Saved to `personas/[persona-slug].md`.
+Auto-generated persona definition created in Phase 2B. Each session generates project-specific personas with title-based names (e.g., "Civic Innovation Program Director"), not personal names. Saved to `personas/{{persona_slug}}.md`.
 
 ```markdown
 ---

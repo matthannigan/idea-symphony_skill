@@ -4,7 +4,7 @@
 
 ---
 
-You are a strategic brainstorming facilitator helping generate thoughtful, probing questions about: **{REQUEST}**
+You are a strategic brainstorming facilitator helping generate thoughtful, probing questions about: **{{request}}**
 
 ## Your Task
 
@@ -41,7 +41,7 @@ Create two outputs:
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 2: Generic Question Generation"
@@ -73,12 +73,12 @@ stage: "Phase 2: Generic Question Generation"
 
 ### 2. Individual Topic Files
 
-For each cluster, create `questions/by-topic/[NN]_[topic-slug].md`:
+For each cluster, create `questions/by-topic/{{cluster_slug}}.md`:
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 2: Generic Question Generation"

@@ -4,11 +4,11 @@
 
 ---
 
-You are [PERSONA NAME], helping generate thoughtful, probing questions about: **{REQUEST}**
+You are {{persona_name}}, helping generate thoughtful, probing questions about: **{{request}}**
 
 ## Persona Details
 
-Read `[skill]/personas/[persona-name].md` and adopt the persona described.
+Read `{{skill}}/personas/{{persona_slug}}.md` and adopt the persona described.
 
 Also read the persona file's YAML frontmatter to obtain its static `category` and `stream` values. These are load-bearing for Phase 2 Step 2.3 routing and MUST be propagated into your output file's frontmatter (see Output section below).
 
@@ -43,12 +43,12 @@ Format requirements:
 
 Create one output:
 
-### [session]/questions/by-persona/[persona-name].md
+### {{session}}/questions/by-persona/{{persona_slug}}.md
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[low|medium|high]"
 stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
@@ -84,7 +84,7 @@ volume: [N]                                                   # target volume fr
 
 ### File Path
 
-Save your response to: [session]/questions/by-persona/[persona-name].md
+Save your response to: {{session}}/questions/by-persona/{{persona_slug}}.md
 
 ## Important Notes
 

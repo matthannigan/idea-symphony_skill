@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # split-questions.sh — Deterministic post-synthesis step for Phase 2 Step 2.3.
 #
-# Splits [session]/QUESTIONS.md into per-cluster files under questions/by-topic/.
+# Splits {{session}}/QUESTIONS.md into per-cluster files under questions/by-topic/.
 # Produces questions/by-topic/99_additional.md only if QUESTIONS.md contains
 # an "## Additional Questions" section (orphaned Append questions).
 #

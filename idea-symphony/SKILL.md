@@ -34,6 +34,15 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 
 **Thoroughness over speed.** Quality and diversity matter more than fast completion.
 
+## Prompt conventions
+
+Prompt files in this skill use two placeholder conventions:
+
+- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{topic}}`, `{{cluster_slug}}`.
+- `[Title Case Descriptive Slot]` — **output-template placeholders.** The subagent fills these in when producing its output (YAML frontmatter values, markdown headings, body prose). Examples: `[Topic 1 Descriptive Name]`, `[Question text]`, `[Your Persona Name]`.
+
+If you see a placeholder in a file-system path, shell command, or prompt-instruction context, treat it as a substitution variable. If you see it inside a fenced output template, treat it as a slot to fill during generation.
+
 ## Persona System
 
 Idea Symphony uses a **tiered roster** of question-generation personas and a **concentric circles model** for brainstorming persona selection.
@@ -144,16 +153,16 @@ Generate and synthesize brainstorming questions from multiple persona perspectiv
 The orchestrator produces a structured roster section in `PLAN.md` for question generation that identifies Tier 1 personas, Tier 2 additions (high effort), any Tier 3 specialists selected by trigger strength, and the Connector/Analogist decision. Each persona row includes the Synthesize/Append stream assignment used by Step 2.3.
 
 **Orchestrator instructions:** Use the prompt at
-`[skill]/prompts/phase2A_question-gen-personas-selection.md`.
+`{{skill}}/prompts/phase2A_question-gen-personas-selection.md`.
 
 **Inputs the orchestrator receives:**
-1. `[session]/REQUEST.md` — the topic body
-2. `{EFFORT_LEVEL}` — `low`, `medium`, or `high` (from Phase 1)
-3. Reference: `[skill]/guidance/phase2A_question-gen-personas.md` —
+1. `{{session}}/REQUEST.md` — the topic body
+2. `{{effort_level}}` — `low`, `medium`, or `high` (from Phase 1)
+3. Reference: `{{skill}}/guidance/phase2A_question-gen-personas.md` —
    consulted only if the prompt directs
 
 **Output:** the orchestrator appends / replaces the
-`## Phase 2A: Question Generation Roster` section inside `[session]/PLAN.md`.
+`## Phase 2A: Question Generation Roster` section inside `{{session}}/PLAN.md`.
 No other files are written at this step.
 
 **Orchestrator Model:** Claude Opus (validation was on Opus; the roster decision is
@@ -171,12 +180,12 @@ If any element is missing, re-run Step 2.1 rather than proceeding.
 
 #### Step 2.2: Generate Questions (Parallel Subagents)
 
-Spawn parallel subagents per the roster plan — one per persona — using the prompt at `[skill]/prompts/phase2B_question-gen_by-persona.md`. Subagent instructions, coverage requirements, and output schema live in the prompt file.
+Spawn parallel subagents per the roster plan — one per persona — using the prompt at `{{skill}}/prompts/phase2B_question-gen_by-persona.md`. Subagent instructions, coverage requirements, and output schema live in the prompt file.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro
 
 **Quality Gate:** Before proceeding, verify:
-- `[session]/questions/by-persona/` file count matches roster plan
+- `{{session}}/questions/by-persona/` file count matches roster plan
 - Each file's YAML frontmatter includes `stream` and `category` fields (the prompt requires subagents to copy these from the persona file's frontmatter; they drive Step 2.3 routing)
 - If count doesn't match: Use Glob to search, move to correct location
 - If frontmatter is missing, re-run that persona's subagent
@@ -189,26 +198,26 @@ Update `PLAN.md` with Phase 2 Step 2 complete status.
 Spawn 1 subagent to consolidate per-persona questions into topic clusters using the Synthesize/Append stream split. The synthesis prompt encodes the cluster targets, compaction ratios, voice-preservation floors, and Append placement rules (all validated in SP1 iter3).
 
 **Synthesis instructions:** Use the prompt at
-`[skill]/prompts/phase2C_question-synthesis.md`.
+`{{skill}}/prompts/phase2C_question-synthesis.md`.
 
 **Inputs the subagent receives:**
-1. `[session]/questions/by-persona/*.md` — all persona files (subagent Globs
+1. `{{session}}/questions/by-persona/*.md` — all persona files (subagent Globs
    this directory; each file's frontmatter provides `stream`, `category`,
    `volume`)
-2. `[session]/REQUEST.md` — topic context
-3. `[session]/PLAN.md` — fallback source for the Phase 2B roster if any
+2. `{{session}}/REQUEST.md` — topic context
+3. `{{session}}/PLAN.md` — fallback source for the Phase 2B roster if any
    persona file is missing stream frontmatter
-4. `[session]/USER-QUESTIONS.md` (if it exists) — user-provided questions
+4. `{{session}}/USER-QUESTIONS.md` (if it exists) — user-provided questions
    treated as a mandatory "+1" input; the subagent marks any synthesized
    question incorporating a user question with `[User Q]`
 
 **Outputs:**
-1. `[session]/QUESTIONS.md` — clustered, numbered question list. Append
+1. `{{session}}/QUESTIONS.md` — clustered, numbered question list. Append
    questions are interleaved verbatim into the topically-closest cluster;
    orphans (questions with no topical home) appear under a final
    `## Additional Questions` section. No persona attribution is visible in
    this file.
-2. `[session]/questions-meta.json` — persona attribution, convergence data,
+2. `{{session}}/questions-meta.json` — persona attribution, convergence data,
    and hard-floor self-check diagnostics. This is the authoritative audit
    trail for future investigations and skill tests.
 
@@ -219,7 +228,7 @@ Spawn 1 subagent to consolidate per-persona questions into topic clusters using 
 After the subagent returns, run the utility script:
 
 ```bash
-scripts/split-questions.sh [session]
+scripts/split-questions.sh {{session}}
 ```
 
 This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md.
@@ -245,13 +254,13 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
 
 **Instructions for subagent:**
 
-1. Read `[session]/QUESTIONS.md` for topic clusters and their questions.
+1. Read `{{session}}/QUESTIONS.md` for topic clusters and their questions.
    **Use the cluster labels exactly as produced by Step 2.3 synthesis when
    assigning personas per cluster** — do not invent alternate cluster names
    or re-cluster the questions. The persona selection must reference the
    same clusters that Phase 3 will iterate.
-2. Read `[session]/REQUEST.md` for brainstorming context
-3. Read `[skill]/guidance/phase2D_brainstorming-personas.md` for the complete selection methodology
+2. Read `{{session}}/REQUEST.md` for brainstorming context
+3. Read `{{skill}}/guidance/phase2D_brainstorming-personas.md` for the complete selection methodology
 4. For each topic cluster:
    a. Classify the topic type
    b. Apply the selection algorithm:
@@ -259,8 +268,8 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
       - **`high` (7 per topic):** Core (2) + Inner Ring (2) + Middle Ring cluster completers (3)
    c. Document rationale for each selection
    d. Verify: no more than 3 personas from the same cluster family per topic
-5. Create `[session]/persona-selections.md` with selection summary table and detailed per-topic rationale
-6. Update `[session]/PLAN.md` with the summary table
+5. Create `{{session}}/persona-selections.md` with selection summary table and detailed per-topic rationale
+6. Update `{{session}}/PLAN.md` with the summary table
 
 **Subagent Model:** Claude Opus (judgment-intensive)
 
@@ -284,9 +293,9 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 **For `low`:** Use Devil's Advocate + Pragmatist for every topic (no persona-selections.md needed).
 
-**For `medium`/`high`:** Read `[session]/persona-selections.md` for per-topic persona assignments.
+**For `medium`/`high`:** Read `{{session}}/persona-selections.md` for per-topic persona assignments.
 
-For each topic cluster, spawn parallel subagents using the prompt at `[skill]/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
+For each topic cluster, spawn parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
 
 - **`low`:** 2 subagents (Devil's Advocate + Pragmatist)
 - **`medium`:** 4 subagents per `persona-selections.md`
@@ -307,13 +316,13 @@ Update `PLAN.md` with Phase 3 complete status.
 
 #### Summary Generation (`low` effort only)
 
-Spawn parallel subagents (1 per topic cluster) using the prompt at `[skill]/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
+Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
 
 **Subagent Model:** Claude Sonnet or Gemini Pro
 
 #### Full Synthesis (`medium`/`high` effort)
 
-Spawn parallel subagents (1 per topic cluster) using the prompt at `[skill]/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
+Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
 **Subagent Model:** Claude Opus or Gemini Pro (judgment-intensive)
 

@@ -1,4 +1,4 @@
-# synthesis/[NN]_[topic]_summary.md Template
+# synthesis/{{cluster_slug}}_summary.md Template
 
 Executive-level summary of a topic cluster. Produced at every effort level by the relevant Phase 4 prompt.
 
@@ -7,11 +7,11 @@ Executive-level summary of a topic cluster. Produced at every effort level by th
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[min|low|medium|high]"
 stage: "Phase 4: Summary Generation"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 ---
 
 # Summary: [Topic Cluster Name]

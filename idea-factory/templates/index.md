@@ -10,12 +10,12 @@ Templates for the documents created during an Idea Factory session. Each templat
 - [ACTION-PLAN.md](action-plan.md) — Final integrated deliverable
 - [FACTORY-SESSION.md](factory-session.md) — Session report with file index
 
-## Persona files (`personas/[persona-slug].md`)
+## Persona files (`personas/{{persona_slug}}.md`)
 
 - [persona.md](persona.md) — Auto-generated persona definition (title-based role)
 
 ## Section files
 
-- [draft-section.md](draft-section.md) — Per-persona draft at `drafts/[NN]_[section-slug]/[persona-slug].md` *(medium/high only)*
-- [section-medium-high.md](section-medium-high.md) — Synthesized section at `sections/[NN]_[section-slug].md` *(medium/high)*
-- [section-low.md](section-low.md) — Simplified section at `sections/[NN]_[section-slug].md` *(low effort only)*
+- [draft-section.md](draft-section.md) — Per-persona draft at `drafts/{{section_slug}}/{{persona_slug}}.md` *(medium/high only)*
+- [section-medium-high.md](section-medium-high.md) — Synthesized section at `sections/{{section_slug}}.md` *(medium/high)*
+- [section-low.md](section-low.md) — Simplified section at `sections/{{section_slug}}.md` *(low effort only)*

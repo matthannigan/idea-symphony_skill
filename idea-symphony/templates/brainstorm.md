@@ -21,11 +21,11 @@ Final user-facing output document for a session. Generated in Phase 5 by consoli
 
 ### 1. [Topic Name]
 [Summary of insights for this topic]
-- See: [synthesis/01_[topic]_synthesis.md](synthesis/01_[topic]_synthesis.md)
+- See: [synthesis/{{cluster_slug}}_synthesis.md](synthesis/{{cluster_slug}}_synthesis.md)
 
 ### 2. [Topic Name]
 [Summary of insights for this topic]
-- See: [synthesis/02_[topic]_synthesis.md](synthesis/02_[topic]_synthesis.md)
+- See: [synthesis/{{cluster_slug}}_synthesis.md](synthesis/{{cluster_slug}}_synthesis.md)
 
 ## Recommended Next Steps
 [Top 10-15 action items synthesized from all topic clusters]

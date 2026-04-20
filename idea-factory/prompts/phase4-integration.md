@@ -28,7 +28,7 @@ Read every section file. For each, note:
 
 ### Step 2: Create ACTION-PLAN.md
 
-Use the template at `[skill]/templates/action-plan.md`. Write:
+Use the template at `{{skill}}/templates/action-plan.md`. Write:
 
 **Executive Summary** (3-5 paragraphs):
 - What this plan achieves
@@ -71,7 +71,7 @@ Before saving, verify:
 
 ### Step 4: Create FACTORY-SESSION.md
 
-Use the template at `[skill]/templates/factory-session.md`. Include:
+Use the template at `{{skill}}/templates/factory-session.md`. Include:
 - Persona composition table
 - Session summary (2-3 paragraphs describing scope decisions, outline structure, synthesis highlights, integration approach)
 - Complete file index with links

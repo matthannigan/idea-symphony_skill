@@ -1,6 +1,6 @@
 # Synthesized Section Template (Medium/High Effort)
 
-Final per-section file produced by the Phase 3B synthesis agent at medium/high effort. Reconciles multiple persona drafts into a unified recommendation with convergence/divergence documented. Saved to `sections/[NN]_[section-slug].md`. For low-effort sessions use [section-low.md](section-low.md) instead.
+Final per-section file produced by the Phase 3B synthesis agent at medium/high effort. Reconciles multiple persona drafts into a unified recommendation with convergence/divergence documented. Saved to `sections/{{section_slug}}.md`. For low-effort sessions use [section-low.md](section-low.md) instead.
 
 ```markdown
 ---

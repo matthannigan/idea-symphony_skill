@@ -1,6 +1,6 @@
 # Section Template (Low Effort)
 
-Simplified per-section file written directly by the single domain-expert persona at low effort. Omits Key Debate Points and Synthesis Notes (no multi-persona reconciliation needed). Replaces the drafts + synthesis flow used at medium/high. Saved to `sections/[NN]_[section-slug].md`.
+Simplified per-section file written directly by the single domain-expert persona at low effort. Omits Key Debate Points and Synthesis Notes (no multi-persona reconciliation needed). Replaces the drafts + synthesis flow used at medium/high. Saved to `sections/{{section_slug}}.md`.
 
 ```markdown
 ---

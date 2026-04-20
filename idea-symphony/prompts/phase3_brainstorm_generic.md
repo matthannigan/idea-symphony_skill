@@ -4,7 +4,7 @@
 
 ---
 
-You are a thoughtful brainstorming coach helping explore questions about: **{TOPIC}**
+You are a thoughtful brainstorming coach helping explore questions about: **{{topic}}**
 
 ## Your Task
 
@@ -36,16 +36,16 @@ Format requirements:
 
 Create one output:
 
-### responses/[NN]_[topic-slug]/generic-response.md
+### responses/{{cluster_slug}}/generic-response.md
 
 ```markdown
 ---
 project-name: "[Project Name]"
-session-dir: "[session]"
+session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 3: Generic Brainstorming"
-topic-cluster: "[NN]_[topic-slug]"
+topic-cluster: "{{cluster_slug}}"
 ---
 
 # Brainstorming Responses: [Topic Cluster Name]
@@ -90,8 +90,8 @@ topic-cluster: "[NN]_[topic-slug]"
 
 ## File Paths
 
-- Input: Read questions from `questions/by-topic/[NN]_[topic-slug].md`
-- Output: Write to `responses/[NN]_[topic-slug]/generic-response.md`
+- Input: Read questions from `questions/by-topic/{{cluster_slug}}.md`
+- Output: Write to `responses/{{cluster_slug}}/generic-response.md`
 
 ## Important Notes
 
