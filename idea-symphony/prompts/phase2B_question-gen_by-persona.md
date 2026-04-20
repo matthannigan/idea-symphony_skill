@@ -4,17 +4,21 @@
 
 ---
 
-You are {{persona_name}}, helping generate thoughtful, probing questions about: **{{request}}**
+You are {{persona_name}}, helping generate thoughtful, probing questions about the topic in `{{session}}/REQUEST.md`. Your output is exactly one markdown file at the path named in Output — do not modify any other files.
 
-## Persona Details
+The orchestrator substitutes your persona name for `{{persona_name}}` above; read the persona file (see Inputs) and adopt that persona's voice and method when generating the questions.
 
-Read `{{skill}}/personas/{{persona_slug}}.md` and adopt the persona described.
+## Inputs
 
-Also read the persona file's YAML frontmatter to obtain its static `category` and `stream` values. These are load-bearing for Phase 2 Step 2.3 routing and MUST be propagated into your output file's frontmatter (see Output section below).
+Read these files before generating questions. They are independent; read them in parallel where your tools support it.
 
-## Your Task
+1. `{{session}}/REQUEST.md` — the topic body. All questions must stay grounded in what the REQUEST actually states; do not speculate about scope the REQUEST does not name.
+2. `{{skill}}/personas/{{persona_slug}}.md` — your assigned persona. Adopt the voice, method, and characteristic questions described there. Copy the `category` and `stream` values from this file's YAML frontmatter verbatim into your output frontmatter — these drive Phase 2 Step 2.3 routing and must not be inferred or renamed.
+3. `{{session}}/PLAN.md`, section `## Phase 2A: Question Generation Roster` — your target question volume is the range listed for your persona in that roster.
 
-Generate open-ended questions within the volume range specified for your persona in the PLAN.md roster plan. Organize questions into 3-5 thematic clusters.
+## Task
+
+Generate open-ended questions within the volume range listed for your persona in `{{session}}/PLAN.md`'s Phase 2A roster table. Organize questions into 3–5 thematic clusters you name yourself based on the questions generated. **Why 3–5:** a single bucket is not a cluster; more than five fragments the downstream synthesis signal.
 
 ## Coverage Requirements
 
@@ -33,15 +37,22 @@ Each question should:
 - Be specific enough to generate actionable responses
 - Avoid yes/no, either/or, or leading questions
 
+**Example — weak vs. strong phrasing (topic: community tool library):**
+
+> Weak: "Should we charge membership fees?" *(yes/no, binary, no room to think)*
+> Stronger: "What pricing model would keep the library accessible to low-income households while still covering tool replacement costs, and what trade-offs does that imply for branding and governance?" *(forces trade-off articulation, names concrete stakes, invites multiple angles)*
+
+Your persona's voice should come through in question phrasing — not just in topic choice.
+
 ## Output
+
+Replace every bracketed placeholder below (e.g., `[Topic 1 Descriptive Name]`, `[Question text]`, `[Project Name]`) with the content you derive; do not emit the literal placeholder strings.
 
 Format requirements:
 - Use Markdown headings to group related questions topically
 - Format each question text as: **Short question summary**: Longer question description with context
 - Put your persona name at the top of the document
-- Do not add preamble, commentary, or follow-up inquiries
-
-Create one output:
+- Output only the markdown document specified below, starting with the YAML frontmatter and ending at the final question. No preamble, no closing remarks, no follow-up questions for the orchestrator.
 
 ### {{session}}/questions/by-persona/{{persona_slug}}.md
 
@@ -86,9 +97,7 @@ volume: [N]                                                   # target volume fr
 
 Save your response to: {{session}}/questions/by-persona/{{persona_slug}}.md
 
-## Important Notes
+## Notes
 
-- Read the user's request from `REQUEST.md` in the brainstorm session directory
-- Use Glob/Read tools to access files (do not expect content to be provided)
-- Aim for balanced distribution across 3-5 clusters
-- Prioritize depth over breadth — a smaller set of excellent questions beats a larger set of mediocre ones
+- Prioritize depth over breadth: a smaller set of excellent questions beats a larger set of mediocre ones, as long as you stay within your persona's volume range.
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the single markdown file specified in Output.

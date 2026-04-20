@@ -4,13 +4,23 @@
 
 ---
 
-You are synthesizing brainstorming responses for a single topic cluster about: **{{topic}}**
+You are synthesizing brainstorming responses for a single topic cluster about: **{{topic}}**. Produce exactly one markdown file at the path named in Output. Do not modify any other files.
+
+## Inputs
+
+Read the single response file before drafting.
+
+1. `{{session}}/responses/{{cluster_slug}}/generic-response.md` — the generic brainstormer's 3-5 responses per question for this topic cluster.
+
+Unlike `low`/`medium`/`high` effort, min-effort synthesis has only a single brainstormer's voice to work with. Patterns and themes must be extracted from *within* that brainstormer's responses — convergence across personas is not available here.
 
 ## Your Task
 
 Read the generic brainstorming response (which contains 3-5 responses per question from a single brainstormer) and create a concise, actionable summary that distills the key insights and recommendations.
 
 ## Summary Structure
+
+Replace every bracketed placeholder below with the content you derive; do not emit the literal placeholder strings.
 
 Create `synthesis/{{cluster_slug}}_summary.md`:
 
@@ -94,15 +104,16 @@ topic-cluster: "{{cluster_slug}}"
 - **Balance optimism and realism**: Acknowledge both opportunities and challenges
 - **Be specific**: Avoid generic statements like "consider stakeholders"
 - **Organize by value**: Lead with the most impactful insights and actions
+- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific.
 
 ## File Paths
 
-- Input: Read from `responses/{{cluster_slug}}/generic-response.md`
-- Output: Write to `synthesis/{{cluster_slug}}_summary.md`
+- Input: Read from `{{session}}/responses/{{cluster_slug}}/generic-response.md`
+- Output: Write to `{{session}}/synthesis/{{cluster_slug}}_summary.md`
 
-## Important Notes
+## Notes
 
-- This is a **summary-only** synthesis (no attribution or full synthesis documents)
-- Read the response file using Read tool (do not expect content to be provided)
-- Aim for concise summaries (500-800 words total)
-- Focus on synthesis, not repetition — transform responses into integrated insights
+- This is a **summary-only** synthesis (no attribution or full synthesis documents).
+- Target 500-800 words total.
+- Focus on synthesis, not repetition — transform responses into integrated insights.
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the single markdown file specified in Output.

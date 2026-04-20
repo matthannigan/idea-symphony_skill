@@ -1,20 +1,17 @@
 # Phase 4: Integration
 
-You are synthesizing the section outputs into a cohesive action plan.
+You are synthesizing the section outputs into a cohesive action plan. Your outputs are exactly two files: `{{session_path}}/ACTION-PLAN.md` and `{{session_path}}/FACTORY-SESSION.md`. You also update `{{session_path}}/FACTORY-PLAN.md` Phase 4 status. Do not modify any other files.
 
 ## Inputs
 
-- **Session directory:** `{{session_path}}`
-- **Symphony session directory:** `{{symphony_path}}`
+Read all of the following before drafting. The section files are independent; read them in parallel, then read SCOPE / OUTLINE / personas / BRAINSTORM in a second parallel batch.
 
-## Files to Read
-
-1. `{{session_path}}/SCOPE.md` — What the plan covers
-2. `{{session_path}}/OUTLINE.md` — The structural skeleton
-3. `{{session_path}}/sections/*.md` — All synthesized section files (one per outline section)
-4. `{{session_path}}/personas/*.md` — Persona definitions (for attribution context)
-5. `{{session_path}}/drafts/` — Per-persona drafts (available for reference if needed; **may not exist for low effort sessions**)
-6. `{{symphony_path}}/BRAINSTORM.md` — Original brainstorming insights (for cross-reference)
+1. `{{session_path}}/SCOPE.md` — what the plan covers.
+2. `{{session_path}}/OUTLINE.md` — the structural skeleton.
+3. `{{session_path}}/sections/*.md` — all synthesized section files (one per outline section).
+4. `{{session_path}}/personas/*.md` — persona definitions (attribution context for the session report).
+5. `{{session_path}}/drafts/` — per-persona drafts for medium/high-effort sessions. **May not exist for low-effort sessions.** Available for reference if a section file is thin and you need the underlying perspectives; otherwise ignore.
+6. `{{symphony_path}}/BRAINSTORM.md` — original brainstorming insights, for cross-reference.
 
 ## Integration Instructions
 
@@ -36,6 +33,8 @@ Use the template at `{{skill}}/templates/action-plan.md`. Write:
 - Key decisions the user needs to make
 - Resource requirements at a high level
 
+Write the Executive Summary as readable prose paragraphs, not bullets. Direct and specific: name the recommended approach, the one or two decisions the user needs to make, and the resource envelope. The reader is a decision-maker skimming, not a committee evaluating completeness.
+
 **Scope** (from SCOPE.md):
 - What's covered vs. what's background context
 
@@ -43,7 +42,7 @@ Use the template at `{{skill}}/templates/action-plan.md`. Write:
 - Integrate the core recommendation — improve clarity and specificity, but preserve the substance
 - Include alternatives with trade-offs — keep the best 2-3 per section
 - Add scaling notes — summarize minimal and expanded versions
-- Omit detailed debate points (those stay in the section files for reference)
+- Keep the core recommendation, top 2-3 alternatives, and scaling summary at the plan level. Detailed debate points stay in the section files for readers who want to trace synthesis — pulling them into the ACTION-PLAN crowds the plan with material readers can retrieve on demand.
 
 **Resource Scaling:**
 - Core plan: the recommended approach across all sections, with total resource summary
@@ -53,12 +52,12 @@ Use the template at `{{skill}}/templates/action-plan.md`. Write:
 **Implementation Timeline:**
 - Organize actions from the plan into a phased timeline
 - Group by time horizon (immediate, short-term, medium-term, ongoing)
-- Note dependencies between sections
+- Name dependencies explicitly when they exist (e.g., "Volunteer Recruitment must complete before Launch Event" or "Fiscal Sustainability Analysis gates the Budget section"). A phased list without dependencies hides the hard scheduling choices — call them out.
 
 **Key Decisions for User:**
 - Where personas couldn't reach consensus
 - Where the right answer depends on user preferences, budget, or constraints
-- Present each as a clear choice with trade-offs
+- Each Key Decision should contain three elements: the decision question (one sentence), the two or three options (one sentence each, each with its core trade-off), and the recommendation if one persona camp had stronger rationale (or "user preference" if genuinely balanced).
 
 ### Step 3: Quality Check
 
@@ -76,7 +75,7 @@ Use the template at `{{skill}}/templates/factory-session.md`. Include:
 - Session summary (2-3 paragraphs describing scope decisions, outline structure, synthesis highlights, integration approach)
 - Complete file index with links
 
-Note that drafts/ directory contains per-persona perspectives available for deeper review.
+If `drafts/` exists (medium/high-effort sessions), note in FACTORY-SESSION.md that it contains per-persona perspectives for deeper review. For low-effort sessions, `drafts/` does not exist — omit the mention.
 
 ### Step 5: Update Status
 
@@ -97,3 +96,7 @@ Output to user:
 ## Model Note
 
 This phase requires strong synthesis judgment. Use Opus for final integration.
+
+## Notes
+
+- Do not create scratch files, helper scripts, or intermediate outputs while drafting. Write only the two files specified plus the FACTORY-PLAN.md Phase 4 status update.

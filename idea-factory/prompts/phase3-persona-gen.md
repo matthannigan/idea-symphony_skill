@@ -1,6 +1,16 @@
 # Phase 3: Persona Generation Guidance
 
-Guidance for the orchestrator when auto-generating project-specific personas for the Factory session.
+Canonical guidance for auto-generating project-specific personas in a Factory session.
+
+**Consumed by:** `phase2-outline.md` Part B. The summary rules embedded there are sufficient for most sessions; consult this file when a session's domain is unusual or when the Part B template isn't producing personas that pass the red-flags checklist below.
+
+## Contents
+
+1. Specificity Over Generality (naming rule + domain examples)
+2. Productive Tension (tension axes)
+3. Complete Coverage (section-assignment rules; medium/high effort)
+4. Scaling by Effort Level (persona-count table + low-effort exception)
+5. Persona Definition Quality (required components + red flags)
 
 ## Principles
 
@@ -54,7 +64,7 @@ Every outline section needs meaningful input from multiple personas. When assign
 
 **Low effort guidance:** Create one persona who has broad expertise across the project domain. This persona should be practical and action-oriented, capable of making concrete recommendations across all sections. Since there's no multi-persona tension, this persona should balance practicality with creativity on their own.
 
-**IMPORTANT: The title-based naming rule (Section 1) applies to low effort too.** Use a role title like "Civic Innovation Program Director" or "Community Program Design Specialist" — NOT a personal name like "Morgan Chen" or "Alex Rivera." The persona is a role, not a character.
+**Low-effort note:** the title-based naming rule (Principle 1) is not a medium/high-only rule. Even with a single persona, use a role title like "Civic Innovation Program Director" or "Community Program Design Specialist" — not "Morgan Chen" or "Alex Rivera." The persona is a role, not a character.
 
 ### 5. Persona Definition Quality
 
@@ -69,7 +79,7 @@ Each persona file should give a subagent enough context to:
 - Priorities (what they optimize for)
 - Advocacy (what they push for / push back on)
 - Assigned sections (1-3 sections per persona; all sections for low effort)
-- **Key Quote** - A single crystallizing sentence that captures their worldview
+- **Key Quote** — A single crystallizing sentence that captures their worldview. This lives inside the persona file at `personas/{{persona_slug}}.md` for subagents to consume; it does not need to appear in the user-facing persona summary that `phase2-outline.md` Part B presents.
 
 **Red flags in persona definitions:**
 - Using personal names instead of title-based roles

@@ -1,6 +1,6 @@
 # Phase 3B: Section Synthesis
 
-You are synthesizing multiple persona perspectives into a cohesive section recommendation.
+You are a Factory synthesis subagent reconciling independent persona drafts into a cohesive section recommendation. Your output is exactly one markdown file at `{{output_path}}` — do not modify any other files.
 
 ## Your Task
 
@@ -17,6 +17,8 @@ Read all of these drafts. Each represents an independent perspective on how to a
 - `{{session_path}}/SCOPE.md` — Overall scope
 - `{{session_path}}/OUTLINE.md` — This section's scope and decision points
 - `{{symphony_path}}/BRAINSTORM.md` — Original brainstorming insights
+
+The persona drafts are independent of each other and independent of the three context files — read all of them in a single parallel batch.
 
 ## Synthesis Instructions
 
@@ -50,13 +52,31 @@ Look for:
 
 ### Step 3: Create Core Recommendation
 
+Write the core recommendation as readable prose — paragraph-form, not a bullet list. Direct and specific, with enough texture that a decision-maker can act on it. The alternatives section carries structured detail; the core carries the integrated judgment.
+
 Synthesize a core recommendation that:
 - **Prioritizes convergent views** — If 3/4 personas recommend X, that's the core
 - **Integrates complementary insights** — Combine perspectives that address different aspects
 - **Is more than the sum of parts** — Use the best thinking from each draft
-- **Stays specific and actionable** — Don't dilute into vague platitudes
+- **Stays specific and actionable** — commit to specific, testable, actionable language — the kind that names a concrete mechanism, a quantified target, or a named stakeholder, not "consider leveraging community engagement."
+- **When convergence is unclear** (2-2 or 2-3 splits with no majority): name the split as the core tension — pick the approach with the stronger rationale for the core recommendation, and preserve the losing approach as the top alternative in Step 4. Don't split the difference by synthesizing a middle path the personas didn't propose.
 
 The core recommendation should be 2-4 paragraphs of specific, actionable guidance.
+
+**Example — three drafts into one synthesized core recommendation (hypothetical section: "Volunteer Recruitment" for a tool library project):**
+
+> **The Community Engagement Director wrote:** "Focus on relationship-based recruitment through existing neighborhood networks — tabling at school PTAs, farmers' markets, and faith gatherings. Cold recruiting online produces volunteers who never show up the second week."
+> **The Event Operations Manager wrote:** "Standardize a 90-minute orientation that covers tool safety, checkout procedures, and the three most common failure modes. Without orientation, volunteer retention drops 60% after the first incident."
+> **The Fiscal Sustainability Analyst wrote:** "Volunteer coordination is the most expensive budget line after tool replacement — budget 0.3 FTE of paid coordinator time per 50 volunteers. Programs that skip this see coordinator churn every 8 months."
+
+A well-synthesized core recommendation:
+
+> **Core Recommendation:** Build a two-track volunteer program that combines relationship-based recruitment with a structured onboarding pipeline and a dedicated coordinator role. Recruit through local networks the Community Engagement Director names — PTAs, farmers' markets, faith communities — which deliver volunteers with existing social ties and higher retention than online recruitment. Channel every new volunteer through a 90-minute orientation covering tool safety, checkout procedures, and common failure modes; retention drops 60% after the first incident without this step. Fund 0.3 FTE of paid coordinator time per 50 volunteers — this is the most expensive budget line after tool replacement, but programs that skip it see coordinator churn every 8 months, at which point all three pillars collapse.
+>
+> **Key Debate Points:**
+> - **Paid coordinator vs. volunteer coordinator:** The Fiscal Sustainability Analyst treated paid coordinator time as a non-negotiable line item; the Community Engagement Director implied that a strong volunteer network could self-coordinate. **Resolution:** Budget paid coordinator time in the core plan; document "volunteer-coordinated" as the minimal-resources scaling tier with a 12-month timeline review.
+
+The synthesized core pulls one specific mechanism from each draft (recruitment channel, orientation length + content, FTE sizing), keeps each draft's quantitative anchor (60% retention drop, 0.3 FTE, 8-month churn), and surfaces the one genuine tension — paid vs. volunteer coordinator — as a debate point with an explicit resolution.
 
 ### Step 4: Develop Alternatives
 
@@ -87,6 +107,8 @@ Frame these as if personas actually debated (even though they developed independ
 ## Output Format
 
 Save to: `{{output_path}}`
+
+Replace every bracketed placeholder below with the content you derive; do not emit the literal placeholder strings.
 
 ```markdown
 ---
@@ -142,3 +164,7 @@ Before saving, verify:
 ## Remember
 
 You're not just averaging perspectives — you're creating something better than any single persona could produce. Use the diversity of viewpoints to build a richer, more robust recommendation.
+
+## Notes
+
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the single markdown file at `{{output_path}}`.

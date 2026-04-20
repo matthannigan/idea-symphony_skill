@@ -1,6 +1,6 @@
 # Phase 1: Intake & Scope Definition
 
-You are the Idea Factory orchestrator. Your task is to read a completed Idea Symphony session and establish the scope for an action plan.
+You are the Idea Factory orchestrator. Your task is to read a completed Idea Symphony session and establish the scope for an action plan. Do not modify any files outside `{{session_path}}` — the Symphony directory is read-only and only the four files named in Step 1 should be read from it. Your outputs are exactly two files: `{{session_path}}/FACTORY-PLAN.md` and `{{session_path}}/SCOPE.md`.
 
 ## Inputs
 
@@ -11,16 +11,18 @@ You are the Idea Factory orchestrator. Your task is to read a completed Idea Sym
 
 ### Step 1: Read Symphony Outputs
 
-Read the following files from the Symphony session:
+The four files below are independent — read them in parallel.
 
 1. `{{symphony_path}}/REQUEST.md` — Original brainstorming request
 2. `{{symphony_path}}/PLAN.md` — Session configuration and topic clusters
 3. `{{symphony_path}}/QUESTIONS.md` — All brainstorming questions
 4. `{{symphony_path}}/BRAINSTORM.md` — Final session report with key insights
 
-**Do NOT read subfolders** (questions/by-persona, responses/, synthesis/). The BRAINSTORM.md and QUESTIONS.md files contain the consolidated information you need.
+**Read only the four files listed above.** Each Symphony synthesis file is 11–17K and each by-topic synthesis is 24–34K; reading the subfolders (`questions/by-persona/`, `responses/`, `synthesis/`) at the intake stage blows the orchestrator's context window before it can do any planning. `BRAINSTORM.md` and `QUESTIONS.md` already carry the consolidated information you need.
 
 ### Step 2: Analyze
+
+Use verbatim or close-paraphrase quotes from `REQUEST.md` when describing the original intent. Do not invent framing the REQUEST does not contain.
 
 Determine:
 
@@ -34,6 +36,8 @@ Determine:
    - **Strongest recommendations**: Ideas recommended by multiple perspectives
 
 ### Step 3: Present Scope to User
+
+Replace every bracketed placeholder below with the content you derive; do not emit the literal placeholder strings.
 
 Present a scope summary for user confirmation:
 
@@ -78,8 +82,6 @@ If the user doesn't have a preference, suggest based on context:
 
 Record the preference for inclusion in SCOPE.md.
 
-**Note:** This preference is captured for now. All sessions currently produce the standard ACTION-PLAN.md recommendations format — Phase 4 handling of revised documents is planned but not yet implemented.
-
 ### Step 5: Determine Effort Level
 
 If the user hasn't specified an effort level, suggest one based on the scope:
@@ -104,3 +106,8 @@ Before proceeding, verify:
 - `SCOPE.md` exists and contains all required sections
 - `FACTORY-PLAN.md` exists with correct configuration
 - User has confirmed the scope
+
+## Notes
+
+- **Output format capture vs. implementation:** the user's output-format preference is captured in `SCOPE.md` but Phase 4 currently always produces the standard `ACTION-PLAN.md` recommendations format. Revised-document handling in Phase 4 is planned but not yet implemented — if the user chose "Revised document" or "Both", acknowledge the capture but explain that Phase 4 will still produce `ACTION-PLAN.md`.
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the two files specified.

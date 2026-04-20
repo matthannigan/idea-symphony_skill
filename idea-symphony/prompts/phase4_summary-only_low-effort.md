@@ -4,9 +4,20 @@
 
 ---
 
-You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{{topic}}**
+You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{{topic}}**. Produce exactly one markdown file at the path named in Output. Do not modify any other files.
 
 `low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast.
+
+## Inputs
+
+Read all four files before drafting. They are independent; read them in parallel.
+
+1. `{{session}}/REQUEST.md` — topic context.
+2. `{{session}}/questions/by-topic/{{cluster_slug}}.md` — the questions answered in this topic cluster.
+3. `{{session}}/responses/{{cluster_slug}}/the-devils-advocate.md` — DA's responses. Required.
+4. `{{session}}/responses/{{cluster_slug}}/the-pragmatist.md` — Pragmatist's responses. Required.
+
+Both persona files are mandatory inputs. Skipping one loses half the point of `low` effort — the skill explicitly pairs these two lenses to surface trade-offs that single-voice brainstorming smooths over.
 
 ## Your Task
 
@@ -14,16 +25,11 @@ Read both persona response files and produce a summary that explicitly surfaces 
 
 **Step-by-step process:**
 
-1. **Read context**: Read `{{session}}/REQUEST.md` for the original brainstorming request
-2. **Read questions**: Read `{{session}}/questions/by-topic/{{cluster_slug}}.md` for the questions in this topic cluster
-3. **Read both persona files**:
-   - `{{session}}/responses/{{cluster_slug}}/the-devils-advocate.md`
-   - `{{session}}/responses/{{cluster_slug}}/the-pragmatist.md`
-4. **Classify responses** per question:
+1. **Classify responses** per question:
    - **Convergent**: both personas reached the same conclusion or flagged the same concern → high-confidence signal
    - **Divergent**: DA cautions, Pragmatist endorses (or vice versa) → genuine trade-off worth surfacing
    - **Unique**: only one persona raised it → potential blind spot from the other's angle
-5. **Build the summary** using the structure below
+2. **Build the summary** using the structure below
 
 ## Synthesis Strategy
 
@@ -35,7 +41,15 @@ For each question, note:
 
 A summary that smooths the DA/Pragmatist contrast into neutral consensus defeats the purpose of `low` effort. Name the disagreements.
 
+**Smoothed (fails the `low` effort mandate):** "Members appreciate accessibility, but balance is needed between inclusivity and sustainability."
+
+**Tension-preserved (succeeds):** "The Pragmatist recommends a sliding-scale membership to maximize sustainability at current member counts; The Devil's Advocate flags that any paywall — including sliding-scale — selectively excludes the members the library exists to serve, and recommends pay-what-you-can with a suggested amount until a sustainability audit at month 6."
+
+The second version names both lenses, commits each to a specific stance, and forces the reader to confront the trade-off rather than letting it dissolve into "balance."
+
 ## Output
+
+Replace every bracketed placeholder below (e.g., `[Topic Cluster Name]`, `[Theme 1 Name]`) with the content you derive; do not emit the literal placeholder strings.
 
 Create `synthesis/{{cluster_slug}}_summary.md`:
 
@@ -119,19 +133,11 @@ topic-cluster: "{{cluster_slug}}"
 - **Prioritize convergent insights**: points both personas mention carry more weight
 - **Don't drop unique insights**: a blind-spot flag from one persona is often the most valuable output
 - **Organize by value**: lead with high-confidence items, then trade-offs, then blind spots
+- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: name both lenses by name when they disagree.
 
-## File Paths
+## Notes
 
-- Input (context): `{{session}}/REQUEST.md`
-- Input (questions): `{{session}}/questions/by-topic/{{cluster_slug}}.md`
-- Input (DA responses): `{{session}}/responses/{{cluster_slug}}/the-devils-advocate.md`
-- Input (Pragmatist responses): `{{session}}/responses/{{cluster_slug}}/the-pragmatist.md`
-- Output: `{{session}}/synthesis/{{cluster_slug}}_summary.md`
-
-## Important Notes
-
-- This is a **summary-only** synthesis (no attribution document, no separate synthesis document)
-- Read both persona files — skipping one loses half the point of `low` effort
-- Use Glob/Read tools to access files (do not expect content to be provided)
-- Aim for 500-800 words total
-- Focus on synthesis, not repetition — transform responses into integrated insights organized by the convergence/divergence/unique structure
+- This is a **summary-only** synthesis (no attribution document, no separate synthesis document).
+- Target 500-800 words total.
+- Focus on synthesis, not repetition — transform responses into integrated insights organized by the convergence / divergence / unique structure.
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the single markdown file specified in Output.
