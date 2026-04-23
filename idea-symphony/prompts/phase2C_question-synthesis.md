@@ -248,11 +248,15 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6
 
 ## Topic Cluster 01: [Descriptive Name]
 
+**Cluster focus**: [One sentence naming the cluster's underlying concern.]
+
 1. **Short summary**: Merged or verbatim question description. Distinctive vocabulary preserved from contributing personas without surfacing their names.
 2. **Short summary**: ...
 3. **Short summary**: ...
 
 ## Topic Cluster 02: [Descriptive Name]
+
+**Cluster focus**: [One sentence naming the cluster's underlying concern.]
 
 1. **Short summary**: ...
 2. **Short summary**: ...
@@ -272,6 +276,7 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6
 ### Format Rules
 
 - Use `## Topic Cluster NN: Name` with zero-padded numbering.
+- Immediately under each `## Topic Cluster NN:` header, emit a single line of the form `**Cluster focus**: <one-sentence framing of the cluster's underlying concern>`, separated from the header by a blank line and followed by a blank line before the numbered list. This line is hoisted by `scripts/split-questions.sh` into each per-cluster file's footer, so it must be present for every cluster (the `## Additional Questions` section is an exception — the script fills that focus line deterministically).
 - Every question is formatted `N. **Short summary**: Longer description.` — no trailing `[Persona tags]`, no `###` sub-headings under clusters.
 - Synthesize-stream questions are merged anchors with distinctive-vocabulary clauses folded in (per Merger Rules in Section 1). Persona names never appear in the clause text — only distinctive vocabulary does (e.g., "Shifting-the-Burden dynamic", "INT8 quantization", "FCRA compliance").
 - Append-stream questions are preserved verbatim word-for-word from the source, with NO rewriting, NO persona tagging, and NO merger with Synthesize content. Voice preservation is achieved through verbatim text, not through attribution labels.

@@ -58,6 +58,7 @@ Replace every bracketed placeholder below (e.g., `[Project Name]`, `[Descriptive
 Format requirements:
 - Use Markdown headings to group related questions topically
 - Format each question text as: **Short question summary**: Longer question description with context
+- Immediately under each `## Topic Cluster NN:` header, emit a single line of the form `**Cluster focus**: <one-sentence framing of the cluster's underlying concern>`, separated from the header by a blank line and followed by a blank line before the numbered list. This line is hoisted by `scripts/split-questions.sh` into each per-cluster file's footer, so it must be present for every cluster.
 
 Create one output: `QUESTIONS.md` (the master file).
 
@@ -78,11 +79,15 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6
 
 ## Topic Cluster 01: [Descriptive Name]
 
+**Cluster focus**: [One sentence naming the cluster's underlying concern.]
+
 1. [Question text]
 2. [Question text]
 ...
 
 ## Topic Cluster 02: [Descriptive Name]
+
+**Cluster focus**: [One sentence naming the cluster's underlying concern.]
 
 3. [Question text]
 4. [Question text]

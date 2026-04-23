@@ -82,13 +82,17 @@ persona: "[Persona Name]"
 ## [Question 1 Short Summary]
 
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
+
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
+
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
 
 ## [Question 2 Short Summary]
 
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
+
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
+
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
 
 [Continue for all questions in topic cluster]

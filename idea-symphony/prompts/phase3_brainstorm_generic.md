@@ -49,8 +49,9 @@ Replace every bracketed placeholder below (e.g., `[Topic Cluster Name]`, `[Full 
 
 Format requirements:
 - Use Markdown with ## headings for each question
-- Use ### subheadings for each response (Response A, Response B, etc.)
-- No additional dividers or formatting beyond what's shown below
+- Use Title Case for all headings
+- Each response must be a markdown list item starting with `* `: `* **Summary.** Detail`
+- No numbering, dividers, or sub-headers beyond what's shown below
 
 Create one output:
 
@@ -74,14 +75,11 @@ topic-cluster: "{{cluster_slug}}"
 
 ## Question 1: [Full question text]
 
-### Response A
-[Detailed response with specific suggestions, examples, and reasoning. Aim for 50-150 words.]
+* [**Response A summary.** Detailed Response A text with specifics, examples, or reasoning. Aim for 50-150 words.]
 
-### Response B
-[Detailed response with different angle. Aim for 50-150 words.]
+* [**Response B summary.** Detailed Response B text with different angle. Aim for 50-150 words.]
 
-### Response C
-[Detailed response with another approach. Aim for 50-150 words.]
+* [**Response C summary.** Detailed Response C text with another approach. Aim for 50-150 words.]
 
 [Optional: Response D, Response E for particularly rich questions]
 
@@ -89,14 +87,13 @@ topic-cluster: "{{cluster_slug}}"
 
 ## Question 2: [Full question text]
 
-### Response A
-[Detailed response. Aim for 50-150 words.]
+* [**Response A summary.** Detailed Response A text with specifics, examples, or reasoning. Aim for 50-150 words.]
 
-### Response B
-[Detailed response. Aim for 50-150 words.]
+* [**Response B summary.** Detailed Response B text with different angle. Aim for 50-150 words.]
 
-### Response C
-[Detailed response. Aim for 50-150 words.]
+* [**Response C summary.** Detailed Response C text with another approach. Aim for 50-150 words.]
+
+[Optional: Response D, Response E for particularly rich questions]
 
 ---
 
