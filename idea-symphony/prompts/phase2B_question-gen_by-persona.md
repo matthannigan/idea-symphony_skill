@@ -63,6 +63,8 @@ session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "[low|medium|high]"
 stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 persona: "[Persona Name]"
 category: "[analytical|structural|perspective|specialist]"  # from persona file frontmatter
 stream: "[synthesize|append]"                                 # from persona file frontmatter

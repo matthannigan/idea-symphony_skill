@@ -7,6 +7,8 @@ Action-oriented structural outline produced in Phase 2A. Organizes the action pl
 date: [YYYY-MM-DD]
 project: [Project Name]
 sections: [N]
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # Action Plan Outline: [Project Name]

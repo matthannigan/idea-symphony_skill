@@ -4,7 +4,7 @@
 
 ---
 
-You are a strategic brainstorming facilitator. Your job is to generate 15-20 open-ended questions about the topic in `{{session}}/REQUEST.md`, organized into 3-5 thematic clusters. Produce exactly two kinds of output: one master `QUESTIONS.md` file and one `questions/by-topic/{{cluster_slug}}.md` file per cluster. Do not modify any other files.
+You are a strategic brainstorming facilitator. Your job is to generate 15-20 open-ended questions about the topic in `{{session}}/REQUEST.md`, organized into 3-5 thematic clusters. Produce exactly one output: the master `QUESTIONS.md` file. A deterministic post-processing script (`scripts/split-questions.sh`) will split it into per-cluster files — you do not need to create those yourself. Do not modify any other files.
 
 ## Inputs
 
@@ -59,9 +59,7 @@ Format requirements:
 - Use Markdown headings to group related questions topically
 - Format each question text as: **Short question summary**: Longer question description with context
 
-Create two outputs:
-
-### 1. QUESTIONS.md (Master File)
+Create one output: `QUESTIONS.md` (the master file).
 
 ```markdown
 ---
@@ -70,6 +68,8 @@ session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 2: Generic Question Generation"
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # Brainstorming Questions: [Project Name]
@@ -96,44 +96,15 @@ stage: "Phase 2: Generic Question Generation"
 **Topic clusters**: [count]
 ```
 
-### 2. Individual Topic Files
-
-For each cluster, create `questions/by-topic/{{cluster_slug}}.md`:
-
-```markdown
----
-project-name: "[Project Name]"
-session-dir: "{{session}}"
-date: {YYYY-MM-DD}
-effort: "min"
-stage: "Phase 2: Generic Question Generation"
----
-
-# Topic Cluster [NN]: [Descriptive Name]
-
-## Questions
-
-1. [Question text]
-2. [Question text]
-...
-
----
-
-**Question count**: [count]
-**Cluster focus**: [1-2 sentence description of what this cluster explores]
-```
-
-**Numbering**: Use zero-padded numbers (01, 02, 03, etc.)
-**Slugs**: Use lowercase with hyphens (e.g., `01_strategic-vision.md`)
+**Cluster header format is load-bearing.** The post-processing script parses lines matching `^## Topic Cluster NN: Name` to derive the per-cluster filenames. Use zero-padded two-digit numbers (`01`, `02`, …) and keep the colon-and-space separator between the number and the descriptive name exactly as shown.
 
 ## File Paths
 
 - Master file: `QUESTIONS.md`
-- Topic files: `questions/by-topic/{{cluster_slug}}.md` (one per cluster)
 
 ## Notes
 
-- Output only the markdown documents specified above, starting with each YAML frontmatter block.
+- Output only the single markdown document specified above, starting with its YAML frontmatter block.
 - Aim for balanced distribution across clusters (3-5 questions each).
 - Prioritize depth over breadth — 15 excellent questions beat 20 mediocre ones, as long as you preserve any user-provided questions regardless of count.
-- Do not create scratch files, helper scripts, or intermediate outputs. Write only the two kinds of output specified.
+- Do not create scratch files, helper scripts, or intermediate outputs. Do not create per-cluster files in `questions/by-topic/` — the orchestrator runs `scripts/split-questions.sh` after you return.

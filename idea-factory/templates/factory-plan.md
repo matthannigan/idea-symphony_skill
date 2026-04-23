@@ -8,6 +8,8 @@ date: [YYYY-MM-DD]
 project: [Project Name]
 effort_level: [low/medium/high]
 symphony_session: [path to Symphony session directory]
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # Factory Plan: [Project Name]

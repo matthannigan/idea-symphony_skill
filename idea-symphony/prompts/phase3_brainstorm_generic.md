@@ -63,6 +63,8 @@ session-dir: "{{session}}"
 date: {YYYY-MM-DD}
 effort: "min"
 stage: "Phase 3: Generic Brainstorming"
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 ---
 

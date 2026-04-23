@@ -112,7 +112,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 - `FACTORY-PLAN.md` exists with correct configuration
 - User has confirmed scope and effort level
 
-**Orchestrator Model:** Sonnet
+**Orchestrator Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 ### Phase 2: Outline & Persona Generation (Orchestrator)
 
@@ -127,7 +127,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 3. Present outline to user for approval
 4. Save `OUTLINE.md`
 
-**Outline Model:** Opus (structural decisions need best judgment)
+**Outline Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; structural decisions need best judgment). Record `model-requested: "opus"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 #### Step 2B: Persona Generation
 
@@ -145,7 +145,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 3. Present team composition to user for approval
 4. Save persona files to `personas/{{persona_slug}}.md`
 
-**Persona Model:** Sonnet (creative but constrained)
+**Persona Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; creative but constrained). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 **Quality Gate:**
 - `OUTLINE.md` exists with all sections
@@ -175,7 +175,7 @@ Spawn **1 subagent per outline section** in parallel using the prompt at `{{skil
 
 **Output file:** `sections/{{section_slug}}.md` (writes directly to `sections/`, no `drafts/` directory). Format: [templates/section-low.md](templates/section-low.md).
 
-**Drafter Model:** Sonnet
+**Drafter Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:**
 - `sections/` contains one file per outline section
@@ -196,7 +196,7 @@ For each outline section, spawn subagents for each assigned persona using the pr
 
 Spawn drafters in parallel groups of 3-6 (group by section to manage context window).
 
-**Drafter Model:** Sonnet (quality reasoning for recommendations)
+**Drafter Model:** Pass `model: "sonnet"` to the Agent tool call (quality reasoning for recommendations). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:**
 - `drafts/{{section_slug}}/` exists for each section
@@ -212,7 +212,7 @@ For each section, spawn a synthesis subagent using the prompt at `{{skill}}/prom
 
 Spawn synthesis agents in parallel (one per section).
 
-**Synthesis Model:** Opus (critical synthesis judgment)
+**Synthesis Model:** Pass `model: "opus"` to the Agent tool call (critical synthesis judgment). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:**
 - `sections/` contains one file per outline section
@@ -241,7 +241,7 @@ Update `FACTORY-PLAN.md` with Phase 3 complete.
    - Where user decisions are needed
    - Point to section files for perspective details
 
-**Integration Model:** Opus (critical synthesis of all work)
+**Integration Model:** Opus (critical synthesis of all work). If spawned as a subagent, pass `model: "opus"` to the Agent tool call and include the literal string `model-requested: "opus"` in the prompt body. If run by the orchestrator directly, treat the model name as advisory and have the orchestrator record `model-requested: "opus"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 ## Session Resume
 

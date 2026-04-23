@@ -9,6 +9,8 @@ project: [Project Name]
 effort_level: [low/medium/high]
 symphony_session: [path]
 session_complete: [true/false]
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # Factory Session: [Project Name]

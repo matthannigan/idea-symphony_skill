@@ -55,6 +55,8 @@ title: {{section_title}}
 persona: {{persona_title}}
 effort: low
 date: {{date}}
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # {{section_title}}

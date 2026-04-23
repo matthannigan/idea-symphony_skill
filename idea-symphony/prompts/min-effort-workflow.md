@@ -43,16 +43,24 @@ Spawn 1 subagent using prompt from `{{skill}}/prompts/phase2B_question-gen_gener
 2. Check if `{{session}}/USER-QUESTIONS.md` exists (use Glob). If it exists, read it — these are questions the user specifically wants answered. Preserve their intent, expand/refine them, and integrate them into topic clusters. Mark any question that preserves or incorporates a user-provided question by appending `[User Q]` to the question text. User questions should appear in final output even if total count exceeds the 15-20 target.
 3. Generate 15-20 questions organized into 3-5 topical clusters (plus any user-provided questions)
 4. Ensure questions span strategic, tactical, creative, analytical, and human-centered dimensions
-5. Use YAML frontmatter in all output files
-6. Create two outputs:
-   - `QUESTIONS.md` (master file with all questions in numbered clusters)
-   - `questions/by-topic/{{cluster_slug}}.md` (one file per cluster)
+5. Use YAML frontmatter in the output file
+6. Create one output: `QUESTIONS.md` (master file with all questions in numbered `## Topic Cluster NN: Name` clusters). Do **not** create per-cluster files in `questions/by-topic/` — the orchestrator will derive those deterministically in the next step.
 
-**Subagent Model:** Claude Sonnet or Gemini Pro
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+
+**Post-generation shell step — split QUESTIONS.md into by-topic files:**
+
+After the subagent returns, run the utility script:
+
+```bash
+scripts/split-questions.sh {{session}}
+```
+
+This is a deterministic transform, not an LLM step. It parses `## Topic Cluster NN: Name` headers from `QUESTIONS.md` and writes one file per cluster into `questions/by-topic/` with derived slug filenames.
 
 **Quality Gate:** Before proceeding, verify:
-- `QUESTIONS.md` exists
-- `questions/by-topic/` contains 3-5 numbered `.md` files
+- `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
+- `questions/by-topic/` contains 3-5 numbered `.md` files (one per cluster)
 - If `USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` and compare against the number of questions in `USER-QUESTIONS.md`. If any are missing, log which user questions lack a corresponding marker and re-examine.
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
@@ -77,7 +85,7 @@ For each topic cluster, spawn 1 subagent using prompt from `{{skill}}/prompts/ph
 
 **Key point:** Focus on specific, actionable responses with concrete details and reasoning.
 
-**Subagent Model:** Claude Sonnet or Gemini Pro
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:** Before proceeding, verify:
 - `responses/{{cluster_slug}}/` exists for each topic
@@ -107,7 +115,7 @@ Spawn parallel subagents (1 per topic cluster) using prompt from `{{skill}}/prom
 
 **Key point:** Summary-only synthesis. No attribution, no full synthesis documents. Aim for 500-800 words.
 
-**Subagent Model:** Claude Sonnet or Gemini Pro
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:** Before proceeding, verify:
 - `synthesis/` directory exists
@@ -123,11 +131,13 @@ Update `PLAN.md` with synthesis complete status.
 
 ### Step 4.1: Create SYNTHESIS.md
 
-Concatenate all summary files into `SYNTHESIS.md`:
+Run the utility script to build `SYNTHESIS.md`:
 
 ```bash
-cat synthesis/[0-9]*.md > SYNTHESIS.md
+scripts/build-synthesis.sh {{session}}
 ```
+
+This is a deterministic transform, not an LLM step. It strips each per-topic file's YAML frontmatter, concatenates the bodies with horizontal-rule separators, and prepends a session-level frontmatter block composed from the shared fields (`project-name`, `session-dir`, `date`, `effort`) plus a fixed `stage: "Phase 5: Synthesis Concatenation"`.
 
 ### Step 4.2: Create BRAINSTORM.md
 

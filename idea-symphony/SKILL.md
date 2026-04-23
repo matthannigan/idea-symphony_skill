@@ -125,22 +125,22 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
 
 ### Phase 1: Context Gathering (Orchestrator)
 
-1. Receive user's topic/idea and any supporting documents
+1. Receive user's topic/idea and any supporting documents. Save supporting documents to `{{session}}/context/`.
 2. Ask user to confirm project name (e.g., "Community Garden" or "Habit Tracker")
 3. Confirm session directory location (default: `./[project-name_YYYY-MM-DD]/`)
-4. Create `REQUEST.md` summarizing the request (see [templates/request.md](templates/request.md))
-5. **Ask about user-defined questions:**
+4. **Ask about user-defined questions:**
    - Ask: "Do you have specific questions you want the brainstorming process to answer? These will be preserved through all phases."
    - If yes: Save as `USER-QUESTIONS.md` (see [templates/user-questions.md](templates/user-questions.md))
    - If no: Proceed without creating the file
    - **Rule:** Persona generators (Phase 2 Step 2.2) must not read USER-QUESTIONS.md. Only the `min` generic generator and the Phase 2C synthesizer may consume it. (Rationale in CLAUDE.md.)
+5. Create `REQUEST.md` summarizing the request (see [templates/request.md](templates/request.md)). Captures user input only — topic, context, goals, considerations, and references to any files in `context/` and `USER-QUESTIONS.md`. Effort level and orchestrator state go in `PLAN.md` (step 7).
 6. **Determine effort level:**
    - If user specified → use that level
    - If not → detect triggers and suggest. See [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) for the full detection logic.
-   - If `min` → proceed to min effort workflow and stop here
-7. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md))
+7. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), session directory, and Phase 1 completion status.
+8. If effort is `min` → proceed to min effort workflow.
 
-**Orchestrator Model:** Claude Sonnet or Gemini Pro
+**Orchestrator Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
 
 ---
 
@@ -165,8 +165,7 @@ The orchestrator produces a structured roster section in `PLAN.md` for question 
 `## Phase 2A: Question Generation Roster` section inside `{{session}}/PLAN.md`.
 No other files are written at this step.
 
-**Orchestrator Model:** Claude Opus (validation was on Opus; the roster decision is
-judgment-intensive).
+**Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; validation was on Opus and the roster decision is judgment-intensive). Record `model-requested: "opus"` and `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
 
 **Quality Gate:** Before proceeding to Step 2.2, verify `PLAN.md` contains:
 - The `## Phase 2A: Question Generation Roster` header
@@ -182,7 +181,7 @@ If any element is missing, re-run Step 2.1 rather than proceeding.
 
 Spawn parallel subagents per the roster plan — one per persona — using the prompt at `{{skill}}/prompts/phase2B_question-gen_by-persona.md`. Subagent instructions, coverage requirements, and output schema live in the prompt file.
 
-**Subagent Model:** Claude Sonnet or Gemini Pro
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:** Before proceeding, verify:
 - `{{session}}/questions/by-persona/` file count matches roster plan
@@ -221,7 +220,7 @@ Spawn 1 subagent to consolidate per-persona questions into topic clusters using 
    and hard-floor self-check diagnostics. This is the authoritative audit
    trail for future investigations and skill tests.
 
-**Subagent Model:** Claude Opus (judgment-intensive)
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Post-synthesis shell step — split QUESTIONS.md into by-topic files:**
 
@@ -271,7 +270,7 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
 5. Create `{{session}}/persona-selections.md` with selection summary table and detailed per-topic rationale
 6. Update `{{session}}/PLAN.md` with the summary table
 
-**Subagent Model:** Claude Opus (judgment-intensive)
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Configurable Approval Pause:** Check `PLAN.md` for `persona-selection-review` field:
 - **`auto`** (default): Proceed immediately
@@ -301,7 +300,7 @@ For each topic cluster, spawn parallel subagents using the prompt at `{{skill}}/
 - **`medium`:** 4 subagents per `persona-selections.md`
 - **`high`:** 7 subagents per `persona-selections.md`
 
-**Subagent Model:** Claude Haiku or Gemini Flash (volume over depth)
+**Subagent Model:** Pass `model: "haiku"` to the Agent tool call (volume over depth). Also include the literal string `model-requested: "haiku"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:** For each topic directory in `responses/`:
 - Expected file count: 2 (`low`), 4 (`medium`), or 7 (`high`) `.md` files
@@ -318,13 +317,13 @@ Update `PLAN.md` with Phase 3 complete status.
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
 
-**Subagent Model:** Claude Sonnet or Gemini Pro
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 #### Full Synthesis (`medium`/`high` effort)
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
-**Subagent Model:** Claude Opus or Gemini Pro (judgment-intensive)
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 **Quality Gate:** Verify:
 - `synthesis/attributed/`: 1 file per topic
@@ -340,11 +339,13 @@ Update `PLAN.md` with Phase 4 complete status.
 
 #### Step 5.1: Create SYNTHESIS.md
 
-Concatenate all summary and synthesis files:
+Run the utility script to build `SYNTHESIS.md`:
 
 ```bash
-cat synthesis/[0-9]*.md > SYNTHESIS.md
+scripts/build-synthesis.sh {{session}}
 ```
+
+This is a deterministic transform, not an LLM step. It strips each per-topic file's YAML frontmatter, concatenates the bodies with horizontal-rule separators, and prepends a session-level frontmatter block composed from the shared fields (`project-name`, `session-dir`, `date`, `effort`) plus a fixed `stage: "Phase 5: Synthesis Concatenation"`. At `medium`/`high` effort this picks up both `_summary.md` and `_synthesis.md` files per topic.
 
 #### Step 5.2: Create BRAINSTORM.md
 

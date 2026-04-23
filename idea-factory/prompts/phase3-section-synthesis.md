@@ -117,6 +117,8 @@ title: {{section_title}}
 contributors: [list of persona names who drafted]
 synthesis_approach: [brief note on how perspectives were reconciled]
 date: {{date}}
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # {{section_title}}

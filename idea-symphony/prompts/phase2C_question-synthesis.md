@@ -238,6 +238,8 @@ If an Append question has no topical home in any Synthesize cluster (pure invers
 project-name: "[Project Name from REQUEST]"
 effort: "[low|medium|high]"
 stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # Brainstorming Questions: [Project Name]

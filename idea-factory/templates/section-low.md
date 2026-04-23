@@ -8,6 +8,8 @@ section: [N]
 title: [Section Title]
 persona: [Persona Title]
 date: [YYYY-MM-DD]
+model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
 # [Section Title]

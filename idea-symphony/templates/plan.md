@@ -6,8 +6,8 @@ Session configuration, Phase 2 roster plan, and per-phase status log. Updated th
 # Brainstorming Session Plan
 
 **Project:** [Project Name]
-**Date:** [YYYY-MM-DD]
-**Effort:** `[min|low|medium|high]`
+**Plan Date:** [YYYY-MM-DD]
+**Effort:** `[min|low|medium|high]` *(sourced from user's Phase 1 selection; REQUEST.md captures user input only)*
 **Persona Selection Review:** [auto|pause] *(default: auto; `medium`/`high` only)*
 **Session Directory:** [path]
 
