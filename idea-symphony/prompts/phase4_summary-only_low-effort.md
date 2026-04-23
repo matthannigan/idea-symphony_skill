@@ -6,7 +6,7 @@
 
 You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{{topic}}**. Produce exactly one markdown file at the path named in Output. Do not modify any other files.
 
-`low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast.
+`low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast. **Frame that tension substantively in the output** (e.g., "a feasibility-oriented case argues…; a risk-oriented counterpoint flags…") rather than naming the personas in the prose. The final BRAINSTORM.md should read as a portable analysis that a cold reader — someone unfamiliar with this skill — can follow, not as a transcript of two named characters.
 
 ## Inputs
 
@@ -36,16 +36,16 @@ Read both persona response files and produce a summary that explicitly surfaces 
 For each question, note:
 
 - **Convergent points** → lead with these as highest-confidence insights and actions
-- **Divergent points** → name the tension explicitly, not in neutralized language. Example: *"The Pragmatist recommends [X] as the most feasible path; The Devil's Advocate flags [Y] as a significant risk of doing so."*
-- **Unique contributions** → preserve as blind-spot notes, attributed to whichever persona raised them
+- **Divergent points** → name the tension explicitly, not in neutralized language. Example: *"A feasibility-oriented case for [X] as the most buildable path; a risk-oriented counterpoint that [Y] is a significant risk of doing so."*
+- **Unique contributions** → preserve as blind-spot notes, tagged by the substantive lens (risk-oriented or feasibility-oriented) rather than the persona name
 
-A summary that smooths the DA/Pragmatist contrast into neutral consensus defeats the purpose of `low` effort. Name the disagreements.
+A summary that smooths the risk/feasibility contrast into neutral consensus defeats the purpose of `low` effort. Name the disagreements — in terms of the substantive positions, not the personas that generated them.
 
 **Smoothed (fails the `low` effort mandate):** "Members appreciate accessibility, but balance is needed between inclusivity and sustainability."
 
-**Tension-preserved (succeeds):** "The Pragmatist recommends a sliding-scale membership to maximize sustainability at current member counts; The Devil's Advocate flags that any paywall — including sliding-scale — selectively excludes the members the library exists to serve, and recommends pay-what-you-can with a suggested amount until a sustainability audit at month 6."
+**Tension-preserved (succeeds):** "A feasibility-oriented case argues for sliding-scale membership to maximize sustainability at current member counts; a risk-oriented counterpoint flags that any paywall — including sliding-scale — selectively excludes the members the library exists to serve, and argues instead for pay-what-you-can with a suggested amount until a sustainability audit at month 6."
 
-The second version names both lenses, commits each to a specific stance, and forces the reader to confront the trade-off rather than letting it dissolve into "balance."
+The second version commits each lens to a specific stance and forces the reader to confront the trade-off rather than letting it dissolve into "balance" — while staying legible to a cold reader who doesn't know a two-persona pairing produced it.
 
 ## Output
 
@@ -67,18 +67,20 @@ topic-cluster: "{{cluster_slug}}"
 
 # Summary: [Topic Cluster Name]
 
+**Central Tension**: [One sentence naming the cluster's organizing trade-off — e.g., "incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk." Required. If the cluster has no productive tension to name, that itself is a signal worth surfacing — say so.]
+
 ---
 
 ## Executive Summary
 
-[2-3 paragraphs capturing the most important insights. Note where DA and Pragmatist converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised.]
+[2-3 paragraphs capturing the most important insights. Note where the two lenses converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised. Frame convergences and disagreements in substantive terms (e.g., "a risk-oriented view," "a feasibility-oriented view"), not by persona name.]
 
 ---
 
 ## Key Themes
 
 ### [Theme 1 Name]
-[2-3 sentences. Note whether this theme was raised by both personas (convergent) or one (unique to DA or Pragmatist).]
+[2-3 sentences. Note whether this theme was raised by both lenses (convergent) or one (unique to the risk-oriented or feasibility-oriented view).]
 
 ### [Theme 2 Name]
 [2-3 sentences.]
@@ -104,38 +106,45 @@ topic-cluster: "{{cluster_slug}}"
 - [Specific action item]
 - [Specific action item]
 
-[Include 4-8 total action items. Prefer convergent recommendations at the top of each timeframe; where DA and Pragmatist disagreed on an action, present the trade-off explicitly rather than picking a side.]
+[Include 4-8 total action items. Each item should be implementable as written — name specific data-model fields, event names, UI strings, or test protocols where the cluster's substance supports it (e.g., "log `grace_offered`, `grace_used`, `grace_declined` as distinct events from launch," not "instrument the grace mechanic"). Vague recommendations get vague follow-through.
+
+Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]` / `[unique: feasibility]` so a downstream reader can weight them. Prefer convergent recommendations at the top of each timeframe; where the two lenses disagreed on an action, present the trade-off explicitly — framed by stance, not by persona name — rather than picking a side.]
 
 ---
 
 ## Key Considerations
 
-**High-confidence items** (both personas agreed):
+**High-confidence items** (both lenses agreed):
 - [Point]
 - [Point]
 
-**Trade-offs** (DA and Pragmatist disagreed):
-- [Specific trade-off — name both sides: "Pragmatist says X; DA flags Y"]
+**Trade-offs** (the two lenses disagreed):
+- [Specific trade-off — name both sides substantively: "A feasibility case for X; a risk-oriented counterpoint that Y"]
 - [Specific trade-off]
 
-**Blind-spot flags** (only one persona raised):
-- [Flag — noted by The Devil's Advocate | The Pragmatist]
-- [Flag — noted by The Devil's Advocate | The Pragmatist]
+**Blind-spot flags** (only one lens raised):
+- [Flag — risk-oriented | feasibility-oriented]
+- [Flag — risk-oriented | feasibility-oriented]
+
+**Neither-lens gaps** (what a different angle would have surfaced):
+- [1-3 things that neither a risk lens nor a feasibility lens naturally surfaces but that the cluster's substance suggests are real — e.g., relational/social dynamics, lifecycle/stage shifts, equity/access second-order effects, ethical surfaces. Be specific to this cluster; don't generalize. Skip the section entirely if nothing substantive emerges — speculative filler is worse than absence.]
 
 ---
 
 **Questions addressed**: [count]
-**Personas**: The Devil's Advocate, The Pragmatist
+**Source lenses**: risk-oriented (The Devil's Advocate) + feasibility-oriented (The Pragmatist)
 ```
 
 ## Synthesis Guidelines
 
-- **Preserve tension, don't smooth it**: the DA + Pragmatist pairing is designed to surface trade-offs — name them
-- **Attribute when it matters**: reference which persona raised which concern or recommendation when the attribution clarifies the point
-- **Prioritize convergent insights**: points both personas mention carry more weight
-- **Don't drop unique insights**: a blind-spot flag from one persona is often the most valuable output
+- **Preserve tension, don't smooth it**: the risk + feasibility pairing is designed to surface trade-offs — name them substantively
+- **Frame by stance, not by generator**: reference the substantive lens (a risk-oriented view, a feasibility-oriented view) when the attribution clarifies the point. Do not name the personas in the output prose; the output must stand alone as a portable document.
+- **Prioritize convergent insights**: points both lenses mention carry more weight
+- **Don't drop unique insights**: a blind-spot flag from one lens is often the most valuable output
+- **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, test protocols, threshold numbers) to abstract design intent — but only when the cluster substance actually supports it. A vague action item is worse than a sharp observation
+- **Look past the brief**: the Neither-lens gaps section is your chance to flag what the DA/Pragmatist pairing structurally won't surface. Use it sparingly and concretely; speculative filler defeats the point
 - **Organize by value**: lead with high-confidence items, then trade-offs, then blind spots
-- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: name both lenses by name when they disagree.
+- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: commit each lens to a stance and surface the disagreement in substantive terms, not by naming the personas that generated each side.
 
 ## Notes
 

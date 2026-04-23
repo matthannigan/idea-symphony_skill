@@ -18,6 +18,10 @@ Unlike `low`/`medium`/`high` effort, min-effort synthesis has only a single brai
 
 Read the generic brainstorming response (which contains 3-5 responses per question from a single brainstormer) and create a concise, actionable summary that distills the key insights and recommendations.
 
+**Internal convergence is your highest-confidence signal.** Min effort has no cross-persona convergence to lean on — the strongest substitute is *intra-response convergence*: ideas the brainstormer returned to across multiple questions, framings that recurred in different forms, recommendations the brainstormer arrived at from more than one angle. Treat these as the load-bearing insights. Single-occurrence ideas can still be valuable but carry less weight; mark them as such when you surface them so a downstream reader can prioritize.
+
+**Watch for conspicuous absence.** Note any stance the brainstormer's output never takes — a feasibility consideration the brainstormer skipped, a risk dimension never raised, a stakeholder group never named, a downside never flagged. Single-voice brainstorming cannot self-correct for these structural blind spots; surfacing them is the most valuable thing this synthesis can do that the raw response cannot.
+
 ## Summary Structure
 
 Replace every bracketed placeholder below with the content you derive; do not emit the literal placeholder strings.
@@ -75,7 +79,9 @@ topic-cluster: "{{cluster_slug}}"
 - [Specific action item]
 - [Specific action item]
 
-[Include 4-8 total action items across timeframes]
+[Include 4-8 total action items across timeframes. Each item should be implementable as written — name specific data fields, event names, UI strings, threshold numbers, or test protocols where the substance supports it (e.g., "log `cap_reached` and `weekly_review_completed` as named events," not "instrument the feature"). Vague recommendations get vague follow-through.
+
+Tag each item with `[recurring]` (the brainstormer returned to this idea in multiple responses — high confidence) or `[single]` (one-off but still worth surfacing — lower confidence) so a downstream reader can weight them.]
 
 ---
 
@@ -93,6 +99,9 @@ topic-cluster: "{{cluster_slug}}"
 - [Bullet point]
 - [Bullet point]
 
+**Conspicuous absences** (stances the brainstormer's output never took):
+- [1-3 angles the brainstormer skipped — e.g., a feasibility constraint never raised, a stakeholder dimension never mentioned, a downside or counter-argument never flagged. Be specific to this cluster's substance; don't list generic gaps. Skip the section entirely if nothing notable emerges — speculative filler is worse than absence.]
+
 ---
 
 **Questions addressed**: [count]
@@ -101,11 +110,12 @@ topic-cluster: "{{cluster_slug}}"
 
 ## Synthesis Guidelines
 
-- **Extract patterns**: Look for recurring themes across the different responses within the brainstormer's output
-- **Prioritize actionability**: Focus on insights that lead to concrete next steps
-- **Balance optimism and realism**: Acknowledge both opportunities and challenges
-- **Be specific**: Avoid generic statements like "consider stakeholders"
-- **Organize by value**: Lead with the most impactful insights and actions
+- **Extract patterns**: look for recurring themes across the different responses within the brainstormer's output — these are your highest-confidence signals in a single-voice setup
+- **Prioritize actionability**: focus on insights that lead to concrete next steps
+- **Balance optimism and realism**: acknowledge both opportunities and challenges
+- **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, threshold numbers, test protocols) to abstract design intent — but only when the substance supports it. "Consider stakeholders" and "improve onboarding" are non-recommendations
+- **Surface what isn't there**: a single-voice brainstorm cannot self-correct for blind spots. The Conspicuous Absences section is where this synthesis adds value the raw response cannot — use it concretely, skip it if nothing real emerges
+- **Organize by value**: lead with the most impactful insights and actions
 - Write the Executive Summary as prose paragraphs, not bullets. Direct and specific.
 
 ## File Paths
