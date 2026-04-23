@@ -4,11 +4,12 @@ Scope definition file produced in Phase 1. Captures what the action plan will co
 
 ```markdown
 ---
-date: [YYYY-MM-DD]
-project: [Project Name]
-symphony_session: [path to Symphony session directory]
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
-model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
+project-name: "[Project Name]"
+session-dir: "{{session_path}}"
+datetime: {{current_datetime}}
+stage: "Phase 1: Intake & Scope Definition"
+symphony-session: "[path to Symphony session directory]"
+model-reported: "[orchestrator self-identifies, e.g., claude-sonnet-4-6]"
 ---
 
 # Scope: [Project Name]

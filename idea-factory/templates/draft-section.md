@@ -5,9 +5,10 @@ Independent section draft produced in Phase 3A by each assigned persona. One fil
 ```markdown
 ---
 section: [N]
-title: [Section Title]
-persona: [Persona Title - use title-based name]
-date: [YYYY-MM-DD]
+title: "[Section Title]"
+persona: "[Persona Title - use title-based name]"
+datetime: {{current_datetime}}
+stage: "Phase 3A: Independent Drafts"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

@@ -5,9 +5,10 @@ Simplified per-section file written directly by the single domain-expert persona
 ```markdown
 ---
 section: [N]
-title: [Section Title]
-persona: [Persona Title]
-date: [YYYY-MM-DD]
+title: "[Section Title]"
+persona: "[Persona Title]"
+datetime: {{current_datetime}}
+stage: "Phase 3: Section Drafts"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

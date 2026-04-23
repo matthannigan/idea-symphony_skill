@@ -60,7 +60,7 @@ Format requirements:
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "[low|medium|high]"
 stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"

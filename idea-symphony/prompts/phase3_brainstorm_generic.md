@@ -61,7 +61,7 @@ Create one output:
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "min"
 stage: "Phase 3: Generic Brainstorming"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"

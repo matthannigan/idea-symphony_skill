@@ -4,11 +4,12 @@ Action-oriented structural outline produced in Phase 2A. Organizes the action pl
 
 ```markdown
 ---
-date: [YYYY-MM-DD]
-project: [Project Name]
+project-name: "[Project Name]"
+session-dir: "{{session_path}}"
+datetime: {{current_datetime}}
+stage: "Phase 2A: Outline"
 sections: [N]
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
-model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 ---
 
 # Action Plan Outline: [Project Name]

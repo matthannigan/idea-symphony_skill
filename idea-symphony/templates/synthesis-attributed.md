@@ -8,7 +8,7 @@ File naming: `{{cluster_slug}}_[type].md` where NN is the two-digit topic number
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "[medium|high]"
 stage: "Phase 4: Response Synthesis"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"

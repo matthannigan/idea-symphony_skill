@@ -113,10 +113,11 @@ Replace every bracketed placeholder below with the content you derive; do not em
 ```markdown
 ---
 section: {{section_number}}
-title: {{section_title}}
+title: "{{section_title}}"
 contributors: [list of persona names who drafted]
-synthesis_approach: [brief note on how perspectives were reconciled]
-date: {{date}}
+synthesis-approach: "[brief note on how perspectives were reconciled]"
+datetime: {{current_datetime}}
+stage: "Phase 3B: Section Synthesis"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

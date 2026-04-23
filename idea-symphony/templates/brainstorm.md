@@ -3,10 +3,16 @@
 Final user-facing output document for a session. Generated in Phase 5 by consolidating per-topic summaries and synthesis files.
 
 ```markdown
-# Brainstorming Session: [Project Name]
+---
+project-name: "[Project Name]"
+session-dir: "{{session}}"
+datetime: {{current_datetime}}
+effort: "[min|low|medium|high]"
+stage: "Phase 5: Final Output"
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
+---
 
-**Date:** [YYYY-MM-DD]
-**Effort:** `[min|low|medium|high]`
+# Brainstorming Session: [Project Name]
 
 ## Executive Summary
 [3-5 paragraphs capturing the most important insights across all topic clusters]

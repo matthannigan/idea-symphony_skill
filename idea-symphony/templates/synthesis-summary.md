@@ -8,7 +8,7 @@ Executive-level summary of a topic cluster. Produced at every effort level by th
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "[min|low|medium|high]"
 stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"

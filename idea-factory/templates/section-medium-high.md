@@ -5,10 +5,11 @@ Final per-section file produced by the Phase 3B synthesis agent at medium/high e
 ```markdown
 ---
 section: [N]
-title: [Section Title]
+title: "[Section Title]"
 contributors: [list of persona titles who drafted - use title-based names]
-synthesis_approach: [brief note on how perspectives were reconciled]
-date: [YYYY-MM-DD]
+synthesis-approach: "[brief note on how perspectives were reconciled]"
+datetime: {{current_datetime}}
+stage: "Phase 3B: Section Synthesis"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

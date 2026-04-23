@@ -6,10 +6,10 @@ Auto-generated persona definition created in Phase 2B. Each session generates pr
 ---
 name: [Role Title - use title-based name, not personal name]
 role: [Role Title]
-project: [Project Name]
-date: [YYYY-MM-DD]
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
-model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
+project-name: "[Project Name]"
+datetime: {{current_datetime}}
+stage: "Phase 2B: Persona Generation"
+model-reported: "[orchestrator self-identifies, e.g., claude-sonnet-4-6]"
 ---
 
 # [Role Title]

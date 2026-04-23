@@ -64,10 +64,11 @@ The orchestrator substitutes this path to `{{session_path}}/drafts/{{section_slu
 ```markdown
 ---
 section: {{section_number}}
-title: {{section_title}}
-persona: {{persona_title}}
-effort: {{effort_level}}
-date: {{date}}
+title: "{{section_title}}"
+persona: "{{persona_title}}"
+effort: "{{effort_level}}"
+datetime: {{current_datetime}}
+stage: "Phase 3A: Independent Drafts"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

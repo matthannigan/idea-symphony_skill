@@ -57,7 +57,7 @@ Create `synthesis/{{cluster_slug}}_summary.md`:
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "low"
 stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"

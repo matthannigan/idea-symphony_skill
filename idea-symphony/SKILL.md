@@ -38,10 +38,12 @@ Transform brainstorming from single-perspective assistance into a simulated mult
 
 Prompt files in this skill use two placeholder conventions:
 
-- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{topic}}`, `{{cluster_slug}}`.
+- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{topic}}`, `{{cluster_slug}}`, `{{current_datetime}}`.
 - `[Title Case Descriptive Slot]` — **output-template placeholders.** The subagent fills these in when producing its output (YAML frontmatter values, markdown headings, body prose). Examples: `[Topic 1 Descriptive Name]`, `[Question text]`, `[Your Persona Name]`.
 
 If you see a placeholder in a file-system path, shell command, or prompt-instruction context, treat it as a substitution variable. If you see it inside a fenced output template, treat it as a slot to fill during generation.
+
+`{{current_datetime}}` resolves to the current date/time the orchestrator observes in its Claude Code system context (ISO 8601, e.g. `2026-04-23`). Use it in YAML frontmatter `datetime:` fields so subagent outputs carry an accurate session timestamp. The orchestrator must substitute the literal value before spawning the subagent — subagents do not resolve it themselves.
 
 ## Persona System
 
@@ -140,7 +142,7 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
 7. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), session directory, and Phase 1 completion status.
 8. If effort is `min` → proceed to min effort workflow.
 
-**Orchestrator Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
+**Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
 
 ---
 
@@ -165,7 +167,7 @@ The orchestrator produces a structured roster section in `PLAN.md` for question 
 `## Phase 2A: Question Generation Roster` section inside `{{session}}/PLAN.md`.
 No other files are written at this step.
 
-**Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; validation was on Opus and the roster decision is judgment-intensive). Record `model-requested: "opus"` and `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
+**Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; validation was on Opus and the roster decision is judgment-intensive). Record `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
 
 **Quality Gate:** Before proceeding to Step 2.2, verify `PLAN.md` contains:
 - The `## Phase 2A: Question Generation Roster` header
@@ -284,25 +286,34 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
 
 ---
 
-### Phase 3: Multi-Perspective Brainstorming
+### Phase 3: Multi-Perspective Brainstorming (Parallel Subagents)
 
 Each persona responds independently to topic cluster questions.
 
 Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
 
-**For `low`:** Use Devil's Advocate + Pragmatist for every topic (no persona-selections.md needed).
+#### For `low` effort only
 
-**For `medium`/`high`:** Read `{{session}}/persona-selections.md` for per-topic persona assignments.
+Use Devil's Advocate + Pragmatist for every topic (no persona-selections.md needed).
+
+For each topic cluster, spawn 2 parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
+
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+
+#### For `medium`/`high` effort
+
+Read `{{session}}/persona-selections.md` for per-topic persona assignments.
 
 For each topic cluster, spawn parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
 
-- **`low`:** 2 subagents (Devil's Advocate + Pragmatist)
 - **`medium`:** 4 subagents per `persona-selections.md`
 - **`high`:** 7 subagents per `persona-selections.md`
 
 **Subagent Model:** Pass `model: "haiku"` to the Agent tool call (volume over depth). Also include the literal string `model-requested: "haiku"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
-**Quality Gate:** For each topic directory in `responses/`:
+#### Quality Gate
+
+For each topic directory in `responses/`:
 - Expected file count: 2 (`low`), 4 (`medium`), or 7 (`high`) `.md` files
 - If count doesn't match: Use Glob to search, move to correct location
 - If files missing after search, log in PLAN.md Notes and proceed
@@ -311,13 +322,13 @@ Update `PLAN.md` with Phase 3 complete status.
 
 ---
 
-### Phase 4: Response Synthesis
+### Phase 4: Response Synthesis (Parallel Subagents)
 
 #### Summary Generation (`low` effort only)
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
 
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 #### Full Synthesis (`medium`/`high` effort)
 
@@ -325,7 +336,9 @@ Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/pr
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
-**Quality Gate:** Verify:
+#### Quality Gate
+
+Verify:
 - `synthesis/attributed/`: 1 file per topic
 - `synthesis/`: 2 files per topic (`_summary.md` + `_synthesis.md`)
 - `low`: only `_summary.md` files, no `attributed/` directory
@@ -337,7 +350,7 @@ Update `PLAN.md` with Phase 4 complete status.
 
 ### Phase 5: Final Output
 
-#### Step 5.1: Create SYNTHESIS.md
+#### Step 5.1: Create SYNTHESIS.md (Orchestrator)
 
 Run the utility script to build `SYNTHESIS.md`:
 
@@ -401,15 +414,16 @@ If a subagent fails:
 
 | Task | Model | Rationale |
 |------|-------|-----------|
-| Orchestration | Sonnet | Balance of speed and quality |
+| Orchestration | Opus | Tools calling expertise |
 | Roster planning | Orchestrator (Sonnet) | Reads guide, applies selection logic |
 | Question generation | Sonnet | Balance of speed and quality |
 | Question synthesis | Opus | Judgment for deduplication and append selection |
 | Persona selection (`medium`/`high`) | Opus | Judgment-intensive topic classification |
-| Brainstorming | Haiku | Volume over depth |
-| Summary generation (`low`) | Sonnet | User-facing summaries |
+| Brainstorming (`min`/`low`) | Sonnet | Balance of speed and quality |
+| Brainstorming (`medium`/`high`)  | Haiku | Volume over depth |
+| Summary generation (`min`/`low`) | Sonnet | User-facing summaries |
 | Full synthesis (`medium`/`high`) | Opus | Critical consolidation |
-| Final output | Sonnet | User-facing deliverable |
+| Final output | Opus | User-facing deliverable |
 
 ## Reference directories
 

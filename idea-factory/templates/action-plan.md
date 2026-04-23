@@ -4,13 +4,14 @@ The final integrated deliverable produced in Phase 4. Combines all section files
 
 ```markdown
 ---
-date: [YYYY-MM-DD]
-project: [Project Name]
-effort_level: [low/medium/high]
-symphony_session: [path]
+project-name: "[Project Name]"
+session-dir: "{{session_path}}"
+datetime: {{current_datetime}}
+effort: "[low|medium|high]"
+stage: "Phase 4: Integration"
+symphony-session: "[path]"
 sections: [N]
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
-model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 ---
 
 # Action Plan: [Project Name]

@@ -3,9 +3,15 @@
 Session-level file summarizing the user's brainstorming request. Lives at the root of the session directory. **Captures user input only** — immutable after Phase 1. Orchestrator state (effort routing, roster plan, phase status) lives in PLAN.md.
 
 ```markdown
-# Request: [Project Name]
+---
+project-name: "[Project Name]"
+session-dir: "{{session}}"
+datetime: {{current_datetime}}
+stage: "Phase 1: Context Gathering"
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
+---
 
-**Request Date:** [YYYY-MM-DD]
+# Request: [Project Name]
 
 ## Topic
 [The core topic / what the user wants to brainstorm about, in the user's own framing]
@@ -33,4 +39,4 @@ Session-level file summarizing the user's brainstorming request. Lives at the ro
 
 - **Effort Level is not stored here.** Although the user selects it, effort belongs in `PLAN.md` because it drives orchestrator routing. `PLAN.md` sources it from the Phase 1 conversation.
 - **`Supporting Documents` and `User-Provided Questions` sections are omitted** if the user submitted neither files nor questions — don't leave empty stub sections.
-- **Date semantics:** `Request Date` is when the user filed the request. `PLAN.md` stamps its own `Plan Date` separately, which may differ if the session starts later.
+- **Date semantics:** The `datetime` frontmatter field records when the request was filed. `PLAN.md` stamps its own `datetime` separately, which may differ if the session starts later.

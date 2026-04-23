@@ -3,13 +3,20 @@
 Session configuration, Phase 2 roster plan, and per-phase status log. Updated throughout the session as each phase/step completes.
 
 ```markdown
+---
+project-name: "[Project Name]"
+session-dir: "{{session}}"
+datetime: {{current_datetime}}
+effort: "[min|low|medium|high]"
+stage: "Phase 1: Context Gathering"
+persona-selection-review: "[auto|pause]"
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
+---
+
 # Brainstorming Session Plan
 
-**Project:** [Project Name]
-**Plan Date:** [YYYY-MM-DD]
 **Effort:** `[min|low|medium|high]` *(sourced from user's Phase 1 selection; REQUEST.md captures user input only)*
 **Persona Selection Review:** [auto|pause] *(default: auto; `medium`/`high` only)*
-**Session Directory:** [path]
 
 ## Phase 2 Roster Plan
 

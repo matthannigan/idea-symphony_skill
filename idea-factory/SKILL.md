@@ -40,10 +40,12 @@ This creates "debate" through independent development + synthesis reconciliation
 
 Prompt files in this skill use two placeholder conventions:
 
-- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session_path}}`, `{{symphony_path}}`, `{{skill}}`, `{{section_slug}}`, `{{cluster_slug}}`, `{{persona_slug}}`.
+- `{{lowercase_underscored}}` — **orchestrator substitution variables.** The orchestrator replaces these with session-specific values before the prompt is handed to a subagent. By the time the subagent reads the prompt, these are already resolved. Examples: `{{session_path}}`, `{{symphony_path}}`, `{{skill}}`, `{{section_slug}}`, `{{cluster_slug}}`, `{{persona_slug}}`, `{{current_datetime}}`.
 - `[Title Case Descriptive Slot]` — **output-template placeholders.** The subagent fills these in when producing its output (YAML frontmatter values, markdown headings, body prose). Examples: `[Section Title]`, `[Persona Title]`, `[Name]`.
 
 If you see a placeholder in a file-system path, shell command, or prompt-instruction context, treat it as a substitution variable. If you see it inside a fenced output template, treat it as a slot to fill during generation.
+
+`{{current_datetime}}` resolves to the current date/time the orchestrator observes in its Claude Code system context (ISO 8601, e.g. `2026-04-23`). Use it in YAML frontmatter `datetime:` fields so subagent outputs carry an accurate session timestamp. The orchestrator must substitute the literal value before spawning the subagent — subagents do not resolve it themselves.
 
 ## Prerequisites
 
@@ -112,7 +114,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 - `FACTORY-PLAN.md` exists with correct configuration
 - User has confirmed scope and effort level
 
-**Orchestrator Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
+**Orchestrator Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 ### Phase 2: Outline & Persona Generation (Orchestrator)
 
@@ -127,7 +129,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 3. Present outline to user for approval
 4. Save `OUTLINE.md`
 
-**Outline Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; structural decisions need best judgment). Record `model-requested: "opus"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
+**Outline Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; structural decisions need best judgment). Record `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 #### Step 2B: Persona Generation
 
@@ -145,7 +147,7 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 3. Present team composition to user for approval
 4. Save persona files to `personas/{{persona_slug}}.md`
 
-**Persona Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; creative but constrained). Record `model-requested: "sonnet"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
+**Persona Model:** Sonnet (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; creative but constrained). Record `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 **Quality Gate:**
 - `OUTLINE.md` exists with all sections
@@ -241,7 +243,7 @@ Update `FACTORY-PLAN.md` with Phase 3 complete.
    - Where user decisions are needed
    - Point to section files for perspective details
 
-**Integration Model:** Opus (critical synthesis of all work). If spawned as a subagent, pass `model: "opus"` to the Agent tool call and include the literal string `model-requested: "opus"` in the prompt body. If run by the orchestrator directly, treat the model name as advisory and have the orchestrator record `model-requested: "opus"` and `model-reported: "<self-identified>"` in the output frontmatter for audit.
+**Integration Model:** Opus (critical synthesis of all work). If spawned as a subagent, pass `model: "opus"` to the Agent tool call and include the literal string `model-requested: "opus"` in the prompt body (the subagent self-reports its model in `model-reported`). If run by the orchestrator directly, treat the model name as advisory and have the orchestrator record `model-reported: "<self-identified>"` in the output frontmatter for audit.
 
 ## Session Resume
 

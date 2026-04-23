@@ -4,18 +4,18 @@ Session report produced in Phase 4 alongside ACTION-PLAN.md. Documents persona c
 
 ```markdown
 ---
-date: [YYYY-MM-DD]
-project: [Project Name]
-effort_level: [low/medium/high]
-symphony_session: [path]
-session_complete: [true/false]
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
-model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
+project-name: "[Project Name]"
+session-dir: "{{session_path}}"
+datetime: {{current_datetime}}
+effort: "[low|medium|high]"
+stage: "Phase 4: Integration"
+symphony-session: "[path]"
+session-complete: [true|false]
+model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 ---
 
 # Factory Session: [Project Name]
 
-**Date:** [YYYY-MM-DD]
 **Symphony Source:** `[path]`
 **Effort Level:** [low/medium/high]
 

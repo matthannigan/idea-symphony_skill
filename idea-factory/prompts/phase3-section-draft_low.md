@@ -51,10 +51,11 @@ This is the final section file — there is no downstream synthesis step at low 
 ```markdown
 ---
 section: {{section_number}}
-title: {{section_title}}
-persona: {{persona_title}}
-effort: low
-date: {{date}}
+title: "{{section_title}}"
+persona: "{{persona_title}}"
+effort: "low"
+datetime: {{current_datetime}}
+stage: "Phase 3: Section Drafts"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---

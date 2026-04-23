@@ -66,7 +66,7 @@ Create one output: `QUESTIONS.md` (the master file).
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
-date: {YYYY-MM-DD}
+datetime: {{current_datetime}}
 effort: "min"
 stage: "Phase 2: Generic Question Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
