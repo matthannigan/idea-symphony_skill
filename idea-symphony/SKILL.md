@@ -330,39 +330,48 @@ Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/pr
 
 **Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
+Once all subagents are complete, run the utility script to build the concatenated `SUMMARIES.md` file. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
+
+```bash
+scripts/build-summaries.sh {{session}}
+```
+
 #### Full Synthesis (`medium`/`high` effort)
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
+Once all subagents are complete, run both utility scripts. Each is a deterministic concat-and-strip-frontmatter transform; `build-summaries.sh` consumes the per-topic `_summary.md` files and `build-synthesis.sh` consumes the per-topic `_synthesis.md` files. They are independent and can be run in either order.
+
+```bash
+scripts/build-summaries.sh {{session}}
+scripts/build-synthesis.sh {{session}}
+```
+
 #### Quality Gate
 
-Verify:
-- `synthesis/attributed/`: 1 file per topic
-- `synthesis/`: 2 files per topic (`_summary.md` + `_synthesis.md`)
-- `low`: only `_summary.md` files, no `attributed/` directory
-- If files missing, log in PLAN.md Notes and proceed
+Verify the artifacts that should exist for this effort level:
+
+- **`low` effort:**
+  - `synthesis/`: 1 `_summary.md` per topic; no `_synthesis.md`, no `attributed/`
+  - `SUMMARIES.md` exists; no `SYNTHESIS.md`
+- **`medium`/`high` effort:**
+  - `synthesis/attributed/`: 1 attribution file per topic
+  - `synthesis/`: per topic, both `_summary.md` and `_synthesis.md`
+  - Both `SUMMARIES.md` and `SYNTHESIS.md` exist
+
+If files are missing, log the gap in PLAN.md Notes and proceed.
 
 Update `PLAN.md` with Phase 4 complete status.
 
 ---
 
-### Phase 5: Final Output
+### Phase 5: Final Output (Orchestrator)
 
-#### Step 5.1: Create SYNTHESIS.md (Orchestrator)
+#### Step 5.1: Create BRAINSTORM.md
 
-Run the utility script to build `SYNTHESIS.md`:
-
-```bash
-scripts/build-synthesis.sh {{session}}
-```
-
-This is a deterministic transform, not an LLM step. It strips each per-topic file's YAML frontmatter, concatenates the bodies with horizontal-rule separators, and prepends a session-level frontmatter block composed from the shared fields (`project-name`, `session-dir`, `date`, `effort`) plus a fixed `stage: "Phase 5: Synthesis Concatenation"`. At `medium`/`high` effort this picks up both `_summary.md` and `_synthesis.md` files per topic.
-
-#### Step 5.2: Create BRAINSTORM.md
-
-Read `QUESTIONS.md` and all `synthesis/*_summary.md` files.
+Read `QUESTIONS.md` and `SUMMARIES.md`. The consolidated `SUMMARIES.md` is the authoritative input for the executive summary, key themes, topic summaries, and recommended next steps — do not re-read individual per-topic files.
 
 Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](templates/brainstorm.md)):
 - Executive summary across all topics
@@ -372,7 +381,11 @@ Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](templat
 - Recommended next steps
 - Session index with links to all files
 
-#### Step 5.3: Present Results
+**Effort-conditional links** (substitute `{{topic_artifact}}` in the template):
+- `min`/`low`: per-topic links use `_summary.md`; Session Index lists only `SUMMARIES.md`
+- `medium`/`high`: per-topic links use `_synthesis.md`; Session Index lists both `SUMMARIES.md` and `SYNTHESIS.md`
+
+#### Step 5.2: Present Results
 
 Output brief summary to user:
 - Highlight 3-5 key insights

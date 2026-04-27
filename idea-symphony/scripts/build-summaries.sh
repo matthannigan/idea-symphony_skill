@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# build-synthesis.sh — Deterministic final-phase step for SYNTHESIS.md.
+# build-summaries.sh — Deterministic final-phase step for SUMMARIES.md.
 #
 # Concatenates all per-topic files in {{session}}/synthesis/ (matching
-# [0-9]*.md) into a single SYNTHESIS.md, stripping each file's YAML
+# [0-9]*_summary.md) into a single SUMMARIES.md, stripping each file's YAML
 # frontmatter and prepending a session-level frontmatter block. Files are
 # separated by markdown horizontal rules.
 #
@@ -10,7 +10,7 @@
 # frontmatter is composed from values shared across the per-topic files
 # (project-name, session-dir, date, effort) plus a fixed stage field.
 #
-# Usage: scripts/build-synthesis.sh <session-dir>
+# Usage: scripts/build-summaries.sh <session-dir>
 
 set -euo pipefail
 
@@ -29,11 +29,11 @@ fi
 cd "$session_dir"
 
 shopt -s nullglob
-files=(synthesis/[0-9]*_synthesis.md)
+files=(synthesis/[0-9]*_summary.md)
 shopt -u nullglob
 
 if [[ ${#files[@]} -eq 0 ]]; then
-  echo "Error: no synthesis/[0-9]*_synthesis.md files found" >&2
+  echo "Error: no synthesis/[0-9]*_summary.md files found" >&2
   exit 1
 fi
 
@@ -69,7 +69,7 @@ effort_value=$(get_field "effort")
   printf 'session-dir: "%s"\n' "$session_dir_value"
   printf 'date: %s\n' "$date_value"
   printf 'effort: "%s"\n' "$effort_value"
-  printf 'stage: "Phase 5: Synthesis Concatenation"\n'
+  printf 'stage: "Phase 5: Summaries Concatenation"\n'
   printf -- '---\n\n'
 
   # Strip each file's YAML frontmatter, skip the leading blank line after
@@ -92,6 +92,6 @@ effort_value=$(get_field "effort")
     }
     { print }
   ' "${files[@]}"
-} > SYNTHESIS.md
+} > SUMMARIES.md
 
-echo "Wrote $session_dir/SYNTHESIS.md"
+echo "Wrote $session_dir/SUMMARIES.md"

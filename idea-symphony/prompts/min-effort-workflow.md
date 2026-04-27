@@ -98,6 +98,8 @@ Update `PLAN.md` with brainstorming complete status.
 
 ## Step 3: Summary Generation
 
+### Summarization
+
 Spawn parallel subagents (1 per topic cluster) using prompt from `{{skill}}/prompts/phase4_summary-only_min-effort.md`.
 
 **Instructions for each subagent:**
@@ -117,10 +119,21 @@ Spawn parallel subagents (1 per topic cluster) using prompt from `{{skill}}/prom
 
 **Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
-**Quality Gate:** Before proceeding, verify:
+### Concatenation
+
+Once all subagents are complete, run the utility script to build the concatenated `SUMMARIES.md` file. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
+
+```bash
+scripts/build-summaries.sh {{session}}
+```
+
+### Quality Gate
+
+Verify:
 - `synthesis/` directory exists
 - One `{{cluster_slug}}_summary.md` file per topic
 - NO `attributed/` subdirectory or `_synthesis.md` files
+- `SUMMARIES.md` exists
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with synthesis complete status.
@@ -129,29 +142,19 @@ Update `PLAN.md` with synthesis complete status.
 
 ## Step 4: Final Output
 
-### Step 4.1: Create SYNTHESIS.md
+### Step 4.1: Create BRAINSTORM.md
 
-Run the utility script to build `SYNTHESIS.md`:
-
-```bash
-scripts/build-synthesis.sh {{session}}
-```
-
-This is a deterministic transform, not an LLM step. It strips each per-topic file's YAML frontmatter, concatenates the bodies with horizontal-rule separators, and prepends a session-level frontmatter block composed from the shared fields (`project-name`, `session-dir`, `date`, `effort`) plus a fixed `stage: "Phase 5: Synthesis Concatenation"`.
-
-### Step 4.2: Create BRAINSTORM.md
-
-Read `QUESTIONS.md` and all `synthesis/*_summary.md` files.
+Read `QUESTIONS.md` and `SUMMARIES.md`. The consolidated `SUMMARIES.md` is the authoritative input — do not re-read individual per-topic files.
 
 Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](../templates/brainstorm.md)):
 - Executive summary across all topics
 - Session overview
 - Key themes
-- Topic summaries with links
+- Topic summaries with links (use `_summary.md` per-topic links; list only `SUMMARIES.md` in the Session Index — `min` effort produces no `_synthesis.md` or `SYNTHESIS.md`)
 - Recommended next steps
 - Session index with links to all files
 
-### Step 4.3: Present Results
+### Step 4.2: Present Results
 
 Output brief summary to user:
 - Highlight 3-5 key insights
