@@ -18,55 +18,54 @@ model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 **Effort:** `[min|low|medium|high]` *(sourced from user's Phase 1 selection; REQUEST.md captures user input only)*
 **Persona Selection Review:** [auto|pause] *(default: auto; `medium`/`high` only)*
 
-## Phase 2 Roster Plan
+## Phase 2 Step 2.1: Question Generation Personas
 
 *(For `min` effort: skip this section — the min workflow uses a single generic question generator. See [prompts/min-effort-workflow.md](../prompts/min-effort-workflow.md).)*
 
-### Tier 1 Personas (always included at `low`/`medium`/`high`)
+**Effort:** `[low|medium|high]`
+**Connector/Analogist:** [Analogist (default) | Connector (swap)]
 
-| Persona | Category | Volume | Step 2.3 Method |
+Full rationale: see [personas/question-generation.md](personas/question-generation.md).
+
+### Tier 1 Personas
+
+| Persona | Category | Volume | Stream |
 |---|---|---|---|
-| The Questioner | Analytical | [range] | Synthesize |
-| The Analyst | Analytical | [range] | Synthesize |
-| The Devil's Advocate | Structural | [range] | Synthesize |
-| The Audience Advocate | Structural | [range] | Synthesize |
-| The Systems Thinker | Structural | [range] | Synthesize |
-| The Appreciative Inquirer | Structural | [range] | Synthesize |
-| The Provocateur | Perspective | 5-8 | Append |
-| [The Analogist or The Connector] | Perspective | 5-8 | Append |
-| The Visionary | Perspective | 5-8 | Append |
-| The Storyteller | Perspective | 5-8 | Append |
+| Questioner | Analytical | [range] | Synthesize |
+| Analyst | Analytical | [range] | Synthesize |
+| Devil's Advocate | Structural | [range] | Synthesize |
+| Appreciative Inquirer | Structural | [range] | Synthesize |
+| Audience Advocate | Structural | [range] | Synthesize |
+| Systems Thinker | Structural | [range] | Synthesize |
+| Provocateur | Perspective | 5-8 | Append |
+| [Analogist or Connector] | Perspective | 5-8 | Append |
+| Visionary | Perspective | 5-8 | Append |
+| Storyteller | Perspective | 5-8 | Append |
 
-### Tier 2 Personas (`high` only — omit section at `low`/`medium`)
+### Tier 2 Personas
 
-| Persona | Category | Volume | Step 2.3 Method |
+*(`high` only — at `low`/`medium`, replace the table with `N/A — [low|medium] effort`.)*
+
+| Persona | Category | Volume | Stream |
 |---|---|---|---|
-| The Constraint Flipper | Perspective | 5-8 | Append (3-5 round-robin) |
-| The Empath | Structural | 8-12 | Synthesize |
-| The First Principles Thinker | Structural | 7-10 | Synthesize |
-| The Futurist | Structural | 8-12 | Synthesize |
+| Constraint Flipper | Perspective | 5-8 | Append (3-5 round-robin) |
+| Empath | Structural | 8-12 | Synthesize |
+| First Principles Thinker | Structural | 7-10 | Synthesize |
+| Futurist | Structural | 8-12 | Synthesize |
 
-### Tier 3 Personas (orchestrator-selected)
+### Tier 3 Personas
 
-*(Or: "None selected — no strong triggers present for this topic.")*
+*(If none selected, replace the table with: `None selected — no strong triggers for this topic` (low/medium) or `None selected — no triggers at or above moderate threshold for this topic` (high).)*
 
-| Persona | Volume | Step 2.3 Method | Rationale |
+| Persona | Category | Volume | Stream |
 |---|---|---|---|
-| [Persona] | [range] | [Synthesize \| Append] | [Why selected — specific trigger in topic] |
+| [Persona] | [Specialist (...)] | [range] | [Synthesize \| Append] |
 
-Selection threshold:
-- `low`/`medium`: 0-1 Tier 3 persona (strong trigger only)
-- `high`: 0-2 Tier 3 personas (moderate+ trigger)
+## Phase 2 Step 2.4: Brainstorming Personas
 
-### Connector/Analogist Decision
+*(`medium`/`high` only.)*
 
-**Default:** The Analogist (Tier 1 Perspective).
-**This session:** [The Analogist | The Connector (swap)]
-**Rationale:** [If Connector: what inter-domain reconciliation the topic requires. If Analogist: single-domain reframing suffices.]
-
-## Phase 2.4 Persona Selection (`medium`/`high` only)
-
-See [persona-selections.md](persona-selections.md) for full rationale. Summary:
+Full rationale: see [personas/brainstorming.md](personas/brainstorming.md).
 
 | Topic | Personas |
 |---|---|
@@ -89,7 +88,7 @@ See [persona-selections.md](persona-selections.md) for full rationale. Summary:
   - Step 2.1 Roster Planning: [status]
   - Step 2.2 Question Generation: [status]
   - Step 2.3 Question Synthesis: [status] — [N] questions across [N] clusters
-  - Step 2.4 Persona Selection (`medium`/`high`): [status] — see persona-selections.md
+  - Step 2.4 Persona Selection (`medium`/`high`): [status] — see personas/brainstorming.md
 
 - **Phase 3 (Multi-Perspective Brainstorming):** [status]
   - Topic 1 ([Topic Name]): [status]

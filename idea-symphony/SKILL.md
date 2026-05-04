@@ -86,11 +86,12 @@ Session top-level:
 ```
 [project-name_YYYY-MM-DD]/
 ├── context/          # (optional) User-submitted files
+├── personas/         # Phase 2 persona-selection rationale (question-generation.md, brainstorming.md)
 ├── questions/        # Phase 2 outputs (by-persona/ and by-topic/)
 ├── responses/        # Phase 3 outputs (per-topic directories, one file per persona)
 ├── synthesis/        # Phase 4 outputs (summaries; attributed/ at medium/high)
 ├── REQUEST.md        # User request summary
-├── PLAN.md           # Session config, roster plan, status
+├── PLAN.md           # Session config, persona summary tables, status
 ├── QUESTIONS.md      # All questions consolidated (canonical order)
 ├── SYNTHESIS.md      # All summaries + syntheses (in topic order)
 └── BRAINSTORM.md     # Final output and session index
@@ -150,32 +151,21 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
 
 Generate and synthesize brainstorming questions from multiple persona perspectives. Three steps at `low`; four steps at `medium`/`high`.
 
-#### Step 2.1: Select Question Generation Personas (Orchestrator)
+#### Step 2.1: Select Question Generation Personas (Single Subagent)
 
-The orchestrator produces a structured roster section in `PLAN.md` for question generation that identifies Tier 1 personas, Tier 2 additions (high effort), any Tier 3 specialists selected by trigger strength, and the Connector/Analogist decision. Each persona row includes the Synthesize/Append stream assignment used by Step 2.3.
+Spawn 1 Opus subagent using the prompt at `{{skill}}/prompts/phase2A_question-gen-personas-selection.md`. The prompt covers Tier 3 trigger evaluation, the Connector/Analogist swap decision, effort-threshold ceilings, and the two-output structure (full rationale file + PLAN.md summary).
 
-**Orchestrator instructions:** Use the prompt at
-`{{skill}}/prompts/phase2A_question-gen-personas-selection.md`.
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
 
-**Inputs the orchestrator receives:**
-1. `{{session}}/REQUEST.md` — the topic body
-2. `{{effort_level}}` — `low`, `medium`, or `high` (from Phase 1)
-3. Reference: `{{skill}}/guidance/phase2A_question-gen-personas.md` —
-   consulted only if the prompt directs
+**Substitution:** Resolve `{{session}}`, `{{skill}}`, `{{current_datetime}}`, and `{{effort}}` in the prompt body before spawning.
 
-**Output:** the orchestrator appends / replaces the
-`## Phase 2A: Question Generation Roster` section inside `{{session}}/PLAN.md`.
-No other files are written at this step.
+**Outputs:**
+- `{{session}}/personas/question-generation.md` — full roster + selection rationale (audit trail).
+- A new `## Phase 2 Step 2.1: Question Generation Personas` section appended to `{{session}}/PLAN.md` — compact summary tables (Tier 1 always; Tier 2 if `high`; Tier 3 if any selected) with Synthesize/Append stream assignment per persona. No rationale.
 
-**Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step; validation was on Opus and the roster decision is judgment-intensive). Record `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
-
-**Quality Gate:** Before proceeding to Step 2.2, verify `PLAN.md` contains:
-- The `## Phase 2A: Question Generation Roster` header
-- An Effort Level line matching the session's effort level
-- A Tier 1 table with 10 personas (Connector substituted for Analogist if swapped)
-- A Tier 2 table at high effort, or `N/A — medium effort` / `N/A — low effort` otherwise
-- A Tier 3 table OR the correct "None selected — …" sentinel
-- A Selection Rationale block with structured fields (Trigger strength, Topic citation, Decision) for all four Tier 3 candidates and a Connector/Analogist swap rationale
+**Quality Gate:** Before proceeding to Step 2.2, verify:
+- `personas/question-generation.md` exists with frontmatter, the three Tier tables (Tier 1 always; Tier 2 populated at `high` or `N/A — {{effort}} effort` otherwise; Tier 3 populated or correct sentinel), and the Selection Rationale block with structured fields for all four Tier 3 candidates plus the Connector/Analogist swap rationale.
+- `PLAN.md` contains a `## Phase 2 Step 2.1: Question Generation Personas` section with Effort, Connector/Analogist line, and the three summary tables.
 
 If any element is missing, re-run Step 2.1 rather than proceeding.
 
@@ -269,7 +259,7 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
       - **`high` (7 per topic):** Core (2) + Inner Ring (2) + Middle Ring cluster completers (3)
    c. Document rationale for each selection
    d. Verify: no more than 3 personas from the same cluster family per topic
-5. Create `{{session}}/persona-selections.md` with selection summary table and detailed per-topic rationale
+5. Create `{{session}}/personas/brainstorming.md` with selection summary table and detailed per-topic rationale
 6. Update `{{session}}/PLAN.md` with the summary table
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
@@ -279,7 +269,8 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
 - **`pause`**: Present selections to user, wait for confirmation or overrides
 
 **Quality Gate:** Before proceeding, verify:
-- `persona-selections.md` exists
+- `personas/brainstorming.md` exists
+- The `## Phase 2 Step 2.4: Brainstorming Personas` summary table is present in `PLAN.md`
 - Each topic has exactly 4 (`medium`) or 7 (`high`) personas assigned
 - Devil's Advocate and Pragmatist included for every topic
 - No retired personas (Questioner, Analyst, Synthesizer) selected
@@ -294,7 +285,7 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 #### For `low` effort only
 
-Use Devil's Advocate + Pragmatist for every topic (no persona-selections.md needed).
+Use Devil's Advocate + Pragmatist for every topic (no Step 2.4 selection needed).
 
 For each topic cluster, spawn 2 parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
 
@@ -302,12 +293,12 @@ For each topic cluster, spawn 2 parallel subagents using the prompt at `{{skill}
 
 #### For `medium`/`high` effort
 
-Read `{{session}}/persona-selections.md` for per-topic persona assignments.
+Read the `## Phase 2 Step 2.4: Brainstorming Personas` table in `{{session}}/PLAN.md` for per-topic persona assignments. The table has everything Phase 3 needs to spawn subagents; do not read `personas/brainstorming.md` (which is the rationale audit trail and is large enough to balloon orchestrator context unnecessarily).
 
 For each topic cluster, spawn parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
 
-- **`medium`:** 4 subagents per `persona-selections.md`
-- **`high`:** 7 subagents per `persona-selections.md`
+- **`medium`:** 4 subagents per row of the PLAN.md table
+- **`high`:** 7 subagents per row of the PLAN.md table
 
 **Subagent Model:** Pass `model: "haiku"` to the Agent tool call (volume over depth). Also include the literal string `model-requested: "haiku"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
@@ -367,23 +358,15 @@ Update `PLAN.md` with Phase 4 complete status.
 
 ---
 
-### Phase 5: Final Output (Orchestrator)
+### Phase 5: Final Output
 
-#### Step 5.1: Create BRAINSTORM.md
+#### Step 5.1: Generate BRAINSTORM.md (Subagent)
 
-Read `QUESTIONS.md` and `SUMMARIES.md`. The consolidated `SUMMARIES.md` is the authoritative input for the executive summary, key themes, topic summaries, and recommended next steps — do not re-read individual per-topic files.
+Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template.
 
-Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](templates/brainstorm.md)):
-- Executive summary across all topics
-- Session overview
-- Key themes
-- Topic summaries with links
-- Recommended next steps
-- Session index with links to all files
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
 
-**Effort-conditional links** (substitute `{{topic_artifact}}` in the template):
-- `min`/`low`: per-topic links use `_summary.md`; Session Index lists only `SUMMARIES.md`
-- `medium`/`high`: per-topic links use `_synthesis.md`; Session Index lists both `SUMMARIES.md` and `SYNTHESIS.md`
+**Substitution:** Resolve `{{session}}`, `{{current_datetime}}`, and `{{effort}}` in the prompt body before spawning.
 
 #### Step 5.2: Present Results
 
@@ -406,9 +389,10 @@ If asked to continue a previous session:
 
 | PLAN.md Status | Files Present | Action |
 |----------------|---------------|--------|
+| Phase 2 Step 2.1: complete | `personas/question-generation.md` exists; PLAN.md has `## Phase 2 Step 2.1: Question Generation Personas` section | Resume at Step 2.2 |
 | Phase 2 Step 2.2: complete | `questions/by-persona/*.md` exist, `QUESTIONS.md` missing | Resume at Step 2.3 (Synthesis) |
-| Phase 2 Step 2.3: complete | `QUESTIONS.md` + `questions-meta.json` exist, `persona-selections.md` missing | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
-| Phase 2 Step 2.4: complete | `persona-selections.md` exists | Resume at Phase 3 |
+| Phase 2 Step 2.3: complete | `QUESTIONS.md` + `questions-meta.json` exist; PLAN.md has no `## Phase 2 Step 2.4: Brainstorming Personas` section yet | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
+| Phase 2 Step 2.4: complete | PLAN.md has the `## Phase 2 Step 2.4: Brainstorming Personas` section | Resume at Phase 3 |
 | Phase 3: complete | `responses/` populated | Resume at Phase 4 |
 | Phase 4: complete | `synthesis/` exists | Resume at Phase 5 |
 | Any phase: in-progress | Partial files | Re-run incomplete phase |

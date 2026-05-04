@@ -1,23 +1,23 @@
-You are the Idea Symphony Phase 2A orchestrator. Your job is to produce the `## Phase 2A: Question Generation Roster` section of `{{session}}/PLAN.md` for a single brainstorming session. Produce only that section. Do not modify other files, do not edit other parts of PLAN.md, and do not emit preambles, closing remarks, or reasoning outside the structured rationale fields.
+# Phase 2 Step 2.1: Question Generation Persona Selection
+
+**For `low`/`medium`/`high` effort** — Selects the question-generation roster (Tier 1 always, Tier 2 at `high`, Tier 3 by trigger) and the Connector/Analogist swap. Skipped at `min` effort (single generic generator instead).
+
+---
+
+You are selecting the question-generation roster for a single brainstorming session. Produce exactly two outputs:
+
+1. **`{{session}}/personas/question-generation.md`** — full roster + selection rationale (the audit trail).
+2. **A new section appended to `{{session}}/PLAN.md`** — a compact summary for execution. Append only; do not modify any other section of PLAN.md.
+
+Do not modify any other files. Show reasoning inside the structured `Rationale` / `Swap rationale` / `Topic citation` fields in Output 1; no preambles, closing remarks, or reasoning outside those fields.
 
 Work through the checklist below in the listed order, completing each step before moving on. Each step's output feeds the next.
 
-## Contents
-
-- Inputs
-- Checklist (work in this order)
-- Output Format
-- Phase 2A: Question Generation Roster
-- Volume Ranges (refer to this table)
-- Low Effort
-
 ## Inputs
 
-1. **Topic request:** {{topic_request}}
-2. **Effort level:** `{{effort_level}}` — one of `low`, `medium`, or `high`. For `low`, follow the checklist as written but apply the modifications in the Low Effort section at the bottom of this file.
-3. **Persona selection guide (reference):** `idea-symphony/guidance/phase2A_question-gen-personas.md` — consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist.
-
-**Before you begin:** read `{{session}}/REQUEST.md` in full. All `Topic citation` fields in your output must be verbatim quotes or close paraphrases from the REQUEST — do not speculate about topic content the REQUEST does not state.
+1. `{{session}}/REQUEST.md` — the topic body. Read in full before selecting. All `Topic citation` fields in your output must be verbatim quotes or close paraphrases from REQUEST — do not speculate about content REQUEST does not state.
+2. `{{effort}}` — `low`, `medium`, or `high` (substituted by the orchestrator from Phase 1). At `low`, follow the checklist as written but apply the modifications in the Low Effort section at the bottom of this file.
+3. `{{skill}}/guidance/phase2A_question-gen-personas.md` — reference. Consult only if you need volume ranges, Tier 2 details, or expanded persona guidance. Everything you need to make decisions is embedded in the checklist below.
 
 ---
 
@@ -115,8 +115,9 @@ Keep **Analogist** when:
 
 Take the Step 1 trigger-strength outputs and apply the effort rule:
 
-- If **{{effort_level}} = medium**: include only personas with trigger strength = strong. Ceiling: 0 or 1. If two or more strong triggers exist, choose the one most central to the stated brainstorming goal and put the second in Notes as a deferred alternative.
-- If **{{effort_level}} = high**: include personas with trigger strength = strong OR moderate. Ceiling: 0, 1, or 2. If three or more qualify, pick the two most central to the stated brainstorming goal; put the third in Notes.
+- If **{{effort}} = low**: include only personas with trigger strength = strong. Ceiling: 0 or 1. If two or more strong triggers exist, choose the one most central to the stated brainstorming goal and put the second in Notes as a deferred alternative.
+- If **{{effort}} = medium**: include only personas with trigger strength = strong. Ceiling: 0 or 1. If two or more strong triggers exist, choose the one most central to the stated brainstorming goal and put the second in Notes as a deferred alternative.
+- If **{{effort}} = high**: include personas with trigger strength = strong OR moderate. Ceiling: 0, 1, or 2. If three or more qualify, pick the two most central to the stated brainstorming goal; put the third in Notes.
 
 **Why these ceilings:** Low ceilings keep Tier 3 additions focused on the topic's dominant decision axis. Deferred alternatives preserve the audit trail without inflating the final roster or diluting per-persona volume.
 
@@ -126,63 +127,71 @@ Take the Step 1 trigger-strength outputs and apply the effort rule:
 
 **Example of a ceiling-forced pick (medium):** If both Accountant and Politician trigger strong on a topic about municipal budget coalitions, the ceiling of 1 forces a pick. If the REQUEST centers on coalition assembly to pass the budget, include Politician and note Accountant as a deferred alternative. If the REQUEST centers on restructuring the budget itself and coalition politics are ambient, include Accountant and note Politician.
 
-### Step 4 — Document decisions in PLAN.md format
+### Step 4 — Write the two outputs
 
-Assemble Steps 1–3 into the Output Format block below and append or replace the `## Phase 2A: Question Generation Roster` section in `{{session}}/PLAN.md`. Do not edit any other section of PLAN.md.
+Assemble Steps 1-3 into Output 1 and Output 2 below. Write Output 1 as a fresh file at `{{session}}/personas/question-generation.md`. Append Output 2 to `{{session}}/PLAN.md` as a new section; do not edit any other section of PLAN.md.
 
 ---
 
-## Output Format
+## Output 1: `{{session}}/personas/question-generation.md`
 
-The orchestrator produces ONLY the markdown block below. Show reasoning inside the structured `Rationale` / `Swap rationale` / `Topic citation` fields; no prefix paragraphs, no closing remarks, no reasoning outside those fields.
+Replace every bracketed placeholder (e.g., `[Project Name]`) with the content you derive; do not emit literal placeholder strings. The Stream column reflects each persona's Phase 2.3 method (Synthesize: collapse to canonical questions; Append: round-robin across the question pool); Tier 1 and Tier 2 stream assignments are fixed per persona as shown. For Tier 3, default to `Synthesize` unless the personas guide says otherwise.
 
 ````markdown
-## Phase 2A: Question Generation Roster
+---
+project-name: "[Project Name]"
+session-dir: "{{session}}"
+datetime: {{current_datetime}}
+effort: "{{effort}}"
+stage: "Phase 2 Step 2.1: Question Generation Persona Selection"
+model-requested: "opus"
+model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
+---
 
-**Effort Level:** {medium | high}
+# Question Generation Personas
 
-### Tier 1 Personas (always included)
+## Tier 1 Personas (always included)
 
-| Persona | Category | Volume Range |
-|---------|----------|-------------|
-| Questioner | Analytical | [range per effort] |
-| Analyst | Analytical | [range per effort] |
-| Devil's Advocate | Structural | [range per effort] |
-| Appreciative Inquirer | Structural | [range per effort] |
-| Audience Advocate | Structural | [range per effort] |
-| Systems Thinker | Structural | [range per effort] |
-| Provocateur | Perspective | [range per effort] |
-| [Analogist or Connector] | Perspective | 5-8 |
-| Visionary | Perspective | [range per effort] |
-| Storyteller | Perspective | [range per effort] |
+| Persona | Category | Volume | Stream |
+|---|---|---|---|
+| Questioner | Analytical | [range per effort] | Synthesize |
+| Analyst | Analytical | [range per effort] | Synthesize |
+| Devil's Advocate | Structural | [range per effort] | Synthesize |
+| Appreciative Inquirer | Structural | [range per effort] | Synthesize |
+| Audience Advocate | Structural | [range per effort] | Synthesize |
+| Systems Thinker | Structural | [range per effort] | Synthesize |
+| Provocateur | Perspective | [range per effort] | Append |
+| [Analogist or Connector] | Perspective | 5-8 | Append |
+| Visionary | Perspective | [range per effort] | Append |
+| Storyteller | Perspective | [range per effort] | Append |
 
-### Tier 2 Personas (high effort only)
+## Tier 2 Personas (`high` effort only)
 
-{If effort = high, populate the table exactly as below. If effort = medium, REPLACE the table with the single line: `N/A — medium effort`.}
+{If effort = high, populate the table exactly as below. Otherwise REPLACE the table with the single line: `N/A — {{effort}} effort`.}
 
-| Persona | Category | Volume Range |
-|---------|----------|-------------|
-| Constraint Flipper | Perspective | 5-8 |
-| Empath | Structural | 8-12 |
-| First Principles Thinker | Structural | 7-10 |
-| Futurist | Structural | 8-12 |
+| Persona | Category | Volume | Stream |
+|---|---|---|---|
+| Constraint Flipper | Perspective | 5-8 | Append (3-5 round-robin) |
+| Empath | Structural | 8-12 | Synthesize |
+| First Principles Thinker | Structural | 7-10 | Synthesize |
+| Futurist | Structural | 8-12 | Synthesize |
 
-### Tier 3 Personas (orchestrator-selected)
+## Tier 3 Personas (orchestrator-selected)
 
 {If zero Tier 3 personas meet the effort threshold, REPLACE the table with the correct sentinel:
-- Medium: `None selected — no strong triggers for this topic`
+- Low/Medium: `None selected — no strong triggers for this topic`
 - High: `None selected — no triggers at or above moderate threshold for this topic`
 
-Otherwise, include one row per selected persona, using the canonical Category labels below.}
+Otherwise include one row per selected persona, using the canonical Category labels below.}
 
-| Persona | Category | Volume Range | Trigger Strength |
-|---------|----------|--------------|------------------|
-| Accountant | Specialist (financial) | 8-12 | [strong \| moderate] |
-| Lawyer | Specialist (regulatory) | 8-10 | [strong \| moderate] |
-| Politician | Specialist (governance) | 8-10 | [strong \| moderate] |
-| Technical Expert | Specialist (architecture) | 8-10 | [strong \| moderate] |
+| Persona | Category | Volume | Stream | Trigger Strength |
+|---|---|---|---|---|
+| Accountant | Specialist (financial) | 8-12 | Synthesize | [strong \| moderate] |
+| Lawyer | Specialist (regulatory) | 8-10 | Synthesize | [strong \| moderate] |
+| Politician | Specialist (governance) | 8-10 | Synthesize | [strong \| moderate] |
+| Technical Expert | Specialist (architecture) | 8-10 | Synthesize | [strong \| moderate] |
 
-### Selection Rationale
+## Selection Rationale
 
 **Connector/Analogist decision:** [Analogist (default) | Connector (swap)]
 - Swap rationale: [1–2 sentences citing REQUEST content that meets or fails criterion (a) or (b); if Analogist, briefly note why (b) does not apply]
@@ -215,6 +224,63 @@ For EACH of Accountant, Lawyer, Politician, Technical Expert (in that order), pr
 **Notes:** [Deferred alternatives when the effort-ceiling forced a pick (e.g., "Politician also qualified as strong; deferred per medium ceiling of 1"), OR genuinely ambiguous cases that did not fit the structured fields. Use `—` if the call was clean. Do NOT use Notes as a substitute for Topic citation, Trigger strength, or Swap rationale.]
 ````
 
+---
+
+## Output 2: PLAN.md section
+
+Append the following block to `{{session}}/PLAN.md` as a new section. Do not modify any other section of PLAN.md. The Tier tables omit Trigger Strength and Rationale columns intentionally — the full rationale lives in Output 1.
+
+If a `## Phase 2 Step 2.1: Question Generation Personas` section already exists in PLAN.md (e.g., on a re-run), replace that section in place rather than appending a duplicate.
+
+````markdown
+## Phase 2 Step 2.1: Question Generation Personas
+
+**Effort:** {{effort}}
+**Connector/Analogist:** [Analogist (default) | Connector (swap)]
+
+Full rationale: see [personas/question-generation.md](personas/question-generation.md).
+
+### Tier 1 Personas
+
+| Persona | Category | Volume | Stream |
+|---|---|---|---|
+| Questioner | Analytical | [range] | Synthesize |
+| Analyst | Analytical | [range] | Synthesize |
+| Devil's Advocate | Structural | [range] | Synthesize |
+| Appreciative Inquirer | Structural | [range] | Synthesize |
+| Audience Advocate | Structural | [range] | Synthesize |
+| Systems Thinker | Structural | [range] | Synthesize |
+| Provocateur | Perspective | [range] | Append |
+| [Analogist or Connector] | Perspective | 5-8 | Append |
+| Visionary | Perspective | [range] | Append |
+| Storyteller | Perspective | [range] | Append |
+
+### Tier 2 Personas
+
+{If effort = high, populate the table. Otherwise REPLACE with the single line: `N/A — {{effort}} effort`.}
+
+| Persona | Category | Volume | Stream |
+|---|---|---|---|
+| Constraint Flipper | Perspective | 5-8 | Append (3-5 round-robin) |
+| Empath | Structural | 8-12 | Synthesize |
+| First Principles Thinker | Structural | 7-10 | Synthesize |
+| Futurist | Structural | 8-12 | Synthesize |
+
+### Tier 3 Personas
+
+{If zero Tier 3 personas selected, REPLACE the table with the correct sentinel:
+- Low/Medium: `None selected — no strong triggers for this topic`
+- High: `None selected — no triggers at or above moderate threshold for this topic`
+
+Otherwise include one row per selected persona.}
+
+| Persona | Category | Volume | Stream |
+|---|---|---|---|
+| [Persona] | [category] | [range] | [Synthesize \| Append] |
+````
+
+---
+
 ## Volume Ranges (refer to this table)
 
 Matches `idea-symphony/guidance/phase2A_question-gen-personas.md` Effort Level Mapping.
@@ -244,5 +310,5 @@ Matches `idea-symphony/guidance/phase2A_question-gen-personas.md` Effort Level M
 
 At `low` effort, produce the same roster structure as medium. Tier 1 is always
 included; Tier 2 is omitted (high-only); Tier 3 is gated to 0-1 strong-trigger
-persona per persona-selection-guide_Phase2B.md. Connector/Analogist swap
-evaluation still applies. The Synthesize/Append split still applies.
+persona per the personas guide. Connector/Analogist swap evaluation still
+applies. The Synthesize/Append split still applies.

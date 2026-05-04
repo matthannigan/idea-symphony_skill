@@ -27,10 +27,12 @@ Full layout of a Symphony session directory, with notes on how the structure var
 │   ├── 01_operations_summary.md      # All effort levels
 │   ├── 01_operations_synthesis.md    # medium/high only
 │   └── ...
-├── persona-selections.md       # medium/high: Per-topic persona assignments
+├── personas/
+│   ├── question-generation.md  # Step 2.1: Tier 1/2/3 roster + selection rationale
+│   └── brainstorming.md        # Step 2.4: Per-topic brainstorming persona assignments + rationale (medium/high)
 ├── REQUEST.md                  # User request summary
 ├── USER-QUESTIONS.md           # (optional) User-provided questions to answer
-├── PLAN.md                     # Session config, roster plan, and status
+├── PLAN.md                     # Session config, persona summary tables, and status
 ├── QUESTIONS.md                # All questions consolidated (canonical order)
 ├── SYNTHESIS.md                # All summaries + syntheses (in topic order)
 └── BRAINSTORM.md               # Final output and session index
@@ -42,4 +44,4 @@ Phase 2 establishes a logical topic order. Numeric prefixes (`01_`, `02_`, etc.)
 
 ## `min` effort differences
 
-No `by-persona/` or `persona-selections.md`. Responses use `generic-response.md`. Synthesis contains only summary files. See [min effort workflow](prompts/min-effort-workflow.md).
+No `by-persona/` or `personas/` directory. Responses use `generic-response.md`. Synthesis contains only summary files. See [min effort workflow](prompts/min-effort-workflow.md).

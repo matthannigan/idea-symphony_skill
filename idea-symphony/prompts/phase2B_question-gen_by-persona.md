@@ -14,11 +14,11 @@ Read these files before generating questions. They are independent; read them in
 
 1. `{{session}}/REQUEST.md` — the topic body. All questions must stay grounded in what the REQUEST actually states; do not speculate about scope the REQUEST does not name.
 2. `{{skill}}/personas/{{persona_slug}}.md` — your assigned persona. Adopt the voice, method, and characteristic questions described there. Copy the `category` and `stream` values from this file's YAML frontmatter verbatim into your output frontmatter — these drive Phase 2 Step 2.3 routing and must not be inferred or renamed.
-3. `{{session}}/PLAN.md`, section `## Phase 2A: Question Generation Roster` — your target question volume is the range listed for your persona in that roster.
+3. `{{session}}/PLAN.md`, section `## Phase 2 Step 2.1: Question Generation Personas` — your target question volume is the range listed for your persona in that roster.
 
 ## Task
 
-Generate open-ended questions within the volume range listed for your persona in `{{session}}/PLAN.md`'s Phase 2A roster table. Organize questions into 3–5 thematic clusters you name yourself based on the questions generated. **Why 3–5:** a single bucket is not a cluster; more than five fragments the downstream synthesis signal.
+Generate open-ended questions within the volume range listed for your persona in `{{session}}/PLAN.md`'s `## Phase 2 Step 2.1: Question Generation Personas` table. Organize questions into 3–5 thematic clusters you name yourself based on the questions generated. **Why 3–5:** a single bucket is not a cluster; more than five fragments the downstream synthesis signal.
 
 ## Coverage Requirements
 

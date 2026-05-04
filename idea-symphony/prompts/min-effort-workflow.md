@@ -29,7 +29,7 @@
 └── BRAINSTORM.md                # Final output and session index
 ```
 
-**No `questions/by-persona/` directory.** No `synthesis/attributed/` or `_synthesis.md` files. No `persona-selections.md`.
+**No `questions/by-persona/` directory.** No `synthesis/attributed/` or `_synthesis.md` files. No `personas/` directory.
 
 ---
 

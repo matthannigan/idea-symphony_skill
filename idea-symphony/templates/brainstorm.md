@@ -1,8 +1,10 @@
 # BRAINSTORM.md Template
 
-Final user-facing output document for a session. Generated in Phase 5 by consolidating per-topic summaries (and, at `medium`/`high` effort, full syntheses).
+Final user-facing output document for a session. Produced in Phase 5 by consolidating `SUMMARIES.md` across all topic clusters.
 
-**Effort-conditional links:** at `min`/`low`, per-topic links point to `_summary.md` files and the Session Index lists only `SUMMARIES.md`. At `medium`/`high`, per-topic links point to `_synthesis.md` files and the Session Index lists both `SUMMARIES.md` and `SYNTHESIS.md`. The template below uses `{{topic_artifact}}` to abstract the per-topic suffix; the orchestrator substitutes `_summary.md` or `_synthesis.md` based on effort.
+## Canonical structure
+
+Per-topic links always point to `synthesis/{{cluster_slug}}_summary.md` (the `_summary.md` file exists at every effort level). The Session Index includes the `SYNTHESIS.md` line only at `medium`/`high` effort; at `min`/`low` that line is omitted because the file does not exist.
 
 ```markdown
 ---
@@ -11,7 +13,8 @@ session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "[min|low|medium|high]"
 stage: "Phase 5: Final Output"
-model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
+model-requested: "opus"
+model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
 ---
 
 # Brainstorming Session: [Project Name]
@@ -29,11 +32,11 @@ model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 
 ### 1. [Topic Name]
 [Summary of insights for this topic]
-- See: [synthesis/{{cluster_slug}}{{topic_artifact}}](synthesis/{{cluster_slug}}{{topic_artifact}})
+- See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)
 
 ### 2. [Topic Name]
 [Summary of insights for this topic]
-- See: [synthesis/{{cluster_slug}}{{topic_artifact}}](synthesis/{{cluster_slug}}{{topic_artifact}})
+- See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)
 
 ## Recommended Next Steps
 [Top 10-15 action items synthesized from all topic clusters]
@@ -48,7 +51,7 @@ model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 ### Responses
 - [responses/](responses/) — All brainstorming responses organized by topic cluster
 
-### Synthesis
+### Summaries & Synthesis
 - [SUMMARIES.md](SUMMARIES.md) — Concatenated per-topic summaries
 - [SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses *(omit at `min`/`low`)*
 - [synthesis/](synthesis/) — Individual per-topic files: `_summary.md` (always); `_synthesis.md` and `attributed/` *(`medium`/`high` only)*
@@ -57,3 +60,9 @@ model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 - [REQUEST.md](REQUEST.md) — Original request and context
 - [PLAN.md](PLAN.md) — Session configuration and status log
 ```
+
+## Authoritative source
+
+The Phase 5 prompt is authoritative for the exact BRAINSTORM.md shape — consult the prompt when in doubt:
+
+- [phase5_final-output.md](../prompts/phase5_final-output.md)
