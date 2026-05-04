@@ -27,3 +27,6 @@ test-runs/
 # Ignore installed skill files
 .claude/skills/
 .gemini/skills/
+
+# Ignore dev data
+dev/2026-05-03_symphony-phase4/baselines/
