@@ -15,6 +15,49 @@
   - [`idea-symphony/prompts/phase4_full-synthesis.md`](../../../idea-symphony/prompts/phase4_full-synthesis.md)
   - [`idea-symphony/prompts/phase4_summary-only_low-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_low-effort.md)
   - [`idea-symphony/prompts/phase4_summary-only_min-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_min-effort.md)
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens; the iteration goals below are tier-explicit per §5.4.
+
+---
+
+## Two-Regime Evaluation Lens — Tier-Explicit Iteration Goals
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5.4, the three Phase 4 prompts have categorically different jobs — and RP1's iteration goals must reflect that. The original methodology said "single-track refine for full-synthesis vs. 2 variants for summary-only" (Q13 escalated full-synthesis to 2 variants). What was missing was *what each iteration is optimizing for*.
+
+### Full-synthesis prompt (`phase4_full-synthesis.md`) — *synthesis-with-reframe-surfacing* regime
+
+Iterations optimize for:
+1. **Reframe presence** (FA1 Axis D) — categorical reframes flagged by BL1 must surface in `_synthesis.md` and `_summary.md`. Reframe-dropping rate < 30% across the 40 samples.
+2. **Framing fidelity** (FA1 Axis A3-framing) — persona lenses survive in synthesis prose, not just content. Framing-survival ≥ 75%.
+3. **Raw-count traceability** (FA1 Axis C) — every "N of M personas converged" claim traces to a BL1 ledger row with the matching raw count.
+4. **Foundational-reversal presence** (FA1 Axis E, high only) — at least one foundational reversal per high cluster surfaces when BL1 surfaces a candidate.
+5. **Aggregation-pressure resilience** — content survival (Axis A3-content) ≥ 90% even at high (where 7 personas create maximal aggregation pressure).
+
+The two variants per iteration should differentiate on which of these failures the variant is targeting:
+- *Variant A (default):* reframe + framing preservation focus
+- *Variant B:* raw-count + reversal preservation focus
+
+### Summary-only low prompt (`phase4_summary-only_low-effort.md`) — *compression-with-distinctive-output* regime
+
+Iterations optimize for:
+1. **Through-line survival** (LB1 Axis A) ≥ 80%
+2. **Tension preservation** (LB1 Axis B.1) — DA × Pragmatist framing substantive, not smoothed
+3. **Neither-lens-gap presence** (LB1 Axis B.2) — gaps surfaced using BL1's 4-category taxonomy when BL1 has candidates
+4. **Compression discipline** — no persona names in prose; word-count target met
+
+The two variants per iteration:
+- *Variant A:* tension preservation focus (more aggressive lens-stance framing)
+- *Variant B:* gap-surfacing focus (richer Neither-lens-gaps section instructions)
+
+### Summary-only min prompt (`phase4_summary-only_min-effort.md`) — *compression-with-distinctive-output* regime
+
+Iterations optimize for:
+1. **Through-line survival** (LB1 Axis A) ≥ 80%, with strict 100% on `[recurring]` items
+2. **Conspicuous-absences quality** (LB1 Axis C) — specific named absences when BL1 has candidates
+3. **Compression discipline** — generic-voice output; word-count target met
+
+The two variants per iteration:
+- *Variant A:* survival focus (weighted `[recurring]` preservation)
+- *Variant B:* absences-detection focus (richer Conspicuous Absences section instructions)
 
 ---
 
@@ -35,7 +78,7 @@ This is the longest-running task in the investigation by wall-clock because each
 | Dimension | Pinned |
 |---|---|
 | Iteration budget | 3 (per Discussion Q12) |
-| Stop criteria (per Q6 + Q12) | FA1 Axis A1 ≥ 90% (`attributed/` persona-name preservation, med strict / high weighted); FA1 Axis A2 = 0 persona-name occurrences in `_synthesis.md` and `_summary.md` prose; FA1 Axis A3 ≥ 90% (substance survival in prose); FA1 Axis B = 0 hallucinated quotes; FA1 Axis C = 100% convergence-count traceability; LB1 ≥ 80% through-line survival; RG1 ≥ 95% intentional variance |
+| Stop criteria (per Q6 + Q12 + `dev/2026-05-03_effort-comparison.md` §5.4) | FA1 Axis A1 ≥ 90% (`attributed/` persona-name preservation, med strict / high weighted); FA1 Axis A2 = 0 persona-name occurrences in `_synthesis.md` and `_summary.md` prose; FA1 Axis A3-content ≥ 90%; **FA1 Axis A3-framing ≥ 75% (NEW)**; FA1 Axis B = 0 hallucinated quotes; FA1 Axis C = 100% convergence-count traceability with raw-count match; **FA1 Axis D ≥ 70% reframe-survival among samples gated by BL1 reframe candidate (NEW)**; **FA1 Axis E ≥ 70% reversal-survival at high among samples gated by BL1 reversal candidate (NEW)**; LB1 ≥ 80% through-line survival AND co-primary regime-distinctive axes (B for low, C for min) ≥ 75%; RG1 ≥ 95% intentional+regime-mandated variance (drift ≤ 5%) |
 | Variant strategy (full-synthesis) | **2 variants per iteration** (per Discussion Q13 — escalated from single-track) |
 | Variant strategy (summary-only low) | 2 variants per iteration |
 | Variant strategy (summary-only min) | 2 variants per iteration |
@@ -124,12 +167,15 @@ Aggregate all "Recommended prompt revision target" items from FA1, LB1, PP1, RG1
 
 For each of the three Phase 4 prompts, produce **2 candidate variants** for iteration-{ITER} in `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER}/` (per Q13):
 
-- `phase4_full-synthesis.md_variant-A.md` and `_variant-B.md` — 2 candidate variants. Differentiator drawn from upstream findings — typical pairs:
-  - Variant-A focuses on persona-name discipline in prose (FA1 Axis A2 fix); Variant-B focuses on convergence-count traceability (FA1 Axis C fix)
-  - Or: Variant-A reduces aggregation pressure (FA1 Axis A3 substance survival); Variant-B preserves aggregation but adds explicit single-persona-bullet preservation
-  - Or whatever pair of competing concerns the upstream findings surface
-- `phase4_summary-only_low-effort.md_variant-A.md` and `_variant-B.md` — 2 candidate variants. Variant-A focuses on tension preservation (LB1 Axis B); Variant-B focuses on through-line survival (LB1 Axis A).
-- `phase4_summary-only_min-effort.md_variant-A.md` and `_variant-B.md` — 2 candidate variants. Variant-A focuses on conspicuous-absences detection (LB1 Axis C); Variant-B focuses on through-line survival weighting `[recurring]` items (LB1 Axis A).
+- `phase4_full-synthesis.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
+  - **Variant-A:** reframe + framing preservation focus (Axes A3-framing + D). Adjustments target reframe-surfacing instructions and persona-lens preservation under aggregation pressure.
+  - **Variant-B:** raw-count + reversal preservation focus (Axes C + E). Adjustments target convergence-count emission with raw counts and foundational-reversal flagging in `_synthesis.md`.
+- `phase4_summary-only_low-effort.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
+  - **Variant-A:** tension preservation focus (Axis B.1 — more aggressive lens-stance framing instructions)
+  - **Variant-B:** gap-surfacing focus (Axis B.2 — richer Neither-lens-gaps section using the 4-category taxonomy)
+- `phase4_summary-only_min-effort.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
+  - **Variant-A:** survival focus (Axis A — weighted `[recurring]` preservation)
+  - **Variant-B:** absences-detection focus (Axis C — richer Conspicuous Absences section instructions)
 
 For each revision, prepend a **revision-log** comment block at the top:
 
@@ -243,11 +289,15 @@ After re-scoring, the orchestrator (same drafting subagent or a separate evaluat
 |---|---|---|---|
 | FA1 Axis A1 (`attributed/` persona-name preservation) | ≥ 90% across 40 med+high (med strict / high weighted) | X% | Y/N |
 | FA1 Axis A2 (prose persona-name absence) | 0 occurrences across 40 med+high in `_synthesis.md` and `_summary.md` | N | Y/N |
-| FA1 Axis A3 (prose substance survival) | ≥ 90% across 40 med+high in both `_synthesis.md` and `_summary.md` | X% | Y/N |
+| FA1 Axis A3-content (prose content survival) | ≥ 90% across 40 med+high in both `_synthesis.md` and `_summary.md` | X% | Y/N |
+| FA1 Axis A3-framing (prose framing/lens survival, NEW) | ≥ 75% across 40 med+high | X% | Y/N |
 | FA1 Axis B (hallucinated quotes) | 0 across 40 med+high | N | Y/N |
-| FA1 Axis C (convergence-count traceability) | 100% across 40 med+high | X% | Y/N |
+| FA1 Axis C (convergence-count traceability with raw-count match) | 100% across 40 med+high | X% | Y/N |
+| FA1 Axis D (reframe survival, NEW, gated samples) | ≥ 70% among samples gated by BL1 reframe candidate | X% (n=N) | Y/N |
+| FA1 Axis E (reversal survival, NEW, high gated samples) | ≥ 70% among high samples gated by BL1 reversal candidate | X% (n=M) | Y/N |
 | LB1 through-line survival | ≥ 80% across 20 min+low (best variant per prompt) | X% | Y/N |
-| RG1 intentional-variance ratio | ≥ 95% | X% | Y/N |
+| LB1 co-primary regime-distinctive (B for low, C for min) | ≥ 75% pass rate | X% | Y/N |
+| RG1 intentional+regime-mandated variance ratio | ≥ 95% (drift ≤ 5%) | X% | Y/N |
 
 If all met → ship. If not, drafter spawns iteration {ITER+1} until {ITER} = 3.
 

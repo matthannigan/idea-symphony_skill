@@ -7,9 +7,24 @@
 - Parent methodology — [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md) (Phase 3 §F4-LB1)
 - BL1 baselines — `dev/2026-05-03_symphony-phase4/baselines/{topic}_{min|low}_{NN}_{cluster-slug}_through-lines.md` (20 files for min + low samples)
 - SS1 manifest — `dev/2026-05-03_symphony-phase4/data-prep/sample-manifest.md`
+- Per-topic effort-comparison memos — `test-runs/{TOPIC}/effort-comparison.md` (available for all 10 topics; see methodology.md mid-investigation asset update). Reference for the topic's persistent through-line set; LB1 weights drops of cross-effort-confirmed through-lines as higher-impact loss than drops of single-cluster-only through-lines.
 - Phase 4 summary-only prompts under test:
   - [`idea-symphony/prompts/phase4_summary-only_min-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_min-effort.md)
   - [`idea-symphony/prompts/phase4_summary-only_low-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_low-effort.md)
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens.
+
+---
+
+## Two-Regime Evaluation Lens (min and low are one regime — *compression with distinctive output*)
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5, LB1 sits inside the *compression-with-distinctive-output* regime. The min and low prompts share a job: take a single-voice (min) or two-voice (low) input and produce a summary that surfaces what one or two voices can't see. The distinctive output IS the value-add:
+
+- At **min:** the conspicuous-absences section is *what one voice cannot self-see*. A `min` summary that surfaces only through-lines and skips conspicuous absences is failing its distinctive job, not just being incomplete.
+- At **low:** the neither-lens-gap section + tension preservation is *what two voices cannot reach together*. A `low` summary that smooths the DA × Pragmatist tension into consensus is failing its distinctive job.
+
+**Practical consequence for LB1 scoring:** Axis A (through-line survival), Axis B (low: tension preservation), and Axis C (min: conspicuous-absences quality) are **co-primary**. A sample that scores 100% on Axis A but fails Axis B (low) or Axis C (min) is a **prompt failure**, not a partial pass. The two regime-distinctive axes are not bonus content — they are the prompt's reason for existing distinct from a generic summarizer.
+
+This co-primary stance differs from the original LB1 framing where survival was treated as primary. The 10-topic data shows the distinctive-output axes are what justify the prompt at all: a summary without conspicuous absences (min) or without tension framing (low) is functionally indistinguishable from concatenating the responses with a generic summarizer.
 
 ---
 
@@ -19,8 +34,8 @@
 
 The two summary-only Phase 4 prompts (`phase4_summary-only_min-effort.md` for `min` and `phase4_summary-only_low-effort.md` for `low`) produce just one document per cluster: `{cluster}_summary.md`. Memo §4 names the audit: **"Quantify the fraction of through-lines visible in responses that survive into the summary."**
 
-LB1 measures through-line survival rate per sample, splits by prompt (min vs. low), and tracks two per-prompt extras:
-- For low: tension-preservation between The Devil's Advocate (risk) and The Pragmatist (feasibility) — the prompt's stated value-add over either single-lens summary
+LB1 measures through-line survival rate per sample, splits by prompt (min vs. low), and tracks two per-prompt extras as **co-primary axes** per the two-regime lens above:
+- For low: tension-preservation between The Devil's Advocate (risk) and The Pragmatist (feasibility) PLUS neither-lens-gap presence using BL1's 4-category taxonomy — the prompt's stated value-add over either single-lens summary
 - For min: conspicuous-absences detection — the prompt's stated value-add over the raw response
 
 ### What We Know
@@ -31,8 +46,10 @@ LB1 measures through-line survival rate per sample, splits by prompt (min vs. lo
 | Survival categories | Verbatim, paraphrased (=survival), absorbed (separate), dropped (per Discussion Q8) |
 | Through-line counting unit | Topic-level claim (per Discussion Q7) |
 | Survival pass threshold | 80% (per RP1 stop criterion) |
-| Tension-preservation rubric (low) | DA + Pragmatist contrast must be substantively framed in `_summary.md` (not smoothed to neutral consensus) |
-| Conspicuous-absences rubric (min) | If BL1 ledger names absences, `_summary.md` should surface them as a section |
+| Tension-preservation rubric (low) | DA + Pragmatist contrast must be substantively framed in `_summary.md` (not smoothed to neutral consensus). **Co-primary with survival.** |
+| Neither-lens-gap rubric (low) | If BL1 surfaces gap candidates (in any of the 4 taxonomy categories: relational / equity / political-economy / emotional), `_summary.md` should surface them as a section. **Co-primary with survival.** |
+| Conspicuous-absences rubric (min) | If BL1 ledger names absences, `_summary.md` should surface them as a section. **Co-primary with survival.** |
+| Failure semantics | Fail on Axis A *or* Axis B (low) *or* Axis C (min) constitutes a sample failure. The two-regime lens means a "100% survival, 0% conspicuous absences" sample is a prompt failure, not a partial pass. |
 
 ### Research Questions
 
@@ -84,8 +101,9 @@ You are scoring the loss-budget of Phase 4 summary-only output for one cluster s
 
 1. {PROMPT_PATH} — the Phase 4 summary-only prompt under test
 2. `dev/2026-05-03_symphony-phase4/baselines/{TOPIC}_{EFFORT}_{CLUSTER_NN}_{CLUSTER_SLUG}_through-lines.md` — BL1's ground-truth ledger
-3. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_summary.md` — Phase 4 output (the only output for summary-only paths)
-4. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — raw Phase 3 responses (for cross-checking; 1 file at min, 2 at low)
+3. `test-runs/{TOPIC}/effort-comparison.md` — per-topic cross-effort comparison (available for all 10 topics; persistent through-line list informs which drops are highest-impact)
+4. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_summary.md` — Phase 4 output (the only output for summary-only paths)
+5. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — raw Phase 3 responses (for cross-checking; 1 file at min, 2 at low)
 
 ## Scoring Methodology
 
@@ -107,7 +125,11 @@ For each through-line in BL1's ledger:
 For min samples, distinguish further:
 - Of the through-lines marked `[recurring]` in BL1 (intra-response repeats — high-confidence in single-voice setup), what is the survival rate? — **strict 100% target for `[recurring]` items**
 
-### Axis B: Tension Preservation (low samples only)
+### Axis B: Tension Preservation + Neither-Lens-Gap Presence (low samples only)
+
+**Co-primary with Axis A per the two-regime lens.** The low prompt's distinctive job is surfacing what two lenses cannot reach together — both via tension preservation between DA and Pragmatist, and via the neither-lens-gap section.
+
+#### B.1 — Tension preservation
 
 The `phase4_summary-only_low-effort.md` prompt explicitly demands the DA + Pragmatist tension be framed substantively, not smoothed:
 
@@ -121,6 +143,21 @@ For your low sample, audit `_summary.md` for tension preservation:
 
 **Scoring:**
 - Tension-preservation verdict: pass (substantive framing) / partial (some smoothing) / fail (consensus-only)
+
+#### B.2 — Neither-lens-gap presence (revision §4.7 four-category taxonomy)
+
+The `phase4_summary-only_low-effort.md` prompt has a "Neither-lens gaps" section instruction. Score whether the output surfaces gaps using the BL1 4-category taxonomy:
+
+For each BL1-flagged gap candidate (across the 4 categories: relational / equity / political-economy / emotional, plus any cluster-specific 5th):
+- Does the `_summary.md`'s "Neither-lens gaps" section name a gap that maps to this BL1 category?
+- Is the named gap *substantive* (cluster-specific) or *generic* ("more perspectives needed")?
+
+**Scoring:**
+- Gap-presence rate = (BL1 categories with substantive gap surfaced in output) / (BL1 categories with non-empty candidate)
+- Specificity verdict: substantive / mixed / generic-only
+- Pass threshold: ≥ 75% category match AND ≥ 50% substantive
+
+If BL1 found no gap candidates in any category for this cluster, this sub-axis is `n/a` (the prompt is permitted to skip the section per its "skip if nothing" instruction).
 
 ### Axis C: Conspicuous-Absences Detection (min samples only)
 
@@ -209,8 +246,9 @@ Produce one scoring sub-finding file:
 
 ## Sample Verdict
 
-**Pass:** Axis A passes AND (Axis B passes for low | Axis C passes for min).
-**Fail:** Either axis fails.
+**Pass:** Axis A passes AND (Axis B.1 + B.2 both pass for low | Axis C passes for min). All gates are co-primary per the two-regime lens.
+
+**Fail:** Any gated axis fails. A sample with 100% survival but 0% tension preservation (low) or 0% conspicuous absences (min) is a prompt failure — the prompt's distinctive job is the regime-distinctive axis, not survival alone.
 
 **Verdict:** [PASS | FAIL]
 

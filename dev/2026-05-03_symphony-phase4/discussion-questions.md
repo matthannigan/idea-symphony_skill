@@ -34,7 +34,7 @@ If you want, answer Q1/Q5/Q6/Q12 and I'll bake those into the corresponding task
 
 2. **Cluster-shape diversity within (topic, med):** the methodology says the two `med` (and two `high`) clusters per topic should differ in cluster-shape (e.g., one strategy-heavy, one tactical). Should this be a hard constraint or a soft preference? Recommended default: soft preference — apply when the topic's cluster set supports the diversity, accept a single-shape pair when it doesn't.
 
-3. **Topic ordering:** SS1's manifest determines the wave order for BL1's batched fan-out. Recommended default: process the 4 topics with `effort-comparison.md` memos first (career-change, food-truck, habit-tracker, space-party — Tier-A) so any prompt-failure signal those topics surface can be cross-checked against their existing memos, then the other 6 topics.
+3. **Topic ordering:** SS1's manifest determines the wave order for BL1's batched fan-out. Recommended default: process the 4 topics with `effort-comparison.md` memos first (career-change, food-truck, habit-tracker, space-party — Tier-A) so any prompt-failure signal those topics surface can be cross-checked against their existing memos, then the other 6 topics. **Update:** As of the methodology's mid-investigation asset update, all 10 topics now have an `effort-comparison.md` memo. The Tier-A-first rationale (memo availability) no longer applies for ordering decisions in tasks that have not yet started; ordering can be chosen for execution-staging convenience. SS1's manifest, frozen with the original Tier-A-first ordering, remains the source of truth for downstream tasks.
 
 ---
 

@@ -15,6 +15,29 @@
   - [`idea-symphony/templates/synthesis-merged.md`](../../../idea-symphony/templates/synthesis-merged.md)
   - [`idea-symphony/templates/synthesis-summary.md`](../../../idea-symphony/templates/synthesis-summary.md)
 - [`idea-symphony/SKILL.md`](../../../idea-symphony/SKILL.md) — Phase 4 invocation block
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens; §5.2 enumerates mandatory divergences PP1 must classify.
+
+---
+
+## Two-Regime Evaluation Lens (PP1's classification gains a third bucket)
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5, PP1's divergence classification originally had two buckets: legitimate divergence vs. drift. The 10-topic data shows several divergences are *mandatory* — collapsing them would break the prompts' jobs. PP1 now classifies divergences into THREE buckets:
+
+1. **Mandatory divergence (NEW)** — collapsing it would break the prompt's distinctive job. Examples enumerated in §5.2:
+   - Conspicuous absences: required at min, forbidden at med/high (the seven-persona panel doesn't have the same distinctive job as a single voice)
+   - Neither-lens gaps: required at low, n/a above (only the 2-persona DA × Pragmatist setup has the structural-gap framing)
+   - Categorical reframe: must surface at med/high, n/a at min/low (the prompts at lower tiers don't have the persona panel to support it)
+   - Convergence-count phrasing ("six of seven personas converged"): must surface at high, optional at med, n/a at low/min
+   - Persona-name attribution in `attributed/`: required at med/high, n/a below (no `attributed/` doc exists)
+2. **Legitimate divergence** (original bucket) — driven by effort-level needs but not load-bearing for the prompt's distinctive job; preserve in future edits.
+3. **Drift** (original bucket) — copy-paste leftovers, inconsistent vocabulary, missing-section that should be present; converge.
+
+Mandatory divergences require a stronger preservation guarantee than legitimate divergences — they should be called out in the contract-diff document explicitly so future RP1 iterations cannot accidentally collapse them.
+
+PP1 also identifies **mandatory similarities** (universal across all 4 efforts):
+- Through-line preservation (LB1 + FA1 measure)
+- Central Tension surfacing (universal — load-bearing across all 10 high runs but currently missing from min/med/high prompts' explicit output schema)
+- No persona names in prose of `_summary.md` and `_synthesis.md` (per Q6, the portable-analysis principle)
 
 ---
 
@@ -118,12 +141,24 @@ For each contract dimension, sample 4-6 actual outputs per effort and check:
 - Does the actual output match the prompt's specification?
 - Where outputs deviate, is it (a) a one-off, (b) systematic, or (c) a sign the prompt's contract is unclear?
 
-### Step 3: Classify divergences
+### Step 3: Classify divergences (THREE buckets per the two-regime lens)
 
 For every contract dimension where the three prompts differ, classify:
-- **Legitimate divergence** — driven by effort-level needs (e.g., min has no convergence, so "Convergent themes" section is correctly absent from min-effort prompt)
-- **Drift** — copy-paste left over from older prompt versions, inconsistent vocabulary, missing-section that should be present
-- **Phase 5 risk** — divergence that breaks Phase 5's ability to aggregate cross-cluster signals (e.g., if min uses `[recurring]` but Phase 5 only knows `[convergent]`, aggregation breaks)
+
+- **Mandatory divergence (NEW per `dev/2026-05-03_effort-comparison.md` §5.2)** — collapsing the divergence would break the prompt's distinctive job. The five canonical mandatory divergences (verify in your audit):
+  - *Conspicuous-absences section* — required at min; forbidden at med/high
+  - *Neither-lens-gaps section* — required at low; n/a above
+  - *Categorical-reframe surfacing* — must appear at med/high; n/a at min/low
+  - *Convergence-count phrasing* — must appear at high; optional at med; n/a at low/min
+  - *Persona-name attribution in `attributed/`* — required at med/high; n/a below
+
+- **Legitimate divergence** — driven by effort-level needs but not load-bearing for the prompt's distinctive job (e.g., min has no convergence, so "Convergent themes" section is correctly absent from min-effort prompt). Document for preservation but not flagged as mandatory.
+
+- **Drift** — copy-paste left over from older prompt versions, inconsistent vocabulary, missing-section that should be present. Converge.
+
+- **Phase 5 risk** — divergence that breaks Phase 5's ability to aggregate cross-cluster signals (e.g., if min uses `[recurring]` but Phase 5 only knows `[convergent]`, aggregation breaks). Sub-classification of drift; flag urgently for RP1.
+
+For each mandatory divergence, verify each of the three prompts honors its side of the divergence correctly. A `med` prompt that includes a "Conspicuous Absences" section is drifting *into* min's territory — flag as drift even though the original three-bucket classifier might call it "legitimate" (because the section exists at some efforts).
 
 ### Step 4: Recommend convergence and divergence-preservation
 
@@ -289,6 +324,16 @@ Sorted by impact:
 
 ---
 
+## Mandatory Divergences (NEW — must be preserved; collapsing breaks the prompt's job)
+
+Per `dev/2026-05-03_effort-comparison.md` §5.2, these divergences are not "legitimate" preferences — they are the prompts' distinctive jobs. Future RP1 iterations must not collapse any of them:
+
+- **Conspicuous absences:** required at min; forbidden at med/high. (Single-voice generation needs this artefact; the multi-persona panel does not have the same distinctive job.) Verify: each `med`/`high` `_summary.md` has NO conspicuous-absences section, and each `min` `_summary.md` either has one or correctly skipped per the "skip if nothing" rule.
+- **Neither-lens gaps:** required at low; n/a above. (Specific to the 2-persona DA × Pragmatist structural-gap framing.) Verify: `low` outputs surface gaps when BL1 has candidates; `med`/`high` outputs do not have a Neither-lens gaps section.
+- **Categorical reframe:** must surface at med/high when the cluster's responses collectively reframe the subject matter; n/a at min/low. Verify: BL1's flagged categorical reframes appear in `_synthesis.md` and/or `_summary.md` at med/high.
+- **Convergence-count phrasing ("N of M personas converged"):** must surface at high; optional at med; n/a at low/min. Verify: `high` `_summary.md` files contain at least one "N of M" or "N of seven" claim with raw count traceable to BL1.
+- **Persona-name attribution in `attributed/`:** required at med/high; n/a below (no `attributed/` doc exists at min/low). Verify: med + high have populated `attributed/{cluster}.md` files; min and low do not.
+
 ## Legitimate Divergences (preserve in future edits)
 
 For each divergence classified as legitimate, document it so that future prompt edits don't accidentally collapse the difference:
@@ -297,6 +342,13 @@ For each divergence classified as legitimate, document it so that future prompt 
 - **Two-lens sub-sections in low (High-confidence / Trade-offs / Blind-spot flags):** specific to DA + Pragmatist pairing. Do not migrate to other efforts.
 - **Multi-file output (attributed + synthesis + summary):** specific to full-synthesis path. Do not converge to single-file.
 - ...
+
+## Mandatory Similarities (universal — drift here is critical)
+
+These surfaces should be uniform across all four efforts. Drift here is RP1 priority:
+- **Through-line preservation:** universal floor (measured by LB1 at min/low, FA1 Axis A3-content at med/high)
+- **Central Tension surfacing:** universal — load-bearing in all 10 high runs but currently missing from min, med, and high prompts' explicit output schema (only `low` requires it). PP1 should flag this as drift requiring RP1 to add Central Tension to all three prompts.
+- **No persona names in prose of `_summary.md` and `_synthesis.md`:** per Q6 portable-analysis principle. Drift if any prompt allows naming.
 
 ---
 

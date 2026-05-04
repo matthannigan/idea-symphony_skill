@@ -2,10 +2,12 @@
 
 **Date:** 2026-05-03
 **Parent:** [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md)
+**Status:** Completed. The Tier-A vs. Tier-B distinction throughout this task file reflects memo availability at the time SS1 ran (4 topics had `effort-comparison.md`, 6 did not). All 10 topics now have a memo per the methodology's mid-investigation asset update; the historical wording is preserved here for transparency, but downstream tasks (BL1 med+high, FA1, LB1, RG1, RP1) treat all 10 topics symmetrically. SS1's outputs (`data-prep/sample-manifest.md`, `data-prep/sample-selection.md`, `findings/SS1_sample-selection.md`) remain authoritative and need not be re-run.
+
 **Inputs:**
 - Parent methodology — [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md) (Phase 1 Sample Selection, sample structure, selection criterion)
 - Source memo — [`dev/2026-04-27_effort-comparison.md`](../../2026-04-27_effort-comparison.md) §4
-- Effort-comparison memos — `test-runs/{topic}/effort-comparison.md` for the four topics that have one (career-change, food-truck, habit-tracker, space-party)
+- Effort-comparison memos — `test-runs/{topic}/effort-comparison.md` for the four topics that had one when SS1 ran (career-change, food-truck, habit-tracker, space-party); all 10 now exist post-update
 - Persona roster — [`idea-symphony/guidance/phase2D_brainstorming-personas.md`](../../../idea-symphony/guidance/phase2D_brainstorming-personas.md)
 - Topic descriptions — [`test-runs/REQUESTS_ALL.md`](../../../test-runs/REQUESTS_ALL.md)
 - Per-cell question files — `test-runs/{topic}/{effort}/questions/by-topic/{NN}_{cluster-slug}.md` (40 cells × 4–11 clusters each)

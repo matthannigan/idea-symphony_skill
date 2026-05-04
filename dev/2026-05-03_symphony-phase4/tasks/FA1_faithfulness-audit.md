@@ -7,8 +7,22 @@
 - Parent methodology — [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md) (Phase 3 §F4-FA1)
 - BL1 baselines — `dev/2026-05-03_symphony-phase4/baselines/{topic}_{med|high}_{NN}_{cluster-slug}_through-lines.md` (40 files for med + high samples)
 - SS1 manifest — `dev/2026-05-03_symphony-phase4/data-prep/sample-manifest.md`
+- Per-topic effort-comparison memos — `test-runs/{TOPIC}/effort-comparison.md` (available for all 10 topics; see methodology.md mid-investigation asset update). Reference for the topic's persistent through-line set; FA1 uses it as cross-validation that the prompt under test preserved cross-effort-confirmed claims.
 - Phase 4 full-synthesis prompt under test — [`idea-symphony/prompts/phase4_full-synthesis.md`](../../../idea-symphony/prompts/phase4_full-synthesis.md)
 - Phase 5 investigation — [`dev/2026-04-23_symphony-phase5-investigation.md`](../../2026-04-23_symphony-phase5-investigation.md) (for the Phase-5-signal-log requirement)
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens; the FA1 axes below are extended per §5.4.
+
+---
+
+## Two-Regime Evaluation Lens (med + high are one regime)
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5, FA1 sits inside the *synthesis-with-reframe-surfacing* regime. The 10-topic data shows two failure modes that the original three axes (A1/A2/A3, B, C) do not fully capture:
+
+- **Framing-flattening:** the synthesis preserves persona names (A1 passes) and content substance (A3 passes) but smooths the *lens* the persona applied. The Empath's emotional architecture becomes a generic "consider user feelings"; the Politician's gatekeeper analysis becomes a generic "stakeholder management." Names survive; lenses don't. **Detected via Axis A3-framing (NEW below).**
+- **Reframe-dropping:** the cluster's responses collectively reframed the subject matter (e.g., "this is not a fitness app — it's a commitment-and-accountability product") but the synthesis surfaces only the literal answers, losing the reframe. **Detected via Axis D (NEW below).**
+- **Foundational-reversal-dropping (high only):** the high cluster's panel reached at least one foundational reversal (e.g., "drop the NPU"), but the synthesis presents only incremental conclusions, making the high run indistinguishable from a med run on the same topic. **Detected via Axis E (NEW, high only).**
+
+Each new axis below is gated explicitly: only score when BL1's ledger surfaces the corresponding signal (distinctive framing, categorical reframe, or foundational reversal). If BL1 found no reframe, Axis D is `n/a` — not a failure.
 
 ---
 
@@ -16,7 +30,7 @@
 
 ### Context
 
-`phase4_full-synthesis.md` produces three documents per cluster at med + high effort: `attributed/{cluster}.md` (transparency), `{cluster}_synthesis.md` (readability), `{cluster}_summary.md` (decision-making). Memo §4 names the audit: **"Targets: zero dropped persona names, zero hallucinated quotes, all convergence counts traceable."** FA1 quantifies how close the prompt actually gets.
+`phase4_full-synthesis.md` produces three documents per cluster at med + high effort: `attributed/{cluster}.md` (transparency), `{cluster}_synthesis.md` (readability), `{cluster}_summary.md` (decision-making). Memo §4 names the audit: **"Targets: zero dropped persona names, zero hallucinated quotes, all convergence counts traceable."** FA1 quantifies how close the prompt actually gets, plus three two-regime axes added per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5.4.
 
 **Per Discussion Q6, FA1 splits the persona-name axis** into three sub-axes that respect the portable-analysis principle: persona names should appear ONLY in `attributed/{cluster}.md` (the transparency document), and should be ABSENT from `_synthesis.md` and `_summary.md` (which must read as portable analysis to a cold reader). The three-sub-axis split is:
 
@@ -31,7 +45,7 @@ The audit doubles as the source of per-cluster aggregable Phase-5 signals (Centr
 | Dimension | Pinned |
 |---|---|
 | Samples | 40 (20 med + 20 high), all using `phase4_full-synthesis.md` |
-| Scoring axes | A1 (attributed: persona-name preservation), A2 (prose: persona-name absence), A3 (prose: substance survival), B (hallucinated quotes), C (traceable convergence counts) |
+| Scoring axes | A1 (attributed persona-name preservation), A2 (prose persona-name absence), A3-content (prose content substance survival), **A3-framing (prose framing/lens survival — NEW)**, B (hallucinated quotes), C (traceable convergence counts), **D (categorical-reframe presence — NEW, gated on BL1 reframe candidate)**, **E (foundational-reversal presence — NEW, high only, gated on BL1 reversal candidate)** |
 | Med rubric (A1) | Strict (4 personas, low ambiguity, drops are unambiguously failures) |
 | High rubric (A1) | Weighted (7 personas, more legitimate aggregation pressure) |
 | Persona-name absence in prose (A2) | Strict zero — any persona name in `_synthesis.md` or `_summary.md` prose = drift (per Q6) |
@@ -93,10 +107,11 @@ You are scoring the faithfulness of Phase 4 full-synthesis output for one cluste
 
 1. `idea-symphony/prompts/phase4_full-synthesis.md` — the prompt under test
 2. `dev/2026-05-03_symphony-phase4/baselines/{TOPIC}_{EFFORT}_{CLUSTER_NN}_{CLUSTER_SLUG}_through-lines.md` — BL1's ground-truth ledger (your scoring reference)
-3. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_summary.md` — Phase 4 output #3 (executive summary)
-4. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_synthesis.md` — Phase 4 output #2 (synthesis without attribution)
-5. `test-runs/{TOPIC}/{EFFORT}/synthesis/attributed/{CLUSTER_NN}_{CLUSTER_SLUG}.md` — Phase 4 output #1 (attributed synthesis)
-6. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — raw Phase 3 responses (for quote-faithfulness verification — read in parallel)
+3. `test-runs/{TOPIC}/effort-comparison.md` — per-topic cross-effort comparison (available for all 10 topics; persistent through-line list informs which scoring drops are highest-impact)
+4. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_summary.md` — Phase 4 output #3 (executive summary)
+5. `test-runs/{TOPIC}/{EFFORT}/synthesis/{CLUSTER_NN}_{CLUSTER_SLUG}_synthesis.md` — Phase 4 output #2 (synthesis without attribution)
+6. `test-runs/{TOPIC}/{EFFORT}/synthesis/attributed/{CLUSTER_NN}_{CLUSTER_SLUG}.md` — Phase 4 output #1 (attributed synthesis)
+7. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — raw Phase 3 responses (for quote-faithfulness verification — read in parallel)
 
 Tool-use hint: read the three Phase 4 outputs and the raw responses in parallel.
 
@@ -140,19 +155,37 @@ Scan `{cluster}_synthesis.md` and `{cluster}_summary.md` for persona-name occurr
 - Persona-name occurrence count in `_synthesis.md` prose: 0 = pass; > 0 = fail. Report each occurrence with excerpt.
 - Persona-name occurrence count in `_summary.md` prose: 0 = pass; > 0 = fail. Report each occurrence with excerpt.
 
-### Axis A3: Substance survival in `_synthesis.md` and `_summary.md`
+### Axis A3-content: Content substance survival in `_synthesis.md` and `_summary.md`
 
-For each distinctive through-line in BL1's persona-distinctiveness map (the through-lines that are uniquely or originally a particular persona's contribution):
+For each **distinctive content through-line** in BL1's persona-distinctiveness map (the TLs unique to or originating with one persona; per BL1's revised "distinctive content" sub-field):
 - Does the through-line's *substance* appear in `{cluster}_synthesis.md` (verbatim, paraphrased, or absorbed)? Substance survival is independent of whether the persona is named.
 - Does the through-line's *substance* appear in `{cluster}_summary.md`?
 
-This axis tests whether the prompt successfully suppresses persona names while preserving the substantive contribution — the value the persona-distinctiveness map encoded.
+This axis tests whether the prompt successfully suppresses persona names while preserving the substantive contribution.
 
 **Scoring:**
-- Substance-survival rate (`_synthesis.md`) = (distinctive-TLs-with-substance-preserved) / (total distinctive TLs)
-- Substance-survival rate (`_summary.md`) = same calculation for the summary doc
+- Content-survival rate (`_synthesis.md`) = (distinctive content TLs with substance preserved) / (total distinctive content TLs)
+- Content-survival rate (`_summary.md`) = same calculation for the summary doc
 - Pass threshold: ≥ 90% on both
 - Use Q8 survival categories: verbatim + paraphrased = survival; absorbed = separate category (tracked but not counted as survival).
+
+### Axis A3-framing (NEW per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5.4): Framing/lens survival
+
+For each persona's **distinctive framing** in BL1's persona-distinctiveness map (the lens characterized in BL1's "distinctive framing" sub-field, e.g., "The Empath frames every operational decision through emotional architecture"):
+- Does the lens survive in `{cluster}_synthesis.md` as a recognizable stance applied to the cluster's content? Or does the synthesis flatten it into generic prose?
+- Same check for `{cluster}_summary.md`.
+
+This axis detects **framing-flattening** — the failure mode where names survive (Axis A1 passes) and content survives (Axis A3-content passes) but the lens that produced the content is smoothed into generic recommendations. The 10-topic cross-comparison data shows this is a real and `med`/`high`-distinctive failure mode that the original Axis A3 conflates into "substance survival."
+
+**Classification per persona's distinctive framing:**
+- **preserved** — at least one passage in `{cluster}_synthesis.md` reads in the persona's distinctive lens (e.g., the Empath's emotional architecture is visible in how the synthesis frames a recommendation, not just in the recommendation's content)
+- **flattened** — content survived (Axis A3-content) but the synthesis reads in a uniform voice with no trace of the persona's lens
+- **n/a** — BL1's distinctive-framing field for this persona is empty or trivial
+
+**Scoring:**
+- Framing-survival rate (`_synthesis.md`) = (lenses preserved) / (lenses with non-trivial framing in BL1)
+- Framing-survival rate (`_summary.md`) = same calculation for the summary doc
+- Pass threshold: ≥ 75% (lower than content because synthesis legitimately compresses framing). Below 60% indicates structural framing-flattening — RP1 priority target.
 
 ### Axis B: Hallucinated quotes
 
@@ -176,11 +209,37 @@ For every convergence claim in `{cluster}_summary.md`, `{cluster}_synthesis.md`,
 - Traceable convergence rate = (convergence-claims-verified) / (total convergence-claims-in-output)
 - Untraceable claims fail. Pass threshold: 100%.
 
+### Axis D (NEW per §5.4): Categorical-reframe presence
+
+**Gated on BL1 categorical-reframe candidate.** If BL1's ledger flagged a categorical reframe for this cluster (per the new Phase-5 signal at med + high), score whether the reframe surfaces in `_synthesis.md` and `_summary.md`. If BL1 found no reframe, this axis is `n/a` — not a failure.
+
+For the BL1-flagged categorical reframe (e.g., "this is not a property management business — it is a regulatory-legitimacy and community-relations business"):
+- Does `{cluster}_synthesis.md` surface the reframe in some recognizable form (verbatim or paraphrased)? Y / partial / N.
+- Does `{cluster}_summary.md` surface it? Y / partial / N.
+
+**Scoring:**
+- Reframe-survival in `_synthesis.md`: pass (Y) / partial / fail (N). Pass threshold: pass.
+- Reframe-survival in `_summary.md`: pass / partial / fail. Pass threshold: pass.
+- Across the 40 med+high samples, the aggregate reframe-survival rate among samples where BL1 flagged a reframe is the headline number. If the rate is < 70%, the prompt is structurally dropping reframes — RP1 priority target.
+
+### Axis E (NEW per §5.4, high samples only): Foundational-reversal presence
+
+**Gated on BL1 foundational-reversal candidate (high only).** The 10-topic data shows that 10/10 high runs produce at least one foundational reversal that smaller runs do not reach (e.g., "drop the NPU"; "decouple smallest district's solvency from the merger vote"; "refuse the JJ case file"). If BL1's ledger surfaces a foundational reversal in this high cluster (typically a strong-convergent or trade-off through-line that reverses a default the cluster's questions assume), score whether it surfaces in the synthesis. If BL1 found no reversal, axis is `n/a`.
+
+Note: BL1 does not have a separate "foundational reversal candidate" field per se — but a categorical reframe combined with strong-convergent counts often signals one. The FA1 subagent identifies reversal candidates by:
+- Through-lines that contradict an assumption embedded in the cluster's questions
+- Strong-convergent (≥ 5/7) trade-off through-lines
+
+**Scoring:**
+- Reversal-survival in `_synthesis.md`: pass / partial / fail. Pass threshold: pass.
+- Reversal-survival in `_summary.md`: pass / partial / fail. Pass threshold: pass.
+
 ### Phase-5 Signal Emission
 
 For each sample, also document:
 - **Central Tension** as named in `{cluster}_summary.md` (if present) — does it match BL1's Central Tension candidate?
-- **Confidence tags** present in `{cluster}_summary.md` — do they match the BL1 confidence-tag candidates?
+- **Categorical reframe** as named in `{cluster}_summary.md` or surfaced in `_synthesis.md` — match BL1 candidate? (Same data as Axis D; recorded here for the Phase-5 signal log.)
+- **Confidence tags** present in `{cluster}_summary.md` — do they match the BL1 confidence-tag candidates? Verify raw counts ("six of seven personas converged" must trace to a BL1 TL with `convergence: 6/7`).
 - **Neither-lens gap signals** — do not apply at med + high (only at low). Note "n/a — med/high effort".
 - **Conspicuous-absence signals** — do not apply at med + high (only at min). Note "n/a — med/high effort".
 
@@ -296,8 +355,18 @@ For each distinctive through-line in BL1's persona-distinctiveness map, classify
 
 ## Sample Verdict
 
-**Pass:** all five axes (A1, A2, A3, B, C) pass.
-**Fail:** any axis fails.
+**Pass:** all gated axes pass — A1, A2, A3-content, A3-framing, B, C, plus D (if gated on by a BL1 reframe candidate) and E (if gated, high only).
+**Fail:** any gated axis fails.
+
+**Failure-mode taxonomy** (for the cross-sample synthesis to aggregate):
+- **A1 fail** — name preservation in `attributed/` (med strict / high weighted)
+- **A2 fail** — persona name leaked into prose
+- **A3-content fail** — distinctive content TLs dropped
+- **A3-framing fail (NEW)** — *framing-flattening*; lenses smoothed though content survived. The 10-topic data flags this as a real `med`/`high`-distinctive failure mode.
+- **B fail** — hallucinated quote
+- **C fail** — untraceable convergence count
+- **D fail (NEW)** — *reframe-dropping*; categorical reframe identified by BL1 was lost in synthesis
+- **E fail (NEW, high only)** — *reversal-dropping*; foundational reversal identified by BL1 was lost in synthesis
 
 **Verdict:** [PASS | FAIL]
 
@@ -358,10 +427,13 @@ Cross-sample synthesis. Structure:
 |---|---|---|---|
 | Axis A1 pass rate (`attributed/` persona-name preservation) | X% | Y% | Z% |
 | Axis A2 pass rate (prose persona-name absence) | X% | Y% | Z% |
-| Axis A3 pass rate (prose substance survival) | X% | Y% | Z% |
+| Axis A3-content pass rate (content survival) | X% | Y% | Z% |
+| Axis A3-framing pass rate (framing/lens survival) | X% | Y% | Z% |
 | Axis B pass rate (no hallucinated quotes) | X% | Y% | Z% |
 | Axis C pass rate (convergence-count traceability) | X% | Y% | Z% |
-| **Overall pass rate (all 5 axes)** | X% | Y% | Z% |
+| Axis D pass rate (categorical-reframe survival, samples gated by BL1) | X% (n=N) | Y% (n=M) | Z% |
+| Axis E pass rate (foundational-reversal survival, high only, gated by BL1) | n/a | Y% (n=M) | Y% |
+| **Overall pass rate (all gated axes)** | X% | Y% | Z% |
 
 ## Med vs. high comparison
 
@@ -445,5 +517,6 @@ Per-cluster Phase-5 signal inventory. **This deliverable closes Phase 5 E4** —
 ## Discussion Questions Affecting This Task
 
 - **Q5** (FA1 scoring rubric: strict vs. weighted) — pinned to med-strict / high-weighted on Axis A1 in the prompt above (resolved per Q5 response)
-- **Q6** (FA1 pass threshold + persona-naming policy) — **Axis A split into A1/A2/A3** per Q6 response. A1: ≥ 90% (med strict / high weighted). A2: zero persona-name occurrences in prose (strict). A3: ≥ 90% substance survival in prose. B: zero hallucinated quotes. C: 100% convergence traceability.
+- **Q6** (FA1 pass threshold + persona-naming policy) — **Axis A split into A1/A2/A3-content/A3-framing** per Q6 response and `dev/2026-05-03_effort-comparison.md` §5.4. A1: ≥ 90% (med strict / high weighted). A2: zero persona-name occurrences in prose (strict). A3-content: ≥ 90% content substance survival in prose. **A3-framing: ≥ 75% framing/lens survival in prose (NEW).** B: zero hallucinated quotes. C: 100% convergence traceability with raw-count verification.
 - **Q14** (Phase 5 coordination) — pinned to "FA1 emits the signal log as a deliverable" in the prompt above (resolved per Q14 response)
+- **Two-regime evaluation lens (NEW per `dev/2026-05-03_effort-comparison.md` §5.4):** Axes D (categorical-reframe survival) and E (foundational-reversal survival, high only) are gated on BL1 ledger candidates. Where BL1 surfaces no candidate, the axis is `n/a`. Where BL1 surfaces a candidate, drops are RP1 priority targets — these are `med`/`high`-distinctive failure modes the original three-axis A scoring did not detect.

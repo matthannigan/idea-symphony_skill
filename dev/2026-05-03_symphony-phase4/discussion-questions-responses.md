@@ -33,6 +33,8 @@ Responses to `discussion-questions.md`, captured as Matt works through each sect
 
 **Action for SS1 task file:** No change — already pinned in the task prompt.
 
+**Mid-investigation update:** After SS1 ran and BL1 min/low completed, the user generated `BRAINSTORM.md` and `effort-comparison.md` for the remaining 6 topics. The memo-availability asymmetry that drove this decision no longer exists. Task files for the not-yet-started downstream work (BL1 med+high, FA1, LB1, RG1, RP1) have been updated to treat all 10 topics symmetrically and to read each topic's `effort-comparison.md` as a standard reference. SS1's frozen manifest ordering is preserved.
+
 ## Baselines (BL1)
 
 ### Q4 — Hybrid vs. from-scratch ledger construction (med + high samples)

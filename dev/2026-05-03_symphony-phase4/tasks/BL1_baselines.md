@@ -6,8 +6,39 @@
 - Parent methodology — [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md) (Phase 2 Baseline Establishment)
 - SS1 manifest — `dev/2026-05-03_symphony-phase4/data-prep/sample-manifest.md` (60 samples with full file-path inventory)
 - Source memo — [`dev/2026-04-27_effort-comparison.md`](../../2026-04-27_effort-comparison.md)
+- Per-topic effort-comparison memos — `test-runs/{TOPIC}/effort-comparison.md` (available for all 10 topics as of the mid-investigation asset update; see methodology.md). The 20 BL1 min/low subagents that ran before this update read these only when the topic happened to have one. The 40 med/high subagents read them unconditionally as a per-topic reference.
 - Persona roster — [`idea-symphony/guidance/phase2D_brainstorming-personas.md`](../../../idea-symphony/guidance/phase2D_brainstorming-personas.md)
 - Phase 5 investigation memo — [`dev/2026-04-23_symphony-phase5-investigation.md`](../../2026-04-23_symphony-phase5-investigation.md) (for the Central Tension / confidence tag / Neither-lens gap concepts that BL1 needs to flag candidates for)
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — the §§4–5 revisions are integrated below; §6 confirms the 20 existing BL1 min/low ledgers stand as authoritative.
+
+---
+
+## Pre-execution revisions for the 40 med + high subagents
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §4 and §5, eight revisions are integrated into the per-cluster subagent prompt below. They apply to the upcoming 40 med + high subagents only; the 20 already-completed BL1 min/low ledgers were audited and stand authoritative (see Re-Run Audit below).
+
+| # | Revision | Scope |
+|---|---|---|
+| 1 | Raw-count tracking + per-effort classification (§4.1) | All efforts (already de facto in min/low ledgers; codified for med/high) |
+| 2 | Hard-sequence inputs: Step 1 reads only `responses/`; memo read in new Step 1.5 as post-hoc audit (§4.2) | All efforts (forward-looking) |
+| 3 | Persona-distinctiveness split: distinctive content + distinctive framing (§4.3) | med + high only |
+| 4 | Categorical-reframe-candidate as fifth Phase-5 signal (§4.4) | med + high only |
+| 5 | Memo-anomaly handling rule (filesystem canonical) (§4.5) | All efforts |
+| 6 | Tightened Opus-vs-Sonnet sanity check or skip in favor of full Opus run (§4.6) | Operational decision below |
+| 7 | Neither-lens-gap 4-category taxonomy (§4.7) | low only — applied retroactively in cross-sample synthesis |
+| 8 | BL1 → SS1 feedback gate before FA1/LB1/RG1 launch (§4.8) | All efforts; new step in cross-sample synthesis |
+
+The optional §4.9 add-on (Phase-4-signal propagation evidence at high) is incorporated into the cross-sample synthesis deliverable.
+
+## Re-Run Audit (existing min/low ledgers)
+
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §6 — verified directly against `baselines/` filesystem and the 20 existing ledgers:
+
+- All 20 ledgers already use raw-count tracking (e.g., `12/18 = 67%`, `2/2 convergent`) and `[recurring]` / `[single]` classification at min — already conformant with revision §4.1.
+- Only 2 of 20 ledgers (career-change_min, space-party_min) reference `effort-comparison.md` memos. Both references appear in *post hoc* NOTES fields, not as ledger seed material — already conformant with the §4.2 spirit.
+- The property-management min memo's "80 (4 per question)" line is a memo error (verified: actual file structure on disk is 5 responses). The ledger was built before the property-management memo existed (per the Mid-Investigation Asset Update — only the original 4 topics had memos at BL1 min/low time), so no contamination occurred.
+
+**Conclusion: the 20 existing min/low ledgers stand as authoritative. No per-cluster re-runs are needed.** The cross-sample synthesis subagent retroactively applies the §4.7 four-category taxonomy when reading the 10 low ledgers in its aggregate findings.
 
 ---
 
@@ -61,7 +92,10 @@ FA1, LB1, and RG1 all need a ground-truth reference: **what should ideal Phase 4
 
 The Opus tier is reserved for the steps where weaker reasoning measurably degrades the ground truth: substantive-similarity convergence calls (lump-vs-split errors propagate to FA1/LB1/RG1 convergence rates), Central Tension abstraction (Sonnet tends to produce generic tensions rather than cluster-specific ones), persona-distinctiveness framing (voice-level distinctions, not just content-level), and Step 6 resistance to circular reasoning when reading `attributed/`.
 
-**Recommended sanity check before launching the full 40-sample Opus run:** spawn 2 med samples on both Opus and Sonnet in parallel, diff the ledgers. If they substantively agree on convergence calls and Central Tension, there is empirical license to push Sonnet onto med as well. If they disagree, keep Opus on med + high as specified.
+**Sanity check decision (revision §4.6):** the original spec proposed 2-sample Opus-vs-Sonnet diff. Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §4.6, two samples is too few to detect the 5–15% disagreement rate that is plausible. Two options:
+
+- **Option A (default — recommended):** skip the sanity check and run all 40 med + high on Opus. Bounded marginal cost; faster start; stronger ground truth.
+- **Option B (only if cost is a hard constraint):** ≥4 samples (1 strategy-heavy + 1 tactical at `med`, repeat at `high`) on both Opus and Sonnet, with pre-registered "substantive agreement" thresholds: convergence-call agreement on ≥85% of through-lines AND Central-Tension semantic agreement on all 4 samples. Anything looser is observation theatre and Option A wins by default.
 
 Per-cluster granularity is the methodology default — each baseline is uncontaminated by cross-cluster assumptions, preserving the possibility that effort levels and topics produce fundamentally different through-line structures.
 
@@ -97,28 +131,41 @@ You are establishing a ground-truth through-line ledger for one cluster sample i
 ## Inputs to Read
 
 1. `dev/2026-05-03_symphony-phase4/methodology.md` — full methodology
-2. `dev/2026-04-27_effort-comparison.md` — source memo
-3. `idea-symphony/guidance/phase2D_brainstorming-personas.md` — persona roster
-4. `dev/2026-04-23_symphony-phase5-investigation.md` — Phase 5 signal concepts (Central Tension, confidence tags, Neither-lens gaps, conspicuous absences)
-5. `test-runs/{TOPIC}/{EFFORT}/questions/by-topic/{CLUSTER_NN}_{CLUSTER_SLUG}.md` — the questions this cluster answered
-6. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — Phase 3 persona response files (1 at min, 2 at low, 4 at med, 7 at high) — **the only source of through-lines; read in parallel**
-7. **For med + high samples only — POST-BASELINE CROSS-REFERENCE ONLY:** `test-runs/{TOPIC}/{EFFORT}/synthesis/attributed/{CLUSTER_NN}_{CLUSTER_SLUG}.md`. **Do not seed your ledger from this file.** Build the ledger from `responses/` first, then read `attributed/` only after your ledger is complete to flag discrepancies for FA1 (additional through-lines `attributed/` claims that aren't in your ledger; through-lines you found that `attributed/` dropped; persona attributions in `attributed/` that don't match your ledger). These flags inform FA1 but do not modify your ledger.
+2. `dev/2026-04-27_effort-comparison.md` — source memo (4-topic precursor)
+3. `dev/2026-05-03_effort-comparison.md` — 10-topic cross-comparison synthesis. §§4–5 are this prompt's revisions; §5 is the two-regime evaluation lens you score for.
+4. `idea-symphony/guidance/phase2D_brainstorming-personas.md` — persona roster
+5. `dev/2026-04-23_symphony-phase5-investigation.md` — Phase 5 signal concepts (Central Tension, confidence tags, Neither-lens gaps, conspicuous absences)
+6. `test-runs/{TOPIC}/effort-comparison.md` — per-topic cross-effort comparison memo (available for all 10 topics). **Use as a post hoc audit reference only — do NOT seed the ledger from it. Read it in Step 1.5 AFTER your raw-from-responses inventory in Step 1 is complete.** Memo-vs.-filesystem discrepancies (e.g., property-management min's "80 (4 per question)" line is a memo error; filesystem shows 5 responses): treat the filesystem as canonical and flag the discrepancy in your verification section.
+7. `test-runs/{TOPIC}/{EFFORT}/questions/by-topic/{CLUSTER_NN}_{CLUSTER_SLUG}.md` — the questions this cluster answered
+8. `test-runs/{TOPIC}/{EFFORT}/responses/{CLUSTER_NN}_{CLUSTER_SLUG}/*.md` — Phase 3 persona response files (1 at min, 2 at low, 4 at med, 7 at high) — **the only source of through-lines; read in parallel**
+9. **For med + high samples only — POST-BASELINE CROSS-REFERENCE ONLY:** `test-runs/{TOPIC}/{EFFORT}/synthesis/attributed/{CLUSTER_NN}_{CLUSTER_SLUG}.md`. **Do not seed your ledger from this file.** Build the ledger from `responses/` first, then read `attributed/` only after your ledger is complete to flag discrepancies for FA1 (additional through-lines `attributed/` claims that aren't in your ledger; through-lines you found that `attributed/` dropped; persona attributions in `attributed/` that don't match your ledger). These flags inform FA1 but do not modify your ledger.
 
 ## Method
 
-### Step 1: Build the through-line inventory (from `responses/` only)
+### Step 1: Build the through-line inventory (from `responses/` ONLY)
 
 Read all persona response files in your sample. For each, extract every distinct **through-line** — a topic-level claim, recommendation, observation, or stance. Count one through-line per discrete idea regardless of how many sentences it spans in the response.
 
-**Universal across all efforts:** build the ledger from `responses/` only. Do not read `attributed/` (med + high samples) until Step 6 (post-baseline cross-reference). This rule prevents the prompt under test from contaminating its own ground truth.
+**Universal across all efforts:** build the ledger from `responses/` only. Do NOT read `test-runs/{TOPIC}/effort-comparison.md` yet. Do NOT read `attributed/` (med + high) yet. The hard sequencing rule (revision §4.2) prevents the memo's through-line list and the prompt-under-test's `attributed/` file from contaminating your ground truth.
 
-### Step 2: Map convergence (low / med / high only)
+### Step 1.5 (NEW per revision §4.2): Post hoc memo audit
 
-For each through-line, count how many distinct personas raised it (verbatim or substantively similar). Categorize:
-- **Convergent**: 2+ personas at low; 2+ personas at med; 2+ personas at high (note: at low the only convergence count possible is 2/2)
-- **Unique**: only 1 persona raised it
+ONLY after Step 1's ledger is finalized, read `test-runs/{TOPIC}/effort-comparison.md`. Compare the memo's persistent through-line list (typically the table in §3 of the memo) to your ledger and produce two flag lists:
+- **Through-lines named as persistent in the memo that are absent from your ledger.** Possible coverage gap. List each with the memo's wording.
+- **Through-lines you found in `responses/` that the memo's persistent list does not surface.** Possible memo-level oversight or cluster-specific signal that didn't generalize to other clusters.
 
-For min, convergence is undefined (single brainstormer). Instead, identify **intra-response convergence**: ideas the brainstormer returned to in multiple responses across questions in the cluster.
+**Do not modify your ledger based on what the memo says.** The flag lists inform FA1 but the ledger remains as built in Step 1.
+
+### Step 2: Map convergence with raw counts + per-effort classification (revision §4.1)
+
+For each through-line, count how many distinct personas raised it (verbatim or substantively similar). Record raw counts plus a derived classification per effort:
+
+- **min (1 persona):** classification is `[recurring]` (intra-document repeat across questions) or `[single]` (one mention only). Convergence is n/a. Use intra-document recurrence within `generic-response.md` as the analog.
+- **low (2 personas):** raw count is `2/2` or `1/2`. Classification: `dual` (2/2 — baseline expectation, NOT strong convergence) or `single-lens` (1/2 — flag whether DA-only or Pragmatist-only as a stance signal).
+- **med (4 personas):** raw count `1/4` through `4/4`. Classification: `strong-convergent` (3/4 or 4/4), `weak-convergent` (2/4), `single` (1/4).
+- **high (7 personas):** raw count `1/7` through `7/7`. Classification: `strong-convergent` (≥5/7), `weak-convergent` (3/4 or 4/7), `single` (1/7 or 2/7).
+
+Recording raw counts is load-bearing: FA1 must verify "six of seven personas converged" claims in BRAINSTORM exec summaries against your ledger. Binary "convergent vs. unique" without raw counts is insufficient.
 
 ### Step 3: Set the faithfulness target
 
@@ -127,21 +174,36 @@ Decide what the Phase 4 output should preserve:
 - Every unique through-line is **should-also-appear** unless trivial — the value of high-effort over low-effort is precisely that unique single-persona insights surface.
 - For min: every intra-response-recurring through-line is should-appear.
 
-### Step 4: Build the persona-distinctiveness map (med + high only)
+### Step 4: Build the persona-distinctiveness map (med + high only) — split into content + framing (revision §4.3)
 
-For each persona in the sample, name what they distinctively contributed to this cluster — the through-lines or framings that no other persona produced. This is the FA1 audit's reference for "did this persona's voice survive synthesis?"
+For each persona in the sample, record TWO sub-fields. This split is load-bearing because a `med`/`high` synthesis can preserve content distinctiveness while flattening framing distinctiveness — and that is a Phase 4 failure FA1 needs to be able to detect.
 
-For low: the DA/Pragmatist contrast is the distinctiveness map — name the tension.
+- **Distinctive content (through-lines):** TLs unique to this persona — claims, recommendations, or specific concrete moves that originate with this persona and don't appear in others' responses.
+- **Distinctive framing (lens):** a 1-sentence characterization of the lens this persona applied across their response. Example from food-truck `high`: "The Visionary frames every operational decision as a product of identity transformation; the Accountant frames every operational decision as a unit-economics test." A persona may have low distinctive content but high distinctive framing if their lens is what made the cluster's other through-lines visible.
+
+For low: the DA/Pragmatist contrast IS the distinctiveness map — name the tension as a single trade-off (this is your Central Tension candidate).
 
 For min: skip; single-voice has no distinctiveness comparison.
 
-### Step 5: Flag aggregable Phase-5 signal candidates (continued below)
+### Step 5: Flag aggregable Phase-5 signal candidates
 
 For each sample, identify candidates for the Phase 5 signals named in [`dev/2026-04-23_symphony-phase5-investigation.md`](../../2026-04-23_symphony-phase5-investigation.md):
-- **Central Tension candidate** — what is the cluster's organizing trade-off? (universal — applies at every effort)
-- **Confidence-tag candidates** — for through-lines, classify as `[convergent]` (multi-persona at low/med/high), `[trade-off]` (DA vs. Pragmatist or multi-persona disagreement), `[unique: risk]` / `[unique: feasibility]` (low only — single-lens flag), `[recurring]` / `[single]` (min only — intra-response repeat)
-- **Neither-lens gap candidates (low only)** — what does the DA + Pragmatist pairing structurally not surface in this cluster? Be specific to the cluster substance; skip if nothing emerges
-- **Conspicuous-absence candidates (min only)** — what stance does the brainstormer's output never take? Be specific; skip if nothing emerges
+
+- **Central Tension candidate** — what is the cluster's organizing trade-off? (universal — applies at every effort). Mark scope as `within-cluster` (the tension is fully framed by this cluster's questions) or `cross-cluster — anchors to {topic-level frame}` (the tension only resolves with reference to another cluster). The cross-cluster scope is rare but informs Phase 5 aggregation.
+
+- **Confidence-tag candidates** — for through-lines, classify as `[convergent]` (multi-persona at low/med/high — record the raw count e.g. `[convergent: 5/7]`), `[trade-off]` (DA vs. Pragmatist or multi-persona disagreement), `[unique: risk]` / `[unique: feasibility]` (low only — single-lens flag), `[recurring]` / `[single]` (min only — intra-response repeat).
+
+- **Neither-lens gap candidates (low only) — use the 4-category taxonomy (revision §4.7).** Identify gaps within these recurring categories observed across the 10-topic sample:
+  1. **Relational / social dynamics** — power asymmetries between stakeholder groups, founding-cohort dynamics, peer-effects
+  2. **Equity / distributional** — who absorbs which costs, distributional analysis the DA + Pragmatist pairing doesn't reach
+  3. **Political-economy / gatekeeper** — incumbent preferences, gatekeeper dynamics, political coalition shape
+  4. **Emotional / psychological architecture** — shame, grief, anxiety, identity-decision moments, motivational architecture
+
+Any cluster may also flag a fifth *cluster-specific* category if nothing fits — but **blank is preferred to forced filler**. Speculative gaps are worse than absence.
+
+- **Conspicuous-absence candidates (min only)** — what stance does the brainstormer's output never take? Be specific; skip if nothing emerges.
+
+- **NEW (revision §4.4) — Categorical-reframe candidate (med + high only):** if the cluster's responses collectively reframe the *subject matter* of the cluster (not just the answer to its questions), name the reframe in a single sentence. Examples observed at med across the 10 topics: "this is not a property management business — it is a regulatory-legitimacy and community-relations business with a property-management delivery channel"; "the truck is a 12–18 month research instrument, not the business." Skip if no reframe emerges. This is the load-bearing Phase-5 signal at med/high — Phase 5's exec-summary thesis is downstream of it.
 
 These flagged candidates serve FA1's per-cluster Phase-5-signal log (`findings/FA1_phase5-signal-log.md`).
 
@@ -187,7 +249,7 @@ Every distinct through-line in the cluster's Phase 3 responses, with persona att
 
 **Raised by personas:** [Persona1 (verbatim quote excerpt or paraphrase), Persona2 (excerpt/paraphrase), ...]
 
-**Convergence:** [N of M personas | unique to PersonaX | intra-response-recurring (min only)]
+**Convergence:** [raw count + classification per Step 2 — e.g., "5/7 personas (strong-convergent)" at high; "2/2 (dual)" at low; "1/4 (single)" at med; "[recurring]" at min]
 
 **Faithfulness target:** [should-appear-in: `_summary.md` | `_synthesis.md` (med+high) | both | optional]
 
@@ -213,28 +275,40 @@ Every distinct through-line in the cluster's Phase 3 responses, with persona att
 
 ## Persona-Distinctiveness Map (med + high only)
 
-For each persona in the sample, name their distinctive contributions — the through-lines or framings unique to them or originating with them.
+For each persona in the sample, record TWO sub-fields per revision §4.3 — distinctive content (through-lines unique to them) AND distinctive framing (the lens they applied across their response). FA1 scores both axes.
 
 ### Persona: The Pragmatist
-**Distinctive through-lines:** TL-3, TL-7, TL-12
-**Distinctive framing:** [e.g., "Frames every recommendation as a falsifiable test rather than a directive"]
+**Distinctive content (through-lines):** TL-3, TL-7, TL-12
+**Distinctive framing:** "Frames every recommendation as a falsifiable test rather than a directive"
 
 ### Persona: The Devil's Advocate
-**Distinctive through-lines:** ...
+**Distinctive content (through-lines):** ...
 **Distinctive framing:** ...
 
-[Continue for all personas in the sample]
+[Continue for all personas in the sample. A persona may have low distinctive content but high distinctive framing — record both honestly.]
 
 ## Aggregable Phase-5 Signal Candidates
 
 ### Central Tension candidate
 [1-sentence naming of the cluster's organizing trade-off. Universal across efforts.]
+**Scope:** [`within-cluster` | `cross-cluster — anchors to {topic-level frame}`]
+
+### Categorical-reframe candidate (med + high only — revision §4.4)
+[1-sentence reframe of the cluster's subject matter, if the responses collectively shift it. Skip if no reframe emerges. Examples from the 10-topic sample: "the truck is a 12–18 month research instrument, not the business"; "this is not a property management business — it is a regulatory-legitimacy and community-relations business." Speculative filler is worse than absence.]
 
 ### Confidence-tag candidates
-[Map of through-line ID → tag (`[convergent]`, `[trade-off]`, `[unique: risk]`, `[unique: feasibility]`, `[recurring]`, `[single]`). For min, only `[recurring]` / `[single]` apply. For low, all four `[convergent]` / `[trade-off]` / `[unique: risk]` / `[unique: feasibility]` apply. For med + high, `[convergent]` / `[trade-off]` apply (multi-persona).]
+[Map of through-line ID → tag with raw count where applicable. For min, only `[recurring]` / `[single]` apply. For low, all four `[convergent: 2/2]` / `[trade-off]` / `[unique: risk]` / `[unique: feasibility]` apply. For med, `[convergent: N/4]` / `[trade-off]` apply. For high, `[convergent: N/7]` / `[trade-off]` apply.]
 
-### Neither-lens gap candidates (low only)
-[1-3 specific gaps that DA + Pragmatist structurally miss in this cluster. Skip section if nothing substantive emerges. Speculative filler is worse than absence.]
+### Neither-lens gap candidates (low only — revision §4.7 taxonomy)
+[1-3 specific gaps that DA + Pragmatist structurally miss in this cluster, mapped to the 4-category taxonomy (relational, equity, political-economy, emotional) plus any cluster-specific 5th category. Skip section if nothing substantive emerges. Speculative filler is worse than absence.]
+
+| Category | Gap (specific to this cluster) |
+|---|---|
+| Relational / social dynamics | [or "none in this cluster"] |
+| Equity / distributional | ... |
+| Political-economy / gatekeeper | ... |
+| Emotional / psychological architecture | ... |
+| (Cluster-specific 5th, if any) | ... |
 
 ### Conspicuous-absence candidates (min only)
 [1-3 specific stances the brainstormer's output never took in this cluster. Skip section if nothing notable. Speculative filler is worse than absence.]
@@ -350,10 +424,15 @@ You are compiling cross-sample patterns from the 60 per-cluster Phase 4 baseline
 ## Aggregable Phase-5 signal candidate inventory
 
 ### Central Tension candidates
-[List of central tensions across the 60 samples, grouped by topic. Note any cross-cluster recurrences within a topic — flagged for Phase 5 cross-cluster aggregation.]
+[List of central tensions across the 60 samples, grouped by topic. Note scope (within-cluster vs. cross-cluster) and any cross-cluster recurrences within a topic — flagged for Phase 5 cross-cluster aggregation.]
 
-### Neither-lens gap categories (across 10 low samples)
-[Aggregate the 10 low samples' Neither-lens gap candidates. Group by category (e.g., "relational/social dynamics" appears in N samples). Flagged for Phase 5 E4.]
+### Categorical-reframe candidates (across 40 med+high samples — revision §4.4)
+[Per topic, list categorical-reframe candidates surfaced by med and high samples. Cross-link to the topic's `effort-comparison.md` memo §4.2 (where the memos document the categorical reframe) — does the BL1-flagged reframe match the memo's? Phase 5's exec-summary thesis is downstream of these.]
+
+### Neither-lens gap categories (across 10 low samples — revision §4.7 taxonomy)
+[Aggregate the 10 low samples' Neither-lens gap candidates against the 4-category taxonomy (relational / equity / political-economy / emotional) plus cluster-specific 5th categories. Tabulate which categories appear in how many topics. Flagged for Phase 5 E4.
+
+**Retro-application note:** the 10 existing low ledgers were built before the taxonomy was finalized (per `dev/2026-05-03_effort-comparison.md` §6 audit). Map each existing low ledger's freeform gap candidates onto the 4 taxonomy categories at this synthesis step. The original ledger files remain unchanged; the categorization happens in the synthesis aggregate only.]
 
 ### Conspicuous-absence categories (across 10 min samples)
 [Same aggregation pattern.]
@@ -361,6 +440,43 @@ You are compiling cross-sample patterns from the 60 per-cluster Phase 4 baseline
 ## Cross-sample observations
 
 - [Patterns visible across samples that wouldn't be visible per-cluster: e.g., "min-effort baselines consistently show 2-3× fewer through-lines than low-effort, suggesting the generic-brainstormer prompt is structurally limited — not a Phase 4 prompt issue per se."]
+
+## Phase-4 signals consumed by Phase 5 (revision §4.9 — optional add-on)
+
+For each high sample (20 high baselines), trace which BL1-flagged signals appear as named claims in the corresponding `test-runs/{topic}/high/synthesis/{cluster}_synthesis.md`:
+
+| Sample | BL1 Central Tension candidate | Surfaces in `_synthesis.md`? | BL1 categorical reframe | Surfaces? | BL1 strong-convergent counts | Counts surface as "N of M personas"? |
+|---|---|---|---|---|---|---|
+| [topic]_high_NN_[slug] | [text] | Y/partial/N | [text] | Y/partial/N | TL-X 6/7, TL-Y 5/7 | Y/partial/N |
+| ... | ... | ... | ... | ... | ... | ... |
+
+**Aggregate (across 20 high samples):**
+- Central Tension surfacing rate: X / 20
+- Categorical reframe surfacing rate: X / 20
+- Strong-convergent count surfacing rate: X / 20
+
+This stays inside Phase 4 scope (does not modify Phase 5) but provides direct evidence for FQ5 (Phase 4 → Phase 5 readiness) — concrete examples instead of inference. Cross-link to FA1's Phase-5 signal log.
+
+## Memo-vs.-filesystem discrepancy log (revision §4.5)
+
+| Topic | Discrepancy | Memo value | Filesystem value | Authoritative |
+|---|---|---|---|---|
+| property-management | Min total persona responses | "80 (4 per question, single brainstormer)" | 5 (one `generic-response.md` per cluster, 5 clusters) | Filesystem |
+| ... | ... | ... | ... | ... |
+
+[Compile any memo-vs.-filesystem discrepancies the per-cluster subagents flagged. Future memo regenerations should correct these.]
+
+## BL1 → SS1 feedback gate (revision §4.8)
+
+Review the 60 baselines for unrecoverable anomalies. For each sample flagged by its per-cluster subagent:
+- **Recoverable** (file accessible, ledger built with caveats): ledger stands; FA1/LB1/RG1 proceed.
+- **Unrecoverable** (e.g., zero through-lines from the responses for structural reasons; missing files SS1's manifest didn't catch): recommend a manifest addendum to SS1 — replace this sample with a backup sample drawn from the same (topic, effort) cell.
+
+| Sample | Anomaly flagged | Recoverability verdict | SS1 addendum recommended? |
+|---|---|---|---|
+| ... | ... | ... | ... |
+
+If zero unrecoverable samples (the expected case): proceed to FA1/LB1/RG1 launch.
 
 ## Handoff to FA1, LB1, RG1
 
@@ -389,7 +505,7 @@ You are compiling cross-sample patterns from the 60 per-cluster Phase 4 baseline
 
 ## Priority
 
-**Critical-path. Longest single task in the investigation.** 60 subagents × ≈ 1 hour each (40 Opus on med + high, 20 Sonnet on min + low), batched 6 concurrent ≈ 10 waves. Can be parallelized across topics (Tier-A first, then the other 6 topics).
+**Critical-path. Longest single task in the investigation.** 60 subagents × ≈ 1 hour each (40 Opus on med + high, 20 Sonnet on min + low), batched 6 concurrent ≈ 10 waves. Topic ordering for the 40 Opus med+high run is no longer constrained by memo availability (all 10 topics now have `effort-comparison.md` per the methodology's mid-investigation asset update); ordering can be chosen for execution-staging convenience.
 
 ## Discussion Questions Affecting This Task
 
