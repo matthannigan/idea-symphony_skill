@@ -18,6 +18,8 @@ topic-cluster: "{{cluster_slug}}"
 
 # Summary: [Topic Cluster Name]
 
+**Central Tension**: [One sentence; if no productive tension to name, that itself is a signal — say so. Required at all effort levels (`min`/`low`/`medium`/`high`).]
+
 ---
 
 ## Executive Summary
@@ -38,6 +40,8 @@ topic-cluster: "{{cluster_slug}}"
 [2-4 sentences describing this theme]
 
 [Include 3-5 themes total]
+
+**Categorical reframe (optional, `medium`/`high` only):** If the cluster has a categorical reframe — a sentence-level claim that reframes the cluster's question itself ("we are not running X; we are running Y") — surface it as a single declarative sentence at the top of `## Key Themes`, separate from the individual themes. The reframe should be derivable from at least three personas' responses.
 
 ---
 
@@ -101,6 +105,8 @@ At `low` effort the Key Considerations section restructures around the productiv
 - [Flag]
 ```
 
+**Central Tension at `low` effort — inverted-framing pairs.** When both lenses (DA and Pragmatist) point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.
+
 ## Frontmatter variants
 
 - `min`/`low`: `stage: "Phase 4: Summary Generation"`
@@ -117,3 +123,5 @@ Each Phase 4 prompt is authoritative for the exact summary shape its subagent sh
 - [phase4-synthesis-min.md](../prompts/phase4_summary-only_min-effort.md) — `min` effort (single-voice summarization)
 - [phase4-synthesis-low.md](../prompts/phase4_summary-only_low-effort.md) — `low` effort (DA + Pragmatist consolidation, restructured Key Considerations)
 - [phase4-synthesis.md](../prompts/phase4_full-synthesis.md) — `medium`/`high` (full multi-persona synthesis, richest form)
+
+**Persona-name and character-name prohibition** (`medium`/`high` `_summary.md`): the full-synthesis prompt bans persona names and character names (Marcus, Maria, Margaret, Elena, Sarah, etc.) from `_summary.md` body prose. Persona names are confined to `attributed/{cluster}.md`. See [phase4_full-synthesis.md](../prompts/phase4_full-synthesis.md) for the complete rule.

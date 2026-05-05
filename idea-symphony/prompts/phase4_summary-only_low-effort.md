@@ -6,7 +6,7 @@
 
 You are synthesizing brainstorming responses from two complementary perspectives for a single topic cluster about: **{{topic}}**. Produce exactly one markdown file at the path named in Output. Do not modify any other files.
 
-`low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast. **Frame that tension substantively in the output** (e.g., "a feasibility-oriented case argues…; a risk-oriented counterpoint flags…") rather than naming the personas in the prose. The final BRAINSTORM.md should read as a portable analysis that a cold reader — someone unfamiliar with this skill — can follow, not as a transcript of two named characters.
+`low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast. **Frame that tension substantively in the output** (e.g., "a feasibility-oriented case argues…; a risk-oriented counterpoint flags…") rather than naming the personas in the prose. The final summary should read as a portable analysis that a cold reader — someone unfamiliar with this skill — can follow, not as a transcript of two named characters.
 
 ## Inputs
 
@@ -47,6 +47,8 @@ A summary that smooths the risk/feasibility contrast into neutral consensus defe
 
 The second version commits each lens to a specific stance and forces the reader to confront the trade-off rather than letting it dissolve into "balance" — while staying legible to a cold reader who doesn't know a two-persona pairing produced it.
 
+**Tightened `[recurring]` tag definition (applies to any tag use below):** `[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker.
+
 ## Output
 
 Replace every bracketed placeholder below (e.g., `[Topic Cluster Name]`, `[Theme 1 Name]`) with the content you derive; do not emit the literal placeholder strings.
@@ -67,7 +69,9 @@ topic-cluster: "{{cluster_slug}}"
 
 # Summary: [Topic Cluster Name]
 
-**Central Tension**: [One sentence naming the cluster's organizing trade-off — e.g., "incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk." Required. If the cluster has no productive tension to name, that itself is a signal worth surfacing — say so.]
+**Central Tension**: [One sentence naming the cluster's organizing trade-off — e.g., "incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk." Required. If the cluster has no productive tension to name, that itself is a signal worth surfacing — say so.
+
+**Inverted-framing pairs.** If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.]
 
 ---
 
@@ -127,7 +131,7 @@ Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]`
 - [Flag — risk-oriented | feasibility-oriented]
 
 **Neither-lens gaps** (what a different angle would have surfaced):
-- [1-3 things that neither a risk lens nor a feasibility lens naturally surfaces but that the cluster's substance suggests are real — e.g., relational/social dynamics, lifecycle/stage shifts, equity/access second-order effects, ethical surfaces. Be specific to this cluster; don't generalize. Skip the section entirely if nothing substantive emerges — speculative filler is worse than absence.]
+- [Before writing this section, walk through the 5 candidate categories and identify the 2–3 most cluster-relevant: (a) relational/social, (b) emotional/phenomenological/lived-experience, (c) equity/access/distributional, (d) political-economy/regulatory/institutional, (e) lifecycle/temporal-stage. For each candidate, ask: did the DA's risk lens and the Pragmatist's feasibility lens both structurally miss this angle? If yes for ≥2 categories, surface them as distinct gaps. Skip the section only if 0 categories pass the test. Be specific to this cluster; don't generalize. Speculative filler is worse than absence.]
 
 ---
 
@@ -142,9 +146,11 @@ Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]`
 - **Prioritize convergent insights**: points both lenses mention carry more weight
 - **Don't drop unique insights**: a blind-spot flag from one lens is often the most valuable output
 - **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, test protocols, threshold numbers) to abstract design intent — but only when the cluster substance actually supports it. A vague action item is worse than a sharp observation
-- **Look past the brief**: the Neither-lens gaps section is your chance to flag what the DA/Pragmatist pairing structurally won't surface. Use it sparingly and concretely; speculative filler defeats the point
+- **Look past the brief**: the Neither-lens gaps section is your chance to flag what the DA/Pragmatist pairing structurally won't surface. Run the 5-category iteration discipline above; speculative filler defeats the point
 - **Organize by value**: lead with high-confidence items, then trade-offs, then blind spots
 - Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: commit each lens to a stance and surface the disagreement in substantive terms, not by naming the personas that generated each side.
+
+**Self-check (only when this prompt is invoked under RP1 diagnostic regeneration with a `targeted_axis` argument):** After producing the standard output, append a `<!-- self-check -->` block at the very end of the file naming: (a) the targeted axis for this sample, (b) the BL1 expectation, (c) what the regenerated output produced relative to that expectation, (d) PASS / PARTIAL / FAIL with a one-sentence rationale. If invoked normally (no `targeted_axis`), skip the block.
 
 ## Notes
 

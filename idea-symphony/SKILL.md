@@ -331,6 +331,8 @@ scripts/build-summaries.sh {{session}}
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
+Each `_summary.md` carries a `**Central Tension**` line at the top — a universal field across all effort levels that Phase 5 aggregates into a session-level `## Central Tensions` section.
+
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
 Once all subagents are complete, run both utility scripts. Each is a deterministic concat-and-strip-frontmatter transform; `build-summaries.sh` consumes the per-topic `_summary.md` files and `build-synthesis.sh` consumes the per-topic `_synthesis.md` files. They are independent and can be run in either order.
@@ -363,6 +365,8 @@ Update `PLAN.md` with Phase 4 complete status.
 #### Step 5.1: Generate BRAINSTORM.md (Subagent)
 
 Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template.
+
+Phase 5 inherits per-cluster Central Tensions, Conspicuous Absences, and dissent-preservation disciplines from Phase 4's `_summary.md` outputs and aggregates them at session level. See `prompts/phase5_final-output.md` for the surfacing rules and the effort-scaled length targets (`min` 600–1200, `low` 750–1500, `medium` 940–1875, `high` 1170–2345 words).
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
 
