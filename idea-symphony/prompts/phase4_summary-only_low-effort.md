@@ -47,7 +47,9 @@ A summary that smooths the risk/feasibility contrast into neutral consensus defe
 
 The second version commits each lens to a specific stance and forces the reader to confront the trade-off rather than letting it dissolve into "balance" — while staying legible to a cold reader who doesn't know a two-persona pairing produced it.
 
-**Tightened `[recurring]` tag definition (applies to any tag use below):** `[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker.
+**`[recurring]` tag definition (applies to any tag use below):** `[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker.
+
+**Five-category absence check (run before drafting Neither-lens gaps).** Walk through five candidate categories and identify the 2–3 most cluster-relevant: (a) relational/social, (b) emotional/phenomenological/lived-experience, (c) equity/access/distributional, (d) political-economy/regulatory/institutional, (e) lifecycle/temporal-stage. For each candidate, ask: did the DA's risk lens and the Pragmatist's feasibility lens both structurally miss this angle? If yes for ≥2 categories, surface them as distinct gaps. Skip the section only if 0 categories pass the test. Be specific to this cluster; don't generalize. Speculative filler is worse than absence.
 
 ## Output
 
@@ -131,7 +133,7 @@ Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]`
 - [Flag — risk-oriented | feasibility-oriented]
 
 **Neither-lens gaps** (what a different angle would have surfaced):
-- [Before writing this section, walk through the 5 candidate categories and identify the 2–3 most cluster-relevant: (a) relational/social, (b) emotional/phenomenological/lived-experience, (c) equity/access/distributional, (d) political-economy/regulatory/institutional, (e) lifecycle/temporal-stage. For each candidate, ask: did the DA's risk lens and the Pragmatist's feasibility lens both structurally miss this angle? If yes for ≥2 categories, surface them as distinct gaps. Skip the section only if 0 categories pass the test. Be specific to this cluster; don't generalize. Speculative filler is worse than absence.]
+- [Apply the five-category absence check (in Synthesis Strategy). Surface 2–3 most cluster-relevant gaps. Skip the section if 0 categories pass.]
 
 ---
 
@@ -141,16 +143,11 @@ Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]`
 
 ## Synthesis Guidelines
 
-- **Preserve tension, don't smooth it**: the risk + feasibility pairing is designed to surface trade-offs — name them substantively
-- **Frame by stance, not by generator**: reference the substantive lens (a risk-oriented view, a feasibility-oriented view) when the attribution clarifies the point. Do not name the personas in the output prose; the output must stand alone as a portable document.
 - **Prioritize convergent insights**: points both lenses mention carry more weight
 - **Don't drop unique insights**: a blind-spot flag from one lens is often the most valuable output
 - **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, test protocols, threshold numbers) to abstract design intent — but only when the cluster substance actually supports it. A vague action item is worse than a sharp observation
-- **Look past the brief**: the Neither-lens gaps section is your chance to flag what the DA/Pragmatist pairing structurally won't surface. Run the 5-category iteration discipline above; speculative filler defeats the point
 - **Organize by value**: lead with high-confidence items, then trade-offs, then blind spots
-- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: commit each lens to a stance and surface the disagreement in substantive terms, not by naming the personas that generated each side.
-
-**Self-check (only when this prompt is invoked under RP1 diagnostic regeneration with a `targeted_axis` argument):** After producing the standard output, append a `<!-- self-check -->` block at the very end of the file naming: (a) the targeted axis for this sample, (b) the BL1 expectation, (c) what the regenerated output produced relative to that expectation, (d) PASS / PARTIAL / FAIL with a one-sentence rationale. If invoked normally (no `targeted_axis`), skip the block.
+- **Executive Summary as prose**: write the Executive Summary as prose paragraphs, not bullets. Direct and specific: commit each lens to a stance and surface the disagreement in substantive terms.
 
 ## Notes
 

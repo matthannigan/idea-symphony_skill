@@ -20,16 +20,16 @@ Read the generic brainstorming response (which contains 3-5 responses per questi
 
 **Internal convergence is your highest-confidence signal.** Min effort has no cross-persona convergence to lean on — the strongest substitute is *intra-response convergence*: ideas the brainstormer returned to across multiple questions, framings that recurred in different forms, recommendations the brainstormer arrived at from more than one angle. Treat these as the load-bearing insights. Single-occurrence ideas can still be valuable but carry less weight; mark them as such when you surface them so a downstream reader can prioritize.
 
-**Tightened `[recurring]` tag definition:** `[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker.
+**`[recurring]` tag definition:** `[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker.
 
 **Watch for conspicuous absence.** Note any stance the brainstormer's output never takes — a feasibility consideration the brainstormer skipped, a risk dimension never raised, a stakeholder group never named, a downside never flagged. Single-voice brainstorming cannot self-correct for these structural blind spots; surfacing them is the most valuable thing this synthesis can do that the raw response cannot.
 
-**Diagnostic checklist for Conspicuous Absences (run before naming absences):**
+**Surfacing Conspicuous Absences.** Before naming absences, run these four checks against the brainstormer's response:
 
-(a) Does the brainstormer name a stakeholder type but not a structurally adjacent one?
-(b) Does it recommend something whose precondition the response never establishes (e.g., a 10K-unit revenue model with no acquisition channel)?
-(c) Does it propose action whose downside class is never raised?
-(d) Did the brainstormer face a decision implicit in the question and decline to make it?
+(a) Does the brainstormer name a stakeholder type but skip a structurally adjacent one? (e.g., names "users" but not "administrators" who would maintain the system)
+(b) Does it recommend something whose precondition the response never establishes? (e.g., proposes a 10K-unit revenue model with no acquisition channel named)
+(c) Does it propose an action whose downside class never appears? (e.g., recommends a feature without surfacing a class of user it would alienate)
+(d) Did the brainstormer face a decision implicit in the question and decline to make it? (e.g., the question asks "X or Y?" and the response describes both without committing)
 
 Pick the 1–2 with highest leverage on the cluster's own recommendations. Avoid restating risks already named.
 
@@ -94,9 +94,9 @@ topic-cluster: "{{cluster_slug}}"
 
 [Include 4-8 total action items across timeframes. Each item should be implementable as written — name specific data fields, event names, UI strings, threshold numbers, or test protocols where the substance supports it (e.g., "log `cap_reached` and `weekly_review_completed` as named events," not "instrument the feature"). Vague recommendations get vague follow-through.
 
-**Mandatory inclusion gate for `[recurring]` items.** Every through-line that recurs across multiple questions in the brainstormer's response must appear in either Recommended Actions or Key Themes. Do not drop a `[recurring]` insight to make room for a single-occurrence item, however vivid.
+**Through-line inclusion rule.** Any `[recurring]` insight (a through-line that recurs across multiple questions in the brainstormer's response) must land in either Recommended Actions or Key Themes. Do not displace a `[recurring]` insight for a single-occurrence item, however vivid.
 
-Tag each item with `[recurring]` (the brainstormer returned to this idea in multiple responses — high confidence; uses the tightened definition above) or `[single]` (one-off but still worth surfacing — lower confidence) so a downstream reader can weight them.]
+Tag each item with `[recurring]` (the brainstormer returned to this idea in multiple responses — high confidence; uses the definition above) or `[single]` (one-off but still worth surfacing — lower confidence) so a downstream reader can weight them.]
 
 ---
 
@@ -115,7 +115,7 @@ Tag each item with `[recurring]` (the brainstormer returned to this idea in mult
 - [Bullet point]
 
 **Conspicuous absences** (stances the brainstormer's output never took):
-- [Run the diagnostic checklist above (a–d) and pick the 1–2 with highest leverage on the cluster's own recommendations. Be specific to this cluster's substance; don't list generic gaps. Avoid restating risks already named. Skip the section entirely if nothing notable emerges — speculative filler is worse than absence.]
+- [Run the four checks (a–d) above and pick the 1–2 with highest leverage on the cluster's own recommendations. Be specific to this cluster's substance; don't list generic gaps. Avoid restating risks already named. Skip the section entirely if nothing notable emerges — speculative filler is worse than absence.]
 
 ---
 
@@ -125,16 +125,10 @@ Tag each item with `[recurring]` (the brainstormer returned to this idea in mult
 
 ## Synthesis Guidelines
 
-- **Extract patterns**: look for recurring themes across the different responses within the brainstormer's output — these are your highest-confidence signals in a single-voice setup
-- **Prioritize actionability**: focus on insights that lead to concrete next steps
-- **Balance optimism and realism**: acknowledge both opportunities and challenges
-- **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, threshold numbers, test protocols) to abstract design intent — but only when the substance supports it. "Consider stakeholders" and "improve onboarding" are non-recommendations
-- **Surface what isn't there**: a single-voice brainstorm cannot self-correct for blind spots. The Conspicuous Absences section is where this synthesis adds value the raw response cannot — run the diagnostic checklist, use it concretely, skip it if nothing real emerges
-- **Through-line discipline**: any `[recurring]` insight must land in either Recommended Actions or Key Themes — do not displace it for a vivid single-occurrence item
-- **Organize by value**: lead with the most impactful insights and actions
-- Write the Executive Summary as prose paragraphs, not bullets. Direct and specific.
-
-**Self-check (only when this prompt is invoked under RP1 diagnostic regeneration with a `targeted_axis` argument):** After producing the standard output, append a `<!-- self-check -->` block at the very end of the file naming: (a) the targeted axis for this sample, (b) the BL1 expectation, (c) what the regenerated output produced relative to that expectation, (d) PASS / PARTIAL / FAIL with a one-sentence rationale. If invoked normally (no `targeted_axis`), skip the block.
+- **Specificity earns its keep**: prefer concrete artifacts (field names, event names, UI strings, threshold numbers, test protocols) to abstract design intent — but only when the substance supports it. "Consider stakeholders" and "improve onboarding" are non-recommendations.
+- **Through-line discipline**: any `[recurring]` insight must land in either Recommended Actions or Key Themes — do not displace it for a vivid single-occurrence item.
+- **Organize by value**: lead with the most impactful insights and actions.
+- **Executive Summary as prose**: write the Executive Summary as prose paragraphs, not bullets. Direct and specific.
 
 ## File Paths
 

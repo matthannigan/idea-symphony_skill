@@ -12,6 +12,7 @@ You are a skilled facilitator synthesizing brainstorming responses from multiple
 - Your Task
 - Synthesis Strategy
 - Consolidation Process
+- Output conventions
 - Output (three documents: attributed, synthesis, summary)
 - Quality Standards
 - Notes
@@ -67,6 +68,15 @@ A well-synthesized point (in Document 1, attributed):
 
 The synthesized point names the convergence (low-barrier access), names the divergence (mechanism + sustainability floor), and commits to an actionable stance. Raw responses are preserved verbatim as sub-bullets. The Document 2 version is identical minus the sub-bullets.
 
+**Convergence-count discipline.** Before writing any "all four / six of seven / every persona" claim, run this discipline pass in scratch reasoning:
+
+(a) Name the personas you are counting.
+(b) Count distinct personas, not distinct framings — if one persona offers two angles, that is one persona, not two.
+(c) Count personas who engage the underlying claim, even with different framing — do not require identical wording.
+(d) Deduct any explicit dissenter even if their adjacent framing partially supports the claim.
+(e) When uncertain, default to underclaim ("Several personas surface…") rather than overclaim — but do not deflate counts that legitimately reach "all/every"; both distortions hurt the signal.
+(f) The summary doc must inherit count claims from the attributed-doc preambles, not re-derive them.
+
 ## Consolidation Process
 
 For each question:
@@ -78,18 +88,13 @@ For each question:
 5. **Preserve originals**: In attributed version, include original responses as sub-bullets
 6. **Maintain balance**: Ensure both consensus views and unique perspectives are represented
 
-**Convergence-count discipline (required before any "all four / six of seven / every persona" claim):**
+## Output conventions
 
-Before writing any count claim, run this discipline pass in scratch reasoning:
+Two conventions apply to the document outputs below before any per-document rule:
 
-(a) Name the personas you are counting.
-(b) Count distinct personas, not distinct framings — if one persona offers two angles, that is one persona, not two.
-(c) Count personas who engage the underlying claim, even with different framing — do not require identical wording.
-(d) Deduct any explicit dissenter even if their adjacent framing partially supports the claim.
-(e) When uncertain, default to underclaim ("Several personas surface…") rather than overclaim.
-(f) The summary doc must inherit count claims from the attributed-doc preambles, not re-derive them.
+- **`[User Q]` markers (Documents 1 and 2).** If the questions file carries a `[User Q]` marker on any question, preserve that marker on the `Full question:` line in the document. Do not propagate the marker onto synthesized-response bullets.
 
-This discipline applies bidirectionally: do not inflate counts to manufacture consensus, and do not deflate counts that legitimately reach "all/every" — both directions distort the signal.
+- **Persona-name prohibition (Documents 2 and 3).** Persona names are prohibited in any prose of these documents — including stylistic constructions ("from X's lens to Y's frame"), possessive enumerations ("The Storyteller's Marcus"), sentence-subject mentions ("The Devil's Advocate argues"), and bullet-summary labels ("Visionary alternatives", "Pragmatist's caution"). Do not name characters from persona narratives (Marcus, Maria, Margaret, Elena, Sarah, etc.) in these documents. Convey breadth via convergence counts and lens types ("a feasibility-oriented case", "an adversarial counter-test"). Persona names belong only in `attributed/{cluster}.md`.
 
 ## Output
 
@@ -157,7 +162,6 @@ synthesis-type: "attributed"
 - Use *—Persona Name* format for attribution (em dash + persona)
 - Preserve important details from original responses
 - Include every insight valuable enough to act on — single-persona insights often flag blind spots everyone else missed.
-- If the questions file carries a `[User Q]` marker on any question, preserve that marker on the `Full question:` line in this document. Do not propagate the marker onto synthesized-response bullets.
 
 ---
 
@@ -215,8 +219,6 @@ synthesis-type: "synthesis"
 - Remove all persona attribution
 - Keep only the synthesized insights (top-level bullets)
 - Must be readable standalone without attribution
-- **Persona names are prohibited in any prose of this document** — including stylistic constructions ("from X's lens to Y's frame"), possessive enumerations ("The Storyteller's Marcus"), sentence-subject mentions ("The Devil's Advocate argues"), and bullet-summary labels ("Visionary alternatives", "Pragmatist's caution"). Do not name characters from persona narratives (Marcus, Maria, Margaret, Elena, Sarah, etc.) in this document. Convey breadth via convergence counts and lens types ("a feasibility-oriented case", "an adversarial counter-test"). Persona names belong only in `attributed/{cluster}.md`.
-- If the questions file carries a `[User Q]` marker on any question, preserve that marker on the `Full question:` line in this document. Do not propagate the marker onto synthesized-response bullets.
 
 ---
 
@@ -317,11 +319,9 @@ Aim for 200-400 words total.]
 - Focus on strategic value, not comprehensive coverage
 - Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: name the insight and its stakes in plain language. The reader is a decision-maker skimming, not a committee evaluating completeness.
 
-- **Single-persona-reframe floor.** Surface load-bearing single-persona reframes. The Themes, Trade-offs, and Risks sections must include any single-persona insight that reframes the cluster's core question — counter-tests, distinctive timing claims, buried hypotheses, alternate diagnostic patterns, productive DA-anchored dissent **including dissent that inverts memo-persistent claims**. The 'synthesis over aggregation' bar applies to redundant raw points, not to distinctive reframes.
+- **Surface load-bearing single-persona reframes.** The Themes, Trade-offs, and Risks sections must include any single-persona insight that reframes the cluster's core question — counter-tests, distinctive timing claims, buried hypotheses, alternate diagnostic patterns, productive DA-anchored dissent, including dissent that overturns a claim established earlier in the cluster. The 'synthesis over aggregation' bar applies to redundant raw points, not to distinctive reframes.
 
-- **Persona names are prohibited in any prose of this document** — including stylistic constructions ("from X's lens to Y's frame"), possessive enumerations ("The Storyteller's Marcus"), sentence-subject mentions ("The Devil's Advocate argues"), and bullet-summary labels ("Visionary alternatives", "Pragmatist's caution"). Do not name characters from persona narratives (Marcus, Maria, Margaret, Elena, Sarah, etc.) in summary prose. Convey breadth via convergence counts and lens types ("a feasibility-oriented case", "an adversarial counter-test"). Persona names belong only in `attributed/{cluster}.md`.
-
-- **Categorical-reframe explicit-staging requirement.** If the cluster has a categorical reframe — a sentence-level claim that reframes the question itself ("we are not running X; we are running Y") — name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes. The reframe should be derivable from at least three personas' responses and should change which actions are prioritized.
+- **Stage any categorical reframe explicitly.** If the cluster has a categorical reframe — a sentence-level claim that reframes the question itself ("we are not running X; we are running Y") — name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes. The reframe should be derivable from at least three personas' responses and should change which actions are prioritized.
 
 - **Central Tension field.** The `**Central Tension**:` line at the top is required. One sentence; if no productive tension to name, that itself is a signal — say so.
 
@@ -347,8 +347,6 @@ Aim for 200-400 words total.]
 - Look for connections between questions
 - Prioritize actionable takeaways
 - Write for decision-makers who need the essence
-
-**Self-check (only when this prompt is invoked under RP1 diagnostic regeneration with a `targeted_axis` argument):** After producing the standard outputs, append a `<!-- self-check -->` block at the very end of `_summary.md` naming: (a) the targeted axis for this sample, (b) the BL1 expectation, (c) what the regenerated output produced relative to that expectation, (d) PASS / PARTIAL / FAIL with a one-sentence rationale. If invoked normally (no `targeted_axis`), skip the block.
 
 ## Output Paths
 
