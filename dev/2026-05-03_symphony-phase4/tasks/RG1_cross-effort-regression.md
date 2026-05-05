@@ -83,7 +83,7 @@ For each topic, the 6 sampled clusters from SS1's manifest plus their BL1 baseli
 
 Each reads:
 - The 6 BL1 baselines for its topic
-- The 6 corresponding Phase 4 outputs (1 `_summary.md` at min, 1 `_summary.md` at low, 2 `_summary.md` + 2 `_synthesis.md` + 2 `attributed/{cluster}.md` at med, same at high)
+- The 6 corresponding Phase 4 `_summary.md` outputs (1 min + 1 low + 2 med + 2 high). `_summary.md` is the canonical cross-effort artifact — the only file all four regimes produce — so it's the like-for-like comparison surface. `_synthesis.md` and `attributed/{cluster}.md` are deliberately excluded; summary-vs-synthesis fidelity is FA1's territory (Failure Mode 1, saturated 12/16) and duplicating it here would muddle the drift-vs-compression distinction.
 - The 6 corresponding Phase 3 response directories (for context)
 - The three Phase 4 prompts (for what's intentional)
 
@@ -115,14 +115,16 @@ You are running cross-effort regression analysis for one topic in the Phase 4 pr
    - 1 at `baselines/{TOPIC}_low_*_through-lines.md`
    - 2 at `baselines/{TOPIC}_med_*_through-lines.md`
    - 2 at `baselines/{TOPIC}_high_*_through-lines.md`
-7. **Your topic's 6 Phase 4 outputs:**
+7. **Your topic's 6 Phase 4 `_summary.md` outputs:**
    - 1 `test-runs/{TOPIC}/min/synthesis/[NN]_[slug]_summary.md`
    - 1 `test-runs/{TOPIC}/low/synthesis/[NN]_[slug]_summary.md`
-   - 2 `test-runs/{TOPIC}/med/synthesis/[NN]_[slug]_summary.md` + 2 `_synthesis.md` + 2 `attributed/[NN]_[slug].md`
-   - 2 each at high
+   - 2 `test-runs/{TOPIC}/med/synthesis/[NN]_[slug]_summary.md`
+   - 2 `test-runs/{TOPIC}/high/synthesis/[NN]_[slug]_summary.md`
+
+   Do **not** read `_synthesis.md` or `attributed/[NN]_[slug].md`. `_summary.md` is the canonical Phase 4 deliverable for downstream consumption and the only artifact all four regimes produce; cross-effort regression compares summary-to-summary. Summary-vs-synthesis fidelity is FA1's job, not RG1's.
 8. **Your topic's 6 Phase 3 response dirs:** `test-runs/{TOPIC}/{effort}/responses/[NN]_[slug]/*.md` (for context only)
 
-Tool-use hint: 6 baselines + 12-14 Phase 4 output files. Read in parallel batches.
+Tool-use hint: 6 baselines + 6 `_summary.md` files. Read in parallel batches.
 
 ## Method
 
@@ -156,7 +158,13 @@ Variance classification per through-line (THREE buckets per the two-regime lens)
   - Convergence-count phrasing ("six of seven") appears at high but not below — *not* drift; mandatory divergence
 - **Intentional (effort branching)** — through-line absent at min/low because clustering at lower effort is coarser and the through-line emerges only at finer clustering. Intentional.
 - **Intentional (cluster-shape)** — through-line present in 1 of 2 med samples because the two clusters have different shape. Intentional.
-- **Drift** — through-line present at high, dropped at med (within the same regime). Or present in 1 high sample, absent in the other for no cluster-shape reason. Or paraphrased away in `_summary.md` while preserved in `_synthesis.md`. Likely prompt failure.
+- **Drift** — through-line present at high's `_summary.md`, dropped at med's `_summary.md` (within the same regime). Or present in 1 high `_summary.md`, absent in the other for no cluster-shape reason. Likely prompt failure.
+
+**Cross-link rule with FA1.** RG1 only sees `_summary.md`. If RG1 detects through-line loss at a given effort, the *attribution* of that loss (summary compression vs. synthesis-stage failure) is FA1's call:
+- If FA1 already attributes the loss to summary compression for that sample → RP1 fixes via the `phase4_summary-only_*.md` prompts (or the summary block of `phase4_full-synthesis.md`).
+- If FA1 does not attribute it to summary compression → RP1 fixes via the synthesis prompt.
+
+Cite the FA1 finding by sample ID when classifying drift, do not re-derive.
 
 Drift across the min/low ↔ med/high regime boundary is the trickiest case. If a through-line surfaces at low but not at med, ask: did `low`'s DA × Pragmatist framing surface a tension that `med`'s 4-persona panel correctly *resolved* into a different frame? If so, this is regime-mandated divergence (the through-line shape changed per the regime's job), not drift.
 
@@ -171,13 +179,13 @@ Sample-level full-text similarity (cosine or section-by-section qualitative judg
 
 ### Step 4: Format/quality drift
 
-Independent of through-line presence, audit format/quality drift across the 4 efforts:
+Independent of through-line presence, audit format/quality drift across the 4 efforts. **Operate on `_summary.md` only** — RG1's surface is the cross-effort canonical artifact:
 - Section headings consistent across efforts as expected from PP1's contract matrix?
 - Frontmatter aligned?
 - Word counts within reason?
 - Confidence-tag usage consistent?
 
-Cross-link to PP1 findings — if PP1 flagged a contract drift, RG1 should observe it manifesting in this topic's outputs.
+Cross-link to PP1 findings — if PP1 flagged a contract drift, RG1 should observe it manifesting in this topic's `_summary.md` outputs.
 
 ## Deliverable
 

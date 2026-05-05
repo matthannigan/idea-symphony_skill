@@ -1,39 +1,16 @@
 # Phase 4 — Faithfulness Audit (Full-Synthesis Path)
 
-**Date:** 2026-05-03 (original); **revised 2026-05-04** following n=8 early-look saturation analysis
-**Status:** **Re-scoped from n=40 uniform fan-out to n=16 (8 scored + 8 top-up)** per early-look stopping-criterion analysis (see Mid-Investigation Pivot below).
+**Date:** 2026-05-03
 **Parent:** [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md)
 **Maps to:** F4-FA1 in [`dev/2026-04-27_effort-comparison.md`](../../2026-04-27_effort-comparison.md) §4
-**Original spec preserved at:** [`FA1_faithfulness-audit_original.md`](FA1_faithfulness-audit_original.md) (unmodified n=40 plan)
 **Inputs:**
 - Parent methodology — [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md) (Phase 3 §F4-FA1)
-- BL1 baselines — `dev/2026-05-03_symphony-phase4/baselines/{topic}_{med|high}_{NN}_{cluster-slug}_through-lines.md`
+- BL1 baselines — `dev/2026-05-03_symphony-phase4/baselines/{topic}_{med|high}_{NN}_{cluster-slug}_through-lines.md` (40 files for med + high samples)
 - SS1 manifest — `dev/2026-05-03_symphony-phase4/data-prep/sample-manifest.md`
-- **n=8 early-look findings** (load-bearing for the revised cross-sample synthesis):
-  - [`findings/FA1_faithfulness-audit_n8-early-look.md`](../findings/FA1_faithfulness-audit_n8-early-look.md)
-  - [`findings/FA1_scoring-matrix_n8.md`](../findings/FA1_scoring-matrix_n8.md)
-  - [`findings/FA1_phase5-signal-log_n8.md`](../findings/FA1_phase5-signal-log_n8.md)
 - Per-topic effort-comparison memos — `test-runs/{TOPIC}/effort-comparison.md` (available for all 10 topics; see methodology.md mid-investigation asset update). Reference for the topic's persistent through-line set; FA1 uses it as cross-validation that the prompt under test preserved cross-effort-confirmed claims.
 - Phase 4 full-synthesis prompt under test — [`idea-symphony/prompts/phase4_full-synthesis.md`](../../../idea-symphony/prompts/phase4_full-synthesis.md)
 - Phase 5 investigation — [`dev/2026-04-23_symphony-phase5-investigation.md`](../../2026-04-23_symphony-phase5-investigation.md) (for the Phase-5-signal-log requirement)
 - 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens; the FA1 axes below are extended per §5.4.
-- PP1 prompt-drift findings — [`findings/PP1_three-prompt-parity.md`](../findings/PP1_three-prompt-parity.md) (cross-checked against n=8; saturation confirms 4 of 4 PP1-predicted drifts).
-
----
-
-## Mid-Investigation Pivot (2026-05-04)
-
-After the first 8 of 40 planned per-sample sub-findings completed (4 med + 4 high; career-change + food-truck, 2 clusters per topic-effort cell), an early-look cross-sample synthesis was run to test whether failure-mode patterns were already saturated. **Result: three failure modes are saturated at n=8, one is emerging-toward-saturated, and gated Axes D and E are operationally near-saturated.** All n=8 samples FAIL overall verdict.
-
-The original n=40 uniform fan-out is therefore **wasteful**: 32 more samples would mostly reconfirm already-saturated patterns. The investigation is re-scoped:
-
-- **8 samples already scored** — kept as-is; their per-sample sub-findings remain the primary evidence base.
-- **+8 targeted top-up** (specified below) — 1 high-effort cluster per unsampled topic, prioritizing reframe-rich and gated-axis-rich clusters. Goals: (a) firm Mode 4 (persona-name leakage in `_summary.md` prose) from emerging to saturated/refuted; (b) double the Axis E (foundational-reversal) gated denominator from n=4 to n=8; (c) close the topic-coverage gap (sampled: 2 of 10 → 10 of 10 topics).
-- **24 samples deferred** — 12 med + 12 low-priority high samples. Available as a post-RP1 validation set if RP1's first prompt-revision pass introduces an unexpected regression at n=16, in which case they become RP2 inputs (not RP1 inputs).
-
-RP1 (prompt revision) may begin **in parallel** with the +8 top-up on the three already-saturated failure modes; the top-up de-risks topic-bounded surprises before final RP1 sign-off rather than blocking RP1 start.
-
-See [`findings/FA1_faithfulness-audit_n8-early-look.md`](../findings/FA1_faithfulness-audit_n8-early-look.md) §"Stopping-Criterion Recommendation" for the full saturation argument.
 
 ---
 
@@ -67,7 +44,7 @@ The audit doubles as the source of per-cluster aggregable Phase-5 signals (Centr
 
 | Dimension | Pinned |
 |---|---|
-| Samples (revised 2026-05-04) | **16** total: 8 scored (4 med + 4 high; career-change + food-truck) + **8 top-up** (1 high cluster per unsampled topic). Original plan was 40 (20 med + 20 high); re-scoped after n=8 early-look saturation analysis. The remaining 24 samples are deferred as a post-RP1 validation set. |
+| Samples | 40 (20 med + 20 high), all using `phase4_full-synthesis.md` |
 | Scoring axes | A1 (attributed persona-name preservation), A2 (prose persona-name absence), A3-content (prose content substance survival), **A3-framing (prose framing/lens survival — NEW)**, B (hallucinated quotes), C (traceable convergence counts), **D (categorical-reframe presence — NEW, gated on BL1 reframe candidate)**, **E (foundational-reversal presence — NEW, high only, gated on BL1 reversal candidate)** |
 | Med rubric (A1) | Strict (4 personas, low ambiguity, drops are unambiguously failures) |
 | High rubric (A1) | Weighted (7 personas, more legitimate aggregation pressure) |
@@ -93,51 +70,19 @@ The audit doubles as the source of per-cluster aggregable Phase-5 signals (Centr
 
 ### I-FA1: Score med + high Phase 4 outputs against ground-truth ledgers
 
-**Key question:** For each of the 16 sampled clusters, does the existing `_synthesis.md` + `_summary.md` + `attributed/{cluster}.md` faithfully preserve the through-lines, personas, and convergences in BL1's ledger? **Top-up sub-question (the +8):** does the n=8 saturation argument hold across topic genres, and does Mode 4 (persona-name leakage in `_summary.md`) saturate or refute when the topic coverage doubles?
+**Key question:** For each of the 40 med + high cluster samples, does the existing `_synthesis.md` + `_summary.md` + `attributed/{cluster}.md` faithfully preserve the through-lines, personas, and convergences in BL1's ledger?
 
 **Research questions addressed:** RQ-FA1a–e (methodology FQ1, FQ4, FQ5)
 
-**Execution model (revised):** Fan-out by sample. **8 already complete; +8 Opus subagents** (single wave of 6 concurrent + 1 wave of 2, total 2 waves), one per top-up sample. Each scores the three Phase 4 output files against the BL1 ledger for its sample. A cross-sample synthesis subagent then compiles n=16 patterns, **explicitly testing whether the +8 confirms or refutes the n=8 early-look saturation verdicts**, and emits the final Phase-5-signal log.
+**Execution model:** Fan-out by sample. **40 Opus subagents in parallel** (batched 6 concurrent ≈ 7 waves), one per med or high sample. Each scores the three Phase 4 output files against the BL1 ledger for its sample. A cross-sample synthesis subagent compiles patterns and emits the Phase-5-signal log.
 
 ### Test Data
 
-**16 samples total:**
-
-#### 8 samples already scored (per-sample sub-findings exist in `findings/FA1_faithfulness-audit_*.md`)
-
-| sample-id | effort | manifest row |
-|---|---|---|
-| career-change_med_01_burnout-as-diagnosis-not-direction | med | 3 |
-| career-change_med_04_pslf-loan-repayment-long-term-financial-sustainability | med | 4 |
-| career-change_high_06_emotional-sustainability-and-the-second-burnout-risk | high | 5 |
-| career-change_high_11_the-field-s-future-mlps-ai-and-30-year-arcs | high | 6 |
-| food-truck_med_01 | med | 9 |
-| food-truck_med_03 | med | 10 |
-| food-truck_high_02_the-fusion-concept-differentiation-authenticity-and-defensibility | high | 11 |
-| food-truck_high_08_regulatory-strategy-and-political-engagement | high | 12 |
-
-#### 8 top-up samples (to be scored): 1 high cluster per unsampled topic
-
-Selection rationale: highest-yield gated-axis surface (reframe-bearing or reversal-bearing per BL1 ledgers), one cluster per unsampled topic to maximize topic-coverage breadth. All are high-effort to also double the Axis E gated denominator from n=4 to n=8.
-
-| # | sample-id | manifest row | Selection rationale |
-|---|---|---|---|
-| 1 | habit-tracker_high_04_streak-anxiety-grace-mechanics-and-the-emotional-interior | 17 | Streak-anxiety / grace-mechanics: emotional-reframe density; Empath/Provocateur lens divergence. |
-| 2 | mobile-app_high_05_feature-selection-methodology-and-decision-bias | 29 | Decision-methodology surface; PP1-flagged convergence-count vulnerability tested. |
-| 3 | property-management_high_07_community-relations-and-good-neighbor-operations | 35 | Community-relations frame; reframe-rich (regulatory-legitimacy reframe noted in `dev/2026-05-03_effort-comparison.md` §5.4). |
-| 4 | school-consolidation_high_09_community-identity-civic-anchors-and-our-school-is-our-town | 42 | High reframe density (community-identity vs. fiscal logic); union-vs-community-vs-equity lens divergence. **Note: uses `claude-opus-4-7[1m]` (1M-context Opus) per SS1 anomaly #1; flag for MA1, not blocking for FA1.** |
-| 5 | space-party_high_06_birthday-girl-s-agency-felt-experience | 23 | Felt-experience reframe; Storyteller/Empath lens. |
-| 6 | tool-library_high_09_trust-stewardship-the-commons-degradation-problem | 48 | Commons-degradation reframe — explicit Phase-5 reframe candidate. |
-| 7 | wearable-device_high_05_privacy-architecture-and-the-capability-gap-tradeoff | 54 | Privacy-architecture reframe — explicit Phase-5 reframe candidate. |
-| 8 | youth-mentorship_high_11_outcome-measurement-evidence-and-program-learning | 60 | Outcome-measurement / evidence framing; Visionary/Pragmatist tension at high effort. |
-
-#### Deferred (24 samples)
-
-The remaining 12 med samples (manifest rows for all unsampled topics' med slots) and 12 high samples (the second high cluster per already-sampled and per unsampled topic). Available as a post-RP1 validation set if RP1's first prompt-revision pass requires confirmation against unseen samples.
+40 samples from BL1's baselines (the 40 med + high baselines).
 
 ### Subagent Design
 
-**Per-sample scoring subagent (8 subagents — the top-up only; the original 8 are complete):**
+**Per-sample scoring subagent (40 subagents):**
 
 Each reads:
 - The Phase 4 prompt under test
@@ -145,11 +90,11 @@ Each reads:
 - The three Phase 4 output files (`_summary.md`, `_synthesis.md`, `attributed/{cluster}.md`)
 - The raw `responses/{cluster}/*.md` files (for quote-faithfulness verification)
 
-Produces one scoring sub-finding file per sample. The per-sample prompt below is unchanged from the original n=40 plan — it works as-is for the +8.
+Produces one scoring sub-finding file per sample.
 
 **Cross-sample synthesis subagent (1 subagent):**
 
-Reads all 16 per-sample scoring sub-findings (8 existing + 8 new) + the n=8 early-look findings + BL1 baselines, and compiles the final cross-sample analysis. **The synthesis must explicitly test whether the +8 confirms or refutes the n=8 saturation verdicts** (especially Mode 4 emerging-toward-saturated and Axis E borderline-thin denominator) before finalizing the RP1 recommendations. See revised Cross-Sample Synthesis Subagent Prompt below.
+Reads all 40 per-sample scoring sub-findings + BL1 baselines and compiles the cross-sample analysis, the scoring matrix, and the Phase-5-signal log.
 
 ### Per-Sample Subagent Prompt
 
@@ -445,31 +390,17 @@ For each distinctive through-line in BL1's persona-distinctiveness map, classify
 
 ### Cross-Sample Synthesis Subagent Prompt
 
-After all 8 top-up per-sample subagents complete (n=16 total, 8 existing + 8 new):
+After all 40 per-sample subagents complete:
 
 ````
-You are compiling the final FA1 cross-sample analysis from 16 per-sample scoring sub-findings (8 from the original wave + 8 from the targeted top-up). The n=8 early-look already produced a saturation analysis with three saturated failure modes, one emerging-toward-saturated mode, and a +8 top-up recommendation. Your job is to produce the *final* n=16 synthesis, with the load-bearing question being: **does the +8 confirm or refute the n=8 saturation verdicts?**
+You are compiling the FA1 cross-sample analysis from 40 per-sample scoring sub-findings.
 
 ## Inputs to Read
 
 1. `dev/2026-05-03_symphony-phase4/methodology.md`
-2. `dev/2026-05-03_symphony-phase4/tasks/FA1_faithfulness-audit.md` — this task spec (revised)
-3. **Early-look findings** (the saturation hypothesis the +8 tests):
-   - `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_n8-early-look.md`
-   - `dev/2026-05-03_symphony-phase4/findings/FA1_scoring-matrix_n8.md`
-   - `dev/2026-05-03_symphony-phase4/findings/FA1_phase5-signal-log_n8.md`
-4. **All 16 per-sample sub-findings:** `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_*.md` (excluding the `_n8-early-look.md` aggregate)
-5. All 16 BL1 baselines for the sampled clusters
-6. `idea-symphony/prompts/phase4_full-synthesis.md` — the prompt under test
-7. `dev/2026-05-03_symphony-phase4/findings/PP1_three-prompt-parity.md` — for the PP1 cross-check section
-
-## Method
-
-1. **Re-aggregate axis-by-axis at n=16.** Build the n=16 pass-rate matrix from scratch — do not just re-use the n=8 numbers. Use per-document splits (synthesis vs. summary) where the per-sample sub-findings provide them.
-2. **Saturation re-test.** For each of the 4 named modes from the early-look (Modes 1-4) plus Axes D and E, compute the new hit rate at n=16 and update the saturation verdict (`saturated` / `emerging` / `unique` / `gated under-sampled`).
-3. **Confirm or refute each early-look claim explicitly.** State for each: (a) Mode 1 (summary content compression, predicted 8/8 saturated) — n=16 result; (b) Mode 2 (convergence miscounts, predicted 7/8 saturated) — n=16 result; (c) Mode 3 (summary framing-flattening, predicted 7/8 saturated) — n=16 result; (d) Mode 4 (persona-name leakage in summary, predicted 3/8 emerging) — does it saturate (≥10/16) or stay rare (3-5/16)? (e) Axis E (gated, n=4 high → n=8 high after top-up) — firm rate.
-4. **Surface any new failure modes** not in the early-look's catalog (≥ 2/8 in the +8 alone, or ≥ 3/16 cumulative). The +8 was selected partly to broaden topic coverage; topic-bounded surprises register here.
-5. **Topic-coverage analysis at n=16.** All 10 topics now represented (career-change, food-truck at depth; 8 others at 1 high cluster each). Look for topic-genre effects on any failure mode.
+2. `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_*.md` — all 40 per-sample sub-findings
+3. All 40 BL1 baselines for med + high samples
+4. `idea-symphony/prompts/phase4_full-synthesis.md` — the prompt under test
 
 ## Deliverables
 
@@ -481,157 +412,107 @@ Cross-sample synthesis. Structure:
 # Phase 4 Investigation — FA1 Faithfulness Audit Findings
 
 **Date:** [today]
-**Samples scored:** 16 (4 med + 12 high; all 10 topics represented)
-**Sampling design:** 8 original (career-change + food-truck, 2 clusters per topic-effort cell at med and high) + 8 top-up (1 high cluster per unsampled topic) per the n=8 early-look stopping-criterion analysis. 24 samples deferred as a post-RP1 validation set.
+**Samples scored:** 40 (20 med + 20 high)
 **Prompt under test:** `idea-symphony/prompts/phase4_full-synthesis.md`
-**Supersedes:** `FA1_faithfulness-audit_n8-early-look.md` (early-look snapshot kept for traceability)
 
 ---
 
 ## Headline
 
-[1-2 paragraph verdict. Lead with: did the +8 confirm or refute the n=8 saturation argument? Then: dominant failure modes at n=16, RP1 readiness verdict.]
-
-## Confirm / refute table — early-look claims at n=16
-
-| Early-look claim (n=8) | Predicted at n=16 | Actual at n=16 | Verdict |
-|---|---|---|---|
-| Mode 1 saturated (summary content compression, 8/8) | ≥14/16 | M/16 | confirmed / refuted / strengthened |
-| Mode 2 saturated (convergence miscounts, 7/8) | ≥12/16 | M/16 | ... |
-| Mode 3 saturated (summary framing-flattening, 7/8) | ≥12/16 | M/16 | ... |
-| Mode 4 emerging (persona-name leakage in summary, 3/8) | either ≥10/16 (saturated) or 4-7/16 (rare-but-real) | M/16 | saturated / emerging-still / refuted |
-| Axis E (gated, n=4 high) | denominator → n=8 high | n=N | firmed / no change |
-| All n=8 Axes A2-synth, B passing rates (8/8) | maintained | M/16 | confirmed / new failure |
-| PP1 cross-check 4/4 confirmed | 4/4 still confirmed | ... | ... |
+[1-2 paragraph verdict: does `phase4_full-synthesis.md` meet the faithfulness targets across the sample? What are the dominant failure modes?]
 
 ## Pass-rate matrix
 
-| Axis | med (n=4) | high (n=12) | Combined (n=16) |
+| | med (n=20) | high (n=20) | Combined (n=40) |
 |---|---|---|---|
 | Axis A1 pass rate (`attributed/` persona-name preservation) | X% | Y% | Z% |
-| Axis A2 pass rate (synthesis prose) | X% | Y% | Z% |
-| Axis A2 pass rate (summary prose) | X% | Y% | Z% |
-| Axis A3-content pass rate (synthesis) | X% | Y% | Z% |
-| Axis A3-content pass rate (summary) | X% | Y% | Z% |
-| Axis A3-framing pass rate (synthesis) | X% | Y% | Z% |
-| Axis A3-framing pass rate (summary) | X% | Y% | Z% |
-| Axis B pass rate | X% | Y% | Z% |
-| Axis C pass rate | X% | Y% | Z% |
-| Axis D pass rate (gated; n shown) | X% (n=N) | Y% (n=M) | Z% (n=N+M) |
-| Axis E pass rate (gated; high-only, n=8 after top-up) | n/a | Y% (n=8) | Y% |
+| Axis A2 pass rate (prose persona-name absence) | X% | Y% | Z% |
+| Axis A3-content pass rate (content survival) | X% | Y% | Z% |
+| Axis A3-framing pass rate (framing/lens survival) | X% | Y% | Z% |
+| Axis B pass rate (no hallucinated quotes) | X% | Y% | Z% |
+| Axis C pass rate (convergence-count traceability) | X% | Y% | Z% |
+| Axis D pass rate (categorical-reframe survival, samples gated by BL1) | X% (n=N) | Y% (n=M) | Z% |
+| Axis E pass rate (foundational-reversal survival, high only, gated by BL1) | n/a | Y% (n=M) | Y% |
 | **Overall pass rate (all gated axes)** | X% | Y% | Z% |
 
 ## Med vs. high comparison
 
-[Note: med stays at n=4 (career-change/med/01, /04; food-truck/med/01, /03). High grows from n=4 to n=12 with the top-up. This is asymmetric — the med-vs-high contrast is even more directional than at n=8 because the high sample now spans 9 topics. Be explicit about which claims n=4 med can vs. cannot support.]
+[2-3 paragraphs explicitly comparing med (4 personas) vs. high (7 personas) faithfulness. Does the prompt scale? Where does aggregation pressure cause it to fail?]
 
-## Failure-mode taxonomy (≥ 2/16 hits)
+## Failure modes
 
-For each pattern at ≥ 2/16:
-- Pattern name
-- Affected samples
-- Topic stratification (across all 10 topics now)
-- Effort stratification
-- Document stratification
-- Mechanism
-- Saturation verdict
-- Recommended RP1 prompt revision target
-
-Specifically address:
-- Modes 1-4 from the n=8 early-look (saturation verdicts updated to n=16).
-- Any new patterns surfaced only in the +8 top-up samples.
-- Any one-off observations in the +8 (analogues to the n=8 unique/one-off list).
-
-## Topic-coverage analysis (NEW at n=16)
-
-For each of the 10 topics, summarize the dominant failure modes observed in that topic's sample(s). Look for topic-genre effects: do reframe-rich topics (school-consolidation, tool-library, wearable-device, property-management) fail differently from decision-methodology topics (career-change, mobile-app, food-truck) or experience-design topics (space-party, habit-tracker, youth-mentorship)?
-
-## Cross-check vs. PP1 prompt-drift findings (refresh from n=8)
-
-PP1 identified 4 prompt drifts. n=8 confirmed all 4. State the n=16 status of each:
-- Persona-name suppression in `_summary.md` (PP1 P0)
-- Missing Central Tension field (PP1 P0)
-- Convergence-count raw-count vulnerability (PP1 P1)
-- Categorical-reframe surfacing vulnerability (PP1 P1)
-
-Note any drift the n=8 only partially-confirmed that the +8 either firmed up or refuted.
+For each recurring failure pattern (count ≥ 3 samples):
+- **Pattern name:** [e.g., "Single-persona insight absorbed into multi-persona synthesis without bullet preservation"]
+- **Affected samples:** [list]
+- **Mechanism:** [why this is happening]
+- **Recommended prompt revision target:** [concrete fix for RP1]
 
 ## Winner / loser samples
 
-- **Cleanest faithfulness (top 3-5 of 16):** [include the n=8 winners if they remain the cleanest, and any new top-up samples that match]
-- **Worst faithfulness (top 3-5 of 16):** [same convention]
+- **Cleanest faithfulness:** [3 samples that passed all axes with no anomalies — confirms prompt works in this regime]
+- **Worst faithfulness:** [3 samples with the most failure modes — RP1 prioritizes fixing these regimes first]
 
 ## Recommendations for RP1
 
-[Prioritized list of prompt revisions, sorted by saturation × impact across n=16. Each item marks evidence strength. The n=8 early-look already produced a 7-item RP1 list; this section either: (a) confirms each item's priority unchanged, (b) elevates an emerging item to saturated, or (c) adds new RP1 items surfaced only at n=16.]
-
-## What n=16 still does NOT establish
-
-[Caveat list: claims this synthesis cannot make at n=16, e.g., med-vs-high contrast firmness with only n=4 med; specific topic-genre effects with n=1 high per most topics; whether the deferred 24 samples would surface RP2-relevant regressions after RP1's first prompt revision pass.]
+[Prioritized list of prompt revisions, sorted by failure-mode impact across the 40 samples. Each item should be concrete enough that RP1 can implement it directly.]
 ```
 
 ### 2. `dev/2026-05-03_symphony-phase4/findings/FA1_scoring-matrix.md`
 
-A flat 16-row table with one row per sample showing all axis scores. Useful for RP1 to track progress per iteration.
+A flat 40-row table with one row per sample showing all axis scores. Useful for RP1 to track progress per iteration.
 
 ```markdown
-# FA1 Scoring Matrix (n=16 final)
+# FA1 Scoring Matrix
 
-| sample-id | effort | A1 | A2-synth | A2-summ | A3c-synth | A3c-summ | A3f-synth | A3f-summ | B | C | D | E | overall |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| career-change_med_01 | med | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | n/a | FAIL |
-| ... 15 more rows ... |
+| sample-id | effort | A1 (attributed names) | A2 (prose name occurrences) | A3 synth survival | A3 summ survival | B (hallucinated quotes) | C (convergence traceability) | overall verdict |
+|---|---|---|---|---|---|---|---|---|
+| career-change_med_03 | med | 100% | 0 | 95% | 92% | 0 | 100% | PASS |
+| career-change_med_07 | med | 75% | 2 | 70% | 60% | 1 | 80% | FAIL |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
 ```
-
-(Per-document split for A2, A3-content, A3-framing — same as the n=8 matrix. Use the verdict + rate from each per-sample sub-finding.)
 
 ### 3. `dev/2026-05-03_symphony-phase4/findings/FA1_phase5-signal-log.md`
 
-Per-cluster Phase-5 signal inventory at n=16. **This deliverable closes Phase 5 E4** — coordinate with the parallel Phase 5 investigation.
+Per-cluster Phase-5 signal inventory. **This deliverable closes Phase 5 E4** — coordinate with the parallel Phase 5 investigation.
 
 ```markdown
-# FA1 Phase-5 Signal Log (n=16 final)
+# FA1 Phase-5 Signal Log
 
 **Date:** [today]
 **Purpose:** Per-cluster aggregable signals for the parallel Phase 5 investigation (closes E4 from `dev/2026-04-23_symphony-phase5-investigation.md`).
-**Supersedes:** `FA1_phase5-signal-log_n8.md` (early-look snapshot).
 
 | sample-id | Central Tension (output) | Central Tension (BL1 candidate) | Match? | Confidence tags found in output | Tag-match rate vs. BL1 |
 |---|---|---|---|---|---|
-| career-change_med_01 | "..." | "..." | Y/partial/N | ... | ...% |
-| ... 15 more rows ... |
+| career-change_med_03 | "[output text]" | "[BL1 text]" | Y/partial/N | `[convergent]` x 4, `[trade-off]` x 1 | 100% |
+| ... | ... | ... | ... | ... | ... |
 
-**Aggregate observations for Phase 5 (n=16):**
-- Central Tension emission rate: X / 16 samples
-- Tag schema adherence rate: X / 16 samples
-- Phase 5 readiness: [ready / partially ready / not ready, with explicit caveat that 24 samples are deferred and may need re-checking after RP1.]
+**Aggregate observations for Phase 5:**
+- Central Tension emission rate: X / 40 samples
+- Tag schema adherence rate: X / 40 samples
+- Phase 5 readiness: [Phase 5's E4 is satisfied iff the per-cluster signals are present and tag-vocabulary-aligned. Verdict: ready / partially ready / not ready.]
 ```
 ````
 
 ### Expected Output
 
-| Output | Path | Status |
-|---|---|---|
-| Per-sample scoring sub-findings (8 original) | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_{career-change,food-truck}_{med,high}_{NN}.md` | **complete (8 files)** |
-| Per-sample scoring sub-findings (8 top-up) | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_{topic}_high_{NN}.md` for the 8 top-up clusters listed in Test Data | to-do |
-| n=8 early-look synthesis | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_n8-early-look.md` | **complete** |
-| n=8 early-look scoring matrix | `dev/2026-05-03_symphony-phase4/findings/FA1_scoring-matrix_n8.md` | **complete** |
-| n=8 early-look Phase-5 signal log | `dev/2026-05-03_symphony-phase4/findings/FA1_phase5-signal-log_n8.md` | **complete** |
-| Final n=16 cross-sample synthesis | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit.md` | to-do (after +8 complete) |
-| Final n=16 scoring matrix | `dev/2026-05-03_symphony-phase4/findings/FA1_scoring-matrix.md` | to-do |
-| Final n=16 Phase-5 signal log | `dev/2026-05-03_symphony-phase4/findings/FA1_phase5-signal-log.md` | to-do |
+| Output | Path |
+|---|---|
+| Per-sample scoring sub-findings | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit_{topic}_{effort}_{NN}.md` (40 files) |
+| Cross-sample synthesis | `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit.md` |
+| Scoring matrix | `dev/2026-05-03_symphony-phase4/findings/FA1_scoring-matrix.md` |
+| Phase-5 signal log | `dev/2026-05-03_symphony-phase4/findings/FA1_phase5-signal-log.md` |
 
 ---
 
 ## Dependency Notes
 
-- **Depends on:** BL1 baselines for the 16 sampled clusters (8 already used by the original wave; 8 needed for the top-up — verify each is present in `dev/2026-05-03_symphony-phase4/baselines/` before spawning the +8 subagents).
-- **Blocks:** RP1's *final* sign-off only. RP1 may begin in parallel on the three saturated failure modes named in the n=8 early-look without waiting for the +8 to complete.
-- **Coordinates with:** the parallel Phase 5 investigation via `findings/FA1_phase5-signal-log.md` (and its early-look counterpart `_n8.md`).
+- **Depends on:** BL1 baselines for the 40 med + high samples being complete.
+- **Blocks:** RP1.
+- **Coordinates with:** the parallel Phase 5 investigation via `findings/FA1_phase5-signal-log.md`.
 
 ## Priority
 
-**Critical-path test track**, but materially de-risked by the n=8 early-look. Remaining fan-out is **8 subagents** (revised from 32), batched 6 concurrent ≈ 2 waves. RP1 may begin in parallel against the three saturated failure modes named in the early-look without waiting for the +8 to complete.
+**Critical-path test track.** Largest fan-out per task in this investigation (40 subagents). Batched 6 concurrent ≈ 7 waves.
 
 ## Discussion Questions Affecting This Task
 

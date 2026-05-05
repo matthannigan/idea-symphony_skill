@@ -1,6 +1,6 @@
 # Phase 4 — Prompt Refinement
 
-**Date:** 2026-05-03
+**Date:** 2026-05-03 (originally) / **Revised:** 2026-05-04
 **Parent:** [`dev/2026-05-03_symphony-phase4/methodology.md`](../methodology.md)
 **Maps to:** Phase 4 (Refinement) of this investigation
 **Inputs:**
@@ -15,49 +15,57 @@
   - [`idea-symphony/prompts/phase4_full-synthesis.md`](../../../idea-symphony/prompts/phase4_full-synthesis.md)
   - [`idea-symphony/prompts/phase4_summary-only_low-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_low-effort.md)
   - [`idea-symphony/prompts/phase4_summary-only_min-effort.md`](../../../idea-symphony/prompts/phase4_summary-only_min-effort.md)
-- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens; the iteration goals below are tier-explicit per §5.4.
+- 10-topic cross-comparison synthesis — [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) — §5 two-regime evaluation lens.
+
+---
+
+## 2026-05-04 Revision — What Changed and Why
+
+The original RP1 plan (2026-05-03) prescribed **2 variants × 60-sample regen × full FA1/LB1/RG1 re-scoring per iteration ≈ 120 regen + 130 scoring = 250 Opus subagents per iteration**. With 3 iterations, that's ~750 subagents.
+
+The four upstream findings (completed 2026-05-04) changed the picture:
+
+1. **Saturation evidence is in.** Each of the four FA1 failure modes recurs across 5–7 of 10 topics. We do not need to re-prove saturation; we need to verify the fixes land on canonical worst-case samples and that design constraints don't regress.
+2. **The P0 list converged.** FA1 + RG1 + LB1 + PP1 all point at the same 5 P0 prompt revisions. There is no genuine A/B uncertainty about *what* to do — only about *whether the rules will land*. The original variant strategy split fixes that all need to coexist in iter 1, which is wrong-shaped.
+3. **Design constraints are now named.** RG1 surfaced four "must not regress" constraints (productive-dissent protection, bidirectional 2B+2C, length permission, reversal preservation). These belong as hard stops alongside the stop criteria.
+
+**The revised plan is:** single-track iter 1, **12-sample diagnostic set**, lightweight per-axis scoring (or self-check folded into the regen subagent). Approximate cost: **~24 agents per iteration**, with iter 2/3 cheaper still (re-run only failures). Total project: ~50 agents across 3 iterations.
+
+The final 60-sample validation pass that the original task file specified is **dropped from RP1 scope.** The user will save those tokens for regenerating `test-runs/` once satisfied with the final prompts. The integration-spec deliverable does not depend on a full re-validation — it can ship on the diagnostic-set evidence + the upstream findings.
 
 ---
 
 ## Two-Regime Evaluation Lens — Tier-Explicit Iteration Goals
 
-Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5.4, the three Phase 4 prompts have categorically different jobs — and RP1's iteration goals must reflect that. The original methodology said "single-track refine for full-synthesis vs. 2 variants for summary-only" (Q13 escalated full-synthesis to 2 variants). What was missing was *what each iteration is optimizing for*.
+Per [`dev/2026-05-03_effort-comparison.md`](../../2026-05-03_effort-comparison.md) §5.4, the three Phase 4 prompts have categorically different jobs and the iteration goals reflect that. Variants are **not the default mechanism** — they are reserved for iter 2/3 if iter 1 reveals a real trade-off (e.g., the Mode 1 floor introduces word-count creep).
 
 ### Full-synthesis prompt (`phase4_full-synthesis.md`) — *synthesis-with-reframe-surfacing* regime
 
-Iterations optimize for:
-1. **Reframe presence** (FA1 Axis D) — categorical reframes flagged by BL1 must surface in `_synthesis.md` and `_summary.md`. Reframe-dropping rate < 30% across the 40 samples.
-2. **Framing fidelity** (FA1 Axis A3-framing) — persona lenses survive in synthesis prose, not just content. Framing-survival ≥ 75%.
-3. **Raw-count traceability** (FA1 Axis C) — every "N of M personas converged" claim traces to a BL1 ledger row with the matching raw count.
-4. **Foundational-reversal presence** (FA1 Axis E, high only) — at least one foundational reversal per high cluster surfaces when BL1 surfaces a candidate.
-5. **Aggregation-pressure resilience** — content survival (Axis A3-content) ≥ 90% even at high (where 7 personas create maximal aggregation pressure).
+Iteration 1 lands all 5 P0 items simultaneously (per RG1's prioritization):
 
-The two variants per iteration should differentiate on which of these failures the variant is targeting:
-- *Variant A (default):* reframe + framing preservation focus
-- *Variant B:* raw-count + reversal preservation focus
+1. **Single-persona-reframe-floor rule** for `_summary.md` Document 3, with explicit productive-dissent protection (must protect career-change/high/06's volunteering-as-weak-predictor inversion).
+2. **Persona-name suppression** in `_summary.md` body prose AND `_synthesis.md` bullet-summary labels (must cover possessive constructions and character-name leaks like "The Storyteller's Marcus").
+3. **Convergence-count discipline** with bidirectional sub-pattern guardrails (2A overcount, 2B undercount-when-persona-reframes, 2C overcount-when-one-persona-multiple-framings).
+4. **Categorical-reframe explicit-staging** — name the reframe as a single declarative sentence at top of Themes when present.
+5. **`## Central Tension` field** at top of `_summary.md` for med/high (mirroring the low template's existing field).
 
 ### Summary-only low prompt (`phase4_summary-only_low-effort.md`) — *compression-with-distinctive-output* regime
 
-Iterations optimize for:
-1. **Through-line survival** (LB1 Axis A) ≥ 80%
-2. **Tension preservation** (LB1 Axis B.1) — DA × Pragmatist framing substantive, not smoothed
-3. **Neither-lens-gap presence** (LB1 Axis B.2) — gaps surfaced using BL1's 4-category taxonomy when BL1 has candidates
-4. **Compression discipline** — no persona names in prose; word-count target met
+Iteration 1 lands the LB1 P0 list:
 
-The two variants per iteration:
-- *Variant A:* tension preservation focus (more aggressive lens-stance framing)
-- *Variant B:* gap-surfacing focus (richer Neither-lens-gaps section instructions)
+1. **Category-iteration discipline** for the Neither-lens-gaps section (5-category checklist before writing).
+2. **Inverted-framing-pair instruction** in the Central Tension section (preserve oppositional framings, do not smooth to convergence).
+3. (P1) **Through-line coverage instruction** to lift the 4 below-80% samples.
+4. (P1) **Stance-tag vocabulary enforcement** (closed set: `[convergent]` / `[trade-off]` / `[unique: feasibility]` / `[unique: risk]`).
 
 ### Summary-only min prompt (`phase4_summary-only_min-effort.md`) — *compression-with-distinctive-output* regime
 
-Iterations optimize for:
-1. **Through-line survival** (LB1 Axis A) ≥ 80%, with strict 100% on `[recurring]` items
-2. **Conspicuous-absences quality** (LB1 Axis C) — specific named absences when BL1 has candidates
-3. **Compression discipline** — generic-voice output; word-count target met
+Iteration 1 lands the LB1 P0 list:
 
-The two variants per iteration:
-- *Variant A:* survival focus (weighted `[recurring]` preservation)
-- *Variant B:* absences-detection focus (richer Conspicuous Absences section instructions)
+1. **Diagnostic checklist for Conspicuous Absences** (4-question checklist before writing the section).
+2. **Mandatory inclusion gate** for `[recurring]` items (must surface in Recommended Actions or Key Themes).
+3. **Tightened `[recurring]` tag definition** (literal cross-question recurrence, not subjective importance — applies to both summary-only prompts).
+4. **`## Central Tension` field** added to min template (mirroring low's existing field; new at min).
 
 ---
 
@@ -66,31 +74,57 @@ The two variants per iteration:
 ### Context
 
 Once FA1, LB1, PP1, RG1 have produced findings, RP1 takes their cumulative recommended prompt-revision targets and produces revised Phase 4 prompts in `proposed-prompts/`. Each iteration:
-1. Drafts a revision based on current findings + previous iteration's results
-2. **Re-runs the four scoring tracks** (FA1, LB1, RG1; PP1 is contract-only and re-runs only if new prompt structure may have changed the contract)
-3. Evaluates against the stop criteria
-4. If criteria met → ship. If not → another iteration (up to 3 total).
+1. Drafts a single revision based on the upstream findings (iter 1) or the previous iteration's diagnostic-set scores (iter 2/3).
+2. Regenerates Phase 4 outputs **on the 12-sample diagnostic set only**, not the full 60.
+3. Scores each diagnostic sample on its specific failure axis (lightweight per-axis scorer or self-check).
+4. Evaluates against the stop criteria. If ≥10/12 pass and design constraints intact → ship. If not → iterate on the failures only.
 
-This is the longest-running task in the investigation by wall-clock because each iteration's re-scoring requires regenerating Phase 4 outputs from existing Phase 3 inputs, then rerunning FA1/LB1/RG1.
+This is no longer the longest-running task in the investigation by wall-clock — at ~24 agents/iter it is comparable in cost to a single FA1 wave.
 
 ### What We Know
 
 | Dimension | Pinned |
 |---|---|
 | Iteration budget | 3 (per Discussion Q12) |
-| Stop criteria (per Q6 + Q12 + `dev/2026-05-03_effort-comparison.md` §5.4) | FA1 Axis A1 ≥ 90% (`attributed/` persona-name preservation, med strict / high weighted); FA1 Axis A2 = 0 persona-name occurrences in `_synthesis.md` and `_summary.md` prose; FA1 Axis A3-content ≥ 90%; **FA1 Axis A3-framing ≥ 75% (NEW)**; FA1 Axis B = 0 hallucinated quotes; FA1 Axis C = 100% convergence-count traceability with raw-count match; **FA1 Axis D ≥ 70% reframe-survival among samples gated by BL1 reframe candidate (NEW)**; **FA1 Axis E ≥ 70% reversal-survival at high among samples gated by BL1 reversal candidate (NEW)**; LB1 ≥ 80% through-line survival AND co-primary regime-distinctive axes (B for low, C for min) ≥ 75%; RG1 ≥ 95% intentional+regime-mandated variance (drift ≤ 5%) |
-| Variant strategy (full-synthesis) | **2 variants per iteration** (per Discussion Q13 — escalated from single-track) |
-| Variant strategy (summary-only low) | 2 variants per iteration |
-| Variant strategy (summary-only min) | 2 variants per iteration |
-| Re-scoring scope | Full 60-sample set per iteration to detect regression on samples not at the failure-source |
+| Stop criteria (per Q6 + Q12 + `dev/2026-05-03_effort-comparison.md` §5.4 + 2026-05-04 findings) | See "Stop Criteria" section below — restated to reflect Mode 4 expansion (bullet-label + character names) and the strict-vs-aggregate-pass distinction surfaced by LB1. |
+| Variant strategy | **Single-track for iter 1** across all three prompts. Reserve variants for iter 2/3 only if iter 1 reveals a trade-off. |
+| Re-scoring scope | **12-sample diagnostic set** (canonical worst-case per P0 mode + 2 must-not-regress design-constraint cases). Full 60-sample re-validation is out of RP1 scope. |
+| Final validation | Out of scope. User regenerates `test-runs/` directly once satisfied with final prompts. Integration-spec ships on diagnostic-set evidence. |
 | If criteria not met after 3 iterations | Ship best variant; document residual issues in integration-spec.md |
 
 ### Research Questions
 
-- **RQ-RP1a (FQ1, FQ2, FQ4):** Can the Phase 4 prompts be revised to meet the stop criteria within 3 iterations?
+- **RQ-RP1a (FQ1, FQ2, FQ4):** Can the Phase 4 prompts be revised to meet the stop criteria within 3 iterations on the 12-sample diagnostic set?
 - **RQ-RP1b (FQ3):** Do PP1's contract-convergence recommendations land cleanly without breaking effort-conditional behavior?
 - **RQ-RP1c (FQ5):** Does the revised full-synthesis prompt produce more reliable Phase-5 signals?
 - **RQ-RP1d:** What residual issues remain after 3 iterations, and are they acceptable to ship?
+
+---
+
+## The 12-Sample Diagnostic Set
+
+Each sample is the canonical worst-case for one P0 fix or the canonical positive case for one design constraint. Selected from FA1's n=16 + LB1's n=20 per RG1's "Regression test" recommendations.
+
+| # | Sample | Effort | What it tests | Type | Source |
+|---|---|---|---|---|---|
+| 1 | career-change/med/01 | med | Mode 1 fix (worst single-persona-drop) | P0 must-fix | FA1 worst-faithfulness #4 |
+| 2 | mobile-app/high/05 | high | Mode 2B undercount-when-persona-reframes | P0 must-fix | FA1 sub-pattern 2B canonical |
+| 3 | youth-mentorship/high/11 | high | Mode 2C overcount-when-one-persona-multi-framings (inverse of 2B) | P0 must-fix | FA1 sub-pattern 2C canonical |
+| 4 | space-party/high/06 | high | Mode 2A classic-overcount | P0 must-fix | FA1 sub-pattern 2A canonical |
+| 5 | habit-tracker/high/04 | high | Mode 3 framing-flattening (only sample failing both docs at synth+summ) | P0 must-fix | FA1 worst-faithfulness #3 |
+| 6 | property-management/high/07 | high | Mode 4 prose leakage (6 sentences + character-name leaks) | P0 must-fix | FA1 worst-faithfulness #1 |
+| 7 | wearable-device/high/05 | high | Mode 4 bullet-label sub-pattern (`_synthesis.md`) | P0 must-fix | FA1 novel sub-pattern at n=16 |
+| 8 | tool-library/high/09 | high | Categorical-reframe explicit-staging (mutual-visibility implicit) | P0 must-fix | FA1 RP1 #6; RG1 Pattern 3 |
+| 9 | mobile-app/min/01 | min | LB1 Conspicuous Absences fix (papers over the cluster's gap) | P0 must-fix | LB1 P0-2 motivating sample |
+| 10 | career-change/low/01 | low | LB1 Neither-lens-gap category-iteration | P0 must-fix | LB1 P0-1 motivating sample (representative of all 10) |
+| 11 | career-change/high/06 | high | **Volunteering-inversion must NOT regress** (productive-dissent constraint) | Constraint | RG1 design constraint #1 |
+| 12 | school-consolidation/high/09 | high | **The only n=16 PASS — must NOT regress** | Constraint | FA1 cleanest-faithfulness #1 |
+
+**Implicit constraint coverage** (no separate samples needed):
+- *Length permission* — wearable-device/high/05 already in set (sample #7); its expanded length must remain permissible.
+- *Reversal preservation* — property-management/high/07 already in set (sample #6); the political-posture inversion (visible→quiet) must survive intact.
+
+If iter 1 surfaces a P0 failure mode this set under-tests, iter 2 may add 1–2 samples (see "Iteration Cadence" below).
 
 ---
 
@@ -98,38 +132,44 @@ This is the longest-running task in the investigation by wall-clock because each
 
 ### I-RP1: Iteratively refine the three Phase 4 prompts
 
-**Key question:** What revisions to the three Phase 4 prompts produce outputs meeting the stop criteria across the 60-sample set?
+**Key question:** What revisions to the three Phase 4 prompts produce outputs meeting the stop criteria across the 12-sample diagnostic set?
 
 **Research questions addressed:** RQ-RP1a–d (methodology FQ1, FQ2, FQ3, FQ4, FQ5)
 
-**Execution model:** Iterative single-orchestrator + fan-out for re-scoring. Each iteration:
+**Execution model:** Iterative single-orchestrator + small fan-out for re-scoring. Each iteration:
 
-- **Step 1: Draft revisions.** 1 Opus subagent reads all upstream findings + current prompt versions and drafts the next revision. **2 candidate variants per prompt for all three prompts** (per Q13).
-- **Step 2: Generate Phase 4 outputs from revisions.** Re-run Phase 4 on all 60 samples using the revised prompts. **Note:** this requires regenerating from existing Phase 3 inputs — Phase 3 is fixed. With 2 variants for all three prompts: 40 med+high samples × 2 variants for full-synthesis = 80 runs; 10 min samples × 2 variants = 20 runs; 10 low samples × 2 variants = 20 runs; **120 regeneration runs total per iteration**.
-- **Step 3: Re-score.** Rerun FA1 (40 samples × 2 variants = 80 score-runs) + LB1 (20 samples × 2 variants = 40 score-runs) + RG1 (10 topics × winning variant per prompt = 10 score-runs) against the regenerated outputs.
-- **Step 4: Evaluate stop criteria.** If met, ship the winning variant per prompt. If not, iterate.
+- **Step 1: Draft revisions.** 1 Opus subagent reads the upstream findings (or previous iter's diagnostic results) and drafts the next revision. Single-track for all three prompts unless iter 1 surfaces a real trade-off.
+- **Step 2: Regenerate diagnostic outputs.** Re-run Phase 4 on the 12 diagnostic samples using the revised prompts. **12 Opus subagents per iteration** (vs. 120 in the original plan).
+- **Step 3: Score per-axis.** Each diagnostic sample is scored against its specific failure axis using a lightweight per-sample scorer prompt (or, preferably, folded into Step 2 as a self-check at the bottom of the regen output). **0–12 additional subagents per iteration** depending on whether self-checks are used.
+- **Step 4: Evaluate stop criteria.** If ≥10/12 pass AND design constraints (#11, #12) intact → ship. If not, iterate on the failures only.
 
 ### Test Data
 
-The full 60-sample set from SS1's manifest, regenerated each iteration with revised prompts. BL1 baselines remain fixed (Phase 3 inputs are unchanged).
+The 12-sample diagnostic set defined above. BL1 baselines remain fixed (Phase 3 inputs are unchanged). The full 60-sample manifest is **not** re-run by RP1.
 
 ### Subagent Design
 
 #### Step 1 — Drafting subagent
 
-1 Opus subagent per iteration. Reads all upstream findings + previous iteration's results (if iter > 1) + current prompt versions. Produces the revised prompts.
+1 Opus subagent per iteration. Reads the upstream findings (iter 1) or the previous iteration's diagnostic-set scores + previous iteration's revised prompts (iter 2/3). Produces the revised prompts.
 
 #### Step 2 — Re-generation subagents
 
-Fan-out: **120 Opus subagents per iteration** (2 variants × 60 samples), batched 6 concurrent ≈ 20 waves. Each runs the relevant revised prompt variant against its sample's Phase 3 inputs to produce regenerated Phase 4 outputs in `proposed-prompts/iter{N}/outputs/{variant}/...`.
+**12 Opus subagents per iteration** (one per diagnostic sample). Each runs the relevant revised prompt against its sample's Phase 3 inputs to produce regenerated Phase 4 outputs in `proposed-prompts/iter{N}/outputs/{topic}/{effort}/synthesis/...`. Each regen subagent's prompt should append a **self-check block** at the end of its output naming whether the sample's targeted axis is satisfied (see "Step 3" below).
 
-#### Step 3 — Re-scoring subagents
+#### Step 3 — Per-axis scoring (preferred: folded into Step 2)
 
-Same fan-out as FA1/LB1/RG1, doubled for variants: 40 × 2 + 20 × 2 + 10 = 130 subagents per iteration, batched. Reuses the FA1/LB1/RG1 task subagent prompts unchanged (those prompts score whatever Phase 4 outputs are at the manifest paths — for re-scoring, we point the manifest at the regenerated outputs in `proposed-prompts/iter{N}/outputs/{variant}/`). RG1 runs once per topic against the winning variant per prompt (post-A/B-decision).
+Each diagnostic sample tests 1–2 specific axes, not the full FA1/LB1 rubric. Two implementation options:
+
+**Option A (preferred):** Self-check folded into Step 2. Append to each regen subagent's prompt: *"After producing the revised output, append a `<!-- self-check -->` block stating: (a) the targeted axis for this sample, (b) the BL1 expectation, (c) what the regenerated output produced, (d) PASS / PARTIAL / FAIL with rationale."* Total iter cost = 12 agents.
+
+**Option B (fallback):** 12 separate scoring subagents, each reading 1 regenerated output + the relevant BL1 ledger excerpt + the targeted axis criterion, returning a one-line PASS/FAIL. Total iter cost = 24 agents.
+
+Per-sample axis criteria are listed in the "Per-Sample Axis Criteria" section below.
 
 #### Step 4 — Evaluation orchestrator
 
-The same drafting subagent (or a separate evaluator) reads the iteration's re-scoring matrices, evaluates against the stop criteria, and decides: ship, iterate, or terminate at iteration ceiling.
+The drafting subagent (or a separate evaluator) reads the iteration's diagnostic-set scores, evaluates against the stop criteria, and decides: ship, iterate, or terminate at iteration ceiling.
 
 ### Step 1 Subagent Prompt
 
@@ -141,65 +181,58 @@ You are drafting Phase 4 prompt revisions for iteration {ITER} of RP1's refineme
 ## Inputs to Read
 
 1. `dev/2026-05-03_symphony-phase4/methodology.md`
-2. `dev/2026-04-27_effort-comparison.md` — source memo
-3. **All four upstream findings (or — if {ITER} > 1 — the previous iteration's re-scoring + previous iteration's revised prompts):**
+2. `dev/2026-05-03_symphony-phase4/tasks/RP1_refinement.md` — this task file (for the diagnostic set + per-sample axis criteria)
+3. **For iter 1 — all four upstream findings:**
    - `dev/2026-05-03_symphony-phase4/findings/FA1_faithfulness-audit.md` + `FA1_scoring-matrix.md` + `FA1_phase5-signal-log.md`
    - `dev/2026-05-03_symphony-phase4/findings/LB1_loss-budget.md` + `LB1_scoring-matrix.md`
    - `dev/2026-05-03_symphony-phase4/findings/PP1_three-prompt-parity.md`
    - `dev/2026-05-03_symphony-phase4/findings/RG1_cross-effort-regression.md` + `RG1_variance-classification.md`
-4. **Current prompt versions:**
+4. **For iter > 1 — previous iteration's diagnostic results:**
+   - `dev/2026-05-03_symphony-phase4/findings/RP1_refinement_iter{ITER-1}.md`
+   - `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER-1}/phase4_*.md`
+5. **Current prompt versions:**
    - For iter 1: `idea-symphony/prompts/phase4_full-synthesis.md`, `phase4_summary-only_low-effort.md`, `phase4_summary-only_min-effort.md`
-   - For iter > 1: `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N-1}/phase4_*.md`
-5. **Previous iteration's findings (if {ITER} > 1):** `dev/2026-05-03_symphony-phase4/findings/RP1_refinement_iter{ITER-1}.md`
+   - For iter > 1: `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER-1}/phase4_*.md`
 
 ## Method
 
-### Step 1: Compile the revision target list
+### Step 1: Implement the P0 revisions directly
 
-Aggregate all "Recommended prompt revision target" items from FA1, LB1, PP1, RG1 (and from the previous iteration's residuals if iter > 1). Deduplicate. Sort by:
-1. **Phase 5 risks** (PP1's "PHASE 5 RISK" items) — highest priority
-2. **Cross-effort drift** (RG1's drift patterns recurring in 5+ topics) — next priority
-3. **Faithfulness failures** (FA1's recurring failure modes affecting 3+ samples) — next
-4. **Loss-budget failures** (LB1's recurring failure modes affecting 3+ samples) — next
-5. **Drift items** (PP1's drift items not classified as Phase 5 risks) — last
+The upstream findings have already prioritized and specified the P0 revisions. Do **not** re-derive them. Implement, in this order:
 
-### Step 2: Draft revisions
+**`phase4_full-synthesis.md` — 5 P0 items:**
 
-For each of the three Phase 4 prompts, produce **2 candidate variants** for iteration-{ITER} in `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER}/` (per Q13):
+1. **Single-persona-reframe-floor rule** (FA1 RP1 #1; RG1 Pattern 1). Add to Document 3 "Important" section. Concrete language: *"Surface load-bearing single-persona reframes. The Themes, Trade-offs, and Risks sections must include any single-persona insight that reframes the cluster's core question — counter-tests, distinctive timing claims, buried hypotheses, alternate diagnostic patterns, productive DA-anchored dissent **including dissent that inverts memo-persistent claims**. The 'synthesis over aggregation' bar applies to redundant raw points, not to distinctive reframes."* The dissent-protection clause is required (career-change/high/06 design constraint).
 
-- `phase4_full-synthesis.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
-  - **Variant-A:** reframe + framing preservation focus (Axes A3-framing + D). Adjustments target reframe-surfacing instructions and persona-lens preservation under aggregation pressure.
-  - **Variant-B:** raw-count + reversal preservation focus (Axes C + E). Adjustments target convergence-count emission with raw counts and foundational-reversal flagging in `_synthesis.md`.
-- `phase4_summary-only_low-effort.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
-  - **Variant-A:** tension preservation focus (Axis B.1 — more aggressive lens-stance framing instructions)
-  - **Variant-B:** gap-surfacing focus (Axis B.2 — richer Neither-lens-gaps section using the 4-category taxonomy)
-- `phase4_summary-only_min-effort.md_variant-A.md` and `_variant-B.md` — per the tier-explicit goals above:
-  - **Variant-A:** survival focus (Axis A — weighted `[recurring]` preservation)
-  - **Variant-B:** absences-detection focus (Axis C — richer Conspicuous Absences section instructions)
+2. **Persona-name suppression rule** (FA1 RP1 #4 expanded; PP1 P0 #1; RG1 Pattern 4). Add to Document 3 "Important" section AND extend Document 2 instructions. Concrete language: *"Persona names are prohibited in any prose of `_synthesis.md` or `_summary.md` — including stylistic constructions ('from X's lens to Y's frame'), possessive enumerations ('The Storyteller's Marcus'), sentence-subject mentions ('The Devil's Advocate argues'), and bullet-summary labels ('Visionary alternatives', 'Pragmatist's caution'). Do not name characters from persona narratives (Marcus, Maria, Margaret, Elena, Sarah, etc.) in summary prose. Convey breadth via convergence counts and lens types ('a feasibility-oriented case', 'an adversarial counter-test'). Persona names belong only in `attributed/{cluster}.md`."*
 
-For each revision, prepend a **revision-log** comment block at the top:
+3. **Convergence-count discipline rule** with bidirectional sub-pattern guardrails (FA1 RP1 #2 expanded; RG1 Pattern 2). Add to Synthesis-Strategy / Consolidation-Process section. Concrete language: *"Before writing any 'all four / six of seven / every persona' count claim: (a) name the personas in scratch reasoning; (b) count distinct personas, not distinct framings — if one persona offers two angles, that is one persona, not two; (c) count personas who engage the underlying claim, even with different framing — do not require identical wording; (d) deduct any explicit dissenter even if their adjacent framing partially supports; (e) default to underclaim ('Several personas surface…') when uncertain; (f) the summary doc must inherit count claims from the attributed-doc preambles, not re-derive them."*
 
-```markdown
-<!--
-Revision log — iteration {ITER}
-====================================
+4. **Categorical-reframe explicit-staging requirement** (FA1 RP1 #6; RG1 Pattern 3). Add to Document 3 "Important" section. Concrete language: *"If the cluster has a categorical reframe — a sentence-level claim that reframes the question itself ('we are not running X; we are running Y') — name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes. The reframe should be derivable from at least three personas' responses and should change which actions are prioritized."*
 
-Revision targets addressed:
-1. [target 1 from FA1/LB1/PP1/RG1, with citation]
-2. [target 2, ...]
+5. **`## Central Tension` field** at top of `_summary.md` for med/high (FA1 RP1 #5; PP1 P0 #2). Add to Document 3 template. Mirror the low template's existing field exactly: `**Central Tension**: [one sentence; if no productive tension to name, that itself is a signal — say so]`.
 
-Specific changes:
-- [change 1: where in the prompt, what changed, why]
-- [change 2: ...]
+**`phase4_summary-only_low-effort.md` — P0/P1 items:**
 
-Variant differences (for variants):
-- Variant A: [differentiator]
-- Variant B: [differentiator]
+6. **Category-iteration discipline** for Neither-lens-gaps (LB1 P0-1). Replace open-ended gap instruction with: *"Before writing this section, walk through the 5 candidate categories and identify the 2–3 most cluster-relevant: (a) relational/social, (b) emotional/phenomenological/lived-experience, (c) equity/access/distributional, (d) political-economy/regulatory/institutional, (e) lifecycle/temporal-stage. For each candidate, ask: did the DA's risk lens and the Pragmatist's feasibility lens both structurally miss this angle? If yes for ≥2 categories, surface them as distinct gaps. Skip the section only if 0 categories pass the test."*
 
-Targets NOT addressed in this iteration (deferred or low-priority):
-- [list with rationale]
--->
-```
+7. **Inverted-framing-pair instruction** in Central Tension (LB1 P1-3). Add: *"If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence."*
+
+8. (P1, optional in iter 1) **Through-line coverage instruction** (LB1 P2-1) and **stance-tag vocabulary enforcement** (LB1 P2-2). Land if regen budget allows.
+
+**`phase4_summary-only_min-effort.md` — P0 items:**
+
+9. **Diagnostic checklist for Conspicuous Absences** (LB1 P0-2). Insert before the Conspicuous Absences instruction: *"Before naming absences, run this diagnostic: (a) Does the brainstormer name a stakeholder type but not a structurally adjacent one? (b) Does it recommend something whose precondition the response never establishes (e.g., a 10K-unit revenue model with no acquisition channel)? (c) Does it propose action whose downside class is never raised? (d) Did the brainstormer face a decision implicit in the question and decline to make it? Pick the 1–2 with highest leverage on the cluster's own recommendations. Avoid restating risks already named."*
+
+10. **Mandatory inclusion gate for `[recurring]` items** (LB1 P0-3). Insert at Recommended Actions instruction: *"Every through-line that recurs across multiple questions in the brainstormer's response must appear in either Recommended Actions or Key Themes. Do not drop a `[recurring]` insight to make room for a single-occurrence item, however vivid."*
+
+11. **Tightened `[recurring]` tag definition** (LB1 P1-1; applies to both summary-only prompts). Insert: *"`[recurring]` = the same specific recommendation/heuristic (not just its theme) appears in two or more questions. A single mention plus thematic resonance counts as `[single]`. When in doubt, tag `[single]`. Do not use `[recurring]` as a generic confidence or importance marker."*
+
+12. **`## Central Tension` field** at top of min `_summary.md` (LB1 P1-2; PP1 P0 #2). Add to min template, mirroring low's existing field.
+
+### Step 2: Embed self-check instructions into each revised prompt
+
+(Optional but recommended — saves the Step 3 fan-out.) At the bottom of each revised prompt's "Quality Standards" or equivalent block, add a self-check directive that the regen subagent will follow when invoked on a diagnostic sample. The orchestrator passes the targeted axis name(s) to each regen subagent so it knows which self-check to perform.
 
 ### Step 3: Document the iteration
 
@@ -212,96 +245,108 @@ Produce the per-iteration findings file:
 
 **Date:** [today]
 **Iteration:** {ITER} of 3 (max)
+**Diagnostic samples scored:** 12 (or N if iter > 1 re-running only failures)
 
 ---
 
-## Revision targets
-
-[Aggregated and prioritized list from Step 1, with which item maps to which prompt change.]
-
 ## Revisions made
 
-### `phase4_full-synthesis.md` (2 variants)
+### `phase4_full-synthesis.md`
 
-**Variant A:** [differentiator]
-**Variant B:** [differentiator]
+[Bulleted list of P0 items 1–5 implemented, with file location of each insertion.]
 
-### `phase4_summary-only_low-effort.md` (2 variants)
+### `phase4_summary-only_low-effort.md`
 
-**Variant A:** [differentiator]
-**Variant B:** [differentiator]
+[Bulleted list of P0/P1 items 6–8 implemented.]
 
-### `phase4_summary-only_min-effort.md` (2 variants)
+### `phase4_summary-only_min-effort.md`
 
-**Variant A:** [differentiator]
-**Variant B:** [differentiator]
+[Bulleted list of P0 items 9–12 implemented.]
 
-## Targets deferred to next iteration
+## Targets deferred to next iteration (if any)
 
 [List with rationale.]
 
-## Re-scoring plan
+## Diagnostic-set scoring plan
 
-This iteration's revised prompts will be re-scored:
-- FA1 against the 40 med + high samples (using the same per-sample subagent prompt, with manifest paths pointing to regenerated outputs in `proposed-prompts/iter{ITER}/outputs/`)
-- LB1 against the 20 min + low samples (×2 variants per prompt = 40 sample-runs)
-- RG1 against all 10 topics' 6 samples each (selecting the winning variant for each summary-only prompt)
-- PP1 re-runs only if the contract surface materially changed
-
-The iteration is complete when re-scoring is done; evaluation against stop criteria happens in the orchestrator step.
+This iteration's revised prompts will be re-scored on the 12 diagnostic samples (or the N failed samples from iter {ITER-1}). Per-sample regen + self-check via 12 (or N) Opus subagents. No full FA1/LB1/RG1 re-run.
 ```
-
-### Step 4: Variant pre-selection
-
-For all three 2-variant prompts: before fanning out the re-generation, the drafting subagent should specify which sample uses which variant. Default — split each effort's samples evenly between variants:
-- min: 5 samples per variant (10 total / 2 variants)
-- low: 5 samples per variant
-- med: 10 samples per variant (20 total / 2 variants)
-- high: 10 samples per variant
-
-Each variant gets a fair test on the same number of samples per effort. Where a topic has 2 med samples (or 2 high samples), assign one to each variant for within-topic A/B comparison.
 
 ## Quality Standards
 
-- Every revision must address a specific cited finding. "Improve clarity" without citation is not a revision target.
-- The revision-log comment block at the top of each revised prompt must be machine-readable (so RP1 iteration {ITER+1} can read it without re-deriving the changes).
-- If the drafting subagent disagrees with an upstream finding's recommended revision, it must document the disagreement in the iteration findings file rather than silently dropping the target.
+- Implement the 12 numbered P0/P1 revisions verbatim — do not re-prioritize or re-phrase them. The findings have already been through n=16 (FA1) and n=20 (LB1) saturation analyses.
+- Preserve the four design constraints from RG1: productive-dissent protection, bidirectional 2B+2C count fix, length permission, reversal preservation. Each constraint has a corresponding diagnostic sample (#11 and #12 explicitly; #6 and #7 implicitly) — losing any of these in the diagnostic re-score is a hard fail.
+- The revision-log comment block at the top of each revised prompt must be machine-readable so RP1 iter {ITER+1} can read it without re-deriving.
+- If you disagree with an upstream finding's recommended revision, document the disagreement in the iteration findings file rather than silently dropping the target. Do not improvise new P0 items beyond the 12 listed.
 
 ## Notes
 
-- Do not modify the canonical `idea-symphony/prompts/phase4_*.md` files. RP1 writes only to `dev/2026-05-03_symphony-phase4/proposed-prompts/`.
-- After all 3 iterations (or earlier ship), the integration-spec subagent (separate task below) takes the winning prompts and writes the integration spec.
+- Do not modify the canonical `idea-symphony/prompts/phase4_*.md` files. RP1 writes only to `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER}/`.
+- Single-track for iter 1. If iter 1 reveals a real trade-off (e.g., the Mode 1 floor causes word-count regression that breaks Mode 3), iter 2 may use 2 variants on the affected prompt — but only if the trade-off is substantive, not as a default.
 ````
 
-### Step 2-3 Re-Scoring Pass
+### Step 2 — Diagnostic Regeneration
 
 After drafting, the orchestrator:
-1. Creates `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER}/outputs/` directory tree mirroring `test-runs/{topic}/{effort}/synthesis/`.
-2. Spawns 60 (+ 20 for variants) Opus subagents to regenerate Phase 4 outputs from revised prompts using existing Phase 3 inputs. Each subagent's prompt is the **revised Phase 4 prompt itself** (verbatim from `proposed-prompts/iter{ITER}/`), invoked against the corresponding sample's Phase 3 inputs.
-3. Spawns the FA1/LB1/RG1 re-scoring subagents (using their existing task prompts, with output paths swapped to read from `proposed-prompts/iter{ITER}/outputs/` instead of `test-runs/`).
-4. Records the per-sample, per-variant scoring results in `findings/RP1_refinement_iter{ITER}.md`.
+1. Creates `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{ITER}/outputs/` directory tree mirroring the 12 diagnostic samples' paths under `test-runs/{topic}/{effort}/synthesis/`.
+2. Spawns **12 Opus subagents** (one per diagnostic sample). Each subagent's prompt is the **revised Phase 4 prompt itself** (verbatim from `proposed-prompts/iter{ITER}/`), invoked against the corresponding sample's Phase 3 inputs, with an appended self-check directive naming the targeted axis (per the table below).
+3. Records the 12 regenerated outputs + 12 self-check verdicts in `proposed-prompts/iter{ITER}/outputs/` and `findings/RP1_refinement_iter{ITER}.md`.
 
-### Step 4 Evaluation
+### Per-Sample Axis Criteria
 
-After re-scoring, the orchestrator (same drafting subagent or a separate evaluator) reads the re-scoring matrices and evaluates:
+The targeted axis criterion passed to each regen subagent's self-check:
 
-| Stop criterion | Target | Iter {ITER} actual | Met? |
+| # | Sample | Targeted axis | PASS criterion |
 |---|---|---|---|
-| FA1 Axis A1 (`attributed/` persona-name preservation) | ≥ 90% across 40 med+high (med strict / high weighted) | X% | Y/N |
-| FA1 Axis A2 (prose persona-name absence) | 0 occurrences across 40 med+high in `_synthesis.md` and `_summary.md` | N | Y/N |
-| FA1 Axis A3-content (prose content survival) | ≥ 90% across 40 med+high in both `_synthesis.md` and `_summary.md` | X% | Y/N |
-| FA1 Axis A3-framing (prose framing/lens survival, NEW) | ≥ 75% across 40 med+high | X% | Y/N |
-| FA1 Axis B (hallucinated quotes) | 0 across 40 med+high | N | Y/N |
-| FA1 Axis C (convergence-count traceability with raw-count match) | 100% across 40 med+high | X% | Y/N |
-| FA1 Axis D (reframe survival, NEW, gated samples) | ≥ 70% among samples gated by BL1 reframe candidate | X% (n=N) | Y/N |
-| FA1 Axis E (reversal survival, NEW, high gated samples) | ≥ 70% among high samples gated by BL1 reversal candidate | X% (n=M) | Y/N |
-| LB1 through-line survival | ≥ 80% across 20 min+low (best variant per prompt) | X% | Y/N |
-| LB1 co-primary regime-distinctive (B for low, C for min) | ≥ 75% pass rate | X% | Y/N |
-| RG1 intentional+regime-mandated variance ratio | ≥ 95% (drift ≤ 5%) | X% | Y/N |
+| 1 | career-change/med/01 | A3-content-summary (Mode 1) | All 3 dropped Visionary reframes (per FA1 sub-finding) appear as named themes or actions in `_summary.md` |
+| 2 | mobile-app/high/05 | C-summary (Mode 2B) | TL-19, TL-20, TL-22 convergence counts match BL1 expected (no undercount-when-reframes) |
+| 3 | youth-mentorship/high/11 | C-summary (Mode 2C) | TL-13/Q69, TL-22/Q71, Q74 counts match BL1 expected (no overcount-multi-framing) |
+| 4 | space-party/high/06 | C-summary (Mode 2A) | The 2 strict overcounts ("all seven" claims) are correctly stated as 6/7 and 5/7 per BL1 |
+| 5 | habit-tracker/high/04 | A3-framing-synthesis + summary (Mode 3) | Empath, Storyteller, Analogist lenses survive in synth (≥75%) AND summ (≥60%) |
+| 6 | property-management/high/07 | A2-summary + character-name (Mode 4) | 0 persona-name occurrences AND 0 character-name leaks (Marcus, Maria, Margaret, Elena) in body prose |
+| 7 | wearable-device/high/05 | A2-synthesis bullet-label (Mode 4 sub-pattern) | 0 bullet-summary labels of the form "Visionary alternatives" / "Pragmatist's caution" in `_synthesis.md` |
+| 8 | tool-library/high/09 | D (categorical-reframe staging) | "Mutual-visibility infrastructure" appears as a single declarative reframe sentence at top of Themes |
+| 9 | mobile-app/min/01 | LB1 Axis C (conspicuous absences) | Names the cluster's load-bearing absence (the brainstormer's "three businesses, pick a lane" non-decision); summary does NOT recommend "choose one business model lane" while papering over the gap |
+| 10 | career-change/low/01 | LB1 Axis B.2 (neither-lens-gaps) | ≥2 of the 4 BL1 categories surfaced as distinct gaps; phenomenology-of-practice gap present |
+| 11 | career-change/high/06 | A3-content + design constraint | TL-15 volunteering-as-weak-predictor inversion appears in `_summary.md` as named insight (must NOT regress to memo's "strongest asset") |
+| 12 | school-consolidation/high/09 | All axes (must NOT regress) | All FA1 axes still PASS (matches n=16 PASS verdict) |
 
-If all met → ship. If not, drafter spawns iteration {ITER+1} until {ITER} = 3.
+### Step 4 — Evaluation
 
-After 3 iterations or earlier ship, the orchestrator triggers the integration-spec subagent.
+After Step 2 returns, the orchestrator reads the 12 self-check verdicts and evaluates:
+
+| Decision | Criterion |
+|---|---|
+| **Ship** | ≥10/12 PASS AND samples #11 + #12 PASS (design constraints intact) |
+| **Iterate (iter 2/3)** | <10/12 PASS OR sample #11 or #12 regresses |
+| **Terminate at ceiling** | Iter 3 still <10/12 PASS — ship best-available; document residuals in integration-spec |
+
+**Iteration cadence:**
+- **Iter 1:** 12 regen + 0–12 score = ~12–24 agents.
+- **Iter 2:** Re-run only failed samples + any new constraint-regression risk = typically 4–8 agents.
+- **Iter 3:** Same shape as iter 2 if needed.
+
+**Total project cost:** ~30–50 agents across all 3 iterations (vs. ~750 in original plan).
+
+### Stop Criteria (restated for the diagnostic set)
+
+The original 60-sample stop criteria are reframed as **per-sample axis criteria** above. The aggregate-level criteria below are evidence the prompts will hold up at full scale; the user will validate at full scale via `test-runs/` regeneration outside RP1's scope.
+
+| Stop criterion | Target | Diagnostic-set proxy |
+|---|---|---|
+| FA1 Axis A1 (`attributed/` persona-name preservation) | ≥ 90% | Implicit — current 94%; samples #6, #7 do not stress A1 |
+| FA1 Axis A2 (prose persona-name absence, expanded to bullet-labels + character names) | 0 occurrences | Samples #6, #7 PASS |
+| FA1 Axis A3-content | ≥ 90% strict / ≥75% with substantive losses | Samples #1, #11 PASS |
+| FA1 Axis A3-framing | ≥ 75% | Sample #5 PASS |
+| FA1 Axis B (hallucinated quotes) | 0 | Implicit — current 100%; not stressed by diagnostic |
+| FA1 Axis C (convergence-count traceability with raw-count match) | 100% | Samples #2, #3, #4 PASS (covers all three sub-patterns) |
+| FA1 Axis D (categorical-reframe surfacing) | ≥ 70% | Sample #8 PASS |
+| FA1 Axis E (foundational-reversal preservation, high gated) | ≥ 70% | Sample #11 PASS (volunteering inversion) |
+| LB1 through-line survival | ≥ 80% | Samples #9, #10 inherit Axis A; primary stress is on co-primary |
+| LB1 co-primary regime-distinctive (B for low, C for min) | ≥ 75% pass | Samples #9 (min C), #10 (low B.2) PASS |
+| RG1 intentional+regime-mandated variance ratio | ≥ 95% (drift ≤ 5%) | Implicit — drift sources are the 5 P0 fixes; if all PASS, residual drift estimated ≤4% per RG1 |
+
+After ship (or after ceiling), the orchestrator triggers the integration-spec subagent.
 
 ### Integration-Spec Subagent Prompt
 
@@ -310,11 +355,13 @@ Spawn (**Opus model**, `general-purpose` type) after RP1's final iteration compl
 ````
 You are writing the integration specification for the Phase 4 prompt-investigation deliverables. Your output is the final research deliverable — what changes go into `idea-symphony/SKILL.md` and `idea-symphony/templates/synthesis-*.md` to land the new prompts.
 
+**Note on validation scope:** RP1 scored revisions on a 12-sample diagnostic set, not the full 60. The user will validate at full scale by regenerating `test-runs/` directly with the migrated prompts, outside this investigation's scope. Your integration spec ships on the diagnostic-set evidence + the upstream findings; do not gate migration on a full re-run.
+
 ## Inputs to Read
 
 1. `dev/2026-05-03_symphony-phase4/methodology.md`
 2. `dev/2026-05-03_symphony-phase4/findings/RP1_refinement_iter{N}.md` — for the final iteration {N}
-3. **The winning revised prompts:** `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/phase4_*.md` (single full-synthesis; chosen variant for each summary-only prompt)
+3. **The winning revised prompts:** `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/phase4_*.md`
 4. **The original prompts:** `idea-symphony/prompts/phase4_*.md` (3 files)
 5. **The current templates:** `idea-symphony/templates/synthesis-*.md` (3 files)
 6. `idea-symphony/SKILL.md` — Phase 4 invocation block
@@ -329,12 +376,14 @@ You are writing the integration specification for the Phase 4 prompt-investigati
 **Date:** [today]
 **Status:** Final research deliverable
 **Final iteration:** {N} of 3
+**Diagnostic-set pass rate:** [X/12]
+**Validation scope:** Diagnostic set only — full-scale validation deferred to user's `test-runs/` regeneration
 
 ---
 
 ## Headline
 
-[1 paragraph: what the revised prompts deliver, what stop criteria were met, what residuals remain.]
+[1 paragraph: what the revised prompts deliver, what diagnostic criteria were met, what residuals remain.]
 
 ## Migration of revised prompts
 
@@ -346,9 +395,9 @@ For each of the three Phase 4 prompts, document the diff from canonical to revis
 
 **Migration step:** Replace canonical with the source above.
 
-**Diff summary:** [bullet list of meaningful changes from canonical]
+**Diff summary:** [bullet list of meaningful changes from canonical, organized by P0 item #]
 
-**Risk notes:** [any backward-compat concerns; whether existing test-runs would need regeneration]
+**Risk notes:** [any backward-compat concerns; whether existing test-runs would need regeneration — note that the user plans to regenerate test-runs after migration]
 
 ### `idea-symphony/prompts/phase4_summary-only_low-effort.md`
 
@@ -361,7 +410,7 @@ For each of the three Phase 4 prompts, document the diff from canonical to revis
 ## Template changes
 
 For each `idea-symphony/templates/synthesis-*.md` file:
-- **Required changes:** [list, with rationale]
+- **Required changes:** [list, with rationale — particularly for the new `## Central Tension` field at min/med/high]
 - **Optional changes:** [list]
 - **No-change:** [confirm]
 
@@ -373,9 +422,9 @@ For each `idea-symphony/templates/synthesis-*.md` file:
 
 ## Residual issues (if any)
 
-If RP1 hit the iteration ceiling without meeting all stop criteria:
-- **Unmet criterion:** [name]
-- **Best achieved:** [actual value]
+If RP1 hit the iteration ceiling without all 12 diagnostic samples passing:
+- **Unmet sample(s):** [name + targeted axis]
+- **Best achieved:** [what the revised prompt did vs. the criterion]
 - **Recommended path forward:** [either accept the gap (with rationale) or schedule a follow-up investigation]
 
 ## Phase 5 readiness
@@ -384,12 +433,9 @@ If RP1 hit the iteration ceiling without meeting all stop criteria:
 - **Confidence-tag vocabulary:** aligned across the three revised prompts (per PP1 recommendation)
 - **Central Tension demand:** universal (per PP1 recommendation)
 
-## Verification before migration
+## Verification before migration (user-side, outside RP1 scope)
 
-Before the user merges the revised prompts to `idea-symphony/prompts/`, verify:
-1. Re-running a fresh test session at each effort produces outputs matching the regenerated samples in `proposed-prompts/iter{N}/outputs/`
-2. PP1 contract-diff against the new prompts shows zero "PHASE 5 RISK" items
-3. The Phase-5 signal log is consumable by a Phase 5 prompt (coordinate with the parallel Phase 5 investigation)
+The user will validate full-scale fidelity by regenerating `test-runs/` with the migrated prompts. RP1 does not block on this; the integration spec ships on the diagnostic-set evidence.
 
 ## Cleanup recommendations
 
@@ -403,25 +449,24 @@ Before the user merges the revised prompts to `idea-symphony/prompts/`, verify:
 
 | Output | Path |
 |---|---|
-| Per-iteration revisions | `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/phase4_*.md` (3-5 files per iteration) |
-| Per-iteration findings | `dev/2026-05-03_symphony-phase4/findings/RP1_refinement_iter{N}.md` (1-3 files) |
-| Per-iteration regenerated outputs | `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/outputs/{topic}/{effort}/synthesis/...` |
-| Re-scoring artifacts (per iteration) | `dev/2026-05-03_symphony-phase4/findings/RP1_iter{N}_FA1.md`, `_LB1.md`, `_RG1.md` (using FA1/LB1/RG1 task prompts pointed at proposed-prompts outputs) |
+| Per-iteration revisions | `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/phase4_*.md` (3 files per iteration) |
+| Per-iteration findings | `dev/2026-05-03_symphony-phase4/findings/RP1_refinement_iter{N}.md` (1–3 files) |
+| Per-iteration regenerated outputs (diagnostic set only) | `dev/2026-05-03_symphony-phase4/proposed-prompts/iter{N}/outputs/{topic}/{effort}/synthesis/...` (12 outputs per iteration, fewer in iter 2/3) |
 | Final integration spec | `dev/2026-05-03_symphony-phase4/findings/integration-spec.md` |
 
 ---
 
 ## Dependency Notes
 
-- **Depends on:** FA1, LB1, PP1, RG1 all complete.
-- **Blocks:** the user's decision to migrate revised prompts to `idea-symphony/prompts/`.
-- **Coordinates with:** the parallel Phase 5 investigation via FA1's signal log and PP1's contract-diff (which the Phase 5 investigation may consume).
+- **Depends on:** FA1, LB1, PP1, RG1 all complete. ✅ (as of 2026-05-04)
+- **Blocks:** the user's decision to migrate revised prompts to `idea-symphony/prompts/` and regenerate `test-runs/`.
+- **Coordinates with:** the parallel Phase 5 investigation via FA1's signal log and PP1's contract-diff.
 
 ## Priority
 
-**Critical-path final task.** Wall-clock time depends on iteration count. With 2-variant strategy across all three prompts (per Q13), each iteration ≈ 1 day for drafting + 3 days for re-generation (120 runs vs. 80 in single-track plan) + 1.5 days for re-scoring (130 score-runs) = ~5.5 days × 3 iterations = ~16-17 days max. Cheaper if criteria met after iteration 1 or 2.
+**Critical-path final task.** With the revised diagnostic-set approach, each iteration ≈ 0.5 day for drafting + 1 day for regen+self-check + 0.5 day for evaluation = ~2 days × up to 3 iterations = ~6 days max. Likely shorter if iter 1 lands ≥10/12 (which the saturation evidence supports).
 
 ## Discussion Questions Affecting This Task
 
-- **Q12** (iteration budget and stop criteria) — pinned to 3 iterations + the seven stop criteria above (resolved per Q12 response; Q6's Axis A split adds A1/A2/A3 sub-criteria)
-- **Q13** (variant strategy per prompt) — **pinned to 2 variants for ALL three prompts** including full-synthesis (resolved per Q13 response; escalated from single-track full-synthesis)
+- **Q12** (iteration budget and stop criteria) — pinned to 3 iterations + the diagnostic-set criteria above.
+- **Q13** (variant strategy per prompt) — **superseded by the 2026-05-04 revision.** Single-track for iter 1; variants reserved for iter 2/3 only if a real trade-off surfaces.
