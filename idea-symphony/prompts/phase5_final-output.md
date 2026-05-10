@@ -18,6 +18,7 @@ Read all of the following before drafting. They are independent; read them in pa
 2. `{{session}}/QUESTIONS.md` — full consolidated question set. Used for session-index links and to confirm topic-cluster scope.
 3. `{{session}}/PLAN.md` — source for the topic-cluster list. Use the "Topic Clusters" section to get correctly-ordered slugs and display names for the per-topic blocks and links.
 4. `{{session}}/SUMMARIES.md` — **authoritative** source for executive summary, key themes, topic summaries, and recommended next steps. Sections are concatenated per topic (frontmatter stripped) and separated by `---`; topic display names appear in each section's `# Summary: [Topic Name]` heading.
+5. [`templates/brainstorm.md`](../templates/brainstorm.md) - template for `BRAINSTORM.md` final output with word count guidance by effort level.
 
 **Do not read `SYNTHESIS.md`.** That file (when it exists at `medium`/`high` effort) is large and would balloon your context unnecessarily. `SUMMARIES.md` is sufficient for everything you need to produce. Linking `SYNTHESIS.md` in the Session Index is independent of reading it; you do not need to open the file to write its link. Whether to include the link is decided from `{{effort}}` alone — see the effort-conditional rule below the output template.
 
@@ -84,70 +85,9 @@ The general principles still apply: meet the aggregate-band lower bound; stay wi
 
 ## Output
 
-Replace every bracketed placeholder below (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. The `{{cluster_slug}}` tokens inside the per-topic links are slots you fill with the actual slugs from PLAN.md (one different value per topic block).
+Use [`templates/brainstorm.md`](../templates/brainstorm.md) as a template to create `{{session}}/BRAINSTORM.md`.
 
-Create `{{session}}/BRAINSTORM.md`:
-
-```markdown
----
-project-name: "[Project Name]"
-session-dir: "{{session}}"
-datetime: {{current_datetime}}
-effort: "{{effort}}"
-stage: "Phase 5: Final Output"
-model-requested: "opus"
-model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
----
-
-# Brainstorming Session: [Project Name]
-
-## Executive Summary
-[3-5 paragraphs capturing the most important insights across all topic clusters]
-
-## Session Overview
-[Brief description of the brainstorming request and approach taken]
-
-## Central Tensions
-[**Maximum 4 entries.** If clusters share a meta-tension, state it as a single sentence with the contributing clusters cited. Otherwise, list the most load-bearing per-cluster Central Tensions verbatim or near-verbatim from each cluster's `_summary.md`. Do not exceed 4 entries; do not pad to 4 if fewer are load-bearing.]
-
-## Key Themes
-[Major themes that emerged across all topic clusters and participants]
-
-## Conspicuous Absences (session-level)
-[Aggregate the per-cluster Conspicuous Absences (`min` clusters) and Neither-lens gaps (`low` clusters). If a structural absence recurs across clusters — a stakeholder type never engaged, a decision the brainstormer faced and declined, a precondition never established for a recommended action — name it here. If absences are cluster-specific, list 2–4 most load-bearing. Do not write this section as a confidence-positive recap; it is the section that says "what's not here."]
-
-## Topic Summaries
-
-### 1. [Topic Name]
-[Summary of insights for this topic]
-- See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)
-
-### 2. [Topic Name]
-[Summary of insights for this topic]
-- See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)
-
-## Recommended Next Steps
-[Top 10-15 action items synthesized from all topic clusters]
-
-## Session Index
-
-### Questions
-- [QUESTIONS.md](QUESTIONS.md) — All questions consolidated
-- [questions/by-persona/](questions/by-persona/) — Questions by generating persona
-- [questions/by-topic/](questions/by-topic/) — Questions organized by topic cluster
-
-### Responses
-- [responses/](responses/) — All brainstorming responses organized by topic cluster
-
-### Summaries & Synthesis
-- [SUMMARIES.md](SUMMARIES.md) — Concatenated per-topic summaries
-- [SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses
-- [synthesis/](synthesis/) — Individual per-topic files: `_summary.md` (always); `_synthesis.md` and `attributed/` *(`medium`/`high` only)*
-
-### Session Files
-- [REQUEST.md](REQUEST.md) — Original request and context
-- [PLAN.md](PLAN.md) — Session configuration and status log
-```
+Replace every bracketed placeholder (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. The `{{cluster_slug}}` tokens inside the per-topic links are slots you fill with the actual slugs from PLAN.md (one different value per topic block).
 
 **Effort-conditional rule for the Session Index:** When `{{effort}}` is `min` or `low`, **delete** the entire `[SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses` line — the file does not exist at those effort levels. Keep all other lines as-is at every effort level.
 

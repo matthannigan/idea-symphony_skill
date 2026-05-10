@@ -366,7 +366,7 @@ Update `PLAN.md` with Phase 4 complete status.
 
 Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template.
 
-Phase 5 inherits per-cluster Central Tensions, Conspicuous Absences, and dissent-preservation disciplines from Phase 4's `_summary.md` outputs and aggregates them at session level. See `prompts/phase5_final-output.md` for the surfacing rules and the effort-scaled length targets (`min` 600–1200, `low` 750–1500, `medium` 940–1875, `high` 1170–2345 words).
+Phase 5 inherits per-cluster Central Tensions, Conspicuous Absences, and dissent-preservation disciplines from Phase 4's `_summary.md` outputs and aggregates them at session level. See `prompts/phase5_final-output.md` for the surfacing rules and the effort-scaled word length targets.
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
 
