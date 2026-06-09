@@ -1,0 +1,48 @@
+---
+project-name: "Food Truck Startup and Expansion Strategy"
+session-dir: "test-runs/food-truck/low"
+topic-cluster: "05_equipment-commissary-and-seasonal-cash-flow"
+persona: "The Devil's Advocate"
+model-requested: "sonnet"
+---
+
+# Equipment, Commissary, and Seasonal Cash Flow - The Devil's Advocate
+
+## Lease vs. Purchase and the Capacity Trap
+
+* **The maintenance surprise that breaks the ownership math.** Have we considered that a used truck in the $30–60K range may be at or past the age where major repairs become frequent — a refrigeration compressor, generator overhaul, or transmission failure can run $5–15K and arrive without warning? The cost-of-ownership calculation often assumes average annual maintenance, but a solo founder with no cash buffer cannot absorb a lumpy $10K repair in month eight. Mitigation: before purchase, budget a hard cap of $5K in a "truck emergency fund" and get an independent mechanic inspection with written estimates on deferred maintenance before signing anything.
+
+* **Leasing locks in a fixed cost that survives your worst months.** One potential challenge with leasing is that the monthly payment continues regardless of revenue — if winter drops revenue 60% below peak, the lease becomes a proportionally larger drag on margins precisely when the business is most vulnerable. At $2,000/month that's $24K/year before a single ingredient is purchased. Ownership at least eliminates the monthly obligation once the loan is retired. Mitigation: model the lease payment as a percentage of your three lowest projected revenue months, not the average — if it exceeds 20% of that trough revenue, leasing may be the riskier path.
+
+* **Ownership concentrates capital at exactly the wrong moment.** Have we considered that sinking $45K into a truck on day one leaves only $15K from the $60K pool for operating reserves, permits, initial inventory, and marketing — before the SBA loan is factored in? If the loan falls through or is delayed, that $15K may not carry the business to break-even. Mitigation: structure any purchase negotiation to minimize the down payment, preserving cash for working capital, and treat the SBA loan approval as a prerequisite rather than a backup plan for truck financing.
+
+* **Adding a second truck is harder under either path than the question implies.** The question frames leasing as high fixed cost and ownership as concentrated capital — but both paths may actually prevent truck two within three years. If truck one is owned and still depreciating, lenders may be reluctant to finance a second asset on thin operating history. If leased, the existing lease obligation reduces debt service capacity for a new loan. Mitigation: model the path to truck two explicitly in year one's business plan, working backward from what revenue and credit history a lender will require, rather than assuming scale will become available organically.
+
+* **The capacity trap cuts both ways on resale.** Have we considered that a purchased truck in a niche fusion concept may be difficult to sell quickly if the business fails — custom build-outs for a specific menu reduce buyer pool, and a forced sale in a soft market could recover 40–60 cents on the dollar? That exit risk should be priced into the "ownership is cheaper" calculation. Mitigation: favor minimal customization and standard equipment configurations that retain appeal to a broader resale market.
+
+## Commissary as Fixed Cost, Shared-Resource Ceiling, and Community Ecosystem
+
+* **Commissary scheduling conflicts are a real ceiling that founders underestimate.** Have we considered that during peak catering season — summer weekends, fall events — every food truck in the commissary wants the same prep windows on the same Friday mornings? If the facility is operating near capacity, you may not be able to book the hours you need, which directly caps catering revenue. This isn't a hypothetical: commissaries in active food truck markets often have waitlists for prime slots. Mitigation: before signing any commissary agreement, ask for the current utilization rate by day of week and time block, and get preferred scheduling rights in writing or seek a facility with lower occupancy.
+
+* **Rate increases are a one-sided risk you're locked into.** The commissary relationship is typically a month-to-month or annual arrangement where the facility sets pricing and you absorb increases or lose your health permit compliance. One potential challenge is that as the food truck scene in a growing city attracts more operators, commissary demand rises and facilities have pricing power — what costs $400/month at launch could be $600 in 18 months. Mitigation: negotiate a rate cap clause for at least 12 months and identify a backup commissary option in advance so you're never negotiating from a compliance-trapped position.
+
+* **The commissary minimum doesn't track your actual usage.** Have we considered that commissary agreements often include minimum monthly fees regardless of how many hours you use? During slow winter months when you're operating two days a week, you may be paying for eight hours of kitchen access you don't need. That fee doesn't flex with your revenue, making it structurally similar to a fixed loan payment. Mitigation: when evaluating commissaries, prioritize pay-per-hour structures over monthly minimums, especially for the first year when usage patterns are unpredictable.
+
+* **Treating the commissary as pure cost misses a real competitive asset.** One potential challenge here is not a risk but a missed opportunity: the other operators in your commissary are your direct intelligence network — they know which event organizers pay on time, which vending spots are oversaturated, and which permits are being contested. A founder who treats the commissary as a cost center rather than a community misses this. Mitigation: spend time in common areas, introduce yourself to other operators early, and treat commissary relationships as part of your local market research strategy.
+
+## Seasonal 12-Month Cash Flow and Reserve Sizing
+
+* **The reserve math may already be broken before launch.** Have we considered working backward from the $60K pool: a used truck purchase ($35–45K), health and business permits ($2–4K), initial inventory and supplies ($3–5K), branding and marketing launch ($2–3K), and three months of commissary fees ($1,200–1,800) could consume $43–58K before the first service day? That leaves $2–17K as the actual operating reserve — not the three months the question contemplates. If the SBA loan is earmarked for working capital, that calculus changes, but relying on loan approval to fund operations is itself a risk. Mitigation: build a launch cost itemization before committing to a purchase price on the truck, and treat the difference between $60K and launch costs as the real reserve number.
+
+* **Two to three low months may be a significant undercount.** One potential challenge is that a mid-size city with cold winters may have four to five genuinely slow months, not two to three — November through March in many northern markets sees foot traffic drops of 50–70% for outdoor food service. If the business plan sizes reserves around three trough months but the actual trough runs five months, the reserve is depleted before spring arrives. Mitigation: research the specific city's weather patterns and any local food truck association data on seasonal volume, and model the conservative case as a five-month trough rather than two.
+
+* **Fixed obligations compound at the worst time.** Have we considered that loan payments, commissary minimums, insurance, and equipment lease all land monthly regardless of whether revenue is $3,000 or $12,000? In a trough month where revenue covers variable costs and nothing more, every dollar of fixed obligation is a dollar of reserve consumed. The question asks how large the reserve needs to be, but the more precise question is what the fixed obligation stack looks like in absolute dollars — if it's $4,500/month and trough revenue is $5,000, the margin for error is $500 before the business draws on reserves. Mitigation: map every fixed cost to a monthly dollar amount, sum them, and treat that total as the minimum monthly revenue floor below which you're burning reserves.
+
+* **The SBA loan principal is not a cash flow safety valve.** One potential challenge might be the assumption — explicit or not — that if reserves run out in February, the SBA loan provides a backstop. SBA microloans are typically disbursed at closing and earmarked for specific uses; drawing on principal mid-year to cover operating losses may violate loan covenants and almost certainly signals a business in distress to lenders, damaging future financing options. Mitigation: treat the SBA loan as off-limits for seasonal operating shortfalls and instead plan for a separate personal line of credit or a structured revenue-sharing arrangement with a silent partner as the actual trough backstop.
+
+* **Peak season cash flow creates a false sense of stability.** Have we considered that strong summer months — the 2–3× peak — may generate the sense that the business is working, encouraging the founder to increase spending on marketing, second truck research, or menu expansion precisely when reserves should be accumulating for winter? The behavioral risk is that surplus months get spent rather than banked. Mitigation: automate a transfer of a fixed percentage — at least 20% — of every week's net revenue into a segregated winter reserve account that requires deliberate action to access, making drawdown visible and intentional rather than gradual and invisible.
+
+---
+
+**Question count**: 3
+**Response count**: 14 (5 + 4 + 5)

@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-04-23T12:00:00Z",
+  "effort": "low",
+  "n_synth_input": 82,
+  "m_synth_output": 35,
+  "append_count": 12,
+  "total": 47,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Vision, Purpose, and the Expansion Premise",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner"],
+        "2": ["Questioner"],
+        "3": ["Analyst", "Devil's Advocate", "Systems Thinker", "Accountant"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Analogist"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Concept Differentiation and Market Fit",
+      "question_numbers": [7, 8, 9, 10, 11, 12, 13],
+      "synthesize_contributors": {
+        "7": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "8": ["Appreciative Inquirer"],
+        "9": ["Questioner"],
+        "10": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "11": "Provocateur",
+        "12": "Storyteller",
+        "13": "Visionary"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Capital Structure and the SBA Decision",
+      "question_numbers": [14, 15, 16, 17],
+      "synthesize_contributors": {
+        "14": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker", "Accountant"],
+        "15": ["Accountant"]
+      },
+      "append_contributors": {
+        "16": "Provocateur",
+        "17": "Analogist"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Unit Economics and Pricing",
+      "question_numbers": [18, 19, 20],
+      "synthesize_contributors": {
+        "18": ["Analyst", "Accountant"],
+        "19": ["Analyst", "Accountant"],
+        "20": ["Analyst", "Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 5,
+      "name": "Equipment, Commissary, and Seasonal Cash Flow",
+      "question_numbers": [21, 22, 23],
+      "synthesize_contributors": {
+        "21": ["Analyst", "Devil's Advocate", "Systems Thinker", "Accountant"],
+        "22": ["Analyst", "Systems Thinker", "Audience Advocate"],
+        "23": ["Analyst", "Systems Thinker", "Accountant"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 6,
+      "name": "Revenue Mix and Channel Strategy",
+      "question_numbers": [24, 25, 26, 27],
+      "synthesize_contributors": {
+        "24": ["Questioner", "Analyst", "Systems Thinker", "Accountant"],
+        "25": ["Questioner"],
+        "26": ["Appreciative Inquirer"],
+        "27": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Regulatory Exposure and Political Engagement",
+      "question_numbers": [28, 29, 30, 31, 32, 33, 34, 35],
+      "synthesize_contributors": {
+        "28": ["Questioner", "Analyst", "Accountant"],
+        "29": ["Devil's Advocate", "Systems Thinker"],
+        "30": ["Audience Advocate"],
+        "31": ["Questioner", "Devil's Advocate", "Systems Thinker"],
+        "32": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "33": "Analogist",
+        "34": "Storyteller",
+        "35": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Customer Experience and Community Rootedness",
+      "question_numbers": [36, 37, 38, 39, 40, 41, 42],
+      "synthesize_contributors": {
+        "36": ["Audience Advocate", "Systems Thinker"],
+        "37": ["Audience Advocate"],
+        "38": ["Audience Advocate"],
+        "39": ["Audience Advocate"],
+        "40": ["Appreciative Inquirer"],
+        "41": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "42": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Solo-Founder Capacity and Staffing Sequencing",
+      "question_numbers": [43, 44, 45, 46, 47],
+      "synthesize_contributors": {
+        "43": ["Devil's Advocate", "Systems Thinker"],
+        "44": ["Appreciative Inquirer"],
+        "45": ["Appreciative Inquirer"],
+        "46": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "47": "Storyteller"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": ["food-truck/low"],
+  "self_check": {
+    "ai_orphan_question_numbers": [4, 10, 26, 32, 40, 41, 44, 45, 46],
+    "st_archetype_question_numbers": [3, 7, 21, 36, 43],
+    "st_archetypes_verbatim": ["brick-and-mortar transition risk", "identity lock-in risk", "capacity trap", "visibility–reputation cycle", "solo-founder bottleneck"]
+  }
+}
