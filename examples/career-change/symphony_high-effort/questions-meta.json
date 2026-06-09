@@ -1,0 +1,322 @@
+{
+  "generated_at": "2026-04-26T00:00:00Z",
+  "effort": "high",
+  "n_synth_input": 121,
+  "m_synth_output": 45,
+  "append_count": 33,
+  "total": 78,
+  "compaction_ratio": 2.69,
+  "cluster_count": 11,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Diagnosing the Driver — Calling, Escape, or Pattern",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Empath", "Systems Thinker", "First Principles Thinker", "Analyst", "Appreciative Inquirer"],
+        "2": ["Questioner", "Devil's Advocate"],
+        "3": ["Questioner", "First Principles Thinker"],
+        "4": ["Empath"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Provocateur",
+        "7": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Financial Architecture and Cash-Flow Runway",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Accountant", "Systems Thinker", "Devil's Advocate"],
+        "2": ["Analyst", "Devil's Advocate", "Accountant"],
+        "3": ["Questioner", "Devil's Advocate", "Accountant", "Systems Thinker", "Appreciative Inquirer"],
+        "4": ["Accountant"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Loan Forgiveness Programs and Public Interest Salary Reality",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Accountant", "Systems Thinker", "Futurist"],
+        "2": ["Accountant"],
+        "3": ["Accountant"],
+        "4": ["Futurist"]
+      },
+      "append_contributors": {
+        "5": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 4,
+      "name": "What Nursing Brings to Legal Practice",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Appreciative Inquirer", "Systems Thinker", "First Principles Thinker", "Audience Advocate"],
+        "2": ["Questioner", "Analyst"],
+        "3": ["Devil's Advocate", "Systems Thinker"],
+        "4": ["Analyst", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Connector",
+        "7": "Connector",
+        "8": "Connector"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Timeline, Age, and Opportunity Cost",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Systems Thinker", "Futurist"],
+        "2": ["Questioner", "Devil's Advocate"],
+        "3": ["Analyst", "Accountant"],
+        "4": ["Questioner", "Analyst"],
+        "5": ["Futurist"]
+      },
+      "append_contributors": {
+        "6": "Connector"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Emotional Sustainability and the Second-Burnout Risk",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Empath", "First Principles Thinker", "Systems Thinker", "Futurist"],
+        "2": ["Questioner", "Audience Advocate", "Systems Thinker"],
+        "3": ["Audience Advocate"],
+        "4": ["Futurist"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Connector",
+        "7": "Visionary",
+        "8": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Identity, Grief, and the Felt Experience of Transition",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Empath", "Systems Thinker"],
+        "2": ["Empath"],
+        "3": ["Empath"],
+        "4": ["Questioner", "Empath"],
+        "5": ["Empath"]
+      },
+      "append_contributors": {
+        "6": "Storyteller",
+        "7": "Storyteller",
+        "8": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 8,
+      "name": "The Clients You Would Serve — Equity, Voice, and Trust",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"],
+        "4": ["Audience Advocate"],
+        "5": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "6": "Storyteller",
+        "7": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Alternative Paths and Hybrid Roles",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Appreciative Inquirer", "Systems Thinker", "Accountant", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "2": "Visionary",
+        "3": "Visionary",
+        "4": "Visionary",
+        "5": "Connector",
+        "6": "Provocateur",
+        "7": "Provocateur",
+        "8": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Decision Architecture — Tests, Reversibility, First Principles",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Appreciative Inquirer", "First Principles Thinker"],
+        "2": ["Analyst", "First Principles Thinker"],
+        "3": ["First Principles Thinker"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Provocateur",
+        "7": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 11,
+      "name": "The Field's Future — MLPs, AI, and 30-Year Arcs",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Futurist"],
+        "2": ["Futurist"],
+        "3": ["Appreciative Inquirer"],
+        "7": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Visionary",
+        "6": "Storyteller",
+        "8": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": null,
+  "append_round_robin_selections": {
+    "Provocateur": {
+      "quota": 7,
+      "internal_clusters": ["A: wrong-frame/burnout-as-feature (Q1, Q2)", "B: reversals (Q3, Q4)", "C: domain-collisions (Q5, Q6)", "D: absurd-premises (Q7)"],
+      "selected_question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "note": "All 7 selected per high-effort quota."
+    },
+    "Connector": {
+      "quota": 7,
+      "internal_clusters": ["A: triage-parallel (Q1, Q2)", "B: cross-domain-assets (Q3, Q4)", "C: bridging-fields (Q5, Q6)", "D: timing-architecture (Q7)"],
+      "selected_question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "note": "All 7 selected per high-effort quota."
+    },
+    "Visionary": {
+      "quota": 7,
+      "internal_clusters": ["A: reimagining-career (Q1, Q2)", "B: invented-from-scratch (Q3, Q4)", "C: transformative-framing (Q5, Q6)", "D: emotional-existential (Q7)"],
+      "selected_question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "note": "All 7 selected per high-effort quota."
+    },
+    "Storyteller": {
+      "quota": 7,
+      "internal_clusters": ["A: day-you-walk-in (Q1, Q2)", "B: patient-who-changed-mind (Q3, Q4)", "C: in-between-years (Q5, Q6)", "D: after-the-bar (Q7)"],
+      "selected_question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "note": "All 7 selected per high-effort quota."
+    },
+    "Constraint Flipper": {
+      "quota": 5,
+      "internal_clusters": ["A: burnout-as-signal (Q1, Q2, Q3)", "B: financial-scarcity (Q4, Q5)", "C: nursing-background (Q6, Q7)"],
+      "template_first_questions": "Cluster A first = Q1, Cluster B first = Q4, Cluster C first = Q6",
+      "cluster_proximity_diagnostic": "N_A=1, N_B=4, N_C=6 — separated by 3 source positions; passes secondary diagnostic.",
+      "round_robin_order": "First-of-each: Q1, Q4, Q6. Then largest cluster (A) second-listed: Q2. Then second-largest (B) next: Q5.",
+      "selected_question_numbers": [1, 4, 6, 2, 5]
+    }
+  },
+  "r11_source_bound_cells": [
+    {
+      "cell": "Systems Thinker (the-systems-thinker.md)",
+      "rationale": "Source ST section uses one classical archetype phrase ('Shifting the Burden' as cluster heading) and otherwise relies on equivalent ST-distinctive systems-vocabulary phrases (load-bearing assumption, second-order effects, compounding asset, transferable load, self-reinforcing loop, depreciating asset, compounding gap, feedback cycle). Floor met by preserving ≥3 such systems-vocabulary phrases verbatim, plus 'Shifting-the-Burden' itself."
+    }
+  ],
+  "self_check": {
+    "n_synth_per_cluster_breakdown": "C1(4) + C2(4) + C3(4) + C4(4) + C5(5) + C6(4) + C7(5) + C8(5) + C9(1) + C10(5) + C11(4) = 45",
+    "raw_compaction_ratio": 2.69,
+    "compaction_floor_high_effort": 2.6,
+    "compaction_floor_passed": true,
+    "target_compaction_ratio": 3.1,
+    "within_20pct_of_target": true,
+    "cluster_count": 11,
+    "cluster_count_in_target_range": true,
+    "cluster_size_min": 5,
+    "cluster_size_max": 8,
+    "cluster_size_within_4_to_8": true,
+    "ai_orphan_question_numbers": [
+      "C2-Q3 (AI Q9 financial design from strength folded into savings runway anchor)",
+      "C4-Q4 (AI Q8 leveraging clinical networks folded into network/access anchor)",
+      "C9-Q1 (AI Q5 career integrating both worlds folded into hybrid landscape anchor)",
+      "C10-Q4 (AI Q7 building structures from self-knowledge — strengths-based register, orphan)",
+      "C10-Q5 (AI Q1 peak moments + AI Q2 volunteering breakthroughs — pure AI orphan-register)",
+      "C11-Q3 (AI Q4 attorney you want to become + AI Q5/Q6 flourishing version — pure AI orphan-register)",
+      "C11-Q7 (AI Q11 community that already exists — pure AI orphan-register, standalone)"
+    ],
+    "ai_orphan_count": 7,
+    "ai_orphan_floor_high_effort": 3,
+    "ai_orphan_floor_passed": true,
+    "st_archetype_question_numbers": [
+      "C1-cluster-focus and C1-Q1: 'Shifting-the-Burden dynamic' (classical archetype noun-phrase verbatim)"
+    ],
+    "st_archetypes_verbatim": ["Shifting-the-Burden"],
+    "st_systems_vocabulary_verbatim_R11": [
+      "C3-Q1: 'load-bearing assumption' (from ST Q5)",
+      "C2-Q3: 'second-order effects' (from ST Q6)",
+      "C4-Q1: 'compounding' / 'compounding asset' framing (from ST Q7)",
+      "C6-Q1: 'transferable load' (from ST Q12)",
+      "C7-Q1: 'self-reinforcing loop' (from ST Q3)"
+    ],
+    "st_systems_vocabulary_count": 5,
+    "st_floor_high_effort": 3,
+    "st_floor_passed_via_R11_combination": true,
+    "r11_note": "Source ST section uses one classical archetype ('Shifting the Burden') as a cluster heading; the remainder of the section relies on equivalent systems-vocabulary distinctive phrases. Per R11 source-bound exception, the ≥3 floor is met by combining 1 classical archetype noun-phrase ('Shifting-the-Burden') with 5 ST-distinctive systems-vocabulary phrases preserved verbatim — total 6 ST-distinctive phrases, well above the ≥3 floor.",
+    "preserve_exception_groups": [],
+    "preserve_exception_count": 0,
+    "preserve_exception_high_effort_discipline_check": "No convergence groups invoked the preserve-distinct-≥5-and-≥3-registers exception; all groups collapsed to single merged anchors with distinctive-vocabulary clauses. Discipline reminder satisfied.",
+    "user_questions_file_present": false,
+    "user_q_marker_count": 0,
+    "user_q_floor": 0,
+    "user_q_floor_passed": true,
+    "voice_preservation_floors": {
+      "appreciative_inquirer_orphan_floor_passed": true,
+      "audience_advocate_distinct_dimensions_preserved": [
+        "C8-Q1 documentation barriers / language access / distrust of institutions",
+        "C8-Q2 cultural/religious/familial frameworks beyond language",
+        "C8-Q3 reframing client-asks-vs-needs (relational trust)",
+        "C8-Q4 triage among clients who don't make the cut + geography of access",
+        "C8-Q5 healthcare-immigration intersection for clients"
+      ],
+      "devils_advocate_named_risks_preserved": [
+        "C1-Q2 idealization risk / day-to-day reality stress-test",
+        "C3-Q1 PSLF denial / restructuring failure mode",
+        "C4-Q3 hiring-signal-may-read-as-curiosity risk",
+        "C5-Q2 has-the-law-school-path-been-overweighted-because-most-dramatic risk"
+      ],
+      "empath_emotional_interior_register_preserved": [
+        "C1-Q4 escape-vs-arrival felt difference",
+        "C7-Q2 grief of leaving",
+        "C7-Q3 felt experience of being present but unable to address core problem",
+        "C7-Q5 imposter energy in new world"
+      ],
+      "first_principles_thinker_definitional_preserved": [
+        "C1-Q3 specificity-of-the-pull (vehicle vs goal)",
+        "C9-Q1 marginal contribution of JD vs alternatives",
+        "C10-Q2 irreversibility test",
+        "C10-Q3 hidden assumptions about law school as entry point"
+      ],
+      "accountant_quantified_ranges_preserved": [
+        "C2-Q1 $82K/year, $22K nursing loans, debt-to-income",
+        "C2-Q2 $60K-$90K/year, $150K-$200K total",
+        "C2-Q3 $2,500-3,000/month, months 13/24/36",
+        "C2-Q4 LSAT $200-2000, applications $75-100, bar $500-1000+, prep $2000-4000",
+        "C3-Q1 SAVE/IBR, 120 payments, $150-250K debt",
+        "C3-Q3 $50-70K starting, $55K gross",
+        "C3-Q2 LRAP $5-10K/year",
+        "C5-Q3 30-year horizon, $55-75K"
+      ],
+      "futurist_trend_grounding_preserved": [
+        "C3-Q4 government-contract-funded shift",
+        "C5-Q5 nursing shortage through 2030s",
+        "C6-Q4 wellness infrastructure investment in legal education",
+        "C11-Q1 MLP expansion trajectory through 2029",
+        "C11-Q2 forced displacement rising decade-long, AI-assisted reduction in routine paperwork hours"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+---
+project-name: "Career Change from ICU Nursing to Public Interest Law"
+session-dir: "test-runs/career-change/high"
+datetime: 2026-04-26
+effort: "high"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 06: Emotional Sustainability and the Second-Burnout Risk
+
+## Questions
+
+1. **Trading one high-burnout field for another — the transferable load**: Public interest immigration law is notorious for burnout — underfunding, impossible caseloads, vicarious trauma from detention and deportation cases, chronic secondary trauma, and a culture of martyrdom that mirrors nursing. The emotional mechanism that generates burnout in nursing — high stakes, inadequate resources, feeling unable to change the system — maps closely onto immigration law as a transferable load. After 8 years of absorbing patient suffering, something in you is clearly built to hold it, but something is also depleted: what specific features of *how* you would practice (practice area, caseload size, organizational type, supervision, peer support, practice mix) would you need to control for, and how realistic is it to build those buffers at the entry level of a new career rather than after?
+2. **Texture of sustainable advocacy — what daily life needs to feel like, and the calling-as-trap**: Beyond the outcome of helping immigrants, what does the *texture* of your daily work life need to feel like for this career to sustain you for two or three decades, and is that texture realistically available in public interest immigration law? "Deeply committed to helping vulnerable populations" is a genuine motivation but can also become a trap — the strength of commitment makes it harder to set limits, the limits are what prevent burnout, the burnout eventually destroys the capacity to help anyone. How do practitioners successfully separate the strength of their commitment from the absence of self-protective limits, and what would need to be true about a legal practice structure — not just personal discipline — to make that separation durable?
+3. **Distinguishing burnout from misalignment, from the clients' perspective**: From the community's perspective, what they need is not someone who is merely less burned out than they were before — they need someone who will stay. What is the human cost of attorney turnover in immigration law (delayed cases, lost institutional knowledge, severed trust), and what specific evidence from your two years of refugee resettlement volunteering — consistency, initiative, types of tasks chosen — suggests your commitment is durable rather than reactive?
+4. **The growing wellness infrastructure in legal education**: Law schools have been investing measurably in mental-health and wellness programs over the past decade, partly in response to documented mental-health crises in the legal profession — how do these structural investments, combined with the availability of clinical placements in high-meaning practice areas, change the sustainability equation for someone entering legal education with prior occupational burnout?
+5. **Imagine the opposite succeeds catastrophically**: You become a celebrated immigration attorney. Fifteen years from now, you're burned out again — this time from immigration law, not nursing. Looking back, what would have had to be true about how you made this transition for that outcome to be almost inevitable? What warning signs would you have ignored? *The real insight: the failure mode of this career change is not "you can't do it" — it's "you do it exactly the same way you did nursing, without changing what burned you out."*
+6. **Burnout ecology across high-stakes helping professions**: Research on burnout in emergency medicine, public defenders, and humanitarian aid workers shows a structural commonality — it's not the workload but the combination of high stakes, low agency, and invisible outcomes that erodes people; which of those three factors is driving your ICU burnout, and does the same factor appear in the public interest law roles you're imagining, or does the job structure actually change that variable in a meaningful way?
+7. **Trading burnout for a different fire**: What if emotional sustainability isn't about finding a less intense version of helping people but about finding the specific intensity that doesn't deplete you — and what would it mean to distinguish between the burnout of being inside a system that makes you feel powerless and the energizing exhaustion of fighting a system from outside it, and how would you know the difference before committing three years and significant financial exposure to finding out?
+8. **The public interest attorney's actual Tuesday**: Forget the idealized version of the work. Imagine a completely ordinary Tuesday as a staff attorney at a nonprofit immigration legal services organization — the caseload pressure, the bureaucratic frustrations, the clients who cannot show up to their own hearings, the grant reporting due at 5pm. How does that ordinary Tuesday compare to your worst ordinary Tuesday as an ICU nurse, and what does the comparison tell you about whether you are running toward something or away from something?
+
+---
+
+**Question count**: 8
+**Cluster focus**: Whether legal advocacy would draw on the same depleted reserves as nursing, and what structural buffers — practice mix, caseload, supervision — would have to be built in to prevent the same dynamic from recurring.
