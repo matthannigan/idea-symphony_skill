@@ -119,9 +119,13 @@ Spawn parallel subagents (1 per topic cluster) using prompt from `{{skill}}/prom
 
 **Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
+### Humanizer post-step
+
+Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at `{path}`). This matches the `low`/`medium`/`high` paths, where `_summary.md` is humanized at every effort level. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+
 ### Concatenation
 
-Once all subagents are complete, run the utility script to build the concatenated `SUMMARIES.md` file. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
+Once the humanizer post-step is complete, run the utility script to build the concatenated `SUMMARIES.md` file so it inherits the humanized substrate. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
 
 ```bash
 scripts/build-summaries.sh {{session}}
@@ -154,6 +158,10 @@ Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](../temp
 - Recommended next steps
 - Session index with links to all files
 
+**Em-dash budget.** Limit em dashes to roughly one per paragraph in the generated prose; em-dash overuse is a strong AI tell, so prefer periods, parentheses, or commas. Applies to the generated prose, not to quoted material.
+
+**Humanizer pass on `BRAINSTORM.md`.** After `BRAINSTORM.md` is written, run an inline humanizer pass over it using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (c), whole-file pass; edits in place). Preserve numbered next-steps ordering, all numeric/dollar figures, and the citations/links to `_summary.md` files. This matches the `low`/`medium`/`high` Phase 5, which humanizes `BRAINSTORM.md` via `phase5_final-output.md`.
+
 ### Step 4.2: Present Results
 
 Output brief summary to user:
@@ -173,6 +181,7 @@ Update `PLAN.md` with session complete status.
 | Question generation | Sonnet | Comprehensive coverage needed |
 | Brainstorming | Sonnet | Balance quality with speed |
 | Summary generation | Sonnet | User-facing summaries |
+| Humanizer post-pass | Haiku | Surface-style polish only |
 | Final output | Sonnet | User-facing deliverable |
 
 ---
