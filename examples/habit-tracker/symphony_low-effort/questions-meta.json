@@ -1,0 +1,143 @@
+{
+  "generated_at": "2026-04-22T12:00:00Z",
+  "effort": "low",
+  "n_synth_input": 64,
+  "m_synth_output": 25,
+  "append_count": 12,
+  "total": 37,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Differentiation in a Crowded Calm Market",
+      "question_numbers": [1, 2],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "Devil's Advocate"],
+        "2": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 2,
+      "name": "Onboarding, Trust Recovery, and the First Encounter",
+      "question_numbers": [3, 4, 5, 6],
+      "synthesize_contributors": {
+        "3": ["Audience Advocate", "Questioner"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Analogist"
+      }
+    },
+    {
+      "number": 3,
+      "name": "The Core Check-In Loop and Behavioral Science",
+      "question_numbers": [7, 8, 9, 10, 11, 12],
+      "synthesize_contributors": {
+        "7": ["Questioner", "Devil's Advocate"],
+        "8": ["Questioner", "Analyst"],
+        "9": ["Systems Thinker", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "10": "Analogist",
+        "11": "Provocateur",
+        "12": "Provocateur"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Streak Grace, Failure, and the Anxiety Loop",
+      "question_numbers": [13, 14, 15, 16],
+      "synthesize_contributors": {
+        "13": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "14": ["Appreciative Inquirer"],
+        "15": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "16": "Provocateur"
+      }
+    },
+    {
+      "number": 5,
+      "name": "The Weekly Review as Wedge and Ritual",
+      "question_numbers": [17, 18],
+      "synthesize_contributors": {
+        "17": ["Questioner", "Analyst", "Appreciative Inquirer"],
+        "18": ["Devil's Advocate", "Analyst"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 6,
+      "name": "Monetization, the 3-Habit Cap, and the Free/Paid Boundary",
+      "question_numbers": [19, 20, 21],
+      "synthesize_contributors": {
+        "19": ["Questioner", "Analyst", "Devil's Advocate", "Audience Advocate", "Systems Thinker"],
+        "20": ["Analyst", "Questioner"],
+        "21": ["Analyst", "Appreciative Inquirer", "Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Retention, the Day-47 Promise, and Graduation",
+      "question_numbers": [22, 23, 24, 25, 26, 27],
+      "synthesize_contributors": {
+        "22": ["Analyst", "Systems Thinker", "Appreciative Inquirer"],
+        "23": ["Systems Thinker", "Devil's Advocate"],
+        "24": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "25": "Visionary",
+        "26": "Analogist",
+        "27": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Inactivity, Re-entry, and the Silence of Returning",
+      "question_numbers": [28, 29],
+      "synthesize_contributors": {
+        "28": ["Systems Thinker", "Audience Advocate", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "29": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Technical Architecture, Local-First, and Privacy Posture",
+      "question_numbers": [30, 31, 32],
+      "synthesize_contributors": {
+        "30": ["Systems Thinker", "Analyst"],
+        "31": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "32": ["Devil's Advocate", "Questioner"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 10,
+      "name": "Equity, Access, and Who Gets Left Behind",
+      "question_numbers": [33, 34, 35],
+      "synthesize_contributors": {
+        "33": ["Audience Advocate", "Appreciative Inquirer"],
+        "34": ["Audience Advocate"],
+        "35": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [36, 37],
+    "append_contributors": {
+      "36": "Visionary",
+      "37": "Storyteller"
+    }
+  },
+  "r11_source_bound_cells": [],
+  "self_check": {
+    "ai_orphan_question_numbers": [2, 24],
+    "st_archetype_question_numbers": [13, 23],
+    "st_archetypes_verbatim": ["Shifting-the-Burden", "Success-to-the-Successful"]
+  }
+}
