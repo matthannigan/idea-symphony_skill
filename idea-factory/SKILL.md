@@ -1,11 +1,13 @@
 ---
 name: idea-factory
 description: >
-  Action plan generator that builds on Idea Symphony brainstorming output.
-  Reads a completed Symphony session, creates a structural outline, generates
-  project-specific personas, uses parallel subagents to develop each section
-  from multiple perspectives, and synthesizes everything into a cohesive
-  action plan with alternatives and scaling options.
+  Action plan generator paired with Idea Symphony. Where Symphony surfaces
+  many voices on a question, Factory takes that material and produces a
+  single structured deliverable — an action plan, a revised document, or a
+  strategy memo. Reads a completed Symphony session, creates a structural
+  outline, generates project-specific personas, uses parallel subagents to
+  develop each section from multiple perspectives, and synthesizes
+  everything into a cohesive output with alternatives and scaling options.
 
   Use when users want: to turn brainstorming into action, create plans from
   Symphony output, develop implementation strategies, explore approaches with
@@ -18,7 +20,16 @@ description: >
 
 # Idea Factory
 
-Transform Idea Symphony brainstorming output into a structured, multi-perspective action plan. Factory reads a completed Symphony session, organizes insights into an action-oriented outline, spawns parallel subagents to develop each section independently from different personas, synthesizes their perspectives, and integrates everything into a cohesive deliverable.
+Idea Symphony surfaces many voices on a question. Idea Factory takes that material and produces a single, structured deliverable — an action plan, a revised document, or a strategy memo. Factory reads a completed Symphony session, organizes insights into an action-oriented outline, spawns parallel subagents to develop each section independently from different personas, synthesizes their perspectives, and integrates everything into a cohesive output.
+
+## Pairs with Idea Symphony
+
+Symphony and Factory are designed as a divergent → convergent pair:
+
+- **Symphony is divergent.** Subagents in isolated context windows generate tension and breadth — multiple personas across topic clusters, with intentional preservation of dissent.
+- **Factory is convergent.** Subagents still develop sections from multiple angles, but a synthesis pass reconciles perspectives into one plan with explicit trade-offs, alternatives, and scaling options.
+
+Use them in sequence: Symphony to map what's at stake on a question; Factory to commit to a path forward.
 
 ## Core Architecture
 
