@@ -8,6 +8,7 @@ Templates for the intermediate and final documents created during an Idea Sympho
 - [USER-QUESTIONS.md](user-questions.md) *(optional)* — User-provided questions to preserve through the workflow
 - [PLAN.md](plan.md) — Session configuration, Phase 2 roster plan, and per-phase status
 - [BRAINSTORM.md](brainstorm.md) — Final output document
+- [NOTEBOOK-LM-INSTRUCTIONS.md](notebook-lm-instructions.md) *(optional; opt-in at Phase 1)* — Copy-paste Customize-box prompts for NotebookLM artifacts (podcast, podcast series, presentation, infographic) generated from session substrate
 
 ## Synthesis files (per topic cluster)
 

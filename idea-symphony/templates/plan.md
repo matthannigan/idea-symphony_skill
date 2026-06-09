@@ -10,6 +10,7 @@ datetime: {{current_datetime}}
 effort: "[min|low|medium|high]"
 stage: "Phase 1: Context Gathering"
 persona-selection-review: "[auto|pause]"
+notebooklm-outputs: "[yes|no]"
 model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 ---
 
@@ -17,6 +18,7 @@ model-reported: "[orchestrator self-identifies, e.g., claude-opus-4-7]"
 
 **Effort:** `[min|low|medium|high]` *(sourced from user's Phase 1 selection; REQUEST.md captures user input only)*
 **Persona Selection Review:** [auto|pause] *(default: auto; `medium`/`high` only)*
+**NotebookLM Outputs:** [yes|no] *(default: no; `low`/`medium`/`high` only — omit field at `min`)*
 
 ## Phase 2 Step 2.1: Question Generation Personas
 

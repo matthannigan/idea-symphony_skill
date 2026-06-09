@@ -140,8 +140,13 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
 6. **Determine effort level:**
    - If user specified → use that level
    - If not → detect triggers and suggest. See [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) for the full detection logic.
-7. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), session directory, and Phase 1 completion status.
-8. If effort is `min` → proceed to min effort workflow.
+7. **Ask about NotebookLM outputs (skip if effort is `min`):**
+   - Ask: "Would you like NotebookLM-ready prompts generated alongside your brainstorm? This adds a NOTEBOOK-LM-INSTRUCTIONS.md file with copy-paste prompts for podcasts (single + per-cluster series), a presentation, and an infographic. The same prompts work in other audio/presentation tools."
+   - Default is `no` (opt-in). If user says yes → set `notebooklm-outputs: "yes"`; otherwise (explicit no or no answer) → set `notebooklm-outputs: "no"`.
+   - At `min` effort, skip this question entirely; do not emit the field.
+   - See [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) for the canonical question text.
+8. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), the `notebooklm-outputs` flag (from step 7, omitted at `min`), session directory, and Phase 1 completion status.
+9. If effort is `min` → proceed to min effort workflow.
 
 **Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
 
@@ -367,6 +372,8 @@ Update `PLAN.md` with Phase 4 complete status.
 Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template.
 
 Phase 5 inherits per-cluster Central Tensions, Conspicuous Absences, and dissent-preservation disciplines from Phase 4's `_summary.md` outputs and aggregates them at session level. See `prompts/phase5_final-output.md` for the surfacing rules and the effort-scaled word length targets.
+
+**NotebookLM addon:** if PLAN.md frontmatter has `notebooklm-outputs: "yes"`, the same subagent also emits `{{session}}/NOTEBOOK-LM-INSTRUCTIONS.md` per [templates/notebook-lm-instructions.md](templates/notebook-lm-instructions.md). Otherwise only `BRAINSTORM.md` is produced. The flag is set at Phase 1 step 7 and is never present at `min` effort.
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
 

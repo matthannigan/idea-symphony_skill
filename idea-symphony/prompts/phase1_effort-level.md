@@ -142,6 +142,31 @@ helpful right now?
 
 ---
 
+## Step 4: NotebookLM Output Addon (skip if effort is `min`)
+
+After effort level is locked in, ask the user whether to bundle a NotebookLM-ready prompts file alongside the brainstorm.
+
+**At `min` effort, skip this step entirely.** Do not ask the question and do not emit the `notebooklm-outputs` field in PLAN.md frontmatter. The min workflow is a self-contained speed run and the addon adds value only when there's deeper substrate to feed.
+
+**At `low`/`medium`/`high` effort, ask:**
+
+```
+Would you like NotebookLM-ready prompts generated alongside your brainstorm?
+This adds a NOTEBOOK-LM-INSTRUCTIONS.md file with copy-paste Customize-box
+prompts for podcasts (single + per-cluster series), a presentation, and an
+infographic. The same prompts work in other audio/presentation tools.
+(yes/no, default: no)
+```
+
+**Recording the answer in PLAN.md frontmatter:**
+
+- If user says yes → `notebooklm-outputs: "yes"`
+- If user says no or doesn't answer → `notebooklm-outputs: "no"` (opt-in default)
+
+The flag is read by the Phase 5 subagent (`prompts/phase5_final-output.md`) to decide whether to emit `NOTEBOOK-LM-INSTRUCTIONS.md` in addition to `BRAINSTORM.md`.
+
+---
+
 ## Quick Reference: Example Patterns
 
 | Request Pattern | Suggested Level | Rationale |

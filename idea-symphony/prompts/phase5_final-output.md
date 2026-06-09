@@ -4,7 +4,7 @@
 
 ---
 
-You are producing the user-facing final output for a brainstorming session. Produce exactly one markdown file at the path named in Output. Do not modify any other files.
+You are producing the user-facing final output for a brainstorming session. Produce the markdown file(s) named in Output — always `BRAINSTORM.md`, and additionally `NOTEBOOK-LM-INSTRUCTIONS.md` when the NotebookLM addon is enabled in PLAN.md frontmatter. Do not modify any other files.
 
 `BRAINSTORM.md` is the document a user reads first when they return to the session — and often the only document they'll read. The executive summary, key themes, and recommended next steps are the most important parts of the deliverable. Write for someone returning cold.
 
@@ -19,6 +19,7 @@ Read all of the following before drafting. They are independent; read them in pa
 3. `{{session}}/PLAN.md` — source for the topic-cluster list. Use the "Topic Clusters" section to get correctly-ordered slugs and display names for the per-topic blocks and links.
 4. `{{session}}/SUMMARIES.md` — **authoritative** source for executive summary, key themes, topic summaries, and recommended next steps. Sections are concatenated per topic (frontmatter stripped) and separated by `---`; topic display names appear in each section's `# Summary: [Topic Name]` heading.
 5. [`templates/brainstorm.md`](../templates/brainstorm.md) - template for `BRAINSTORM.md` final output with word count guidance by effort level.
+6. [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md) — **conditional input.** Read only if `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`. Contains the user-facing template plus an inline module reference for composing NotebookLM Customize-box prompts without external skill dependencies. If the flag is `"no"` or absent, do not read this file — skip the NLM addon entirely.
 
 **Do not read `SYNTHESIS.md`.** That file (when it exists at `medium`/`high` effort) is large and would balloon your context unnecessarily. `SUMMARIES.md` is sufficient for everything you need to produce. Linking `SYNTHESIS.md` in the Session Index is independent of reading it; you do not need to open the file to write its link. Whether to include the link is decided from `{{effort}}` alone — see the effort-conditional rule below the output template.
 
@@ -59,6 +60,13 @@ Synthesize the per-topic summaries into a single user-facing document.
 
       **Example.** *Forbidden:* "The Devil's Advocate argues that the timeline is unrealistic." → *Rewrite:* "An adversarial counter-test surfaced that the timeline is unrealistic."
 
+    - **(c) NotebookLM instructions audit (only if producing `NOTEBOOK-LM-INSTRUCTIONS.md`).** Before writing the file, verify:
+      - **Source framing present.** Every one of the five artifact prompt blocks opens with a `Source framing:` paragraph that names `[Project Name]` and describes the source as the output of a facilitated multi-perspective brainstorming session. Per-cluster prompts (Artifacts 2 and 5) name the specific cluster in the framing. The Source Framing module is always-include — never omit it to save characters.
+      - **Character cap.** Each artifact's Customize-box prompt is under 5,000 characters (NotebookLM's hard limit). Compute character count for each prompt block and write the result on the `**Character count:** [N] / 5,000` line. If any prompt exceeds the cap, cut from the Module 7 "Custom additions" section first; then trim examples from Module 2 (tone directives). **Never cut Module 0 (Source Framing) or Modules 1-3** — they are load-bearing.
+      - **Cluster name fidelity and parity.** Every per-cluster block under Artifact 2 (podcast episodes) and Artifact 5 (infographics) names a cluster from PLAN.md's Topic Clusters section verbatim. No invented or paraphrased cluster names; slugs match the actual `synthesis/{slug}_summary.md` files. Artifact 2 and Artifact 5 must have the same cluster count and the same cluster order.
+      - **Sources list correctness.** The "Sources to upload" section matches the actual files present in `{{session}}/`: `BRAINSTORM.md` plus one `synthesis/{slug}_summary.md` per cluster from PLAN.md.
+      - **No subagent-only content leaks.** The "For the Phase 5 subagent: inline module reference" block and the "Subagent fill-in checklist" from the template must not appear in the emitted file. The emitted file starts at `# NotebookLM Instructions: [Project Name]`.
+
 ## Synthesis discipline
 
 **Cross-cluster convergence-count discipline.** When making any cross-cluster count claim ("across all clusters" / "every topic" / "most clusters") in the Executive Summary, Key Themes, or Recommended Next Steps, run this discipline:
@@ -85,15 +93,27 @@ The general principles still apply: meet the aggregate-band lower bound; stay wi
 
 ## Output
 
-Use [`templates/brainstorm.md`](../templates/brainstorm.md) as a template to create `{{session}}/BRAINSTORM.md`.
+1. **Always: write `{{session}}/BRAINSTORM.md`.** Use [`templates/brainstorm.md`](../templates/brainstorm.md) as a template.
 
-Replace every bracketed placeholder (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. The `{{cluster_slug}}` tokens inside the per-topic links are slots you fill with the actual slugs from PLAN.md (one different value per topic block).
+   Replace every bracketed placeholder (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. The `{{cluster_slug}}` tokens inside the per-topic links are slots you fill with the actual slugs from PLAN.md (one different value per topic block).
 
-**Effort-conditional rule for the Session Index:** When `{{effort}}` is `min` or `low`, **delete** the entire `[SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses` line — the file does not exist at those effort levels. Keep all other lines as-is at every effort level.
+   **Effort-conditional rule for the Session Index:** When `{{effort}}` is `min` or `low`, **delete** the entire `[SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses` line — the file does not exist at those effort levels. Keep all other lines as-is at every effort level.
+
+2. **Conditional: if `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`, also write `{{session}}/NOTEBOOK-LM-INSTRUCTIONS.md`.** Use [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md) as a template.
+
+   The template contains two parts: an inline module reference (for you, the subagent) and a user-facing canonical structure. Emit **only** the user-facing structure — the part starting at `# NotebookLM Instructions: [Project Name]`. Do not emit the "For the Phase 5 subagent" block, the "Subagent fill-in checklist," or the surrounding meta-commentary.
+
+   Compose each artifact's Customize-box prompt by combining the inline modules with project-specific values from `BRAINSTORM.md` (themes, central tensions), `PLAN.md` (cluster slugs and display names, project name, effort), and `REQUEST.md` (audience cues). Tailor terminology, focus targets, and slide-count targets per the Subagent fill-in checklist in the template.
+
+   Emit one `### Episode N: [Cluster Name]` block under Artifact 2 for each cluster in PLAN.md's Topic Clusters section, in order.
+
+   If the flag is `"no"` or absent, skip this step entirely.
+
+3. Do not modify any other files.
 
 ## Notes
 
 - **Synthesize, don't aggregate.** The Key Themes section is the place to identify cross-topic patterns; per-topic blocks should be brief and link out. Recommended Next Steps should be ordered by impact and specificity, not by topic.
 - **Topic order matters.** Use the order from PLAN.md's "Topic Clusters" section so per-topic blocks line up with how the session was structured.
 - **Per-topic links use the correct slug from PLAN.md.** Every topic's link points to `synthesis/<slug>_summary.md` regardless of effort level — `_summary.md` always exists; `_synthesis.md` is not linked from BRAINSTORM.md.
-- Do not create scratch files, helper scripts, or intermediate outputs. Write only the single markdown file specified in Output.
+- Do not create scratch files, helper scripts, or intermediate outputs. Write only the file(s) specified in Output — `BRAINSTORM.md` always, and `NOTEBOOK-LM-INSTRUCTIONS.md` when `notebooklm-outputs: "yes"`.
