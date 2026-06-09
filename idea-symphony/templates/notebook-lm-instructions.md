@@ -187,7 +187,7 @@ Nuance: Surface what the cluster did not engage with, and any minority view wort
 **Customize box prompt:**
 
 ```
-[Same skeleton, with Focus module pointing to cluster-2-slug and the cluster display name swapped throughout.]
+[Same skeleton, with the Focus module pointing to the Cluster 2 display name (content-anchored, no file path) and the cluster display name swapped throughout.]
 ```
 
 **Character count:** [N] / 5,000
@@ -270,7 +270,7 @@ Density: Single screen, but dense. A reader should be able to extract the cluste
 **Customize box prompt:**
 
 ```
-[Same skeleton, with Focus and the cluster display name and slug swapped throughout.]
+[Same skeleton, with the Focus module pointing to the Cluster 2 display name (content-anchored, no file path) and the cluster display name swapped throughout.]
 ```
 
 **Character count:** [N] / 5,000
@@ -295,8 +295,8 @@ Density: Single screen, but dense. A reader should be able to extract the cluste
 When producing the user-facing file, the Phase 5 subagent must:
 
 1. Replace every `[Bracketed Placeholder]` with project-specific content derived from `BRAINSTORM.md`, `PLAN.md`, and `SUMMARIES.md`. Do not emit literal placeholder strings.
-2. **Include the Source Framing module in every artifact prompt.** It is always-include — the same way Modules 1-3 are. Substitute `[Project Name]` and (for per-cluster prompts) the cluster name and slug.
-3. Generate one `### Episode N: [Cluster Name]` block under Artifact 2 for each cluster in PLAN.md's Topic Clusters section, in order. Each episode's Focus module names the cluster's slug and display name verbatim.
+2. **Include the Source Framing module in every artifact prompt.** It is always-include — the same way Modules 1-3 are. Use the Module 0 text **as written**, substituting only `[Project Name]` and (for per-cluster prompts) the cluster display name. Do not expand it, add sentences, or restate its claims — keep it to roughly the skeleton length (~400 characters); do not pad it toward 500+. Over-expansion bloats every prompt and eats into the 5,000-character ceiling.
+3. Generate one `### Episode N: [Cluster Name]` block under Artifact 2 for each cluster in PLAN.md's Topic Clusters section, in order. Each episode's Focus module references the cluster by **display name only** (content-anchored, e.g. "the summary document for [Display Name]"). Do **not** place a file path or slug (`synthesis/NN_…_summary.md`) inside a Focus block or any other fenced customize-box prompt — NotebookLM has no filesystem view, so a path read aloud is noise. The slug-bearing path belongs only in the `## Sources to upload` list.
 4. Generate one `### Infographic N: [Cluster Name]` block under Artifact 5 for each cluster in PLAN.md's Topic Clusters section, in the same order as Artifact 2. The episode count and infographic count must match.
 5. Compute and write the actual character count on each `**Character count:** [N] / 5,000` line.
 6. Tailor `[domain-specific term 1/2/3]` in Artifact 1 to terminology the brainstorm uses repeatedly, so NotebookLM skips defining what the audience already knows.
