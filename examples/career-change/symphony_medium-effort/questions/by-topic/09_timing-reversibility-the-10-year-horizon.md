@@ -1,0 +1,25 @@
+---
+project-name: "Career Change from ICU Nursing to Public Interest Law"
+effort: "medium"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 09: Timing, Reversibility & the 10-Year Horizon
+
+## Questions
+
+1. **Age-adjusted career horizon and lifetime-earnings math**: At 32, completing a JD and bar lands entry to legal work at roughly 36 — over a 30-year remaining career horizon, what does the cumulative 10-year net worth picture look like across two scenarios (staying in nursing with specialization or travel rates vs. JD into public interest at $55-75K), what salary growth rate in the constrained and relatively flat public interest sector would produce comparable lifetime earnings to nursing, and what specific financial threshold, if any, would make the timing feel right versus premature?
+2. **Reversibility asymmetry**: Leaving ICU nursing for law school is partially reversible — nursing licenses can be maintained, clinical skills atrophy but reactivate — but the deeper identity shift from clinician to advocate may be less reversible than the credential change; what is your honest read on how much of your professional identity is rooted in direct care vs. systemic change, and have those two modes been experienced side-by-side long enough to generate a real preference signal?
+3. **Age-32 timeline interactions with life plans**: Entering law school at 32-33, graduating at 35-36, then completing a fellowship or rotation, means reaching senior associate level in public interest organizations in the early-to-mid 40s — does this timeline interact with partnership, children, aging parents, or housing in ways that make the window at 32 less flexible than it appears, and beyond the salary and debt costs, what is the felt cost of starting over at the bottom of a professional hierarchy at 35?
+4. **The 10-year system view of three futures**: Looking at this as a 10-year trajectory rather than a binary go/no-go: what does the system look like at year 10 under "stay in nursing and deepen advocacy" vs. "JD and public interest law" vs. "bridge role" — and which of those futures, concretely described, produces the strongest pull toward the destination rather than away from the current situation?
+5. **Option value and irreversibility**: Options theory in finance distinguishes between decisions that close off other paths permanently and decisions that preserve future optionality — and the most common error is treating reversible decisions as irreversible and vice versa. Which elements of this transition are genuinely irreversible (three years of foregone income, the specific framing of your legal career once you enter it), which are more reversible than they appear (returning to nursing, pivoting within law), and how does mapping the actual irreversibility structure change what you need to be certain about before committing versus what you can afford to figure out along the way?
+6. **Building the thing that doesn't exist yet**: What if the most transformative outcome of this career change is not that she becomes a good immigration attorney, but that — ten or twenty years out — she builds or leads something genuinely new: an organization, a model of care, a policy framework that reimagines how the healthcare and legal systems jointly serve immigrant populations? What would she need to do in the next decade to position herself for that longer arc rather than just the immediate one?
+7. **The decade-out scene**: Imagine yourself at 42, a decade after this decision point. In one version of the story, you became an immigration attorney and you love it. In another, you tried and left law after five years. In a third, you stayed in nursing and redirected your advocacy energy into policy or community organizing. Describe what a Tuesday afternoon looks like in each version — not the career highlights, but the texture of the ordinary day. Which scene feels most like home?
+8. **Work backward from the version everyone hates**: Imagine this career transition succeeds wildly — you graduate top of your class, land at a prestigious immigration nonprofit, become a nationally recognized advocate for immigrant healthcare rights, and then ten years later you're exhausted, estranged from direct client contact, spending your days fundraising and managing junior attorneys who do the work you originally wanted to do. Work backward: what decisions along the path led there, and what would a different set of commitments look like that preserves the direct human contact you found meaningful in the ICU? *The real insight: the risk is not that this transition fails — it's that it succeeds in a direction that replicates the alienation rather than resolving it.*
+
+---
+
+**Question count**: 8
+**Cluster focus**: Whether the age-32 starting line, the lifetime-earnings math, and the partial-reversibility of the decision actually support committing now — and what the path looks like seen as a 10-year trajectory rather than a binary go/no-go.

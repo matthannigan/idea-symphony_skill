@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-04-26T12:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 84,
+  "m_synth_output": 35,
+  "append_count": 20,
+  "total": 55,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Burnout as Diagnosis, Not Direction",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Systems Thinker"],
+        "4": ["Questioner"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Provocateur",
+        "7": "Connector"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Sustainability in the New Field",
+      "question_numbers": [8, 9, 10, 11],
+      "synthesize_contributors": {
+        "8": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker", "Audience Advocate"],
+        "9": ["Audience Advocate", "Appreciative Inquirer"],
+        "10": ["Audience Advocate", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "11": "Provocateur"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Total Cost & Funding the JD",
+      "question_numbers": [12, 13, 14, 15, 16],
+      "synthesize_contributors": {
+        "12": ["Analyst", "Devil's Advocate", "Accountant"],
+        "13": ["Accountant"],
+        "14": ["Devil's Advocate"],
+        "15": ["Accountant", "Questioner"]
+      },
+      "append_contributors": {
+        "16": "Storyteller"
+      }
+    },
+    {
+      "number": 4,
+      "name": "PSLF, Loan Repayment & Long-Term Financial Sustainability",
+      "question_numbers": [17, 18, 19, 20, 21],
+      "synthesize_contributors": {
+        "17": ["Questioner", "Analyst", "Devil's Advocate", "Accountant", "Systems Thinker"],
+        "18": ["Systems Thinker"],
+        "19": ["Accountant"],
+        "20": ["Accountant"]
+      },
+      "append_contributors": {
+        "21": "Provocateur"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Nursing as Legal Asset — Skills, Credentials, Niche Risk",
+      "question_numbers": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      "synthesize_contributors": {
+        "22": ["Analyst", "Appreciative Inquirer"],
+        "23": ["Questioner", "Analyst"],
+        "24": ["Audience Advocate", "Systems Thinker"],
+        "25": ["Audience Advocate", "Appreciative Inquirer"],
+        "26": ["Devil's Advocate", "Systems Thinker", "Appreciative Inquirer", "Questioner"]
+      },
+      "append_contributors": {
+        "27": "Connector",
+        "28": "Connector",
+        "29": "Visionary",
+        "30": "Storyteller",
+        "31": "Provocateur"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Client-Centered Practice & Equity",
+      "question_numbers": [32, 33, 34, 35],
+      "synthesize_contributors": {
+        "32": ["Audience Advocate"],
+        "33": ["Audience Advocate"],
+        "34": ["Audience Advocate"],
+        "35": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Alternative Paths & Hybrid Roles",
+      "question_numbers": [36, 37, 38, 39, 40, 41, 42, 43, 44],
+      "synthesize_contributors": {
+        "36": ["Devil's Advocate", "Questioner", "Analyst", "Systems Thinker", "Audience Advocate"],
+        "37": ["Systems Thinker"],
+        "38": ["Systems Thinker", "Appreciative Inquirer"],
+        "39": ["Accountant"]
+      },
+      "append_contributors": {
+        "40": "Visionary",
+        "41": "Visionary",
+        "42": "Visionary",
+        "43": "Connector",
+        "44": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Validation Steps Before Committing",
+      "question_numbers": [45, 46, 47],
+      "synthesize_contributors": {
+        "45": ["Questioner", "Analyst", "Appreciative Inquirer"],
+        "46": ["Questioner"],
+        "47": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 9,
+      "name": "Timing, Reversibility & the 10-Year Horizon",
+      "question_numbers": [48, 49, 50, 51, 52, 53, 54, 55],
+      "synthesize_contributors": {
+        "48": ["Analyst", "Accountant"],
+        "49": ["Systems Thinker"],
+        "50": ["Devil's Advocate", "Questioner"],
+        "51": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "52": "Connector",
+        "53": "Visionary",
+        "54": "Storyteller",
+        "55": "Provocateur"
+      }
+    }
+  ],
+  "r11_source_bound_cells": [
+    "career-change/med: Systems Thinker source uses systems-vocabulary distinctive phrases (early warning system, personal circuit breaker, gravitational anchor, fragility points, reversibility asymmetry, leverage points, feedback loops, compounding) rather than classical named archetypes; ST-verbatim floor met by preserving these systems-vocabulary phrases verbatim in synthesized questions."
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [2, 47],
+    "st_archetype_question_numbers": [3, 18, 26, 49],
+    "st_archetypes_verbatim": [
+      "early warning system",
+      "personal circuit breaker",
+      "fragility points",
+      "gravitational anchor",
+      "reversibility asymmetry"
+    ]
+  }
+}

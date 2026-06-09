@@ -1,0 +1,33 @@
+---
+project-name: "Career Change from ICU Nursing to Public Interest Law"
+session-dir: "test-runs/career-change/med"
+datetime: 2026-04-26
+effort: "medium"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "04_pslf-loan-repayment-long-term-financial-sustainability"
+persona: "The Devil's Advocate"
+---
+
+# PSLF, Loan Repayment & Long-Term Financial Sustainability - The Devil's Advocate
+
+## Question Summary: PSLF as a Load-Bearing Assumption
+
+* **Summary.** You're betting your entire 13-year financial model on a program that has a documented failure rate and legislative risk. The government has repeatedly changed PSLF eligibility retroactively, and the forgiveness mechanic requires flawless ten-year employment continuity — one employer switch to a for-profit or ineligible nonprofit, one extended leave, one gap, and you lose years of progress. Monthly payments on $150–200K debt at $55–70K salary under SAVE/REPAYE will run $200–400/month with interest capitalization, eating through most of your discretionary income. Have you stress-tested what happens if PSLF is reformed, capped at $50K forgiveness, or eliminated? One mitigation: model an alternative 15-year aggressive repayment plan ($800–1,000/month) that reaches loan freedom by age 50 without relying on forgiveness, then treat PSLF as upside rather than load-bearing. This flips the dependency and lets you exit public interest law without catastrophic debt if you change fields.
+
+## Question Summary: The 13-Year Compounding Arc and Its Fragility Points
+
+* **Summary.** PSLF only stabilizes the system if thirteen years of decisions go perfectly: you stay at a qualifying employer, employment gaps don't exceed three months, the program survives legislative changes, you don't get burned out again halfway through. That's a long time to be trapped in a role for the sake of debt forgiveness rather than because it's fulfilling. The implicit assumption is that year 8 of public interest law will feel as meaningful as year 1; if it doesn't, you'll face a brutal choice between staying miserable or tanking your financial plan. Have we considered that the debt itself becomes a retention tool that could trap you? One concrete hedge: at year 5, conduct a decision point: if the work is genuinely draining, explore employer switches to other qualifying organizations (government, other nonprofits) without losing progress. Build relationships now with 2–3 organizations ahead of time so that if your current role becomes unsustainable, you have a pre-mapped escape hatch that doesn't reset your PSLF clock.
+
+## Question Summary: IDR Floor Over Twenty Years
+
+* **Summary.** At $200K debt and $60K salary, SAVE or IBR monthly payments of $200–400/month are manageable in theory but leave almost nothing for unexpected expenses, home ownership, or meaningful retirement savings. You're borrowing against your future flexibility. Meanwhile, staying in nursing and aggressively paying down your existing $22K in 2–3 years costs you roughly $10K/year ($30K total) but leaves you debt-free by age 35, with a fully open financial life thereafter. The public interest salary floor of $55–70K may be "technically livable on paper" in a low cost-of-living city, but housing, healthcare, childcare, or family illness will shatter that budget quickly. What's the actual cost-of-living in your target city, and does that salary leave you with a real safety margin or just a numerical one? Mitigation: before law school, spend 3–6 months working a law-adjacent role (paralegal, nonprofit legal coordinator) in your target city at entry-level pay to stress-test whether the lifestyle is actually sustainable for you. If it isn't, you've discovered that now while you still have a nursing career, not after $200K in debt.
+
+## Question Summary: Retirement Trajectory Disruption
+
+* **Summary.** Eight years in nursing likely means you've built $60K–$150K in retirement savings (401k, Roth IRA). Three years of law school wipes out contributions and forces potential liquidation to cover living expenses, costing you tax penalties and compounding growth. Followed by 13 years at $60K salary with income-driven payments, your retirement savings will accumulate slowly. A nurse staying in the field for 13 more years at $82K, with employer match and 3% annual raises, will have roughly $400K–$500K by age 45. An attorney starting from zero after law school, contributing modestly while managing PSLF, might reach $150K–$250K in that same timeframe. That's a $250K+ retirement gap. Have you calculated when (or if) an attorney's career trajectory would close that gap relative to staying in nursing? One realistic mitigation: if you pursue law school, commit to a non-negotiable annual retirement contribution starting in year 1 after law school — even $150–200/month — and lock in employer match at your qualifying organization. Request that your nonprofit offer a SIMPLE IRA match; many do. This won't close the gap, but it slows the divergence.
+
+## Question Summary: What If the Financially Safe Path Is Actually the Riskier Bet
+
+* **Summary.** You're comparing the explicit costs of switching (debt, lost income, tuition) against the fantasy of staying in nursing: stable, predictable, no risk. But you've already signaled serious burnout; the nursing scenario assumes you'll stay engaged and productive for 13 more years. In reality, if burnout accelerates, you might exit the ICU within 5 years for a lower-paying nursing role ($60K), take stress-related medical leave, reduce to part-time, or develop health conditions that limit your work capacity — all of which erase your salary advantage. Healthcare costs for chronic stress, lost productivity, potential early retirement at reduced benefits — these are real costs, but they're invisible in financial models because they're labeled "what if" rather than "likely trajectory." The financial argument for staying assumes you'll be fine; the financial argument for law school assumes you won't be fine if you stay. Which assumption is more evidence-based? Concrete mitigation: run two parallel financial models — one assumes you thrive in nursing for 13 more years, one assumes burnout leads to a $20K salary cut and 2 years of reduced work capacity within 5 years. Which scenario's cost is actually lower? If the burnout scenario makes law school the better bet, then the decision isn't financial; it's about honestly naming the sustainability gap in your current career and accepting the cost of closure rather than the hidden cost of denial.
