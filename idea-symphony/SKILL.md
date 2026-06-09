@@ -326,7 +326,9 @@ Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/pr
 
 **Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
-Once all subagents are complete, run the utility script to build the concatenated `SUMMARIES.md` file. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
+**Humanizer post-step.** Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at `{path}`). `_summary.md` is humanized at every effort level; there is no `_synthesis.md` at `low` effort, so no per-question pass runs here. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+
+Once the humanizer post-step is complete, run the utility script to build the concatenated `SUMMARIES.md` file so it inherits the humanized substrate. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
 
 ```bash
 scripts/build-summaries.sh {{session}}
@@ -340,7 +342,14 @@ Each `_summary.md` carries a `**Central Tension**` line at the top — a univers
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 
-Once all subagents are complete, run both utility scripts. Each is a deterministic concat-and-strip-frontmatter transform; `build-summaries.sh` consumes the per-topic `_summary.md` files and `build-synthesis.sh` consumes the per-topic `_synthesis.md` files. They are independent and can be run in either order.
+**Humanizer post-step.** Once all synthesis subagents are complete, fan out Haiku subagents using the prompt at `{{skill}}/prompts/humanizer-pass.md`:
+
+- **One per `_summary.md` file** — mode (a), per-file pass; edits in place at `{path}`.
+- **One per `### Question N` block of each `_synthesis.md`** — mode (b), per-question pass. Rather than humanizing each `_synthesis.md` as one whole-file call, chunk per question: a single whole-file pass holds clean to roughly 35 synthesized insights but degrades past that (losing framing-marker prefixes and dissolving reframe bold-leads in later questions), and one call per question keeps every call under that ceiling. Each call is handed one `### Question N` block as text and returns its humanized block as text — it writes nothing. An **assembler step** then reassembles each `_synthesis.md` from its humanized blocks and writes the file once, to avoid parallel-write races on a single file.
+
+`_synthesis.md` is emitted only at `medium`/`high` effort, so the per-question pass runs only here; `_summary.md` is humanized at every effort level. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+
+Once the humanizer post-step and the `_synthesis.md` reassembly are complete, run both utility scripts so `SUMMARIES.md` and `SYNTHESIS.md` inherit the humanized substrate. Each is a deterministic concat-and-strip-frontmatter transform; `build-summaries.sh` consumes the per-topic `_summary.md` files and `build-synthesis.sh` consumes the per-topic `_synthesis.md` files. They are independent and can be run in either order.
 
 ```bash
 scripts/build-summaries.sh {{session}}

@@ -98,11 +98,6 @@ topic-cluster: "{{cluster_slug}}"
 ---
 
 [Continue for all questions in this topic cluster]
-
----
-
-**Questions addressed**: [count]
-**Total responses**: [count]
 ```
 
 ## File Paths

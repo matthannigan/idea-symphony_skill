@@ -96,11 +96,6 @@ persona: "[Persona Name]"
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
 
 [Continue for all questions in topic cluster]
-
----
-
-**Questions addressed**: [count]
-**Total responses**: [count]
 ```
 
 ### File Path

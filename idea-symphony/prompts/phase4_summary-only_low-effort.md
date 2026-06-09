@@ -67,19 +67,16 @@ stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
+central-tension: "[One sentence naming the cluster's organizing trade-off, lightly compressed — e.g., 'incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk.' Carry the same claim the Executive Summary's opening makes. If the cluster is broadly convergent with no genuine trade-off, state the convergent finding instead.]"
 ---
 
 # Summary: [Topic Cluster Name]
 
-**Central Tension**: [One sentence naming the cluster's organizing trade-off — e.g., "incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk." Required. If the cluster has no productive tension to name, that itself is a signal worth surfacing — say so.
-
-**Inverted-framing pairs.** If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.]
-
----
-
 ## Executive Summary
 
-[2-3 paragraphs capturing the most important insights. Note where the two lenses converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised. Frame convergences and disagreements in substantive terms (e.g., "a risk-oriented view," "a feasibility-oriented view"), not by persona name.]
+[Open with the cluster's organizing tension if it has one — a genuine trade-off the two lenses did not resolve, stated as natural prose (e.g., "Sliding-scale membership maximizes sustainability at current member counts, but any paywall selectively excludes the members the library exists to serve"). If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair explicitly — inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.
+
+Then, across 2-3 paragraphs, capture the most important insights: where the two lenses converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised. Frame convergences and disagreements in substantive terms (e.g., "a risk-oriented view," "a feasibility-oriented view"), not by persona name.]
 
 ---
 

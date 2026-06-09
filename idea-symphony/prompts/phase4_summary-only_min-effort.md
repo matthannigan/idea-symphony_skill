@@ -49,17 +49,14 @@ stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
+central-tension: "[One sentence naming the cluster's organizing trade-off as it appears within the brainstormer's own response, lightly compressed — what does this cluster's substance pull in two directions on? Carry the same claim the Executive Summary's opening makes. If the cluster is broadly convergent with no genuine trade-off, state the convergent finding instead.]"
 ---
 
 # Summary: [Topic Cluster Name]
 
-**Central Tension**: [One sentence naming the cluster's organizing trade-off as it appears within the brainstormer's own response — what does this cluster's substance pull in two directions on? Required. If the cluster has no productive tension to name, that itself is a signal worth surfacing — say so.]
-
----
-
 ## Executive Summary
 
-[2-3 paragraphs capturing the essence of this topic cluster's exploration. What are the most important takeaways?]
+[Open with the cluster's organizing tension if it has one — a genuine trade-off the brainstormer's own response pulls in two directions on, stated as natural prose. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. Then, across 2-3 paragraphs, capture the essence of this topic cluster's exploration — what are the most important takeaways?]
 
 ---
 
