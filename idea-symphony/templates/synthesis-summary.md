@@ -14,17 +14,14 @@ stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
+central-tension: "[One line; the cluster's organizing trade-off if it has one. Phase 5 reads this key. May be lightly compressed relative to the Executive Summary's prose, but must carry the same claim. Omit or leave blank if the cluster is broadly convergent.]"
 ---
 
 # Summary: [Topic Cluster Name]
 
-**Central Tension**: [One sentence; if no productive tension to name, that itself is a signal — say so. Required at all effort levels (`min`/`low`/`medium`/`high`).]
-
----
-
 ## Executive Summary
 
-[Paragraphs capturing the most important insights. Length scales with effort: 2-3 paragraphs at `min`/`low`; 3-5 paragraphs (200-400 words) at `medium`/`high`.]
+[The opening should state the cluster's organizing tension if it has one — a genuine trade-off the personas did not resolve — carried as natural prose, not a labeled line. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. The opening tension or finding should match the `central-tension:` frontmatter claim. Length scales with effort: 2-3 paragraphs at `min`/`low`; 3-5 paragraphs (200-400 words) at `medium`/`high`.]
 
 ---
 
@@ -41,7 +38,7 @@ topic-cluster: "{{cluster_slug}}"
 
 [Include 3-5 themes total]
 
-**Categorical reframe (optional, `medium`/`high` only):** If the cluster has a categorical reframe — a sentence-level claim that reframes the cluster's question itself ("we are not running X; we are running Y") — surface it as a single declarative sentence at the top of `## Key Themes`, separate from the individual themes. The reframe should be derivable from at least three personas' responses.
+**Categorical reframe (exceptional, `medium`/`high` only):** A categorical reframe is a sentence-level reversal — produced by a single persona, corroborated by at least two others — that changes which actions get prioritized in the cluster. Most clusters will not have one. Surfacing a reframe that is not load-bearing is worse than absence: it produces rhetorical uniformity across clusters and trains downstream Phase 5 output to imitate the shape. If a candidate reframe restates an existing theme without changing which actions are prioritized, omit it. When a genuine reframe is present, surface it as a single declarative sentence at the top of `## Key Themes`, separate from the individual themes.
 
 ---
 

@@ -16,7 +16,7 @@ Compose modules into a single block of text (NotebookLM's Customize box is plain
 
 This module is **Symphony-specific** — it does not appear in the canonical `nlm-audio-prompt` skill because that skill is consumed with arbitrary sources. Symphony sources are always the output of a structured ideation process, and consumers (NotebookLM hosts, slide generators, infographic generators) must be told so up front, or they will frame the content as primary research or expert consensus.
 
-> **Source framing:** The documents provided are the output of a facilitated multi-perspective brainstorming session on **[Project Name]**, conducted using a structured ideation method that simulates multiple thinking styles (e.g., a pragmatist lens, an adversarial lens, an audience-advocate lens, a systems lens). The content synthesizes ideas generated through that process — it is **not** primary research, expert consensus, peer-reviewed findings, or validated truth. Treat every claim as an idea surfaced through structured ideation, and frame the discussion accordingly: prefer "the session surfaced…" / "one perspective in the brainstorm proposed…" / "the brainstorm converged on…" over "research shows…" / "experts agree…" / "the data demonstrates…". When a finding is attributed to convergence across multiple lenses, that is a quality signal within the brainstorm — not external validation.
+> **Source framing:** These documents are the output of a facilitated brainstorming session on **[Project Name]** — structured ideation across multiple thinking styles, not primary research or validated findings. Frame claims as ideas the session surfaced ("the brainstorm proposed…"), not as facts ("research shows…"). Convergence across lenses is an internal quality signal, not external validation.
 
 ### Module 1 — Format and audience (always include)
 
@@ -97,7 +97,7 @@ For Artifacts 2 (single podcast) and 4 (single infographic), uploading `BRAINSTO
 **Customize box prompt:**
 
 ```
-Source framing: The documents are the output of a facilitated multi-perspective brainstorming session on [Project Name], generated using a structured ideation method that simulates multiple thinking styles. The content synthesizes ideas surfaced through that process — it is not primary research, expert consensus, or validated findings. The presentation should frame its claims as outputs of structured ideation, not external validation. Use phrasing like "the session surfaced…" / "the brainstorm identified…" / "one perspective in the cluster argued…" rather than "research shows…" or "experts agree…".
+Source framing: These documents are the output of a facilitated brainstorming session on [Project Name] — structured ideation across multiple thinking styles, not primary research or validated findings. The presentation should frame claims as ideas the session surfaced ("the brainstorm proposed…", "one perspective in the cluster argued…"), not as facts ("research shows…", "experts agree…"). Convergence across lenses is an internal quality signal, not external validation.
 
 Create a presentation for [Target Audience — e.g., "the project's stakeholders" / "an internal review committee" / "a funder"] covering the findings from this brainstorming session on [Project Name].
 
@@ -110,7 +110,7 @@ Slide structure:
 4. Central Tensions — one slide per tension (maximum 4 slides).
 5. Key Themes — 2-4 slides on cross-cluster patterns.
 6. Per-cluster summaries — one slide per cluster, in the order from BRAINSTORM.md. Each slide names the cluster's Central Tension and one or two key insights.
-7. Conspicuous Absences — one slide listing what the brainstorm did not engage with.
+7. What the brainstorm did not engage with — one slide listing the gaps and unexplored angles the session left open.
 8. Recommended Next Steps — 1-2 slides, ordered by impact.
 
 Tone: Analytical and direct. Avoid bullet-point-as-marketing-slogan phrasing. Each bullet should be a complete, specific claim — not a 3-word teaser. No hype words ("transformative," "game-changing," "revolutionary"). No exclamation marks.
@@ -133,7 +133,7 @@ Visuals: Prefer concept diagrams and 2-axis trade-off charts over decorative sto
 **Customize box prompt:**
 
 ```
-Source framing: The document is the output of a facilitated multi-perspective brainstorming session on [Project Name], generated using a structured ideation method that simulates multiple thinking styles (pragmatist, adversarial, audience-advocate, systems lens, and others). The content synthesizes ideas surfaced through that process — it is not primary research, expert consensus, or validated findings. Frame claims as ideas the session surfaced, not as facts: prefer "the session surfaced…" / "the brainstorm converged on…" / "one perspective proposed…" over "research shows…" or "experts agree…". When the source notes convergence across multiple lenses, that is internal-to-the-brainstorm quality signal, not external validation.
+Source framing: This document is the output of a facilitated brainstorming session on [Project Name] — structured ideation across multiple thinking styles, not primary research or validated findings. Frame claims as ideas the session surfaced ("the brainstorm proposed…", "the brainstorm converged on…"), not as facts ("research shows…", "experts agree…"). Convergence across lenses is an internal quality signal, not external validation.
 
 Create a Deep Dive for an audience that already has working knowledge of [Project Domain]. Skip introductory definitions of standard terminology like [domain-specific term 1], [term 2], [term 3].
 
@@ -143,7 +143,7 @@ Interpretation: Summarize what the source actually says. Do not extrapolate or s
 
 Structure: Begin with a brief, calm framing of the brainstorming session and what the source covers. Work through the material one section at a time — Executive Summary, then Central Tensions, then Key Themes, then Topic Summaries. End with a concise synthesis tied to the Recommended Next Steps, not a hype recap.
 
-Nuance: Give equal weight to the Conspicuous Absences and trade-offs as to the convergent findings. The Central Tensions are the most analytically interesting parts — spend time on them.
+Nuance: Give equal weight to what the brainstorm did not engage with and to the trade-offs as you do to the convergent findings. The strongest unresolved tensions are the most analytically interesting parts — spend time on them.
 
 Focus: Concentrate on [the 2-3 most load-bearing themes from the brainstorm]. Treat tactical implementation details as context rather than the main subject.
 ```
@@ -165,7 +165,7 @@ For each cluster from PLAN.md, the prompt scopes the episode to that cluster whi
 **Customize box prompt:**
 
 ```
-Source framing: The documents are the output of a facilitated multi-perspective brainstorming session on [Project Name], generated using a structured ideation method that simulates multiple thinking styles. The content synthesizes ideas surfaced through that process — it is not primary research or validated findings. This episode focuses on one of the session's topic clusters: [Cluster 1 Display Name]. Frame claims as ideas the session surfaced ("the brainstorm proposed…", "one perspective in the cluster argued…"), not as facts ("research shows…", "experts agree…").
+Source framing: These documents are the output of a facilitated brainstorming session on [Project Name] — structured ideation across multiple thinking styles, not primary research or validated findings. This episode focuses on one of the session's topic clusters: [Cluster 1 Display Name]. Frame claims as ideas the session surfaced ("the brainstorm proposed…", "one perspective in the cluster argued…"), not as facts ("research shows…", "experts agree…").
 
 Create a Deep Dive for an audience that already has working knowledge of [Project Domain]. Skip introductory definitions of standard terminology.
 
@@ -175,9 +175,9 @@ Interpretation: Summarize what the sources actually say. Do not extrapolate or s
 
 Structure: Begin with a brief framing of [Cluster 1 Display Name] as a cluster the brainstorming session explored, then work through the cluster's questions methodically. End with a concise synthesis of the cluster's Central Tension and Recommended Next Steps.
 
-Focus: Concentrate on `synthesis/[cluster-1-slug]_summary.md`. Treat `BRAINSTORM.md` and the other `_summary.md` files as context only — refer to them when they intersect with [Cluster 1 Display Name], but do not summarize their content.
+Focus: Concentrate on the summary document for [Cluster 1 Display Name]. Treat the overall BRAINSTORM summary and the other cluster summaries as context only — refer to them when they intersect with [Cluster 1 Display Name], but do not summarize their content.
 
-Nuance: Surface the cluster's Conspicuous Absences and any single-perspective reframes alongside the convergent findings.
+Nuance: Surface what the cluster did not engage with, and any minority view worth surfacing, alongside the convergent findings.
 ```
 
 **Character count:** [N] / 5,000
@@ -205,7 +205,7 @@ Nuance: Surface the cluster's Conspicuous Absences and any single-perspective re
 **Customize box prompt:**
 
 ```
-Source framing: The source document is the output of a facilitated multi-perspective brainstorming session on [Project Name], generated using a structured ideation method that simulates multiple thinking styles. The content synthesizes ideas surfaced through that process — it is not primary research, expert consensus, or validated findings. Frame the infographic as a summary of what the brainstorming session surfaced, not as a research report. Use language like "the session surfaced…" / "the brainstorm identified…" in labels and callouts.
+Source framing: This document is the output of a facilitated brainstorming session on [Project Name] — structured ideation across multiple thinking styles, not primary research or validated findings. Frame the infographic as a summary of what the session surfaced, not as a research report. Use language like "the session surfaced…" / "the brainstorm proposed…" in labels and callouts.
 
 Create a single-page infographic summarizing the findings from this brainstorming session on [Project Name].
 
@@ -241,7 +241,7 @@ For each cluster from PLAN.md, the prompt scopes the infographic to that cluster
 **Customize box prompt:**
 
 ```
-Source framing: The documents are the output of a facilitated multi-perspective brainstorming session on [Project Name], generated using a structured ideation method that simulates multiple thinking styles. This infographic focuses on one of the session's topic clusters: [Cluster 1 Display Name]. Frame claims as ideas the session surfaced ("the cluster's brainstorm proposed…", "one perspective in the cluster argued…"), not as facts.
+Source framing: These documents are the output of a facilitated brainstorming session on [Project Name] — structured ideation across multiple thinking styles, not primary research or validated findings. This infographic focuses on one of the session's topic clusters: [Cluster 1 Display Name]. Frame claims as ideas the session surfaced ("the brainstorm proposed…", "one perspective in the cluster argued…"), not as facts ("research shows…").
 
 Create a single-page infographic for [Cluster 1 Display Name] — one of the topic clusters explored in the brainstorming session on [Project Name].
 
@@ -249,16 +249,16 @@ Audience: Someone unfamiliar with the project who has 60 seconds to grasp what t
 
 Information hierarchy (top to bottom):
 1. Title: [Cluster 1 Display Name]. Subtitle: one-sentence framing of the question the cluster explored.
-2. Central Tension — the cluster's single Central Tension as a featured callout, quoted near-verbatim from `synthesis/[cluster-1-slug]_summary.md`.
+2. Central Tension — the cluster's single Central Tension as a featured callout, quoted near-verbatim from the [Cluster 1 Display Name] summary.
 3. Key Themes within the cluster — 2-4 themes the brainstorm surfaced for this cluster. Each as a short labeled section with a complete-claim label.
-4. Conspicuous Absences / single-perspective reframes — 1-3 items the cluster's summary calls out as structurally missing or as a load-bearing minority view. Visually distinct from the convergent themes (e.g., bordered callout or different section).
+4. What the cluster did not resolve — 1-3 items the cluster's summary calls out as structurally missing or as a strong minority view worth surfacing. Visually distinct from the convergent themes (e.g., bordered callout or different section).
 5. Recommended Next Steps for this cluster — top 2-4 items from the cluster's summary.
 
-Focus: Concentrate on `synthesis/[cluster-1-slug]_summary.md`. Treat `BRAINSTORM.md` and the other `_summary.md` files as context only — reference them only when they intersect with [Cluster 1 Display Name].
+Focus: Concentrate on the summary document for [Cluster 1 Display Name]. Treat the overall BRAINSTORM summary and the other cluster summaries as context only — reference them only when they intersect with [Cluster 1 Display Name].
 
 Tone: Analytical and specific. Each label or callout should be a complete claim, not a topic tag. No marketing voice. No exclamation marks. No hype words.
 
-Visual structure: Top-to-bottom reading order. Use whitespace and section dividers, not color-coded blocks. The Central Tension and the Absences section are the most analytically interesting parts — give them visual weight. Keep iconography minimal and functional.
+Visual structure: Top-to-bottom reading order. Use whitespace and section dividers, not color-coded blocks. The Central Tension and the "what the cluster did not resolve" section are the most analytically interesting parts — give them visual weight. Keep iconography minimal and functional.
 
 Density: Single screen, but dense. A reader should be able to extract the cluster's framing, tension, and themes at a glance.
 ```
@@ -302,4 +302,5 @@ When producing the user-facing file, the Phase 5 subagent must:
 6. Tailor `[domain-specific term 1/2/3]` in Artifact 1 to terminology the brainstorm uses repeatedly, so NotebookLM skips defining what the audience already knows.
 7. Tailor `[the 2-3 most load-bearing themes from the brainstorm]` in Artifact 1's Focus module to the actual themes — pull from `BRAINSTORM.md`'s Key Themes section.
 8. Tailor `[Target Audience]` and the slide-count target in Artifact 3 based on effort level (defaults in the template) and any audience cues from `REQUEST.md`.
-9. Do not emit the "For the Phase 5 subagent: inline module reference" block or this checklist into the user-facing file. The user-facing file starts at `# NotebookLM Instructions: [Project Name]`.
+9. **Vocabulary translation.** The customize-box prompts are read aloud or rendered as labels by NotebookLM, so they must speak NotebookLM's language, not Symphony's. When filling in the template, translate any Symphony-internal vocabulary that the substrate (`BRAINSTORM.md`, `SUMMARIES.md`) carries into the prompts: "categorical reframe" → "the cluster's core reframe" (or omit if not load-bearing); "single-perspective reframe" → "a minority view worth surfacing"; "productive dissent" / "productive disagreement" → "a strong counter-argument the brainstorm did not resolve"; capitalized "Conspicuous Absences" as a section label → "what the brainstorm did not engage with"; "the cluster's brainstorm proposed…" → "the brainstorm proposed…". This applies to text inside the fenced customize-box prompts only; the "Notes for the user" prose may reference Symphony concepts freely.
+10. Do not emit the "For the Phase 5 subagent: inline module reference" block or this checklist into the user-facing file. The user-facing file starts at `# NotebookLM Instructions: [Project Name]`.

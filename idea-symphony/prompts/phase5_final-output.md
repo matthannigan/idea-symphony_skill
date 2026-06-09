@@ -10,6 +10,8 @@ You are producing the user-facing final output for a brainstorming session. Prod
 
 **Persona names and character names are prohibited in `BRAINSTORM.md`.** This includes (a) persona-name mentions ("The Devil's Advocate", "The Storyteller", "The Pragmatist's caution"); (b) bullet-summary labels of the form "Visionary alternatives" / "Pragmatist's caution"; (c) possessive enumerations ("The Storyteller's Marcus"); (d) sentence-subject mentions ("The Devil's Advocate argues"); (e) character names from persona narratives (Marcus, Maria, Margaret, Elena, Sarah, David, James, Aisha, etc.) — these come from per-persona scenic writing inside Phase 3 responses and must not survive into the user-facing document. Convey breadth via cluster counts and lens types ("a feasibility-oriented finding", "an adversarial counter-test across two clusters"). Process jargon is also prohibited ("orchestrator", "subagent", "phase").
 
+**Em-dash budget.** Limit em dashes to roughly one per paragraph. Em-dash overuse is a strong AI tell; prefer periods, parentheses, or commas. This applies to the generated prose, not to quoted persona material.
+
 ## Inputs
 
 Read all of the following before drafting. They are independent; read them in parallel.
@@ -31,19 +33,17 @@ Synthesize the per-topic summaries into a single user-facing document.
 
 1. **Read inputs in parallel.** Note the project name, effort level, and topic-cluster list (slugs + display names from PLAN.md, in order).
 2. **Draft the executive summary** (3-5 paragraphs). Capture the most important insights *across all topics*, not a topic-by-topic recap. Lead with the highest-confidence findings.
-3. **Surface Central Tensions.** Each per-cluster `_summary.md` includes a `**Central Tension**` line at the top. Read all of them before drafting the Executive Summary. If two or more clusters share a structurally similar tension, name the cross-cluster meta-tension explicitly. If clusters' tensions diverge, that divergence is itself a session-level finding worth naming. Either aggregate per-cluster tensions or list them in a dedicated subsection. Limit the section to **at most 4 entries** — past 4, the section dilutes; the remaining tensions stay in their per-cluster summaries and are not lost. List fewer than 4 if fewer are load-bearing.
+3. **Surface Central Tensions.** Each per-cluster `_summary.md` carries its central tension in a `central-tension:` YAML frontmatter key. Read that key from every cluster's `_summary.md` before drafting the Executive Summary (do not scrape it from a bolded prose line in the body — the frontmatter key is the authoritative source). If two or more clusters share a structurally similar tension, name the cross-cluster meta-tension explicitly. If clusters' tensions diverge, that divergence is itself a session-level finding worth naming. Either aggregate per-cluster tensions or list them in a dedicated subsection. Limit the section to **at most 4 entries** — past 4, the section dilutes; the remaining tensions stay in their per-cluster summaries and are not lost. List fewer than 4 if fewer are load-bearing.
 4. **Write the session overview** — 2-4 sentences on what the user asked and how the session approached it (e.g., effort level, number of topic clusters).
 5. **Extract key themes** that appear across multiple topic clusters or cross-cut the whole session. These are *not* topic summaries — they're patterns that emerge when you look at all the summaries together.
 6. **Build per-topic blocks.** For each topic cluster (in the order from PLAN.md):
    - `### N. [Topic Display Name]` (sequential 1, 2, 3 numbering)
    - 2-4 sentences extracting the most important insight(s) from that cluster's section in SUMMARIES.md
-   - If the cluster's `_summary.md` opens with a categorical reframe (a single declarative sentence reframing the cluster's question — e.g., "the library's operational core is not inventory management but mutual-visibility infrastructure"), open the per-topic block with that sentence verbatim or as a near-paraphrase preserving the same noun-pair contrast. Use the substrate's framing, not your own.
+   - If the cluster's `_summary.md` opens with a categorical reframe (a single declarative sentence reframing the cluster's question — e.g., "the library's operational core is not inventory management but mutual-visibility infrastructure"), convey the same insight in the per-topic block's own voice. **Do not preserve the noun-pair grammar** if it produces repetitive shape across clusters. The reframe's content survives; the rhetorical structure does not propagate. Use the substrate's framing, not your own.
 
      **Example.** Substrate: *"the library's operational core is not inventory management but mutual-visibility infrastructure."*
-     Passing first sentence: *"The library's operational core is mutual-visibility infrastructure, not inventory management."* (near-paraphrase, same noun pair)
-     Failing first sentence: *"Libraries serve as community hubs for knowledge sharing."* (different framing, noun pair lost)
-
-     If multiple clusters carry categorical reframes that share a structural pattern, surface that pattern in `## Key Themes` separately from the per-topic blocks.
+     Passing first sentence: *"The library runs on members seeing each other's tools; tracking inventory is secondary to keeping that visibility alive."* (content preserved, own voice, noun-pair grammar dropped)
+     Failing first sentence: *"The library's operational core is mutual-visibility infrastructure, not inventory management."* (content preserved but the "X, not Y" shape is echoed mechanically — this is the repetitive structure to avoid)
    - `- See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)` — substitute the actual slug from PLAN.md
 7. **Forward absences.** Per-cluster Conspicuous Absences (`min`) and Neither-lens gaps (`low`) name what's structurally missing. Read those sections from each `_summary.md` and aggregate to session level. The Executive Summary is confidence-positive by register; Conspicuous Absences is the counterweight. Do not let Recommended Next Steps paper over an absence — if a cluster surfaced a decision-the-brainstormer-declined, the next-steps section must either invite that decision or name it as out-of-scope.
 8. **Recommend next steps** — 10-15 action items synthesized across all topics. Prioritize specificity over topic-grouping; an impact-ordered list is more useful than a topic-ordered one.
@@ -81,7 +81,7 @@ Synthesize the per-topic summaries into a single user-facing document.
 
 **Per-cluster dissent and reversals are non-droppable in per-topic blocks.** When a cluster's `_summary.md` names a single-persona-reframe (counter-test, distinctive timing claim, alternate diagnostic pattern, DA-anchored dissent that overturns a claim established earlier in the cluster) or a foundational reversal (a sentence-level "we thought X; the answer is the opposite of X" finding), the per-topic block for that cluster MUST surface it — even at the cost of dropping a more convergent theme. Cross-cluster majority-rule logic in the Executive Summary and Key Themes does not override per-cluster dissent preservation. If a dissent recurs across multiple clusters, name it as a dissent in the Key Themes (not as a convergence).
 
-**Preservation takes precedence over the band.** When length pressure forces a choice between the upper bound and surfacing a dissent, foundational reversal, categorical reframe, Central Tension, or `[recurring]` item, retain the content and exceed the band. The upper bound governs editorial elaboration; it does not govern preservation.
+**Preservation takes precedence over the band.** Foundational reversals (sentence-level "we thought X; the answer is the opposite of X") and productive dissent are non-droppable. Categorical reframes are droppable under length pressure or when retaining them would produce rhetorical uniformity across clusters. When length pressure forces a choice between the upper bound and surfacing a non-droppable dissent, foundational reversal, Central Tension, or `[recurring]` item, retain the content and exceed the band. The upper bound governs editorial elaboration; it does not govern preservation.
 
 **Example.** A high-effort session has 9 clusters, each with a one-sentence dissent. Surfacing all 9 dissents in per-topic blocks pushes body length to 2400 words, 55 over the 1170–2345 ceiling. The correct response is to retain all 9 dissents and accept the 55-word overage. Compressing by dropping the 3 least-vivid dissents to land at 2340 is incorrect.
 
@@ -109,7 +109,9 @@ The general principles still apply: meet the aggregate-band lower bound; stay wi
 
    If the flag is `"no"` or absent, skip this step entirely.
 
-3. Do not modify any other files.
+3. **Humanizer pass on `BRAINSTORM.md`.** After `BRAINSTORM.md` is fully written, run an inline humanizer pass over it using the shared brief at [`{{skill}}/prompts/humanizer-pass.md`](humanizer-pass.md), which itself invokes the humanizer skill at [`{{skill}}/prompts/humanizer/SKILL.md`](humanizer/SKILL.md). Edit `BRAINSTORM.md` in place. Preserve the numbered next-steps ordering, all dollar figures, and the citations to `synthesis/{slug}_summary.md` files. Do **not** humanize `NOTEBOOK-LM-INSTRUCTIONS.md` — its readers are NotebookLM's customize box, not humans.
+
+4. Do not modify any other files.
 
 ## Notes
 

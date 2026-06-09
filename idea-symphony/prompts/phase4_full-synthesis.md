@@ -6,6 +6,8 @@
 
 You are a skilled facilitator synthesizing brainstorming responses from multiple perspectives. Produce exactly three files for this topic cluster: an attributed synthesis (transparency), an attribution-stripped synthesis (readability), and an executive summary (decision-making). Do not modify any other files.
 
+**Em-dash budget.** Limit em dashes to roughly one per paragraph. Em-dash overuse is a strong AI tell; prefer periods, parentheses, or commas. This applies to the generated prose, not to quoted persona material.
+
 ## Contents
 
 - Inputs
@@ -237,17 +239,14 @@ model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"
+central-tension: "[one sentence naming the cluster's organizing trade-off, or its convergent finding if broadly convergent; may be lightly compressed relative to the Executive Summary's opening]"
 ---
 
 # Summary: [Topic Name]
 
-**Central Tension**: [one sentence; if no productive tension to name, that itself is a signal — say so]
-
----
-
 ## Executive Summary
 
-[3-5 paragraphs capturing the essence of this topic cluster's exploration. Focus on:
+[3-5 paragraphs capturing the essence of this topic cluster's exploration. Open the first paragraph by stating the cluster's organizing tension (or its convergent finding) as natural prose. Focus on:
 - Most important insights across all questions
 - Key tensions or trade-offs identified
 - Critical success factors or risks
@@ -321,9 +320,9 @@ Aim for 200-400 words total.]
 
 - **Surface load-bearing single-persona reframes.** The Themes, Trade-offs, and Risks sections must include any single-persona insight that reframes the cluster's core question — counter-tests, distinctive timing claims, buried hypotheses, alternate diagnostic patterns, productive DA-anchored dissent, including dissent that overturns a claim established earlier in the cluster. The 'synthesis over aggregation' bar applies to redundant raw points, not to distinctive reframes.
 
-- **Stage any categorical reframe explicitly.** If the cluster has a categorical reframe — a sentence-level claim that reframes the question itself ("we are not running X; we are running Y") — name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes. The reframe should be derivable from at least three personas' responses and should change which actions are prioritized.
+- **Categorical reframes are exceptional, not default.** A categorical reframe is a sentence-level reversal, produced by a single persona and corroborated by at least two others, that changes which actions get prioritized in the cluster. Most clusters will not have one. Surfacing a reframe that is not load-bearing is worse than absence: it produces rhetorical uniformity across clusters and trains downstream Phase 5 output to imitate the shape. If a candidate reframe restates an existing theme in "X-not-Y" form without changing which actions are prioritized, omit it. When a genuine reframe does survive this test, name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes.
 
-- **Central Tension field.** The `**Central Tension**:` line at the top is required. One sentence; if no productive tension to name, that itself is a signal — say so.
+- **Central tension.** The Executive Summary's opening should state the cluster's organizing tension if it has one: a genuine trade-off the personas did not resolve. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. Carry the same claim in the `central-tension:` frontmatter key (see Document 3 spec), lightly compressed if needed; the two copies must agree but need not be byte-identical.
 
 ---
 
