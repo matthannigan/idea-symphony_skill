@@ -1,0 +1,68 @@
+---
+project-name: "Food Truck Startup and Expansion Strategy"
+session-dir: "test-runs/food-truck/min"
+datetime: 2026-04-23
+effort: "min"
+stage: "Phase 3: Generic Brainstorming"
+model-requested: "sonnet"
+model-reported: "claude-sonnet-4-6"
+topic-cluster: "01_unit-economics-and-financial-sustainability"
+---
+
+# Brainstorming Responses: Unit Economics and Financial Sustainability
+
+---
+
+## Question 1: Food Cost Targeting
+
+Given the complexity of Filipino-Mexican fusion ingredients (specialty items like ube, fresh lumpia wrappers, achiote), what food cost percentage is realistic for this menu, and how should menu engineering balance signature items with higher-margin offerings to hit overall unit economics targets?
+
+* **Target 32–36% blended food cost and build the menu around that ceiling, not below it.** Standard food truck benchmarks run 28–32%, but Filipino-Mexican fusion with specialty imports (ube powder ~$18/lb, fresh lumpia wrappers from an Asian market at $4–6/dozen) realistically pushes higher. Accept that signature items like ube horchata or fresh lumpia tacos may run 38–42% food cost individually — then engineer the menu so every high-cost item is paired with a high-margin anchor. Adobo burritos using braised pork shoulder ($2.50–3.00 food cost on a $14 menu price = 18–21%) carry the math. Design a 12-item menu where 4 flagship items are premium-cost/premium-price, 6 items are margin workhorses, and 2 items are near-zero-cost add-ons (pickled daikon, house sauces). Calculate plate cost on every item before launch, not after.
+
+* **Use batch-cook economics to bring specialty ingredient costs down.** Ube halaya (purple yam paste) is expensive pre-made but cheap to make in 10-lb batches from raw ube (~$1.80/lb at Asian grocers). Fresh lumpia wrappers cost 4x more than making them in-house on a crepe-style griddle. Map which specialty inputs are cost-prohibitive to buy vs. which are time-prohibitive to make, then build prep schedules accordingly. A 3-hour Sunday prep session producing 200 lumpia wrappers and a full batch of ube paste can cut food cost on those items from 40% to under 20%. This requires commissary kitchen time factored into the cost model — add $15–25/hr commissary rental to your cost-of-goods calculation, not just ingredient cost.
+
+* **Price for perceived value at the top, not food cost at the bottom.** In a mid-size city food truck scene, $14–16 for a fusion specialty item is defensible if the story is clear. The lumpia taco is not a $4 street taco — it's a Filipino-Mexican fusion dish with a specific origin story. Lead with narrative on signage, social, and the menu board. Customers in the $14–16 price tier are less price-sensitive and more story-sensitive. A 35% food cost on a $16 item ($5.60 COGS) is far better than a 28% food cost on a $10 item ($2.80 COGS) — you need volume on cheap items to match margin dollars from premium pricing. Avoid the trap of underpricing to compete with taco trucks; compete on differentiation instead.
+
+* **Engineer a combo/bundle architecture to raise average ticket without raising per-item cost.** A $22 combo (burrito + horchata + side) at 30% blended food cost generates $15.40 gross margin per transaction. A la carte orders averaging $13 at 35% food cost generate $8.45. At 100 daily covers, that combo architecture adds $694 in daily gross margin. Design 2–3 bundle options that pair a high-margin item with a specialty signature — the customer gets the "full experience" and you increase ticket size. Upsell training for solo operators matters here: the prompt at the window should be "want to add the ube horchata for $4?" not a passive menu listing.
+
+---
+
+## Question 2: Financing Decision Trade-Offs
+
+Weighing the $40K SBA microloan against more conservative bootstrapping — what factors beyond interest rate (personal risk tolerance, cash flow timing, credit implications, operational constraints) should drive this decision, and what does each path imply for the growth timeline?
+
+* **Map the cash flow gap before deciding — the SBA loan may be a bridge, not a bet.** A used food truck in serviceable condition runs $30–55K. Commissary setup, permits, initial inventory, and POS equipment add $8–15K. On $60K savings, bootstrapping is possible but leaves minimal operating buffer — as little as $0–10K after build-out. One mechanical failure ($3–8K for a compressor or generator) or a slow first month could create a personal cash crisis. The SBA microloan at ~8% interest costs roughly $400/month on a 10-year term — that's breakeven insurance, not a luxury. The right framing: if bootstrap means launching with under $8K operating reserve, take the loan. If you can launch with $15K+ in reserve after all startup costs, bootstrap is defensible.
+
+* **Evaluate the operational constraints the loan imposes, not just the debt.** SBA microloans through CDFIs (Community Development Financial Institutions) often require business plan submission, quarterly check-ins, and sometimes mentorship participation. For a solo founder with no prior business ownership, this overhead is actually an asset — forced financial discipline and an advisor relationship you'd otherwise pay a consultant for. Contrast with bootstrapping, which has no external accountability. The question isn't only "can I afford the payments?" but "will the structure of having a lender help me run tighter operations in year one?" For first-time operators, the answer is often yes.
+
+* **Model the growth timeline difference concretely.** With the SBA loan: launch with full equipment budget, hit break-even at ~80 covers/day, begin accumulating savings for truck #2 or catering equipment by month 18. Without the loan: potentially launch with a lower-spec truck or shared commissary arrangement, slower ramp, but no debt service. The 3-year goal (fleet or brick-and-mortar) likely requires $80–120K in capital. Bootstrapping that from a single truck's net profit at $2,000–4,000/month net (optimistic year-2 estimate) takes 20–40 months of perfect execution with no reinvestment. The loan compresses that timeline by 12–18 months — which matters if the local food truck market is still undersaturated for fusion concepts. Time-to-scale is a competitive variable, not just a financial one.
+
+* **Consider the credit implications as a strategic asset, not a liability.** Successfully repaying an SBA microloan establishes a business credit history that makes subsequent financing (SBA 7(a) for brick-and-mortar, equipment lease lines) significantly easier to obtain. A business with 2 years of on-time SBA repayment can access $100–250K in commercial financing; a business with no credit history cannot. If the 3-year plan requires outside capital at any point, the microloan is the foundation of that future relationship. Treat the $40K not as debt but as the first chapter of a credit file you're building deliberately.
+
+---
+
+## Question 3: Break-Even Modeling Under Seasonality
+
+In a mid-size city with pronounced weather-driven slow seasons, what revenue floor is needed to sustain operations through low months, and how should the capital reserve strategy account for the gap between seasonal peaks and troughs?
+
+* **Build a monthly fixed cost floor first, then back into required covers.** Fixed costs for a food truck operation typically run: truck payment/insurance ($600–900/mo), commissary rental ($400–800/mo), permits and licenses ($100–200/mo amortized), POS/software ($80–150/mo), fuel and maintenance reserve ($300–500/mo), and personal draw ($2,500–4,000/mo for a solo founder). Total fixed floor: roughly $4,000–6,500/month. At a $12 average net margin per cover (after food cost and direct labor on a $15 average ticket), you need 333–542 covers/month just to cover fixed costs — about 11–18 covers/day on a 30-day month. In a slow winter month with 15 operating days, that's 22–36 covers/day to break even. This is achievable on a modest outdoor market day; it's not achievable sitting in a vending zone during a January cold snap. Model each month individually, not as an annual average.
+
+* **Target a 3-month operating reserve before the first slow season hits.** If your fixed cost floor is $5,500/month and you enter November with $16,500 liquid reserves, you can survive three zero-revenue months without touching credit. In practice, slow months don't produce zero revenue — they produce 30–50% of peak revenue. The realistic goal is a reserve that covers the gap: if peak summer months generate $8,000/month net and slow winter months generate $2,500/month net, the monthly gap is $5,500. Over a 4-month slow season, that's a $22,000 swing. Build toward that reserve target by month 8–10 of operation, treating summer surpluses as savings, not spending money. A dedicated "slow season fund" savings account (separate from operating checking) enforces this discipline.
+
+* **Diversify revenue streams to raise the winter floor, not just the reserve.** Catering and private events are the single most effective hedge against weather-driven seasonality — a corporate holiday party in December pays the same whether it's 20 degrees outside or not. Begin building a catering pitch deck by month 3, price catering at a minimum of 30% above street pricing (you're providing convenience and exclusivity), and target 2–4 catering gigs per slow-season month at $600–1,200 each. That $1,200–4,800/month in catering revenue during slow months can be the difference between drawing a salary and dipping into reserves. The key operational lever: don't wait until October to book November catering — start taking deposits in August.
+
+* **Use seasonal patterns to schedule maintenance and reinvestment, not just survival.** The slow season is not only a cash flow problem — it's actually the optimal time for truck maintenance, equipment upgrades, and menu R&D that would be disruptive during peak months. Budget $2,000–4,000 for slow-season maintenance each year (deep clean, oil changes, equipment calibration, refrigeration service). Reframe slow months from "revenue gap to survive" to "investment period" — this mental shift affects how aggressively you save during peaks. If you know February is for a $3,000 truck servicing, you save for it like a bill, not a surprise.
+
+---
+
+## Question 4: Equipment Financing vs. Leasing
+
+For the primary truck and commissary kitchen equipment, what criteria (expected lifespan, maintenance risk, cash flow impact, tax treatment) should determine whether to finance, lease, or buy used outright — and how does this choice affect flexibility if the concept needs to pivot?
+
+* **Buy the truck used outright if you can, finance only if cash is constrained.** A used food truck with a solid commercial kitchen build-out runs $30–55K. Paying cash eliminates $400–700/month in debt service, and a fully owned truck is an asset you can sell or repurpose. The risk is maintenance: a 10-year-old truck may need $5–10K in mechanical work in year 1–2. Mitigate by budgeting $300–500/month into a dedicated maintenance reserve regardless of whether you financed or bought outright — treat it as a fixed cost. The flexibility argument for ownership is strong: if the concept pivots from street vending to catering-only, a truck you own can be reconfigured or sold. A leased truck returns to the lessor under potentially punitive exit terms.
+
+* **Lease commissary equipment rather than buy, especially for items with high obsolescence risk.** Commercial refrigeration, prep tables, and smallwares at a commissary kitchen are often already included in the rental fee — confirm this before spending $15–25K on equipment. If you do need your own commissary setup (some cities require a dedicated commissary rather than a shared facility), lease commercial refrigeration units rather than buying: refrigeration technology improves quickly, maintenance on owned units is your responsibility, and a 36-month lease at $200–350/month keeps capital free for truck operations. Buy smallwares and prep tools outright (low cost, long lifespan, no financing benefit).
+
+* **Use Section 179 depreciation to optimize the tax treatment of owned equipment.** If you finance or buy the truck outright, Section 179 allows you to deduct the full purchase price in year one (up to $1.16M limit, well above your truck cost). On a $45K truck purchase, that's a $45K deduction against business income in year one — potentially $9,000–13,500 in tax savings depending on your effective rate. This only applies to owned equipment, not leases (leases are operating expenses, deducted monthly). If you're financing the truck, the Section 179 deduction in year one often more than offsets the first year of interest payments. Factor this into the lease-vs-buy calculation explicitly, not as an afterthought.
+
+* **Model the pivot scenario before committing to any financing structure.** If the concept fails or needs to shift (catering-only, ghost kitchen, brick-and-mortar conversion) within 24 months, what are the exit costs? For a financed truck: you own an asset worth $25–40K that you can sell to pay off the loan. For a leased truck: early termination penalties typically run 3–6 months of remaining payments. For owned commissary equipment: you can sell it or transfer it. The pivot-flexibility premium on ownership is real — particularly relevant given the pending city ordinance changes that could make downtown vending financially unviable. A truck you own can move to a suburban location, a parking lot arrangement, or a private lot; a leased truck binds you to the lessor's approval for any operational change.
