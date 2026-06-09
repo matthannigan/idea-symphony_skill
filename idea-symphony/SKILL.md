@@ -338,7 +338,7 @@ scripts/build-summaries.sh {{session}}
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
-Each `_summary.md` carries a `**Central Tension**` line at the top — a universal field across all effort levels that Phase 5 aggregates into a session-level `## Central Tensions` section.
+Each `_summary.md` records its central tension in a `central-tension:` YAML frontmatter key, and states it in the Executive Summary's opening prose — a universal field across all effort levels that Phase 5 reads from the frontmatter and aggregates into a session-level `## Central Tensions` section.
 
 **Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
 

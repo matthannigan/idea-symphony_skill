@@ -14,7 +14,7 @@ stage: "Phase 4: Summary Generation"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
-central-tension: "[One line; the cluster's organizing trade-off if it has one. Phase 5 reads this key. May be lightly compressed relative to the Executive Summary's prose, but must carry the same claim. Omit or leave blank if the cluster is broadly convergent.]"
+central-tension: "[One line; the cluster's organizing trade-off if it has one. Phase 5 reads this key. May be lightly compressed relative to the Executive Summary's prose, but must carry the same claim. If the cluster is broadly convergent with no genuine trade-off, state the convergent finding instead.]"
 ---
 
 # Summary: [Topic Cluster Name]
