@@ -1,0 +1,191 @@
+{
+  "generated_at": "2026-04-26T00:00:00Z",
+  "effort": "low",
+  "model_requested": "opus",
+  "model_reported": "claude-opus-4-7",
+  "n_synth_input": 83,
+  "m_synth_output": 32,
+  "append_count": 12,
+  "total": 44,
+  "compaction_ratio": 2.59,
+  "cluster_count": 9,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Calling vs. Escape — Diagnosing the Driver",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Analyst"],
+        "2": ["Questioner", "Devil's Advocate", "Appreciative Inquirer"],
+        "3": ["Systems Thinker", "Questioner"],
+        "4": ["Systems Thinker", "Questioner"]
+      },
+      "append_contributors": {
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Financial Cost Modeling and Cash-Flow Runway",
+      "question_numbers": [6, 7, 8, 9],
+      "synthesize_contributors": {
+        "6": ["Accountant", "Questioner", "Analyst"],
+        "7": ["Questioner", "Accountant"],
+        "8": ["Analyst", "Accountant"],
+        "9": ["Accountant", "Analyst"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 3,
+      "name": "Lifetime Economics, Loan Forgiveness, and Anchoring",
+      "question_numbers": [10, 11, 12, 13, 14],
+      "synthesize_contributors": {
+        "10": ["Analyst", "Accountant", "Questioner", "Appreciative Inquirer"],
+        "11": ["Analyst", "Accountant", "Systems Thinker"],
+        "12": ["Accountant"],
+        "13": ["Devil's Advocate", "Accountant"]
+      },
+      "append_contributors": {
+        "14": "Provocateur"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Law School Risk, Reversibility, and the Bar Cliff",
+      "question_numbers": [15, 16, 17, 18],
+      "synthesize_contributors": {
+        "15": ["Analyst"],
+        "16": ["Devil's Advocate"],
+        "17": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "18": "Storyteller"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Nursing as a Legal Differentiator — Asset Transfer",
+      "question_numbers": [19, 20, 21, 22, 23],
+      "synthesize_contributors": {
+        "19": ["Analyst", "Questioner", "Systems Thinker", "Appreciative Inquirer"],
+        "20": ["Analyst", "Questioner"],
+        "21": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "22": "Connector",
+        "23": "Visionary"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Alternative and Hybrid Paths",
+      "question_numbers": [24, 25, 26, 27],
+      "synthesize_contributors": {
+        "24": ["Analyst", "Devil's Advocate", "Systems Thinker", "Questioner", "Appreciative Inquirer"],
+        "25": ["Analyst", "Accountant"],
+        "26": ["Accountant", "Analyst"]
+      },
+      "append_contributors": {
+        "27": "Visionary"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Whom She Would Serve — Client-Centered Practice",
+      "question_numbers": [28, 29, 30, 31, 32, 33],
+      "synthesize_contributors": {
+        "28": ["Audience Advocate"],
+        "29": ["Audience Advocate"],
+        "30": ["Audience Advocate"],
+        "31": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "32": "Connector",
+        "33": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Family, Mentors, and the Felt Sense of the Decision",
+      "question_numbers": [34, 35, 36, 37, 38, 39],
+      "synthesize_contributors": {
+        "34": ["Audience Advocate"],
+        "35": ["Audience Advocate"],
+        "36": ["Audience Advocate", "Questioner"],
+        "37": ["Appreciative Inquirer", "Questioner"]
+      },
+      "append_contributors": {
+        "38": "Connector",
+        "39": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Leverage, Timing, and the First Concrete Step",
+      "question_numbers": [40, 41, 42, 43, 44],
+      "synthesize_contributors": {
+        "40": ["Systems Thinker", "Devil's Advocate"],
+        "41": ["Systems Thinker", "Analyst"],
+        "42": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "43": "Provocateur",
+        "44": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "append_round_robin_selections": {
+    "Connector": {
+      "source_clusters": ["A: Parallel Systems / Shared Populations", "B: Emotional Labor Architecture", "C: Cross-Domain Asset Valuation", "D: Institutional Bridging"],
+      "selected_source_question_numbers": [1, 3, 5],
+      "placements": {"1": "Cluster 07 (q32)", "3": "Cluster 08 (q38)", "5": "Cluster 05 (q22)"}
+    },
+    "Provocateur": {
+      "source_clusters": ["A: Problem Beneath the Problem", "B: Debt as Time, Not Money", "C: Identity / Escape Velocity", "D: Counterfactual Institutional Paths", "E: Burnout as Transferable Infrastructure"],
+      "selected_source_question_numbers": [1, 3, 4],
+      "placements": {"1": "Cluster 01 (q5)", "3": "Cluster 03 (q14)", "4": "Cluster 09 (q43)"}
+    },
+    "Visionary": {
+      "source_clusters": ["A: Reimagining What 'Helping' Could Mean", "B: The Nature of the Transition Itself", "C: Structural Transformation at Scale", "D: Identity, Time, and Risk Reimagined"],
+      "selected_source_question_numbers": [1, 3, 5],
+      "placements": {"1": "Cluster 06 (q27)", "3": "Cluster 05 (q23)", "5": "Cluster 09 (q44)"}
+    },
+    "Storyteller": {
+      "source_clusters": ["A: The Patient Who Stayed With You", "B: A Day in the Life, Five Years from Now", "C: The In-Between Years", "D: The Road Not Taken", "E: The Story You'll Tell at 50"],
+      "selected_source_question_numbers": [1, 3, 5],
+      "placements": {"1": "Cluster 07 (q33)", "3": "Cluster 08 (q39)", "5": "Cluster 04 (q18)"}
+    }
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "Source ST section does not use classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.); it relies on equivalent systems-vocabulary distinctive phrases. R11 substitution applies: ≥1 ST-distinctive systems-vocabulary phrase preserved verbatim.",
+      "phrases_preserved_verbatim": ["moral injury", "self-amplifying trap", "system dependency"],
+      "questions": [3, 11]
+    }
+  ],
+  "self_check": {
+    "n_synth_input": 83,
+    "m_synth_per_cluster_breakdown": "C01(4) + C02(4) + C03(4) + C04(3) + C05(3) + C06(3) + C07(4) + C08(4) + C09(3) = 32",
+    "m_synth_total": 32,
+    "raw_compaction_ratio": 2.59,
+    "cluster_count": 9,
+    "low_effort_compaction_floor_2.3x": "PASS (2.59 >= 2.3)",
+    "low_effort_target_2.6x": "ON-TARGET (2.59 ~= 2.6)",
+    "low_effort_cluster_range_8_to_10": "PASS (9 in [8,10])",
+    "ai_orphan_question_numbers": [19, 37, 42],
+    "ai_orphan_register_notes": "Q42 carries AI 'first signal worth noticing' + 'succeeded brilliantly / what would you have trusted in yourself' — pure aspirational/strengths register with no other persona's question doing equivalent work. Q37 preserves AI 'burning brightly vs burning out' sustainable-advocacy framing. Q19 folds AI 'peak moment of advocacy' (Q1) and 'integration prize' (Q5) strengths-framing into the asset-differentiator anchor.",
+    "st_archetype_question_numbers": [3, 11],
+    "st_archetypes_verbatim": ["moral injury", "self-amplifying trap", "system dependency"],
+    "st_archetype_floor_note": "R11 source-bound exception applied: source Systems Thinker section uses systems-vocabulary distinctive phrases rather than classical named archetypes. ≥1 ST-distinctive phrase preserved verbatim — floor met (3 phrases preserved across 2 questions).",
+    "user_questions_floor": "N/A (USER-QUESTIONS.md does not exist)",
+    "append_quota_check": "Connector 3/3, Provocateur 3/3, Visionary 3/3, Storyteller 3/3 = 12/12 PASS",
+    "additional_questions_section_present": false,
+    "per_cg_audit_notes": "All convergence groups merged to single anchors. No 2nd survivors emitted from any single CG. No preserve-exception conditions invoked (no register-mismatch, definitional-split, or preserve-distinct-≥4 cases). Largest groups (Q19 with 4 contributors, Q24 with 5 contributors) collapsed to single anchors with distinctive-vocabulary clauses folded in."
+  }
+}
