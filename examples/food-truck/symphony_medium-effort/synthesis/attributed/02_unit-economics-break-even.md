@@ -1,0 +1,93 @@
+---
+project-name: "Food Truck Startup and Expansion Strategy"
+session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/food-truck/med"
+datetime: 2026-06-09
+effort: "medium"
+stage: "Phase 4: Response Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-8"
+topic-cluster: "02_unit-economics-break-even"
+synthesis-type: "attributed"
+---
+
+# Brainstorming Synthesis: Unit Economics & Break-Even - With Attribution
+
+---
+
+## Synthesized Insights by Question
+
+### Question 9: Food Cost Ratio for a Fusion Menu
+
+**Full question**: For the Filipino-Mexican fusion menu (lumpia tacos, adobo burritos, ube horchata), what is the realistic food cost percentage for each item category, and how does the blended menu food cost ratio compare to the industry benchmark range of 28–35% given that Filipino ingredients (ube, adobo components) may have different sourcing profiles than standard Mexican fare — and does the resulting ratio leave enough margin to cover labor, commissary fees, fuel, and overhead at price points that four existing fusion competitors have effectively ceiling-tested?
+
+* **Derive food cost from your own supplier quotes, not the 28–35% benchmark, before you price anything.** All four perspectives agree the industry range is a starting reference, not a usable input for this menu. The actionable method is to cost the two or three highest-volume items from real quotes (two sources each: bulk distributor and specialty importer), cook a test batch, and measure actual material cost per finished dish. Filipino staples (ube, adobo paste, calamansi) plausibly run 15–25% higher than commodity Mexican fare in a 250K market without established ethnic-supplier competition, so the blended ratio must be built bottom-up rather than assumed. Validate with a one-week test batch and adjust portion or price immediately if you land at 38%+.
+  * **Budget sourcing toward 32% blended via bulk ethnic suppliers.** Target 32% by buying Filipino staples in bulk at a 15–20% discount vs. specialty importers; price signature items at $9–11 and lower-cost sides at $6–7. *—The Accountant*
+  * **Start with what you actually control: measured cost per dish.** Food cost percentage is meaningful only if you can execute it; purchase exact ingredients, cook one unit, measure material cost. The real ratio is revealed by your supply chain, not industry averages. *—The First Principles Thinker*
+  * **Map supplier cost first, then validate with a test batch.** Map the three highest-volume items with quotes from two sources each; Filipino ingredients likely cost 15–25% more; target 32–36% blended and validate with a one-week test, adjusting at 38%+. *—The Pragmatist*
+  * **Add a contingency buffer to competitor-derived assumptions.** Conduct a blind cost build-up for each competitor's signature item from first principles, then add 15% contingency to your own food cost assumptions. *—The Devil's Advocate*
+
+* **Model each menu tier separately and set a minimum margin per item — a healthy blended ratio can hide items that bleed money.** Several perspectives warn that a single blended number is misleading because the three product families (high-margin drinks, mid-margin burritos, lower-margin tacos) have fundamentally different cost drivers, and because the actual sales mix will differ from the forecast. If lumpia tacos run 22%, horchata 18%, and adobo burritos 38%, a shift in the buying mix can swing the blend while individual items lose money. The discipline is to set minimum acceptable food-cost margins per item, monitor actual sales mix weekly, and adjust portion or price at the item level before losses compound.
+  * **Deconstruct the menu into cost families and model each tier.** Three price tiers with different drivers: horchata tracks dairy/flavoring, burritos track meat, tacos track wrapper/filler. Selling more horchata at ~70% margin can offset lower margins elsewhere. *—The First Principles Thinker*
+  * **Blended ratios hide cross-subsidy traps.** Per-item costs vary widely; if the 2:3:1 buying mix drifts you can hit a 31% blend while items bleed. Set per-item minimum margins and monitor mix weekly. *—The Devil's Advocate*
+  * **Use a five-item core executable at 32%, plus higher-priced specials.** Identify the three items that are ~70% of volume, lock their costs, and use lower-margin items as traffic drivers subsidized by higher-margin customizations. *—The Pragmatist*
+
+* **Treat sourcing lock as the real determinant of cost stability, and price for early-stage (higher) costs.** A distinctive reframe: the food cost ratio is only as stable as supplier relationships, and the benchmark assumes commodity sourcing the truck may not have access to early on. Bulk-ordering adobo paste direct can change the cost structure, but minimum order quantities may be unreachable in the low-volume early months, forcing retail pricing and 35–38% food cost. The recommendation is to lock two credible sourcing paths (retail and wholesale) per ingredient, price for early-stage retail costs, and capture margin improvement as a deliberate later win when volume reaches 150+ daily covers. The Devil's Advocate adds the risk dimension: pre-identify two alternative suppliers per specialty ingredient now and run a quarterly cost audit, because specialty wholesale pricing is volatile.
+  * **Sourcing lock is the fundamental question, not the ratio.** Lock two credible sourcing paths (retail and wholesale) per ingredient and price both scenarios; the ratio is only as stable as supplier relationships. *—The First Principles Thinker*
+  * **Volume unlocks margin; price for early-stage costs.** Early months use retail components at 35–38%; at 150+ covers, volume sourcing and batch prep drop to 28–30%. Don't optimize for an end-state you can't sustain. *—The First Principles Thinker*
+  * **Specialty sourcing creates hidden cost drift; pre-line alternatives.** Filipino specialty pricing is volatile; stress-test a 30% mid-season ube spike, build a quarterly cost audit, and pre-identify two alternative suppliers per ingredient before launch. *—The Devil's Advocate*
+  * **Competitor price points are not a reliable ceiling test.** Rivals may run different capital structures, cheaper founder labor, or accept lower margins; their $12 burrito need not be sustainable at your cost structure. *—The Devil's Advocate*
+
+---
+
+### Question 10: Break-Even Architecture at the Truck Level
+
+**Full question**: Given estimated fixed costs (truck payment or lease, commissary rental, permits, insurance, fuel, loan servicing if applicable) and variable costs per transaction, at what average ticket size and daily transaction count — and across how many service days per month — does the truck break even, how does that threshold shift under the $60K bootstrap, $100K-with-SBA-loan, and higher-capitalization scenarios, and which assumptions about daily cover count, average ticket, and operating days are most likely to be wrong in the first six months of actual operation?
+
+* **Daily transaction count is the assumption most likely to be wrong, and the dominant break-even risk — model a conservative baseline, not a target.** This is the strongest convergence in the cluster: all four perspectives identify daily cover count as the fragile variable and warn against optimistic projections. New trucks commonly start low (the estimates range from ~11 to ~50–60 transactions/day depending on the model used), rise with word-of-mouth over months one to six, then often dip when novelty fades. The shared discipline is to set break-even at a conservative baseline (build margin so you survive a drop to the lower range) and to run a soft launch to observe real numbers rather than trusting projected ones. Note the response set carries two different cost frames — a lower fixed-cost frame (~$1,800–$3,100/month) and a higher all-in frame (~$12,500/month including labor) — which is itself a signal to nail down the true fixed-cost stack before committing.
+  * **Volume is the primary risk; a 12-vs-18 cover miss compresses runway to 6–7 months.** Month 1–2 typically 8–12/day, peaking 15–25 by month 4–6; missing 18 and hitting 12 in the SBA case burns ~$1,140/month. *—The Accountant*
+  * **Cover-count variability is the actual risk; model the trough, not the average.** Weather, seasonality, and events swing traffic 30–50% week-to-week; ensure the lowest-expected month is not cash-flow negative, and validate ticket size in a soft launch. *—The Devil's Advocate*
+  * **Most failures come from overestimating covers; target break-even at 40, not 50.** Realistic month-one is 40–60/day, not 100+; at 50 covers break-even is plausible, but a drop to 35 in month three opens a ~$778 monthly deficit. *—The First Principles Thinker*
+  * **Plan for 60 covers/day as baseline, not target.** First month ~50, month two ~65, settling 70–75 if operations are solid; build the model on the baseline. *—The Pragmatist*
+
+* **The SBA loan materially raises the break-even bar; bootstrap first and let real data justify the debt.** A clear convergence on direction: across the scenarios, the added ~$300–$500/month debt service shifts the break-even requirement up by several covers per day (one estimate moves the target from ~11 to ~18–19/day), making site selection less forgiving and seasonal variation riskier. The recommended path is to lease rather than buy, operate lean on the $60K for four to six months, prove 70+ daily covers at $14+ average ticket, and only then pursue the SBA loan or expansion. Taking debt upfront assumes a day-one volume confidence the data cannot yet support.
+  * **SBA debt service shifts the target from 11 to 18–19 covers/day and cuts success probability 15–25%.** Adds $400–500/month, raising break-even sales to $3,820–4,560/month. *—The Accountant*
+  * **Bootstrap first; the SBA loan tightens margin and forces ~80 covers/day or $15+ ticket.** Lease initially, operate lean six months, prove the model, then decide whether to buy or expand. *—The Pragmatist*
+  * **The three scenarios have fundamentally different fixed-cost profiles, not just amounts.** $60K is likely debt-free; $100K SBA adds $300–400/month debt service as a distinct tier. *—The First Principles Thinker*
+
+* **Build break-even on a tiered fixed-cost stack and assume the estimate is 15–25% too low.** Complementary structural advice: rather than lumping fixed costs into one number, separate them into tiers (truck lease, regulatory minimums, commissary, semi-variable fuel/supplies, optional loan servicing) so each scenario can be modeled cleanly. The Devil's Advocate adds the buffer: the initial fixed-cost floor almost certainly omits equipment repair (a $3K compressor failure), reinspections, peak-season commissary surcharges, registration, and sustaining marketing, so a realistic floor runs 15–25% higher. Track every cost item for six months, annualize, and add ~20% before recalculating break-even.
+  * **Map the fixed-cost stack as five tiers, not one number.** Truck lease, permits/insurance, commissary, semi-variable fuel/supplies, and loan servicing each behave differently across scenarios. *—The First Principles Thinker*
+  * **Your fixed-cost estimate is almost certainly 15–25% too low.** It omits repairs, reinspections, surcharges, registration, and sustaining marketing; track six months, annualize, add 20%, recalculate. *—The Devil's Advocate*
+  * **Operator capacity is the upstream constraint on transaction volume.** A solo founder can sustainably run ~35 service hours/week (5–6 days); if the market needs 50+ weekly hours, the model already fails without paid labor (higher fixed cost) or fewer days (lower covers). *—The First Principles Thinker*
+
+* **Average ticket creep can silently inflate the break-even count; validate it in a real soft launch.** A single-perspective caution worth surfacing: break-even math often assumes an optimistic add-on rate (drinks, extra sides). If a projected $15 ticket actually lands at $12.50, the required transaction count rises ~20%. The fix is to run a soft-launch week or two at real pricing, track actual ticket obsessively, and build the twelve-month model on the observed figure rather than the projection.
+  * **Average-ticket creep masks fixed-cost dependency; observe it, don't assume it.** A $15-vs-$12.50 gap raises break-even count ~20%; soft-launch at real pricing and model on the observed ticket. *—The Devil's Advocate*
+
+---
+
+### Question 11: Break-Even as a Moving Target
+
+**Full question**: The break-even analysis you calculate today assumes stable food costs, permit fees, and commissary rates — but all three are likely to shift within 12 months — what is the minimum margin buffer that keeps you solvent through a 20% food cost spike or a new annual licensing fee without requiring price increases that lose price-sensitive regulars, and at what food cost increase does the current pricing model become unprofitable without a menu price adjustment?
+
+* **Price to a 35–38% cost / 12–15%+ margin buffer from day one rather than to today's lean 32%.** Strong convergence on the core answer to the question: do not price to current best-case costs. Building a deliberate shock absorber (pricing for an effective 36–38% food cost, or holding 12–15%+ operating/contribution margin) lets the business absorb a 15–20% commodity spike or a new fee for two to three months without the price increase that would shed price-sensitive regulars. Concretely, a break-even ticket calculated at $13.50 should be priced 5–7% higher (~$14.25–14.50). The dissenting nuance from The Accountant is that the better route to the buffer may be ruthless supplier sourcing to a 27–28% starting cost rather than higher prices in a price-sensitive market, but the destination (a real margin cushion before opening) is shared.
+  * **Lock a 12–15% operating margin; a 20% spike eats 6.4 points, so start lean at 27–28% or pre-plan price increases.** Better to start lean than to raise prices and lose 8–15% of volume. *—The Accountant*
+  * **Price to 36–38%, not 32%, for a 4–6% shock absorber.** Price the $13.50 break-even ticket at $14.25–14.50; the buffer buys 2–3 months before forced repricing or portion cuts. *—The Pragmatist*
+  * **A sub-12–15% contribution margin leaves no room for error.** A single slow quarter, spike, or repair hits hard; pair the margin with a cash reserve covering 1.5–2 months of fixed costs. *—The Devil's Advocate*
+  * **Design pricing around the buffer: target 35–38% margin, not break-even-today.** Optimizing for 33% margin means a 5% food cost rise bankrupts you; lock pricing that leaves a 5-point buffer. *—The First Principles Thinker*
+
+* **Predefine the price-adjustment triggers and a quarterly repricing cadence now, while you have data and not stress.** Convergent operational control: set explicit decision rules tied to measured food cost and review them on a fixed cadence rather than reacting in a panic. The shared mechanics are a tiered trigger ladder (small raise on low-elasticity signature items at a first threshold, broader 5–8% raise at a higher threshold) plus a 90-day repricing review communicated to customers as a sourcing adjustment rather than a surprise hike. A firm non-negotiable pricing floor (the per-transaction dollars below which the model cannot cover labor and overhead) anchors the rules.
+  * **Use a three-trigger ladder keyed to 35% / 37%+ / >10% fee rises.** Raise low-elasticity items first, then all prices 6–8%, and diversify into catering when fees climb; pre-calculate the raises now. *—The Accountant*
+  * **Set a quarterly repricing cadence with a customer-communication plan.** Review COGS at days 30/60/90; hold at 34–35%, raise 3–5% at 36–37%, framed as ingredient-sourcing updates; commit to a known pricing floor. *—The Pragmatist*
+  * **Run quarterly checkpoints; break-even is a floor you monitor, not a number you hit.** Recalculate each quarter with actuals and adjust before the next quarter ends; react to a new competitor by diversifying rather than waiting until month 12. *—The First Principles Thinker*
+
+* **Calculate break-even as a range under simultaneous shocks, and identify the single variable that actually breaks the model.** A complementary reframe: a single static break-even point is fiction because food cost, permit fees, and commissary rates all move, often together. Several perspectives push to model the realistic worst case (food cost to ~38%, commissary +25%, a new licensing fee) as a break-even range, and to find which lever is the true margin killer. The First Principles Thinker's distinctive finding is that fixed-cost increases with flat volume can be structurally unfixable: a $2,400 annual licensing fee adds ~$200/month, which at a $13 ticket and 55% variable cost demands ~30 additional covers/day — and if the market cannot supply them, no pricing or cost-cutting rescues the model, which is the strongest argument for engaging city council before the ordinance passes. The Accountant's worst-case stack (simultaneous food, permit, and commissary increases in month 8–10) quantifies the same threat as roughly 3.5% of gross revenue and motivates a $5–8K, 1.5–2 month contingency fund.
+  * **Calculate break-even as a range, not a point.** Solve for the volume and ticket needed if food cost hits 38%, commissary +25%, and licensing adds $200/month: that is the realistic worst-case break-even. *—The First Principles Thinker*
+  * **A new fixed fee with flat volume can be structurally unfixable.** A $2,400 annual fee needs ~30 more covers/day; if the market can't supply them, engage city council before the ordinance passes because no pricing fix exists. *—The First Principles Thinker*
+  * **Model simultaneous food/permit/commissary shocks in month 8–10.** The combined ~$329/month hit (~3.5% of gross) forces a 7–10% price rise plus volume loss; hold a $5–8K, 12-month contingency fund. *—The Accountant*
+  * **Hold a $15K–$20K cash reserve before scaling; treat a sub-$10K reserve as a stop signal.** A reserve covering 1.5–2 months of fixed costs survives volatility without expensive bridge financing. *—The Devil's Advocate*
+  * **Lock long-term pricing on top ingredients and pre-plan a tiered (smaller-portion) menu.** Contract the top 3–4 high-volume ingredients now, and offer smaller portions of expensive items rather than across-the-board raises that lose regulars. *—The Devil's Advocate*
+
+---
+
+**Questions addressed**: 3
+**Personas contributing**: The Accountant, The Devil's Advocate, The First Principles Thinker, The Pragmatist
+**Total synthesized insights**: 10

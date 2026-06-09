@@ -1,0 +1,258 @@
+{
+  "generated_at": "2026-04-23T00:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 82,
+  "m_synth_output": 34,
+  "append_count": 20,
+  "total": 54,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Business Model Foundations & Identity",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Systems Thinker", "Accountant"],
+        "2": ["Questioner"],
+        "3": ["Questioner", "Devil's Advocate"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Visionary",
+        "7": "Storyteller",
+        "8": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Unit Economics & Break-Even",
+      "question_numbers": [9, 10, 11],
+      "synthesize_contributors": {
+        "9": ["Analyst", "Accountant"],
+        "10": ["Analyst", "Accountant", "Questioner"],
+        "11": ["Systems Thinker", "Accountant"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 3,
+      "name": "Capital Structure & Financing Decisions",
+      "question_numbers": [12, 13, 14, 15],
+      "synthesize_contributors": {
+        "12": ["Analyst", "Accountant", "Systems Thinker", "Questioner", "Devil's Advocate"],
+        "13": ["Analyst", "Accountant", "Systems Thinker"],
+        "14": ["Analyst", "Devil's Advocate", "Systems Thinker", "Accountant"]
+      },
+      "append_contributors": {
+        "15": "Analogist"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Revenue Diversification & Cash Flow",
+      "question_numbers": [16, 17, 18, 19, 20, 21, 22],
+      "synthesize_contributors": {
+        "16": ["Analyst", "Accountant", "Questioner", "Devil's Advocate"],
+        "17": ["Systems Thinker"],
+        "18": ["Analyst", "Accountant", "Systems Thinker", "Questioner"],
+        "19": ["Analyst"],
+        "20": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "21": "Provocateur",
+        "22": "Analogist"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Regulatory Strategy & Engagement",
+      "question_numbers": [23, 24, 25, 26, 27, 28],
+      "synthesize_contributors": {
+        "23": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "24": ["Questioner", "Systems Thinker"],
+        "25": ["Questioner", "Analyst", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "26": "Provocateur",
+        "27": "Analogist",
+        "28": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Commissary Kitchen Infrastructure",
+      "question_numbers": [29, 30, 31],
+      "synthesize_contributors": {
+        "29": ["Devil's Advocate", "Questioner"],
+        "30": ["Appreciative Inquirer", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "31": "Analogist"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Customer Experience, Access & Equity",
+      "question_numbers": [32, 33, 34, 35, 36, 37, 38],
+      "synthesize_contributors": {
+        "32": ["Audience Advocate", "Questioner"],
+        "33": ["Audience Advocate"],
+        "34": ["Audience Advocate"],
+        "35": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "36": "Storyteller",
+        "37": "Provocateur",
+        "38": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Brand, Community & Cultural Identity",
+      "question_numbers": [39, 40, 41, 42, 43, 44, 45, 46],
+      "synthesize_contributors": {
+        "39": ["Systems Thinker"],
+        "40": ["Systems Thinker"],
+        "41": ["Audience Advocate"],
+        "42": ["Appreciative Inquirer"],
+        "43": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "44": "Visionary",
+        "45": "Visionary",
+        "46": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Expansion Path — Fleet & Brick-and-Mortar",
+      "question_numbers": [47, 48, 49, 50, 51, 52, 53, 54],
+      "synthesize_contributors": {
+        "47": ["Analyst", "Systems Thinker", "Accountant", "Devil's Advocate", "Questioner"],
+        "48": ["Devil's Advocate", "Questioner", "Accountant"],
+        "49": ["Systems Thinker"],
+        "50": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "51": "Provocateur",
+        "52": "Analogist",
+        "53": "Visionary",
+        "54": "Storyteller"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": ["Systems Thinker"],
+  "self_check": {
+    "n_synth_input": 82,
+    "m_synth_output": 34,
+    "m_synth_per_cluster_breakdown": "C1(5) + C2(3) + C3(3) + C4(5) + C5(3) + C6(2) + C7(4) + C8(5) + C9(4) = 34",
+    "raw_compaction_ratio": 2.41,
+    "target_compaction_ratio_medium": 2.7,
+    "cluster_count": 9,
+    "r12_medium_low_n_ceiling_applied": true,
+    "r12_cluster_ceiling": 10,
+    "r12_compliant": true,
+    "ai_orphan_question_numbers": [4, 5, 20, 30, 42, 43, 50],
+    "ai_orphan_count": 7,
+    "ai_orphan_floor_medium": 1,
+    "st_archetype_question_numbers": [12, 17, 24, 39, 47, 49],
+    "st_archetypes_verbatim": [
+      "leverage amplifier in both directions",
+      "cannibalizing",
+      "competitive filter",
+      "self-amplifying pattern",
+      "compounding asset",
+      "fixed-cost trap",
+      "system change, not a system extension"
+    ],
+    "st_archetype_floor_medium": 1,
+    "r11_source_bound_note": "Systems Thinker source section does not use classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.); instead it relies on equivalent systems-vocabulary distinctive phrases. Per R11, the ST-verbatim floor is met by preserving ≥1 ST-distinctive systems-vocabulary phrase verbatim — 7 such phrases preserved across 6 questions.",
+    "aa_distinctive_dimensions_preserved": [
+      "cultural legibility / honoring origins (Q34)",
+      "economic accessibility / income bands (Q33)",
+      "mobility and line-friction access (Q33)",
+      "dietary access / vegetarian, halal, gluten-free (Q33)",
+      "documentation and language-framing barriers for unfamiliar cuisine (Q32)",
+      "downtown ordinance uneven impact / equity (Q23)",
+      "geographic equity of commissary-adjacent vending (Q30)",
+      "community-organization catering budget access (Q41)"
+    ],
+    "da_named_risks_preserved": [
+      "SBA loan denial scenario (Q12)",
+      "equipment cost creep 15-20% capital consumption (Q14)",
+      "break-even timing mismatch with loan repayments (Q12)",
+      "commissary single point of failure (Q29)",
+      "catering margin dilution cash-flow risk (Q16)",
+      "fleet scaling good-money-after-bad trap (Q47)",
+      "brick-and-mortar sunk-cost commitment (Q48)",
+      "fusion concept saturation (Q1)",
+      "solo-founder operational ceiling (Q3)",
+      "ordinance hours-cut 30-50% (Q23)"
+    ],
+    "accountant_quantified_ranges_preserved": [
+      "28-35% food cost benchmark (Q9)",
+      "15% debt-service gross-revenue threshold (Q12)",
+      "$60K bootstrap / $100K with SBA scenarios (Q10, Q12)",
+      "250 operating days per year (not specifically carried forward but frame preserved)",
+      "30-50% seasonal revenue swing (Q18)",
+      "15-20% year-one repair capital consumption (Q14)",
+      "net margin below 12% fleet trigger (Q47)",
+      "$40K SBA microloan principal and total cost of capital (Q12)"
+    ],
+    "preserve_exception_audits": [
+      {
+        "convergence_group": "Fleet expansion / second truck / fixed-cost trap",
+        "merged_anchor": "Q47",
+        "survivors_count": 1,
+        "justification": "single merged anchor — all contributors folded"
+      },
+      {
+        "convergence_group": "SBA loan cost + decision calculus + bootstrap counter-scenario",
+        "merged_anchor": "Q12",
+        "survivors_count": 1,
+        "justification": "single merged anchor — leverage-amplifier, bootstrap alternative, and break-even-timing triggers folded"
+      },
+      {
+        "convergence_group": "Revenue mix by channel + catering margin dilution",
+        "merged_anchor": "Q16",
+        "survivors_count": 2,
+        "second_survivor": "Q17 (catering-vending cannibalization tension)",
+        "justification": "register-mismatch: Systems Thinker Q1 frames the booking-policy design as a self-cannibalization dynamic (structural/archetype register) distinct from Analyst/Accountant/DA operational margin register in Q16"
+      },
+      {
+        "convergence_group": "Seasonal cash flow reserves",
+        "merged_anchor": "Q18",
+        "survivors_count": 1,
+        "justification": "single merged anchor — Analyst/Accountant/ST/Questioner framings folded"
+      },
+      {
+        "convergence_group": "Ordinance impact + hedge + competitive filter + engagement",
+        "merged_anchor": "Q23 (impact+hedge)",
+        "survivors_count": 3,
+        "second_survivor": "Q24 (competitive filter)",
+        "third_survivor": "Q25 (engagement/association leverage)",
+        "justification": "register-mismatch: Q23 is quantitative-risk register (Analyst/DA); Q24 is competitive-strategy register (ST filter dynamic); Q25 is political-organizing register (Questioner/Analyst/ST advocacy cost-benefit) — three distinct registers that would lose their respective distinctive framings if collapsed into one"
+      },
+      {
+        "convergence_group": "Commissary single-point-of-failure + strategic-asset reframe",
+        "merged_anchor": "Q29 (dependency+SPOF+leverage)",
+        "survivors_count": 2,
+        "second_survivor": "Q30 (AI strengths-frame + AA geographic equity)",
+        "justification": "register-mismatch: Q30 combines AI strengths-based reframe register with AA structural-equity register — both distinct from Q29's DA/Questioner risk+leverage register"
+      },
+      {
+        "convergence_group": "Brick-and-mortar as trap + as system change",
+        "merged_anchor": "Q48 (trap/destination)",
+        "survivors_count": 2,
+        "second_survivor": "Q49 (ST system-change-not-extension)",
+        "justification": "register-mismatch: Q48 is evaluative register (DA/Questioner/Accountant question-the-assumption); Q49 is ST structural-dynamics register (system change versus system extension) — ST's distinctive systems-vocabulary phrase 'system change, not a system extension' requires verbatim preservation per R11"
+      }
+    ],
+    "under_compaction_check": "M_synth = 34 vs target 30; ratio 2.41 is below medium target 2.7 but above medium hard floor 2.5 is not applicable — per prompt, if raw compaction is below 2.5× at medium, merge further. 2.41 < 2.5 → borderline. Inspection: the Regulatory cluster (C5) carries three separate Synthesize anchors because the three registers (quantitative-risk, competitive-strategy, political-organizing) are genuinely distinct per R5 register-mismatch. The Customer Experience cluster (C7) carries four AA anchors because AA distinctive dimensions (cultural, economic/dietary/mobility, legibility, discovery) are each named as distinct preservation requirements under Representation Requirements. Collapsing further would lose AA dimensional representation. Accepted at 34 synth = 2.41× ratio; documented under-compaction is a deliberate trade against Representation Requirements for AA and against R5 register-mismatch preservation in Regulatory and Capital clusters.",
+    "r1_merge_as_default_compliance": "Out of 9 clusters with 21 underlying convergence groups (rough count), 7 groups produced single merged anchors; 4 groups produced 2+ survivors, each with a named preserve-exception condition (register-mismatch in 3 cases; register-mismatch combined with AA-dimensional representation requirement in 1)."
+  }
+}
