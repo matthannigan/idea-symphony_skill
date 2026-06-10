@@ -1,0 +1,218 @@
+{
+  "generated_at": "2026-04-27T00:00:00Z",
+  "effort": "high",
+  "n_synth_input": 107,
+  "m_synth_output": 41,
+  "append_count": 35,
+  "total": 76,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Defining the Core Value Hypothesis",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "First Principles Thinker"],
+        "2": ["Questioner"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Visionary",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Interpreting Session Length and Engagement Signals",
+      "question_numbers": [7, 8, 9],
+      "synthesize_contributors": {
+        "7": ["Questioner", "Analyst", "Futurist"],
+        "9": ["Empath"]
+      },
+      "append_contributors": {
+        "8": "Storyteller"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Retention Diagnostics and the Activation Event",
+      "question_numbers": [10, 11, 12],
+      "synthesize_contributors": {
+        "10": ["Analyst", "Questioner", "Futurist", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "11": "Storyteller",
+        "12": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 4,
+      "name": "The Passionate Minority Problem",
+      "question_numbers": [13, 14, 15, 16],
+      "synthesize_contributors": {
+        "13": ["Questioner", "Analyst", "Systems Thinker", "Audience Advocate", "Futurist"],
+        "14": ["Empath"]
+      },
+      "append_contributors": {
+        "15": "Storyteller",
+        "16": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Feature-Selection Methodology and Decision Bias",
+      "question_numbers": [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+      "synthesize_contributors": {
+        "17": ["Devil's Advocate", "Systems Thinker"],
+        "18": ["Devil's Advocate", "Systems Thinker"],
+        "19": ["First Principles Thinker"],
+        "20": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "21": "Provocateur",
+        "22": "Provocateur",
+        "23": "Visionary",
+        "24": "Connector",
+        "25": "Connector",
+        "26": "Provocateur",
+        "27": "Provocateur"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Technical Entanglement and Removal Risks",
+      "question_numbers": [28, 29, 30, 31],
+      "synthesize_contributors": {
+        "28": ["Analyst", "Devil's Advocate", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "29": "Connector",
+        "30": "Connector",
+        "31": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Communicating the Reset to Existing Users",
+      "question_numbers": [32, 33, 34, 35, 36, 37, 38],
+      "synthesize_contributors": {
+        "32": ["Devil's Advocate", "Systems Thinker"],
+        "33": ["Devil's Advocate"],
+        "34": ["Audience Advocate"],
+        "35": ["Questioner", "Empath", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "36": "Storyteller",
+        "37": "Storyteller",
+        "38": "Provocateur"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Equity, Inclusion, and Whose Voice Shapes the Decision",
+      "question_numbers": [39, 40, 41, 42, 43],
+      "synthesize_contributors": {
+        "39": ["Audience Advocate"],
+        "40": ["Audience Advocate"],
+        "41": ["Audience Advocate"],
+        "42": ["Audience Advocate", "Empath"],
+        "43": ["Devil's Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 9,
+      "name": "Team Capacity, Burnout, and the Build Itself",
+      "question_numbers": [44, 45, 46, 47, 48, 49, 50, 51, 52],
+      "synthesize_contributors": {
+        "44": ["Devil's Advocate", "Systems Thinker", "Empath"],
+        "45": ["Empath"],
+        "46": ["Analyst", "Systems Thinker"],
+        "47": ["Appreciative Inquirer"],
+        "48": ["Empath", "Questioner"]
+      },
+      "append_contributors": {
+        "49": "Constraint Flipper",
+        "50": "Visionary",
+        "51": "Storyteller",
+        "52": "Connector"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Runway as a Design Constraint",
+      "question_numbers": [53, 54, 55],
+      "synthesize_contributors": {
+        "53": ["Questioner", "Devil's Advocate", "Analyst"],
+        "54": ["First Principles Thinker"]
+      },
+      "append_contributors": {
+        "55": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Defining Success for the Simplified Product",
+      "question_numbers": [56, 57, 58, 59, 60, 61, 62],
+      "synthesize_contributors": {
+        "56": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "57": ["Devil's Advocate"],
+        "58": ["Systems Thinker", "Futurist"],
+        "59": ["Audience Advocate"],
+        "60": ["First Principles Thinker"]
+      },
+      "append_contributors": {
+        "61": "Visionary",
+        "62": "Provocateur"
+      }
+    },
+    {
+      "number": 12,
+      "name": "Strategic Positioning, Category Trajectory, and Relaunch Timing",
+      "question_numbers": [63, 64, 65, 66, 67, 68, 69, 70],
+      "synthesize_contributors": {
+        "63": ["Futurist"],
+        "64": ["Futurist", "Questioner"],
+        "65": ["Futurist"],
+        "66": ["Futurist"],
+        "67": ["Futurist", "Questioner"]
+      },
+      "append_contributors": {
+        "68": "Constraint Flipper",
+        "69": "Constraint Flipper",
+        "70": "Connector"
+      }
+    },
+    {
+      "number": 13,
+      "name": "First Steps and Experiments Worth Running",
+      "question_numbers": [71, 72, 73],
+      "synthesize_contributors": {
+        "71": ["Appreciative Inquirer"],
+        "72": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "73": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [74, 75, 76],
+    "append_contributors": {
+      "74": "Storyteller",
+      "75": "Provocateur",
+      "76": "Connector"
+    }
+  },
+  "r11_source_bound_cells": ["Systems Thinker"],
+  "self_check": {
+    "n_synth_input": 107,
+    "m_synth_output": 41,
+    "raw_compaction_ratio": 2.61,
+    "cluster_count": 13,
+    "ai_orphan_question_numbers": [3, 20, 47, 71, 72],
+    "st_archetype_question_numbers": [17, 28, 44],
+    "st_archetypes_verbatim": ["lagging indicator", "second-order effects", "self-reinforcing fragmentation of attention"],
+    "r11_source_bound_note": "Source Systems Thinker section does not use classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.) — relies on systems-vocabulary distinctive phrases. R11 source-bound exception applied: ST-distinctive systems-vocabulary phrases preserved verbatim in mergers."
+  }
+}

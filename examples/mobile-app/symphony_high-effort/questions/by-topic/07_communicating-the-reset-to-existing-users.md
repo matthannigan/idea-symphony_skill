@@ -1,0 +1,24 @@
+---
+project-name: "Feature-Bloated Mobile App MVP Reset"
+effort: "high"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 07: Communicating the Reset to Existing Users
+
+## Questions
+
+32. **The announcement backfire, self-fulfilling churn, and delayed-signal compression**: Communicating simplification as a positive "focus" message assumes users will interpret removal as improvement, but power users — the 2% DAU/MAU cohort who may account for disproportionate word-of-mouth — may feel punished for engagement, and even users who barely used a removed feature may question whether the app still fits them. Users who don't immediately churn after the announcement may still leave 30-60 days later when they discover their specific use case is gone. What concrete retention plan exists for the 2% segment that doesn't require keeping removed features alive; what framing strategies neutralize the "killing features" reaction by directing attention toward what's being gained rather than what's leaving; and how should the team design relaunch communication and timeline to compress the discovery window rather than spread churn out over months in a way that makes the retention signal harder to read?
+33. **The niche migration cliff**: Small but passionate user bases for removed features will not quietly disappear — they will publicly review-bomb the app and seed negative sentiment in fitness communities; what is the specific mitigation plan for this scenario, beyond a generic "communicate early" instruction?
+34. **Churn vs. harm — the documentation/language/access dimension**: Communication about simplification is framed as a risk of triggering churn. From the perspective of users who rely on specific features, how is "churn" different from "being abandoned by a product you trusted"? What communication approach — including language access, plain-language documentation, and respectful tone for users with lower tech literacy — would allow users to feel respected and informed rather than discarded, and how would the team know the difference before rollout?
+35. **Trust repair, emotional credibility, and the returning-user emotional arc**: What would current users need to experience in the first week after relaunch to feel that the team listened to them rather than abandoned them, and have we designed that experience or just the product changes? When the team communicates the simplification, what tone will feel genuine versus what will feel like corporate spin — what is the emotional promise being made (relief, clarity, confidence in their fitness journey), and if the team can't feel that promise themselves, will users sense the hollowness in the product? Existing users will encounter a product materially different from what they downloaded — how does the team design the relaunch experience to acknowledge the emotional arc (confusion when familiar features are gone, relief if remaining features work better, grief if something meaningful was removed) rather than ignore it?
+36. **The email you dread writing**: Picture the product team composing the message to 180,000 existing users explaining that most of the features they downloaded the app for are gone. Walk through the range of responses that message might provoke — from the user who feels betrayed to the one who feels relieved — and what each response would reveal about how the team communicated (or failed to communicate) the app's original promise. What story would make a simplified relaunch feel like an upgrade rather than a retreat?
+37. **The first open after relaunch**: Imagine a lapsed user — someone who stopped opening the app three months ago — who receives a notification about the relaunch and opens it for the first time with a reset product. Walk through the first sixty seconds of their experience: what do they see, what do they try, and what would need to happen in that minute for them to feel that the product finally understands what they actually need? What does that scene demand of the simplified design?
+38. **The hospice model for features**: What if you treated the 12 features being cut not as deletions but as a scheduled death — a "feature hospice" where each feature gets a 30-day farewell window, its most devoted users are contacted, their alternatives are arranged, and a public wake is held? The absurd version is theatrical; the real insight is that features with small but passionate user bases may need dignity in their removal, not just a changelog entry. What would a "humane sunset" process for deeply-used features reveal about what made them valuable — and how might that inform what you build next?
+
+---
+
+**Question count**: 7
+**Cluster focus**: How simplification is announced and experienced — narrative framing, churn dynamics, emotional credibility, and the first-week trust-repair window.
