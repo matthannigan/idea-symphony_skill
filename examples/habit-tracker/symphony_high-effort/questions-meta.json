@@ -1,0 +1,189 @@
+{
+  "generated_at": "2026-04-22T12:00:00Z",
+  "effort": "high",
+  "n_synth_input": 111,
+  "m_synth_output": 39,
+  "append_count": 32,
+  "total": 71,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "First Principles and the Job-to-Be-Done",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["First Principles Thinker"],
+        "2": ["First Principles Thinker"],
+        "3": ["First Principles Thinker", "Devil's Advocate"],
+        "4": ["First Principles Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 2,
+      "name": "Differentiation and Positioning in a Crowded Market",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker", "Futurist"],
+        "2": ["Questioner", "Futurist"],
+        "3": ["Futurist", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Analogist",
+        "5": "Provocateur",
+        "6": "Constraint Flipper",
+        "7": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Monetization and the Freemium Gate",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "First Principles Thinker", "Audience Advocate", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Systems Thinker"],
+        "3": ["Analyst", "Futurist"],
+        "4": ["Devil's Advocate", "Systems Thinker"],
+        "5": ["Empath"]
+      },
+      "append_contributors": {
+        "6": "Analogist",
+        "7": "Provocateur"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Streak Anxiety, Grace Mechanics, and the Emotional Interior",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Empath", "Devil's Advocate"],
+        "3": ["Appreciative Inquirer", "Systems Thinker"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Visionary",
+        "7": "Storyteller",
+        "8": "Analogist",
+        "9": "Analogist",
+        "10": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Behavioral Science as Architecture vs. Framing",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["First Principles Thinker", "Devil's Advocate"],
+        "2": ["Devil's Advocate"],
+        "3": ["Questioner", "Analyst", "Futurist"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Visionary",
+        "6": "Analogist"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Notifications, Attention, and Trust Infrastructure",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Audience Advocate", "Questioner"],
+        "2": ["Systems Thinker"],
+        "3": ["Futurist", "Empath"]
+      },
+      "append_contributors": {
+        "4": "Analogist",
+        "5": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 7,
+      "name": "The Weekly Review as Keystone Habit",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Systems Thinker"],
+        "2": ["Audience Advocate"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Check-In Speed and the Partial-Logging Dilemma",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Empath"],
+        "2": ["Questioner", "Empath", "Systems Thinker", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Storyteller",
+        "4": "Storyteller",
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Local-First Architecture, Data Sovereignty, and Sync Conflict",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Futurist"],
+        "2": ["Systems Thinker"],
+        "3": ["Analyst"]
+      },
+      "append_contributors": {
+        "4": "Analogist"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Access, Inclusion, and the Returner's Emotional Landscape",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Empath"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"],
+        "4": ["Audience Advocate"],
+        "9": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Storyteller",
+        "7": "Visionary",
+        "8": "Visionary"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Inactive Users, Drift, and What Success Actually Means",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Systems Thinker", "Audience Advocate", "Empath"],
+        "2": ["Questioner", "Analyst", "Audience Advocate"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Provocateur",
+        "7": "Provocateur",
+        "8": "Visionary",
+        "9": "Visionary",
+        "10": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": ["habit-tracker/high"],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C4-Q4", "C7-Q3", "C10-Q9", "C11-Q3", "C11-Q4"],
+    "st_archetype_question_numbers": ["C2-Q3", "C6-Q2", "C7-Q1", "C9-Q2", "C11-Q1"],
+    "st_archetypes_verbatim": ["sunk-cost dynamics", "slow-burn", "keystone habit", "last-write-wins", "ghost population"]
+  }
+}
