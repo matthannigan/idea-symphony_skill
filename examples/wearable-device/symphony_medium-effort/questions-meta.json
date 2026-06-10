@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "medium",
+  "model_requested": "opus",
+  "model_reported": "claude-opus-4-7",
+  "n_synth_input": 82,
+  "m_synth_output": 31,
+  "append_count": 20,
+  "total": 51,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Power Budget & Battery Architecture",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate"],
+        "2": ["Analyst", "Technical Expert"],
+        "3": ["Devil's Advocate", "Technical Expert"]
+      },
+      "append_contributors": {
+        "4": "Connector",
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "ML Model Architecture & Inference Tradeoffs",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Technical Expert"],
+        "2": ["Technical Expert"],
+        "3": ["Analyst", "Technical Expert", "Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 3,
+      "name": "False Positive/Negative Economics & Alert Design",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner", "Audience Advocate", "Systems Thinker"],
+        "2": ["Systems Thinker"],
+        "3": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "4": "Connector",
+        "5": "Storyteller",
+        "6": "Storyteller",
+        "7": "Provocateur",
+        "8": "Visionary"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Privacy Architecture & Data Boundaries",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Systems Thinker", "Technical Expert"],
+        "2": ["Systems Thinker", "Audience Advocate"],
+        "3": ["Questioner", "Devil's Advocate"],
+        "4": ["Technical Expert"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Provocateur",
+        "7": "Storyteller",
+        "8": "Visionary"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Model Update Strategy & Long-Term Maintainability",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Technical Expert"],
+        "2": ["Devil's Advocate", "Systems Thinker"],
+        "3": ["Systems Thinker", "Devil's Advocate", "Questioner", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Connector"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Regulatory Pathway, HIPAA & Clinical Partnership Architecture",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Questioner"],
+        "2": ["Analyst", "Questioner"],
+        "3": ["Analyst"],
+        "4": ["Analyst", "Devil's Advocate", "Systems Thinker", "Appreciative Inquirer", "Questioner"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Visionary",
+        "7": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "User Experience, Trust & Equity",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Questioner"]
+      },
+      "append_contributors": {
+        "6": "Provocateur",
+        "7": "Storyteller",
+        "8": "Visionary",
+        "9": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Sensor Fusion & Detection Reliability",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker"],
+        "2": ["Questioner"]
+      },
+      "append_contributors": {
+        "3": "Connector"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Team Capacity, Runway & Validation",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Questioner"],
+        "2": ["Systems Thinker"],
+        "3": ["Analyst"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "ST source uses systems-vocabulary distinctive phrases (sensitivity ratchet, self-amplifying differentiator, one-way door, reliability multiplier with a fragility tail) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). R11 source-bound exception applied: ST-distinctive phrases preserved verbatim in merged questions instead of classical archetype noun-phrases."
+    }
+  ],
+  "self_check": {
+    "n_synth_input": 82,
+    "m_synth_output": 31,
+    "m_synth_breakdown": "C01(3) + C02(3) + C03(3) + C04(4) + C05(3) + C06(4) + C07(5) + C08(2) + C09(4) = 31",
+    "raw_compaction_ratio": 2.65,
+    "cluster_count": 9,
+    "cluster_count_under_r12_ceiling": true,
+    "ai_orphan_question_numbers": ["C07.Q4", "C09.Q4"],
+    "ai_orphan_count": 2,
+    "st_archetype_question_numbers": ["C03.Q2", "C04.Q2", "C06.Q1", "C08.Q1"],
+    "st_archetypes_verbatim": ["sensitivity ratchet", "self-amplifying differentiator", "one-way door", "reliability multiplier with a fragility tail"],
+    "st_archetype_count": 4,
+    "st_archetype_floor_met_via": "R11 source-bound exception (ST source uses systems-vocabulary phrases, not classical archetypes; ≥1 ST-distinctive phrase preserved verbatim — actual count 4)",
+    "append_quota_per_persona": {
+      "Connector": 5,
+      "Provocateur": 5,
+      "Storyteller": 5,
+      "Visionary": 5
+    },
+    "append_total": 20,
+    "user_questions_marker_count": 0,
+    "user_questions_input_count": 0
+  }
+}
