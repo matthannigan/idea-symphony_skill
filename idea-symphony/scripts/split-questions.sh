@@ -29,11 +29,12 @@
 # an "## Additional Questions" section (orphaned Append questions).
 #
 # Also populates the "## Topic Clusters (from Phase 2)" section in PLAN.md (if
-# PLAN.md exists) with one numbered, linked row per real topic cluster. This is
-# the deterministic producer for the section Phase 5 reads as its authoritative
-# ordered slug + display-name source. The orphan "99_additional" bucket is NOT
-# a topic cluster and is excluded. The write is idempotent: an existing section
-# is replaced in place; otherwise the section is inserted before "## Status".
+# PLAN.md exists) with one numbered, linked row per cluster. This is the
+# deterministic producer for the section Phase 5 reads as its authoritative
+# ordered slug + display-name source. The orphan "99_additional" bucket is the
+# final catch-all cluster and is included as the last row. The write is
+# idempotent: an existing section is replaced in place; otherwise the section
+# is inserted before "## Status".
 #
 # Usage: scripts/split-questions.sh <session-dir>
 
@@ -145,9 +146,9 @@ awk '
 
 # --- Populate the "## Topic Clusters (from Phase 2)" section in PLAN.md ---
 # Deterministic producer for the section Phase 5 (and the NotebookLM template)
-# read for ordered slugs + display names. Excludes the orphan "Additional
-# Questions" bucket. Idempotent: replaces an existing section, else inserts it
-# before "## Status". No-op when PLAN.md is absent.
+# read for ordered slugs + display names. Includes the orphan "Additional
+# Questions" bucket as the final catch-all cluster. Idempotent: replaces an
+# existing section, else inserts it before "## Status". No-op when PLAN.md is absent.
 if [[ -f PLAN.md ]]; then
   section_rows="$(awk '
     function emit() {
@@ -166,8 +167,14 @@ if [[ -f PLAN.md ]]; then
       qc = 0
       next
     }
-    # Any other H2 (e.g. "## Additional Questions") closes the active cluster
-    # without being emitted itself.
+    # The orphan "## Additional Questions" section is the final catch-all
+    # cluster (number 99, slug "additional"); emit it like any other cluster.
+    /^## Additional Questions/ {
+      if (name != "") emit()
+      num = 99; name = "Additional Questions"; slug = "additional"; qc = 0
+      next
+    }
+    # Any other H2 closes the active cluster without being emitted itself.
     /^## / && name != "" { emit(); name = ""; next }
     name != "" && /^[0-9]+\./ { qc++ }
     END { if (name != "") emit() }
@@ -183,12 +190,18 @@ if [[ -f PLAN.md ]]; then
         sec = "## Topic Clusters (from Phase 2)\n\n" \
               ENVIRON["TOPIC_CLUSTERS_SECTION"] "\n\n"
       }
-      # Replace an existing section: emit new section, then drop old lines
-      # until the next H2 heading.
-      /^## Topic Clusters/ { printf "%s", sec; inserted = 1; skipping = 1; next }
+      # Replace any existing "## Topic Clusters" section (canonical or legacy):
+      # emit the new section at the first one found and drop its body — and any
+      # later duplicate sections — until the next H2 heading. Guarding the emit
+      # with !inserted prevents a double-insert when a legacy section sits after
+      # the "## Status" block (the Status rule below would already have fired).
+      /^## Topic Clusters/ {
+        if (!inserted) { printf "%s", sec; inserted = 1 }
+        skipping = 1; next
+      }
       skipping && /^## / { skipping = 0 }
       skipping { next }
-      # Otherwise insert before the Status block.
+      # If no Topic Clusters section exists yet, insert before the Status block.
       !inserted && /^## Status/ { printf "%s", sec; inserted = 1 }
       { print }
       END { if (!inserted) printf "%s", sec }

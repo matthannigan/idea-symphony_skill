@@ -13,7 +13,8 @@ Full layout of a Symphony session directory, with notes on how the structure var
 │   └── by-topic/               # Numbered files preserve topic order
 │       ├── 01_operations.md
 │       ├── 02_community-engagement.md
-│       └── ...
+│       ├── ...
+│       └── 99_additional.md    # (if any) final catch-all cluster — see "Catch-all cluster" below
 ├── responses/
 │   └── [NN_topic]/             # Numbered directories match topic order
 │       ├── the-devils-advocate.md  # low: 2 persona files
@@ -34,13 +35,18 @@ Full layout of a Symphony session directory, with notes on how the structure var
 ├── USER-QUESTIONS.md           # (optional) User-provided questions to answer
 ├── PLAN.md                     # Session config, persona summary tables, and status
 ├── QUESTIONS.md                # All questions consolidated (canonical order)
-├── SYNTHESIS.md                # All summaries + syntheses (in topic order)
+├── SUMMARIES.md                # All topic summaries concatenated (Phase 5's authoritative input; all effort levels)
+├── SYNTHESIS.md                # All summaries + syntheses (in topic order; medium/high only)
 └── BRAINSTORM.md               # Final output and session index
 ```
 
 ## Topic ordering
 
 Phase 2 establishes a logical topic order. Numeric prefixes (`01_`, `02_`, etc.) preserve this order through all subsequent phases.
+
+## Catch-all cluster (`99_additional`)
+
+When Phase 2.3 synthesis leaves Append-stream questions without a topical home, they collect under a final `## Additional Questions` section in `QUESTIONS.md`, which `split-questions.sh` emits as `questions/by-topic/99_additional.md` (number 99). This is a real cluster, not just overflow: it is brainstormed, synthesized, and folded into `BRAINSTORM.md` like any other — at every effort level — so its answers feed the downstream outputs. It appears as the final row of PLAN.md's `## Topic Clusters (from Phase 2)` section, and gets a fixed generalist persona panel rather than topic-matched personas (see [Catch-All Cluster](guidance/phase2D_brainstorming-personas.md)).
 
 ## `min` effort differences
 

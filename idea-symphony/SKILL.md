@@ -227,7 +227,7 @@ After the subagent returns, run the utility script:
 scripts/split-questions.sh {{session}}
 ```
 
-This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md. The script also writes the `## Topic Clusters (from Phase 2)` section into `PLAN.md` (one numbered, linked row per real cluster; the orphan bucket is excluded). This is the authoritative ordered slug + display-name source Phase 5 reads, so no separate orchestrator step is needed to populate it.
+This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md. The script also writes the `## Topic Clusters (from Phase 2)` section into `PLAN.md` (one numbered, linked row per cluster, including the `99_additional` catch-all cluster as the final row). This is the authoritative ordered slug + display-name source Phase 5 reads, so no separate orchestrator step is needed to populate it.
 
 **Quality Gate:** Before proceeding, verify:
 - `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
@@ -264,6 +264,12 @@ Spawn 1 Opus subagent to select brainstorming personas for each topic cluster.
       - **`high` (7 per topic):** Core (2) + Inner Ring (2) + Middle Ring cluster completers (3)
    c. Document rationale for each selection
    d. Verify: no more than 3 personas from the same cluster family per topic
+   e. **Catch-all cluster exception:** the final `## Additional Questions`
+      cluster is cross-cutting by construction and has no single topic type —
+      do NOT run the classification in (a)/(b) on it. Assign the fixed
+      generalist panel from the guide's "Catch-All Cluster" section
+      (`medium`: Devil's Advocate, Pragmatist, Analogist, Visionary;
+      `high`: those four plus Connector, Systems Thinker, Provocateur).
 5. Create `{{session}}/personas/brainstorming.md` with selection summary table and detailed per-topic rationale
 6. Update `{{session}}/PLAN.md` with the summary table
 

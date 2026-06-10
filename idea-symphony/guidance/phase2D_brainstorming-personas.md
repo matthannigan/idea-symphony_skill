@@ -243,6 +243,20 @@ Never select these personas unless the topic specifically warrants them:
 
 When in doubt about a specialized lens, leave it out. The core and middle ring personas provide sufficient coverage for most topics.
 
+### Catch-All Cluster (Additional Questions)
+
+The `## Additional Questions` cluster (`questions/by-topic/99_additional.md`, number 99) is the final catch-all for Append-stream questions that had no topical home in any synthesized cluster. These questions are cross-cutting by construction — analogies, premortems, paradigm reframes, cross-domain provocations — so they do **not** map to a single topic type. Running the classification algorithm on them produces over-application artifacts (a specialist lens forced onto a grab-bag).
+
+**Do not classify this cluster. Assign a fixed generalist panel:**
+
+| Effort | Panel |
+|--------|-------|
+| `low` | Devil's Advocate, Pragmatist (the standard low-effort pair) |
+| `medium` | Devil's Advocate, Pragmatist, Analogist, Visionary |
+| `high` | Devil's Advocate, Pragmatist, Analogist, Connector, Systems Thinker, Visionary, Provocateur |
+
+Rationale: these are the cross-domain (External Perspectives triad — Analogist, Connector, Systems Thinker), paradigm (Visionary), and challenge (Devil's Advocate, Provocateur) generalists — the personas that look *beyond the immediate problem space*, which is what hard-to-classify catch-all questions need. The Analogist is the strongest single pick when a cluster doesn't map to an established domain.
+
 ---
 
 ## Cluster Relationship Map
