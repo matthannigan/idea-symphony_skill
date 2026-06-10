@@ -1,6 +1,6 @@
 ---
 project-name: "Feature-Bloated Mobile App MVP Reset"
-session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/mobile-app/low"
+session-dir: "/Users/matth/dev/idea-symphony_skill/examples/mobile-app/symphony_low-effort"
 datetime: 2026-06-09
 effort: "low"
 stage: "Phase 5: Final Output"
@@ -52,9 +52,7 @@ Both lenses in this session were analytical and execution-minded, and the same b
 
 - **The emotional and phenomenological dimension of fitness.** No cluster examined what fitness means to users as identity or feeling. A user who logs one workout, feels worse than before, and avoids the reminder is a retention failure no feature audit can surface. The app's whole vocabulary ("track," "log," "challenge") may signal that it is for a different kind of person than the ones who left.
 - **Equity and access, raised but never resolved.** Several clusters flagged that the retained 8% may skew narrow (younger, urban, iOS, already habituated, gym-equipped) and that cuts may strip the only usable pathway for users with chronic illness or mobility limitations. No cluster offered a framework for assessing which populations lose access, as opposed to which features lose usage.
-- **What happens at the runway boundary.** Clusters treated 8 months as a hard limit but rarely asked what month 9 looks like if retention targets are missed. Whether the simplified product should be designed for acquireability or graceful wind-down, and what the relaunch narrates to investors, went largely unexamined.
-
-None of the recommended next steps should be read as resolving these. The inclusion question in particular is a decision the team has not yet been asked to make.
+- **What happens at the runway boundary.** Clusters treated 8 months as a hard limit but rarely asked what month 9 looks like if retention targets are missed, or whether the simplified product should be designed for acquireability or graceful wind-down rather than retention alone. The inclusion question in particular is a decision the team has not yet been asked to make, and none of the recommended next steps resolve it.
 
 ## Topic Summaries
 
