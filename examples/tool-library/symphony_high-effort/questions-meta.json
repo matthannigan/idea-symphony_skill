@@ -1,0 +1,212 @@
+{
+  "generated_at": "2026-04-28T12:00:00Z",
+  "effort": "high",
+  "n_synth_input": 109,
+  "m_synth_output": 37,
+  "append_count": 33,
+  "total": 70,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Foundational Purpose & What This Library Actually Is",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "First Principles Thinker"],
+        "2": ["Questioner", "First Principles Thinker"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Sustainability Model & the Post-Enthusiasm Steady State",
+      "question_numbers": [6, 7, 8, 9, 10],
+      "synthesize_contributors": {
+        "6": ["Questioner", "First Principles Thinker", "Systems Thinker", "Devil's Advocate"],
+        "7": ["Analyst", "Devil's Advocate", "Questioner"],
+        "8": ["Devil's Advocate", "Futurist"]
+      },
+      "append_contributors": {
+        "9": "Storyteller",
+        "10": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Inventory Composition, Demand Modeling & Cost Structure",
+      "question_numbers": [11, 12, 13, 14],
+      "synthesize_contributors": {
+        "11": ["Analyst", "Futurist"],
+        "12": ["Analyst", "First Principles Thinker"],
+        "13": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "14": "Analogist"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Volunteer Capacity, Throughput & Operational Resilience",
+      "question_numbers": [15, 16, 17, 18, 19, 20, 21, 22],
+      "synthesize_contributors": {
+        "15": ["Analyst", "Futurist", "First Principles Thinker"],
+        "16": ["Systems Thinker", "Devil's Advocate", "Analyst"],
+        "17": ["Systems Thinker", "Empath"],
+        "18": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "19": "Analogist",
+        "20": "Constraint Flipper",
+        "21": "Storyteller",
+        "22": "Provocateur"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Equitable Access — Who Walks Through the Door and Who Doesn't",
+      "question_numbers": [23, 24, 25, 26, 27, 28],
+      "synthesize_contributors": {
+        "23": ["Audience Advocate", "Questioner", "Systems Thinker", "First Principles Thinker"],
+        "24": ["Audience Advocate", "Devil's Advocate", "Analyst", "Questioner"],
+        "25": ["Audience Advocate", "Devil's Advocate", "Futurist"]
+      },
+      "append_contributors": {
+        "26": "Storyteller",
+        "27": "Visionary",
+        "28": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Belonging, Dignity & the Emotional Texture of Borrowing",
+      "question_numbers": [29, 30, 31, 32, 33, 34],
+      "synthesize_contributors": {
+        "29": ["Empath", "Audience Advocate"],
+        "30": ["Empath"],
+        "31": ["Empath"],
+        "32": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "33": "Storyteller",
+        "34": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Risk, Liability & Safety as a Design Problem",
+      "question_numbers": [35, 36, 37, 38, 39],
+      "synthesize_contributors": {
+        "35": ["Analyst", "Devil's Advocate", "Questioner"],
+        "36": ["Questioner"],
+        "37": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "38": "Storyteller",
+        "39": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Governance, Decision Authority & Whose Rules Govern",
+      "question_numbers": [40, 41, 42, 43],
+      "synthesize_contributors": {
+        "40": ["Audience Advocate", "Devil's Advocate"],
+        "41": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "42": "Analogist",
+        "43": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Trust, Stewardship & the Commons-Degradation Problem",
+      "question_numbers": [44, 45, 46, 47, 48, 49, 50],
+      "synthesize_contributors": {
+        "44": ["Systems Thinker", "Empath"],
+        "45": ["Systems Thinker", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "46": "Analogist",
+        "47": "Analogist",
+        "48": "Analogist",
+        "49": "Storyteller",
+        "50": "Provocateur"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Cultural Fit, Power Dynamics & Whose Norms Govern",
+      "question_numbers": [51, 52],
+      "synthesize_contributors": {
+        "51": ["Audience Advocate", "Empath"],
+        "52": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 11,
+      "name": "Strategic Positioning, Funding & Future-Compatibility",
+      "question_numbers": [53, 54, 55, 56, 57, 58, 59],
+      "synthesize_contributors": {
+        "53": ["Futurist"],
+        "54": ["Futurist", "Systems Thinker", "Questioner", "First Principles Thinker"],
+        "56": ["Futurist"]
+      },
+      "append_contributors": {
+        "55": "Analogist",
+        "57": "Constraint Flipper",
+        "58": "Provocateur",
+        "59": "Visionary"
+      }
+    },
+    {
+      "number": 12,
+      "name": "Maturation, Replication & Generative Outcomes",
+      "question_numbers": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
+      "synthesize_contributors": {
+        "60": ["Systems Thinker", "Empath"],
+        "61": ["Systems Thinker"],
+        "62": ["Appreciative Inquirer"],
+        "63": ["Appreciative Inquirer"],
+        "64": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "65": "Provocateur",
+        "66": "Provocateur",
+        "67": "Provocateur",
+        "68": "Visionary",
+        "69": "Visionary",
+        "70": "Visionary"
+      }
+    }
+  ],
+  "r11_source_bound_cells": [
+    "Systems Thinker: source section uses ST-distinctive systems-vocabulary phrases (commons degradation problem, compounding dynamic, founding enthusiasm as a non-renewable resource, donor-space dependency, popular-tool bottleneck, early-adopter shaping effect, liability chilling effect, returning-borrower loop) rather than classical named archetypes. R11 source-bound substitution invoked: ≥3 ST-distinctive phrases preserved verbatim in merged questions."
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [3, 18, 32, 52, 62, 63, 64],
+    "st_archetype_question_numbers": [6, 13, 37, 44, 45, 54, 60],
+    "st_archetypes_verbatim": [
+      "founding enthusiasm as a non-renewable resource",
+      "popular-tool bottleneck",
+      "liability chilling effect",
+      "commons degradation problem",
+      "compounding dynamic",
+      "donor-space dependency",
+      "early-adopter shaping effect"
+    ],
+    "compaction_ratio": 2.95,
+    "cluster_count": 12,
+    "append_personas_quotas_met": {
+      "Provocateur": "7/7 (high effort: all)",
+      "Storyteller": "7/7 (high effort: all)",
+      "Visionary": "7/7 (high effort: all)",
+      "Analogist": "7/7 (high effort: all)",
+      "Constraint Flipper": "5/7 (high effort: 3-5; selected via round-robin from 5 internal clusters)"
+    }
+  }
+}

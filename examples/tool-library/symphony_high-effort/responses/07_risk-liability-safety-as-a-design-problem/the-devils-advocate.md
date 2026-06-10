@@ -1,0 +1,61 @@
+---
+project-name: "Community Tool Lending Library"
+session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/tool-library/high"
+datetime: "2026-04-28"
+effort: "high"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "07_risk-liability-safety-as-a-design-problem"
+persona: "The Devil's Advocate"
+---
+
+# Risk, Liability & Safety as a Design Problem - The Devil's Advocate
+
+---
+
+## Liability Disaggregation, Competency Verification, and Worst-Case Failure
+
+* **Attorney consultation is a legal prerequisite, not a safety check.** A nonprofit's waiver language has minimal legal teeth if the library knowingly lends chainsaws to untrained borrowers or fails to maintain tools. You need an attorney licensed in your state to review liability exposure before launch, not after an incident. The conversation should not be "Does this waiver protect us?" but "What legal duty of care does our library owe?" and "If someone is injured, will we be found negligent?" Suggest: retain a nonprofit-focused attorney for a brief (2-3 hour) liability audit costing $500–$1,500, which is far cheaper than a lawsuit.
+
+* **Tool theft and loss are likely the highest expected cost, but they're invisible until they're not.** Injury claims are episodic and covered by insurance; property damage has a cap. But if 5–10% of tools disappear annually, your replacement costs will compound and overwhelm the nonprofit's budget. At 2,000 households and a 100-tool inventory, even a 3% annual loss ($1,500–$3,000) requires either aggressive deposit policies that reduce access or a revenue model that doesn't exist yet. Suggestion: track tool lifecycle meticulously from day one and run loss projections quarterly to catch this trend before it becomes unsustainable.
+
+* **Worst-case scenario: a borrowed ladder drops from a renter's fire escape and injures someone below.** If the tenant is not the borrower, you have third-party injury exposure. Insurance may not cover that chain-of-custody failure. If your inspection protocol missed a crack in the ladder, you're liable for negligent maintenance. Walk through the specific failure mode: How will volunteers inspect a ladder for hairline fractures? What documentation proves the inspection happened? What happens if it didn't? Suggestion: designate high-risk items (ladders, pressure washers, electrical tools) and either provide in-person training before checkout or establish a "high-risk items available by appointment only with staff supervision" tier to reduce unmonitored use.
+
+* **Insurance riders for specific tool categories may be cheaper than legal liability.** Rather than trying to engineer perfect waivers, ask your nonprofit's insurance agent if a modest rider ($1,000–$2,000 annually) covers borrowed-tool liability or if you need a separate policy. Some nonprofits underestimate this cost. Suggestion: get a quote from your current carrier and a nonprofit-focused insurer (like Nonprofit Insurance Alliance) before making tool policy decisions.
+
+## Safety as a Design Problem, Not a Paperwork Problem
+
+* **Tool condition beats waivers every time—but only if you're ruthless about retiring worn equipment.** A well-maintained circular saw with clear labeling ("How to cross-cut safely") and no shortcuts in the design is safer than a shiny one hidden behind three pages of waiver language. This means: inspect every returned tool (15 minutes per tool), repair or retire immediately, and throw away tools that are harder to keep safe than to replace. Most libraries falter here—they skip inspections to save time. Suggestion: build a 20-minute quality gate into every return. If a tool fails, it goes straight to the "maintenance" shelf, and volunteers understand that retiring tools is not failure—it's the core of the safety model.
+
+* **Embedded guidance can replace waivers: think physical design, not paperwork.** A drill press with a clear guard and large red "DANGER: Long Hair Hazard" label works better than a two-paragraph waiver nobody reads. Chainsaws? Don't lend them without built-in restrictions (rent-only, staff-supervised checkout window, require a wrist strap for eye protection). Suggestion: classify tools by complexity and design your borrowing experience around that: simple tools (hand saws, levels, tape measures) are check-out-and-go; intermediate tools require a 10-minute demo; advanced tools (power saws, pressure washers) are appointment-only with staff present.
+
+* **The silent failure: tools deteriorate faster under voluntary maintenance than supervised use.** If Marcus checks out a tile saw and dulls the blade halfway through his project, does he report it? Probably not. He returns it damaged. By the time the next borrower grabs it, the risk is high. Suggestion: implement a "maintenance checklist" at return time (blade sharpness, electrical cord fraying, guard function) and swap out worn tools every 6 months, before they become safety hazards. This is not paperwork; it's design discipline.
+
+## The Liability Chilling Effect
+
+* **Each incident will trigger a new restriction, and restrictions compound into inaccessibility.** First incident: "We need signed waivers." Second incident: "Age minimum of 18." Third incident: "Power tools now require a 30-minute in-person safety course." Fourth incident: "No ladders over 6 feet." Within 18 months, your library looks like a hardware store with a 100-point checkout process, and borrowing becomes less convenient than buying at Home Depot. Suggestion: decide your safety trade-offs upfront, document them in writing, and enforce a rule: new restrictions require a two-person approval (coordinator + board member) and a sunset clause (reviewed annually). You can't prevent incidents, but you can slow the ratchet.
+
+* **The real risk: restrictive policies silently exclude the people who need access most.** If you require a credit card for deposits, renters without credit are locked out. If you require a three-day notice for power tools, someone needing an emergency repair can't access them. If you require a safety course, shift-work neighbors can't attend. Each friction point reduces access for the most economically vulnerable households. Suggestion: start with minimal friction (name, phone, one-page waiver) and only tighten if specific risks emerge—not preemptively. Track who can't access tools and why; this tells you where restrictive policies are failing the community.
+
+* **The chilling effect also infects volunteer culture.** After the first injury claim, volunteers become risk-averse and over-enforce rules. A third violation of a casual borrowing rule becomes grounds for membership suspension. The library shifts from "community tool share" to "liability containment." Suggestion: establish a learning model, not a punishment model. First incident with a tool (damaged or misused): offer a free 20-minute training on that tool. Repeated negligence: graduated response (loss of that tool category, then suspension). This preserves community while managing risk.
+
+## The Tool That Taught Someone Something
+
+* **Marcus's tile saw moment fails silently if the library assumes borrowers already know how to use tools.** Marcus picks up the saw, reads the label (if he reads it), and doesn't know: safe body position, blade depth, kickback risk, hearing protection, dust management, or the fact that tile saws cut upward (fingers lose). He finishes the project without injury, returns the tool, and learned nothing. Worse, he's now confident about a tool he half-understands—and confidence is exactly when accidents happen. Suggestion: before Marcus even touches the saw, a 10-minute walk-through with a volunteer (or video guide if staff isn't available) shows him the three things he'll actually forget: angle of approach, how to set blade depth, and why kickback matters.
+
+* **Transformative experience: Marcus watches a 5-minute demo video embedded in an iPad at checkout.** The video shows a volunteer using the tile saw correctly, talking through mistakes, and demonstrating exactly the cut Marcus needs to make. Marcus learns by watching someone solve his actual problem, not by reading a generic manual. This is "embedded guidance"—the library doesn't just lend a tool; it lends a mental model. Suggestion: create short video libraries for the 15 most-borrowed power tools (circular saw, miter saw, tile saw, drill press). These videos should be specific: "How to cut drywall" not "How to use a circular saw in general."
+
+* **The riskier win: peer knowledge networks.** If Marcus is a plumber who borrows the tile saw, he likely knows tile-cutting. Can the library connect him with a homeowner (Emily) who needs to learn? Marcus gets to mentor (building his community identity), and Emily learns from someone who understands her actual problem. The library becomes not just a tool lender but a skill-bridge. Suggestion: maintain a volunteer roster with tool expertise and offer optional peer-mentor connections at checkout. "You're borrowing a tile saw—want to borrow 30 minutes of Marcus's expertise too?"
+
+* **What the library must provide: confidence in mastery, not fear of injury.** Most safety training assumes borrowers are afraid of the tool and need to be more afraid. Reframe: Marcus should leave the library feeling more capable, not more cautious. He borrowed a tool and learned a skill—that's the value proposition. Suggestion: every tool checkout is also a micro-education moment: "Here's what you might not know," "Here's where people typically struggle," "Here's how to know if you've done it right." This positions the library as a learning institution, not a waiver-and-liability institution.
+
+## Safety Requirements as Community Education
+
+* **Reframe onboarding as a 15-minute intro, not a barrier.** Instead of a one-page waiver, invite first-time borrowers to a 15-minute "How This Library Works" conversation (live or video). This covers: tool condition expectations, what happens if something breaks, how to report damage, and the library's culture of care. This is not compliance theater; it's community orientation. People who understand the culture are less likely to abuse tools. Suggestion: record a video for asynchronous access, but also hold in-person office hours twice a week for people who prefer human interaction. Make it welcoming, not interrogatory.
+
+* **Safety training as a side benefit, not the main event.** A new borrower checking out a power drill gets a 5-minute "Drill Safety Essentials" video (not mandatory, but available) covering: trigger control, bit removal, and why pushing hard makes accidents more likely. But the real message is "The library trusts you, and we'll help you succeed." Suggestion: build a tiered system where volunteers with expertise offer optional 30-minute "deep dives" (free) for people who want to master a tool. These are not gate-keeping requirements; they're community value-adds that turn compliance into skill-building.
+
+* **The danger of making requirements too onerous: you'll screen out the people who need access most.** If you require a background check, recent address verification, and a safety certificate, you've excluded undocumented residents, homeless neighbors, and people in unstable housing—the very households most dependent on a lending library. Suggestion: require only a name, contact info, and a single-page agreement. If theft or damage emerges as a pattern, you can tighten policies for that person; don't preemptively restrict everyone. Trust first, verify second.
+
+* **Safety becomes culture-building, not gatekeeping.** When Marcus and Emily return tools, a volunteer asks "How did it go?" If Marcus reports a problem, he's not in trouble—he's part of a team that's refining the library. If a tool got damaged, the conversation is "Here's what we learned, here's how we'll maintain it better." Over time, borrowers internalize the culture: you're not just renting tools; you're stewarding shared resources. Suggestion: maintain a simple log of tool damage and improvements, share it with the community ("We replaced three blades this month after discovering a wear pattern"), and make learning from incidents visible. This transparency builds trust and shared ownership.
