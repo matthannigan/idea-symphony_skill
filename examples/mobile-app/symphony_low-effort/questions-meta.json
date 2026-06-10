@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-04-27T00:00:00Z",
+  "effort": "low",
+  "n_synth_input": 72,
+  "m_synth_output": 31,
+  "append_count": 12,
+  "total": 43,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Diagnosing the Real Problem",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate"],
+        "2": ["Devil's Advocate"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 2,
+      "name": "Reading the Engagement Signals",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate", "Systems Thinker"],
+        "4": ["Analyst"],
+        "5": ["Analyst"]
+      },
+      "append_contributors": {
+        "2": "Visionary",
+        "3": "Provocateur"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Locating the True Core",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Questioner", "Systems Thinker"],
+        "4": ["Questioner"]
+      },
+      "append_contributors": {
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Strengths-Based Vision for the Focused Product",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Storyteller"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Methodology for the Cut",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Systems Thinker", "Analyst"],
+        "2": ["Devil's Advocate", "Analyst"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Connector"
+      }
+    },
+    {
+      "number": 6,
+      "name": "The Passionate Minority and Niche Users",
+      "question_numbers": [1, 2],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Technical Debt, Team Capacity, and the Burnout Loop",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker"],
+        "2": ["Analyst", "Devil's Advocate"],
+        "3": ["Analyst", "Questioner", "Appreciative Inquirer"],
+        "4": ["Questioner", "Systems Thinker", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Choosing the Relaunch Path and Communicating the Change",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Systems Thinker", "Analyst"],
+        "2": ["Devil's Advocate"],
+        "3": ["Questioner", "Devil's Advocate", "Audience Advocate", "Systems Thinker", "Analyst"],
+        "4": ["Appreciative Inquirer", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Connector",
+        "7": "Connector"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Inclusion, Voice, and Redefining Success",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate", "Systems Thinker"],
+        "3": ["Audience Advocate"],
+        "4": ["Audience Advocate"],
+        "5": ["Questioner", "Analyst", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Storyteller"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "cluster": 7,
+      "question_number": 1,
+      "note": "Source persona section uses systems-vocabulary ('reinforcing feedback loop', 'compounding dynamic') rather than a classical named archetype. R11 source-bound substitution applied — preserved 'reinforcing feedback loop' and 'compounding dynamic' verbatim."
+    }
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [
+      {"cluster": 3, "question": 2, "note": "Retention bright spot — strengths-register, what the product at its best already does remarkably well"},
+      {"cluster": 4, "question": 1, "note": "Team pride moment — when has a member said 'that part is genuinely good'"},
+      {"cluster": 4, "question": 3, "note": "Beloved daily ritual / aspirational user quote — peak-future register"},
+      {"cluster": 8, "question": 4, "note": "Communication built on honesty — strengths-based AI register"}
+    ],
+    "st_archetype_question_numbers": [
+      {"cluster": 6, "question": 1, "archetype_verbatim": "Success to the Successful"},
+      {"cluster": 7, "question": 1, "archetype_verbatim": "reinforcing feedback loop / compounding dynamic (R11 source-bound substitution)"}
+    ],
+    "st_archetypes_verbatim": ["Success to the Successful", "reinforcing feedback loop", "compounding dynamic"],
+    "compaction_ratio": 2.32,
+    "compaction_floor_met": true,
+    "aa_distinct_equity_dimensions": [
+      {"cluster": 9, "question": 1, "dimension": "implicit narrow archetype assumptions about bodies, schedules, income, physical ability"},
+      {"cluster": 9, "question": 2, "dimension": "notification overload as justice issue — agency to manage attention"},
+      {"cluster": 9, "question": 3, "dimension": "voice and co-design — who has standing to define core value"},
+      {"cluster": 6, "question": 2, "dimension": "dignity of niche users when their feature is cut"}
+    ],
+    "da_named_risk_anchors": [
+      {"cluster": 1, "question": 1, "phrase": "misattributed failure / value-proposition failure vs complexity-driven churn"},
+      {"cluster": 1, "question": 2, "phrase": "gut call dressed up as a data-driven decision"},
+      {"cluster": 5, "question": 2, "phrase": "anchoring on 3-4 before analysis is complete"},
+      {"cluster": 7, "question": 2, "phrase": "destabilized core after aggressive removal"},
+      {"cluster": 7, "question": 4, "phrase": "relief-driven cuts vs user-driven cuts"},
+      {"cluster": 8, "question": 2, "phrase": "incremental-vs-clean-break false dichotomy / third path"}
+    ]
+  }
+}
