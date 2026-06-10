@@ -1,0 +1,218 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "high",
+  "n_synth_input": 120,
+  "m_synth_output": 41,
+  "append_count": 42,
+  "total": 83,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Foundational Value Proposition and Fee Architecture",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["First Principles Thinker", "Questioner"],
+        "2": ["First Principles Thinker", "Analyst", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "3": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Regulatory Strategy and Multi-Jurisdiction Compliance",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Lawyer"],
+        "2": ["Lawyer", "Questioner", "Devil's Advocate"],
+        "3": ["Lawyer", "Questioner", "Analyst", "Devil's Advocate", "Systems Thinker", "Futurist"],
+        "4": ["Appreciative Inquirer", "Futurist", "First Principles Thinker", "Analogist-cross-attribution-only-via-append"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Storyteller",
+        "7": "Analogist",
+        "8": "Analogist",
+        "9": "Constraint Flipper",
+        "10": "Politician",
+        "11": "Politician"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Permit Scarcity, Zone Concentration, and Portfolio Concentration Risk",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate"],
+        "2": ["Systems Thinker", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "3": "Visionary",
+        "4": "Politician"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Liability Architecture, Insurance, and Risk Transfer",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Lawyer"],
+        "2": ["Lawyer", "Devil's Advocate"],
+        "3": ["Devil's Advocate", "Lawyer"],
+        "4": ["Lawyer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Financial Resilience and Seasonal Cash Flow",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Analyst"],
+        "3": ["Analyst", "Futurist"]
+      },
+      "append_contributors": {
+        "4": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Owner Trust, Onboarding, and Retention",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer", "Systems Thinker", "Empath"],
+        "2": ["Analyst", "Audience Advocate", "Systems Thinker", "Futurist"],
+        "3": ["Empath"],
+        "4": ["Audience Advocate", "Empath"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Provocateur",
+        "7": "Storyteller",
+        "8": "Storyteller",
+        "9": "Visionary",
+        "10": "Analogist",
+        "11": "Analogist"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Community Relations and Good Neighbor Operations",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer", "Audience Advocate", "Empath", "Systems Thinker", "Devil's Advocate"],
+        "2": ["Audience Advocate", "Empath", "Systems Thinker"],
+        "3": ["Audience Advocate"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Futurist"]
+      },
+      "append_contributors": {
+        "6": "Provocateur",
+        "7": "Visionary",
+        "8": "Visionary",
+        "9": "Analogist",
+        "10": "Analogist",
+        "11": "Constraint Flipper",
+        "12": "Politician",
+        "13": "Politician"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Political Strategy and City Council Engagement",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Systems Thinker", "Questioner"],
+        "2": ["First Principles Thinker"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Empath"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Storyteller",
+        "7": "Visionary",
+        "8": "Constraint Flipper",
+        "9": "Politician",
+        "10": "Politician",
+        "11": "Politician",
+        "12": "Politician"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Operational Scaling and the 5-to-50 Inflection Point",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Futurist", "First Principles Thinker", "Analyst"],
+        "2": ["Analyst", "Systems Thinker", "First Principles Thinker"],
+        "3": ["Questioner", "Analyst", "Audience Advocate"],
+        "4": ["Questioner"],
+        "5": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "6": "Storyteller",
+        "7": "Analogist"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Guest Experience, Pricing Authority, and Frontline Workforce",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Empath"],
+        "2": ["Audience Advocate"],
+        "3": ["Analyst"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Storyteller",
+        "7": "Storyteller"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Market Differentiation, Future Trends, and Climate Risk",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Futurist"],
+        "2": ["Futurist"],
+        "3": ["Futurist"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [1],
+    "append_contributors": {
+      "1": "Constraint Flipper"
+    }
+  },
+  "r11_source_bound_cells": [
+    "Systems Thinker source section uses systems-vocabulary distinctive phrases (e.g., 'ordinance tightening spiral', 'owner-trust compounding effect', '5-to-50 inflection point', 'self-reinforcing cycle', 'destabilizer', 'forcing function', 'operational bottleneck') rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). Per R11 source-bound carve-out, the ST-verbatim floor is met by preserving these systems-vocabulary phrases verbatim in merged questions."
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C6:Q1", "C6:Q5", "C7:Q4", "C8:Q3"],
+    "st_archetype_question_numbers": ["C3:Q2", "C6:Q1", "C9:Q1", "C9:Q2", "C9:Q5"],
+    "st_archetypes_verbatim": [
+      "ordinance tightening spiral (C3:Q2)",
+      "owner-trust compounding effect (C6:Q1)",
+      "5-to-50 inflection point (C9:Q1)",
+      "scaling bottleneck (C9:Q2)",
+      "self-reinforcing cycle (C9:Q5)"
+    ],
+    "r11_substitution_note": "Source ST section relies on systems-vocabulary distinctive phrases rather than classical named archetypes; per R11 source-bound exception, verbatim preservation of ST-distinctive systems-vocabulary phrases satisfies the ST-verbatim hard floor (≥3 at high effort). Five such phrases preserved verbatim across 5 distinct merged questions.",
+    "compaction_ratio": 2.93,
+    "cluster_count": 11,
+    "n_synth_input": 120,
+    "m_synth_output": 41,
+    "m_synth_per_cluster": "C1(2) + C2(4) + C3(2) + C4(4) + C5(3) + C6(5) + C7(5) + C8(4) + C9(5) + C10(4) + C11(3) = 41",
+    "preserve_exception_uses": "Used preserve-distinct-≥5-and-≥3-registers on 0 convergence groups; all multi-persona convergence groups collapsed to single merged anchors with distinctive-vocabulary clauses folded in."
+  }
+}
