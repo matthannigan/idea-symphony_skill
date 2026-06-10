@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "low",
+  "n_synth_input": 63,
+  "m_synth_output": 24,
+  "append_count": 12,
+  "total": 36,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Vision, Aspirations & Founding Strengths",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Sustainability, Volunteer Capacity & Founder Dependency",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Systems Thinker", "Appreciative Inquirer"],
+        "2": ["Questioner", "Devil's Advocate"],
+        "3": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "4": "Analogist"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Financial Model, Cost Structure & Revenue",
+      "question_numbers": [1, 2],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner"],
+        "2": ["Analyst", "Devil's Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 4,
+      "name": "Liability, Safety & Damage Accountability",
+      "question_numbers": [1, 2],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate"],
+        "2": ["Analyst", "Devil's Advocate", "Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 5,
+      "name": "Equity, Access & Belonging",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate"],
+        "2": ["Audience Advocate", "Devil's Advocate"],
+        "3": ["Audience Advocate", "Systems Thinker"],
+        "4": ["Systems Thinker"],
+        "5": ["Audience Advocate", "Questioner"]
+      },
+      "append_contributors": {
+        "6": "Storyteller",
+        "7": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Tool Selection & Inventory Curation",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Analyst", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "3": "Analogist",
+        "4": "Provocateur"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Governance, Co-Design & the Commons",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate"],
+        "2": ["Questioner", "Appreciative Inquirer"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Visionary",
+        "6": "Provocateur"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Space, Operations & Strategic Risk",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Systems Thinker"],
+        "2": ["Analyst", "Systems Thinker"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Analogist",
+        "5": "Provocateur"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C1Q1", "C1Q2", "C1Q4"],
+    "st_archetype_question_numbers": ["C5Q4", "C7Q3", "C8Q2", "C8Q3"],
+    "st_archetypes_verbatim": ["Shifting-the-Burden", "commons", "death-spiral", "leverage point"]
+  }
+}
