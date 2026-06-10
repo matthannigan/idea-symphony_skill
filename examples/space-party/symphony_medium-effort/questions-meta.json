@@ -1,0 +1,159 @@
+{
+  "generated_at": "2026-04-27T00:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 72,
+  "m_synth_output": 28,
+  "append_count": 20,
+  "total": 48,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Theme, Immersion & Wonder",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate"],
+        "2": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Visionary",
+        "7": "Analogist",
+        "8": "Analogist"
+      }
+    },
+    {
+      "number": 2,
+      "name": "The Birthday Girl's Experience",
+      "question_numbers": [9, 10, 11, 12],
+      "synthesize_contributors": {
+        "9": ["Questioner", "Audience Advocate", "Systems Thinker", "Appreciative Inquirer", "Devil's Advocate"],
+        "10": ["Questioner"]
+      },
+      "append_contributors": {
+        "11": "Storyteller",
+        "12": "Storyteller"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Activity Design, Attention & Engagement",
+      "question_numbers": [13, 14, 15, 16, 17, 18, 19],
+      "synthesize_contributors": {
+        "13": ["Analyst", "Devil's Advocate", "Systems Thinker", "Questioner"],
+        "14": ["Analyst", "Devil's Advocate", "Questioner"],
+        "15": ["Appreciative Inquirer"],
+        "16": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "17": "Provocateur",
+        "18": "Provocateur",
+        "19": "Analogist"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Inclusion, Sensory Care & Emotional Regulation",
+      "question_numbers": [20, 21, 22, 23, 24, 25],
+      "synthesize_contributors": {
+        "20": ["Questioner", "Analyst", "Audience Advocate"],
+        "21": ["Devil's Advocate", "Audience Advocate", "Systems Thinker"],
+        "22": ["Devil's Advocate", "Audience Advocate"],
+        "23": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "24": "Visionary",
+        "25": "Visionary"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Adult Capacity & Parent Engagement",
+      "question_numbers": [26, 27, 28, 29, 30],
+      "synthesize_contributors": {
+        "26": ["Analyst", "Devil's Advocate", "Systems Thinker", "Questioner"],
+        "27": ["Systems Thinker", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "28": "Storyteller",
+        "29": "Visionary",
+        "30": "Provocateur"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Spatial Layout, Flow & Transitions",
+      "question_numbers": [31, 32, 33, 34],
+      "synthesize_contributors": {
+        "31": ["Analyst", "Devil's Advocate", "Questioner"],
+        "32": ["Analyst", "Systems Thinker", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "33": "Storyteller",
+        "34": "Analogist"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Budget, DIY & Resource Tradeoffs",
+      "question_numbers": [35, 36, 37, 38],
+      "synthesize_contributors": {
+        "35": ["Questioner", "Analyst", "Devil's Advocate"],
+        "36": ["Analyst", "Systems Thinker", "Appreciative Inquirer"],
+        "37": ["Appreciative Inquirer"],
+        "38": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 8,
+      "name": "Peak Moments & Memory Design",
+      "question_numbers": [39, 40, 41, 42, 43, 44],
+      "synthesize_contributors": {
+        "39": ["Systems Thinker", "Audience Advocate", "Analyst"],
+        "40": ["Questioner"],
+        "41": ["Appreciative Inquirer"],
+        "42": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "43": "Storyteller",
+        "44": "Provocateur"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Take-home, Closing Rituals & Relational Memory",
+      "question_numbers": [45, 46, 47, 48],
+      "synthesize_contributors": {
+        "45": ["Questioner", "Analyst", "Systems Thinker"],
+        "46": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "47": "Visionary",
+        "48": "Analogist"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    "test-runs/space-party/med (Systems Thinker source uses systems-vocabulary distinctive phrases — self-correcting system, compounding dynamic, snowball effect, decoration complexity trap, leverage point, peak-end rule, second-order effects, system lever — rather than classical named archetypes such as Shifting-the-Burden or Fixes-that-Fail; ST-verbatim floor met via R11 source-bound substitution)"
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [3, 4, 15, 16, 37, 38, 41, 42],
+    "st_archetype_question_numbers": [2, 13, 21, 32, 36, 39, 45],
+    "st_archetypes_verbatim": [
+      "snowball effect",
+      "decoration complexity trap",
+      "self-correcting system",
+      "compounding dynamic",
+      "system lever",
+      "leverage point",
+      "peak-end rule",
+      "second-order effects"
+    ]
+  }
+}
