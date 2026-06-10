@@ -1,0 +1,29 @@
+---
+project-name: "Food Truck Startup and Expansion Strategy"
+session-dir: "test-runs/food-truck/high"
+datetime: 2026-04-23
+effort: "high"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 10: Growth Paths — Fleet, Brick-and-Mortar, and Unconventional Structures
+
+## Questions
+
+1. **Fleet vs. brick-and-mortar as diverging system architectures, not just sizes**: Adding a second truck scales a mobile, low-fixed-cost model where coordination costs (two drivers, two commissary slots, vending-zone schedules) grow non-linearly; brick-and-mortar converts to high fixed cost but eliminates mobile-specific overhead — these are different operating systems with different failure modes, and the skills, capital structure, and operational model of a single food truck have almost no overlap with restaurant FOH staffing, lease negotiation, and liquor licensing. What are the revenue thresholds at which each path becomes self-funding, what is the decision framework for crossing the threshold rather than treating it as a default endpoint, and does fleet or ownership-vs-lease on the original truck create better conditions for adding unit two?
+2. **Expansion triggers as quantitative thresholds rather than calendar milestones**: Rather than targeting fleet or brick-and-mortar on a three-year timeline (and why three years — real constraint or aspirational guess?), what specific quantitative triggers — sustained monthly revenue, average occupancy rate, working capital cushion, repeat customer ratio, 50–80K second-truck capital plus proven commissary workflow plus a trusted manager — should gate each expansion step, and in what sequence do those steps most de-risk the trajectory?
+3. **Depth vs. breadth, and surviving the fleet-scale identity transition**: What if the founder went deep — one exceptional truck, a strong catering book, a product line — rather than wide, and what assumptions about "growth" are we not questioning? And if the fleet path is taken, early food truck culture is often built on the founder's personal presence and craft — how do we plan for quality, identity, and culture surviving the moment the founder can no longer be at every truck, or do we assume it won't matter?
+4. **Ghost kitchens, shared commissary infrastructure, and location intelligence as expansion inputs**: The shift toward ghost kitchens and shared commissary infrastructure is reducing the capital cost of multi-unit operations, and food truck operators increasingly use proven street locations as low-risk scouting data for brick-and-mortar site selection — what is the timing logic for piloting a ghost kitchen channel versus a second truck (and how does that interact with SBA loan timing), and how should routing strategy be designed now to systematically generate the location intelligence that makes eventual brick-and-mortar transition lower-risk?
+5. **Fleet expansion math under current capital**: Have we considered that adding a second truck typically requires $50-80K in additional capital, a proven commissary workflow, and a manager the founder trusts enough to leave unsupervised — and that none of those conditions are likely to exist within 36 months on a $100K starting base without a reinvestment strategy that is currently absent from the plan?
+6. **What if the three-year goal is already available and you can't see it**: The plan targets brick-and-mortar in three years. But what if a version of that destination already exists — an underused commissary, a struggling restaurant with a lease, a ghost kitchen slot — and the three-year plan is just a story told to delay a decision that's actually available now? *The insight: what assumptions about sequencing and readiness are keeping options invisible that a less cautious founder would already be testing?*
+7. **Franchise hub-and-spoke logistics**: Large fast-casual chains solved commissary efficiency through centralized prep hubs feeding distributed service points — if this business eventually runs two or three trucks, what does a minimal but scalable commissary kitchen arrangement look like, and how early should that architecture be designed into the operations?
+8. **Cuisine as intellectual property, not inventory**: What if the most scalable asset of this Filipino-Mexican fusion concept was not the truck, the recipes, or the brand, but the *method of fusion itself* — an open, teachable framework for combining two culinary traditions that could be licensed, franchised as a philosophy rather than a menu, or seeded into culinary schools, community kitchens, and home cooking communities across the country? What would it mean to grow by spreading a method rather than by replicating a truck?
+9. **The day the second truck decision arrives**: Three years in, revenue is stable, a second truck feels possible, and a brick-and-mortar landlord has reached out. Walk through the founder's internal experience at that crossroads — the pride, the fear of overextension, the weight of hiring someone else to run a truck that carries their name. What would have to be true about the first truck's story for the founder to feel genuinely ready to write the next chapter?
+10. **Political implications of fleet expansion**: Adding a second truck or pursuing a brick-and-mortar location changes your political profile — you shift from a solo operator (sympathetic, low-stakes) to a small business employer (more stakeholders, more visibility) — at what scale does it become worth actively cultivating a relationship with the local small business development office or chamber of commerce as a political backstop for future regulatory fights?
+
+---
+
+**Question count**: 10
+**Cluster focus**: Whether the conventional truck → fleet → brick-and-mortar ladder is the right architecture, and what alternative growth shapes are on the table.

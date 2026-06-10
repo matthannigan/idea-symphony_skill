@@ -1,0 +1,253 @@
+{
+  "generated_at": "2026-04-23T12:00:00Z",
+  "project_name": "Food Truck Startup and Expansion Strategy",
+  "session_dir": "test-runs/food-truck/high",
+  "effort": "high",
+  "model_requested": "opus",
+  "model_reported": "claude-opus-4-7",
+  "n_synth_input": 123,
+  "m_synth_output": 39,
+  "append_count": 42,
+  "total": 81,
+  "raw_compaction_ratio": 3.15,
+  "cluster_count": 12,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Foundational Vision and the Definition of Success",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["First Principles Thinker", "Questioner"],
+        "2": ["Empath", "Appreciative Inquirer"],
+        "3": ["Questioner", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "The Fusion Concept — Differentiation, Authenticity, and Defensibility",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "First Principles Thinker", "Futurist"],
+        "2": ["Systems Thinker", "Empath", "Appreciative Inquirer"],
+        "3": ["Devil's Advocate", "Questioner", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "4": "Analogist",
+        "5": "Analogist",
+        "6": "Constraint Flipper",
+        "7": "Provocateur"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Unit Economics, Menu Design, and Pricing",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Accountant", "Analyst", "Audience Advocate"],
+        "2": ["Analyst", "Accountant"],
+        "3": ["Analyst", "Accountant"],
+        "4": ["Questioner", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Capital Structure — SBA Loan, Equipment, and Sequencing",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Accountant", "Systems Thinker", "Devil's Advocate"],
+        "2": ["Analyst", "Accountant", "Devil's Advocate", "Systems Thinker", "Questioner"],
+        "3": ["Analyst", "Devil's Advocate", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "4": "Constraint Flipper",
+        "5": "Analogist"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Cash Flow, Seasonality, and Revenue Diversification",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Analyst", "Accountant"],
+        "2": ["Analyst", "Accountant", "Systems Thinker", "Questioner"],
+        "3": ["Accountant"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Customer Experience, Loyalty, and the Emotional Journey",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Empath"],
+        "2": ["Empath", "Systems Thinker", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Storyteller",
+        "4": "Storyteller",
+        "5": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Audience, Equity, and Cultural Authenticity",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Empath"],
+        "2": ["Audience Advocate", "Empath"],
+        "3": ["Audience Advocate", "Empath"]
+      },
+      "append_contributors": {
+        "4": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Regulatory Strategy and Political Engagement",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker", "Accountant"],
+        "2": ["Devil's Advocate", "Analyst", "Empath"],
+        "3": ["Systems Thinker", "Questioner", "Appreciative Inquirer"],
+        "4": ["Futurist", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Politician",
+        "6": "Politician",
+        "7": "Politician",
+        "8": "Politician",
+        "9": "Politician",
+        "10": "Provocateur",
+        "11": "Provocateur",
+        "12": "Analogist",
+        "13": "Visionary",
+        "14": "Visionary",
+        "15": "Storyteller",
+        "16": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 9,
+      "name": "The Food Truck Community and Association",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Audience Advocate", "Empath"],
+        "2": ["Audience Advocate", "Questioner", "Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Politician",
+        "5": "Politician",
+        "6": "Politician",
+        "7": "Analogist",
+        "8": "Storyteller"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Growth Paths — Fleet, Brick-and-Mortar, and Unconventional Structures",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Accountant", "Questioner"],
+        "2": ["Analyst", "Questioner"],
+        "3": ["Questioner"],
+        "4": ["Futurist"],
+        "5": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "6": "Provocateur",
+        "7": "Analogist",
+        "8": "Visionary",
+        "9": "Storyteller",
+        "10": "Politician"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Founder Capacity, Identity, and the Solo Bottleneck",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Questioner"],
+        "2": ["Accountant", "Empath"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Constraint Flipper",
+        "5": "Storyteller",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 12,
+      "name": "Early Validation and Getting Started",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer", "Futurist"],
+        "2": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "3": "Analogist"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    "systems-thinker"
+  ],
+  "r11_note": "Source Systems Thinker section does not use classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.) but relies on equivalent systems-vocabulary distinctive phrases. R11 source-bound exception applied: ≥3 ST-distinctive systems-vocabulary phrases preserved verbatim in merged questions.",
+  "self_check": {
+    "ai_orphan_question_numbers": [
+      "C1.Q2",
+      "C5.Q4",
+      "C9.Q3",
+      "C11.Q3",
+      "C12.Q1",
+      "C12.Q2"
+    ],
+    "ai_orphan_count": 6,
+    "ai_orphan_floor_high": 3,
+    "st_archetype_question_numbers": [],
+    "st_archetypes_verbatim": [],
+    "st_systems_vocabulary_verbatim": [
+      {"phrase": "vicious cycle", "location": "C5.Q1"},
+      {"phrase": "self-amplifying engine", "location": "C6.Q2"},
+      {"phrase": "compounding dynamic", "location": "C6.Q2"},
+      {"phrase": "moat", "location": "C8.Q3"},
+      {"phrase": "collective action problem", "location": "C9.Q1"},
+      {"phrase": "different operating systems with different failure modes", "location": "C10.Q1"},
+      {"phrase": "second-order effect", "location": "C11.Q1"}
+    ],
+    "st_systems_vocabulary_count": 7,
+    "st_floor_high": 3,
+    "st_floor_met_via_r11": true,
+    "per_cg_audit_notes": "All convergence groups of size >=3 collapsed to single merged anchor with distinctive-vocabulary clauses folded in. No group invoked preserve-distinct->=5-and->=3-registers exception. The largest CGs (capital structure, regulatory strategy, growth paths, fusion concept) each collapse multiple persona contributions into 3-4 merged anchors that span distinct sub-concerns (e.g., loan decision vs equipment vs sequencing in C4).",
+    "r10_append_proximity_diagnostic": "All Append personas have source-defined sub-heading clusters with 2-3 questions each. First-questions (Q1, Q3, Q5, Q7 for 7-question personas; Q1, Q4, Q7, Q9 for Politician) reflect genuine source-defined cluster boundaries. Theme-label sanity check passed: each cluster label names a genuinely distinct concern.",
+    "compaction_check": {
+      "n_synth": 123,
+      "m_synth": 39,
+      "raw_ratio": 3.15,
+      "target_ratio": 3.1,
+      "within_target": true
+    },
+    "cluster_count_check": {
+      "clusters": 12,
+      "target_range_high": [11, 13],
+      "within_target": true
+    }
+  }
+}
