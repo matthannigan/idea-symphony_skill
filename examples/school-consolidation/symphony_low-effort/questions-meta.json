@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "low",
+  "n_synth_input": 71,
+  "m_synth_output": 28,
+  "append_count": 21,
+  "total": 49,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Financial Foundations and Savings Reality",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Questioner", "Systems Thinker"],
+        "3": ["Analyst", "Devil's Advocate", "Questioner", "Systems Thinker"],
+        "4": ["Analyst", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Politician"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Enrollment Decline and Long-Term Sustainability",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Questioner", "Devil's Advocate"],
+        "2": ["Analyst", "Questioner"],
+        "3": ["Analyst", "Systems Thinker", "Questioner"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Provocateur",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Union Contracts and Staffing Transition",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Audience Advocate", "Questioner", "Appreciative Inquirer"],
+        "3": ["Analyst", "Systems Thinker"],
+        "4": ["Analyst"]
+      },
+      "append_contributors": {
+        "5": "Politician",
+        "6": "Storyteller",
+        "7": "Connector"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Facility Decisions and Community Impact",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "synthesize_contributors": {
+        "1": ["Analyst"],
+        "2": ["Analyst", "Systems Thinker"],
+        "3": ["Audience Advocate"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Politician",
+        "7": "Storyteller",
+        "8": "Visionary",
+        "9": "Provocateur"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Community Identity and \"Our School Is Our Town\"",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Questioner", "Systems Thinker"],
+        "2": ["Audience Advocate", "Questioner"],
+        "3": ["Questioner"]
+      },
+      "append_contributors": {
+        "4": "Politician",
+        "5": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Governance Design and Voter Approval",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Questioner", "Systems Thinker"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Politician",
+        "6": "Politician",
+        "7": "Politician",
+        "8": "Politician"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Equity, Voice, and Family Experience",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Politician"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Strengths, Vision, and Coalition-Building",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": ["Systems Thinker"],
+  "self_check": {
+    "n_synth_input": 71,
+    "m_synth_output_breakdown": "Cluster 01 (4) + Cluster 02 (3) + Cluster 03 (4) + Cluster 04 (4) + Cluster 05 (3) + Cluster 06 (3) + Cluster 07 (4) + Cluster 08 (3) = 28 total",
+    "raw_compaction_ratio": 2.54,
+    "cluster_count": 8,
+    "ai_orphan_question_numbers": ["C06.Q3", "C08.Q1", "C08.Q2", "C08.Q3"],
+    "ai_orphan_count": 4,
+    "st_archetype_question_numbers": ["C01.Q2", "C02.Q1", "C05.Q1"],
+    "st_archetypes_verbatim": ["doom loop", "self-amplifying spiral", "compounding dynamic", "time bomb", "stabilizer", "governor"],
+    "r11_note": "Systems Thinker source section does not use classical Senge archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.); instead it relies on ST-distinctive systems-vocabulary phrases. Per R11 source-bound exception, the floor is met by preserving these phrases verbatim: 'doom loop' and 'self-amplifying spiral' and 'compounding dynamic' (C02.Q1), 'time bomb' (C01.Q2), and 'stabilizer'/'governor' (C05.Q1).",
+    "round_robin_template": {
+      "Connector": "A=organizational mergers (Q1) | B=identity/ecology (Q3) | C=network effects (Q5) | D=transition architecture (Q7); selected Q1,Q3,Q5",
+      "Provocateur": "A=crisis as cure (Q1) | B=inverting ownership (Q3) | C=cross-domain (Q5) | D=identity logical extreme (Q6); selected Q1,Q3,Q5",
+      "Storyteller": "A=last day (Q1) | B=town without school (Q3) | C=teachers (Q5) | D=feasibility study (Q6); selected Q1,Q3,Q5",
+      "Visionary": "A=school as ecosystem (Q1) | B=rethinking unified district (Q3) | C=enrollment narrative (Q5) | D=identity reframed (Q7); selected Q1,Q3,Q5"
+    },
+    "round_robin_proximity_note": "Connector/Provocateur/Storyteller/Visionary all yielded first-question pattern Q1,Q3,Q5 (within-2 source positions) per R10 secondary diagnostic. This proximity is source-imposed by the persona authors' 2-question-per-cluster structure, not synthesizer mis-segmentation: cluster themes pass the R10 theme-label sanity check (organizational-merger vs identity vs network-effects vs transition-architecture for Connector; crisis-cure vs inverting-ownership vs cross-domain for Provocateur; etc.). Final guard passes — selections are not Q1,Q2,Q3 source order."
+  }
+}
