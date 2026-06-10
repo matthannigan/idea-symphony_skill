@@ -1,0 +1,172 @@
+{
+  "generated_at": "2026-04-28T12:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 73,
+  "m_synth_output": 29,
+  "append_count": 29,
+  "total": 58,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Financial Case, Transition Costs, and Tax Burden",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "Systems Thinker", "Devil's Advocate"],
+        "2": ["Analyst", "Questioner", "Systems Thinker", "Devil's Advocate"],
+        "3": ["Analyst", "Questioner", "Systems Thinker", "Devil's Advocate"],
+        "4": ["Analyst"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Connector",
+        "7": "Politician"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Voter Approval and the Three-District Coalition",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Questioner", "Audience Advocate"],
+        "2": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "3": "Connector",
+        "4": "Politician",
+        "5": "Politician",
+        "6": "Politician",
+        "7": "Politician",
+        "8": "Visionary"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Governance Architecture for the Unified Board",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "Devil's Advocate", "Systems Thinker", "Audience Advocate"],
+        "2": ["Questioner"]
+      },
+      "append_contributors": {
+        "3": "Politician"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Union Contract Reconciliation and the Staffing Reality",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker", "Questioner"],
+        "3": ["Audience Advocate"],
+        "4": ["Questioner"]
+      },
+      "append_contributors": {
+        "2": "Politician",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Facilities Decisions, Closures, and Symbolic Loss",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner"],
+        "2": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Connector",
+        "4": "Storyteller",
+        "5": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Transportation, Equity, and Daily Lived Experience",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Audience Advocate"],
+        "2": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Enrollment Decline and the Long Arc",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Questioner"],
+        "2": ["Analyst"],
+        "3": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Provocateur",
+        "6": "Provocateur"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Community Identity, Trust, and Whose Voice Is Heard",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Audience Advocate", "Devil's Advocate", "Questioner"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"],
+        "4": ["Systems Thinker", "Devil's Advocate", "Questioner", "Audience Advocate"],
+        "5": ["Audience Advocate"],
+        "6": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "7": "Politician",
+        "8": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "What Already Works, and What a Generative Consolidation Could Unlock",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"],
+        "6": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "7": "Connector"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [1, 2, 3, 4, 5, 6],
+    "append_contributors": {
+      "1": "Provocateur",
+      "2": "Provocateur",
+      "3": "Provocateur",
+      "4": "Storyteller",
+      "5": "Storyteller",
+      "6": "Visionary"
+    }
+  },
+  "r11_source_bound_cells": [
+    "Systems Thinker (school-consolidation/med): source ST section uses systems-vocabulary distinctive phrases (shrinking-school spiral, structural-governor, long-fuse dynamic, feedback effects, leverage points, debt trap, learning curve) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). ST-verbatim floor met via R11 substitution by preserving systems-vocabulary phrases verbatim in merged questions."
+  ],
+  "self_check": {
+    "compaction_ratio": 2.52,
+    "cluster_count": 9,
+    "ai_orphan_question_numbers": ["C09 Q1", "C09 Q2", "C09 Q3", "C09 Q4", "C09 Q5", "C09 Q6"],
+    "st_archetype_question_numbers": ["C07 Q1", "C01 Q2", "C04 Q1"],
+    "st_archetypes_verbatim": [
+      "shrinking-school spiral (C07 Q1)",
+      "self-amplifying dynamic (C07 Q1)",
+      "structural-governor (C01 Q2)",
+      "long-fuse (C01 Q2, C04 Q1)",
+      "feedback effects (C07 Q1)",
+      "leverage (C04 Q1)"
+    ],
+    "r11_substitution_note": "Source-bound exception applied: ST section relies on systems-vocabulary distinctive phrases, not classical archetypes. Floor met by preserving ≥1 ST-distinctive systems-vocabulary phrase verbatim (≥6 preserved)."
+  }
+}

@@ -1,0 +1,25 @@
+---
+project-name: "Rural School District Consolidation"
+effort: "medium"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 08: Community Identity, Trust, and Whose Voice Is Heard
+
+## Questions
+
+1. **"Our school is our town" as load-bearing infrastructure, not sentiment**: The community identity attachment to local schools isn't irrational — schools often anchor community cohesion, local employment, and civic participation, and the resistance to consolidation reflects a genuine belief that the school is load-bearing infrastructure (not a service provider) and cannot be neutralized by fiscal arguments alone — what specific experiences and relationships are residents describing when they say their school is the heart of their community, what form of institutional recognition, naming continuity, or programmatic commitment could acknowledge and partially preserve what these communities are actually defending without undermining the operational logic of consolidation, what secondary effects might follow in towns that lose their building, and what if those concerns were treated as design requirements rather than obstacles?
+2. **Whose voices are missing — and who actually decides**: Beyond formal stakeholder groups (unions, parent organizations, fiscal conservatives), which community members are most likely to be affected but least likely to show up — students themselves, renters, recent arrivals, parents working two jobs, families of students with IEPs and English language learners — and how can the engagement process be redesigned to actively reach them rather than being implicitly built only for long-tenured homeowners with flexible schedules?
+3. **The grief that doesn't get named and asymmetric loss**: Consolidation is framed in fiscal and operational terms, but for many families this is experienced as loss — and the loss will be unequal: one town might keep its building while others lose theirs; what would it look like to acknowledge grief as a legitimate part of the process rather than treating it as resistance to be overcome, and how can the process surface and address asymmetric loss without simply letting the largest or wealthiest community win?
+4. **Trust deficits, transparency sequencing, and credible commitment**: Voter approval is required in all three districts, which means the weakest coalition wins; the people being asked to vote yes have likely seen past promises about schools, taxes, and services go unfulfilled — what is the history of institutional trust in each community, which stakeholder groups are most likely to flip from opposition to support based on specific credible commitments, what governance structures or binding agreements would make those commitments believable rather than aspirational, and what phased communication strategy maps honestly to where the planning process actually is (information released too early generates anxiety without resolution; information released too late triggers distrust of a "done deal")?
+5. **Who shapes the feasibility study**: The county board commissioned the feasibility study, but the people most affected by its findings rarely shape the questions it asks — what assumptions are baked into the study's framing, and how would the findings look different if community members from each district had co-designed the research questions?
+6. **What a "yes" vote commits the district to**: From the community's perspective, a yes vote is not the end of the story — it is the beginning of years of implementation decisions that will determine whether consolidation actually delivers — so what ongoing accountability structures would give community members genuine agency over those decisions rather than leaving them as passive recipients of institutional choices made behind closed doors?
+7. **"Our school is our town" as principled opposition**: Some of the resistance to consolidation is not transactional — it reflects a genuine belief that the school is load-bearing infrastructure for community identity, not just a service provider — and this opposition cannot be neutralized by fiscal arguments alone, so what form of institutional recognition, naming continuity, or programmatic commitment could acknowledge and partially preserve what these communities are actually defending without undermining the operational logic of consolidation?
+8. **Identity as generative force**: Instead of treating "our school IS our town" as resistance to be overcome, what if that fierce place-based identity were the raw material for building something unprecedented — a model of consolidated schooling that actually deepens community belonging rather than diluting it, in a way no urban or suburban district has ever achieved?
+
+---
+
+**Question count**: 8
+**Cluster focus**: Where the financial logic meets the lived reality of "our school is our town," and where the design of public engagement determines whether the resulting decision is legitimate in the eyes of the people it most affects.
