@@ -1,0 +1,49 @@
+---
+project-name: "Youth Mentorship Program for At-Risk Teens"
+session-dir: "test-runs/youth-mentorship/med"
+datetime: 2026-04-28
+effort: "medium"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "09_sustainability-funding-institutional-continuity"
+persona: "The Accountant"
+---
+
+# Sustainability, Funding & Institutional Continuity - The Accountant
+
+---
+
+## Cost-Per-Match Unit Economics, The $15K Gap, And Behavioral Lock-In
+
+* **Full-cycle cost model at 20 pairs.** Screening and training for 40 volunteers (assuming 50% match rate): background checks ~$50/person = $2K; mentor orientation (4 hours, staff + materials) ~$1.5K; initial coordinator time (100 hours at $25/hr) = $2.5K. Per-pair ongoing: weekly coordinator check-ins (30 min/pair, 52 weeks = $650/pair), escalation support and documentation (estimated 10 hours/pair/year = $250/pair), liability insurance allocated (pro-rata ~$80/pair on $3.2K annual premium). Total year-one: $5.5K fixed + ~$930/pair × 20 = $24.1K. **The $15K seed covers only 64% of realistic first-year costs.** The program is dependent on in-kind staff support (coordinator's salary absorbed by the church) functioning as a hidden $20-25K subsidy. If the church loses budget capacity to donate staff time, the program collapses unless external funding replaces it.
+
+* **Revenue model and grant dependency.** Without fees to mentees (appropriate for at-risk youth), the program is entirely grant-funded. The $15K covers months 0-6.5 at 20 active pairs, assuming no scaling and the in-kind coordinator continues. Behavioral lock-in: by month 4, mentors and teens are invested in relationships; terminating the program mid-year creates trust damage, reputational harm to the organization, and mentor burnout that depresses future recruitment. To avoid cliff-edge termination, secure 18-month funding commitments *before* launching (not sequential grants), or develop a membership/donor model by month 3 that generates $500-800/month to bridge the gap.
+
+* **Contingency funding floor for continuity.** If funding lapses at month 6, a minimal viable continuity model preserves active matches: reduce coordinator FTE from full-time to 10 hours/week (emergency support only, no proactive outreach) = $8-10K annual savings. This keeps existing matches intact but suspends new recruitment and training. Cost: $12-14K/year for 20 pairs in "maintenance mode." This requires a $3-4K emergency reserve established by month 3, or pre-negotiated volunteer coordinator time from board members. Without this backstop, relationships terminate abruptly.
+
+* **Scaling economics and staffing cliff.** Current model: 1 coordinator manages ~20 active pairs (1 per week per mentor, reasonable). At 30 pairs, check-in frequency drops to 2 weeks/mentor or coordinator works 60+ hour weeks (burnout risk). At 40 pairs, you need a second coordinator (FTE ~$35-40K salary + 25% overhead = $44-50K annually). This doubles operating costs and dramatically changes the funding requirement: 40 pairs at $930/pair/year = $37.2K + fixed costs $5.5K = $42.7K annual revenue needed. The $15K seed is viable for a 20-pair pilot; a 40-pair expansion requires $40K+ annual fundraising capacity or earned revenue model.
+
+---
+
+## Single-Coordinator Single-Point-Of-Failure And Compliance-By-Design
+
+* **Documentation and backup access architecture.** Currently: coordinator holds consent records, match files, mandatory-reporter logs, and escalation history in email, shared drive folders, or paper. If unavailable (illness, departure, emergency), these records are inaccessible and the program exposes itself to legal liability (missing consent docs, unreported incidents). Establish a *compliance record system* (Google Workspace shared drive with role-based access, or simple encrypted database) with: (1) read-only backup access granted to executive director or designated compliance officer; (2) monthly backup exports stored off-site; (3) documented handoff procedures for each record type. Cost: 0 (uses existing tools); time: 4-6 hours to structure, 2 hours/month to maintain. This is not optional if the organization has legal liability exposure.
+
+* **Designed governance: compliance officer role and standing review cycle.** Rather than treating compliance as "complete checklist, launch, forget," embed compliance into operating structure: (1) designate a board-level Compliance Officer (can be volunteer, 2-4 hours/month) responsible for annual policy review, state law monitoring, and incident reporting; (2) mandatory-reporter refresher training tied to mentor re-enrollment each year (built into cohort process, not one-time event); (3) formal policy review cycle: quarterly board-level spot-checks on consent records, incident logs, and background-check status. Estimated budget impact: 0 if compliance officer is volunteer board member; 30 minutes/month for staff coordination. This shifts compliance from "person-dependent" to "process-dependent."
+
+* **Single-point-of-failure transfer protocol and interim management.** Create a "continuity brief" (4-page document) held by executive director, outlining: (1) location and access credentials for all compliance records; (2) list of active matches with mentor and teen contact info; (3) pending escalations and their status; (4) upcoming mandatory-reporter refresher deadlines; (5) name and contact of interim coordinator (designated in advance, e.g., volunteer board member or partner organization staff). If coordinator becomes unavailable, interim can operate for 2-4 weeks without losing continuity. Annual update: 1 hour. This costs nothing but preparation and protects relationships.
+
+* **Compliance debt accumulation and institutional risk.** Typical scenario: coordinator builds systems informally ("I know who has done what"), no documentation. At year two, coordinator transitions, new person discovers consent records scattered across three email inboxes, some paper files, unclear escalation history. The organization now faces: unverifiable background checks, unclear parental consent status, potential unreported incidents, and liability exposure. To prevent this, budget 3-4 hours in months 1-2 to *audit* existing informal systems, formalize them, and build the governance structure from inception. Cost of prevention: $100-150 (if using external consultant) and staff time. Cost of compliance failure: potential fines, program closure, reputation damage, litigation.
+
+---
+
+## Caseload Supervisor Ratio And The Mentor-Attrition Reputation Feedback
+
+* **Realistic supervisor span and quality check-in frequency.** Industry standard for mentorship programs: 1 coordinator supervises 15-25 active pairs depending on complexity and check-in depth. This program (at-risk youth, mandatory-reporting obligations, escalation potential) sits at the higher-supervision end. At 1 coordinator / 20 pairs: weekly check-ins (30 min/pair) = 10 hours/week + escalation, documentation, training, matching work = 40-45 hours/week. This is sustainable for 12-18 months before burnout. At 25 pairs: coordinator exceeds 50 hours/week (burnout threshold). At 30 pairs: you need 1.5 FTEs (1 coordinator + 0.5 part-time). Staffing implication: if you want to scale to 30-40 pairs, budget a second coordinator FTE ($35-40K salary + 25% fringe = $44-50K) by year two. Without this, quality check-ins collapse and escalations are missed.
+
+* **Mentor attrition risk and word-of-mouth feedback loop.** A burned-out coordinator → missed check-ins → mentors feel unsupported → mentors leave or reduce commitment (visible departures in months 8-12). One mentor departure gets back to the volunteer network fast ("I invested a year and nobody from the organization checked in, and when I flagged concerns they weren't responsive"). This depresses recruitment: at 40 interested volunteers and 20% visible-burnout attrition, the next cohort recruitment drops to 30-32 interested volunteers. Second burnout cycle: drops to 20 volunteers, limiting scaling capacity. Reputation cost: measured in recruitment efficiency. If first cohort has 2 visible departures due to coordinator burnout, the second cohort recruitment effort doubles (20 contacts per volunteer vs. 10 contacts). Cost: 40-60 additional hours of coordinator outreach per cycle, or loss of 20% of volunteer capacity.
+
+* **Burnout prevention and retention economics.** To keep the coordinator sustainable at 20 pairs: (1) delegate escalation support to board member or partner organization (save 5 hours/month coordinator time); (2) use templated check-in system (form-based, 20 min/check-in vs. 30 min freeform; saves 3 hours/week); (3) institute "office hours" for mentor support (1 hour/week, open drop-in) vs. individual check-ins (saves individual scheduling overhead); (4) hire part-time administrative assistant ($15-18/hour, 10 hours/week = $10K annually) to handle consent paperwork, scheduling, and data entry, freeing coordinator for relationship-focused work. Cost: $10K/year. Benefit: coordinator remains effective at 25 pairs instead of burning out at 20; enables scaling without quality degradation.
+
+* **Scaling trigger and staffing readiness model.** Define explicit scaling gates: *Hire second coordinator when active pairs reach 25*. This is not "if you have budget" but "when you have this many relationships, coordinator capacity is mathematically exhausted." Working with 25+ pairs and 1 coordinator = certain burnout by month 12. Early recruitment of second coordinator (months 6-8) means overlap and knowledge transfer during high-functioning period, not emergency replacement after burnout. Cost: $44-50K FTE, but delays it until active pairs justify it. Avoids reputation damage and mentor attrition from visible coordinator burnout.

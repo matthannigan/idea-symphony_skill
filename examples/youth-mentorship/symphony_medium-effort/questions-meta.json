@@ -1,0 +1,219 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 83,
+  "m_synth_output": 33,
+  "append_count": 20,
+  "total": 53,
+  "user_questions_count": 10,
+  "user_q_marker_count": 10,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Vision, Purpose & Strengths-Based Foundations",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Visionary",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Volunteer Recruitment, Screening & Background Checks",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Lawyer", "User Q"],
+        "2": ["Analyst", "Devil's Advocate"],
+        "3": ["Analyst", "Lawyer", "Questioner"]
+      },
+      "append_contributors": {
+        "4": "Connector"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Mentor Training, Mandatory-Reporter Competency & Ongoing Support",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Lawyer", "User Q"],
+        "2": ["Lawyer", "User Q"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Questioner", "User Q"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Provocateur",
+        "7": "Storyteller",
+        "8": "Storyteller"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Matching Logic & Relationship Dynamics",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "User Q"],
+        "2": ["Systems Thinker", "Analyst"],
+        "3": ["Devil's Advocate", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "4": "Connector",
+        "5": "Provocateur",
+        "6": "Storyteller"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Consent, Referral Integrity & Juvenile-Justice Privacy",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Devil's Advocate", "User Q"],
+        "2": ["Lawyer", "Analyst"],
+        "3": ["Systems Thinker", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "4": "Connector",
+        "5": "Connector"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Safety Architecture, Meeting-Location Policy & Insurance",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner", "User Q"],
+        "2": ["Lawyer", "User Q"],
+        "3": ["Appreciative Inquirer", "Systems Thinker", "Questioner"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Teen Voice, Family Engagement & Cultural Inclusion",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate", "Questioner", "Devil's Advocate"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "5": "Storyteller",
+        "6": "Provocateur"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Outcome Measurement & Learning Loops",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "Audience Advocate", "User Q"],
+        "2": ["Analyst"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Sustainability, Funding & Institutional Continuity",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Devil's Advocate", "Lawyer"],
+        "3": ["Analyst", "Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 10,
+      "name": "Endings, Continuity & What Comes Next",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Audience Advocate", "User Q"],
+        "3": ["Questioner"]
+      },
+      "append_contributors": {
+        "4": "Storyteller",
+        "5": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "Source ST section uses systems-vocabulary distinctive phrases ('feedback loops', 'self-amplifying pattern', 'institutional load-shifting', 'compounding factor', 'behavioral lock-in', 'short-cycle versus long-cycle', 'chilling') rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). Per R11 source-bound exception, ST verbatim floor met by preserving ≥3 ST-distinctive systems-vocabulary phrases verbatim in merged questions."
+    }
+  ],
+  "self_check": {
+    "n_synth_input": 83,
+    "m_synth_per_cluster_breakdown": "C01(4) + C02(3) + C03(4) + C04(3) + C05(3) + C06(3) + C07(4) + C08(3) + C09(3) + C10(3) = 33",
+    "raw_compaction_ratio": 2.52,
+    "cluster_count": 10,
+    "medium_low_n_ceiling_check": "N_synth=83 < 100, cluster count=10 ≤ 10 per R12 ✓",
+    "ai_orphan_question_numbers": [
+      "C01-Q1 (peak-moment trajectory shift)",
+      "C01-Q2 (congregation as irreplaceable lifeline and asset base)",
+      "C01-Q3 (start with five pairs as discovery data)",
+      "C01-Q4 (2029 model-program vision)",
+      "C03-Q3 (training as a gift, not a compliance burden)"
+    ],
+    "ai_orphan_count": 5,
+    "ai_orphan_floor_met": true,
+    "st_archetype_question_numbers": [
+      "C04-Q2 ('compounding factor', 'self-amplifying pattern')",
+      "C05-Q3 ('feedback loops', 'institutional load-shifting')",
+      "C08-Q3 ('short-cycle versus long-cycle', 'measurement-burden chilling effect')",
+      "C09-Q1 ('behavioral lock-in', 'load-bearing')"
+    ],
+    "st_archetypes_verbatim": [
+      "compounding factor",
+      "self-amplifying pattern",
+      "feedback loops",
+      "institutional load-shifting",
+      "short-cycle versus long-cycle",
+      "chilling effect",
+      "behavioral lock-in"
+    ],
+    "st_verbatim_substitution_note": "R11 source-bound exception applied: source Systems Thinker section does not use classical named archetypes (no Shifting-the-Burden, Fixes-that-Fail, etc.); floor met by preserving 7 ST-distinctive systems-vocabulary phrases verbatim across 4 merged questions (≥1 required at medium effort).",
+    "st_verbatim_floor_met": true,
+    "user_questions_total": 10,
+    "user_q_marker_count_in_questions_md": 10,
+    "user_q_floor_met": true,
+    "user_q_placement": {
+      "USER-Q1 (background-check criteria)": "C02-Q1",
+      "USER-Q2 (meeting-location policy)": "C06-Q1",
+      "USER-Q3 (mandatory-reporter training internalization)": "C03-Q1",
+      "USER-Q4 (liability insurance + SAM)": "C06-Q2",
+      "USER-Q5 (juvenile-justice consent + power dynamics)": "C05-Q1",
+      "USER-Q6 (matching criteria)": "C04-Q1",
+      "USER-Q7 (concern escalation below mandatory-report line)": "C03-Q2",
+      "USER-Q8 (mentor support cadence to prevent burnout)": "C03-Q4",
+      "USER-Q9 (outcome measurement without overburdening)": "C08-Q1",
+      "USER-Q10 (match-termination protocol)": "C10-Q2"
+    },
+    "append_quota_check": {
+      "Connector": {"selected": ["C-Q1", "C-Q3", "C-Q5", "C-Q6", "C-Q2"], "count": 5, "quota": 5},
+      "Provocateur": {"selected": ["P-Q1", "P-Q3", "P-Q5", "P-Q6", "P-Q7"], "count": 5, "quota": 5},
+      "Storyteller": {"selected": ["S-Q1", "S-Q3", "S-Q4", "S-Q6", "S-Q7"], "count": 5, "quota": 5},
+      "Visionary": {"selected": ["V-Q1", "V-Q3", "V-Q5", "V-Q6", "V-Q7"], "count": 5, "quota": 5}
+    },
+    "append_round_robin_note": "Each Append persona's source file uses explicit ## sub-headings as cluster boundaries; round-robin selection took the first-listed question from each source cluster, then for personas with quota > cluster count (Connector, Storyteller), returned to the largest cluster for the second-listed question. Provocateur and Visionary source files contain exactly 5 ## clusters each, mapping 1-to-1 onto the medium-effort quota."
+  }
+}
