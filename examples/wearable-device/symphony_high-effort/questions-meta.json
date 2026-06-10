@@ -1,0 +1,276 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "high",
+  "n_synth_input": 128,
+  "m_synth_output": 47,
+  "append_count": 35,
+  "total": 82,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Foundational Premises and First-Principles Reframings",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "First Principles Thinker"],
+        "2": ["First Principles Thinker"],
+        "3": ["Questioner"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Power Budget, Thermodynamics, and Duty-Cycle Architecture",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "First Principles Thinker", "Systems Thinker", "Devil's Advocate", "Questioner"],
+        "2": ["First Principles Thinker", "Analyst"]
+      },
+      "append_contributors": {
+        "3": "Constraint Flipper",
+        "4": "Connector"
+      }
+    },
+    {
+      "number": 3,
+      "name": "ML Architecture, Quantization, and Sensor Fusion",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Technical Expert", "Analyst"],
+        "2": ["Technical Expert", "Analyst"],
+        "3": ["Technical Expert", "Systems Thinker"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Connector"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Model Lifecycle, Drift, and Update Strategy",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Systems Thinker", "Technical Expert", "Devil's Advocate"],
+        "2": ["Systems Thinker"],
+        "3": ["Systems Thinker", "Futurist", "First Principles Thinker"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Privacy Architecture and the Capability-Gap Tradeoff",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Analyst", "Questioner"],
+        "2": ["First Principles Thinker", "Analyst"],
+        "3": ["Questioner", "Systems Thinker"],
+        "4": ["Audience Advocate"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Constraint Flipper",
+        "7": "Connector",
+        "8": "Provocateur",
+        "9": "Provocateur",
+        "10": "Visionary",
+        "11": "Visionary"
+      }
+    },
+    {
+      "number": 6,
+      "name": "HIPAA, PHI Boundaries, and the Sync Protocol",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Analyst", "Questioner", "Devil's Advocate"],
+        "2": ["Lawyer"],
+        "3": ["Lawyer", "Futurist"],
+        "4": ["Futurist"]
+      },
+      "append_contributors": {
+        "5": "Connector"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Regulatory Pathway from Wellness to 510(k)",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate", "Analyst", "Lawyer", "Questioner"],
+        "2": ["Lawyer"],
+        "3": ["Systems Thinker", "Analyst", "Devil's Advocate", "Futurist"],
+        "4": ["Appreciative Inquirer", "Futurist"]
+      },
+      "append_contributors": {
+        "5": "Constraint Flipper",
+        "6": "Provocateur",
+        "7": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "False-Positive / False-Negative Tradeoffs and Liability",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Lawyer", "Analyst", "Technical Expert", "Systems Thinker", "Empath"],
+        "2": ["Systems Thinker", "Audience Advocate", "Questioner"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Connector",
+        "5": "Provocateur",
+        "6": "Provocateur",
+        "7": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Population, Equity, and Embodied Difference",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Questioner", "Audience Advocate"],
+        "2": ["Audience Advocate", "Futurist"]
+      },
+      "append_contributors": {
+        "3": "Provocateur",
+        "4": "Provocateur"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Lived Experience — Trust, Anxiety, and the Felt Texture of Wearing the Device",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      "synthesize_contributors": {
+        "1": ["Empath"],
+        "5": ["Empath"],
+        "6": ["Empath"],
+        "7": ["Empath"],
+        "9": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "2": "Storyteller",
+        "3": "Storyteller",
+        "4": "Storyteller",
+        "8": "Storyteller",
+        "10": "Storyteller",
+        "11": "Storyteller",
+        "12": "Storyteller",
+        "13": "Visionary",
+        "14": "Visionary"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Doctor-Patient Translation, Reassurance, and the Clinical Bridge",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Systems Thinker", "Questioner"],
+        "2": ["Audience Advocate"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 12,
+      "name": "Team, Runway, and Conway's-Law Architecture",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Systems Thinker", "Questioner"],
+        "2": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "3": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 13,
+      "name": "Competitive Landscape and Strategic Moat",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Futurist"],
+        "2": ["Futurist"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "3": "Constraint Flipper",
+        "6": "Connector"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    "Systems Thinker source uses systems-vocabulary distinctive phrases (alert credibility spiral, clinician-trust lag, compounding asset, Conway's Law, feedback delays and overshoot, keystone constraint, balancing-and-reinforcing-loops, death-spiral, capability-gap dynamic) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). R11 source-bound exception applied: ≥3 ST-distinctive systems-vocabulary phrases preserved verbatim in merged questions instead of classical archetype noun-phrases."
+  ],
+  "self_check": {
+    "n_synth": 128,
+    "m_synth_per_cluster": "C01(3) + C02(2) + C03(4) + C04(4) + C05(5) + C06(4) + C07(4) + C08(3) + C09(2) + C10(5) + C11(5) + C12(2) + C13(4) = 47",
+    "raw_compaction_ratio": 2.72,
+    "cluster_count": 13,
+    "ai_orphan_question_numbers": [
+      "C03.Q4 (sensor fusion as a strength)",
+      "C04.Q4 (the ML pipeline that ages well)",
+      "C05.Q5 (on-device privacy as differentiator)",
+      "C07.Q4 (consumer trust to clinical credibility — folded with Futurist RPM)",
+      "C08.Q3 (the false-positive win)",
+      "C11.Q3 (trust built through transparency)",
+      "C11.Q4 (the clinical partnership story)",
+      "C11.Q5 (the device users brag about)",
+      "C12.Q2 (the team you already have)",
+      "C13.Q4 (when hardware and ML clicked)",
+      "C13.Q5 (seven days without a thought)"
+    ],
+    "ai_orphan_count": 11,
+    "ai_orphan_floor_high_effort": 3,
+    "st_archetype_question_numbers": [],
+    "st_archetypes_verbatim": [],
+    "st_systems_vocabulary_phrases_verbatim_r11": [
+      "keystone constraint (C02.Q1)",
+      "alert credibility spiral / death-spiral feedback loop (C08.Q1)",
+      "Conway's Law (C12.Q1)",
+      "balancing-and-reinforcing-loops (C05.Q1)",
+      "compounding asset (C05.Q1)",
+      "feedback-delay overshoot (C07.Q3)",
+      "trust-building or trust-eroding trajectory (C11.Q1)"
+    ],
+    "st_systems_vocabulary_count_r11": 7,
+    "st_floor_high_effort_under_r11": 3,
+    "r11_substitution_note": "Systems Thinker source section does not use classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, Success-to-the-Successful, Tragedy-of-the-Commons, Limits-to-Growth, Escalation, Drifting Goals). Source ST persona instead uses systems-vocabulary distinctive phrases ('alert credibility spiral', 'clinician-trust lag', 'compounding asset', 'Conway's Law', 'regulatory feedback delays and overshoot', 'keystone constraint that shapes everything else', 'capability gap as structural disadvantage'). R11 source-bound exception applied — floor met by preserving 7 ST-distinctive systems-vocabulary phrases verbatim (≥3 required at high effort).",
+    "preserve_distinct_groups_high_effort": [
+      {
+        "convergence_group": "Privacy architecture and capability-gap tradeoff (C05)",
+        "members": ["Systems Thinker", "Devil's Advocate", "Analyst", "First Principles Thinker", "Audience Advocate", "Appreciative Inquirer"],
+        "register_signatures": ["archetype/feedback-loop", "skeptical-rigor named-risk", "metric/data-residency", "definitional/information-theoretic", "structural-equity/documentation-barrier", "AI peak-moments orphan"],
+        "justification": "preserve-distinct-≥5-and-≥3-registers: 6 members, 6 distinct register signatures"
+      },
+      {
+        "convergence_group": "False-positive/false-negative threshold (C08.Q1)",
+        "members": ["Devil's Advocate", "Lawyer", "Analyst", "Technical Expert", "Systems Thinker", "Empath"],
+        "register_signatures": ["skeptical-rigor", "named-statute (FCRA-style products-liability theories)", "metric/operating-point", "engineering-specificity", "archetype/credibility-spiral", "emotional-interior"],
+        "justification": "Collapsed into single merged anchor C08.Q1 — preserve-distinct NOT invoked; 6-register convergence folded into one anchor with all distinctive vocabularies preserved as clauses."
+      }
+    ],
+    "preserve_distinct_count": 1,
+    "preserve_distinct_ceiling_high_effort": 3,
+    "user_questions_count": 0,
+    "user_questions_marker_count": 0,
+    "append_persona_full_take_high_effort": {
+      "Provocateur": 7,
+      "Storyteller": 7,
+      "Visionary": 7,
+      "Connector": 7,
+      "Constraint Flipper": 7
+    },
+    "round_robin_step1_through_5_confirmation": "All Append personas at high effort were taken in full (7 each = 35 total). Round-Robin Step-1-through-5 confirmed cluster identification by reading each Append persona's source sub-headings (e.g., Provocateur's 4 internal clusters: 'What if the device is wrong on purpose', 'What if privacy is the wrong frame', 'What if the body is not the patient', 'What if FDA clearance is the goal'). Since quota = all questions, selection across clusters is automatic; verbatim preservation maintained per Append Presentation Rules."
+  }
+}
