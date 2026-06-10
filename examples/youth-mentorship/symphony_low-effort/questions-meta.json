@@ -1,0 +1,158 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "low",
+  "n_synth_input": 82,
+  "m_synth_output": 33,
+  "append_count": 12,
+  "total": 45,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Program Identity, Framing, and Hidden Assumptions",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate"],
+        "2": ["Questioner", "Systems Thinker"],
+        "3": ["Questioner", "Devil's Advocate"],
+        "4": ["Devil's Advocate", "Audience Advocate", "Systems Thinker"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "6": "Visionary",
+        "7": "Connector",
+        "8": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Volunteer Screening, Background Checks, and Disqualifying Criteria",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Analyst"],
+        "2": ["Analyst"]
+      },
+      "append_contributors": {
+        "3": "Connector"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Mandatory Reporting, Escalation, and Concern-Raising",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Analyst"],
+        "2": ["Devil's Advocate", "Lawyer"],
+        "3": ["Questioner", "Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 4,
+      "name": "Liability, Insurance, and Organizational Protections",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Analyst"],
+        "2": ["Lawyer"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 5,
+      "name": "Consent Frameworks and Data Privacy",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Audience Advocate"],
+        "2": ["Lawyer"],
+        "3": ["Lawyer", "Analyst", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Matching, Power, and Youth Agency",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Appreciative Inquirer"],
+        "2": ["Devil's Advocate", "Audience Advocate"],
+        "3": ["Questioner"],
+        "4": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Safety Protocols and the Relational Core",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Appreciative Inquirer", "Systems Thinker"],
+        "2": ["Questioner", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Provocateur",
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Mentor Support, Retention, and Burnout",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate"],
+        "2": ["Systems Thinker"],
+        "3": ["Devil's Advocate", "Systems Thinker"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Connector",
+        "6": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Outcome Measurement and Success Definition",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Audience Advocate"],
+        "2": ["Questioner", "Devil's Advocate", "Audience Advocate", "Systems Thinker"],
+        "3": ["Analyst"],
+        "4": ["Questioner"]
+      },
+      "append_contributors": {
+        "5": "Provocateur"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Sustainability, Endings, and Long-Term Horizon",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Questioner"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Analyst", "Devil's Advocate", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Visionary"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "Source ST section uses systems-vocabulary distinctive phrases (compounding-positive/negative dynamic, virtuous cycle, second-order effect, self-fulfilling dynamic, self-reinforcing signal, filtering effect) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). R11 substitution: floor met by preserving ST-distinctive systems-vocabulary phrases verbatim in merged questions."
+    }
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C01-5", "C08-4", "C10-2"],
+    "st_archetype_question_numbers": ["C01-4", "C04-3", "C06-4", "C07-1", "C08-2"],
+    "st_archetypes_verbatim": ["filtering effect", "second-order effect", "self-fulfilling dynamic", "virtuous cycle"]
+  }
+}
