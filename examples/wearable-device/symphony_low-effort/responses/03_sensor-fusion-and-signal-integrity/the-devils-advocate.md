@@ -1,0 +1,79 @@
+---
+project-name: "On-Device ML Health Monitoring Wearable"
+session-dir: "test-runs/wearable-device/low"
+datetime: 2026-04-28
+effort: "low"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "sonnet"
+model-reported: "claude-sonnet-4-6"
+topic-cluster: "03_sensor-fusion-and-signal-integrity"
+persona: "The Devil's Advocate"
+---
+
+# Sensor Fusion and Signal Integrity - The Devil's Advocate
+
+---
+
+## Q1: Fusion Architecture, Microphone Power Gating, and Whether Fusion Is Even Necessary
+* **Late fusion hides per-sensor confidence collapse.** Have we considered that late fusion's apparent modularity actually obscures a serious failure mode? When one sensor's classifier degrades silently — say, PPG accuracy drops 30% due to skin fouling — late fusion's weighted combination still produces a confident-looking output. Early fusion at least forces the combined model to learn degradation signatures. Mitigation: instrument per-sensor classifier confidence scores independently and surface them as first-class signals before the fusion layer decides anything.
+
+* **The microphone's power gating logic assumes sleep-state inference is reliable enough to gate a clinical sensor.** One potential challenge might be the bootstrap problem: accurately inferring sleep state from PPG and accelerometer alone requires those sensors to already be performing well — but that's exactly the condition you'd expect to be noisiest during the transition to sleep (lots of movement, variable perfusion). A microphone gated off during a marginal sleep detection means you're missing breathing data precisely when the classification is least certain. Consider adding a low-power acoustic presence detector that runs continuously and overrides the gate when it detects structured audio above a threshold.
+
+* **"Hybrid fusion" is an architecture choice that can metastasize.** Have we considered that hybrid approaches often start as principled designs and end as accumulated exceptions? Each new edge case — motion artifact during exercise, SpO2 interference from ambient light — becomes a hand-coded routing rule. Within 18 months you may have a fusion graph with 40 conditional branches that no single engineer fully understands. If hybrid is the direction, enforce it through a formal routing schema with explicit fallback semantics, not ad hoc branching.
+
+* **The question "is fusion genuinely necessary?" may have different answers for arrhythmia vs. apnea — and the team may be treating them as one product instead of two.** Arrhythmia detection from PPG alone (with accelerometer for artifact rejection) is well-established. Adding temperature and microphone to arrhythmia classification adds complexity and potential false positives without proven benefit. Apnea is the opposite — microphone and SpO2 together are near-essential. Designing one fusion architecture for both conditions likely means you're under-optimized for each. Mitigation: build condition-specific inference paths that share hardware but diverge at the model level.
+
+* **Asking whether fusion is "necessary" undersells the actual risk of unnecessary fusion.** Every additional fused signal is an additional attack surface for adversarial noise, an additional calibration burden, and an additional dimension of demographic generalization failure. The burden of proof should be on inclusion, not exclusion. Require a quantified recall improvement threshold — say, 8% lift on the target condition — before adding any sensor to the fusion pipeline.
+
+---
+
+## Q2: Multi-Signal Interdependence, Slow Sensor Degradation, and Alert Reliability Under Real Wear
+* **"Signals disagree because something is clinically interesting" vs. "one sensor is compromised" is not a binary — and your model won't know which it is.** Have we considered that the training data for distinguishing genuine clinical disagreement from sensor fault is almost certainly not in the corpus? Real-world wrist-worn sensor degradation patterns — PPG optical path fouling over 30 days, accelerometer baseline drift from thermal cycling — don't appear in published health monitoring datasets. Without fault-mode training examples, the fusion model will make arbitrary choices in these cases. Mitigation: build a hardware-in-the-loop degradation simulator to generate synthetic fault-mode training data before launch.
+
+* **Slow sensor drift is not self-announcing, and users won't notice.** One potential challenge might be that PPG optical path fouling with skin oils happens on a timescale of weeks — well beyond any validation test cycle. A device that was 94% accurate at unboxing could be 78% accurate at day 45 without triggering any alert, because the degradation is gradual and the model confidence scores degrade proportionally. This is a patient safety issue in a clinical partnership scenario. Mitigation: implement a rolling per-sensor calibration check — compare sensor response on a standard behavioral trigger (e.g., step count vs. accelerometer magnitude) against baseline and flag when deviation exceeds a threshold.
+
+* **Graceful degradation that surfaces uncertainty to users may create more harm than it prevents.** Have we considered the behavioral response to uncertainty alerts? If the device displays "low-confidence reading" regularly enough, users will either ignore it (alert fatigue) or become anxious about a device they can't interpret. Neither outcome is acceptable for a health-conscious 40+ demographic already primed for cardiac anxiety. The graceful degradation UX requires the same design rigor as the clinical alert UX, not an afterthought. Require UX research on uncertainty communication before the alert suppression logic is finalized.
+
+* **Suppressing low-confidence alerts is a liability position that hasn't been legally reviewed.** If the device suppresses a cardiac event alert because sensor confidence was below threshold — and an adverse event occurs — "we suppressed it appropriately based on signal quality" is a significantly harder legal argument than "the device didn't fire." Coordinate with legal counsel before shipping the suppression logic. This is not a product decision alone.
+
+---
+
+## Q3: Motion Artifact Rejection, Demographic Generalization, and End-to-End Preprocessing Budget
+* **"Stress-tested for irregular skin tones, tattoos, and subcutaneous fat" is probably not true yet, and you should know that before Series A closes.** Have we considered that the recall rate on these subgroups isn't a post-launch concern — it's a pre-launch liability? If the device underperforms for darker skin tones (a well-documented PPG problem) and you've marketed to health-conscious adults 40+ broadly, you're exposed to discrimination claims and regulatory scrutiny regardless of FDA clearance status. Run validation studies with demographically stratified participants before launch, not as a future research item.
+
+* **The accelerometer-as-artifact-corrector assumption breaks during the activities most relevant to your target user.** One potential challenge might be that the motions most likely to confound PPG artifact rejection for a 40+ demographic aren't vigorous exercise — they're slow, irregular arm movements: gesturing during conversation, reaching across a table, lying in an awkward position at night. These produce low-frequency, low-amplitude PPG interference that an accelerometer trained primarily on step-pattern data may not reject well. Validate the artifact rejection pipeline specifically on sedentary and semi-sedentary motion profiles, not just exercise protocols.
+
+* **Per-sensor compute estimates summed separately is a known failure mode in embedded systems.** Have we considered that every NPU vendor's benchmark numbers assume the chip is doing nothing else while running inference? On a real device, DMA transfers, sensor polling interrupts, display refresh, and BLE advertising all compete for the same bus bandwidth and shared SRAM. The aggregate latency under real multitasking conditions is typically 1.4–2x the sum of individual estimates. Require an end-to-end measured budget on actual silicon — not simulation, not dev board with nothing else running — before finalizing the preprocessing architecture.
+
+* **Motion artifact rejection that works well on average hides tail performance.** The metric "PPG signal quality score above 0.8 on 90% of samples" sounds good until you realize the 10% where it fails may be temporally clustered — exactly during transitions to sleep or during the arrhythmia-inducing stress events you're trying to detect. Report artifact rejection performance stratified by activity state and physiological state, not as a population mean.
+
+---
+
+## Q4: The Sensor Fusion Moment That Exceeded Expectations
+* **This question assumes the team has already discovered something unexpected — and may not have.** Have we considered that prompting for a "moment that exceeded expectations" privileges teams who have already done extensive real-world piloting, which a Series A startup with 18 months of runway almost certainly has not done at scale? If the honest answer is "we haven't found one yet," that's important data: it means the fusion architecture's latent capability is currently theoretical. Don't let the framing of this question generate a compelling story that substitutes for empirical evidence.
+
+* **Anecdotal fusion successes can anchor the architecture incorrectly.** One potential challenge might be that a single impressive fusion event — say, detecting a sleep apnea episode that PPG alone missed because of a corroborating skin temperature drop — becomes the design reference case that shapes the entire system. Architecture decisions made from n=1 observations tend to optimize for that one case at the expense of robustness across the distribution. Require that any "fusion exceeded expectations" example be reproduced in at least a structured pilot with 20+ subjects before it influences architectural decisions.
+
+* **The question inverts the productive inquiry.** The more useful investigation is: when has sensor fusion produced a false positive or false negative that a single-sensor approach would have avoided? The failure modes of fusion are less romantically memorable than the successes, but they're what will generate support calls, erode user trust, and surface in adverse event reports. Require equal time investigating fusion's worst moments alongside its best.
+
+---
+
+## Q5: Keystone Signals, Indicator-Species Framing, and Power Scheduling
+* **The indicator-species analogy is evocative but may mislead the architecture.** Have we considered that in ecology, indicator species were identified through longitudinal observation of actual ecosystems — not deduced from first principles? Declaring PPG the "keystone signal for arrhythmia" before you have large-scale real-world data is a hypothesis dressed as a framework. The danger is that the architecture then bakes in PPG primacy in ways that are hard to reverse if the data later shows skin temperature carries more independent information for a specific subpopulation. Build the keystone framing as a testable hypothesis with defined falsification criteria, not as a fixed architectural commitment.
+
+* **Framing signals as "keystone vs. dependent" risks undersampling dependent signals until they matter.** One potential challenge might be that if accelerometer is treated as purely an artifact-rejection input to PPG rather than an independent signal, it may be sampled at a rate calibrated for that role — and you may lose temporal resolution on motion data that would have been clinically informative in its own right. Power scheduling built around signal hierarchy can create blind spots in the very signals you've demoted. Maintain independent minimum sampling floors for each sensor regardless of its hierarchical role.
+
+* **The "interpret the others" framing for keystone signals assumes signal relationships are stable across individuals and over time.** Have we considered that a 45-year-old with a resting heart rate of 58 and a sedentary lifestyle will have a completely different PPG-to-temperature correlation baseline than a 42-year-old who runs 30 miles a week? A fusion architecture that treats inter-signal relationships as fixed will produce systematically biased inferences for users who fall outside the implicit calibration population. Require per-user baseline calibration during onboarding rather than population-level signal relationship priors.
+
+* **Power scheduling built around "which signal is keystone" optimizes the average case at the cost of edge-case coverage.** Arrhythmias are by definition intermittent and often asymptomatic at onset. If the microphone is scheduled off during periods when PPG shows normal sinus rhythm — because the keystone signal says everything is fine — you may miss the corroborating breathing irregularity that would have triggered an apnea alert. The power scheduling logic needs explicit coverage guarantees for the transition states, not just the steady states.
+
+---
+
+## Q6: From Event Detection to Temporal Health Geography (Continuous Physiological Mapping)
+* **This framing reframes a 7-day battery constraint device as a longitudinal mapping tool — and that tension hasn't been resolved.** Have we considered that "continuous, evolving map of a person's physiological state over months and years" requires data retention, model updating, and pattern recognition across timescales orders of magnitude longer than the current architecture is designed for? The device has 7-day battery life and no cloud processing of raw data. A physiological cartography system either lives on the companion app (which introduces a cloud dependency) or requires onboard storage and compute that doesn't exist in the current BOM. Don't let the vision outrun the architecture without an explicit feasibility gate.
+
+* **"No current analog in either consumer wellness or clinical medicine" is a risk signal, not a selling point.** One potential challenge might be that products with no current analog have no established clinical validation pathway, no reimbursement code, no physician workflow to slot into, and no patient mental model for adoption. Novelty in health monitoring has a poor commercial track record precisely because clinical trust requires precedent. Before investing in a "pattern cartography" architecture, require a specific articulation of who uses this output, in what clinical or personal decision context, and how it would be validated.
+
+* **Continuous mapping may make false positive management harder, not easier.** Discrete event detection has a clear threshold problem — but at least it's bounded. A continuous physiological map that highlights "unusual zones" over months will surface statistical anomalies constantly, most of which are meaningless. For a target user with family history of cardiac events, a device that perpetually shows "areas of concern" on a personal health map is not a wellness product — it is an anxiety engine. The UX and clinical interpretation framework for this vision needs to be designed before the architecture, not after.
+
+* **The team's regulatory strategy becomes radically more complex under a cartography model.** The current plan distinguishes consumer wellness (now) from FDA 510(k) clinical claims (later). A device whose primary output is a "continuous physiological map" with no current clinical analog fits neither box cleanly. The FDA has shown it will regulate continuous passive monitoring tools that surface health patterns differently than discrete event detectors — and the evidentiary burden for a novel output type is substantially higher. Require a regulatory pre-submission consultation specifically on this output type before building toward it.

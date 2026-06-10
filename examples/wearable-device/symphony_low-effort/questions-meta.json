@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "low",
+  "n_synth_input": 82,
+  "m_synth_output": 35,
+  "append_count": 12,
+  "total": 47,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Defining Success and the Real Objective",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst"],
+        "2": ["Questioner"],
+        "3": ["Audience Advocate"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Power Budget and Hardware-Software Co-Design",
+      "question_numbers": [6, 7, 8, 9, 10, 11, 12],
+      "synthesize_contributors": {
+        "6": ["Analyst", "Systems Thinker", "Technical Expert"],
+        "7": ["Analyst", "Systems Thinker", "Technical Expert"],
+        "8": ["Technical Expert", "Questioner", "Systems Thinker", "Devil's Advocate"],
+        "9": ["Analyst", "Devil's Advocate"],
+        "10": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "11": "Connector",
+        "12": "Storyteller"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Sensor Fusion and Signal Integrity",
+      "question_numbers": [13, 14, 15, 16, 17, 18],
+      "synthesize_contributors": {
+        "13": ["Analyst", "Technical Expert", "Questioner"],
+        "14": ["Systems Thinker", "Analyst"],
+        "15": ["Technical Expert", "Devil's Advocate"],
+        "16": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "17": "Connector",
+        "18": "Visionary"
+      }
+    },
+    {
+      "number": 4,
+      "name": "False Positives, Trust, and Alert Behavior",
+      "question_numbers": [19, 20, 21, 22, 23, 24, 25],
+      "synthesize_contributors": {
+        "19": ["Analyst", "Questioner", "Systems Thinker", "Devil's Advocate"],
+        "20": ["Devil's Advocate"],
+        "21": ["Audience Advocate"],
+        "22": ["Systems Thinker"],
+        "23": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "24": "Provocateur",
+        "25": "Storyteller"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Privacy Architecture and Data Pipeline",
+      "question_numbers": [26, 27, 28, 29, 30, 31],
+      "synthesize_contributors": {
+        "26": ["Technical Expert", "Devil's Advocate", "Questioner"],
+        "27": ["Questioner", "Analyst", "Audience Advocate", "Technical Expert"],
+        "28": ["Devil's Advocate"],
+        "29": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "30": "Provocateur",
+        "31": "Visionary"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Regulatory Pathway from Consumer Wellness to Clinical",
+      "question_numbers": [32, 33, 34, 35, 36, 37, 38],
+      "synthesize_contributors": {
+        "32": ["Analyst", "Questioner", "Systems Thinker", "Appreciative Inquirer"],
+        "33": ["Questioner", "Systems Thinker"],
+        "34": ["Devil's Advocate"],
+        "35": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "36": "Connector",
+        "37": "Provocateur",
+        "38": "Storyteller"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Model Updates, Drift, and Continuous Learning",
+      "question_numbers": [39, 40, 41],
+      "synthesize_contributors": {
+        "39": ["Analyst", "Technical Expert", "Devil's Advocate", "Systems Thinker"],
+        "40": ["Analyst"],
+        "41": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 8,
+      "name": "Equity, Access, and the People Being Served",
+      "question_numbers": [42, 43, 44, 45, 46, 47],
+      "synthesize_contributors": {
+        "42": ["Audience Advocate"],
+        "43": ["Audience Advocate"],
+        "44": ["Audience Advocate"],
+        "45": ["Audience Advocate"],
+        "46": ["Audience Advocate"],
+        "47": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [],
+  "self_check": {
+    "ai_orphan_question_numbers": [4, 10, 16, 23, 29, 41, 47],
+    "st_archetype_question_numbers": [22],
+    "st_archetypes_verbatim": ["Shifting-the-Burden"]
+  }
+}
