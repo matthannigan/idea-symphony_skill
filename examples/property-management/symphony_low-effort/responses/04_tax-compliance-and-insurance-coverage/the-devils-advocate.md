@@ -1,0 +1,67 @@
+---
+project-name: "Short-Term Rental Property Management Company"
+session-dir: "test-runs/property-management/low"
+datetime: 2026-04-27
+effort: "low"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "sonnet"
+model-reported: "claude-sonnet-4-6"
+topic-cluster: "04_tax-compliance-and-insurance-coverage"
+persona: "The Devil's Advocate"
+---
+
+# Tax Compliance and Insurance Coverage - The Devil's Advocate
+
+## Three-Regime Tax Burden and Statutory Remittance Liability
+
+* **The management agreement will not hold under audit pressure.** Have we considered that municipal revenue departments increasingly treat whoever collects and controls booking proceeds as the de facto remitter, regardless of what the management agreement says? A contractual assignment of occupancy tax liability to the owner means nothing when the city auditor subpoenas your bank records and sees the money flowing through your account. Mitigation: consult a tax attorney in your specific jurisdiction before drafting the agreement — not after the first audit notice arrives.
+
+* **At 10 properties the compliance cost is already underestimated.** The question frames this as a scale problem ("when does it require a dedicated role?"), but one missed remittance at the 5-property stage can trigger penalties that exceed your entire management fee for a quarter. If your $80K startup capital is funding operations and compliance simultaneously, the first city audit or penalty notice could be existential. Mitigation: budget a dedicated compliance line item from day one, even if that means a part-time bookkeeper rather than a founder moonlighting.
+
+* **Platform remittance creates a false sense of coverage.** Airbnb and VRBO collect and remit occupancy taxes in many jurisdictions, which sounds helpful — but this creates a dangerous assumption that all tax obligations are met. Platform remittance typically covers state-level taxes but may miss city-specific or county-specific levies. If you rely on platform reports to confirm compliance and the platform's definition of "taxable stay" differs from the city's definition, you accumulate unremitted liability invisibly. Mitigation: independently reconcile platform tax reports against city ordinance definitions every quarter.
+
+* **Three-regime complexity creates a principal-agent dispute waiting to happen.** When an owner sees their annual 1099 and calculates that their effective tax burden is higher than they expected — because your management agreement passed remittance liability to them but they didn't understand that liability — you face a contract dispute at exactly the moment you're trying to retain that client. Mitigation: build a plain-English tax impact summary into the onboarding package so owners understand their obligations before they sign, not after they receive their first tax bill.
+
+* **Regulatory change erases your compliance investment overnight.** The city just passed new STR regulations, and the state legislature is considering preemption. If the city ordinance changes — a likely outcome given the upcoming council election — your carefully designed remittance workflow may be immediately wrong. Mitigation: build remittance processes around configurable rules rather than hardcoded rates, and set a calendar trigger to review all tax workflows within 30 days of any local ordinance change.
+
+## Federal Tax Character and 1099 Obligations
+
+* **The 14-day exclusion is a trap for owners who don't understand it.** Have we considered that owners attracted to the "it's tax-free income under 14 days" framing will be furious when they discover the company's full-service, year-round management model means their property will almost certainly exceed 14 days and none of the exclusion applies? If you use IRC § 280A(g) as a marketing talking point without clearly disclaiming that full-service management makes it inapplicable, you've created a misrepresentation claim. Mitigation: explicitly disclaim the 14-day exclusion in all owner-facing materials and explain the Schedule E treatment they should actually expect.
+
+* **Your company's 1099 obligations may be larger than you think.** The question asks whether 1099 obligations vary by rental regime, but one potential challenge is that as a property manager collecting rents on behalf of others, you likely trigger Form 1099-MISC reporting requirements for every owner who receives more than $600 annually — which is essentially all of them. Failure to file 1099s correctly draws IRS penalties and, worse, audits of your owners who then blame you. Mitigation: engage a CPA with specific property management experience before your first tax season, not during it.
+
+* **Owner misclassification as active vs. passive participants creates downstream exposure.** If an owner's STR income is reclassified from passive rental income to active business income — triggered by how the IRS characterizes the company's full-service involvement — the owner may owe self-employment tax they didn't budget for. They will look for someone to blame, and the company that told them "we handle everything" is the obvious target. Mitigation: include an explicit disclaimer in the management agreement that tax characterization depends on each owner's individual circumstances and that owners should consult their own tax advisors.
+
+* **The company's own tax character is unresolved.** Have we considered that the management company itself may be operating a trade or business in the IRS's view, not merely acting as an agent? This affects how the company's income is taxed, whether the founders pay self-employment tax, and whether the QBI deduction under § 199A is available. Getting this wrong in year one and having to restate could trigger penalties. Mitigation: structure the company's entity type and tax elections with explicit advice on the management company's own tax treatment, not just the owners' tax treatment.
+
+* **Inconsistent guest stay lengths across properties create a compliance patchwork.** A portfolio of 30-40 properties will have wildly different average guest stay lengths — some beachfront properties may average 7-day stays while others average 2-day stays. The tax and reporting treatment differs for each property. Managing this complexity manually is error-prone. Mitigation: invest in property management software that tracks average stay length per property and flags when a property's profile crosses a tax-relevant threshold.
+
+## Coverage Gap Between Platform Protection and Company E&O
+
+* **Platform protection is a marketing claim, not a contract right.** Have we considered that AirCover and VRBO's host guarantee are unilaterally modifiable by the platform at any time, are subject to discretionary claims adjudication, and have a track record of denial on technicalities? Positioning these programs as part of your insurance stack to prospective owners is dangerous — they are not insurance, and if a significant claim is denied, the owner's claim against the company becomes your problem. Mitigation: explicitly disclaim platform protection programs in owner-facing materials and emphasize the company's and owner's actual insurance stack.
+
+* **The professional services exclusion in standard GL policies is exactly the right concern.** One potential failure mode: the company purchases a general liability policy that explicitly excludes "property management services" as professional services, rendering the policy useless for the most likely claims. Many brokers sell GL policies to small businesses without flagging this exclusion. Mitigation: work with a broker who specializes in property management or hospitality — not a generalist — and demand that they show you the professional services exclusion language specifically and confirm it does not apply to your operations.
+
+* **The named-defendant problem is worse than the coverage problem.** Even if the company has adequate coverage, being named in a guest injury lawsuit is a multi-year distraction that consumes founder time, elevates insurance premiums at renewal, and becomes a public record that sophisticated property owners will find during due diligence. The coverage question is secondary to the liability limitation question. Mitigation: consider whether the company's contract with each owner can include indemnification provisions and a requirement that the owner name the company as an additional insured on the owner's homeowner policy, which shifts the first-dollar defense to the owner's insurer.
+
+* **Umbrella policy gaps are invisible until a serious claim.** Have we considered that umbrella policies often have "drop-down" provisions that only activate after primary coverage is exhausted, but also have their own exclusions that may mirror the primary policy's exclusions? A company that believes it has $5M of umbrella coverage for STR management liability may discover the umbrella excludes the same professional services the GL excludes. Mitigation: require the umbrella insurer to specifically confirm coverage for STR property management operations in writing before binding the policy.
+
+* **Serious injury claims will test every assumption simultaneously.** A guest drowning or fall from a second-story balcony is not a hypothetical — it happens to STR properties. When it does, the platform's coverage will be disputed, the owner's homeowner policy will apply STR exclusions, the company's GL will face the professional services question, and the E&O will debate whether a cleaning or maintenance failure was a "professional error." All of this happens while the company is in its first two years of operation, when legal defense costs alone could be terminal. Mitigation: run a tabletop exercise with an insurance attorney before you take on the first property to map exactly which policy responds first to a catastrophic guest injury scenario.
+
+## Insurance Requirements as Contract Conditions
+
+* **Minimum coverage requirements are meaningless without enforcement mechanisms.** Have we considered that requiring owners to maintain STR-endorsed homeowner's insurance is only valuable if the company actually verifies it at signing, re-verifies it annually, and has a clear process for what happens when an owner's policy lapses mid-season? Most management agreements that require insurance have no audit mechanism. Mitigation: build a certificate of insurance collection process into onboarding, calendar reminders for annual renewal verification, and a hard contract provision that management services are suspended — not just that the company has the right to suspend — when insurance lapses.
+
+* **The "named insured" requirement will lose you clients.** Requiring an owner to name the management company as an additional insured on their homeowner policy is the correct risk management move, but many owners will balk because it feels intrusive or because their insurer charges extra for it. If the requirement is in the contract but routinely waived to close deals, it provides no protection. Mitigation: be prepared to walk away from properties whose owners will not satisfy the insurance requirements, and factor this into your year-one acquisition projections — assume 15-20% of otherwise-qualified properties will fail the insurance requirement screen.
+
+* **Waiver of subrogation provisions protect the company but anger insurers.** If the management agreement requires the owner's insurer to waive subrogation rights against the company, some insurers will refuse to write the policy or will exclude it, leaving the owner scrambling for replacement coverage. This creates friction at onboarding and attrition at renewal. Mitigation: consult with an insurance attorney on which provisions are legally enforceable in your state versus which will be struck by insurers as non-standard, and draft the contract around realistic requirements rather than ideal ones.
+
+* **Owner coverage gaps compound when HOAs are in the picture.** Several target neighborhoods have HOA STR restrictions. An owner who is operating in violation of HOA rules may find that their homeowner's insurer considers the STR use a material misrepresentation, voiding the policy retroactively. If the company has been collecting fees from that property for six months and a claim occurs, both the owner and the company are exposed without any insurance coverage at all. Mitigation: the management agreement should require owners to represent and warrant that their STR operation does not violate any HOA restriction, and include a termination right if that representation proves false.
+
+* **Contract termination rights for insurance lapse are harder to exercise than to draft.** One potential challenge: when an owner's insurance lapses mid-booking season, exercising the right to suspend management means canceling confirmed guest reservations, triggering refund obligations, and creating platform penalty exposure. The company may find that the contractual right to terminate is effectively impossible to exercise without incurring costs that exceed the risk of continuing management without coverage. Mitigation: include a "cure period" of no more than 5 business days for insurance lapse, and build into the management agreement an owner obligation to reimburse the company for any cancellation penalties or refunds that result from suspension necessitated by the owner's coverage failure.
+
+---
+
+**Total questions answered**: 4
+**Total responses**: 20
+**Responses per question**: 5

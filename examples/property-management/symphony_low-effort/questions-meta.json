@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-04-27T12:00:00Z",
+  "effort": "low",
+  "n_synth_input": 75,
+  "m_synth_output": 31,
+  "append_count": 12,
+  "total": 43,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Vision and Founding Identity",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Visionary",
+        "5": "Storyteller"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Regulatory Strategy and Political Risk",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst"],
+        "2": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker"],
+        "3": ["Questioner", "Analyst", "Devil's Advocate", "Audience Advocate"],
+        "4": ["Questioner", "Devil's Advocate", "Lawyer", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "5": "Visionary",
+        "6": "Provocateur"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Legal Architecture and Contract Design",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Lawyer"],
+        "2": ["Analyst", "Lawyer", "Devil's Advocate"],
+        "3": ["Lawyer", "Devil's Advocate"],
+        "4": ["Lawyer", "Devil's Advocate", "Analyst"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 4,
+      "name": "Tax Compliance and Insurance Coverage",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Lawyer", "Analyst"],
+        "2": ["Lawyer"],
+        "3": ["Lawyer", "Devil's Advocate"],
+        "4": ["Lawyer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 5,
+      "name": "Unit Economics and Capital Runway",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Devil's Advocate", "Questioner"],
+        "2": ["Analyst", "Devil's Advocate"],
+        "3": ["Analyst", "Devil's Advocate", "Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 6,
+      "name": "Operational Scaling and the 30-Minute Constraint",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate", "Appreciative Inquirer"],
+        "2": ["Questioner", "Analyst", "Devil's Advocate"],
+        "3": ["Questioner", "Systems Thinker"],
+        "4": ["Analyst"]
+      },
+      "append_contributors": {
+        "5": "Analogist",
+        "6": "Provocateur"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Owner Relationships, Trust, and the Shifting-the-Burden Dynamic",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Audience Advocate", "Appreciative Inquirer"],
+        "2": ["Questioner", "Audience Advocate"],
+        "3": ["Devil's Advocate", "Systems Thinker", "Analyst"]
+      },
+      "append_contributors": {
+        "4": "Analogist"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Guest Experience and Accessibility",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "4": "Visionary"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Community Relations and the Good-Neighbor Operating Model",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Audience Advocate", "Systems Thinker"],
+        "2": ["Systems Thinker"],
+        "3": ["Questioner", "Audience Advocate", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Storyteller",
+        "5": "Provocateur",
+        "6": "Analogist",
+        "7": "Storyteller"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C01-Q1", "C01-Q2", "C01-Q3"],
+    "st_archetype_question_numbers": ["C02-Q4", "C07-Q1"],
+    "st_archetypes_verbatim": ["Tragedy-of-the-Commons", "Shifting-the-Burden"]
+  }
+}
