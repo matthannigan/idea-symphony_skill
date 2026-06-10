@@ -1,6 +1,6 @@
 ---
 project-name: "Food Truck Startup and Expansion Strategy"
-session-dir: "test-runs/food-truck/high"
+session-dir: "examples/food-truck/symphony_high-effort/"
 datetime: 2026-02-24T05:00:00Z
 effort: "high"
 model-reported: "claude-opus-4-7"
@@ -12,7 +12,7 @@ model-reported: "claude-opus-4-7"
 **Plan Date:** 2026-02-24
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/food-truck/high/
+**Session Directory:** examples/food-truck/symphony_high-effort/
 
 ## Status
 

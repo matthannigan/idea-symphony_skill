@@ -4,7 +4,14 @@
 **Plan Date:** 2026-02-18
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/tool-library/min/
+**Session Directory:** examples/tool-library/symphony_min-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Governance, Sustainability, and Financial Model (5 questions)](questions/by-topic/01_governance-sustainability-and-financial-model.md)
+2. [Equitable Access and Community Engagement (5 questions)](questions/by-topic/02_equitable-access-and-community-engagement.md)
+3. [Operations, Logistics, and Space Use (5 questions)](questions/by-topic/03_operations-logistics-and-space-use.md)
+4. [Launch Strategy and Community Buy-In (4 questions)](questions/by-topic/04_launch-strategy-and-community-buy-in.md)
 
 ## Status
 

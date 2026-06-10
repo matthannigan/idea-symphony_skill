@@ -22,7 +22,7 @@ Two cautions keep the optimism honest. The simplification cannot manufacture dem
 
 ## Session Overview
 
-The request was to strip a feature-bloated social fitness app (fifteen half-built features, 180K downloads, 8% retention, a burned-out team, eight months of runway) down to its true core and relaunch as something users open every day. The session ran at high effort: thirteen topic clusters, each explored by seven distinct lenses with isolated context, spanning core-value definition, the engagement metrics, technical entanglement, user communication, equity, team burnout, runway, success redefinition, positioning, and concrete first experiments. What follows synthesizes those thirteen explorations, including the places where the lenses disagreed.
+The request was to strip a feature-bloated social fitness app (fifteen half-built features, 180K downloads, 8% retention, a burned-out team, eight months of runway) down to its true core and relaunch as something users open every day. The session ran at high effort: thirteen thematic topic clusters plus a final catch-all cluster, each explored by seven distinct lenses with isolated context, spanning core-value definition, the engagement metrics, technical entanglement, user communication, equity, team burnout, runway, success redefinition, positioning, and concrete first experiments. What follows synthesizes those fourteen explorations, including the places where the lenses disagreed.
 
 ## Central Tensions
 
@@ -124,6 +124,11 @@ The load-bearing and unresolved question is whether to choose direction by the f
 
 The tension is speed versus validation rigor: six of seven lenses push toward a fast, small, walled-off experiment that lets subtraction reveal the core, while one sustained adversarial voice warns that moving fast on the loyal 2% inside a 30-day window manufactures false confidence in a core nobody else wants. Both agree on the test's shape. The most actionable point is that the experiment cannot run inside the cluttered current app, because a test in a new tab cannot separate "the core failed" from "the surrounding noise killed it," so build a walled-off one-feature version for a cohort of 100-500 users. The dissent threads all three questions: define success concretely before testing, test on lapsed or fresh users rather than the biased early adopters, and measure for habit and scale signals rather than novelty enthusiasm.
 - See: [synthesis/13_first-steps-and-experiments-worth-running_summary.md](synthesis/13_first-steps-and-experiments-worth-running_summary.md)
+
+### 14. Additional Questions
+
+The catch-all cluster lands on the session's sharpest reframe: the app's failure is not its feature count but a missing conceptual identity, so the work is rezoning the app's territory rather than demolishing features. All seven lenses independently reconstruct the same abandonment scene, a returning user who wanted to do one thing, met six tabs and a hamburger menu, and concluded the app was an obstacle, which shifts the central task from "which features survive?" to "what is this app?". On the provocation of a coherence-forcing 16th feature, six of seven agree the instinct is right but the punitive framing is wrong: scope the experience with a single up-front commitment and let the rest recede rather than locking users out. The open trade-offs are about sequencing rather than direction, with most lenses favoring a reversible test (hide features behind a toggle, or run a parallel power-user beta) over permanent deletion, and two cautions hold: do not build complex AI to solve a complexity problem, and remember that for a kitchen-sink cohort the bloat may be the value.
+- See: [synthesis/99_additional_summary.md](synthesis/99_additional_summary.md)
 
 ## Recommended Next Steps
 

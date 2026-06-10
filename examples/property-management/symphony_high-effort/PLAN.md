@@ -8,7 +8,22 @@ model-reported: claude-opus-4-7
 **Plan Date:** 2026-02-24
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/property-management/high/
+**Session Directory:** examples/property-management/symphony_high-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Foundational Value Proposition and Fee Architecture (3 questions)](questions/by-topic/01_foundational-value-proposition-and-fee-architecture.md)
+2. [Regulatory Strategy and Multi-Jurisdiction Compliance (11 questions)](questions/by-topic/02_regulatory-strategy-and-multi-jurisdiction-compliance.md)
+3. [Permit Scarcity, Zone Concentration, and Portfolio Concentration Risk (4 questions)](questions/by-topic/03_permit-scarcity-zone-concentration-and-portfolio-concentration-risk.md)
+4. [Liability Architecture, Insurance, and Risk Transfer (5 questions)](questions/by-topic/04_liability-architecture-insurance-and-risk-transfer.md)
+5. [Financial Resilience and Seasonal Cash Flow (4 questions)](questions/by-topic/05_financial-resilience-and-seasonal-cash-flow.md)
+6. [Owner Trust, Onboarding, and Retention (11 questions)](questions/by-topic/06_owner-trust-onboarding-and-retention.md)
+7. [Community Relations and "Good Neighbor" Operations (13 questions)](questions/by-topic/07_community-relations-and-good-neighbor-operations.md)
+8. [Political Strategy and City Council Engagement (12 questions)](questions/by-topic/08_political-strategy-and-city-council-engagement.md)
+9. [Operational Scaling and the 5-to-50 Inflection Point (7 questions)](questions/by-topic/09_operational-scaling-and-the-5-to-50-inflection-point.md)
+10. [Guest Experience, Pricing Authority, and Frontline Workforce (7 questions)](questions/by-topic/10_guest-experience-pricing-authority-and-frontline-workforce.md)
+11. [Market Differentiation, Future Trends, and Climate Risk (5 questions)](questions/by-topic/11_market-differentiation-future-trends-and-climate-risk.md)
+12. [Additional Questions (1 questions)](questions/by-topic/99_additional.md)
 
 ## Status
 
@@ -68,23 +83,6 @@ Full rationale: see [personas/question-generation.md](personas/question-generati
 ## Notes & Issues
 
 (None)
-
-## Topic Clusters
-
-| # | Slug | Display Name |
-|---|------|--------------|
-| 01 | 01_foundational-value-proposition-and-fee-architecture | Foundational Value Proposition and Fee Architecture |
-| 02 | 02_regulatory-strategy-and-multi-jurisdiction-compliance | Regulatory Strategy and Multi-Jurisdiction Compliance |
-| 03 | 03_permit-scarcity-zone-concentration-and-portfolio-concentration-risk | Permit Scarcity, Zone Concentration, and Portfolio Concentration Risk |
-| 04 | 04_liability-architecture-insurance-and-risk-transfer | Liability Architecture, Insurance, and Risk Transfer |
-| 05 | 05_financial-resilience-and-seasonal-cash-flow | Financial Resilience and Seasonal Cash Flow |
-| 06 | 06_owner-trust-onboarding-and-retention | Owner Trust, Onboarding, and Retention |
-| 07 | 07_community-relations-and-good-neighbor-operations | Community Relations and "Good Neighbor" Operations |
-| 08 | 08_political-strategy-and-city-council-engagement | Political Strategy and City Council Engagement |
-| 09 | 09_operational-scaling-and-the-5-to-50-inflection-point | Operational Scaling and the 5-to-50 Inflection Point |
-| 10 | 10_guest-experience-pricing-authority-and-frontline-workforce | Guest Experience, Pricing Authority, and Frontline Workforce |
-| 11 | 11_market-differentiation-future-trends-and-climate-risk | Market Differentiation, Future Trends, and Climate Risk |
-| 99 | 99_additional | Statewide Preemption as an Asymmetric Bet |
 
 ## Phase 2 Step 2.4: Brainstorming Personas
 

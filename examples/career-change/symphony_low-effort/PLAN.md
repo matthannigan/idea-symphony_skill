@@ -4,8 +4,20 @@
 **Plan Date:** 2026-02-24
 **Effort:** `low` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/career-change/low/
+**Session Directory:** examples/career-change/symphony_low-effort/
 **Phase 2A Orchestrator model-reported:** claude-opus-4-7
+
+## Topic Clusters (from Phase 2)
+
+1. [Calling vs. Escape — Diagnosing the Driver (5 questions)](questions/by-topic/01_calling-vs-escape-diagnosing-the-driver.md)
+2. [Financial Cost Modeling and Cash-Flow Runway (4 questions)](questions/by-topic/02_financial-cost-modeling-and-cash-flow-runway.md)
+3. [Lifetime Economics, Loan Forgiveness, and Anchoring (5 questions)](questions/by-topic/03_lifetime-economics-loan-forgiveness-and-anchoring.md)
+4. [Law School Risk, Reversibility, and the Bar Cliff (4 questions)](questions/by-topic/04_law-school-risk-reversibility-and-the-bar-cliff.md)
+5. [Nursing as a Legal Differentiator — Asset Transfer (5 questions)](questions/by-topic/05_nursing-as-a-legal-differentiator-asset-transfer.md)
+6. [Alternative and Hybrid Paths (4 questions)](questions/by-topic/06_alternative-and-hybrid-paths.md)
+7. [Whom She Would Serve — Client-Centered Practice (6 questions)](questions/by-topic/07_whom-she-would-serve-client-centered-practice.md)
+8. [Family, Mentors, and the Felt Sense of the Decision (6 questions)](questions/by-topic/08_family-mentors-and-the-felt-sense-of-the-decision.md)
+9. [Leverage, Timing, and the First Concrete Step (5 questions)](questions/by-topic/09_leverage-timing-and-the-first-concrete-step.md)
 
 ## Status
 

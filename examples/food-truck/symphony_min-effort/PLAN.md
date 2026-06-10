@@ -1,6 +1,6 @@
 ---
 project-name: "Food Truck Startup and Expansion Strategy"
-session-dir: "test-runs/food-truck/min"
+session-dir: "examples/food-truck/symphony_min-effort/"
 datetime: 2026-02-24T05:00:00Z
 effort: "min"
 ---
@@ -11,7 +11,15 @@ effort: "min"
 **Plan Date:** 2026-02-24
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/food-truck/min/
+**Session Directory:** examples/food-truck/symphony_min-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Unit Economics and Financial Sustainability (4 questions)](questions/by-topic/01_unit-economics-and-financial-sustainability.md)
+2. [Regulatory Environment and Political Strategy (4 questions)](questions/by-topic/02_regulatory-environment-and-political-strategy.md)
+3. [Brand Differentiation and Market Positioning (3 questions)](questions/by-topic/03_brand-differentiation-and-market-positioning.md)
+4. [Revenue Diversification and Growth Sequencing (4 questions)](questions/by-topic/04_revenue-diversification-and-growth-sequencing.md)
+5. [Operations, Staffing, and Founder Capacity (4 questions)](questions/by-topic/05_operations-staffing-and-founder-capacity.md)
 
 ## Status
 

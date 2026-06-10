@@ -1,6 +1,6 @@
 ---
 project-name: "Career Change from ICU Nursing to Public Interest Law"
-session-dir: "test-runs/career-change/min"
+session-dir: "examples/career-change/symphony_min-effort/"
 datetime: 2026-02-24T05:00:00Z
 effort: "min"
 ---
@@ -11,7 +11,7 @@ effort: "min"
 **Plan Date:** 2026-02-24
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/career-change/min/
+**Session Directory:** examples/career-change/symphony_min-effort/
 
 ## Status
 

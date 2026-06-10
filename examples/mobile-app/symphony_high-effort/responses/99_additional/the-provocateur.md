@@ -1,0 +1,43 @@
+---
+project-name: "Feature-Bloated Mobile App MVP Reset"
+session-dir: "test-runs/mobile-app/high"
+datetime: 2026-04-28
+effort: "high"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "99_additional"
+persona: "The Provocateur"
+---
+
+# Feature-Bloated Mobile App MVP Reset — The Provocateur
+
+## The Abandonment Scene
+
+* **The user wanted social proof, not progress.** The scene plays out this way: they open the app on day two looking to compare their workout with a friend, but the friend-matching algorithm has no data yet. They scroll past the social feed, see irrelevant posts from strangers, close the app assuming it's empty. The hidden assumption this reveals: we built a feature-rich app that requires critical mass to be valuable—but we launched at scale-of-one. The real insight: simplification isn't just about cutting features; it's about cutting the sequencing delay. Some features become instantly valuable (personal tracking), others need time to reach utility (social). What if we reframed the MVP by *sequencing value by activation timeline* rather than by feature?
+
+* **They wanted autonomy; we offered surveillance.** User opens the app day three, notices they're being asked to log meals before they've even completed a workout. The meal planner is algorithmically suggesting portions based on activity data they haven't generated yet. They feel watched and managed by automation they didn't consent to. The absurd version: what if we made the surveillance explicit and gamified—"The app is now monitoring you; every calorie is a liability"? The real insight: constraint clarity beats feature richness. Users don't abandon features; they abandon *ambiguity about what the system wants from them*.
+
+* **The app was competing against itself.** They downloaded for "track workouts," but the first time they open it post-download, they're met with six competing entry points: start a workout, join a challenge, view your social feed, explore the marketplace, read the meditation guide, check your progress journal. No clear primary action. They panic and close it. The provocation: what if we designed the app to be actively *hostile* to choice—literally disable five of the six entry points and force the user down one path? The real insight: cognitive load isn't about feature count; it's about decision paralysis. A 10-feature app with one obvious entry point beats a 3-feature app with three equally viable paths.
+
+* **They returned because they felt like a failure.** Specifically: they logged four workouts, then the algorithm compared them to a "typical user" and their output looked anemic. The comparison feature—built to be motivating—became a mirror that said "you're doing this wrong." They had a choice: feel bad repeatedly or delete the app. The absurd version: what if the app *celebrated* the difference between users and a norm—"Look, you're already 15% weirder than the average user, which is awesome"? The real insight: simplification has to include *removing comparison surfaces* if the data isn't mature enough to make those comparisons meaningful.
+
+## The App That Refuses To Simplify
+
+* **The coherence feature as a guardrail.** The absurd version: the "AI concierge" locks users into one goal per week and literally grays out four-fifths of the app. That's punitive. But the real insight is directional: what if the core simplification was *commitment-based access* rather than *feature removal*? Users who commit to "just tracking workouts" see only the workout tracker and nothing else—not through hiding, but through intentional scoping. Users who want the full ecosystem get it, but only after explicitly saying "I'm ready for complexity." The forcing function isn't punishment; it's permission structure. This flips the retention problem: instead of "which 3 features do we keep," ask "which 1-3 *commitment profiles* do we offer, and what does the app look like for someone committed to each one?"
+
+* **The 16th feature as a Rosetta Stone.** Add something so radically different—say, an app-wide "sabbatical mode" where you literally can't access the app for 30 days once activated—and suddenly all 15 existing features snap into coherence around *freedom of relationship with the tool*. The provocation sounds absurd (why ship a "not using" feature?), but the insight is that the bloat feels chaotic because users don't understand the *philosophy* of the app. The 16th feature could instead be a narrative hook: "This app helps you have a *responsible relationship* with your fitness data. That means the right to ignore it." That reframes complexity as intentional, not accidental.
+
+* **Coherence as hierarchy, not deletion.** What if instead of cutting features, we made them explicitly hierarchical—a "core stack" that ships day one, plus "advanced unlocks" that appear only after mastery? Users see the simplicity first, complexity emerges through earned access. The absurdity is that this sounds like onboarding design (which it is), but it reverses the problem: instead of "too many features," it becomes "features you didn't earn yet." This turns complexity into a feature progression rather than a design failure.
+
+* **The opposite provocation: what if bloat was the feature?** Some users explicitly want a kitchen-sink app—one place where all fitness-adjacent behaviors live, unified, rather than juggling five best-in-class point solutions. What if the real simplification was *for them* making the bloat navigable through smarter choreography, search, and defaults—not through deletion? Simplify the *interface to complexity* rather than the complexity itself. The insight: "MVP reset" might not mean fewer features; it might mean a clarified *audience lens* and totally different UX for different user types.
+
+## Zoning Before Demolition
+
+* **Demolition assumes structure will regenerate the same way.** If we tear down features, the information architecture—the "bones" of the app—stays intact. Users will still navigate via tabs. Notifications will still interrupt. We'll build something identical, just smaller. The provocation: what if simplification *requires* rezoning? Delete the tab structure entirely. Kill notifications. Rebuild the entire conceptual framework so that "coherence" isn't a feature; it's the *default shape of the system*. The real insight: half of our bloat is architectural, not feature-level. You can cut 12 features and still have a bloated UX if the underlying navigation schema doesn't change.
+
+* **Zoning changes sequencing; demolition changes speed.** Demolition is fast—cut features, ship in 6 weeks. Rezoning is strategic—decide what the app fundamentally *is* (a habit tracker? a progress journal? a social platform?), then rebuild the architecture around that identity. Then—and only then—add features that fit that zoned territory. The provocation: the fast path (demolition) almost always fails because users feel the absence; the strategic path (rezoning) works because users experience coherence. Which do we actually have time and runway for? The insight: if we demolish without rezoning, we're shipping "the same app, smaller." If we rezone without demolishing, we're redesigning from scratch. Both are expensive. The honest answer is which risk we're actually comfortable taking.
+
+* **Zoning reveals hidden dependencies.** When you rezone, you discover that the meditation feature wasn't actually dead weight—it was psychologically paired with the post-workout cool-down ritual for 200 users. Demolition loses that signal; rezoning makes it visible. The provocation: what if the right move was to zone the *social aspects* into a separate experience entirely—not deleting the feature, but moving it out of the app and into a web platform or a separate companion app? The insight: simplification isn't always subtraction; sometimes it's *relocation and reorganization*.
+
+* **The rezoning bet: accept temporary growth.** The real provocation is this: to truly rezone, we probably need to add 2-3 *new* features that clarify the app's identity—not to expand, but to *define*. Like a "workspace" feature that clusters related tools, or a "daily focus" feature that sequences the experience. This sounds like the opposite of simplification, but the insight is that sometimes you need strategic additions to make subtractions feel coherent rather than arbitrary. The real question isn't "which features do we cut," but "what needs to be true about the new architecture so that what we cut feels like obvious excess, not missing essentials?"

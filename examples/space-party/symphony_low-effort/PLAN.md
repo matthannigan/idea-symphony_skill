@@ -1,8 +1,8 @@
 ---
 project-name: "Space-Themed 5th Birthday Party Planning"
-session-dir: "test-runs/space-party/low"
+session-dir: "examples/space-party/symphony_low-effort/"
 datetime: 2026-04-26T04:00:00Z
-model-reported: "claude-opus-4-7[1m]"
+model-reported: "claude-opus-4-7"
 ---
 
 # Brainstorming Session Plan
@@ -11,7 +11,20 @@ model-reported: "claude-opus-4-7[1m]"
 **Plan Date:** 2026-04-26
 **Effort:** `low` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/space-party/low/
+**Session Directory:** examples/space-party/symphony_low-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Party Purpose and Whose Experience It Serves (4 questions)](questions/by-topic/01_party-purpose-and-whose-experience-it-serves.md)
+2. [Interpreting "Space" — Theme Depth and Coherence (7 questions)](questions/by-topic/02_interpreting-space-theme-depth-and-coherence.md)
+3. [Activity Design, Pacing, and the Energy Arc (4 questions)](questions/by-topic/03_activity-design-pacing-and-the-energy-arc.md)
+4. [Sensory Load, Overwhelm, and the Stimulation Ceiling (3 questions)](questions/by-topic/04_sensory-load-overwhelm-and-the-stimulation-ceiling.md)
+5. [Group Dynamics, Inclusion, and the Outlier Child (4 questions)](questions/by-topic/05_group-dynamics-inclusion-and-the-outlier-child.md)
+6. [Adult Capacity, Supervision, and Logistics Under Pressure (4 questions)](questions/by-topic/06_adult-capacity-supervision-and-logistics-under-pressure.md)
+7. [Safety as Lived Experience (3 questions)](questions/by-topic/07_safety-as-lived-experience.md)
+8. [Budget Allocation and Cascading Trade-offs (4 questions)](questions/by-topic/08_budget-allocation-and-cascading-trade-offs.md)
+9. [Memory, Keepsakes, and the Birthday Girl's Centrality (8 questions)](questions/by-topic/09_memory-keepsakes-and-the-birthday-girl-s-centrality.md)
+10. [Additional Questions (1 questions)](questions/by-topic/99_additional.md)
 
 ## Status
 
@@ -60,21 +73,6 @@ N/A — low effort
 ### Tier 3 Personas
 
 None selected — no strong triggers for this topic
-## Topic Clusters
-
-| # | Slug | Display Name |
-|---|---|---|
-| 01 | `01_party-purpose-and-whose-experience-it-serves` | Party Purpose and Whose Experience It Serves |
-| 02 | `02_interpreting-space-theme-depth-and-coherence` | Interpreting "Space" — Theme Depth and Coherence |
-| 03 | `03_activity-design-pacing-and-the-energy-arc` | Activity Design, Pacing, and the Energy Arc |
-| 04 | `04_sensory-load-overwhelm-and-the-stimulation-ceiling` | Sensory Load, Overwhelm, and the Stimulation Ceiling |
-| 05 | `05_group-dynamics-inclusion-and-the-outlier-child` | Group Dynamics, Inclusion, and the Outlier Child |
-| 06 | `06_adult-capacity-supervision-and-logistics-under-pressure` | Adult Capacity, Supervision, and Logistics Under Pressure |
-| 07 | `07_safety-as-lived-experience` | Safety as Lived Experience |
-| 08 | `08_budget-allocation-and-cascading-trade-offs` | Budget Allocation and Cascading Trade-offs |
-| 09 | `09_memory-keepsakes-and-the-birthday-girl-s-centrality` | Memory, Keepsakes, and the Birthday Girl's Centrality |
-| 99 | `99_additional` | Additional Questions |
-
 ## Notes & Issues
 
 (None)

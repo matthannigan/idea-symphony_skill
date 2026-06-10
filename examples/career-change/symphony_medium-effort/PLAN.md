@@ -1,6 +1,6 @@
 ---
 project-name: "Career Change from ICU Nursing to Public Interest Law"
-session-dir: "test-runs/career-change/med"
+session-dir: "examples/career-change/symphony_medium-effort/"
 datetime: 2026-05-06T09:30:00Z
 effort: "medium"
 notebooklm-outputs: "yes"
@@ -12,7 +12,19 @@ notebooklm-outputs: "yes"
 **Plan Date:** 2026-02-24
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/career-change/med/
+**Session Directory:** examples/career-change/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Burnout as Diagnosis, Not Direction (7 questions)](questions/by-topic/01_burnout-as-diagnosis-not-direction.md)
+2. [Sustainability in the New Field (4 questions)](questions/by-topic/02_sustainability-in-the-new-field.md)
+3. [Total Cost & Funding the JD (5 questions)](questions/by-topic/03_total-cost-funding-the-jd.md)
+4. [PSLF, Loan Repayment & Long-Term Financial Sustainability (5 questions)](questions/by-topic/04_pslf-loan-repayment-long-term-financial-sustainability.md)
+5. [Nursing as Legal Asset — Skills, Credentials, Niche Risk (10 questions)](questions/by-topic/05_nursing-as-legal-asset-skills-credentials-niche-risk.md)
+6. [Client-Centered Practice & Equity (4 questions)](questions/by-topic/06_client-centered-practice-equity.md)
+7. [Alternative Paths & Hybrid Roles (9 questions)](questions/by-topic/07_alternative-paths-hybrid-roles.md)
+8. [Validation Steps Before Committing (3 questions)](questions/by-topic/08_validation-steps-before-committing.md)
+9. [Timing, Reversibility & the 10-Year Horizon (8 questions)](questions/by-topic/09_timing-reversibility-the-10-year-horizon.md)
 
 ## Status
 

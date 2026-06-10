@@ -8,7 +8,7 @@ model-reported: "claude-opus-4-7"
 **Plan Date:** 2026-02-24
 **Effort:** `low` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/youth-mentorship/low/
+**Session Directory:** examples/youth-mentorship/symphony_low-effort/
 
 ## Status
 

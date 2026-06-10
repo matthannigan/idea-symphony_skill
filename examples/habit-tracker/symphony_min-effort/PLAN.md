@@ -4,7 +4,15 @@
 **Plan Date:** 2026-02-18
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/habit-tracker/min/
+**Session Directory:** examples/habit-tracker/symphony_min-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Differentiation and Positioning (4 questions)](questions/by-topic/01_differentiation-and-positioning.md)
+2. [User Psychology and Retention (5 questions)](questions/by-topic/02_user-psychology-and-retention.md)
+3. [Product Scope and Technical Tradeoffs (4 questions)](questions/by-topic/03_product-scope-and-technical-tradeoffs.md)
+4. [Monetization and Business Sustainability (4 questions)](questions/by-topic/04_monetization-and-business-sustainability.md)
+5. [Growth and Long-Term Vision (3 questions)](questions/by-topic/05_growth-and-long-term-vision.md)
 
 ## Status
 

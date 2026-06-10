@@ -1,5 +1,5 @@
 ---
-model-reported: "claude-opus-4-7[1m]"
+model-reported: "claude-opus-4-7"
 ---
 
 # Brainstorming Session Plan
@@ -8,7 +8,20 @@ model-reported: "claude-opus-4-7[1m]"
 **Plan Date:** 2026-02-24
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/youth-mentorship/med/
+**Session Directory:** examples/youth-mentorship/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Vision, Purpose & Strengths-Based Foundations (6 questions)](questions/by-topic/01_vision-purpose-strengths-based-foundations.md)
+2. [Volunteer Recruitment, Screening & Background Checks (4 questions)](questions/by-topic/02_volunteer-recruitment-screening-background-checks.md)
+3. [Mentor Training, Mandatory-Reporter Competency & Ongoing Support (8 questions)](questions/by-topic/03_mentor-training-mandatory-reporter-competency-ongoing-support.md)
+4. [Matching Logic & Relationship Dynamics (6 questions)](questions/by-topic/04_matching-logic-relationship-dynamics.md)
+5. [Consent, Referral Integrity & Juvenile-Justice Privacy (5 questions)](questions/by-topic/05_consent-referral-integrity-juvenile-justice-privacy.md)
+6. [Safety Architecture, Meeting-Location Policy & Insurance (5 questions)](questions/by-topic/06_safety-architecture-meeting-location-policy-insurance.md)
+7. [Teen Voice, Family Engagement & Cultural Inclusion (6 questions)](questions/by-topic/07_teen-voice-family-engagement-cultural-inclusion.md)
+8. [Outcome Measurement & Learning Loops (5 questions)](questions/by-topic/08_outcome-measurement-learning-loops.md)
+9. [Sustainability, Funding & Institutional Continuity (3 questions)](questions/by-topic/09_sustainability-funding-institutional-continuity.md)
+10. [Endings, Continuity & What Comes Next (5 questions)](questions/by-topic/10_endings-continuity-what-comes-next.md)
 
 ## Status
 

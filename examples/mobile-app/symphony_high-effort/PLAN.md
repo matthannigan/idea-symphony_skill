@@ -4,7 +4,24 @@
 **Plan Date:** 2026-02-24
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/mobile-app/high/
+**Session Directory:** examples/mobile-app/symphony_high-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Defining the Core Value Hypothesis (6 questions)](questions/by-topic/01_defining-the-core-value-hypothesis.md)
+2. [Interpreting Session Length and Engagement Signals (3 questions)](questions/by-topic/02_interpreting-session-length-and-engagement-signals.md)
+3. [Retention Diagnostics and the Activation Event (3 questions)](questions/by-topic/03_retention-diagnostics-and-the-activation-event.md)
+4. [The Passionate Minority Problem (4 questions)](questions/by-topic/04_the-passionate-minority-problem.md)
+5. [Feature-Selection Methodology and Decision Bias (11 questions)](questions/by-topic/05_feature-selection-methodology-and-decision-bias.md)
+6. [Technical Entanglement and Removal Risks (4 questions)](questions/by-topic/06_technical-entanglement-and-removal-risks.md)
+7. [Communicating the Reset to Existing Users (7 questions)](questions/by-topic/07_communicating-the-reset-to-existing-users.md)
+8. [Equity, Inclusion, and Whose Voice Shapes the Decision (5 questions)](questions/by-topic/08_equity-inclusion-and-whose-voice-shapes-the-decision.md)
+9. [Team Capacity, Burnout, and the Build Itself (9 questions)](questions/by-topic/09_team-capacity-burnout-and-the-build-itself.md)
+10. [Runway as a Design Constraint (3 questions)](questions/by-topic/10_runway-as-a-design-constraint.md)
+11. [Defining Success for the Simplified Product (7 questions)](questions/by-topic/11_defining-success-for-the-simplified-product.md)
+12. [Strategic Positioning, Category Trajectory, and Relaunch Timing (8 questions)](questions/by-topic/12_strategic-positioning-category-trajectory-and-relaunch-timing.md)
+13. [First Steps and Experiments Worth Running (3 questions)](questions/by-topic/13_first-steps-and-experiments-worth-running.md)
+14. [Additional Questions (3 questions)](questions/by-topic/99_additional.md)
 
 ## Status
 
@@ -17,36 +34,16 @@
   - Step 2.1 (Roster planning): ✅ Complete
   - Step 2.2 (Per-persona generation): ✅ Complete (14/14 files; Tier 1 + Tier 2)
   - Step 2.3 (Synthesis): ✅ Complete (13 clusters + Additional, 76 questions)
-  - Step 2.4 (Brainstorming persona selection): ✅ Complete (13 clusters × 7 personas)
-- **Phase 3 (Multi-Perspective Brainstorming):** ✅ Complete (13 clusters × 7 personas = 91/91 files; haiku model)
-- **Phase 4 (Response Synthesis):** ✅ Complete (regenerated 2026-06-09 under merged tone/reframe/humanizer fixes; 13 clusters × {attributed, _synthesis, _summary}; per-question humanizer pass on 73 synthesis blocks + per-file pass on 13 summaries; SUMMARIES.md + SYNTHESIS.md built)
-- **Phase 5 (Final Output):** ✅ Complete (BRAINSTORM.md generated 2026-06-09, 3,960 body words, within high-effort band; humanizer pass applied; persona/character/jargon audit clean; 4 Central Tensions; SYNTHESIS.md retained in Session Index)
+  - Step 2.4 (Brainstorming persona selection): ✅ Complete (14 clusters × 7 personas; 13 thematic + Additional Questions catch-all)
+- **Phase 3 (Multi-Perspective Brainstorming):** ✅ Complete (14 clusters × 7 personas = 98/98 files; haiku model; includes the Additional Questions catch-all cluster)
+- **Phase 4 (Response Synthesis):** ✅ Complete (regenerated 2026-06-09 under merged tone/reframe/humanizer fixes; 14 clusters × {attributed, _synthesis, _summary}; humanizer pass on 76 synthesis blocks + per-file pass on 14 summaries; SUMMARIES.md + SYNTHESIS.md built)
+- **Phase 5 (Final Output):** ✅ Complete (BRAINSTORM.md generated 2026-06-09, ~4,180 body words, within high-effort band; humanizer pass applied; persona/character/jargon audit clean; 4 Central Tensions; SYNTHESIS.md retained in Session Index)
 
 **Session status: ✅ COMPLETE**
 
 ## Notes & Issues
 
 (None)
-
-## Topic Clusters
-
-Ordered cluster slugs and display names (from Phase 2.3 synthesis):
-
-| # | Slug | Display Name |
-|---|------|--------------|
-| 01 | 01_defining-the-core-value-hypothesis | Defining the Core Value Hypothesis |
-| 02 | 02_interpreting-session-length-and-engagement-signals | Interpreting Session Length and Engagement Signals |
-| 03 | 03_retention-diagnostics-and-the-activation-event | Retention Diagnostics and the Activation Event |
-| 04 | 04_the-passionate-minority-problem | The Passionate Minority Problem |
-| 05 | 05_feature-selection-methodology-and-decision-bias | Feature-Selection Methodology and Decision Bias |
-| 06 | 06_technical-entanglement-and-removal-risks | Technical Entanglement and Removal Risks |
-| 07 | 07_communicating-the-reset-to-existing-users | Communicating the Reset to Existing Users |
-| 08 | 08_equity-inclusion-and-whose-voice-shapes-the-decision | Equity, Inclusion, and Whose Voice Shapes the Decision |
-| 09 | 09_team-capacity-burnout-and-the-build-itself | Team Capacity, Burnout, and the Build Itself |
-| 10 | 10_runway-as-a-design-constraint | Runway as a Design Constraint |
-| 11 | 11_defining-success-for-the-simplified-product | Defining Success for the Simplified Product |
-| 12 | 12_strategic-positioning-category-trajectory-and-relaunch-timing | Strategic Positioning, Category Trajectory, and Relaunch Timing |
-| 13 | 13_first-steps-and-experiments-worth-running | First Steps and Experiments Worth Running |
 
 ## Phase 2 Step 2.1: Question Generation Personas
 
@@ -102,3 +99,4 @@ Each topic cluster receives 7 personas: Core (Devil's Advocate + Pragmatist) + 2
 | 11 | Defining Success for the Simplified Product | Devil's Advocate | Pragmatist | First Principles Thinker | Visionary | Futurist | Provocateur | Empath |
 | 12 | Strategic Positioning, Category Trajectory, and Relaunch Timing | Devil's Advocate | Pragmatist | Futurist | Visionary | Connector | Analogist | Systems Thinker |
 | 13 | First Steps and Experiments Worth Running | Devil's Advocate | Pragmatist | Momentum Builder | Constraint Flipper | Simplifier | Storyteller | Visionary |
+| 14 | Additional Questions (catch-all) | Devil's Advocate | Pragmatist | Analogist | Connector | Systems Thinker | Visionary | Provocateur |

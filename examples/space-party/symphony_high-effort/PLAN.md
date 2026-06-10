@@ -1,6 +1,6 @@
 ---
 project-name: "Space-Themed 5th Birthday Party Planning"
-session-dir: "test-runs/space-party/high"
+session-dir: "examples/space-party/symphony_high-effort/"
 datetime: 2026-04-26T04:00:00Z
 phase2A-model-reported: "claude-opus-4-7"
 ---
@@ -11,7 +11,7 @@ phase2A-model-reported: "claude-opus-4-7"
 **Plan Date:** 2026-04-26
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/space-party/high/
+**Session Directory:** examples/space-party/symphony_high-effort/
 
 ## Status
 

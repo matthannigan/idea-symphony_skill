@@ -4,7 +4,19 @@
 **Plan Date:** 2026-02-24
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/mobile-app/med/
+**Session Directory:** examples/mobile-app/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Diagnosing the Real Problem (6 questions)](questions/by-topic/01_diagnosing-the-real-problem.md)
+2. [Reading Feature Signals (3 questions)](questions/by-topic/02_reading-feature-signals.md)
+3. [The Passionate Minority (4 questions)](questions/by-topic/03_the-passionate-minority.md)
+4. [The Cut Decision — Framework and Authority (6 questions)](questions/by-topic/04_the-cut-decision-framework-and-authority.md)
+5. [Removal Mechanics and Relaunch Approach (3 questions)](questions/by-topic/05_removal-mechanics-and-relaunch-approach.md)
+6. [Communication and the Existing User Ecosystem (6 questions)](questions/by-topic/06_communication-and-the-existing-user-ecosystem.md)
+7. [Team Dynamics and the Psychology of Cutting (7 questions)](questions/by-topic/07_team-dynamics-and-the-psychology-of-cutting.md)
+8. [Strategic Identity After the Cut (6 questions)](questions/by-topic/08_strategic-identity-after-the-cut.md)
+9. [Redefining Success for the Focused Product (6 questions)](questions/by-topic/09_redefining-success-for-the-focused-product.md)
 
 ## Status
 

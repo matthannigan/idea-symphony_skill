@@ -4,7 +4,7 @@
 **Plan Date:** 2026-02-18
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/habit-tracker/high/
+**Session Directory:** examples/habit-tracker/symphony_high-effort/
 
 ## Status
 

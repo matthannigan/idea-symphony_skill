@@ -4,7 +4,20 @@
 **Plan Date:** 2026-02-18
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/tool-library/med/
+**Session Directory:** examples/tool-library/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Vision, Purpose, and What This Is Fundamentally For (7 questions)](questions/by-topic/01_vision-purpose-and-what-this-is-fundamentally-for.md)
+2. [Equitable Access and Hidden Barriers (3 questions)](questions/by-topic/02_equitable-access-and-hidden-barriers.md)
+3. [Renter and Homeowner Realities (3 questions)](questions/by-topic/03_renter-and-homeowner-realities.md)
+4. [Trust, Dignity, and the Borrower Experience (8 questions)](questions/by-topic/04_trust-dignity-and-the-borrower-experience.md)
+5. [Volunteer Sustainability and Succession (6 questions)](questions/by-topic/05_volunteer-sustainability-and-succession.md)
+6. [Tool Inventory, Demand, and the Commons (3 questions)](questions/by-topic/06_tool-inventory-demand-and-the-commons.md)
+7. [Operations, Checkout, and Maintenance Systems (4 questions)](questions/by-topic/07_operations-checkout-and-maintenance-systems.md)
+8. [Liability, Damage, and Adjudication (4 questions)](questions/by-topic/08_liability-damage-and-adjudication.md)
+9. [Financial Sustainability and Space Risk (4 questions)](questions/by-topic/09_financial-sustainability-and-space-risk.md)
+10. [Governance, Norms, and Long-Term Mission (6 questions)](questions/by-topic/10_governance-norms-and-long-term-mission.md)
 
 ## Status
 

@@ -1,6 +1,6 @@
 ---
 project-name: "Career Change from ICU Nursing to Public Interest Law"
-session-dir: "test-runs/career-change/high"
+session-dir: "examples/career-change/symphony_high-effort/"
 datetime: 2026-04-26T00:00:00Z
 effort: "high"
 model-reported: "claude-opus-4-7"
@@ -12,7 +12,21 @@ model-reported: "claude-opus-4-7"
 **Plan Date:** 2026-02-24
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/career-change/high/
+**Session Directory:** examples/career-change/symphony_high-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Diagnosing the Driver — Calling, Escape, or Pattern (7 questions)](questions/by-topic/01_diagnosing-the-driver-calling-escape-or-pattern.md)
+2. [Financial Architecture and Cash-Flow Runway (6 questions)](questions/by-topic/02_financial-architecture-and-cash-flow-runway.md)
+3. [Loan Forgiveness Programs and Public Interest Salary Reality (5 questions)](questions/by-topic/03_loan-forgiveness-programs-and-public-interest-salary-reality.md)
+4. [What Nursing Brings to Legal Practice (8 questions)](questions/by-topic/04_what-nursing-brings-to-legal-practice.md)
+5. [Timeline, Age, and Opportunity Cost (6 questions)](questions/by-topic/05_timeline-age-and-opportunity-cost.md)
+6. [Emotional Sustainability and the Second-Burnout Risk (8 questions)](questions/by-topic/06_emotional-sustainability-and-the-second-burnout-risk.md)
+7. [Identity, Grief, and the Felt Experience of Transition (8 questions)](questions/by-topic/07_identity-grief-and-the-felt-experience-of-transition.md)
+8. [The Clients You Would Serve — Equity, Voice, and Trust (7 questions)](questions/by-topic/08_the-clients-you-would-serve-equity-voice-and-trust.md)
+9. [Alternative Paths and Hybrid Roles (8 questions)](questions/by-topic/09_alternative-paths-and-hybrid-roles.md)
+10. [Decision Architecture — Tests, Reversibility, First Principles (7 questions)](questions/by-topic/10_decision-architecture-tests-reversibility-first-principles.md)
+11. [The Field's Future — MLPs, AI, and 30-Year Arcs (8 questions)](questions/by-topic/11_the-field-s-future-mlps-ai-and-30-year-arcs.md)
 
 ## Status
 
@@ -21,7 +35,7 @@ model-reported: "claude-opus-4-7"
   - User-defined questions: No
   - Effort: `high`
 
-- **Phase 2 (Question Generation):** In progress
+- **Phase 2 (Question Generation):** ✅ Complete
   - Step 2.1 (Roster planning): ✅ Complete (2026-04-26)
   - Step 2.2 (Per-persona generation): ✅ Complete (15/15 files; volumes within ranges)
   - Step 2.3 (Synthesis): ✅ Complete (11 clusters, 78 questions; all hard-floor gates passed)

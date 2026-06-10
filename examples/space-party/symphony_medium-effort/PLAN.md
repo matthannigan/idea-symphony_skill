@@ -1,6 +1,6 @@
 ---
 project-name: "Space-Themed 5th Birthday Party Planning"
-session-dir: "test-runs/space-party/med"
+session-dir: "examples/space-party/symphony_medium-effort/"
 datetime: 2026-04-26T04:00:00Z
 phase2A:
   model-requested: opus
@@ -13,7 +13,19 @@ phase2A:
 **Plan Date:** 2026-04-26
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/space-party/med/
+**Session Directory:** examples/space-party/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Theme, Immersion & Wonder (8 questions)](questions/by-topic/01_theme-immersion-wonder.md)
+2. [The Birthday Girl's Experience (4 questions)](questions/by-topic/02_the-birthday-girl-s-experience.md)
+3. [Activity Design, Attention & Engagement (7 questions)](questions/by-topic/03_activity-design-attention-engagement.md)
+4. [Inclusion, Sensory Care & Emotional Regulation (6 questions)](questions/by-topic/04_inclusion-sensory-care-emotional-regulation.md)
+5. [Adult Capacity & Parent Engagement (5 questions)](questions/by-topic/05_adult-capacity-parent-engagement.md)
+6. [Spatial Layout, Flow & Transitions (4 questions)](questions/by-topic/06_spatial-layout-flow-transitions.md)
+7. [Budget, DIY & Resource Tradeoffs (4 questions)](questions/by-topic/07_budget-diy-resource-tradeoffs.md)
+8. [Peak Moments & Memory Design (6 questions)](questions/by-topic/08_peak-moments-memory-design.md)
+9. [Take-home, Closing Rituals & Relational Memory (4 questions)](questions/by-topic/09_take-home-closing-rituals-relational-memory.md)
 
 ## Status
 
@@ -22,7 +34,7 @@ phase2A:
   - User-defined questions: No
   - Effort: `medium`
 
-- **Phase 2 (Question Generation):** In progress
+- **Phase 2 (Question Generation):** ✅ Complete
   - Step 2.1 (Roster planning): ✅ Complete
   - Step 2.2 (Persona question generation): ✅ Complete (10/10 files; all required frontmatter present)
   - Step 2.3 (Synthesis + clustering): ✅ Complete (9 clusters, 48 questions, raw compaction 2.57×; AI orphan & ST verbatim floors met via R11 source-bound substitution)

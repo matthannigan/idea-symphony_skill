@@ -4,7 +4,7 @@
 **Plan Date:** 2026-02-18
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/tool-library/high/
+**Session Directory:** examples/tool-library/symphony_high-effort/
 
 ## Status
 

@@ -4,7 +4,7 @@
 **Plan Date:** 2026-02-24
 **Effort:** `low` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/wearable-device/low/
+**Session Directory:** examples/wearable-device/symphony_low-effort/
 
 ## Status
 

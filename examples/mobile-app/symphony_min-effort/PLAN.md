@@ -4,7 +4,7 @@
 **Plan Date:** 2026-02-24
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/mobile-app/min/
+**Session Directory:** examples/mobile-app/symphony_min-effort/
 
 ## Status
 

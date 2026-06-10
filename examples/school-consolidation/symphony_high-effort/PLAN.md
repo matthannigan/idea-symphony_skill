@@ -4,7 +4,7 @@
 **Plan Date:** 2026-02-24
 **Effort:** `high` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/school-consolidation/high/
+**Session Directory:** examples/school-consolidation/symphony_high-effort/
 
 ## Status
 
@@ -107,5 +107,5 @@ Full rationale: see [personas/question-generation.md](personas/question-generati
 
 Core (Devil's Advocate + Pragmatist) included in every cluster. No retired personas selected. Cluster-family caps verified per topic.
 
-<!-- Step 2.4 model audit: orchestrator self-identified as Opus 4.7 (1M context); model-reported: claude-opus-4-7[1m] -->
+<!-- Step 2.4 model audit: orchestrator self-identified as Opus 4.7 (1M context); model-reported: claude-opus-4-7 -->
 

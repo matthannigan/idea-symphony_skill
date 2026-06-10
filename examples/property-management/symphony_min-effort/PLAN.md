@@ -4,7 +4,15 @@
 **Plan Date:** 2026-02-24
 **Effort:** `min` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/property-management/min/
+**Session Directory:** examples/property-management/symphony_min-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Regulatory Navigation and Compliance (5 questions)](questions/by-topic/01_regulatory-navigation-and-compliance.md)
+2. [Business Model, Financial Sustainability, and Scaling (5 questions)](questions/by-topic/02_business-model-financial-sustainability-and-scaling.md)
+3. [Liability, Insurance, and Contract Design (4 questions)](questions/by-topic/03_liability-insurance-and-contract-design.md)
+4. [Community Relations and Political Engagement (3 questions)](questions/by-topic/04_community-relations-and-political-engagement.md)
+5. [Trust-Building with Property Owners and Guests (3 questions)](questions/by-topic/05_trust-building-with-property-owners-and-guests.md)
 
 ## Status
 
@@ -20,7 +28,7 @@
 - **Phase 4 (Response Synthesis):** ✅ Complete — 5 humanized `_summary.md` + SUMMARIES.md, regenerated 2026-06-09 post-revision
   - 5 `_summary.md` files written; SUMMARIES.md concatenated (~6,074 words)
 - **Phase 5 (Final Output):** ✅ Complete — BRAINSTORM.md (humanized), regenerated 2026-06-09 post-revision
-- **Session Status:** ⏸ Pending Phase 5 (per user request: stop at end of Phase 4)
+- **Session Status:** ✅ Complete — delivered through Phase 5 (BRAINSTORM.md humanized, 2026-06-09).
 
 ## Notes & Issues
 

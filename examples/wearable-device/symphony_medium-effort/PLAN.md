@@ -9,7 +9,19 @@ model-reported: claude-opus-4-7
 **Plan Date:** 2026-02-24
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/wearable-device/med/
+**Session Directory:** examples/wearable-device/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Power Budget & Battery Architecture (5 questions)](questions/by-topic/01_power-budget-battery-architecture.md)
+2. [ML Model Architecture & Inference Tradeoffs (3 questions)](questions/by-topic/02_ml-model-architecture-inference-tradeoffs.md)
+3. [False Positive/Negative Economics & Alert Design (8 questions)](questions/by-topic/03_false-positive-negative-economics-alert-design.md)
+4. [Privacy Architecture & Data Boundaries (8 questions)](questions/by-topic/04_privacy-architecture-data-boundaries.md)
+5. [Model Update Strategy & Long-Term Maintainability (4 questions)](questions/by-topic/05_model-update-strategy-long-term-maintainability.md)
+6. [Regulatory Pathway, HIPAA & Clinical Partnership Architecture (7 questions)](questions/by-topic/06_regulatory-pathway-hipaa-clinical-partnership-architecture.md)
+7. [User Experience, Trust & Equity (9 questions)](questions/by-topic/07_user-experience-trust-equity.md)
+8. [Sensor Fusion & Detection Reliability (3 questions)](questions/by-topic/08_sensor-fusion-detection-reliability.md)
+9. [Team Capacity, Runway & Validation (4 questions)](questions/by-topic/09_team-capacity-runway-validation.md)
 
 ## Status
 

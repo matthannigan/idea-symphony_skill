@@ -1,5 +1,5 @@
 ---
-model-reported: "claude-opus-4-7[1m]"
+model-reported: "claude-opus-4-7"
 ---
 
 # Brainstorming Session Plan
@@ -8,7 +8,21 @@ model-reported: "claude-opus-4-7[1m]"
 **Plan Date:** 2026-02-24
 **Effort:** `medium` *(sourced from user's Phase 1 selection)*
 **Persona Selection Review:** auto
-**Session Directory:** test-runs/property-management/med/
+**Session Directory:** examples/property-management/symphony_medium-effort/
+
+## Topic Clusters (from Phase 2)
+
+1. [Strategic Identity and Business Model Foundations (5 questions)](questions/by-topic/01_strategic-identity-and-business-model-foundations.md)
+2. [Regulatory Architecture and Multi-Jurisdiction Compliance (6 questions)](questions/by-topic/02_regulatory-architecture-and-multi-jurisdiction-compliance.md)
+3. [Political and Regulatory Risk Scenarios (4 questions)](questions/by-topic/03_political-and-regulatory-risk-scenarios.md)
+4. [Liability, Insurance, and Contract Design (5 questions)](questions/by-topic/04_liability-insurance-and-contract-design.md)
+5. [Owner Trust, Acquisition, and Retention (5 questions)](questions/by-topic/05_owner-trust-acquisition-and-retention.md)
+6. [Community Legitimacy and the "Good Neighbor" Brand (5 questions)](questions/by-topic/06_community-legitimacy-and-the-good-neighbor-brand.md)
+7. [Equity, Power, and Stakeholder Voice (4 questions)](questions/by-topic/07_equity-power-and-stakeholder-voice.md)
+8. [Operational Systems and Service Delivery (4 questions)](questions/by-topic/08_operational-systems-and-service-delivery.md)
+9. [Unit Economics, Cash Flow, and Scaling Thresholds (4 questions)](questions/by-topic/09_unit-economics-cash-flow-and-scaling-thresholds.md)
+10. [Guest Experience, Place, and the First 90 Days (7 questions)](questions/by-topic/10_guest-experience-place-and-the-first-90-days.md)
+11. [Additional Questions (3 questions)](questions/by-topic/99_additional.md)
 
 ## Status
 

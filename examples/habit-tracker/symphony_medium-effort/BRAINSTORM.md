@@ -24,7 +24,7 @@ The sharpest unresolved cautions point the same direction. Users do not graduate
 
 ## Session Overview
 
-The request was to design a habit-tracker web app that differentiates itself in a crowded market through thoughtful UX, behavioral science, and a sustainable engagement model, with an MVP targeted for three months and a solo developer building it. The session ran at medium effort across ten topic clusters covering vision, behavioral foundations, monetization, privacy, competitive positioning, equity, and the weekly review. Each cluster was explored by four perspectives, including a consistent adversarial lens and a feasibility lens, then synthesized into per-cluster summaries that this document consolidates.
+The request was to design a habit-tracker web app that differentiates itself in a crowded market through thoughtful UX, behavioral science, and a sustainable engagement model, with an MVP targeted for three months and a solo developer building it. The session ran at medium effort across ten thematic topic clusters plus a final catch-all cluster, covering vision, behavioral foundations, monetization, privacy, competitive positioning, equity, and the weekly review. Each cluster was explored by four perspectives, including a consistent adversarial lens and a feasibility lens, then synthesized into per-cluster summaries that this document consolidates.
 
 ## Central Tensions
 
@@ -110,6 +110,11 @@ The exclusions baked into the default persona are framed as v2-deferrable featur
 
 The reflective surfaces meant to deepen commitment draw their power from honesty, yet that same honesty is exactly what makes them avoidable, so the binding constraint on the weekly review is emotional safety, not visibility. The PRD assumes the review underperforms because it is buried, but the cross-perspective signal says a surfaced review still fails if Sunday feels like a report card, which reorders the work from placement to tone and permission. Partial logging and noticing should mirror the user's real behavior back as understanding rather than verdict, and the deepest implication is that the app may be optimizing a broken input, making a calibration-framed habit audit at onboarding the highest-leverage and most differentiating intervention in the cluster.
 - See: [synthesis/10_the-weekly-review-partial-logging-and-reflection-as-leverage-point_summary.md](synthesis/10_the-weekly-review-partial-logging-and-reflection-as-leverage-point_summary.md)
+
+### 11. Additional Questions
+
+The single catch-all question asks where the app's ongoing adaptation should live: running invisibly in the background, as the framing assumes, or surfaced to the user as a consensual ritual that itself builds engagement. Three of the four perspectives accept the invisible-resurfacing premise and detail its machinery, while one pushes back, arguing that visible adaptation turns maintenance into a feature rather than a hidden operational cost. All four converge on the same two pieces of quiet work: nightly recalibration of notification timing against actual check-in behavior, and continual refreshment of habit suggestions against the user's evolving profile, both learning from what users do rather than what they declared at onboarding. The load-bearing antidote to silent model staleness is measurement, with explicit thresholds that trigger a reset and performance held to service-level objectives so latency invisible at 1,000 users never surfaces at 100,000.
+- See: [synthesis/99_additional_summary.md](synthesis/99_additional_summary.md)
 
 ## Recommended Next Steps
 
