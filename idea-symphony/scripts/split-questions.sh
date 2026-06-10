@@ -28,6 +28,13 @@
 # Produces questions/by-topic/99_additional.md only if QUESTIONS.md contains
 # an "## Additional Questions" section (orphaned Append questions).
 #
+# Also populates the "## Topic Clusters (from Phase 2)" section in PLAN.md (if
+# PLAN.md exists) with one numbered, linked row per real topic cluster. This is
+# the deterministic producer for the section Phase 5 reads as its authoritative
+# ordered slug + display-name source. The orphan "99_additional" bucket is NOT
+# a topic cluster and is excluded. The write is idempotent: an existing section
+# is replaced in place; otherwise the section is inserted before "## Status".
+#
 # Usage: scripts/split-questions.sh <session-dir>
 
 set -euo pipefail
@@ -135,3 +142,57 @@ awk '
 
   END { flush_cluster() }
 ' QUESTIONS.md
+
+# --- Populate the "## Topic Clusters (from Phase 2)" section in PLAN.md ---
+# Deterministic producer for the section Phase 5 (and the NotebookLM template)
+# read for ordered slugs + display names. Excludes the orphan "Additional
+# Questions" bucket. Idempotent: replaces an existing section, else inserts it
+# before "## Status". No-op when PLAN.md is absent.
+if [[ -f PLAN.md ]]; then
+  section_rows="$(awk '
+    function emit() {
+      printf("%d. [%s (%d questions)](questions/by-topic/%02d_%s.md)\n", \
+             ++idx, name, qc, num, slug)
+    }
+    /^## Topic Cluster [0-9]+:/ {
+      if (name != "") emit()
+      s = substr($0, 18)                  # strip "## Topic Cluster "
+      colon = index(s, ":")
+      num = substr(s, 1, colon - 1) + 0
+      name = substr(s, colon + 2)
+      slug = tolower(name)
+      gsub(/[^a-z0-9]+/, "-", slug)
+      sub(/^-+/, "", slug); sub(/-+$/, "", slug)
+      qc = 0
+      next
+    }
+    # Any other H2 (e.g. "## Additional Questions") closes the active cluster
+    # without being emitted itself.
+    /^## / && name != "" { emit(); name = ""; next }
+    name != "" && /^[0-9]+\./ { qc++ }
+    END { if (name != "") emit() }
+  ' QUESTIONS.md)"
+
+  if [[ -n "$section_rows" ]]; then
+    # Pass the rows through the environment (no temp files in the system temp
+    # dir, which may be unwritable). The splice is written to a sibling temp
+    # file in the session dir (always writable) and moved into place.
+    export TOPIC_CLUSTERS_SECTION="$section_rows"
+    awk '
+      BEGIN {
+        sec = "## Topic Clusters (from Phase 2)\n\n" \
+              ENVIRON["TOPIC_CLUSTERS_SECTION"] "\n\n"
+      }
+      # Replace an existing section: emit new section, then drop old lines
+      # until the next H2 heading.
+      /^## Topic Clusters/ { printf "%s", sec; inserted = 1; skipping = 1; next }
+      skipping && /^## / { skipping = 0 }
+      skipping { next }
+      # Otherwise insert before the Status block.
+      !inserted && /^## Status/ { printf "%s", sec; inserted = 1 }
+      { print }
+      END { if (!inserted) printf "%s", sec }
+    ' PLAN.md > PLAN.md.tmp && mv PLAN.md.tmp PLAN.md
+    unset TOPIC_CLUSTERS_SECTION
+  fi
+fi

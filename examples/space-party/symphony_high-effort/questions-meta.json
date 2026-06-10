@@ -1,0 +1,198 @@
+{
+  "generated_at": "2026-04-26T00:00:00Z",
+  "effort": "high",
+  "n_synth_input": 109,
+  "m_synth_output": 34,
+  "append_count": 34,
+  "total": 68,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "What \"Space\" Means to This 5-Year-Old",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate", "First Principles Thinker"],
+        "2": ["Empath", "Questioner"],
+        "3": ["First Principles Thinker", "Empath"]
+      },
+      "append_contributors": {
+        "4": "Provocateur"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Theme Coherence vs. Saturation",
+      "question_numbers": [5, 6, 7, 8, 9, 10, 11],
+      "synthesize_contributors": {
+        "5": ["Questioner", "Analyst", "Systems Thinker", "Devil's Advocate"],
+        "6": ["First Principles Thinker", "Analyst", "Questioner"],
+        "7": ["Devil's Advocate"]
+      },
+      "append_contributors": {
+        "8": "Provocateur",
+        "9": "Storyteller",
+        "10": "Visionary",
+        "11": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Mission Structure as a Through-Line",
+      "question_numbers": [12, 13, 14, 15, 16, 17],
+      "synthesize_contributors": {
+        "12": ["First Principles Thinker", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "13": "Visionary",
+        "14": "Constraint Flipper",
+        "15": "Analogist",
+        "16": "Analogist",
+        "17": "Provocateur"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Energy Arc, Pacing & Sequencing",
+      "question_numbers": [18, 19, 20, 21, 22, 23, 24, 25],
+      "synthesize_contributors": {
+        "18": ["Systems Thinker", "Analyst", "Devil's Advocate", "Questioner"],
+        "19": ["Analyst", "Systems Thinker"],
+        "20": ["First Principles Thinker", "Audience Advocate", "Futurist"]
+      },
+      "append_contributors": {
+        "21": "Provocateur",
+        "22": "Storyteller",
+        "23": "Analogist",
+        "24": "Analogist",
+        "25": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Wonder, Awe & Embodied Immersion",
+      "question_numbers": [26, 27, 28, 29, 30, 31, 32, 33],
+      "synthesize_contributors": {
+        "26": ["Analyst", "Empath", "Futurist", "Questioner"],
+        "27": ["Appreciative Inquirer"],
+        "28": ["Empath"]
+      },
+      "append_contributors": {
+        "29": "Provocateur",
+        "30": "Provocateur",
+        "31": "Visionary",
+        "32": "Analogist",
+        "33": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Birthday Girl's Agency & Felt Experience",
+      "question_numbers": [34, 35, 36, 37, 38, 39, 40, 41],
+      "synthesize_contributors": {
+        "34": ["Audience Advocate", "Devil's Advocate", "Futurist"],
+        "35": ["Empath", "Devil's Advocate"],
+        "36": ["Systems Thinker", "Questioner"]
+      },
+      "append_contributors": {
+        "37": "Provocateur",
+        "38": "Visionary",
+        "39": "Storyteller",
+        "40": "Storyteller",
+        "41": "Visionary"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Inclusion, Diversity & the Quiet Guest",
+      "question_numbers": [42, 43, 44, 45],
+      "synthesize_contributors": {
+        "42": ["Audience Advocate", "Analyst"],
+        "43": ["Audience Advocate", "Empath", "First Principles Thinker"],
+        "44": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "45": "Storyteller"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Host & Caregiver Experience",
+      "question_numbers": [46, 47, 48, 49, 50],
+      "synthesize_contributors": {
+        "46": ["Empath", "Systems Thinker", "Questioner", "First Principles Thinker"],
+        "47": ["Audience Advocate", "Empath"],
+        "48": ["Empath", "Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "49": "Provocateur",
+        "50": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Logistics, Safety & The Cleanup Cascade",
+      "question_numbers": [51, 52, 53, 54, 55],
+      "synthesize_contributors": {
+        "51": ["Devil's Advocate", "First Principles Thinker", "Systems Thinker"],
+        "52": ["Devil's Advocate", "Systems Thinker"],
+        "53": ["Devil's Advocate", "Analyst", "Systems Thinker"],
+        "54": ["Analyst", "Devil's Advocate", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "55": "Analogist"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Budget, DIY & Sustainable Spend",
+      "question_numbers": [56, 57, 58, 59, 60, 61],
+      "synthesize_contributors": {
+        "56": ["Analyst", "Systems Thinker", "Questioner", "Devil's Advocate"],
+        "57": ["Systems Thinker", "Analyst", "Devil's Advocate", "Futurist"],
+        "58": ["Questioner"],
+        "59": ["Analyst", "Futurist"],
+        "60": ["Futurist", "Questioner"]
+      },
+      "append_contributors": {
+        "61": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Memory, Take-Homes & What Lasts",
+      "question_numbers": [62, 63, 64, 65, 66, 67, 68],
+      "synthesize_contributors": {
+        "62": ["Questioner", "Analyst", "Systems Thinker", "Audience Advocate", "Futurist"],
+        "63": ["Questioner", "Analyst", "Devil's Advocate", "Futurist"],
+        "64": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "65": "Storyteller",
+        "66": "Visionary",
+        "67": "Visionary",
+        "68": "Analogist"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [],
+    "append_contributors": {}
+  },
+  "r11_source_bound_cells": [
+    "the-systems-thinker"
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [27, 48, 64],
+    "st_archetype_question_numbers": [5, 18, 46, 52, 53, 57],
+    "st_archetypes_verbatim": [
+      "coherence multiplier",
+      "energy arc",
+      "contagion effect",
+      "parent-helper feedback loop",
+      "cleanup cascade",
+      "latent constraint",
+      "DIY trap"
+    ],
+    "r11_note": "Source ST section uses systems-vocabulary distinctive phrases rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.); R11 source-bound exception applied — ≥3 ST-distinctive phrases preserved verbatim (high-effort floor met)."
+  }
+}
