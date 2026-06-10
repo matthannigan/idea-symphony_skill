@@ -1,0 +1,218 @@
+{
+  "generated_at": "2026-04-28T12:00:00Z",
+  "effort": "high",
+  "n_synth_input": 121,
+  "m_synth_output": 45,
+  "append_count": 38,
+  "total": 83,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Foundations, Purpose, and Theory of Change",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["First Principles Thinker", "Questioner"],
+        "2": ["First Principles Thinker", "Questioner"],
+        "3": ["Questioner", "First Principles Thinker"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Provocateur",
+        "6": "Visionary",
+        "7": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Volunteer Screening, Background Checks, and Disqualifying Criteria",
+      "question_numbers": [8, 9, 10, 11],
+      "synthesize_contributors": {
+        "8": ["Analyst", "Devil's Advocate", "First Principles Thinker", "Lawyer", "User Q"],
+        "9": ["Lawyer"],
+        "10": ["Devil's Advocate"],
+        "11": ["Analyst", "Devil's Advocate", "First Principles Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 3,
+      "name": "Matching Architecture and Two-Sided Compatibility",
+      "question_numbers": [12, 13, 14, 15, 16, 17, 18, 19],
+      "synthesize_contributors": {
+        "12": ["Analyst", "User Q"],
+        "13": ["Appreciative Inquirer", "Analyst"],
+        "14": ["Analyst", "Audience Advocate"],
+        "15": ["Empath"]
+      },
+      "append_contributors": {
+        "16": "Visionary",
+        "17": "Storyteller",
+        "18": "Connector",
+        "19": "Connector"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Mentor Training, Ongoing Support, and Burnout Prevention",
+      "question_numbers": [20, 21, 22, 23, 24, 25, 26, 27, 28],
+      "synthesize_contributors": {
+        "20": ["Analyst", "Lawyer", "Appreciative Inquirer", "Questioner", "User Q"],
+        "21": ["Analyst", "Systems Thinker", "User Q"],
+        "22": ["Empath"]
+      },
+      "append_contributors": {
+        "23": "Provocateur",
+        "24": "Storyteller",
+        "25": "Storyteller",
+        "26": "Storyteller",
+        "27": "Connector",
+        "28": "Connector"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Safety Protocols, Meeting Logistics, and Felt Safety",
+      "question_numbers": [29, 30, 31, 32, 33, 34],
+      "synthesize_contributors": {
+        "29": ["Devil's Advocate", "Lawyer", "User Q"],
+        "30": ["Lawyer"],
+        "31": ["Appreciative Inquirer", "Empath", "First Principles Thinker"]
+      },
+      "append_contributors": {
+        "32": "Visionary",
+        "33": "Visionary",
+        "34": "Connector"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Mandatory Reporting, Concern Escalation, and Disclosure Trust",
+      "question_numbers": [35, 36, 37, 38],
+      "synthesize_contributors": {
+        "35": ["Lawyer", "User Q"],
+        "36": ["Lawyer"],
+        "37": ["Devil's Advocate", "Systems Thinker", "Empath"]
+      },
+      "append_contributors": {
+        "38": "Connector"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Liability Exposure, Insurance, and Legal Architecture",
+      "question_numbers": [39, 40, 41, 42],
+      "synthesize_contributors": {
+        "39": ["Lawyer", "User Q"],
+        "40": ["Analyst", "Lawyer"],
+        "41": ["Lawyer"]
+      },
+      "append_contributors": {
+        "42": "Provocateur"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Consent, Data Privacy, and Cross-Institutional Information Flow",
+      "question_numbers": [43, 44, 45, 46, 47, 48, 49],
+      "synthesize_contributors": {
+        "43": ["Lawyer", "Devil's Advocate", "User Q"],
+        "44": ["Lawyer", "Systems Thinker", "First Principles Thinker"],
+        "45": ["Analyst", "Devil's Advocate", "Lawyer", "Futurist"],
+        "46": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "47": "Visionary",
+        "48": "Connector",
+        "49": "Connector"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Family, Guardian, and Community Inclusion",
+      "question_numbers": [50, 51, 52, 53, 54, 55, 56, 57, 58],
+      "synthesize_contributors": {
+        "50": ["Audience Advocate"],
+        "51": ["Empath", "Systems Thinker", "Questioner"],
+        "52": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "53": "Visionary",
+        "54": "Storyteller",
+        "55": "Storyteller",
+        "56": "Connector",
+        "57": "Constraint Flipper",
+        "58": "Constraint Flipper"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Teen Voice, Power Dynamics, and Dignity",
+      "question_numbers": [59, 60, 61, 62, 63, 64, 65],
+      "synthesize_contributors": {
+        "59": ["Audience Advocate", "Questioner", "Empath"],
+        "60": ["Audience Advocate"],
+        "61": ["Empath"],
+        "62": ["Devil's Advocate", "Questioner"]
+      },
+      "append_contributors": {
+        "63": "Provocateur",
+        "64": "Provocateur",
+        "65": "Storyteller"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Outcome Measurement, Evidence, and Program Learning",
+      "question_numbers": [66, 67, 68, 69, 70, 71, 72, 73, 74],
+      "synthesize_contributors": {
+        "66": ["Audience Advocate", "Empath", "Questioner", "Appreciative Inquirer", "User Q"],
+        "67": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "68": ["Analyst", "Futurist"],
+        "69": ["Analyst", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "70": "Provocateur",
+        "71": "Visionary",
+        "72": "Storyteller",
+        "73": "Connector",
+        "74": "Connector"
+      }
+    },
+    {
+      "number": 12,
+      "name": "Match Lifecycle, Endings, and Long-Term Sustainability",
+      "question_numbers": [75, 76, 77, 78, 79, 80, 81, 82, 83],
+      "synthesize_contributors": {
+        "75": ["Devil's Advocate", "Analyst", "User Q"],
+        "76": ["Empath"],
+        "77": ["Analyst", "Devil's Advocate", "Futurist"],
+        "78": ["Systems Thinker"],
+        "79": ["Devil's Advocate", "Futurist", "Systems Thinker"],
+        "80": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "81": "Provocateur",
+        "82": "Storyteller",
+        "83": "Constraint Flipper"
+      }
+    }
+  ],
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "Source ST section uses systems-vocabulary distinctive phrases (self-amplifying signal, downward cycle, tipping point, chilling effect, drift, hollow out, feedback delay) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). Floor met by preserving >=3 ST-distinctive phrases verbatim per R11."
+    }
+  ],
+  "self_check": {
+    "ai_orphan_question_numbers": [4, 13, 52, 80],
+    "st_archetype_question_numbers": [21, 37, 78],
+    "st_archetypes_verbatim": ["self-amplifying signal (Q78)", "downward cycle (Q78)", "tipping point (Q21, Q78)", "chilling effect (Q37)", "hollow out / hollowing out (Q78)"],
+    "user_q_marker_count": 10,
+    "user_q_input_count": 10,
+    "user_q_marker_question_numbers": [8, 12, 20, 21, 29, 35, 39, 43, 66, 75],
+    "compaction_ratio": 2.69,
+    "cluster_count": 12,
+    "high_effort_target_compaction": "~3.1x (achieved 2.69x; above floor of 2.6x)",
+    "high_effort_target_cluster_count": "11-13 (achieved 12)"
+  }
+}

@@ -56,7 +56,7 @@ After the subagent returns, run the utility script:
 scripts/split-questions.sh {{session}}
 ```
 
-This is a deterministic transform, not an LLM step. It parses `## Topic Cluster NN: Name` headers from `QUESTIONS.md` and writes one file per cluster into `questions/by-topic/` with derived slug filenames.
+This is a deterministic transform, not an LLM step. It parses `## Topic Cluster NN: Name` headers from `QUESTIONS.md` and writes one file per cluster into `questions/by-topic/` with derived slug filenames. It also writes the `## Topic Clusters (from Phase 2)` section into `PLAN.md` — the ordered slug + display-name source Phase 5 reads — so no separate step is needed to populate it.
 
 **Quality Gate:** Before proceeding, verify:
 - `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header

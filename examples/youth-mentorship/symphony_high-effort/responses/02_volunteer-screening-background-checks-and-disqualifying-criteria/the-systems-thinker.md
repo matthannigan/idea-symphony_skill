@@ -1,0 +1,53 @@
+---
+project-name: "Youth Mentorship Program for At-Risk Teens"
+session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/youth-mentorship/high"
+datetime: 2026-04-28
+effort: "high"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "02_volunteer-screening-background-checks-and-disqualifying-criteria"
+persona: "The Systems Thinker"
+---
+
+# Volunteer Screening, Background Checks, and Disqualifying Criteria - The Systems Thinker
+
+---
+
+## Minimum Disqualifying Criteria and the Borderline Case
+
+* **Risk stratification with graduated authority.** Rather than binary pass/fail on borderlines, create a tiered system: crimes against minors and recent violent felonies are automatic disqualification (non-negotiable, single authority holds veto); DUIs, property crimes, and expunged offenses go to a three-person peer review committee (no single person decides); everything else requires conversation with the applicant plus supervisor sign-off. This distributes authority precisely where adjudication risk is highest—and the peer review layer prevents a single screener's risk appetite from dominating. Track every borderline decision for 18 months: which approved applicants create incidents, which rejected applicants would have been safe? Feed that back into the framework every year.
+
+* **Reverse-engineer from match design.** Before writing criteria, map what relational failures look like in mentorship: boundary drift (gradual escalation into inappropriate relationship), grooming tells (gift-giving, isolation, boundary testing), and capacity collapse (mentor disappears after 4 months, teen feels abandoned). Then ask: what history or behavior pattern predicts each failure mode? Someone with multiple arrests for fraud may be poor at financial boundaries; someone who abandoned a marriage may ghost relationships under stress. This grounds criteria in actual system failure modes rather than abstract risk categories.
+
+* **Expungement as a reset point, not erasure.** Expunged records mean the system decided the debt was paid—but mentorship relationships demand trust over years. Include expunged offenses in discussion-based review only if the underlying behavior pattern (dishonesty, anger management, sexual boundary issues) would matter to the role. If someone was convicted of drunk driving 15 years ago, served time, went to AA, and is now sober—that's one story. The same charge three years ago tells a different story. Make the adjudication committee explicitly state the behavior pattern they're evaluating, not just the legal category.
+
+---
+
+## Background Check Statutory Floor, FCRA Pre-Adverse-Action, and the Screening Workflow
+
+* **State floor creates cascading liability risk.** Most states require fingerprint-based FBI and state checks for youth-serving organizations; FCRA requires pre-adverse-action notice (3-5 days), notice of rights, and final adverse-action notice with reason. Many faith-based organizations skip FCRA steps because they hire a background-check vendor and assume the vendor handles it—but the organization is still liable if notices weren't delivered correctly. Map your state's specific floor (call the state licensing body, don't guess), then document every step: (1) applicant signs FCRA acknowledgment; (2) background vendor sends results to you; (3) you send pre-adverse notice to applicant *immediately* if results are concerning; (4) you wait the required period; (5) you send final notice with reason and dispute instructions. Every skipped step is a legal exposure for which you, not the vendor, can be sued.
+
+* **Third-party consumer reporting liability trap.** If you use a background-check vendor that pulls reports on your behalf, you are the "employer" under FCRA and you control the adverse action decision—the vendor is just the messenger. Many organizations discover they violated FCRA only when an applicant sues after being rejected without pre-adverse notice. Set up a written protocol: screener receives results, immediately flags if there's anything disqualifying, legal review happens within 24 hours, pre-adverse notice is sent *that day* via documented delivery (email with read receipt), calendar reminder goes out for the waiting period, final notice is sent only after the waiting period expires. Document that you followed this protocol for every applicant. If someone later claims you violated FCRA, you have a paper trail showing you didn't.
+
+* **Statutory floor audit schedule.** Many state requirements change when youth-serving organization definitions shift or mandatory reporting laws update. Set a quarterly reminder to check: (1) Does your state still require fingerprint-based checks? (2) Are there any new mandatory training requirements for mentors? (3) Has the sexual abuse registry been expanded? (4) Are there new consent/notification rules for juvenile justice referrals? A small state-law change can cascade through your entire screening workflow. Have a legal review once per year, not just at launch.
+
+---
+
+## Documented History Misses, Congregation Familiarity Bends, and Counter-Balancing Safeguards
+
+* **Social loyalty creates systematic leniency bias.** This is a classic "Shifting the Burden" pattern: the comfort of knowing volunteers personally means you rely on social reputation instead of rigorous screening—which works until it doesn't, at which point the crisis erodes the entire program's credibility. Counter this by building *structural independence* into adjudication: (1) screener is not from the congregation (hire a volunteer from outside or outsource entirely); (2) results go to a peer-review committee of 3 people, at least one external (school counselor, community nonprofit director, social worker); (3) the primary mentor's supervisor is never involved in approving that mentor's own match (prevents "my volunteer is good" reasoning). Rotate committee membership yearly to prevent long-standing relationships from softening thresholds over time. This isn't distrust of your congregation—it's recognizing that human relationships naturally bias judgment, and systems design should compensate.
+
+* **Peer observation as ongoing screening.** Background checks catch history; they don't catch drift that happens after approval. Create a lightweight ongoing channel: every 3 months, the youth and mentor's supervisor have a separate conversation (mentor not present) about how boundaries are holding, whether the mentor is keeping commitments, and whether any tell-tale signs of inappropriate relationship are emerging (isolation of the teen, gift-giving, inappropriate contact outside scheduled meetings, boundary-testing language). If flags appear, there's a conversation protocol—not immediate removal, but structured escalation. This compensates for background check's blindness to current behavior. It also creates a self-correcting mechanism: mentors know they're being observed, which reinforces boundary discipline.
+
+* **Structured interview questions that predict relational failure.** Rather than gut-feel interviews, use scenario questions that reveal how candidates handle boundaries, commitment under stress, and frustration: "Tell me about a time you had to set a boundary with someone you cared about and they didn't like it—what happened?" "You've been mentoring for 8 months, the teen isn't showing up to meetings, and you're frustrated—what do you do?" "Have you ever quit something you committed to doing? What was happening?" People who have thought through these scenarios answer thoughtfully; people who haven't often reveal hidden assumptions (savior energy, rescue fantasies, low frustration tolerance). This isn't foolproof, but it surfaces risk far better than "Why do you want to be a mentor?"
+
+---
+
+## Recruiting for Relational Capacity and the 40-Volunteer Ceiling Versus Deep-Design Canvas
+
+* **Quality-over-quantity creates a resource-allocation cascade.** If you screen for relational capacity rather than willingness, you'll naturally shrink from 40 to 10-15 mentors. This looks like loss, but it flips the entire system: with 10 deep mentors, you have time for thoughtful matching (personality compatibility, shared interests, geographic proximity, schedule overlap), intensive training (not a 2-hour orientation, but real skill-building over 8 weeks), and high-touch supervision (monthly meetings with each mentor, not quarterly). With 40 moderately motivated mentors, you're logistically assigning pairs, doing minimal training, and burning out supervisors trying to manage too many relationships. The smaller system pays more per mentor but gets better outcomes *and* uses fewer staff hours overall because supervision is predictable rather than crisis-driven. The feedback loop runs the other way: successful matches generate retention and word-of-mouth recruiting, which attracts *more* genuinely committed people because they see it works.
+
+* **Identify relational capacity through observation, not declaration.** Screening for willingness is easy—everyone can say "I want to help." Screening for relational capacity requires seeing how people actually show up: (1) Give applicants a small task: "We need someone to help organize donated school supplies for one Saturday." Observe who follows through, how they engage with others, how they respond when plans change. (2) Have applicants attend a mentor-community event (existing mentors, current teens if appropriate, potluck dinner) before formal interview. Watch how they interact with teens, how they listen, whether they center themselves or genuinely learn about others. (3) In the interview, ask about long-term relationships they've maintained (not just romantic—friendships, family, mentoring-like roles) and ask for contact info to verify those people think this person is reliable and boundaried. This is slow, but it catches the wannabes and the saviors early.
+
+* **Straightforward pilot structure: 8-mentor soft launch.** Rather than launching with 40 volunteers and then discovering you need better screening, start with 8 carefully selected and trained mentors for 3 months. Match them deliberately. Meet monthly with each pair to troubleshoot. After 3 months, interview the 8 mentors about what worked, what failed, what kind of teen needs what kind of mentor, and which mentors should continue. Then open recruitment for 4-5 more mentors based on what you learned. This lets you refine screening criteria from real experience instead of best practices from other programs. It also builds a core culture (these first 8 mentors become your ambassadors, modeling what good mentorship looks like for later recruits).

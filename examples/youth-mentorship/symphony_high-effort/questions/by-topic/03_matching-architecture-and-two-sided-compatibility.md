@@ -1,0 +1,25 @@
+---
+project-name: "Youth Mentorship Program for At-Risk Teens"
+effort: "high"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7"
+---
+
+# Topic Cluster 03: Matching Architecture and Two-Sided Compatibility
+
+## Questions
+
+12. **Matching variables, weighting, and what actually predicts realized match quality** [User Q]: Compatibility likely spans demographics, shared interests, geographic proximity, personality fit, and referral context — but realized match quality (where a relationship actually thrives, not where it could theoretically survive) hinges on factors beyond surface similarity. What structured weighting system should govern matching, which variables carry the highest risk of harm if prioritized incorrectly, and how does intake elicit honest preference data from teens who may distrust the institutions making the referral?
+13. **Matching as relationship-making, not logistics — and what predicts a relationship that lasts past the one-year minimum**: Given that the most powerful mentorships hinge on genuine connection, what matching process would reliably surface the conditions for that connection rather than just minimizing mismatch risk, and what information about a volunteer's life experience or a teen's interests and hopes is most predictive of a relationship that lasts and deepens past the one-year minimum?
+14. **Referral source data asymmetry and cultural-experiential distance across difference**: Teens referred through juvenile justice come with a richer institutional record than those referred by school counselors, and congregation volunteers paired with juvenile-justice-referred teens bring assumptions about family structure, communication norms, and authority that — even when well-intentioned — can register to teens as judgment rather than curiosity. How does matching account for this referral-source asymmetry without over-relying on justice-system framing or under-informing mentors about safety context, and how does the process surface and act on teen feedback about a match that isn't working before the relationship quietly collapses?
+15. **What "being chosen" feels like to a teen who has rarely been chosen**: When a mentee is matched with a volunteer, there is a moment of being singled out as worth someone's time. That moment will feel enormous to some of these kids — maybe uncomfortably so. How do we prepare mentors to hold that weight without letting the relationship become defined by pity or savior energy, which these teens will detect instantly and resent?
+16. **What if the match were the program**: Imagine a world where all the training curricula, safety protocols, and outcome metrics dissolve into a single obsessive focus: the design of the pairing itself. What would it look like to treat the matching moment as a sacred act of relational architecture — something more akin to a long-term friendship curation than an administrative intake process? How might this reframing change every downstream decision?
+17. **The turning-point moment**: Every sustained mentoring relationship has a moment — maybe six weeks in, maybe six months — when the mentee decides the mentor is genuinely trustworthy; what conditions, rituals, or touchpoints does your program design specifically to help that moment arrive, and how will you know when it has?
+18. **Matching architecture from labor markets**: Two-sided matching markets (residency match programs, school choice lotteries, organ transplant registries) have been extensively studied. The core insight is that stable matches require surfacing preferences from both sides and designing an algorithm that accounts for mutual fit — not just one-sided assignment. Most mentorship programs assign based on coordinator judgment or simple demographic similarity. What structured information — about mentor interests, availability, communication style, and life experience, and about teen goals, interests, and counselor observations — would allow a more systematic match process? And critically, how do you elicit honest preference data from teens who may distrust the institutions making the referral?
+19. **Match quality as an ecological fit problem**: Ecologists distinguish between a species' fundamental niche (the conditions it could theoretically survive in) and its realized niche (where it actually thrives given competition and interaction effects). A mentor may technically be "qualified" for any match (fundamental niche) but will only form a genuinely developmental relationship in a subset of pairings (realized niche). What factors — beyond demographic similarity and shared interests — actually predict realized match quality in one-on-one mentorship, and how can intake and matching design surface those factors without creating invasive or stigmatizing screening processes?
+
+---
+
+**Question count**: 8
+**Cluster focus**: How mentor-mentee pairs are designed, what predicts strong matches, and how teen voice and cultural distance enter the matching process.

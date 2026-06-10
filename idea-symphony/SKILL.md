@@ -227,7 +227,7 @@ After the subagent returns, run the utility script:
 scripts/split-questions.sh {{session}}
 ```
 
-This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md.
+This is a deterministic transform, not an LLM step. `questions/by-topic/99_additional.md` is produced only if the `## Additional Questions` section exists in QUESTIONS.md. The script also writes the `## Topic Clusters (from Phase 2)` section into `PLAN.md` (one numbered, linked row per real cluster; the orphan bucket is excluded). This is the authoritative ordered slug + display-name source Phase 5 reads, so no separate orchestrator step is needed to populate it.
 
 **Quality Gate:** Before proceeding, verify:
 - `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header

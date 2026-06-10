@@ -1,0 +1,61 @@
+---
+project-name: "Youth Mentorship Program for At-Risk Teens"
+session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/youth-mentorship/high"
+datetime: 2026-04-28
+effort: "high"
+stage: "Phase 3: Multi-Perspective Brainstorming"
+model-requested: "haiku"
+model-reported: "claude-haiku-4-5-20251001"
+topic-cluster: "02_volunteer-screening-background-checks-and-disqualifying-criteria"
+persona: "The Analogist"
+---
+
+# Volunteer Screening, Background Checks, and Disqualifying Criteria - The Analogist
+
+---
+
+## Minimum Disqualifying Criteria and the Borderline Case
+
+* **Framework from aviation's hazard classification.** Aviation safety uses a tiered hazard matrix: "catastrophic" (unacceptable risk, period), "critical" (mitigated only with multiple safeguards), and "major" (managed through standard procedures). Apply this to screening: crimes against minors are catastrophic (permanent bar). Non-violent offenses, financial crimes, or substance-related convictions might be "critical" (allowable only with enhanced training, supervision, or specific role restrictions). Minor regulatory violations or expunged records fall to "major" (standard oversight suffices). This separates absolute bars from judgment calls through clear escalation, not intuition.
+
+* **Borrow from clinical ethics' multidisciplinary case review.** Medical ethics committees review borderline cases—unclear diagnoses, resource allocation dilemmas—through structured deliberation among people with different expertise (clinician, ethicist, social worker, chaplain). Apply this to screening: a three-person independent panel reviews borderline cases—one background-check expert (to interpret records), one safeguarding specialist (to assess risk patterns), and one community voice (to ground judgment in local context). This distributes authority away from a single gatekeeper and surfaces pattern-blindness that any one person might have.
+
+* **Patent examiner's precedent system.** Patent offices maintain indexed precedent decisions: when a borderline case arises, examiners consult prior rulings on similar facts to ensure consistency. Document each borderline screening decision with the reasoning, decision, and outcome—then use that library to flag new cases as "similar to 2026 case X, which was approved/denied for Y reason." This creates transparent precedent, reduces re-litigation of identical borderline questions, and makes it testable whether the organization's adjudication logic is actually evidence-based or drifting.
+
+* **Incident command system's role clarity.** Wildfire incident command uses explicit role assignment—"I am the Operations Chief, my authority is X, I defer to the Planning Chief for Y." Apply to screening: publish a one-page authority matrix: "The background check screener flags disqualifying records (absolute role). The Review Panel adjudicates borderline cases (explicit role). The Executive Director approves final enrollment (accountability role)." This removes ambiguity about who decides what and makes it clear to volunteers where they stand when a decision affects them.
+
+---
+
+## Background Check Statutory Floor, FCRA Pre-Adverse-Action, and Screening Workflow
+
+* **Model from regulated telecommunications network.** Telecom companies operate under FCC rules, state utility commissions, and HIPAA (for medical-adjacent services). Each layer sets a floor; companies implement the most stringent. For mentorship screening: build a compliance audit table listing your state's mandatory screening floor (e.g., Pennsylvania Act 153: fingerprint-based checks, disqualifying offenses list), FCRA requirements (notice, dispute window, final adverse action), and any funder-specific mandates. Each row is a rule; each column is your implementation. This reveals gaps (e.g., "We're doing FCRA notice but not the 5-day dispute window") and makes it documentable that you meet or exceed all floors.
+
+* **FDA's adverse-event reporting pipeline for consumer safety.** When a drug adverse event is reported, FDA has a documented workflow: intake, assessment, notification to relevant parties, public database entry, signal detection. Apply to background screening: document your screening workflow end-to-end. Intake: volunteer applies. Assessment: screener reviews records and flags disqualifiers. FCRA pre-adverse notice: if an issue arises, screener sends written notice with the agency's information and dispute instructions (explicit 5-day window). Final adverse decision: if disputed claim is unresolved, send final notice with reasons and any appeal process. Retention: keep copies (FCRA requires 7 years). This prevents ad-hoc "we forgot to tell them" failures.
+
+* **Regulatory sandbox model for policy testing.** Financial regulators run "sandboxes"—controlled zones where companies test new ideas under lighter oversight, with explicit data collection to evaluate safety. Apply this to borderline criteria: Before locking a disqualifier in place, pilot-test it with your panel using historical cases. Example: "For non-violent financial offenses, does a 10-year lookback or 5-year lookback better distinguish mentors who've stabilized from those still cycling?" Document the test, results, and final decision. This keeps your criteria evidence-responsive rather than inherited from another organization's risk tolerance.
+
+* **Clinical trial protocol registration.** Medical researchers register trial protocols before running them (clinical trials.gov), preventing post-hoc "we looked for whatever came out") analysis drift. Apply to screening workflow: publish your screening criteria and workflow before interviews begin—funder websites, application materials, volunteer handbook. This prevents volunteer complaints of "I wasn't told about this standard when I applied" and makes it clear to referrers (schools, juvenile justice) what disqualifiers they should expect. Public registration also invites early feedback from legal/safeguarding experts before you've already enrolled volunteers under a flawed process.
+
+---
+
+## Documented History Misses, Congregation Familiarity Bends, and Counter-Balancing Safeguards
+
+* **Epidemiology's "ascertainment bias" correction.** When disease registries rely only on clinical diagnoses, they miss asymptomatic cases and over-count symptomatic ones in healthcare-rich neighborhoods. Epidemiologists correct for this by running parallel population surveys to validate which rates are real vs. artifact. Apply to screening: background checks catch only documented cases, but you can triangulate risk through structured interviews and reference checks that ask about relational patterns. Example: "Tell us about a time you felt frustrated with a young person you worked with and how you handled it." Answers reveal judgment under stress—something no background check captures. And ask references specifically, "Has this person ever struggled with boundaries, anger management, or reliability?" to surface behavioral flags that documentation missed.
+
+* **Borrow from clinical trial's independent data safety monitoring.** Clinical trials use independent monitors who have no stake in the trial's success and can halt the trial if adverse signals appear. Apply to screening: recruit your Review Panel from outside the congregation—a board member from a partner organization, a safeguarding consultant from another nonprofit, a legal advisor. They have no social loyalty to the applicant and no reputation risk if they say "we should decline this person." Annual review: an external auditor (volunteer legal aid clinic, state attorney general's office) spot-checks 10% of decisions to flag whether familiar faces are systematically getting lenient adjudication. This external eye catches the social-loyalty drift.
+
+* **Nature's immune-system redundancy.** A body doesn't rely on one immune mechanism (antibodies alone, or T-cells alone); it layers them—antibodies, T-cells, macrophages, lysozyme—so a single failure doesn't compromise defense. Apply to screening: layer multiple safeguards. Background check (catches documented history). Structured interview (reveals relational judgment). Reference checks (surfaces behavioral flags). Community feedback window (if anyone reports concerns before match begins, they're heard). Ongoing peer observation (mentors are visible to other volunteers and staff, not isolated with youth). No single check is the whole defense; multiple systems compensate for each other's blind spots.
+
+* **Anthropology's "outsider-insider" ethnographic method.** Anthropologists studying a community bring in researchers who've never seen the community before (to catch what insiders normalize) and work alongside insiders (to understand context). Apply to screening: pair your internal congregation screener with an outside safeguarding consultant for every borderline case. The insider knows organizational values and context; the outsider spots assumptions that go unquestioned locally (e.g., "everyone knows Jane is trustworthy" isn't evidence). Together, they catch both documented risks and the blind spots that come from loving a community too well.
+
+---
+
+## Recruiting for Relational Capacity, Not Just Willingness — and the 40-Volunteer Ceiling Versus Deep-Design Canvas
+
+* **Craft guild apprenticeship model.** Medieval guilds didn't recruit volunteers; they recruited apprentices and screened ruthlessly—candidates had to show aptitude for the work, demonstrate commitment, and complete a long probation. The guild invested deeply in a few excellent craftspeople, not broadly in many lukewarm ones. Apply to mentorship: flip the recruitment model. Instead of "Sign up if you're interested," run a structured interview asking: "Tell me about a young person you've influenced—how, over what timeframe, with what result?" Then require a 3-month "mentor apprenticeship" before matching youth—training, co-mentoring another mentor's youth, reflecting on cases. Accept only those who demonstrate relational presence, not just availability. You might end with 10-15 mentors, but each is genuinely prepared.
+
+* **Theater ensemble casting, not staffing.** Theater companies don't hire any actor who can recite lines; they hold auditions and cast for ensemble fit—not just talent, but chemistry, reliability, and alignment with the director's vision. Mentorship recruitment works similarly. Create a multi-stage evaluation: written application (basic readiness), group assessment (observe how candidates relate in low-stakes conversation with other applicants), structured interview (relational capacity and boundary awareness), and reference calls that specifically ask about emotional regulation and follow-through. This takes more staff time upfront but prevents mismatches and burnout from candidates who looked good on paper but can't sustain a relationship.
+
+* **Monastic community's intentional discernment.** Monastic orders spend months or years in "discernment"—testing whether a candidate has a genuine vocation (calling) or is seeking status, escape, or belonging for the wrong reasons. Apply here: build in a structured reflective component. Early in recruitment, ask: "What does mentorship mean to you? What are you hoping to get from it? What are you worried about?" Listen for savior energy ("I'll change their life"), transactional motivation ("I need volunteer hours"), or genuine presence ("I want to walk alongside someone and see what they teach me"). Candidates who reflect seriously and name both gifts and limits are stronger bets than those offering unqualified enthusiasm.
+
+* **Pharmaceutical trials' dose-escalation design.** Drug trials don't expose everyone to a full dose at once; they start small (low-risk volunteers, low dosage), observe safety and efficacy, then escalate. Apply mentorship: structure a graduated match-intensity system. Early matches are shorter duration (6-month pilot), lower vulnerability youth (not the most acute trauma histories), with more frequent check-ins and staff visibility. As mentors demonstrate relational stability and emotional bandwidth, they graduate to longer commitments and more complex youth. This means you know which of your 40 are truly ready before asking them to carry a year-long relationship with someone in crisis.
