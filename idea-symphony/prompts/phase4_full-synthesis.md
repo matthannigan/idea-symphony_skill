@@ -239,19 +239,18 @@ model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"
-central-tension: "[one sentence naming the cluster's organizing trade-off, or its convergent finding if broadly convergent; may be lightly compressed relative to the Executive Summary's opening]"
+central-tension: "[One sentence naming the cluster's organizing trade-off, or its convergent finding if broadly convergent. It may be lightly compressed relative to the Executive Summary's opening. Phase 5 reads this key.]"
 ---
 
-# Summary: [Topic Name]
+# Summary: [Topic Cluster Name]
 
 ## Executive Summary
 
-[3-5 paragraphs capturing the essence of this topic cluster's exploration. Open the first paragraph by stating the cluster's organizing tension (or its convergent finding) as natural prose. Focus on:
+[3-5 paragraphs, 200-400 words. Open the first paragraph with the cluster's organizing tension or convergent finding (see the **Central tension** guideline below). Focus on:
 - Most important insights across all questions
 - Key tensions or trade-offs identified
 - Critical success factors or risks
-- Strategic implications
-Aim for 200-400 words total.]
+- Strategic implications]
 
 ---
 
@@ -261,30 +260,30 @@ Aim for 200-400 words total.]
 [2-4 sentences describing this recurring theme across responses. Cite specific insights.]
 
 ### [Theme 2 Name]
-[2-4 sentences describing this recurring theme.]
+[2-4 sentences describing this recurring theme across responses.]
 
 ### [Theme 3 Name]
-[2-4 sentences describing this recurring theme.]
+[2-4 sentences describing this recurring theme across responses.]
 
-[Include 3-5 themes total that cut across multiple questions]
+[Include 5-8 themes total that cut across multiple questions]
 
 ---
 
-## Recommended Next Steps
+## Recommended Actions and Next Steps
 
 ### Immediate (0-3 months)
 - [Specific, actionable item with enough detail to be useful]
-- [Specific, actionable item]
+- [Specific action item]
 
 ### Near-term (3-12 months)
-- [Specific, actionable item]
-- [Specific, actionable item]
+- [Specific action item]
+- [Specific action item]
 
 ### Long-term (1+ years)
-- [Specific, actionable item]
-- [Specific, actionable item]
+- [Specific action item]
+- [Specific action item]
 
-[Include 6-10 total action items across timeframes, prioritized by impact]
+[Include 6-10 total action items across timeframes prioritized by impact. Each item should be implementable as written — name specifics where the substance supports it. Vague recommendations get vague follow-through.]
 
 ---
 
@@ -307,6 +306,7 @@ Aim for 200-400 words total.]
 ---
 
 **Questions addressed**: [count]
+**Response sources**: [count of contributing personas]
 **Key insights synthesized**: [count]
 ```
 
@@ -316,13 +316,14 @@ Aim for 200-400 words total.]
 - Action items should be specific enough to act on
 - Balance optimism (opportunities) with realism (risks)
 - Focus on strategic value, not comprehensive coverage
+- Target 800-1500 words total for this document
 - Write the Executive Summary as prose paragraphs, not bullets. Direct and specific: name the insight and its stakes in plain language. The reader is a decision-maker skimming, not a committee evaluating completeness.
 
 - **Surface load-bearing single-persona reframes.** The Themes, Trade-offs, and Risks sections must include any single-persona insight that reframes the cluster's core question — counter-tests, distinctive timing claims, buried hypotheses, alternate diagnostic patterns, productive DA-anchored dissent, including dissent that overturns a claim established earlier in the cluster. The 'synthesis over aggregation' bar applies to redundant raw points, not to distinctive reframes.
 
 - **Categorical reframes are exceptional, not default.** A categorical reframe is a sentence-level reversal, produced by a single persona and corroborated by at least two others, that changes which actions get prioritized in the cluster. Most clusters will not have one. Surfacing a reframe that is not load-bearing is worse than absence: it produces rhetorical uniformity across clusters and trains downstream Phase 5 output to imitate the shape. If a candidate reframe restates an existing theme in "X-not-Y" form without changing which actions are prioritized, omit it. When a genuine reframe does survive this test, name it as a single declarative sentence at the top of the Themes section, separate from the individual Themes.
 
-- **Central tension.** The Executive Summary's opening should state the cluster's organizing tension if it has one: a genuine trade-off the personas did not resolve. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. Carry the same claim in the `central-tension:` frontmatter key (see Document 3 spec), lightly compressed if needed; the two copies must agree but need not be byte-identical.
+- **Central tension.** Open the Executive Summary by stating the cluster's organizing tension if it has one — a genuine trade-off the personas did not resolve — as natural prose. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. Carry the same claim in the `central-tension:` frontmatter key (see Document 3 spec), lightly compressed if needed; the two copies must agree but need not be byte-identical.
 
 ---
 

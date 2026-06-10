@@ -8,6 +8,8 @@ You are synthesizing brainstorming responses from two complementary perspectives
 
 `low` effort deliberately pairs The Devil's Advocate (critical-risk lens) with The Pragmatist (feasibility lens). Your summary must preserve this tension — the value of `low` effort is specifically in the critical + pragmatic contrast. **Frame that tension substantively in the output** (e.g., "a feasibility-oriented case argues…; a risk-oriented counterpoint flags…") rather than naming the personas in the prose. The final summary should read as a portable analysis that a cold reader — someone unfamiliar with this skill — can follow, not as a transcript of two named characters.
 
+**Em-dash budget.** Limit em dashes to roughly one per paragraph. Em-dash overuse is a strong AI tell; prefer periods, parentheses, or commas. This applies to the generated prose, not to quoted persona material.
+
 ## Inputs
 
 Read all four files before drafting. They are independent; read them in parallel.
@@ -51,6 +53,8 @@ The second version commits each lens to a specific stance and forces the reader 
 
 **Five-category absence check (run before drafting Neither-lens gaps).** Walk through five candidate categories and identify the 2–3 most cluster-relevant: (a) relational/social, (b) emotional/phenomenological/lived-experience, (c) equity/access/distributional, (d) political-economy/regulatory/institutional, (e) lifecycle/temporal-stage. For each candidate, ask: did the DA's risk lens and the Pragmatist's feasibility lens both structurally miss this angle? If yes for ≥2 categories, surface them as distinct gaps. Skip the section only if 0 categories pass the test. Be specific to this cluster; don't generalize. Speculative filler is worse than absence.
 
+**Central tension.** Open the Executive Summary by stating the cluster's organizing tension if it has one — a genuine trade-off the two lenses did not resolve (e.g., "Sliding-scale membership maximizes sustainability at current member counts, but any paywall selectively excludes the members the library exists to serve") — as natural prose. If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair explicitly — inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence. Carry the same claim in the `central-tension:` frontmatter key, lightly compressed if needed; the two copies must agree but need not be byte-identical.
+
 ## Output
 
 Replace every bracketed placeholder below (e.g., `[Topic Cluster Name]`, `[Theme 1 Name]`) with the content you derive; do not emit the literal placeholder strings.
@@ -63,42 +67,41 @@ project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "low"
-stage: "Phase 4: Summary Generation"
+stage: "Phase 4: Response Synthesis"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
-central-tension: "[One sentence naming the cluster's organizing trade-off, lightly compressed — e.g., 'incremental shipping inside the 3-month timeline vs. structural redesign that defers but doesn't solve the architectural risk.' Carry the same claim the Executive Summary's opening makes. If the cluster is broadly convergent with no genuine trade-off, state the convergent finding instead.]"
+synthesis-type: "summary"
+central-tension: "[One sentence naming the cluster's organizing trade-off, or its convergent finding if broadly convergent. It may be lightly compressed relative to the Executive Summary's opening. Phase 5 reads this key.]"
 ---
 
 # Summary: [Topic Cluster Name]
 
 ## Executive Summary
 
-[Open with the cluster's organizing tension if it has one — a genuine trade-off the two lenses did not resolve, stated as natural prose (e.g., "Sliding-scale membership maximizes sustainability at current member counts, but any paywall selectively excludes the members the library exists to serve"). If the cluster is broadly convergent, open with the convergent finding instead; a cluster without a productive tension is a normal outcome, not a gap to flag. If both lenses point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair explicitly — inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.
-
-Then, across 2-3 paragraphs, capture the most important insights: where the two lenses converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised. Frame convergences and disagreements in substantive terms (e.g., "a risk-oriented view," "a feasibility-oriented view"), not by persona name.]
+[2-3 paragraphs. Open with the cluster's organizing tension or convergent finding (see the **Central tension** guideline in `## Synthesis Strategy` above). Then capture the most important insights: where the two lenses converged on high-confidence points, where they disagreed on key trade-offs, and what unique concerns each raised. Frame convergences and disagreements in substantive terms (e.g., "a risk-oriented view," "a feasibility-oriented view"), not by persona name.]
 
 ---
 
 ## Key Themes
 
 ### [Theme 1 Name]
-[2-3 sentences. Note whether this theme was raised by both lenses (convergent) or one (unique to the risk-oriented or feasibility-oriented view).]
+[2-3 sentences describing this recurring theme across responses. Note whether this theme was raised by both lenses (convergent) or one (unique to the risk-oriented or feasibility-oriented view).]
 
 ### [Theme 2 Name]
-[2-3 sentences.]
+[2-3 sentences describing this recurring theme across responses]
 
 ### [Theme 3 Name]
-[2-3 sentences.]
+[2-3 sentences describing this recurring theme across responses]
 
-[Include 3-5 themes total]
+[Include 3-5 themes total that cut across multiple questions]
 
 ---
 
-## Recommended Actions
+## Recommended Actions and Next Steps
 
 ### Immediate (0-3 months)
-- [Specific action item]
+- [Specific, actionable item with enough detail to be useful]
 - [Specific action item]
 
 ### Near-term (3-12 months)
@@ -109,7 +112,7 @@ Then, across 2-3 paragraphs, capture the most important insights: where the two 
 - [Specific action item]
 - [Specific action item]
 
-[Include 4-8 total action items. Each item should be implementable as written — name specific data-model fields, event names, UI strings, or test protocols where the cluster's substance supports it (e.g., "log `grace_offered`, `grace_used`, `grace_declined` as distinct events from launch," not "instrument the grace mechanic"). Vague recommendations get vague follow-through.
+[Include 4-8 total action items across timeframes prioritized by impact. Each item should be implementable as written — name specifics where the substance supports it. Vague recommendations get vague follow-through.
 
 Tag each item at the end with `[convergent]`, `[trade-off]`, or `[unique: risk]` / `[unique: feasibility]` so a downstream reader can weight them. Prefer convergent recommendations at the top of each timeframe; where the two lenses disagreed on an action, present the trade-off explicitly — framed by stance, not by persona name — rather than picking a side.]
 

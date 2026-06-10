@@ -10,11 +10,12 @@ project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "[min|low|medium|high]"
-stage: "Phase 4: Summary Generation"
+stage: "Phase 4: Response Synthesis"
 model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
-central-tension: "[One line; the cluster's organizing trade-off if it has one. Phase 5 reads this key. May be lightly compressed relative to the Executive Summary's prose, but must carry the same claim. If the cluster is broadly convergent with no genuine trade-off, state the convergent finding instead.]"
+synthesis-type: "summary"
+central-tension: "[One sentence naming the cluster's organizing trade-off, or its convergent finding if broadly convergent. It may be lightly compressed relative to the Executive Summary's opening. Phase 5 reads this key.]"
 ---
 
 # Summary: [Topic Cluster Name]
@@ -28,21 +29,21 @@ central-tension: "[One line; the cluster's organizing trade-off if it has one. P
 ## Key Themes
 
 ### [Theme 1 Name]
-[2-4 sentences describing this recurring theme across responses]
+[Sentences describing a recurring theme across responses]
 
 ### [Theme 2 Name]
-[2-4 sentences describing this theme]
+[Sentences describing another recurring theme across responses]
 
 ### [Theme 3 Name]
-[2-4 sentences describing this theme]
+[Sentences describing another recurring theme across responses]
 
-[Include 3-5 themes total]
+[Length scales with effort: 3-5 themes of 2-3 sentences each at `min`/`low`; 5-8 themes of 2-4 sentences each at `medium`/`high`.]
 
 **Categorical reframe (exceptional, `medium`/`high` only):** A categorical reframe is a sentence-level reversal — produced by a single persona, corroborated by at least two others — that changes which actions get prioritized in the cluster. Most clusters will not have one. Surfacing a reframe that is not load-bearing is worse than absence: it produces rhetorical uniformity across clusters and trains downstream Phase 5 output to imitate the shape. If a candidate reframe restates an existing theme without changing which actions are prioritized, omit it. When a genuine reframe is present, surface it as a single declarative sentence at the top of `## Key Themes`, separate from the individual themes.
 
 ---
 
-## Recommended Actions
+## Recommended Actions and Next Steps
 
 ### Immediate (0-3 months)
 - [Specific action item]
@@ -56,7 +57,7 @@ central-tension: "[One line; the cluster's organizing trade-off if it has one. P
 - [Specific action item]
 - [Specific action item]
 
-[Item count scales with effort: 4-8 at `min`/`low`; 6-10 at `medium`/`high`.]
+[Item count scales with effort: 4-8 at `min`/`low`; 6-10 at `medium`/`high`. Tagging varies by effort level — `min`: each item tagged `[recurring]` or `[single]` (intra-response convergence); `low`: each item tagged `[convergent]`, `[trade-off]`, or `[unique: risk]` / `[unique: feasibility]`; `medium`/`high`: items untagged, prioritized by impact. The producing prompt defines each tag.]
 
 ---
 
@@ -79,8 +80,14 @@ central-tension: "[One line; the cluster's organizing trade-off if it has one. P
 ---
 
 **Questions addressed**: [count]
-**Response sources**: [count or persona list]
+**Response sources**: [voice count or lens description]
+
+[`medium`/`high` adds a third footer line: **Key insights synthesized**: [count].]
 ```
+
+## Document length
+
+Total length scales with effort: 500-800 words at `min`/`low`; 800-1500 words at `medium`/`high`.
 
 ## `low` effort variant — Key Considerations
 
@@ -89,36 +96,27 @@ At `low` effort the Key Considerations section restructures around the productiv
 ```markdown
 ## Key Considerations
 
-**High-confidence items** (both personas agreed):
+**High-confidence items** (both lenses agreed):
 - [Point]
 - [Point]
 
-**Trade-offs** (DA and Pragmatist disagreed):
-- [Specific trade-off — name both sides]
+**Trade-offs** (the two lenses disagreed):
+- [Specific trade-off — name both sides substantively: "A feasibility case for X; a risk-oriented counterpoint that Y"]
 - [Specific trade-off]
 
-**Blind-spot flags** (only one persona raised):
-- [Flag — noted by The Devil's Advocate | The Pragmatist]
-- [Flag]
+**Blind-spot flags** (only one lens raised):
+- [Flag — risk-oriented | feasibility-oriented]
+- [Flag — risk-oriented | feasibility-oriented]
 ```
 
 **Central Tension at `low` effort — inverted-framing pairs.** When both lenses (DA and Pragmatist) point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.
-
-## Frontmatter variants
-
-- `min`/`low`: `stage: "Phase 4: Summary Generation"`
-- `medium`/`high`: `stage: "Phase 4: Response Synthesis"` and adds `synthesis-type: "summary"`
-
-## Section heading variant
-
-`medium`/`high` uses **Recommended Next Steps** as the heading for the timeframe-bucketed action list; `min`/`low` uses **Recommended Actions**. Content structure is identical either way.
 
 ## Authoritative source by effort level
 
 Each Phase 4 prompt is authoritative for the exact summary shape its subagent should produce — consult the prompt when in doubt:
 
-- [phase4-synthesis-min.md](../prompts/phase4_summary-only_min-effort.md) — `min` effort (single-voice summarization)
-- [phase4-synthesis-low.md](../prompts/phase4_summary-only_low-effort.md) — `low` effort (DA + Pragmatist consolidation, restructured Key Considerations)
-- [phase4-synthesis.md](../prompts/phase4_full-synthesis.md) — `medium`/`high` (full multi-persona synthesis, richest form)
+- [phase4_summary-only_min-effort.md](../prompts/phase4_summary-only_min-effort.md) — `min` effort (single-voice summarization)
+- [phase4_summary-only_low-effort.md](../prompts/phase4_summary-only_low-effort.md) — `low` effort (DA + Pragmatist consolidation, restructured Key Considerations)
+- [phase4_full-synthesis.md](../prompts/phase4_full-synthesis.md) — `medium`/`high` (full multi-persona synthesis, richest form)
 
 **Persona-name and character-name prohibition** (`medium`/`high` `_summary.md`): the full-synthesis prompt bans persona names and character names (Marcus, Maria, Margaret, Elena, Sarah, etc.) from `_summary.md` body prose. Persona names are confined to `attributed/{cluster}.md`. See [phase4_full-synthesis.md](../prompts/phase4_full-synthesis.md) for the complete rule.
