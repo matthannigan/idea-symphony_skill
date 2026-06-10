@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 81,
+  "m_synth_output": 32,
+  "append_count": 20,
+  "total": 55,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Strategic Identity and Business Model Foundations",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Systems Thinker", "Devil's Advocate"],
+        "2": ["Questioner", "Analyst"]
+      },
+      "append_contributors": {
+        "3": "Provocateur",
+        "4": "Provocateur",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Regulatory Architecture and Multi-Jurisdiction Compliance",
+      "question_numbers": [1, 2, 3, 4, 5, 6],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Lawyer", "Devil's Advocate"],
+        "2": ["Lawyer"],
+        "3": ["Devil's Advocate", "Analyst", "Lawyer", "Questioner"],
+        "4": ["Lawyer"]
+      },
+      "append_contributors": {
+        "5": "Analogist",
+        "6": "Visionary"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Political and Regulatory Risk Scenarios",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Questioner", "Devil's Advocate"],
+        "2": ["Questioner", "Devil's Advocate", "Systems Thinker", "Lawyer"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Provocateur"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Liability, Insurance, and Contract Design",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Lawyer"],
+        "2": ["Lawyer"],
+        "3": ["Lawyer", "Systems Thinker", "Devil's Advocate"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "5": "Analogist"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Owner Trust, Acquisition, and Retention",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Audience Advocate"],
+        "2": ["Analyst", "Systems Thinker", "Questioner"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Storyteller",
+        "5": "Visionary"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Community Legitimacy and the \"Good Neighbor\" Brand",
+      "question_numbers": [1, 2, 3, 4, 5],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate"],
+        "2": ["Systems Thinker"],
+        "3": ["Systems Thinker"],
+        "4": ["Appreciative Inquirer"],
+        "5": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Equity, Power, and Stakeholder Voice",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate"],
+        "2": ["Audience Advocate"],
+        "3": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "4": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Operational Systems and Service Delivery",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Devil's Advocate"],
+        "2": ["Systems Thinker", "Analyst"],
+        "3": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Unit Economics, Cash Flow, and Scaling Thresholds",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst"],
+        "2": ["Analyst", "Systems Thinker"],
+        "3": ["Analyst", "Questioner"]
+      },
+      "append_contributors": {
+        "4": "Analogist"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Guest Experience, Place, and the First 90 Days",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer"],
+        "2": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "3": "Storyteller",
+        "4": "Storyteller",
+        "5": "Storyteller",
+        "6": "Visionary",
+        "7": "Provocateur"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [1, 2, 3],
+    "append_contributors": {
+      "1": "Provocateur",
+      "2": "Analogist",
+      "3": "Analogist"
+    }
+  },
+  "r11_source_bound_cells": ["systems-thinker"],
+  "self_check": {
+    "ai_orphan_question_numbers": ["C04-Q4", "C05-Q3", "C06-Q4", "C06-Q5", "C10-Q1"],
+    "st_archetype_question_numbers": ["C03-Q3", "C06-Q2", "C06-Q3", "C08-Q2", "C08-Q3", "C09-Q2"],
+    "st_archetypes_verbatim": [
+      "self-amplifying asset (C03-Q3)",
+      "political oscillation trap (C03-Q3)",
+      "system shock (C03-Q2)",
+      "commons structure (C06-Q2)",
+      "tipping point (C06-Q2)",
+      "regulatory engagement flywheel (C06-Q3)",
+      "cleaning-contractor dependency bottleneck (C08-Q2)",
+      "review score as the engine that drives everything else (C08-Q3)",
+      "compounding stress test (C09-Q2)"
+    ],
+    "r11_source_bound_note": "Source Systems Thinker section relies on systems-vocabulary distinctive phrases (commons structure, tipping point, oscillation trap, system shock, self-amplifying asset, regulatory engagement flywheel, dependency bottleneck, review-score engine, compounding stress test) rather than classical named archetypes; ST verbatim floor met by preserving these phrases per R11.",
+    "n_synth_input": 81,
+    "m_synth_output": 32,
+    "compaction_ratio": 2.53,
+    "cluster_count": 10,
+    "r12_check": "N_synth (81) < 100 at medium effort; cluster count 10 satisfies R12 ceiling.",
+    "append_quotas": {
+      "Provocateur": {"selected": ["Q1", "Q2", "Q3", "Q5", "Q7"], "count": 5},
+      "Storyteller": {"selected": ["Q1", "Q3", "Q5", "Q6", "Q7"], "count": 5},
+      "Visionary": {"selected": ["Q1", "Q3", "Q5", "Q6", "Q7"], "count": 5},
+      "Analogist": {"selected": ["Q1", "Q3", "Q5", "Q6", "Q7"], "count": 5}
+    }
+  }
+}

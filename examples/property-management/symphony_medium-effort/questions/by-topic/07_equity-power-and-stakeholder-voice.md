@@ -1,0 +1,21 @@
+---
+project-name: "Short-Term Rental Property Management Company"
+effort: "medium"
+stage: "Phase 2 Step 2.3: Question Synthesis"
+model-requested: "opus"
+model-reported: "claude-opus-4-7[1m]"
+---
+
+# Topic Cluster 07: Equity, Power, and Stakeholder Voice
+
+## Questions
+
+1. **Long-term renters, displacement, designing with the community rather than for it, and structural mechanisms for the least-heard voice**: From the perspective of a long-term renter who got priced out of a neighborhood where your managed properties operate, a professionally managed STR may feel indistinguishable from absentee landlords — just making the displacement machine run more efficiently — and have we empathy-mapped a tenant who learns their building's owner is converting to STR (anxiety, powerlessness, anger), considered whether any part of the business design acknowledges this harm, asked who defines "good neighbor" (the company or the people affected), articulated a version of success at 30–50 properties that takes seriously the interests of housing-cost-burdened renters the company does not directly serve, and identified — across the five distinct stakeholder groups (property owners, guests, long-term residents, cleaning/maintenance workforce, local government) — which group can least afford a bad outcome and has the fewest mechanisms to hold the company accountable, with what structural mechanisms (grievance processes, community advisory input, public transparency) would give them meaningful voice beyond filing a complaint with the city?
+2. **Whom the owner model is not built for, and the power asymmetry when owners disagree**: A full-service model at a percentage of revenue works for owners with multiple investment properties or high-value listings — but what about the owner whose STR is primary income during illness, the retiree with a single property who can't afford a bad month, or the owner in a permit-uncertain zone? Are contract terms and fee structures accessible and fair to financially vulnerable owners, and what leverage do owners realistically have in disputes given the information asymmetry between a professional management company and an individual owner — does the contract relationship turn out to be structurally one-sided in ways owners only discover when something goes wrong?
+3. **Whom the guest-experience model and the back-of-house labor model exclude or depend on**: Full-service STR optimizes for the "ideal" guest — tech-literate, credit-card-holding, English-speaking, able to navigate Airbnb's interface and smart-home entry — but what about guests who are elderly, have disabilities making self-check-in difficult, don't have smartphones, or need communication in languages other than English (are these guests systematically excluded from properties this company manages, and is that a deliberate choice or an unconsidered default); and on the labor side, the service model depends on a cleaning and maintenance workforce that is often low-wage, frequently gig-economy or contractor-classified, and disproportionately composed of immigrants and people of color — what is their experience working for this company, do they have reliable income, safe working conditions, access to benefits, and a way to raise concerns; and across the wider community (renters in adjacent units bearing noise/parking impacts directly, gig-economy cleaners, service workers whose housing options shrink as STR density grows), are these less-organized voices part of how the company thinks about community relationships?
+4. **What if community opposition were a design specification, not a political problem**: Imagine a world where the company was designed from the outset so that long-term renters, neighbors, and housing advocates experienced it as an ally rather than an antagonist — not through PR campaigns, but through structural features of the business itself. What would have to be true about ownership, revenue distribution, or housing supply commitment for community opposition to dissolve as a category?
+
+---
+
+**Question count**: 4
+**Cluster focus**: Who is most affected by the company's existence, who has the least formal power, and whether the business design includes structural mechanisms — beyond complaint management — for their voice.
