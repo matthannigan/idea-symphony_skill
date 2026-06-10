@@ -1,0 +1,162 @@
+# Idea Symphony 1.0 — Instruction Congruence Audit
+
+**Date:** 2026-06-10
+**Method:** Four parallel auditor agents (one per effort level: `min`, `low`, `medium`, `high`) performed read-only dry-run orchestration traces of `idea-symphony/`, walking every handoff from SKILL.md through prompts, guidance, templates, and script source, adopting both the orchestrator's and each subagent's perspective. Findings were cross-validated against the published `examples/tool-library/` sessions: where an example shows the capable orchestrator silently choosing an interpretation, the gap is **confirmed** — that silent repair is exactly what a weaker orchestrator won't perform. All high-impact citations below were independently re-verified against source lines before inclusion.
+
+**Result:** 4 agent reports, ~110 raw findings, deduplicated to **36 quick fixes** (Section A) and **12 decision points** (Section B). No fixes have been applied.
+
+**Severity key:** 🔴 high = wrong/missing artifact or blocked phase · 🟡 medium = output drift · ⚪ low = cosmetic/doc-only.
+
+---
+
+## Section A — Technical / Quick Fixes
+
+Mechanical corrections with one defensible resolution. Grouped by theme. "Levels" = effort levels affected.
+
+### A1. Cross-file contradictions (single correct side identifiable)
+
+| # | Sev | Where | Issue | Fix | Levels |
+|---|-----|-------|-------|-----|--------|
+| 1 | 🟡 | `SKILL.md:441` vs `SKILL.md:161-163` | Model Selection table says "Roster planning \| Orchestrator (Sonnet)" but Step 2.1 spawns an Opus subagent. Example frontmatter (`model-reported: "claude-opus-4-7"`) confirms the subagent is the lived behavior. Table also has no row for the Haiku humanizer passes. | Row → "Roster planning (Step 2.1) \| Opus subagent \| Judgment-intensive trigger evaluation"; add "Humanizer pass \| Haiku" row. | all |
+| 2 | 🟡 | `templates/brainstorm.md:61` vs `prompts/phase5_final-output.md:42-46` | Template orders the per-topic block to "quote or closely paraphrase" a categorical reframe; the prompt's *failing example* is precisely that close paraphrase ("do not preserve the noun-pair grammar"). Stale leftover from the Jun 9 reframe-demotion fix. | Rewrite template line to the prompt's own-voice rule. | low/med/high |
+| 3 | 🟡 | `prompts/phase5_final-output.md:86` vs `templates/brainstorm.md:18` | Worked example cites a "1170–2345 ceiling" for a high-effort session; the actual high band is 2800–4500 (the prompt itself calls the template "the single source of truth for length"). A weak subagent anchors on the phantom ceiling and halves the deliverable. Example PLAN.md (3,272 body words, "within high-effort band") confirms the band table is current. | Recompute the example against the real band (e.g., "4,550 words, 50 over the 2800–4500 band"). | low/med/high |
+| 4 | 🔴 | `prompts/phase5_final-output.md:64,66,108` + `templates/notebook-lm-instructions.md:3,237,288,299,304` vs the template's own headings (`:91,127,155,199,231` and `:87`) | NotebookLM artifact numbering is internally contradictory: per-cluster podcast episodes are "Artifact 2" in the prompt and checklist but **Artifact 3** in the canonical structure (Artifact 2 = single podcast); the checklist puts the slide-count target in "Artifact 3" though slides are Artifact 1; `:3` says "four artifact types" vs five blocks. With the flag on, a weak subagent emits episodes under the wrong artifact and runs the parity audit against the wrong sections. | Renumber every cross-reference to the heading numbering (episodes → 3, slides → 1, series parity → 3 vs 5); "four" → "five". | low/med/high (flag=yes) |
+| 5 | 🟡 | `prompts/phase2A_question-gen-personas-selection.md:191` vs `guidance/phase2A:127`, `personas/the-politician.md`, `prompts/phase2C:34,172,214` | The 2.1 prompt's example output table shows Politician = **Synthesize**; everywhere else (guidance, persona frontmatter, 2C routing) Politician = **Append**. A roster copied from the example mis-routes Politician's questions on the 2C fallback path, destroying the voice-preservation the Append stream exists for. | Change the example row to `Append`. | low/med/high |
+| 6 | 🟡 | `prompts/phase1_effort-level.md:59,94,113` vs `prompts/phase2C_question-synthesis.md:139-143` | Phase 1 promises "4-7 topic areas" (low/medium) and "6-9" (high); Phase 2C's engineered targets are 8-10 / 10-12 / 11-13 clusters. Example sessions (8 clusters at low, 12 at high) confirm 2C wins. | Update Phase 1's user-facing topic-area numbers to match 2C targets. | low/med/high |
+| 7 | ⚪ | `guidance/phase2A_question-gen-personas.md:286-288` | "~50-80 questions → ~20-35 thematic clusters" mislabels merged-question counts as cluster counts (real cluster targets: 8-13). | "thematic clusters" → "merged questions". | low/med/high |
+| 8 | ⚪ | `guidance/phase2D_brainstorming-personas.md:59` vs `SKILL.md:107` and the same file's `:254` | The guide's effort table says low = "0 (generic), no persona system"; low is actually DA + Pragmatist (the file's own catch-all section says so). | Row → "Low \| 2 \| Core pair only (no Step 2.4 selection)". | low |
+| 9 | ⚪ | `guidance/phase2D_brainstorming-personas.md:1,3,11,193` + `SKILL.md:52` | The 2D guide titles itself "Persona Selection Guide **(Phase 2C)**" (2C is question synthesis); SKILL.md:52 links the 2A guidance as the "**Phase 2B** Selection Guide"; SKILL.md:204 / phase2C:30 call the Step 2.1 roster the "Phase 2B roster" while the PLAN.md heading is `## Phase 2 Step 2.1: …`. | Standardize: guide titles "(Phase 2 Step 2.4)", link text "Phase 2A Selection Guide", "Step 2.1 roster". | low/med/high |
+| 10 | ⚪ | `SKILL.md:52,172` vs `prompts/phase2A:28` | "Tier 3 (5 personas)" vs the prompt/gate's "all four Tier 3 candidates" (the fifth, Connector, is handled via the Analogist swap, not as a Tier 3 candidate). | SKILL.md:52 → "Tier 3 (4 trigger-gated specialists; the Connector is handled via the Analogist swap)". | low/med/high |
+| 11 | 🟡 | `prompts/min-effort-workflow.md:28` vs `:131,140-141,157` | The min workflow's own directory tree lists `SYNTHESIS.md` ("All summaries concatenated") — the file is `SUMMARIES.md`, and min explicitly produces no SYNTHESIS.md. | Line 28 → `SUMMARIES.md`. | min |
+| 12 | ⚪ | `prompts/phase4_full-synthesis.md:139` | Attribution example cites `*—The Analyst*` — a retired Phase 3 persona that can never appear in `responses/`. | Swap to a selectable persona (e.g., The Systems Thinker). | med/high |
+
+### A2. Missing handoff specifications (substitutions, inputs, isolation)
+
+| # | Sev | Where | Issue | Fix | Levels |
+|---|-----|-------|-------|-----|--------|
+| 13 | 🔴 | `SKILL.md` Steps 2.2 (`:177-181`), 2.3 (`:192-220`), 2.4 (`:249-276`), Phase 3 (`:297-314`), Phase 4 (`:329-356`); `prompts/min-effort-workflow.md` Steps 1–3 | Only Steps 2.1 and 5.1 carry **Substitution:** lines. Every other spawn point hands prompts containing `{{persona_name}}`, `{{persona_slug}}`, `{{cluster_slug}}`, `{{topic}}`, `{{session}}`, `{{skill}}`, `{{current_datetime}}` with no instruction to resolve them. No file defines the display-name → slug rule (`Devil's Advocate` → `the-devils-advocate`, apostrophe dropped; PLAN table abbreviates to `DA★`), nor where `{{topic}}` comes from (PLAN.md's `## Topic Clusters (from Phase 2)` display name). | Add a Substitution line at every spawn point listing exactly that prompt's variables; add a slug-derivation rule and `{{topic}}` source to SKILL.md's Prompt conventions. | all |
+| 14 | 🔴 | `prompts/phase2C_question-synthesis.md` (whole file) + `SKILL.md:192-220` | The 2.3 synthesizer branches on effort throughout (compaction targets `:139-143`, preserve-distinct gating `:91-93`, append quotas `:210-214`, `effort:` frontmatter slot `:239`) but **`{{effort}}` is never substituted into the prompt** and SKILL.md lists no effort input. Confirmed silent repair: the example's QUESTIONS.md carries the right `effort:` — the capable model inferred it from by-persona frontmatter. | Add `{{effort}}` to the prompt and a Substitution line to Step 2.3. | low/med/high |
+| 15 | 🔴 | `SKILL.md:251-276` (Step 2.4) | The 2.4 subagent is never told the effort level (the 4-vs-7 algorithm and catch-all panel size depend on it), and is never given the exact PLAN.md heading string (`## Phase 2 Step 2.4: Brainstorming Personas`) that the gate (`:284`) and Phase 3 (`:307`) match on, the table format (`templates/plan.md:73-75` — which only shows a 4-persona row), or any frontmatter spec for `personas/brainstorming.md` despite `:276` requiring `model-requested` "in its output frontmatter". | Add `{{effort}}` + the verbatim heading + table format (incl. a 7-persona high example and the `99 Additional Questions` row) + a frontmatter block to the Step 2.4 instructions. (Whether to also move them to a prompt file is Decision B5.) | med/high |
+| 16 | 🔴 | `prompts/phase5_final-output.md:15-26` vs `:36,48` + `scripts/build-summaries.sh:83-94` | Phase 5's Inputs list omits `synthesis/*_summary.md`, yet `:36` mandates reading the `central-tension:` frontmatter key "from every cluster's `_summary.md`" and `:48` reads their absence sections — and build-summaries.sh strips all frontmatter, so SUMMARIES.md cannot supply the keys. A subagent obeying the Inputs list literally cannot populate `## Central Tensions`. Confirmed silent repair in examples. | Add Inputs item: "`{{session}}/synthesis/*_summary.md` — read frontmatter only, for `central-tension:` (plus absence sections at min/low)". | low/med/high (min variant: Decision B2) |
+| 17 | 🟡 | `SKILL.md:395` vs `prompts/phase5_final-output.md:112` + `templates/brainstorm.md:33-34` | Phase 5 substitution list is wrong in both directions: `{{skill}}` appears in the prompt (humanizer paths) but isn't listed; `{{current_datetime}}` is listed but occurs nowhere in the prompt — its real occurrence is inside `templates/brainstorm.md`, which the subagent reads off disk and no orchestrator ever substitutes (same for `{{session}}` there, and in `templates/notebook-lm-instructions.md:62-63`). Unresolved `{{skill}}` breaks the inline humanizer pass. | `:395` → resolve `{{session}}`, `{{skill}}`, `{{effort}}`, `{{current_datetime}}`; add a prompt-body line carrying the concrete session dir + datetime and stating that template-held tokens are filled from those values. | low/med/high (mirror in min if min delegates — B1) |
+| 18 | 🟡 | `prompts/phase2B_question-gen_by-persona.md:11-17` + `templates/request.md:34-35` vs `SKILL.md:138` | The USER-QUESTIONS.md isolation rule exists only in orchestrator-facing docs; the 2.2 prompt contains no prohibition, and REQUEST.md (a required 2.2 input) *explicitly references* USER-QUESTIONS.md — a thorough subagent follows the pointer and biases its questions, silently defeating the isolation design. | Add to the 2.2 prompt's Inputs: "Do NOT read `{{session}}/USER-QUESTIONS.md` even though REQUEST.md may reference it — user questions are injected at Step 2.3 by design." | low/med/high |
+| 19 | 🟡 | `prompts/phase2B_question-gen_generic.md:63,108` + `prompts/phase3_brainstorm_generic.md:58,105-106` | The min generic prompts name their output paths relative (`QUESTIONS.md`, `responses/...`) instead of `{{session}}/`-anchored (the min phase4 prompt anchors correctly). A subagent cwd'd at the project root writes outside the session and `split-questions.sh` exits 1. | Prefix all output paths with `{{session}}/`. | min |
+| 20 | 🟡 | `prompts/min-effort-workflow.md:107,115` vs `prompts/phase4_summary-only_min-effort.md:11-13,43-53` | min Step 3's inline bullets contradict the phase4-min prompt: bullets say read the by-topic questions file; the prompt's input is only `generic-response.md`; bullets prescribe a 3-field frontmatter vs the prompt's 9-field schema. Two desynced instruction channels. | Replace the duplicated bullet lists in min Steps 1–3 with SKILL.md's pattern ("instructions and output schema live in the prompt file"), keeping only spawn count, model, substitutions. | min |
+| 21 | ⚪ | `prompts/phase2B_question-gen_generic.md:72`, `phase3_brainstorm_generic.md:67`, `phase4_summary-only_min-effort.md:49` | `model-requested:` is written as a `[bracket]` subagent-fill slot, but only the orchestrator knows the value (the workflow says to inject a literal string). Convention mismatch. | Convert to `{{model_requested}}` substitution in the three prompts. | min |
+| 22 | ⚪ | `templates/brainstorm.md:37` | Template frontmatter hardcodes `model-requested: "opus"` — false at min (Sonnet per the min model table). Example shows the silent repair (`"sonnet"`). | Make it a substitution/slot. | all |
+| 23 | ⚪ | `prompts/phase2C_question-synthesis.md:283` | "If `[User Q]` markers appear in the input, preserve them" — no input ever contains the markers; the synthesizer itself *creates* them (`:45`). A literal reader concludes the rule is inactive and the SKILL.md:239 gate then fails. | Rewrite: "Apply the `[User Q]` marker per the USER-QUESTIONS Handling rule; ensure markers survive into the final file." | low/med/high |
+| 24 | ⚪ | `prompts/phase2C_question-synthesis.md:236-243` | QUESTIONS.md frontmatter omits `session-dir:`/`datetime:` against the convention every other artifact follows (SKILL.md:46). | Add both fields (requires `{{current_datetime}}` in the 2.3 substitution line — covered by #14). | low/med/high |
+
+### A3. Script interfaces
+
+| # | Sev | Where | Issue | Fix | Levels |
+|---|-----|-------|-------|-----|--------|
+| 25 | 🟡 | `scripts/split-questions.sh:134-142` vs `prompts/phase2C:276-284` and `phase2B_…_generic.md:58-61` | The splitter keeps only `^[0-9]+\.` lines inside a cluster and **silently drops continuation lines** — but no prompt states the one-physical-line requirement. High-effort merged anchors are the longest questions in the system; a subagent that hard-wraps loses question tails in every by-topic file (and potentially trailing `[User Q]` markers), with counts still matching so no gate fires. Examples are all single-line — the capable model picked the only surviving interpretation. | Add to both prompts' format rules: "Each numbered question must be one physical line — never hard-wrap; continuation lines are dropped by the splitter." | all |
+| 26 | ⚪ | `scripts/build-summaries.sh:72`, `scripts/build-synthesis.sh:72` | Both stamp `stage: "Phase 5: … Concatenation"` though SKILL.md runs them at the end of Phase 4, before the Phase 4 gate. | → `"Phase 4: …"`. | all |
+| 27 | ⚪ | `scripts/build-synthesis.sh:4` vs `:32`; `SKILL.md:96`; `SESSION-STRUCTURE.md:39` | Script header comment says "matching `[0-9]*.md`" but the glob is `[0-9]*_synthesis.md`; SKILL.md/SESSION-STRUCTURE describe SYNTHESIS.md as "All summaries + syntheses" — it contains only syntheses. | Fix comment; description → "All per-topic syntheses concatenated". | med/high |
+| 28 | ⚪ | `scripts/split-questions.sh:6` | Comment references `test-runs/career-change/min/...`, a repo dev path absent from the packaged skill. | Delete/replace the comment. | all |
+
+### A4. Layout docs and resume table
+
+| # | Sev | Where | Issue | Fix | Levels |
+|---|-----|-------|-------|-----|--------|
+| 29 | 🟡 | `SESSION-STRUCTURE.md:26` + `templates/synthesis-attributed.md:5` vs `prompts/phase4_full-synthesis.md:352` | SESSION-STRUCTURE names attributed files `01_operations_attributed.md`; the prompt (and examples) write `attributed/{{cluster_slug}}.md` with no suffix. The attributed template's naming note is also garbled ("`{{cluster_slug}}_[type].md` where NN is…"). A resuming orchestrator looking for `*_attributed.md` re-runs a completed Phase 4. | Fix the SESSION-STRUCTURE entry and rewrite the template naming note. | med/high |
+| 30 | 🟡 | `SKILL.md:86-98`; `SESSION-STRUCTURE.md:5-41,10` | Layout omissions: SKILL.md tree lacks `SUMMARIES.md`, `questions-meta.json`, `USER-QUESTIONS.md`, `NOTEBOOK-LM-INSTRUCTIONS.md` and doesn't tag `SYNTHESIS.md` as medium/high-only; SESSION-STRUCTURE lacks `questions-meta.json` + `NOTEBOOK-LM-INSTRUCTIONS.md` and says by-persona holds "(10-19 files)" though roster math caps at 16 (10 T1 + 4 T2 + 2 T3; Connector replaces, never adds). The Step 2.2 gate explicitly licenses "move to correct location" behavior, so undocumented files risk relocation. | Add the missing artifacts (with effort/conditional tags); "10-19" → "10-16"; note in the min-differences list that `questions-meta.json` and `personas/` never exist at min. | all |
+| 31 | 🟡 | `SKILL.md:416-424` | Resume table too weak: the 2.3-complete row doesn't check `questions/by-topic/` or PLAN's Topic Clusters section (produced by the separate script step — a crash between subagent and script resumes past the split); the Phase 4 row ("`synthesis/` exists") is true after the *first* file write, so a half-finished Phase 4 resumes into Phase 5 with no SUMMARIES.md; humanizer completion is recorded nowhere. And no row matches a `min` session at all (min has no Step 2.x statuses and no `questions-meta.json`) — a resuming orchestrator concludes Phase 2 never ran. | Strengthen the 2.3 and Phase 4 rows (require by-topic/ + PLAN section; require SUMMARIES.md + SYNTHESIS.md at med/high); add a humanizer line item to the PLAN status block; add a min resume sub-table mapping min's status labels. | all |
+| 32 | 🟡 | `templates/plan.md:23-80` vs `SKILL.md:148,420` | PLAN.md instantiation is unspecified: the template ships with pre-filled placeholder sections for 2.1/2.4/Topic Clusters. An orchestrator that instantiates the whole template at Phase 1 creates a `## Phase 2 Step 2.4` heading containing placeholder rows — the resume condition ("PLAN.md has no 2.4 section yet") then skips Step 2.4 and Phase 3 spawns from `[Persona]` literals. Example shows minimal instantiation was silently chosen. | State in Phase 1 step 8: initial PLAN.md = frontmatter + header + Status + Notes only; later sections are appended by their producing steps. | low/med/high |
+| 33 | 🟡 | `SKILL.md:278-281` + `templates/plan.md:12,20` vs `SKILL.md:131-148` | `persona-selection-review` is consumed at Step 2.4 and present in the PLAN template, but no Phase 1 step ever sets it — a template-following orchestrator emits the literal `"[auto|pause]"`. | Add to Phase 1 step 8: set `persona-selection-review: "auto"` unless the user asks to review selections. | med/high |
+| 34 | ⚪ | `SKILL.md:347,369-371` | `central-tension:`'s "universal across all effort levels" statement lives only under the medium/high heading; the low section and low quality gate never mention the field (the low prompt does emit it). | Move the sentence to the shared Phase 4 preamble; add the field to the low gate. | low |
+| 35 | ⚪ | `SKILL.md:301`; `prompts/min-effort-workflow.md:24-25` | Editing slips: low branch ends "…live in the prompt file. Spawn counts:" with no list; min tree says "From Introduction" for a phase named Context Gathering. | Delete the dangling label (or append "2 per topic"); "Introduction" → "Phase 1". | low, min |
+
+### A5. Development-language remnants (dimension 8 sweep)
+
+| # | Sev | Where | Issue | Fix | Levels |
+|---|-----|-------|-------|-----|--------|
+| 36 | ⚪ | `SKILL.md:194` ("all validated in SP1 iter3"), `SKILL.md:236` ("SP1 hard floors"); `SKILL.md:138` + `prompts/phase2B_…_generic.md:26` + `prompts/phase2C:47` (rationale "see CLAUDE.md" — not packaged in the .skill); `guidance/phase2A:113` ("R8: q10-15 overshoots in 50% of topics"), `:132,145,161,171,182,198` ("dev notes in repo, not in packaged skill"), `:316-318` footer; `guidance/phase2D:113` ("(B11 finding)"), `:410-411` footer; `guidance/phase1:10,397-399` ("Key Insights from Research", study-source footer); `prompts/phase1_effort-level.md:41` ("Previously the default was `medium`…"); `prompts/phase2A:49,76` ("per R6"); `prompts/phase2C:131` ("BL1 targets…" — BL1 never defined) | Research/validation history narrated inside operative files; pointers to repo paths a packaged install cannot reach. A weak subagent burns turns hunting for "SP1 iter3" or "dev notes in repo". | Strip provenance phrasing ("validated in…", "Based on:", "Last Updated", dev-note pointers, study footers); inline the one-sentence CLAUDE.md rationale; "SP1 hard floors" → "hard floors"; define or drop "BL1". The fate of phase2C's *operative* R-labels is Decision B11. | all |
+
+---
+
+## Section B — Decision Points
+
+Each has multiple defensible resolutions. Recommendation first.
+
+### B1. `min` final output: two contradictory specifications 🔴
+`prompts/min-effort-workflow.md:147-163` defines a self-contained Step 4 (read QUESTIONS.md + SUMMARIES.md, content list with **no** Central Tensions / Conspicuous Absences); `prompts/phase5_final-output.md:3` claims to serve "all effort levels (`min`/…)" with different inputs and an Opus model vs min's Sonnet. The min example silently merged the two (phase5 structure incl. both sections, min's Sonnet model) — confirmed gap.
+- **(a) Recommended: delegate.** min Step 4 becomes "spawn 1 **Sonnet** subagent with `prompts/phase5_final-output.md`" (substitute `{{session}}`, `{{effort}}`=min, `{{skill}}`, `{{current_datetime}}`; NotebookLM flag always absent). Delete the divergent inline content list. Matches what the good example actually did; one source of truth for BRAINSTORM.md.
+- (b) Keep min self-contained but copy in the missing requirements (Central Tensions, Conspicuous Absences, REQUEST.md input). Preserves min's "no per-topic re-reads" speed at the cost of a second forked spec to maintain.
+- (c) Strip `min` from phase5's header and accept a simpler min BRAINSTORM. Contradicts the template and the published example.
+
+### B2. `central-tension:` is unreachable from declared Phase 5 inputs (min variant) 🔴
+`build-summaries.sh` strips frontmatter; min:151 says "do not re-read individual per-topic files"; yet phase5:36/templates require the frontmatter key. (At low/med/high this is quick fix #16; at min the re-read prohibition needs an explicit carve-out.)
+- **(a) Recommended: frontmatter-only carve-out.** "Exception: read only the YAML frontmatter of each `synthesis/*_summary.md` to collect `central-tension:`; do not read bodies." Cheap, keeps the script untouched, resolves min and harmonizes with #16.
+- (b) Have `build-summaries.sh` carry `central-tension:` values into SUMMARIES.md's session-level frontmatter as a list. More robust, touches the script and its consumers.
+- (c) Rely on the tension's copy in each Executive Summary's opening prose and relax phase5:36's "don't scrape prose" rule at min. Weakens the authoritative-source contract.
+
+### B3. Conspicuous Absences + `[recurring]` have no upstream substrate at medium/high 🔴
+`templates/brainstorm.md:55-56` requires a session-level `## Conspicuous Absences` at every effort and phase5:48 sources it from per-cluster sections that only the **min/low** Phase 4 prompts emit; phase5:84-92's `[recurring]` weighting rules likewise reference tags only min/low define. `phase4_full-synthesis.md` contains neither (grep: 0 matches). The high example fabricated the aggregation silently — confirmed.
+- **(a) Recommended: add the substrate.** Add a "Conspicuous Absences" block and the `[recurring]`/`[single]` tag rule to phase4_full-synthesis Document 3 (`_summary.md`). Symmetry across effort levels; Phase 5 instructions become true as written.
+- (b) Keep Phase 4 as-is; rewrite phase5:48/88 and the template to say medium/high derive absences/recurrence from SUMMARIES.md themselves. Cheaper, but bakes in fabrication-from-aggregate.
+- (c) Make the BRAINSTORM section min/low-only and drop the medium/high budget cells.
+
+### B4. Humanizer mode (b) assembler: unowned, procedure unspecified 🔴
+`SKILL.md:354` / `humanizer-pass.md:8` say "an assembler step reassembles each `_synthesis.md`… writes the file once" — passive voice; nobody is named, and nothing says how frontmatter, the `#` title, section header, `---` rules, and the `**Questions addressed**` footer survive the split/rejoin. Dropping frontmatter corrupts the file right before `build-synthesis.sh` reads it.
+- **(a) Recommended: orchestrator splices deterministically.** Spec in SKILL.md: orchestrator splits on `^### Question \d+` keeping prefix/suffix verbatim, fans out blocks, rejoins prefix + humanized blocks + suffix, single Write. No extra spawn; modest orchestrator context.
+- (b) One Haiku assembler subagent per file, handed all blocks. Keeps orchestrator context minimal (consistent with the architecture doctrine) but adds an LLM step to a mechanical join.
+- (c) A deterministic split/join script pair in `scripts/` (consistent with the repo's script philosophy; most work).
+
+### B5. Step 2.4 has no prompt file 🔴
+Every other spawn uses a prompt file; 2.4's instructions are inline in SKILL.md and incomplete (see quick fix #15 for the must-add content regardless). The high example's PLAN.md actually **lacks** the exact 2.4 heading and references a nonexistent file — even the capable orchestrator fumbled this handoff.
+- **(a) Recommended: create `prompts/phase2D_brainstorm-personas-selection.md`** mirroring the 2A prompt pattern (inputs incl. `{{effort}}`, verbatim output templates for both files, frontmatter block, catch-all rule). Consistency makes the weakest link match the strongest.
+- (b) Keep inline but fold in everything from #15. Less churn; SKILL.md grows toward its 500-line ceiling.
+
+### B6. Default effort level: `medium` vs `low` 🟡
+`SKILL.md:111` (+ repo CLAUDE.md) say default `medium`; `prompts/phase1_effort-level.md:39-41,141` says suggest/default `low` and narrates the change ("Previously the default was `medium`…"). Same request → different pipeline depending on which file the orchestrator trusts.
+- **(a) Recommended: `low` everywhere.** The prompt reads as the deliberate later decision with stated rationale; update SKILL.md:111, CLAUDE.md, and check `examples/CHOOSING-AN-EFFORT-LEVEL.md` for a default claim.
+- (b) `medium` everywhere (revert the prompt). Matches the older docs and the "Default to medium" muscle memory.
+- (c) Split semantics: `medium` when the user says nothing at all, `low` as the no-trigger *suggestion* — but then state it identically in both files.
+
+### B7. `questions-meta.json` numbering scheme 🟡
+phase2C's file template restarts question numbering at 1 per cluster; its sidecar schema example uses global ordinals (`[45,46]` for additional questions). The two published examples diverged: the low session invented `"C1Q1"` compound IDs; the medium/high sessions used global ordinals — direct proof two capable runs read it differently.
+- **(a) Recommended: document the dual scheme explicitly** — "QUESTIONS.md restarts per cluster; all `question_numbers` in the sidecar are global ordinals counted top-to-bottom." Matches the schema example and the medium/high precedent; zero format change.
+- (b) Global numbering in QUESTIONS.md too. Simplest mapping, but changes the user-visible file and per-cluster files.
+- (c) Compound IDs (`"C5Q4"`) in the sidecar. Self-describing, but invalidates the schema example and the medium/high examples.
+
+### B8. "Grep-based verification" of humanizer output is named but never defined 🟡
+Asserted in four places (`SKILL.md:335,356`, `humanizer-pass.md:64`, `min-effort-workflow.md:124`); no patterns, thresholds, or record location anywhere. The gate is unenforceable as written.
+- **(a) Recommended: define one concrete checklist** in SKILL.md's Phase 4 (e.g., every framing-marker prefix present pre-pass still present post-pass; per-file em-dash count decreased or held; bold-lead count per `### Question N` block unchanged; log results in PLAN.md Notes; re-run the file's pass on failure).
+- (b) Downgrade the language to "spot-check".
+- (c) Delete the claim and trust self-report.
+
+### B9. `guidance/phase2D_…_max-option.md` is unreachable 🟡
+"max" exists as an effort level nowhere; zero references to the file repo-wide; it shares the identical (wrong) title with the live 2D guide and **lacks the Catch-All Cluster section** — a 2.4 subagent globbing `guidance/phase2D*` can load the wrong file and never learn the fixed-panel rule for `99_additional`.
+- **(a) Recommended: move it out of the packaged skill** (to `docs/dev/`). Removes the glob hazard; preserves the design work.
+- (b) Implement `max` as a real routed effort level (and add the catch-all section to the clone).
+- (c) Keep in place but retitle with a "not routed — do not load" banner. Weakest protection.
+
+### B10. `scripts/count-cluster-questions.py` is an orphan 🟡
+Referenced by nothing; no session-dir argument (hardcoded cwd-relative `open('QUESTIONS.md')`, unlike all three shell scripts); its regex never counts `## Additional Questions`, so its total disagrees with split-questions.sh whenever the catch-all exists.
+- **(a) Recommended: delete from the packaged skill** (or relocate to repo dev tooling). The Step 2.3 gate currently works without it.
+- (b) Promote it into the Step 2.3 quality gate: add `<session-dir>` argv, count the Additional section, reference it from SKILL.md:232-241. Gives the gate a mechanical tool, at the cost of new wiring.
+
+### B11. phase2C's R-label research tags: strip or formalize 🟡
+`prompts/phase2C` weaves R1–R12 labels through its instruction headers ("(R8, with R11 source-bound carve-out)"). Some are load-bearing internal cross-references (the R5 audit, `r11_source_bound_cells` in the sidecar schema); the provenance framing ("tightened by R9") is dev narration. SKILL.md:236's "SP1 hard floors" points at them.
+- **(a) Recommended: keep R-labels as named rule IDs but add one definition line** ("R-numbers are internal rule identifiers used for cross-reference within this prompt") and strip only the provenance verbs ("validated/tightened by"). Preserves working cross-references incl. the JSON field name.
+- (b) Strip all R-labels and rename the sidecar diagnostics. Cleanest read; touches the meta-JSON contract and any tooling that greps it.
+
+### B12. `min` Session Index pruning rule ⚪
+Three specs disagree: `templates/brainstorm.md:75` unconditionally lists `questions/by-persona/` (dead link at min) while `:28`/phase5:100 say only the SYNTHESIS.md line is conditional; min:157 ("list only SUMMARIES.md") read literally also deletes the `synthesis/` line the template keeps. The min example pruned even further (also dropped `by-topic/` and `responses/`, which *do* exist) — confirmed ambiguity.
+- **(a) Recommended: minimal rule** — at min, delete exactly the lines whose targets don't exist (`questions/by-persona/`, `SYNTHESIS.md`); keep everything else; reword min:157 accordingly.
+- (b) Codify the example's deeper pruning (index only REQUEST/PLAN/QUESTIONS/SUMMARIES/synthesis/). Tidier min deliverable; hides real artifacts.
+
+---
+
+## Coverage notes
+
+- All four recent change areas got findings: catch-all cluster (B9 — the max-option clone lacks the rule; flowcharts confirm `99_additional` routing is otherwise consistent), humanizer post-step (#16/B2/B4/B8, mode-(c) ownership quick-fixed via SKILL.md Step 5.1 mention + `humanizer-pass.md:5` rewording, `{path}` → `{{path}}` and the `{slug}`/`{cluster}` third-convention strays folded into #13's convention cleanup), central-tension (#16/#34/B2), NotebookLM addon (#4/#17).
+- Known-intentional items excluded as instructed: 19-of-23 question-generation persona pool; `99_additional` as a real synthesized cluster.
+- Tier 3 at `low` (guide says medium/high-only; prompt/SKILL.md:52 allow 0-1 strong-trigger at low; SKILL.md:107's "10 Tier 1 personas" implies none) is a residual inconsistency: recommend allowing **0-1 strong-trigger at low** (matches the 2.1 prompt's explicit Low section) and updating `guidance/phase2A:79,124-128` + adding the missing Low column to the prompt's Volume Ranges table (`phase2A:286-307`) + SKILL.md:107. Filed here rather than as a full decision point because the prompt — the file the subagent actually executes — is unambiguous; the guide is the stale side.
+- The high-effort selection algorithm never pins the panel at exactly 7 (`guidance/phase2D:213-235` allows 6 or 8); add a final "count and reconcile to exactly 7" step — quick fix, folded into the B5 work.
+
+## Companion artifact
+
+Reconciled per-effort-level workflow flowcharts: [docs/workflow-flowcharts.md](../workflow-flowcharts.md).
