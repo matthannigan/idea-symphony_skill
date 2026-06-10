@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-04-28T00:00:00Z",
+  "effort": "medium",
+  "n_synth_input": 72,
+  "m_synth_output": 28,
+  "append_count": 20,
+  "total": 48,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Vision, Purpose, and What This Is Fundamentally For",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner"],
+        "2": ["Questioner", "Appreciative Inquirer"],
+        "3": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "4": "Provocateur",
+        "5": "Analogist",
+        "6": "Visionary",
+        "7": "Storyteller"
+      }
+    },
+    {
+      "number": 2,
+      "name": "Equitable Access and Hidden Barriers",
+      "question_numbers": [8, 9, 10],
+      "synthesize_contributors": {
+        "8": ["Questioner", "Analyst", "Audience Advocate", "Devil's Advocate", "Systems Thinker"],
+        "9": ["Audience Advocate", "Devil's Advocate"],
+        "10": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 3,
+      "name": "Renter and Homeowner Realities",
+      "question_numbers": [11, 12, 13],
+      "synthesize_contributors": {
+        "11": ["Questioner", "Analyst", "Audience Advocate"],
+        "12": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "13": "Storyteller"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Trust, Dignity, and the Borrower Experience",
+      "question_numbers": [14, 15, 16, 17, 18, 19, 20, 21],
+      "synthesize_contributors": {
+        "14": ["Audience Advocate"],
+        "15": ["Audience Advocate", "Appreciative Inquirer"],
+        "16": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "17": "Provocateur",
+        "18": "Analogist",
+        "19": "Analogist",
+        "20": "Analogist",
+        "21": "Storyteller"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Volunteer Sustainability and Succession",
+      "question_numbers": [22, 23, 24, 25, 26, 27],
+      "synthesize_contributors": {
+        "22": ["Questioner", "Analyst", "Devil's Advocate", "Systems Thinker", "Appreciative Inquirer"],
+        "23": ["Systems Thinker"]
+      },
+      "append_contributors": {
+        "24": "Provocateur",
+        "25": "Analogist",
+        "26": "Visionary",
+        "27": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Tool Inventory, Demand, and the Commons",
+      "question_numbers": [28, 29, 30],
+      "synthesize_contributors": {
+        "28": ["Analyst"],
+        "29": ["Systems Thinker", "Devil's Advocate"]
+      },
+      "append_contributors": {
+        "30": "Provocateur"
+      }
+    },
+    {
+      "number": 7,
+      "name": "Operations, Checkout, and Maintenance Systems",
+      "question_numbers": [31, 32, 33, 34],
+      "synthesize_contributors": {
+        "31": ["Analyst", "Questioner", "Devil's Advocate"],
+        "32": ["Devil's Advocate", "Analyst"],
+        "33": ["Analyst"]
+      },
+      "append_contributors": {
+        "34": "Visionary"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Liability, Damage, and Adjudication",
+      "question_numbers": [35, 36, 37, 38],
+      "synthesize_contributors": {
+        "35": ["Devil's Advocate", "Analyst"],
+        "36": ["Devil's Advocate", "Questioner", "Audience Advocate"],
+        "37": ["Audience Advocate"]
+      },
+      "append_contributors": {
+        "38": "Storyteller"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Financial Sustainability and Space Risk",
+      "question_numbers": [39, 40, 41, 42],
+      "synthesize_contributors": {
+        "39": ["Analyst", "Devil's Advocate", "Systems Thinker"],
+        "40": ["Analyst"],
+        "41": ["Systems Thinker", "Devil's Advocate"],
+        "42": ["Systems Thinker"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 10,
+      "name": "Governance, Norms, and Long-Term Mission",
+      "question_numbers": [43, 44, 45, 46, 47, 48],
+      "synthesize_contributors": {
+        "43": ["Analyst"],
+        "44": ["Systems Thinker"],
+        "45": ["Questioner", "Audience Advocate"]
+      },
+      "append_contributors": {
+        "46": "Provocateur",
+        "47": "Visionary",
+        "48": "Visionary"
+      }
+    }
+  ],
+  "r11_source_bound_cells": [],
+  "self_check": {
+    "ai_orphan_question_numbers": [3],
+    "st_archetype_question_numbers": [29, 44],
+    "st_archetypes_verbatim": ["Tragedy of the Commons", "Success to the Successful"]
+  }
+}
