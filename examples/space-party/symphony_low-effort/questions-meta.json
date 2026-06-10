@@ -1,0 +1,223 @@
+{
+  "generated_at": "2026-04-26T00:00:00Z",
+  "effort": "low",
+  "model_requested": "opus",
+  "model_reported": "claude-opus-4-7[1m]",
+  "n_synth_input": 71,
+  "m_synth_output": 30,
+  "append_count": 12,
+  "additional_count": 1,
+  "total": 43,
+  "compaction_ratio": 2.37,
+  "cluster_count": 9,
+  "clusters": [
+    {
+      "number": 1,
+      "name": "Party Purpose and Whose Experience It Serves",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate"],
+        "2": ["Questioner"],
+        "3": ["Appreciative Inquirer"],
+        "4": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 2,
+      "name": "Interpreting Space — Theme Depth and Coherence",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "synthesize_contributors": {
+        "1": ["Questioner"],
+        "2": ["Analyst", "Devil's Advocate"],
+        "3": ["Analyst", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Analogist",
+        "5": "Analogist",
+        "6": "Provocateur",
+        "7": "Visionary"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Activity Design, Pacing, and the Energy Arc",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Systems Thinker", "Questioner"],
+        "2": ["Analyst"]
+      },
+      "append_contributors": {
+        "3": "Analogist",
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Sensory Load, Overwhelm, and the Stimulation Ceiling",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Devil's Advocate", "Systems Thinker"],
+        "2": ["Audience Advocate", "Storyteller-themed"]
+      },
+      "append_contributors": {
+        "3": "Visionary"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Group Dynamics, Inclusion, and the Outlier Child",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Audience Advocate", "Systems Thinker", "Questioner"],
+        "2": ["Audience Advocate", "Devil's Advocate", "Questioner"],
+        "3": ["Audience Advocate", "Systems Thinker"]
+      },
+      "append_contributors": {
+        "4": "Storyteller"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Adult Capacity, Supervision, and Logistics Under Pressure",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Devil's Advocate", "Analyst", "Systems Thinker", "Questioner"],
+        "2": ["Systems Thinker", "Analyst", "Questioner", "Devil's Advocate"],
+        "3": ["Systems Thinker", "Audience Advocate"],
+        "4": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 7,
+      "name": "Safety as Lived Experience",
+      "question_numbers": [1, 2, 3],
+      "synthesize_contributors": {
+        "1": ["Analyst", "Audience Advocate", "Questioner"],
+        "2": ["Audience Advocate", "Questioner"],
+        "3": ["Audience Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 8,
+      "name": "Budget Allocation and Cascading Trade-offs",
+      "question_numbers": [1, 2, 3, 4],
+      "synthesize_contributors": {
+        "1": ["Questioner", "Analyst", "Systems Thinker"],
+        "2": ["Analyst", "Devil's Advocate"],
+        "3": ["Analyst", "Audience Advocate", "Systems Thinker"],
+        "4": ["Devil's Advocate"]
+      },
+      "append_contributors": {}
+    },
+    {
+      "number": 9,
+      "name": "Memory, Keepsakes, and the Birthday Girl's Centrality",
+      "question_numbers": [1, 2, 3, 4, 5, 6, 7, 8],
+      "synthesize_contributors": {
+        "1": ["Appreciative Inquirer", "Audience Advocate"],
+        "2": ["Systems Thinker", "Audience Advocate"],
+        "6": ["Appreciative Inquirer", "Questioner"],
+        "7": ["Appreciative Inquirer"]
+      },
+      "append_contributors": {
+        "3": "Analogist",
+        "4": "Visionary",
+        "5": "Storyteller",
+        "8": "Provocateur"
+      }
+    }
+  ],
+  "additional_questions": {
+    "question_numbers": [1],
+    "append_contributors": {
+      "1": "Provocateur"
+    }
+  },
+  "append_selections": {
+    "Provocateur": {
+      "quota": 3,
+      "internal_clusters": [
+        {"label": "A — Children as astronauts", "first_q": 1},
+        {"label": "B — Designed to fail", "first_q": 3},
+        {"label": "C — Scientific seriousness", "first_q": 5},
+        {"label": "D — Succeeded too well", "first_q": 6}
+      ],
+      "selected": [1, 3, 5]
+    },
+    "Analogist": {
+      "quota": 3,
+      "internal_clusters": [
+        {"label": "A — Mission Control", "first_q": 1},
+        {"label": "B — Theme Parks", "first_q": 3},
+        {"label": "C — Nature/Self-organization", "first_q": 5},
+        {"label": "D — Restaurant flow", "first_q": 6},
+        {"label": "E — Theatre", "first_q": 7}
+      ],
+      "selected": [1, 3, 5]
+    },
+    "Visionary": {
+      "quota": 3,
+      "internal_clusters": [
+        {"label": "A — Living Universe", "first_q": 1},
+        {"label": "B — Memory beyond party", "first_q": 3},
+        {"label": "C — Wonder without props", "first_q": 5},
+        {"label": "D — Scale and belonging", "first_q": 7}
+      ],
+      "selected": [1, 3, 5]
+    },
+    "Storyteller": {
+      "quota": 3,
+      "internal_clusters": [
+        {"label": "A — Arc of the Day", "first_q": 1},
+        {"label": "B — Child's-eye view", "first_q": 3},
+        {"label": "C — Keepsakes", "first_q": 5},
+        {"label": "D — Food/atmosphere", "first_q": 7}
+      ],
+      "selected": [1, 3, 5]
+    }
+  },
+  "r11_source_bound_cells": [
+    {
+      "persona": "Systems Thinker",
+      "note": "Source ST section uses systems-vocabulary distinctive phrases (stimulation ceiling, ripple effects, imagination scaffolding, budget allocation spiral, recovery bandwidth) rather than classical named archetypes (Shifting-the-Burden, Fixes-that-Fail, etc.). R11 source-bound exception applied: ST hard floor met by preserving ≥1 ST-distinctive systems-vocabulary phrase verbatim in merged questions."
+    }
+  ],
+  "self_check": {
+    "n_synth_input": 71,
+    "m_synth_per_cluster": {
+      "C01": 4, "C02": 3, "C03": 2, "C04": 2, "C05": 3,
+      "C06": 4, "C07": 3, "C08": 4, "C09": 5
+    },
+    "m_synth_total": 30,
+    "compaction_ratio": 2.37,
+    "compaction_target_low": 2.6,
+    "compaction_floor_low": 2.3,
+    "compaction_within_target_range": true,
+    "cluster_count": 9,
+    "cluster_count_target_range": "8-10",
+    "ai_orphan_question_numbers": [
+      "C01-Q3 (transported child, AI Q1)",
+      "C01-Q4 (host's hidden strengths, AI Q3)",
+      "C09-Q7 (one decision unlocks rest, AI Q10)"
+    ],
+    "ai_orphan_count": 3,
+    "ai_orphan_floor_low": 1,
+    "st_archetype_question_numbers": [],
+    "st_archetypes_verbatim": [],
+    "st_systems_vocabulary_verbatim": [
+      {"phrase": "stimulation ceiling", "location": "C04-Q1"},
+      {"phrase": "ripple effects", "location": "C05-Q1"},
+      {"phrase": "imagination scaffolding", "location": "C02-Q3"},
+      {"phrase": "budget allocation spiral", "location": "C08-Q1"},
+      {"phrase": "recovery bandwidth", "location": "C06-Q2"}
+    ],
+    "st_systems_vocabulary_count": 5,
+    "st_floor_low": 1,
+    "st_floor_met_via_r11_source_bound_exception": true,
+    "user_questions_present": false,
+    "user_q_marker_count": 0
+  }
+}
