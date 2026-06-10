@@ -1,0 +1,40 @@
+---
+project-name: "Rural School District Consolidation"
+session-dir: "/Users/matth/dev/idea-symphony_skill/test-runs/school-consolidation/min"
+datetime: 2026-04-27
+effort: "min"
+stage: "Phase 3: Generic Brainstorming"
+model-requested: "sonnet"
+model-reported: "claude-sonnet-4-6"
+topic-cluster: "05_implementation-planning-and-risk-management"
+---
+
+# Brainstorming Responses: Implementation Planning and Risk Management
+
+---
+
+## Question 19: Under What Conditions Does a Phased Approach — Shared Services First, Then Administrative Merger, Then Full Academic Consolidation — Reduce Risk Enough to Justify the Slower Savings Realization, Versus a Faster Single-Step Consolidation?
+
+* **Phased approach wins when political trust is low and one district is fiscally stable.** If two districts have reasonable fund balances and only the smallest is near insolvency, a phased model buys trust: start with a shared transportation director and joint HR platform in Year 1, consolidate the two healthier superintendents into one in Year 2, and reserve academic consolidation for Year 3 after the community has seen that bus routes didn't collapse. The cost is real — you forgo roughly $600K–$800K of the $1.2M administrative savings for two extra years — but you dramatically reduce the probability of a failed second vote. Use phasing when a "no" in any district would likely kill the whole effort for a decade.
+
+* **Single-step consolidation is preferable when one district faces imminent insolvency.** With a 2-year fund balance on the clock, a phased approach may simply not be available. A phased timeline of 3–4 years burns through that runway before the merged entity can stabilize. In this scenario, structure a "crisis consolidation" — a binding referendum timeline of 18 months from feasibility study to new board seating — and use the urgency as a political argument: the alternative isn't the status quo, it's state receivership, which removes local control entirely. The urgency reframes the conversation from "why merge?" to "who do you want making decisions if you don't?"
+
+* **Use phasing selectively, not as a universal default.** Rather than full phased sequencing, consider a hybrid: merge administratively on Day 1 (three superintendents become one, three HR departments become one, contracts placed under a single negotiating framework) while preserving academic structures and building assignments for 24 months. This captures roughly 80% of the $1.2M savings immediately — primarily the superintendent and department duplication — while giving communities time to adjust to operating under one board before any school closure decisions. The key is separating "administrative merger" from "physical school closure," which is where community identity resistance concentrates.
+
+* **Condition the phase decision on union contract alignment.** If all three union contracts expire within 18 months of each other, that window is a natural forcing function for full consolidation — you negotiate one new contract rather than three staggered ones, avoiding the legal and political tangle of mid-merger contract reconciliation. If contract timelines are staggered across 5–6 years, phasing may be forced on you anyway, and a deliberate phased structure (with explicit transition rules baked into each contract) is safer than ad hoc improvisation. Map contract expiration dates before choosing the sequencing model.
+
+* **Attach explicit go/no-go gates to each phase.** The risk of phasing without governance teeth is that Phase 1 completes (shared transportation) but Phase 2 (administrative merger) stalls indefinitely when political will fades. Build a legal structure where completing Phase 1 automatically triggers a binding 90-day window for Phase 2 approval — a sunset clause requiring an affirmative supermajority vote to pause, not a vote to proceed. This flips the default: momentum continues unless someone actively stops it, rather than requiring a fresh political victory at every stage. Nebraska and Iowa rural consolidation models have used analogous mechanisms.
+
+---
+
+## Question 20: If One District Votes Against Consolidation, What Alternative Arrangements — Two-District Merger, Shared Services Agreements, State Receivership Triggers — Remain Viable, and How Should the Feasibility Study Frame These Options to Avoid Them Being Perceived as Threats?
+
+* **Present a menu of outcomes in the feasibility study, not a binary.** Structure the feasibility document with a "scenario matrix": Scenario A is full three-district consolidation, Scenario B is two-district merger plus shared services agreement with the dissenting district, Scenario C is shared services only, and Scenario D is the no-action baseline with projected insolvency dates. Crucially, present all four with the same financial rigor — enrollment projections, fund balance runway, per-pupil allocation impacts — so voters see scenarios, not ultimatums. The tone is: "Here is what each path looks like for your children and your tax rate over 10 years." This preempts the "threat" reading because the dissenting district's voters have already evaluated the alternatives themselves rather than being told what happens if they say no.
+
+* **Make two-district merger a real option with its own financial model.** If District C (the smallest, most at-risk) is the likely holdout, model what a District A + District B merger looks like independently. If the two healthier districts can still achieve 65–70% of the financial benefits, that path may be viable and worth presenting explicitly. The political effect on District C is significant: seeing that the other two can proceed without them — and that District C is then negotiating a shared services agreement from a weaker position — changes the calculus. This isn't a threat if it's presented as a factual pathway, especially if the two-district model still includes an open invitation for District C to join within 36 months under defined terms.
+
+* **Reframe shared services agreements as a floor, not a fallback.** Some services can be regionalized regardless of full consolidation — special education, transportation, technology infrastructure, purchasing cooperatives. Establish these agreements now, before the vote, as low-stakes early wins that demonstrate collaboration works. When communities see that sharing a special ed director didn't destroy local identity, the argument that consolidation will erase their town becomes weaker. This approach also creates real administrative infrastructure that makes a future full merger cheaper and faster if sentiment shifts.
+
+* **Explicitly describe state receivership without weaponizing it.** The feasibility study should include a factual one-page description of what state receivership means under the state's education code: who takes over decisions, what local board authority is suspended, what the state's track record is in managing distressed rural districts. This is not a threat — it is transparency. Voters have a right to know what happens if a district becomes insolvent and no merger or shared services agreement is in place. The framing is: "We are not predicting this will happen; we are showing you the legal mechanism so you can make a fully informed decision." Omitting it would be a disservice; burying it in an appendix vs. presenting it as a standalone scenario are very different rhetorical choices.
+
+* **Build optionality language directly into the referendum.** Draft the ballot language so that a "yes" vote authorizes the new consolidated board with a 36-month window, during which any dissenting district can hold a second opt-in vote if circumstances change. This makes voting "no" feel less permanent — you're not locked out forever if your district initially declines. It also reduces the perceived stakes of the first vote, which can improve turnout and reduce opposition intensity. Districts that feel they have a re-entry path are less likely to campaign aggressively against consolidation in the other two districts, which is where no-votes often do the most damage to overall coalition-building.
