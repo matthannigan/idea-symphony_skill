@@ -55,7 +55,7 @@ Format requirements:
 
 Create one output:
 
-### responses/{{cluster_slug}}/generic-response.md
+### {{session}}/responses/{{cluster_slug}}/generic-response.md
 
 ```markdown
 ---
@@ -64,7 +64,7 @@ session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "min"
 stage: "Phase 3: Generic Brainstorming"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 ---
@@ -102,8 +102,8 @@ topic-cluster: "{{cluster_slug}}"
 
 ## File Paths
 
-- Input: Read questions from `questions/by-topic/{{cluster_slug}}.md`
-- Output: Write to `responses/{{cluster_slug}}/generic-response.md`
+- Input: Read questions from `{{session}}/questions/by-topic/{{cluster_slug}}.md`
+- Output: Write to `{{session}}/responses/{{cluster_slug}}/generic-response.md`
 
 ## Notes
 

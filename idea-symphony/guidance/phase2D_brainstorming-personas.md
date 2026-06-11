@@ -1,6 +1,6 @@
-# Persona Selection Guide (Phase 2C)
+# Persona Selection Guide (Phase 2 Step 2.4)
 
-This document provides the orchestrator (and human reviewers) with structured guidance for selecting personas per topic cluster in Phase 2C.
+This document provides the orchestrator (and human reviewers) with structured guidance for selecting personas per topic cluster in Phase 2 Step 2.4.
 
 ## Contents
 
@@ -8,7 +8,7 @@ This document provides the orchestrator (and human reviewers) with structured gu
 - Validated Clusters
 - Specialized Lenses (Outer Ring)
 - Topic Affinity Matrix
-- Selection Algorithm (for Phase 2C Subagent)
+- Selection Algorithm (for Phase 2 Step 2.4 Subagent)
 - Cluster Relationship Map
 - Example Selections
 - Phase 3 Retired Personas (not available for selection)
@@ -56,7 +56,7 @@ Personas are organized into tiers that expand with effort level. Higher tiers ad
 
 | Effort | Personas/Topic | Composition |
 |--------|---------------|-------------|
-| Low | 0 (generic) | No persona system |
+| Low | 2 | Core pair only (no Step 2.4 selection) |
 | Medium | 4 | Core (2) + Inner Ring topic-matched (2) |
 | High | 7 | Core (2) + Inner Ring (2) + Middle Ring cluster completers (3) |
 
@@ -110,7 +110,7 @@ These groupings are empirically validated — personas within a cluster produce 
      fundamentals)                   specifics)            minimum viable)
 ```
 
-- **Overlap:** Moderate on technical topics (B11 finding). FPT asks "why does this need to exist?"; TE asks "how would we build it?"; Pragmatist asks "what's the simplest version?"
+- **Overlap:** Moderate on technical topics. FPT asks "why does this need to exist?"; TE asks "how would we build it?"; Pragmatist asks "what's the simplest version?"
 - **When to complete:** Technical/product topics.
 - **Note:** Pragmatist is core (always present). Avoid stacking all 3 on non-technical topics — analytical convergence is highest on technical subjects.
 
@@ -190,7 +190,7 @@ These are real examples of persona-topic mismatches from testing:
 
 ---
 
-## Selection Algorithm (for Phase 2C Subagent)
+## Selection Algorithm (for Phase 2 Step 2.4 Subagent)
 
 ### Medium Effort (4 personas per topic)
 
@@ -404,8 +404,3 @@ These personas are retired from Phase 3 brainstorming. Do not select them.
 | Questioner | Subsumable by DA + FPT; inconsistent quality (CV=34.3%) | Phase 2 Question Generation |
 | Analyst | Organizational frameworks overlap with analytical core | Phase 2 Question Generation |
 | Synthesizer | Integration capability wasted in isolated brainstorming | Phase 4 Synthesis (future) |
-
----
-
-**Last Updated:** 2026-02-18
-**Based on:** Targeted persona investigations B1-B26, cross-investigation synthesis

@@ -2,33 +2,53 @@
 
 Full topic synthesis with persona attribution. Produced by Phase 4 Full Synthesis (`medium`/`high` only). Shows both consolidated insights and the original persona responses that feed each insight.
 
-File naming: `{{cluster_slug}}_[type].md` where NN is the two-digit topic number. Attributed files go in `synthesis/attributed/`.
+File naming: the attributed file is `synthesis/attributed/{{cluster_slug}}.md` (no suffix); the companion merged file is `synthesis/{{cluster_slug}}_synthesis.md`.
 
 ```markdown
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[medium|high]"
+effort: "{{effort}}"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "attributed"
 ---
 
-# Brainstorming Synthesis: [Topic Cluster] - With Attribution
+# Brainstorming Synthesis: [Topic Name] - With Attribution
+
+---
 
 ## Synthesized Insights by Question
 
-### [Short Question 1 Summary]
+### Question 1: [Short Question Summary]
 
-[Longer question 1 description]
+**Full question**: [Longer question description from questions file] [User Q]
 
-* **Short synthesized response summary.** Detailed synthesized response text with specifics, examples, or reasoning.
-  * **Original short response summary.** Original detailed response text. *[Persona Name]*
-  * **Original short response summary.** Original detailed response text. *[Persona Name]*
+* **Synthesized response summary.** Detailed synthesized response text that consolidates similar perspectives into a unified insight.
+  * **Original response summary.** Original detailed response text from first persona. *—The Visionary*
+  * **Original response summary.** Original detailed response text from second persona. *—The Pragmatist*
 
-### [Short Question 2 Summary]
-...
+* **Next synthesized response summary.** Another consolidated insight from the responses.
+  * **Original response summary.** Original detailed response text. *—The Devil's Advocate*
+
+[Synthesized points within each question are ordered by consensus — most convergent first; unique insights last.]
+
+---
+
+### Question 2: [Short Question Summary]
+
+**Full question**: [Longer question description]
+
+[Continue same pattern for all questions in topic cluster, with a `---` rule between question blocks]
+
+---
+
+**Questions addressed**: [count]
+**Personas contributing**: [list]
+**Total synthesized insights**: [count]
 ```
+
+**`[User Q]` markers**: if the questions file carries a `[User Q]` marker on a question, preserve it on the `**Full question**:` line (as shown above); it appears only when present in the source. Never propagate the marker onto synthesized-response bullets.

@@ -69,7 +69,7 @@ effort_value=$(get_field "effort")
   printf 'session-dir: "%s"\n' "$session_dir_value"
   printf 'date: %s\n' "$date_value"
   printf 'effort: "%s"\n' "$effort_value"
-  printf 'stage: "Phase 5: Summaries Concatenation"\n'
+  printf 'stage: "Phase 4: Summaries Concatenation"\n'
   printf -- '---\n\n'
 
   # Strip each file's YAML frontmatter, skip the leading blank line after

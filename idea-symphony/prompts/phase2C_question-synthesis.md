@@ -23,11 +23,13 @@ Do not expect any file content to be provided inline — use Read/Glob tools.
 
 ## Context
 
+This session's effort level is `{{effort}}` (substituted by the orchestrator); apply the matching targets and quotas wherever the rules below branch on effort.
+
 The input is the set of per-persona question files at `{{session}}/questions/by-persona/*.md`. Each file's YAML frontmatter carries `stream: synthesize|append`, `category: analytical|structural|perspective|specialist`, and `volume: N`. Read every file; use the `stream` field to route each persona's questions to Section 1 (Synthesize) or Section 2 (Append) processing below.
 
 ### Fallback Routing (when persona frontmatter is incomplete)
 
-If a persona file is missing the `stream` field (e.g., legacy path), first check the Phase 2B roster in `{{session}}/PLAN.md` for the declared stream. If still not found, apply this canonical mapping from `category`:
+If a persona file is missing the `stream` field (e.g., legacy path), first check the Step 2.1 roster in `{{session}}/PLAN.md` for the declared stream. If still not found, apply this canonical mapping from `category`:
 - `analytical` → synthesize
 - `structural` → synthesize
 - `perspective` → append
@@ -44,7 +46,7 @@ If `{{session}}/USER-QUESTIONS.md` exists, treat the questions in that file as m
 - **Merge behavior:** for each user question, determine whether it overlaps topically with any Synthesize convergence group or Append persona question. If it does, fold the user question into that merged anchor (for Synthesize) or preserve it verbatim alongside the closest Append question. If it does not overlap, preserve it verbatim as a standalone question in the topically-closest cluster, or in `## Additional Questions` if it has no topical home.
 - **Marker rule:** any synthesized or preserved question that incorporates user-question content must be marked with a trailing `[User Q]` in `QUESTIONS.md`.
 - **Floor:** the count of `[User Q]` markers in `QUESTIONS.md` must be ≥ the count of questions in `USER-QUESTIONS.md`. If preserving user questions pushes you over target compaction, prefer staying faithful to the user's input over hitting the compaction ratio.
-- **Why:** persona-based question generators are isolated from `USER-QUESTIONS.md` by design (see CLAUDE.md). The synthesizer is the single point where user intent re-enters the question stream, so dropping a user question is a correctness failure, not a compaction decision.
+- **Why:** persona-based question generators are isolated from `USER-QUESTIONS.md` by design. The synthesizer is the single point where user intent re-enters the question stream, so dropping a user question is a correctness failure, not a compaction decision.
 
 ---
 
@@ -128,7 +130,7 @@ Every Synthesize persona in the input MUST be represented in the output, not jus
 - Arrange clusters in a logical flow (foundational/visioning → strategic → operational → human/experiential).
 - Each cluster carries 4–8 questions (higher end at high effort). Split clusters above 8; combine clusters below 3.
 - Cluster labels should reflect the theme, not the persona — convergence is the organizing principle, persona attribution is metadata.
-- **Medium-effort cluster ceiling for low-N topics (R12):** If N_synth < 100 at medium effort, cluster count MUST be ≤10 regardless of persona count. Before emitting, if you have drafted >10 clusters on a medium-effort cell with N_synth < 100, merge the two smallest adjacent-theme clusters. This prevents theme-fragmentation on smaller input volumes where BL1 targets 8–10 clusters.
+- **Medium-effort cluster ceiling for low-N topics (R12):** If N_synth < 100 at medium effort, cluster count MUST be ≤10 regardless of persona count. Before emitting, if you have drafted >10 clusters on a medium-effort cell with N_synth < 100, merge the two smallest adjacent-theme clusters. This prevents theme-fragmentation on smaller input volumes where the target is 8–10 clusters.
 
 **Voice note for merged questions:** each merged question should read as a single cohesive question, not as a stapled list of persona clauses. Fold distinctive vocabulary into the grammar of the question (appositives, parentheticals, subordinate clauses) rather than concatenating. A merged question the reader stumbles over has failed even if all required vocabulary appears.
 
@@ -236,9 +238,11 @@ If an Append question has no topical home in any Synthesize cluster (pure invers
 ```markdown
 ---
 project-name: "[Project Name from REQUEST]"
-effort: "[low|medium|high]"
+session-dir: "{{session}}"
+datetime: {{current_datetime}}
+effort: "{{effort}}"
 stage: "Phase 2 Step 2.3: Question Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
@@ -280,7 +284,8 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6
 - Every question is formatted `N. **Short summary**: Longer description.` — no trailing `[Persona tags]`, no `###` sub-headings under clusters.
 - Synthesize-stream questions are merged anchors with distinctive-vocabulary clauses folded in (per Merger Rules in Section 1). Persona names never appear in the clause text — only distinctive vocabulary does (e.g., "Shifting-the-Burden dynamic", "INT8 quantization", "FCRA compliance").
 - Append-stream questions are preserved verbatim word-for-word from the source, with NO rewriting, NO persona tagging, and NO merger with Synthesize content. Voice preservation is achieved through verbatim text, not through attribution labels.
-- If `[User Q]` markers appear in the input, preserve them on any synthesized question that incorporates user input.
+- Apply the `[User Q]` marker per the USER-QUESTIONS Handling rule above; ensure every marker you create survives into the final QUESTIONS.md.
+- Each numbered question must be one physical line — never hard-wrap a question; the deterministic splitter drops continuation lines.
 - Emit exactly the two files named in Output. All reasoning, counting, per-CG audits, and self-check artifacts stay internal; the emitted files contain only the structures specified above.
 
 ## Metadata Sidecar (`questions-meta.json`)

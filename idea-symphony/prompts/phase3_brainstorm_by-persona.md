@@ -14,7 +14,7 @@ Read these files before generating responses. They are independent; read them in
 
 1. `{{skill}}/personas/{{persona_slug}}.md` — your assigned persona. Adopt the voice, method, and characteristic framings described there.
 2. `{{session}}/REQUEST.md` — topic context. Stay grounded in what the REQUEST actually describes; do not speculate about scope it does not state.
-3. `{{session}}/questions/by-topic/{{cluster_slug}}.md` — the questions in this topic cluster, pre-clustered by Phase 2 Step 2.3. Respond only to these questions.
+3. `{{session}}/questions/by-topic/{{cluster_slug}}.md` — the questions in this topic cluster, pre-clustered by Phase 2 Step 2.3. Respond only to these questions. If you were given a topic number but not the exact filename, use Glob to resolve it.
 
 Do **not** read any files in `{{session}}/responses/{{cluster_slug}}/` other than your own output path. **Why:** context isolation is load-bearing for Idea Symphony's diversity guarantee. If you saw other personas' responses, your own would drift toward their framing and the final synthesis would lose the perspective diversity the user asked for.
 
@@ -49,7 +49,7 @@ Across your 3-5 responses per question, vary:
 
 ## Output
 
-Replace every bracketed placeholder below (e.g., `[Topic Name]`, `[Question 1 Short Summary]`, `[Your Persona Name]`) with the content you derive; do not emit the literal placeholder strings.
+Replace every bracketed placeholder below (e.g., `[Topic Name]`, `[Question 1 Short Summary]`, `[Your Persona Name]`) with the content you derive; do not emit the literal placeholder strings. Add a fourth or fifth response only when a question genuinely supports more angles.
 
 Format requirements:
 - Use Markdown with ## headings for each question
@@ -67,9 +67,9 @@ Create one output:
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[low|medium|high]"
+effort: "{{effort}}"
 stage: "Phase 3: Multi-Perspective Brainstorming"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 persona: "[Persona Name]"
@@ -87,6 +87,10 @@ persona: "[Persona Name]"
 
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
 
+[Optional: a fourth and fifth response for particularly rich questions]
+
+---
+
 ## [Question 2 Short Summary]
 
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
@@ -94,6 +98,10 @@ persona: "[Persona Name]"
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
 
 * **Response summary.** Detailed response text with specifics, examples, or reasoning.
+
+[Optional: a fourth and fifth response for particularly rich questions]
+
+---
 
 [Continue for all questions in topic cluster]
 ```

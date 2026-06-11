@@ -46,7 +46,7 @@ For EACH of the four Tier 3 personas (Accountant, Lawyer, Politician, Technical 
 - **Question 1 (domain match):** Is regulatory/compliance exposure a dimension of the brainstorming need? Look for: specific regulatory frameworks (HIPAA, FDA, zoning ordinance, STR ordinance, mandatory reporting, licensing regimes), liability structure, contract design with legal stakes, compliance architecture.
 - **Question 2 (depth):** Is this "trigger on need, not keywords"? Named statutes or compliance regimes where the brainstorming need is to *design* regulatory strategy → strong. "Liability concerns" without specific framework → Devil's Advocate territory, not Lawyer.
 - **Question 3 (trap check):**
-  - Career-change topics that name "lawyer"/"attorney" as a target career are NOT a Lawyer trigger (partial false positive per R6 — persona responds to keyword and produces regulatory implementation guide rather than decision-exploration).
+  - Career-change topics that name "lawyer"/"attorney" as a target career are NOT a Lawyer trigger (partial false positive — persona responds to keyword and produces regulatory implementation guide rather than decision-exploration).
   - Generic "safety concerns" or "liability" mentions without regulatory frameworks are not Lawyer triggers.
   - **Operating-environment-permits trap:** Routine permits, licenses, health codes, and zoning checks for a single small business (e.g., food-truck health permits, vendor licenses, parking ordinances, event permits) are operating-environment CONSTRAINTS to comply with, not compliance ARCHITECTURE to design. Lawyer fires when the brainstorming need is to design multi-jurisdiction regulatory strategy, tenant-protection ordinance architecture, consent/referral frameworks across institutions, or a named statutory regime (HIPAA, FDA, STR ordinance). If permits/licenses appear only as routine check-the-box operational constraints for one small business → none. (Accountant and/or Politician typically cover the strategic dimension in these cases.)
   - If yes to any → none.
@@ -72,7 +72,7 @@ For EACH of the four Tier 3 personas (Accountant, Lawyer, Politician, Technical 
 - **Question 3 (trap check):**
   - "Modern JS framework," "cloud backend," "mobile app" keywords alone are NOT triggers. Web/mobile product topics without hardware/ML/systems-architecture are Technical Expert false positives.
   - "Technical debt" in a product-strategy context (like mobile-app feature pruning) is product management, not architecture.
-  - Career-change "legacy code" framing is a clear false positive per R6.
+  - Career-change "legacy code" framing is a clear false positive.
   - If yes to any → none.
 - **Output for this persona:**
   - Trigger strength: [strong | moderate | none]
@@ -188,7 +188,7 @@ Otherwise include one row per selected persona, using the canonical Category lab
 |---|---|---|---|---|
 | Accountant | Specialist (financial) | 8-12 | Synthesize | [strong \| moderate] |
 | Lawyer | Specialist (regulatory) | 8-10 | Synthesize | [strong \| moderate] |
-| Politician | Specialist (governance) | 8-10 | Synthesize | [strong \| moderate] |
+| Politician | Specialist (governance) | 8-10 | Append | [strong \| moderate] |
 | Technical Expert | Specialist (architecture) | 8-10 | Synthesize | [strong \| moderate] |
 
 ## Selection Rationale

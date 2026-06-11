@@ -16,9 +16,11 @@ Read these files before generating questions. They are independent; read them in
 2. `{{skill}}/personas/{{persona_slug}}.md` — your assigned persona. Adopt the voice, method, and characteristic questions described there. Copy the `category` and `stream` values from this file's YAML frontmatter verbatim into your output frontmatter — these drive Phase 2 Step 2.3 routing and must not be inferred or renamed.
 3. `{{session}}/PLAN.md`, section `## Phase 2 Step 2.1: Question Generation Personas` — your target question volume is the range listed for your persona in that roster.
 
+Do NOT read `{{session}}/USER-QUESTIONS.md` even though REQUEST.md may reference it — user questions are injected at Step 2.3 by design.
+
 ## Task
 
-Generate open-ended questions within the volume range listed for your persona in `{{session}}/PLAN.md`'s `## Phase 2 Step 2.1: Question Generation Personas` table. Organize questions into 3–5 thematic clusters you name yourself based on the questions generated. **Why 3–5:** a single bucket is not a cluster; more than five fragments the downstream synthesis signal.
+Generate open-ended questions within the volume range listed for your persona in `{{session}}/PLAN.md`'s `## Phase 2 Step 2.1: Question Generation Personas` table. Organize questions into 2–3 thematic clusters when your volume is ≤8 questions, 3–5 above that; name the clusters yourself based on the questions generated. **Why:** a single bucket is not a cluster; more than five fragments the downstream synthesis signal.
 
 ## Coverage Requirements
 
@@ -51,7 +53,6 @@ Replace every bracketed placeholder below (e.g., `[Topic 1 Descriptive Name]`, `
 Format requirements:
 - Use Markdown headings to group related questions topically
 - Format each question text as: **Short question summary**: Longer question description with context
-- Put your persona name at the top of the document
 - Output only the markdown document specified below, starting with the YAML frontmatter and ending at the final question. No preamble, no closing remarks, no follow-up questions for the orchestrator.
 
 ### {{session}}/questions/by-persona/{{persona_slug}}.md
@@ -61,13 +62,13 @@ Format requirements:
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[low|medium|high]"
+effort: "{{effort}}"
 stage: "Phase 2 Step 2.2: Persona-Based Question Generation"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 persona: "[Persona Name]"
-category: "[analytical|structural|perspective|specialist]"  # from persona file frontmatter
-stream: "[synthesize|append]"                                 # from persona file frontmatter
+category: [analytical|structural|perspective|specialist]  # from persona file frontmatter
+stream: [synthesize|append]                                # from persona file frontmatter
 volume: [N]                                                   # target volume from Step 2.1 roster plan
 ---
 
@@ -87,7 +88,7 @@ volume: [N]                                                   # target volume fr
 4. [Question text]
 ...
 
-[Continue for remaining questions in 3-5 clusters]
+[Continue for remaining questions per the cluster rule in Task]
 
 ---
 

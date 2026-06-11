@@ -9,9 +9,9 @@ Executive-level summary of a topic cluster. Produced at every effort level by th
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[min|low|medium|high]"
+effort: "{{effort}}"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"
@@ -75,7 +75,7 @@ central-tension: "[One sentence naming the cluster's organizing trade-off, or it
 - [Specific trade-off between competing priorities]
 - [Specific trade-off]
 
-[3-5 per category at `medium`/`high`; bullets at `min`. See the `low` variant below for a DA/Pragmatist-specific restructuring.]
+[3-5 per category at `medium`/`high`; bullets at `min`. At `min`, the section additionally ends with a fourth subsection, **Conspicuous absences** (stances the brainstormer's output never took): 1-2 gaps specific to this cluster's substance, omitted entirely if nothing notable emerges — Phase 5 consumes this subsection. At `low`, the section restructures around the two lenses and ends with a **Neither-lens gaps** subsection (also Phase-5-consumed) — see the `low` variant below. The producing prompt defines each subsection's selection checks.]
 
 ---
 
@@ -107,6 +107,9 @@ At `low` effort the Key Considerations section restructures around the productiv
 **Blind-spot flags** (only one lens raised):
 - [Flag — risk-oriented | feasibility-oriented]
 - [Flag — risk-oriented | feasibility-oriented]
+
+**Neither-lens gaps** (what a different angle would have surfaced):
+- [2-3 cluster-relevant gaps from the producing prompt's five-category absence check; skip the subsection if no category passes. Phase 5 consumes this subsection.]
 ```
 
 **Central Tension at `low` effort — inverted-framing pairs.** When both lenses (DA and Pragmatist) point at the same coordinator/structure/mechanism from opposite directions (one as risk-source, the other as solution-vector), name that inverted-framing pair as the Central Tension explicitly. Inverted framings are the highest-value tensions to preserve and the most likely to be smoothed into false convergence.

@@ -1,12 +1,12 @@
 # Humanizer Pass
 
-You are a surface-style editor. Apply the humanizer skill at `{{skill}}/prompts/humanizer/SKILL.md` to the target you are given, then report what you changed. You alter only surface style — never content.
+You are a surface-style editor. Apply the humanizer skill at `humanizer/SKILL.md`, sibling to this file (i.e., `<skill-root>/prompts/humanizer/SKILL.md`), to the target you are given, then report what you changed. You alter only surface style — never content.
 
-This prompt serves three callers. The orchestrator will tell you which mode you are in:
+This prompt serves three callers. Your caller (the orchestrator, or the Phase 5 subagent applying this brief to its own output) will tell you which mode you are in:
 
-- **(a) Per-file pass over a `_summary.md`.** Edit the file in place at `{path}`.
+- **(a) Per-file pass over a `_summary.md`.** Edit the file in place at `{{path}}`.
 - **(b) Per-question pass over a single `### Question N` block of a `_synthesis.md`.** You are given one question block as text. Return the humanized block as your final message — do **not** write any file. An assembler step reassembles the full `_synthesis.md` from the humanized blocks in a single write, so do not touch the file yourself.
-- **(c) Whole-file pass over `BRAINSTORM.md`.** Edit the file in place at `{path}`.
+- **(c) Whole-file pass over `BRAINSTORM.md`.** Edit the file in place at `{{path}}`.
 
 ## What to preserve exactly
 
@@ -45,7 +45,7 @@ These are analytic signal, not style. Keep the exact wording where it appears:
 Reduce the surface AI tells, nothing more:
 
 - Bring em-dash density down to roughly one per paragraph. Prefer periods, parentheses, or commas.
-- Break up "X is not Y; it is Z" negative-parallelism structures — **unless** the cluster's `_synthesis.md` marks that one as a load-bearing reframe (a framing-marker prefix above is the signal that it is load-bearing; leave those intact).
+- Break up "X is not Y; it is Z" negative-parallelism structures — **unless** the source document marks that one as a load-bearing reframe (a framing-marker prefix above is the signal that it is load-bearing; leave those intact).
 - Drop AI vocabulary words.
 - Eliminate rule-of-three constructions that are not load-bearing.
 

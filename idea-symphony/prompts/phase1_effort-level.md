@@ -38,7 +38,7 @@ Analyze the user's request text for keywords and patterns.
 
 ### `low` — Default Suggestion
 
-If no strong triggers match any level, **suggest `low`** as the default. `low` effort provides multi-perspective question generation with lean brainstorming — a strong baseline for most requests. Previously the default was `medium`, but `low` demonstrates multi-perspective value faster with lower time investment.
+If no strong triggers match any level, **suggest `low`** as the default. `low` effort provides multi-perspective question generation with lean brainstorming — a strong baseline for most requests, demonstrating multi-perspective value with lower time investment.
 
 ---
 
@@ -55,7 +55,7 @@ decisions requiring foundational examination of assumptions and long-term implic
 `high` effort will provide:
 - Questions from 10+ diverse thinking styles with full convergence documentation
 - Philosophical depth and assumption-challenging
-- 55-90 questions across 6-9 foundational topic areas
+- 55-90 questions across 11-13 foundational topic areas
 - 7 brainstorming perspectives per topic
 - Research-informed recommendations
 - Time: ~45-60 minutes
@@ -91,7 +91,7 @@ perspectives exploring trade-offs and design patterns."]
 
 `medium` effort will provide:
 - Questions from 10+ diverse thinking styles
-- 45-65 questions across 4-7 topic areas
+- 45-65 questions across 10-12 topic areas
 - 4 brainstorming perspectives per topic
 - Framework development and systems thinking
 - Full synthesis with attribution
@@ -110,7 +110,7 @@ questioning with practical brainstorming."]
 
 `low` effort will provide:
 - Questions from 10 diverse thinking styles
-- 32-42 questions across 4-7 topic areas
+- 32-42 questions across 8-10 topic areas
 - Practical and critical brainstorming (2 perspectives per topic)
 - Summary-only synthesis
 - Time: ~15-20 minutes

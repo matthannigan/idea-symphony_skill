@@ -20,10 +20,11 @@ Read all of the following before drafting. They are independent; read them in pa
 2. `{{session}}/QUESTIONS.md` — full consolidated question set. Used for session-index links and to confirm topic-cluster scope.
 3. `{{session}}/PLAN.md` — source for the topic-cluster list. Use the "Topic Clusters" section to get correctly-ordered slugs and display names for the per-topic blocks and links.
 4. `{{session}}/SUMMARIES.md` — **authoritative** source for executive summary, key themes, topic summaries, and recommended next steps. Sections are concatenated per topic (frontmatter stripped) and separated by `---`; topic display names appear in each section's `# Summary: [Topic Name]` heading.
-5. [`templates/brainstorm.md`](../templates/brainstorm.md) - template for `BRAINSTORM.md` final output with word count guidance by effort level.
-6. [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md) — **conditional input.** Read only if `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`. Contains the user-facing template plus an inline module reference for composing NotebookLM Customize-box prompts without external skill dependencies. If the flag is `"no"` or absent, do not read this file — skip the NLM addon entirely.
+5. `{{session}}/synthesis/*_summary.md` — read the YAML frontmatter only, for `central-tension:` (plus the per-cluster Conspicuous Absences / Neither-lens gaps sections at `min`/`low`).
+6. [`templates/brainstorm.md`](../templates/brainstorm.md) - template for `BRAINSTORM.md` final output with word count guidance by effort level.
+7. [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md) — **conditional input.** Read only if `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`. Contains the user-facing template plus an inline module reference for composing NotebookLM Customize-box prompts without external skill dependencies. If the flag is `"no"` or absent, do not read this file — skip the NLM addon entirely.
 
-**Do not read `SYNTHESIS.md`.** That file (when it exists at `medium`/`high` effort) is large and would balloon your context unnecessarily. `SUMMARIES.md` is sufficient for everything you need to produce. Linking `SYNTHESIS.md` in the Session Index is independent of reading it; you do not need to open the file to write its link. Whether to include the link is decided from `{{effort}}` alone — see the effort-conditional rule below the output template.
+**Do not read `SYNTHESIS.md`.** That file (when it exists at `medium`/`high` effort) is large and would balloon your context unnecessarily. `SUMMARIES.md` is sufficient for everything you need to produce. Linking `SYNTHESIS.md` in the Session Index is independent of reading it; you do not need to open the file to write its link. Whether to include the link is decided from `{{effort}}` alone — see the effort-conditional rules below the output template.
 
 ## Your Task
 
@@ -34,11 +35,11 @@ Synthesize the per-topic summaries into a single user-facing document.
 1. **Read inputs in parallel.** Note the project name, effort level, and topic-cluster list (slugs + display names from PLAN.md, in order).
 2. **Draft the executive summary** (3-5 paragraphs). Capture the most important insights *across all topics*, not a topic-by-topic recap. Lead with the highest-confidence findings.
 3. **Surface Central Tensions.** Each per-cluster `_summary.md` carries its central tension in a `central-tension:` YAML frontmatter key. Read that key from every cluster's `_summary.md` before drafting the Executive Summary (do not scrape it from a bolded prose line in the body — the frontmatter key is the authoritative source). If two or more clusters share a structurally similar tension, name the cross-cluster meta-tension explicitly. If clusters' tensions diverge, that divergence is itself a session-level finding worth naming. Either aggregate per-cluster tensions or list them in a dedicated subsection. Limit the section to **at most 4 entries** — past 4, the section dilutes; the remaining tensions stay in their per-cluster summaries and are not lost. List fewer than 4 if fewer are load-bearing.
-4. **Write the session overview** — 2-4 sentences on what the user asked and how the session approached it (e.g., effort level, number of topic clusters).
+4. **Write the session overview** — what the user asked and how the session approached it (e.g., effort level, number of topic clusters). Length per the "Session Overview" row of the budget table in [`templates/brainstorm.md`](../templates/brainstorm.md) for `{{effort}}` (roughly 2-4 sentences at `min`/`low`, 4-8 at `medium`/`high`).
 5. **Extract key themes** that appear across multiple topic clusters or cross-cut the whole session. These are *not* topic summaries — they're patterns that emerge when you look at all the summaries together.
 6. **Build per-topic blocks.** For each topic cluster (in the order from PLAN.md):
    - `### N. [Topic Display Name]` (sequential 1, 2, 3 numbering)
-   - 2-4 sentences extracting the most important insight(s) from that cluster's section in SUMMARIES.md
+   - The most important insight(s) extracted from that cluster's section in SUMMARIES.md. Length per the "Per-topic block" row of the budget table for `{{effort}}` (roughly 2-4 sentences at `min`/`low`, 4-8 at `medium`/`high`)
    - If the cluster's `_summary.md` opens with a categorical reframe (a single declarative sentence reframing the cluster's question — e.g., "the library's operational core is not inventory management but mutual-visibility infrastructure"), convey the same insight in the per-topic block's own voice. **Do not preserve the noun-pair grammar** if it produces repetitive shape across clusters. The reframe's content survives; the rhetorical structure does not propagate. Use the substrate's framing, not your own.
 
      **Example.** Substrate: *"the library's operational core is not inventory management but mutual-visibility infrastructure."*
@@ -61,9 +62,9 @@ Synthesize the per-topic summaries into a single user-facing document.
       **Example.** *Forbidden:* "The Devil's Advocate argues that the timeline is unrealistic." → *Rewrite:* "An adversarial counter-test surfaced that the timeline is unrealistic."
 
     - **(c) NotebookLM instructions audit (only if producing `NOTEBOOK-LM-INSTRUCTIONS.md`).** Before writing the file, verify:
-      - **Source framing present.** Every one of the five artifact prompt blocks opens with a `Source framing:` paragraph that names `[Project Name]` and describes the source as the output of a facilitated multi-perspective brainstorming session. Per-cluster prompts (Artifacts 2 and 5) name the specific cluster in the framing. The Source Framing module is always-include — never omit it to save characters.
+      - **Source framing present.** Every one of the five artifact prompt blocks opens with a `Source framing:` paragraph that names `[Project Name]` and describes the source as the output of a facilitated multi-perspective brainstorming session. Per-cluster prompts (Artifacts 3 and 5) name the specific cluster in the framing. The Source Framing module is always-include — never omit it to save characters.
       - **Character cap.** Each artifact's Customize-box prompt is under 5,000 characters (NotebookLM's hard limit). Compute character count for each prompt block and write the result on the `**Character count:** [N] / 5,000` line. If any prompt exceeds the cap, cut from the Module 7 "Custom additions" section first; then trim examples from Module 2 (tone directives). **Never cut Module 0 (Source Framing) or Modules 1-3** — they are load-bearing.
-      - **Cluster name fidelity and parity.** Every per-cluster block under Artifact 2 (podcast episodes) and Artifact 5 (infographics) names a cluster from PLAN.md's Topic Clusters section verbatim. No invented or paraphrased cluster names; slugs match the actual `synthesis/{slug}_summary.md` files. Artifact 2 and Artifact 5 must have the same cluster count and the same cluster order.
+      - **Cluster name fidelity and parity.** Every per-cluster block under Artifact 3 (podcast episodes) and Artifact 5 (infographics) names a cluster from PLAN.md's Topic Clusters section verbatim. No invented or paraphrased cluster names; slugs match the actual `synthesis/{slug}_summary.md` files. Artifact 3 and Artifact 5 must have the same cluster count and the same cluster order.
       - **Sources list correctness.** The "Sources to upload" section matches the actual files present in `{{session}}/`: `BRAINSTORM.md` plus one `synthesis/{slug}_summary.md` per cluster from PLAN.md.
       - **No subagent-only content leaks.** The "For the Phase 5 subagent: inline module reference" block and the "Subagent fill-in checklist" from the template must not appear in the emitted file. The emitted file starts at `# NotebookLM Instructions: [Project Name]`.
 
@@ -83,7 +84,7 @@ Synthesize the per-topic summaries into a single user-facing document.
 
 **Preservation takes precedence over the band.** Foundational reversals (sentence-level "we thought X; the answer is the opposite of X") and productive dissent are non-droppable. Categorical reframes are droppable under length pressure or when retaining them would produce rhetorical uniformity across clusters. When length pressure forces a choice between the upper bound and surfacing a non-droppable dissent, foundational reversal, Central Tension, or `[recurring]` item, retain the content and exceed the band. The upper bound governs editorial elaboration; it does not govern preservation.
 
-**Example.** A high-effort session has 9 clusters, each with a one-sentence dissent. Surfacing all 9 dissents in per-topic blocks pushes body length to 2400 words, 55 over the 1170–2345 ceiling. The correct response is to retain all 9 dissents and accept the 55-word overage. Compressing by dropping the 3 least-vivid dissents to land at 2340 is incorrect.
+**Example.** A high-effort session has 9 clusters, each with a one-sentence dissent. Surfacing all 9 dissents in per-topic blocks pushes body length to 4,550 words, 50 over the 2800–4500 band. The correct response is to retain all 9 dissents and accept the 50-word overage. Compressing by dropping the 3 least-vivid dissents to land at 4,490 is incorrect.
 
 **Cross-cluster recurrence weighting.** When building Recommended Next Steps and Key Themes, weight items that appear in multiple clusters' `_summary.md` more heavily than vivid one-shots. A through-line tagged `[recurring]` in any cluster's `_summary.md` should appear in either Key Themes or Recommended Next Steps; do not drop it to make room for a single-occurrence item, however vivid.
 
@@ -93,11 +94,15 @@ The general principles still apply: meet the aggregate-band lower bound; stay wi
 
 ## Output
 
+**Substitution values for templates.** The concrete session directory and session datetime are carried by `{{session}}` and `{{current_datetime}}`, resolved by the orchestrator in this prompt. Any `{{…}}` token you encounter inside the template files you read off disk ([`templates/brainstorm.md`](../templates/brainstorm.md), [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md)) is a slot **you** fill from those values — no one substitutes inside template files for you.
+
 1. **Always: write `{{session}}/BRAINSTORM.md`.** Use [`templates/brainstorm.md`](../templates/brainstorm.md) as a template.
 
-   Replace every bracketed placeholder (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. The `{{cluster_slug}}` tokens inside the per-topic links are slots you fill with the actual slugs from PLAN.md (one different value per topic block).
+   Replace every bracketed placeholder (e.g., `[Project Name]`, `[Topic Name]`) with the content you derive; do not emit literal placeholder strings. All `{{…}}` tokens inside the template are slots you fill (see "Substitution values for templates" above): `{{session}}` with the session directory, `{{current_datetime}}` with the session datetime, `{{effort}}` with this session's effort level, `{{model_requested}}` with the model the orchestrator requested for this task, and the `{{cluster_slug}}` tokens inside the per-topic links with the actual slugs from PLAN.md (one different value per topic block).
 
-   **Effort-conditional rule for the Session Index:** When `{{effort}}` is `min` or `low`, **delete** the entire `[SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses` line — the file does not exist at those effort levels. Keep all other lines as-is at every effort level.
+   **Effort-conditional rules for the Session Index:** The template's canonical block carries no effort annotations — all effort conditionality lives here, in these prose rules; never emit effort-conditional annotations into the deliverable.
+   - When `{{effort}}` is `min` or `low`: **delete** the entire `[SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses` line (the file does not exist at those effort levels), and end the `[synthesis/](synthesis/)` line after "`_summary.md` (always)" — drop the `_synthesis.md` and `attributed/` mentions, since those exist only at `medium`/`high`.
+   - Keep all other lines as-is at every effort level.
 
 2. **Conditional: if `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`, also write `{{session}}/NOTEBOOK-LM-INSTRUCTIONS.md`.** Use [`templates/notebook-lm-instructions.md`](../templates/notebook-lm-instructions.md) as a template.
 
@@ -105,11 +110,11 @@ The general principles still apply: meet the aggregate-band lower bound; stay wi
 
    Compose each artifact's Customize-box prompt by combining the inline modules with project-specific values from `BRAINSTORM.md` (themes, central tensions), `PLAN.md` (cluster slugs and display names, project name, effort), and `REQUEST.md` (audience cues). Tailor terminology, focus targets, and slide-count targets per the Subagent fill-in checklist in the template.
 
-   Emit one `### Episode N: [Cluster Name]` block under Artifact 2 for each cluster in PLAN.md's Topic Clusters section, in order.
+   Emit one `### Episode N: [Cluster Name]` block under Artifact 3 for each cluster in PLAN.md's Topic Clusters section, in order.
 
    If the flag is `"no"` or absent, skip this step entirely.
 
-3. **Humanizer pass on `BRAINSTORM.md`.** After `BRAINSTORM.md` is fully written, run an inline humanizer pass over it using the shared brief at [`{{skill}}/prompts/humanizer-pass.md`](humanizer-pass.md), which itself invokes the humanizer skill at [`{{skill}}/prompts/humanizer/SKILL.md`](humanizer/SKILL.md). Edit `BRAINSTORM.md` in place. Preserve the numbered next-steps ordering, all dollar figures, and the citations to `synthesis/{slug}_summary.md` files. Do **not** humanize `NOTEBOOK-LM-INSTRUCTIONS.md` — its readers are NotebookLM's customize box, not humans.
+3. **Humanizer pass on `BRAINSTORM.md`.** After `BRAINSTORM.md` is fully written, run an inline humanizer pass (**mode (c)**, whole-file pass) over it using the shared brief at [`{{skill}}/prompts/humanizer-pass.md`](humanizer-pass.md), which itself invokes the humanizer skill at [`{{skill}}/prompts/humanizer/SKILL.md`](humanizer/SKILL.md). Edit `BRAINSTORM.md` in place. Preserve the numbered next-steps ordering, all dollar figures, and the citations to `synthesis/{slug}_summary.md` files. Do **not** humanize `NOTEBOOK-LM-INSTRUCTIONS.md` — its readers are NotebookLM's customize box, not humans.
 
 4. Do not modify any other files.
 

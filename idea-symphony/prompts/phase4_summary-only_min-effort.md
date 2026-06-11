@@ -51,7 +51,7 @@ session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "min"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"

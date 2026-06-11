@@ -45,11 +45,13 @@ If you see a placeholder in a file-system path, shell command, or prompt-instruc
 
 `{{current_datetime}}` resolves to the current date/time the orchestrator observes in its Claude Code system context (ISO 8601, e.g. `2026-04-23`). Use it in YAML frontmatter `datetime:` fields so subagent outputs carry an accurate session timestamp. The orchestrator must substitute the literal value before spawning the subagent — subagents do not resolve it themselves.
 
+**Slug derivation:** `{{persona_slug}}` = `the-` + the persona display name lowercased and hyphenated, apostrophes dropped (e.g. `Devil's Advocate` → `the-devils-advocate`). `{{cluster_slug}}` = `NN_lowercase-hyphenated-name` (e.g. `03_funding-models`). `{{topic}}` = the cluster's display name as listed in PLAN.md's `## Topic Clusters (from Phase 2)` section.
+
 ## Persona System
 
 Idea Symphony uses a **tiered roster** of question-generation personas and a **concentric circles model** for brainstorming persona selection.
 
-**Question generation (Phase 2):** Draws from a pool of 19 validated personas across three tiers. All 10 Tier 1 personas participate at every effort level above `min`. Tier 2 (4 personas) joins at `high`. Tier 3 (5 personas) are topic-gated specialists selected by the orchestrator at `low`/`medium`/`high`. See [Phase 2B Selection Guide](guidance/phase2A_question-gen-personas.md).
+**Question generation (Phase 2):** Draws from a pool of 19 validated personas across three tiers. All 10 Tier 1 personas participate at every effort level above `min`. Tier 2 (4 personas) joins at `high`. Tier 3 (4 trigger-gated specialists; the Connector is handled via the Analogist swap) are selected by the orchestrator at `low`/`medium`/`high`. See [Phase 2A Selection Guide](guidance/phase2A_question-gen-personas.md).
 
 **Brainstorming (Phase 3):** Uses the concentric circles model — Core pair (Devil's Advocate + Pragmatist) at all levels, expanding through Inner Ring and Middle Ring at higher effort. See [Phase 2D Selection Guide](guidance/phase2D_brainstorming-personas.md).
 
@@ -91,13 +93,17 @@ Session top-level:
 ├── responses/        # Phase 3 outputs (per-topic directories, one file per persona)
 ├── synthesis/        # Phase 4 outputs (summaries; attributed/ at medium/high)
 ├── REQUEST.md        # User request summary
+├── USER-QUESTIONS.md # (only when the user supplies questions) Preserved user questions
 ├── PLAN.md           # Session config, persona summary tables, status
 ├── QUESTIONS.md      # All questions consolidated (canonical order)
-├── SYNTHESIS.md      # All summaries + syntheses (in topic order)
+├── questions-meta.json # Step 2.3 attribution + diagnostics sidecar (never at min)
+├── SUMMARIES.md      # All per-topic summaries concatenated
+├── SYNTHESIS.md      # All per-topic syntheses concatenated (medium/high only)
+├── NOTEBOOK-LM-INSTRUCTIONS.md # (only when notebooklm-outputs: "yes"; never at min)
 └── BRAINSTORM.md     # Final output and session index
 ```
 
-**Full layout, per-phase file naming, and `min` effort differences:** See [SESSION-STRUCTURE.md](SESSION-STRUCTURE.md).
+At `min` effort, `questions-meta.json` and `personas/` never exist. **Full layout, per-phase file naming, and `min` effort differences:** See [SESSION-STRUCTURE.md](SESSION-STRUCTURE.md).
 
 ## Effort Levels
 
@@ -135,7 +141,7 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
    - Ask: "Do you have specific questions you want the brainstorming process to answer? These will be preserved through all phases."
    - If yes: Save as `USER-QUESTIONS.md` (see [templates/user-questions.md](templates/user-questions.md))
    - If no: Proceed without creating the file
-   - **Rule:** Persona generators (Phase 2 Step 2.2) must not read USER-QUESTIONS.md. Only the `min` generic generator and the Phase 2C synthesizer may consume it. (Rationale in CLAUDE.md.)
+   - **Rule:** Persona generators (Phase 2 Step 2.2) must not read USER-QUESTIONS.md. Only the `min` generic generator and the Phase 2C synthesizer may consume it. (User questions are injected at Step 2.3 so the persona question-generators stay unbiased by the user's framing.)
 5. Create `REQUEST.md` summarizing the request (see [templates/request.md](templates/request.md)). Captures user input only — topic, context, goals, considerations, and references to any files in `context/` and `USER-QUESTIONS.md`. Effort level and orchestrator state go in `PLAN.md` (step 7).
 6. **Determine effort level:**
    - If user specified → use that level
@@ -145,7 +151,7 @@ Self-contained speed run that skips the persona system entirely. After Phase 1 c
    - Default is `no` (opt-in). If user says yes → set `notebooklm-outputs: "yes"`; otherwise (explicit no or no answer) → set `notebooklm-outputs: "no"`.
    - At `min` effort, skip this question entirely; do not emit the field.
    - See [prompts/phase1_effort-level.md](prompts/phase1_effort-level.md) for the canonical question text.
-8. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), the `notebooklm-outputs` flag (from step 7, omitted at `min`), session directory, and Phase 1 completion status.
+8. Create `PLAN.md` documenting configuration (see [templates/plan.md](templates/plan.md)). Records effort level (from step 6), the `notebooklm-outputs` flag (from step 7, omitted at `min`), session directory, and Phase 1 completion status. Set `persona-selection-review: "auto"` unless the user asks to review selections. The initial PLAN.md contains only frontmatter, header, Status, and Notes — later sections (Step 2.1, Step 2.4, Topic Clusters) are appended by their producing steps, not pre-instantiated from the template.
 9. If effort is `min` → proceed to min effort workflow.
 
 **Orchestrator Model:** Opus (advisory — runs in the orchestrator's own session, no Agent tool call is made for this step). Record `model-reported: "<self-identified>"` in PLAN.md frontmatter for audit.
@@ -178,11 +184,13 @@ If any element is missing, re-run Step 2.1 rather than proceeding.
 
 Spawn parallel subagents per the roster plan — one per persona — using the prompt at `{{skill}}/prompts/phase2B_question-gen_by-persona.md`. Subagent instructions, coverage requirements, and output schema live in the prompt file.
 
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (the subagent self-reports its actual model in `model-reported`).
+
+**Substitution:** Resolve `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{persona_slug}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
 
 **Quality Gate:** Before proceeding, verify:
 - `{{session}}/questions/by-persona/` file count matches roster plan
-- Each file's YAML frontmatter includes `stream` and `category` fields (the prompt requires subagents to copy these from the persona file's frontmatter; they drive Step 2.3 routing)
+- Each file's YAML frontmatter includes `stream`, `category`, and `volume` fields (the prompt requires subagents to copy these from the persona file's frontmatter; they drive Step 2.3 routing)
 - If count doesn't match: Use Glob to search, move to correct location
 - If frontmatter is missing, re-run that persona's subagent
 - If files missing after search, log in PLAN.md Notes and proceed
@@ -191,7 +199,7 @@ Update `PLAN.md` with Phase 2 Step 2 complete status.
 
 #### Step 2.3: Question Synthesis and Clustering (Single Subagent)
 
-Spawn 1 subagent to consolidate per-persona questions into topic clusters using the Synthesize/Append stream split. The synthesis prompt encodes the cluster targets, compaction ratios, voice-preservation floors, and Append placement rules (all validated in SP1 iter3).
+Spawn 1 subagent to consolidate per-persona questions into topic clusters using the Synthesize/Append stream split. The synthesis prompt encodes the cluster targets, compaction ratios, voice-preservation floors, and Append placement rules.
 
 **Synthesis instructions:** Use the prompt at
 `{{skill}}/prompts/phase2C_question-synthesis.md`.
@@ -201,7 +209,7 @@ Spawn 1 subagent to consolidate per-persona questions into topic clusters using 
    this directory; each file's frontmatter provides `stream`, `category`,
    `volume`)
 2. `{{session}}/REQUEST.md` — topic context
-3. `{{session}}/PLAN.md` — fallback source for the Phase 2B roster if any
+3. `{{session}}/PLAN.md` — fallback source for the Step 2.1 roster if any
    persona file is missing stream frontmatter
 4. `{{session}}/USER-QUESTIONS.md` (if it exists) — user-provided questions
    treated as a mandatory "+1" input; the subagent marks any synthesized
@@ -217,7 +225,9 @@ Spawn 1 subagent to consolidate per-persona questions into topic clusters using 
    and hard-floor self-check diagnostics. This is the authoritative audit
    trail for future investigations and skill tests.
 
-**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive; the subagent self-reports its actual model in `model-reported`).
+
+**Substitution:** Resolve `{{session}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"opus"`) in the prompt body before spawning.
 
 **Post-synthesis shell step — split QUESTIONS.md into by-topic files:**
 
@@ -233,7 +243,7 @@ This is a deterministic transform, not an LLM step. `questions/by-topic/99_addit
 - `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
 - `questions-meta.json` exists and parses as valid JSON
 - `questions/by-topic/` contains one file per cluster (plus `99_additional.md` if orphans existed)
-- Self-check values in `questions-meta.json` satisfy the SP1 hard floors:
+- Self-check values in `questions-meta.json` satisfy the hard floors:
   - `ai_orphan_question_numbers` is non-empty (≥3 at high effort)
   - `st_archetype_question_numbers` is non-empty OR `r11_source_bound_cells` is populated (≥3 at high effort)
 - If `USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` vs. user question count
@@ -298,9 +308,11 @@ Read `questions/by-topic/` to get the list of numbered topic files. Process topi
 
 Use Devil's Advocate + Pragmatist for every topic (no Step 2.4 selection needed).
 
-For each topic cluster, spawn 2 parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file. Spawn counts:
+For each topic cluster, spawn 2 parallel subagents using the prompt at `{{skill}}/prompts/phase3_brainstorm_by-persona.md`. Subagent instructions (persona adoption, context isolation, response diversity) live in the prompt file.
 
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality; the subagent self-reports its actual model in `model-reported`).
+
+**Substitution:** Resolve `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{persona_slug}}`, `{{cluster_slug}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
 
 #### For `medium`/`high` effort
 
@@ -311,7 +323,9 @@ For each topic cluster, spawn parallel subagents using the prompt at `{{skill}}/
 - **`medium`:** 4 subagents per row of the PLAN.md table
 - **`high`:** 7 subagents per row of the PLAN.md table
 
-**Subagent Model:** Pass `model: "haiku"` to the Agent tool call (volume over depth). Also include the literal string `model-requested: "haiku"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "haiku"` to the Agent tool call (volume over depth; the subagent self-reports its actual model in `model-reported`).
+
+**Substitution:** Resolve `{{session}}`, `{{skill}}`, `{{persona_name}}`, `{{persona_slug}}`, `{{cluster_slug}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"haiku"`) in the prompt body before spawning.
 
 #### Quality Gate
 
@@ -326,13 +340,17 @@ Update `PLAN.md` with Phase 3 complete status.
 
 ### Phase 4: Response Synthesis (Parallel Subagents)
 
+Each per-topic `_summary.md` records its central tension in a `central-tension:` YAML frontmatter key and states it in the Executive Summary's opening prose — a universal field across all effort levels that Phase 5 reads from the frontmatter and aggregates into a session-level `## Central Tensions` section.
+
 #### Summary Generation (`low` effort only)
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_summary-only_low-effort.md`. The prompt covers DA/Pragmatist tension-preserving synthesis, summary structure, and output format.
 
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality). Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (balance of speed and quality; the subagent self-reports its actual model in `model-reported`).
 
-**Humanizer post-step.** Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at `{path}`). `_summary.md` is humanized at every effort level; there is no `_synthesis.md` at `low` effort, so no per-question pass runs here. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+**Substitution:** Resolve `{{session}}`, `{{cluster_slug}}`, `{{topic}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
+
+**Humanizer post-step.** Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at `{{path}}`). `_summary.md` is humanized at every effort level; there is no `_synthesis.md` at `low` effort, so no per-question pass runs here. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
 
 Once the humanizer post-step is complete, run the utility script to build the concatenated `SUMMARIES.md` file so it inherits the humanized substrate. This is a deterministic transform (no LLM): it strips each per-topic `_summary.md`'s YAML frontmatter, joins the bodies with horizontal-rule separators, and prepends a session-level frontmatter block.
 
@@ -344,13 +362,13 @@ scripts/build-summaries.sh {{session}}
 
 Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_full-synthesis.md`. The prompt covers convergence tracking, the three-output structure (`attributed/`, `_synthesis.md`, `_summary.md`), and quality standards.
 
-Each `_summary.md` records its central tension in a `central-tension:` YAML frontmatter key, and states it in the Executive Summary's opening prose — a universal field across all effort levels that Phase 5 reads from the frontmatter and aggregates into a session-level `## Central Tensions` section.
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive; the subagent self-reports its actual model in `model-reported`).
 
-**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Substitution:** Resolve `{{session}}`, `{{cluster_slug}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"opus"`) in the prompt body before spawning.
 
 **Humanizer post-step.** Once all synthesis subagents are complete, fan out Haiku subagents using the prompt at `{{skill}}/prompts/humanizer-pass.md`:
 
-- **One per `_summary.md` file** — mode (a), per-file pass; edits in place at `{path}`.
+- **One per `_summary.md` file** — mode (a), per-file pass; edits in place at `{{path}}`.
 - **One per `### Question N` block of each `_synthesis.md`** — mode (b), per-question pass. Rather than humanizing each `_synthesis.md` as one whole-file call, chunk per question: a single whole-file pass holds clean to roughly 35 synthesized insights but degrades past that (losing framing-marker prefixes and dissolving reframe bold-leads in later questions), and one call per question keeps every call under that ceiling. Each call is handed one `### Question N` block as text and returns its humanized block as text — it writes nothing. An **assembler step** then reassembles each `_synthesis.md` from its humanized blocks and writes the file once, to avoid parallel-write races on a single file.
 
 `_synthesis.md` is emitted only at `medium`/`high` effort, so the per-question pass runs only here; `_summary.md` is humanized at every effort level. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
@@ -368,6 +386,7 @@ Verify the artifacts that should exist for this effort level:
 
 - **`low` effort:**
   - `synthesis/`: 1 `_summary.md` per topic; no `_synthesis.md`, no `attributed/`
+  - Each `_summary.md` carries a `central-tension:` frontmatter key
   - `SUMMARIES.md` exists; no `SYNTHESIS.md`
 - **`medium`/`high` effort:**
   - `synthesis/attributed/`: 1 attribution file per topic
@@ -376,7 +395,7 @@ Verify the artifacts that should exist for this effort level:
 
 If files are missing, log the gap in PLAN.md Notes and proceed.
 
-Update `PLAN.md` with Phase 4 complete status.
+Update `PLAN.md` with Phase 4 complete status, including a humanizer post-step line item (complete/skipped) — the resume check reads it.
 
 ---
 
@@ -384,15 +403,15 @@ Update `PLAN.md` with Phase 4 complete status.
 
 #### Step 5.1: Generate BRAINSTORM.md (Subagent)
 
-Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template.
+Spawn a single subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md`. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index line, and the full output template. The prompt's final step is an inline humanizer pass (mode (c)) over `BRAINSTORM.md`, run by the same subagent; the orchestrator verifies the result (see the Phase 4 humanizer post-step).
 
 Phase 5 inherits per-cluster Central Tensions, Conspicuous Absences, and dissent-preservation disciplines from Phase 4's `_summary.md` outputs and aggregates them at session level. See `prompts/phase5_final-output.md` for the surfacing rules and the effort-scaled word length targets.
 
 **NotebookLM addon:** if PLAN.md frontmatter has `notebooklm-outputs: "yes"`, the same subagent also emits `{{session}}/NOTEBOOK-LM-INSTRUCTIONS.md` per [templates/notebook-lm-instructions.md](templates/notebook-lm-instructions.md). Otherwise only `BRAINSTORM.md` is produced. The flag is set at Phase 1 step 7 and is never present at `min` effort.
 
-**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable). Also include the literal string `model-requested: "opus"` in the prompt body so the subagent records it in its output frontmatter.
+**Subagent Model:** Pass `model: "opus"` to the Agent tool call (judgment-intensive, user-facing deliverable).
 
-**Substitution:** Resolve `{{session}}`, `{{current_datetime}}`, and `{{effort}}` in the prompt body before spawning.
+**Substitution:** Resolve `{{session}}`, `{{skill}}`, `{{effort}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"opus"`) in the prompt body before spawning.
 
 #### Step 5.2: Present Results
 
@@ -417,11 +436,19 @@ If asked to continue a previous session:
 |----------------|---------------|--------|
 | Phase 2 Step 2.1: complete | `personas/question-generation.md` exists; PLAN.md has `## Phase 2 Step 2.1: Question Generation Personas` section | Resume at Step 2.2 |
 | Phase 2 Step 2.2: complete | `questions/by-persona/*.md` exist, `QUESTIONS.md` missing | Resume at Step 2.3 (Synthesis) |
-| Phase 2 Step 2.3: complete | `QUESTIONS.md` + `questions-meta.json` exist; PLAN.md has no `## Phase 2 Step 2.4: Brainstorming Personas` section yet | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
+| Phase 2 Step 2.3: complete | `QUESTIONS.md` + `questions-meta.json` exist; `questions/by-topic/` populated; PLAN.md has the `## Topic Clusters (from Phase 2)` section but no `## Phase 2 Step 2.4: Brainstorming Personas` section yet | Resume at Step 2.4 (`medium`/`high`) or Phase 3 (`low`) |
 | Phase 2 Step 2.4: complete | PLAN.md has the `## Phase 2 Step 2.4: Brainstorming Personas` section | Resume at Phase 3 |
 | Phase 3: complete | `responses/` populated | Resume at Phase 4 |
-| Phase 4: complete | `synthesis/` exists | Resume at Phase 5 |
+| Phase 4: complete | `SUMMARIES.md` exists (plus `SYNTHESIS.md` at `medium`/`high`); humanizer line item recorded | Resume at Phase 5 |
 | Any phase: in-progress | Partial files | Re-run incomplete phase |
+
+`min` sessions have no Step 2.x statuses and no `questions-meta.json`; map the min workflow's step statuses instead:
+
+| PLAN.md Status (`min`) | Files Present | Action |
+|------------------------|---------------|--------|
+| Question generation: complete | `QUESTIONS.md` exists; `questions/by-topic/` populated | Resume at min Step 2 (Brainstorming) |
+| Brainstorming: complete | `responses/*/generic-response.md` per topic | Resume at min Step 3 (Summary) |
+| Synthesis: complete | Per-topic `_summary.md` files + `SUMMARIES.md` exist | Resume at min Step 4 (Final Output — delegated to the Phase 5 prompt) |
 
 Present resume status to user before continuing.
 
@@ -438,7 +465,7 @@ If a subagent fails:
 | Task | Model | Rationale |
 |------|-------|-----------|
 | Orchestration | Opus | Tools calling expertise |
-| Roster planning | Orchestrator (Sonnet) | Reads guide, applies selection logic |
+| Roster planning (Step 2.1) | Opus subagent | Judgment-intensive trigger evaluation |
 | Question generation | Sonnet | Balance of speed and quality |
 | Question synthesis | Opus | Judgment for deduplication and append selection |
 | Persona selection (`medium`/`high`) | Opus | Judgment-intensive topic classification |
@@ -446,6 +473,7 @@ If a subagent fails:
 | Brainstorming (`medium`/`high`)  | Haiku | Volume over depth |
 | Summary generation (`min`/`low`) | Sonnet | User-facing summaries |
 | Full synthesis (`medium`/`high`) | Opus | Critical consolidation |
+| Humanizer pass, modes (a)/(b) | Haiku | Surface-style polish only; mode (c) runs inline on the Phase 5 subagent's model |
 | Final output | Opus | User-facing deliverable |
 
 ## Reference directories

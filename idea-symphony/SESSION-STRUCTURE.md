@@ -7,7 +7,7 @@ Full layout of a Symphony session directory, with notes on how the structure var
 ├── context/                    # (optional) User-submitted files
 ├── questions/
 │   ├── by-persona/             # low/medium/high: One file per question-generating persona
-│   │   ├── the-questioner.md   # (10-19 files depending on effort and selections)
+│   │   ├── the-questioner.md   # (10-16 files depending on effort and selections)
 │   │   ├── the-analyst.md
 │   │   └── ...
 │   └── by-topic/               # Numbered files preserve topic order
@@ -22,8 +22,8 @@ Full layout of a Symphony session directory, with notes on how the structure var
 │       ├── the-visionary.md        # high: 7 persona files
 │       └── ...
 ├── synthesis/
-│   ├── attributed/             # medium/high only
-│   │   ├── 01_operations_attributed.md
+│   ├── attributed/             # medium/high only — files named {{cluster_slug}}.md (no suffix)
+│   │   ├── 01_operations.md
 │   │   └── ...
 │   ├── 01_operations_summary.md      # All effort levels
 │   ├── 01_operations_synthesis.md    # medium/high only
@@ -35,8 +35,10 @@ Full layout of a Symphony session directory, with notes on how the structure var
 ├── USER-QUESTIONS.md           # (optional) User-provided questions to answer
 ├── PLAN.md                     # Session config, persona summary tables, and status
 ├── QUESTIONS.md                # All questions consolidated (canonical order)
+├── questions-meta.json         # Phase 2.3 audit sidecar (persona attribution + convergence metadata; never at min)
 ├── SUMMARIES.md                # All topic summaries concatenated (Phase 5's authoritative input; all effort levels)
-├── SYNTHESIS.md                # All summaries + syntheses (in topic order; medium/high only)
+├── SYNTHESIS.md                # All per-topic syntheses concatenated (in topic order; medium/high only)
+├── NOTEBOOK-LM-INSTRUCTIONS.md # Only when the NotebookLM flag is set (never at min)
 └── BRAINSTORM.md               # Final output and session index
 ```
 
@@ -50,4 +52,4 @@ When Phase 2.3 synthesis leaves Append-stream questions without a topical home, 
 
 ## `min` effort differences
 
-No `by-persona/` or `personas/` directory. Responses use `generic-response.md`. Synthesis contains only summary files. See [min effort workflow](prompts/min-effort-workflow.md).
+No `by-persona/` or `personas/` directory, and no `questions-meta.json` — none of these exist at `min`. `NOTEBOOK-LM-INSTRUCTIONS.md` is also never produced at `min`. Responses use `generic-response.md`. Synthesis contains only summary files. See [min effort workflow](prompts/min-effort-workflow.md).

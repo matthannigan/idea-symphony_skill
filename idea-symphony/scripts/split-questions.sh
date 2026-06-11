@@ -3,7 +3,7 @@
 #
 # Splits {{session}}/QUESTIONS.md into per-cluster files under questions/by-topic/.
 # Per-cluster file format matches the shape an LLM subagent would have produced
-# directly (see test-runs/career-change/min/questions/by-topic for reference):
+# directly (e.g., {{session}}/questions/by-topic/01_operations.md):
 #
 #   ---
 #   <frontmatter copied verbatim from QUESTIONS.md>

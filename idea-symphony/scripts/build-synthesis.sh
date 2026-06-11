@@ -2,7 +2,7 @@
 # build-synthesis.sh — Deterministic final-phase step for SYNTHESIS.md.
 #
 # Concatenates all per-topic files in {{session}}/synthesis/ (matching
-# [0-9]*.md) into a single SYNTHESIS.md, stripping each file's YAML
+# [0-9]*_synthesis.md) into a single SYNTHESIS.md, stripping each file's YAML
 # frontmatter and prepending a session-level frontmatter block. Files are
 # separated by markdown horizontal rules.
 #
@@ -69,7 +69,7 @@ effort_value=$(get_field "effort")
   printf 'session-dir: "%s"\n' "$session_dir_value"
   printf 'date: %s\n' "$date_value"
   printf 'effort: "%s"\n' "$effort_value"
-  printf 'stage: "Phase 5: Synthesis Concatenation"\n'
+  printf 'stage: "Phase 4: Synthesis Concatenation"\n'
   printf -- '---\n\n'
 
   # Strip each file's YAML frontmatter, skip the leading blank line after

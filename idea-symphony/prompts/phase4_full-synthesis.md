@@ -113,9 +113,9 @@ Full synthesis with persona attribution showing both consolidated insights and o
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[medium/high]"
+effort: "{{effort}}"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "attributed"
@@ -136,7 +136,7 @@ synthesis-type: "attributed"
 * **Synthesized response summary.** Detailed synthesized response text that consolidates similar perspectives into a unified insight.
   * **Original response summary.** Original detailed text from first persona. *—The Visionary*
   * **Original response summary.** Original detailed text from second persona. *—The Pragmatist*
-  * **Original response summary.** Original detailed text from third persona. *—The Analyst*
+  * **Original response summary.** Original detailed text from third persona. *—The Systems Thinker*
 
 * **Next synthesized response summary.** Another consolidated insight from the responses.
   * **Original response summary.** Original detailed text. *—The Devil's Advocate*
@@ -176,9 +176,9 @@ Same content as Document 1, but with attribution removed for clean reading.
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[medium/high]"
+effort: "{{effort}}"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "synthesis"
@@ -233,9 +233,9 @@ Executive summary distilling the most important insights and actions.
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[medium/high]"
+effort: "{{effort}}"
 stage: "Phase 4: Response Synthesis"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 topic-cluster: "{{cluster_slug}}"
 synthesis-type: "summary"

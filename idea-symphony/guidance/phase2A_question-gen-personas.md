@@ -110,7 +110,7 @@ These personas should not be included in any question generations.
 | Questioner               | Tier 1 Analytical  |  10-15   |  10-15   |  15-20   | Synthesis |  |
 | Analyst                  | Tier 1 Analytical  |   8-12   |  10-15   |  10-15   | Synthesis |  |
 | Devil's Advocate         | Tier 1 Structural  |   8-12   |   8-12   |  10-15   | Synthesis |  |
-| Appreciative Inquirer    | Tier 1 Structural  |   8-12   |   8-12   |   8-12   | Synthesis | R8: q10-15 overshoots in 50% of topics |
+| Appreciative Inquirer    | Tier 1 Structural  |   8-12   |   8-12   |   8-12   | Synthesis | Volumes of 10-15 overshoot in ~50% of topics; keep at 8-12 |
 | Audience Advocate        | Tier 1 Structural  |   8-12   |  10-15   |  10-15   | Synthesis |  |
 | Systems Thinker          | Tier 1 Structural  |   8-12   |  10-15   |  10-15   | Synthesis |  |
 | Provocateur              | Tier 1 Perspective | 3 of 5-8 | 5 of 5-8 |  all 5-8 | Append    |  |
@@ -129,8 +129,7 @@ These personas should not be included in any question generations.
 
 ### Tier 1 Analytical Personas (Synthesized)
 
-Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See **D2: Analytical and Structural Effort Mapping** (dev notes in repo, not in packaged skill) for full rationale.
-
+Analytical personas (**Questioner**, **Analyst**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step.
 | Persona | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
 | Questioner | Low | 10-15 | Synthesis |
@@ -142,8 +141,7 @@ Analytical personas (**Questioner**, **Analyst**) generate a variable number of 
 
 ### Tier 1 Structural Personas (Synthesized)
 
-Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step. See **D2: Analytical and Structural Effort Mapping** (dev notes in repo, not in packaged skill) for full rationale.
-
+Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thinker**, **Appreciative Inquirer**) generate a variable number of questions in Phase 2A depending on effort. In Phase 2C, the orchestrator includes all questions from these personas in the synthesis step.
 | Personas | Effort | Generate | Phase 2C Method |
 |:---|:---|:---|:---|
 | Devil's Advocate | Low | 8-12 | Synthesis |
@@ -158,8 +156,7 @@ Structural personas (**Devil's Advocate**, **Audience Advocate**, **Systems Thin
 
 ### Tier 1 Perspective Personas (Appended)
 
-Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2A regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts. See **D1: Perspective Persona Append Strategy** (dev notes in repo, not in packaged skill) for full analysis.
-
+Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storyteller**) generate a fixed range of questions (5-8) in Phase 2A regardless of effort. In Phase 2C, the orchestrator appends a subset by round-robin cluster selection rather than including all questions or crafting prompts for exact output counts.
 | Personas | Effort | Generate | Phase 2C Method | Append per Persona | Selection Method |
 |:---|:---|:---|:---|:---|:---|
 | Provocateur, Analogist, Visionary, Storyteller | Low | 5-8 | Append | 3 | One per cluster, round-robin |
@@ -168,8 +165,7 @@ Perspective personas (**Provocateur**, **Analogist**, **Visionary**, **Storytell
 
 ### Tier 2 Question Personas (Mixed Methods)
 
-Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2A only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs. See **R5: Tier 2 Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
-
+Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles Thinker**, **Futurist**) generate questions in Phase 2A only on **high effort**. In Phase 2C, the orchestrator includes questions from these Tier 2 personas via either synthesis or append for high effort runs.
 | Persona | Tier | Effort | Generate | Phase 2C Method | Append per Persona | Notes |
 |:---|:---|:---|:---|:---|:---|:---|
 | Constraint Flipper | Tier 2 Perspective | High | 5-8 | Append | 3-5 (round-robin) | Strongest on constraint-rich topics |
@@ -179,8 +175,7 @@ Tier 2 question personas (**Constraint Flipper**, **Empath**, **First Principles
 
 ### Tier 3 Question Personas (Mixed Methods)
 
-Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2A, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs. See **R6: Tier 3 Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
-
+Most Tier 3 question personas (**Accountant**, **Lawyer**, **Politician**, **Technical Expert**) generate 8-12 questions each in Phase 2A, only on **medium or high effort** and only when **specifically selected by the orchestrator** for inclusion. In Phase 2C, the orchestrator includes questions from these selected Tier 3 personas by synthesis or append for medium and high effort runs.
 | Persona | Effort | Generate | Phase 2C Method | Selection Trigger | Notes |
 |:---|:---|:---|:---|:---|:---|
 | **Accountant** | Medium, High | 8-12 | Synthesis | Financial structure central: "business," "nonprofit," "budget," "startup," "pricing," "revenue" | Complementary with Analyst |
@@ -195,8 +190,7 @@ Effort level controls **persona count** (selection threshold strictness), not **
 | **Medium** | Strong trigger only | 0-1 | 8-10 (8-12 Accountant) |
 | **High** | Moderate+ trigger | 0-2 | 8-10 (8-12 Accountant) |
 
-**Connector** is a special case handled separately from the other Tier 3 personas. When selected by the orchestrator, it **replaces the Analogist** in the Tier 1 Perspective slot and inherits the 5-8 questions Append treatment. See **R7: Connector Volume-Quality** (dev notes in repo, not in packaged skill) for full analysis.
-
+**Connector** is a special case handled separately from the other Tier 3 personas. When selected by the orchestrator, it **replaces the Analogist** in the Tier 1 Perspective slot and inherits the 5-8 questions Append treatment.
 **Swap Analogist → Connector when:**
 - The topic requires bridging, merging, or reconciling distinct systems that constrain each other
 - The user's question is about connecting domains, not just understanding one domain better
@@ -278,17 +272,17 @@ These personas produce questions with **highly distinctive framing** that would 
 When using persona-specific volume targets:
 
 **Low effort:**
-- **Synthesize group** (Tier 1 only): ~50-70 questions → ~20-30 thematic clusters
+- **Synthesize group** (Tier 1 only): ~50-70 questions → ~20-30 merged questions
 - **Append group** (Tier 1 Perspective, 3 per persona): ~12 questions
 - **Total:** ~32-42 questions
 
 **Medium effort:**
-- **Synthesize group** (Tier 1 + 0-1 Tier 3): ~50-80 questions → ~20-35 thematic clusters
+- **Synthesize group** (Tier 1 + 0-1 Tier 3): ~50-80 questions → ~20-35 merged questions
 - **Append group** (Tier 1 Perspective at 5 per persona + 0-1 Tier 3): ~20-30 questions
 - **Total:** ~45-65 questions
 
 **High effort:**
-- **Synthesize group** (Tier 1 + Tier 2 + 0-2 Tier 3): ~73-115 questions → ~30-45 thematic clusters
+- **Synthesize group** (Tier 1 + Tier 2 + 0-2 Tier 3): ~73-115 questions → ~30-45 merged questions
 - **Append group** (Tier 1 Perspective all + Constraint Flipper + 0-1 Tier 3): ~23-45 questions
 - **Total:** ~55-90 questions
 
@@ -310,8 +304,3 @@ Several personas show topic-complexity-correlated overshooting where rich multi-
 ### Volume Floor
 
 The minimum useful volume is **8 questions** for standard question generation. Below 8, the model shifts from generating a list of focused questions to producing compound "research brief" style questions that pack multiple concerns into each item. These compound questions are too dense for downstream synthesis or brainstorming.
-
----
-
-**Last Updated:** 2026-02-25
-**Based on:** V1 per-persona volume-quality analysis (take 2), Phase 2A prompt refinement research, external research coverage mapping, targeted investigations I01-I05/I11-I15, head-to-head comparisons R1 (Audience Advocate vs Empath), R2 (Systems Thinker vs FPT), R3 (Accountant financial coverage), D1 (Perspective Persona Append Strategy), D2 (Analytical/Structural Effort Mapping), R5 (Tier 2 Volume-Quality), R6 (Tier 3 Volume-Quality), R7 (Connector vs Analogist Head-to-Head), R8 (Tier 1 Volume-Quality Validation)

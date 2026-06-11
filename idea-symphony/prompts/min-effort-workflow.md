@@ -21,11 +21,11 @@
 ├── synthesis/
 │   ├── {{cluster_slug}}_summary.md
 │   └── ...
-├── REQUEST.md                   # From Introduction
-├── USER-QUESTIONS.md            # (optional) From Introduction
+├── REQUEST.md                   # From Phase 1
+├── USER-QUESTIONS.md            # (optional) From Phase 1
 ├── PLAN.md                      # Session config and status
 ├── QUESTIONS.md                 # All questions consolidated
-├── SYNTHESIS.md                 # All summaries concatenated
+├── SUMMARIES.md                 # All per-topic summaries concatenated
 └── BRAINSTORM.md                # Final output and session index
 ```
 
@@ -35,18 +35,11 @@
 
 ## Step 1: Question Generation
 
-Spawn 1 subagent using prompt from `{{skill}}/prompts/phase2B_question-gen_generic.md`.
+Spawn 1 subagent using the prompt at `{{skill}}/prompts/phase2B_question-gen_generic.md`. Subagent instructions, USER-QUESTIONS handling, and output schema live in the prompt file. It produces exactly one output: `{{session}}/QUESTIONS.md` — the orchestrator derives the `questions/by-topic/` files deterministically in the next step.
 
-**Instructions for subagent:**
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call.
 
-1. Read `{{session}}/REQUEST.md` for the brainstorming topic and context
-2. Check if `{{session}}/USER-QUESTIONS.md` exists (use Glob). If it exists, read it — these are questions the user specifically wants answered. Preserve their intent, expand/refine them, and integrate them into topic clusters. Mark any question that preserves or incorporates a user-provided question by appending `[User Q]` to the question text. User questions should appear in final output even if total count exceeds the 15-20 target.
-3. Generate 15-20 questions organized into 3-5 topical clusters (plus any user-provided questions)
-4. Ensure questions span strategic, tactical, creative, analytical, and human-centered dimensions
-5. Use YAML frontmatter in the output file
-6. Create one output: `QUESTIONS.md` (master file with all questions in numbered `## Topic Cluster NN: Name` clusters). Do **not** create per-cluster files in `questions/by-topic/` — the orchestrator will derive those deterministically in the next step.
-
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Substitution:** Resolve `{{session}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning. (The subagent records `model-requested` in its output frontmatter and self-reports its actual model in `model-reported`.)
 
 **Post-generation shell step — split QUESTIONS.md into by-topic files:**
 
@@ -59,9 +52,9 @@ scripts/split-questions.sh {{session}}
 This is a deterministic transform, not an LLM step. It parses `## Topic Cluster NN: Name` headers from `QUESTIONS.md` and writes one file per cluster into `questions/by-topic/` with derived slug filenames. It also writes the `## Topic Clusters (from Phase 2)` section into `PLAN.md` — the ordered slug + display-name source Phase 5 reads — so no separate step is needed to populate it.
 
 **Quality Gate:** Before proceeding, verify:
-- `QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
-- `questions/by-topic/` contains 3-5 numbered `.md` files (one per cluster)
-- If `USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` and compare against the number of questions in `USER-QUESTIONS.md`. If any are missing, log which user questions lack a corresponding marker and re-examine.
+- `{{session}}/QUESTIONS.md` exists and contains at least one `## Topic Cluster NN:` header
+- `{{session}}/questions/by-topic/` contains 3-5 numbered `.md` files (one per cluster)
+- If `{{session}}/USER-QUESTIONS.md` exists: count `[User Q]` markers in `QUESTIONS.md` and compare against the number of questions in `USER-QUESTIONS.md`. If any are missing, log which user questions lack a corresponding marker and re-examine.
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with question generation complete status.
@@ -70,25 +63,16 @@ Update `PLAN.md` with question generation complete status.
 
 ## Step 2: Generic Brainstorming
 
-Read `questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
+Read `{{session}}/questions/by-topic/` to get the list of numbered topic files. Process topics in numeric order.
 
-For each topic cluster, spawn 1 subagent using prompt from `{{skill}}/prompts/phase3_brainstorm_generic.md`.
+For each topic cluster, spawn 1 subagent using the prompt at `{{skill}}/prompts/phase3_brainstorm_generic.md`. Subagent instructions (inputs, response diversity, output schema) live in the prompt file. Output: `{{session}}/responses/{{cluster_slug}}/generic-response.md`.
 
-**Instructions for each subagent:**
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call.
 
-1. Read `{{session}}/questions/by-topic/{{cluster_slug}}.md` for the questions to answer
-2. Read `{{session}}/REQUEST.md` for context (if needed)
-3. For each question, provide 3-5 distinct, substantive responses (50-150 words each)
-4. Vary approach across scale (small wins vs. transformative), risk (conservative vs. experimental), timeframe (immediate vs. long-term), and focus (process vs. people vs. technology)
-5. Use YAML frontmatter in output (include topic cluster, date, effort level)
-6. Save to `{{session}}/responses/{{cluster_slug}}/generic-response.md`
-
-**Key point:** Focus on specific, actionable responses with concrete details and reasoning.
-
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Substitution:** Resolve `{{session}}`, `{{cluster_slug}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
 
 **Quality Gate:** Before proceeding, verify:
-- `responses/{{cluster_slug}}/` exists for each topic
+- `{{session}}/responses/{{cluster_slug}}/` exists for each topic
 - Each topic directory contains `generic-response.md`
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
@@ -100,28 +84,17 @@ Update `PLAN.md` with brainstorming complete status.
 
 ### Summarization
 
-Spawn parallel subagents (1 per topic cluster) using prompt from `{{skill}}/prompts/phase4_summary-only_min-effort.md`.
+Spawn parallel subagents (1 per topic cluster) using the prompt at `{{skill}}/prompts/phase4_summary-only_min-effort.md`. Subagent instructions, inputs, and the frontmatter/output schema live in the prompt file. Output: `{{session}}/synthesis/{{cluster_slug}}_summary.md`. Summary-only synthesis: no attribution, no full synthesis documents.
 
-**Instructions for each subagent:**
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call.
 
-1. Read `{{session}}/questions/by-topic/{{cluster_slug}}.md` for questions
-2. Read `{{session}}/responses/{{cluster_slug}}/generic-response.md` for responses
-3. Create concise, actionable summary:
-   - **Executive Summary**: 2-3 paragraphs capturing essence of topic exploration
-   - **Key Themes**: 3-5 recurring themes with 2-3 sentences each
-   - **Recommended Actions**: 4-8 action items organized by timeframe (immediate, near-term, long-term)
-   - **Key Considerations**: Opportunities, risks/challenges, and trade-offs
-4. Extract patterns across responses, prioritize actionability
-5. Use YAML frontmatter in output (include topic cluster, date, effort level)
-6. Save to `{{session}}/synthesis/{{cluster_slug}}_summary.md`
-
-**Key point:** Summary-only synthesis. No attribution, no full synthesis documents. Aim for 500-800 words.
-
-**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call. Also include the literal string `model-requested: "sonnet"` in the prompt body so the subagent records it in its output frontmatter (it will self-report its actual model in `model-reported`).
+**Substitution:** Resolve `{{session}}`, `{{cluster_slug}}`, `{{topic}}` (the cluster's display name from PLAN.md's `## Topic Clusters (from Phase 2)` section), `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
 
 ### Humanizer post-step
 
-Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at `{path}`). This matches the `low`/`medium`/`high` paths, where `_summary.md` is humanized at every effort level. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+Once all summary subagents are complete, fan out one Haiku subagent per `_summary.md` file using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (a), per-file pass; edits in place at the target path). This matches the `low`/`medium`/`high` paths, where `_summary.md` is humanized at every effort level. Pass `model: "haiku"` to each Agent tool call. Self-reported change counts are recorded but not trusted; verification is grep-based.
+
+**Substitution:** Resolve `{{skill}}` and the target-file path slot (one `{{session}}/synthesis/{{cluster_slug}}_summary.md` per spawn) in the prompt body before each spawn.
 
 ### Concatenation
 
@@ -134,10 +107,10 @@ scripts/build-summaries.sh {{session}}
 ### Quality Gate
 
 Verify:
-- `synthesis/` directory exists
+- `{{session}}/synthesis/` directory exists
 - One `{{cluster_slug}}_summary.md` file per topic
 - NO `attributed/` subdirectory or `_synthesis.md` files
-- `SUMMARIES.md` exists
+- `{{session}}/SUMMARIES.md` exists
 - If files missing after Glob search, log in PLAN.md Notes and proceed
 
 Update `PLAN.md` with synthesis complete status.
@@ -146,21 +119,22 @@ Update `PLAN.md` with synthesis complete status.
 
 ## Step 4: Final Output
 
-### Step 4.1: Create BRAINSTORM.md
+### Step 4.1: Create BRAINSTORM.md (Subagent)
 
-Read `QUESTIONS.md` and `SUMMARIES.md`. The consolidated `SUMMARIES.md` is the authoritative input — do not re-read individual per-topic files.
+Spawn 1 subagent using the prompt at `{{skill}}/prompts/phase5_final-output.md` — the same prompt `low`/`medium`/`high` use at Step 5.1. The prompt covers input-file roles, executive-summary derivation, key-theme extraction, the effort-conditional Session-Index rules, and the full output template with effort-scaled word budgets.
 
-Generate final summary in `BRAINSTORM.md` (see [templates/brainstorm.md](../templates/brainstorm.md)):
-- Executive summary across all topics
-- Session overview
-- Key themes
-- Topic summaries with links (use `_summary.md` per-topic links; list only `SUMMARIES.md` in the Session Index — `min` effort produces no `_synthesis.md` or `SYNTHESIS.md`)
-- Recommended next steps
-- Session index with links to all files
+The NotebookLM flag is never present at `min` effort, so the subagent produces only `{{session}}/BRAINSTORM.md`.
 
-**Em-dash budget.** Limit em dashes to roughly one per paragraph in the generated prose; em-dash overuse is a strong AI tell, so prefer periods, parentheses, or commas. Applies to the generated prose, not to quoted material.
+The prompt's final step is an inline humanizer pass (mode (c), whole-file pass) over `BRAINSTORM.md`, run by the same subagent — no separate humanizer spawn is needed at this step.
 
-**Humanizer pass on `BRAINSTORM.md`.** After `BRAINSTORM.md` is written, run an inline humanizer pass over it using the prompt at `{{skill}}/prompts/humanizer-pass.md` (mode (c), whole-file pass; edits in place). Preserve numbered next-steps ordering, all numeric/dollar figures, and the citations/links to `_summary.md` files. This matches the `low`/`medium`/`high` Phase 5, which humanizes `BRAINSTORM.md` via `phase5_final-output.md`.
+**Subagent Model:** Pass `model: "sonnet"` to the Agent tool call (`min` uses Sonnet here, where `low`/`medium`/`high` use Opus).
+
+**Substitution:** Resolve `{{session}}`, `{{effort}}` (= `"min"`), `{{skill}}`, `{{current_datetime}}`, and `{{model_requested}}` (= `"sonnet"`) in the prompt body before spawning.
+
+**Quality Gate:** Before presenting results, verify:
+- `{{session}}/BRAINSTORM.md` exists with YAML frontmatter
+- Its Session Index links resolve to files that exist in `{{session}}/` (in particular, no `SYNTHESIS.md` or `_synthesis.md` links — `min` produces neither)
+- If anything is missing, re-run Step 4.1 rather than proceeding
 
 ### Step 4.2: Present Results
 
@@ -181,7 +155,8 @@ Update `PLAN.md` with session complete status.
 | Question generation | Sonnet | Comprehensive coverage needed |
 | Brainstorming | Sonnet | Balance quality with speed |
 | Summary generation | Sonnet | User-facing summaries |
-| Humanizer post-pass | Haiku | Surface-style polish only |
+| Humanizer post-pass (`_summary.md` files) | Haiku | Surface-style polish only |
+| Humanizer inline pass (`BRAINSTORM.md`) | (same agent as Final output) | Runs inside the Step 4 subagent |
 | Final output | Sonnet | User-facing deliverable |
 
 ---

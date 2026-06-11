@@ -23,7 +23,7 @@ Check if `{{session}}/USER-QUESTIONS.md` exists in the session directory (use Gl
 - **Overlapping**: If a user question covers the same ground as one of your generated questions, consolidate them into a single question. Mark the result with `[User Q]`. Do NOT keep both as separate entries.
 - **Non-overlapping**: If a user question doesn't overlap with any of your generated questions, preserve it verbatim or with minimal refinement — it represents unique user knowledge that your analysis missed.
 
-**Why:** the persona-based generators in `low`/`medium`/`high` effort are isolated from `USER-QUESTIONS.md` by design (see CLAUDE.md). This min-effort generator is the single point where user intent enters the question stream in min-effort runs, so dropping or silently merging a user question is a correctness failure, not a volume-management decision.
+**Why:** the persona-based generators in `low`/`medium`/`high` effort are isolated from `USER-QUESTIONS.md` by design. This min-effort generator is the single point where user intent enters the question stream in min-effort runs, so dropping or silently merging a user question is a correctness failure, not a volume-management decision.
 
 ## Your Task
 
@@ -59,8 +59,9 @@ Format requirements:
 - Use Markdown headings to group related questions topically
 - Format each question text as: **Short question summary**: Longer question description with context
 - Immediately under each `## Topic Cluster NN:` header, emit a single line of the form `**Cluster focus**: <one-sentence framing of the cluster's underlying concern>`, separated from the header by a blank line and followed by a blank line before the numbered list. This line is hoisted by `scripts/split-questions.sh` into each per-cluster file's footer, so it must be present for every cluster.
+- Each numbered question must be one physical line — never hard-wrap a question; the deterministic splitter drops continuation lines.
 
-Create one output: `QUESTIONS.md` (the master file).
+Create one output: `{{session}}/QUESTIONS.md` (the master file).
 
 ```markdown
 ---
@@ -69,7 +70,7 @@ session-dir: "{{session}}"
 datetime: {{current_datetime}}
 effort: "min"
 stage: "Phase 2: Generic Question Generation"
-model-requested: "[model passed to Agent tool, e.g., sonnet | opus | haiku]"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6]"
 ---
 
@@ -105,7 +106,7 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-sonnet-4-6
 
 ## File Paths
 
-- Master file: `QUESTIONS.md`
+- Master file: `{{session}}/QUESTIONS.md`
 
 ## Notes
 

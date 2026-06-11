@@ -1,6 +1,6 @@
 # NOTEBOOK-LM-INSTRUCTIONS.md Template
 
-Opt-in addon emitted by the Phase 5 subagent when `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`. Produces copy-paste-ready Customize-box prompts for four NotebookLM artifact types, project-specific to the current session.
+Opt-in addon emitted by the Phase 5 subagent when `PLAN.md` frontmatter has `notebooklm-outputs: "yes"`. Produces copy-paste-ready Customize-box prompts for five NotebookLM artifact types, project-specific to the current session.
 
 This template is **heavy**: full prompt skeletons with bracketed placeholder fields the subagent fills from PLAN.md (project name, cluster list) and BRAINSTORM.md (themes, framing). The subagent composes each artifact's Customize-box prompt by combining the inline module reference below with the project-specific values.
 
@@ -8,7 +8,7 @@ This template is **heavy**: full prompt skeletons with bracketed placeholder fie
 
 ## For the Phase 5 subagent: inline module reference
 
-The audio-artifact prompts (Artifacts 1 and 2) are built from the modules below. These mirror the canonical `nlm-audio-prompt` skill modules so Symphony is self-contained — do not require an external skill.
+The audio-artifact prompts (Artifacts 2 and 3) are built from the modules below. These mirror the canonical `nlm-audio-prompt` skill modules so Symphony is self-contained — do not require an external skill.
 
 Compose modules into a single block of text (NotebookLM's Customize box is plain text). Always include modules 1, 2, 3, and the Symphony Source Framing module below. Add 4-7 as the artifact requires. Verify the final prompt is under 5,000 characters; if over, cut from module 7 first, then trim examples from module 2. Never cut modules 1-3 or Source Framing.
 
@@ -42,7 +42,7 @@ This module is **Symphony-specific** — it does not appear in the canonical `nl
 
 > **Nuance:** Highlight limitations, caveats, counterarguments, and alternative interpretations present in the sources. Give as much weight to what the sources don't prove as to what they do.
 
-### Module 6 — Focus scoping (used heavily for Artifact 2 per-cluster episodes)
+### Module 6 — Focus scoping (used heavily for Artifact 3 per-cluster episodes)
 
 > **Focus:** Concentrate on [specific topics, sections, or sources]. Deprioritize or skip [topics to exclude].
 
@@ -61,9 +61,9 @@ The template below is what gets written to `{{session}}/NOTEBOOK-LM-INSTRUCTIONS
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[low|medium|high]"
+effort: "{{effort}}"
 stage: "Phase 5: Final Output (NotebookLM Addon)"
-model-requested: "opus"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
 ---
 
@@ -234,7 +234,7 @@ Density: Single screen, but dense. A reader should be able to extract the four s
 **Sources to upload:** `BRAINSTORM.md` + all `synthesis/*_summary.md` files
 **Output size per infographic:** Single screen / single page each.
 
-For each cluster from PLAN.md, the prompt scopes the infographic to that cluster's `_summary.md` while treating the others as context only. Run each prompt in a fresh Customize box. Pair these with Artifact 2's podcast episodes for a complete per-cluster deep-dive set.
+For each cluster from PLAN.md, the prompt scopes the infographic to that cluster's `_summary.md` while treating the others as context only. Run each prompt in a fresh Customize box. Pair these with Artifact 3's podcast episodes for a complete per-cluster deep-dive set.
 
 ### Infographic 1: [Cluster 1 Display Name]
 
@@ -275,7 +275,7 @@ Density: Single screen, but dense. A reader should be able to extract the cluste
 
 **Character count:** [N] / 5,000
 
-[Continue with one Infographic block per cluster from PLAN.md. The subagent emits N infographic blocks total, where N = cluster count — matching Artifact 2's episode count.]
+[Continue with one Infographic block per cluster from PLAN.md. The subagent emits N infographic blocks total, where N = cluster count — matching Artifact 3's episode count.]
 
 ---
 
@@ -283,9 +283,9 @@ Density: Single screen, but dense. A reader should be able to extract the cluste
 
 - **NotebookLM 5,000-character limit.** Each prompt above is verified under the limit. If you edit a prompt, recount.
 - **Customize before Generate.** Paste the Customize-box prompt before clicking Generate; you cannot change instructions after the artifact is created. If an artifact already exists with the default voice, delete it and regenerate.
-- **Format selection.** For Artifact 1, try Deep Dive first. If the source content is evaluative (proposals, plans, critiques), switch to the Critique format — it produces a more objective tone with less prompt engineering.
+- **Format selection.** For Artifact 2, try Deep Dive first. If the source content is evaluative (proposals, plans, critiques), switch to the Critique format — it produces a more objective tone with less prompt engineering.
 - **Portability.** The module structure (source framing, measured tone, interpretation guardrails, focus scoping) ports to other tools. For Gamma or Canva, the Slide-structure and Visuals blocks transfer; for Spotify's audio summaries, the Tone and Interpretation blocks transfer. The Source Framing paragraph at the top of each prompt is especially important to keep — without it, downstream tools tend to frame brainstorming output as if it were primary research.
-- **Pairing per-cluster artifacts.** Artifacts 2 (podcast series) and 5 (infographic series) are intentionally parallel — one episode and one infographic per cluster. For deep engagement with a single cluster, generate both for that cluster from the same uploaded source set.
+- **Pairing per-cluster artifacts.** Artifacts 3 (podcast series) and 5 (infographic series) are intentionally parallel — one episode and one infographic per cluster. For deep engagement with a single cluster, generate both for that cluster from the same uploaded source set.
 ````
 
 ---
@@ -296,11 +296,11 @@ When producing the user-facing file, the Phase 5 subagent must:
 
 1. Replace every `[Bracketed Placeholder]` with project-specific content derived from `BRAINSTORM.md`, `PLAN.md`, and `SUMMARIES.md`. Do not emit literal placeholder strings.
 2. **Include the Source Framing module in every artifact prompt.** It is always-include — the same way Modules 1-3 are. Use the Module 0 text **as written**, substituting only `[Project Name]` and (for per-cluster prompts) the cluster display name. Do not expand it, add sentences, or restate its claims — keep it to roughly the skeleton length (~400 characters); do not pad it toward 500+. Over-expansion bloats every prompt and eats into the 5,000-character ceiling.
-3. Generate one `### Episode N: [Cluster Name]` block under Artifact 2 for each cluster in PLAN.md's Topic Clusters section, in order. Each episode's Focus module references the cluster by **display name only** (content-anchored, e.g. "the summary document for [Display Name]"). Do **not** place a file path or slug (`synthesis/NN_…_summary.md`) inside a Focus block or any other fenced customize-box prompt — NotebookLM has no filesystem view, so a path read aloud is noise. The slug-bearing path belongs only in the `## Sources to upload` list.
-4. Generate one `### Infographic N: [Cluster Name]` block under Artifact 5 for each cluster in PLAN.md's Topic Clusters section, in the same order as Artifact 2. The episode count and infographic count must match.
+3. Generate one `### Episode N: [Cluster Name]` block under Artifact 3 for each cluster in PLAN.md's Topic Clusters section, in order. Each episode's Focus module references the cluster by **display name only** (content-anchored, e.g. "the summary document for [Display Name]"). Do **not** place a file path or slug (`synthesis/NN_…_summary.md`) inside a Focus block or any other fenced customize-box prompt — NotebookLM has no filesystem view, so a path read aloud is noise. The slug-bearing path belongs only in the `## Sources to upload` list.
+4. Generate one `### Infographic N: [Cluster Name]` block under Artifact 5 for each cluster in PLAN.md's Topic Clusters section, in the same order as Artifact 3. The episode count and infographic count must match.
 5. Compute and write the actual character count on each `**Character count:** [N] / 5,000` line.
-6. Tailor `[domain-specific term 1/2/3]` in Artifact 1 to terminology the brainstorm uses repeatedly, so NotebookLM skips defining what the audience already knows.
-7. Tailor `[the 2-3 most load-bearing themes from the brainstorm]` in Artifact 1's Focus module to the actual themes — pull from `BRAINSTORM.md`'s Key Themes section.
-8. Tailor `[Target Audience]` and the slide-count target in Artifact 3 based on effort level (defaults in the template) and any audience cues from `REQUEST.md`.
+6. Tailor `[domain-specific term 1/2/3]` in Artifact 2 to terminology the brainstorm uses repeatedly, so NotebookLM skips defining what the audience already knows.
+7. Tailor `[the 2-3 most load-bearing themes from the brainstorm]` in Artifact 2's Focus module to the actual themes — pull from `BRAINSTORM.md`'s Key Themes section.
+8. Tailor `[Target Audience]` and the slide-count target in Artifact 1 based on effort level (defaults in the template) and any audience cues from `REQUEST.md`.
 9. **Vocabulary translation.** The customize-box prompts are read aloud or rendered as labels by NotebookLM, so they must speak NotebookLM's language, not Symphony's. When filling in the template, translate any Symphony-internal vocabulary that the substrate (`BRAINSTORM.md`, `SUMMARIES.md`) carries into the prompts: "categorical reframe" → "the cluster's core reframe" (or omit if not load-bearing); "single-perspective reframe" → "a minority view worth surfacing"; "productive dissent" / "productive disagreement" → "a strong counter-argument the brainstorm did not resolve"; capitalized "Conspicuous Absences" as a section label → "what the brainstorm did not engage with"; "the cluster's brainstorm proposed…" → "the brainstorm proposed…". This applies to text inside the fenced customize-box prompts only; the "Notes for the user" prose may reference Symphony concepts freely.
 10. Do not emit the "For the Phase 5 subagent: inline module reference" block or this checklist into the user-facing file. The user-facing file starts at `# NotebookLM Instructions: [Project Name]`.

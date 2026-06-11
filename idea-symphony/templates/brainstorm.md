@@ -25,16 +25,16 @@ Budgets compound roughly **25% per effort step** from min upward (min=1.00×, lo
 
 ## Canonical structure
 
-Per-topic links always point to `synthesis/{{cluster_slug}}_summary.md` (the `_summary.md` file exists at every effort level). The Session Index includes the `SYNTHESIS.md` line only at `medium`/`high` effort; at `min`/`low` that line is omitted because the file does not exist.
+Per-topic links always point to `synthesis/{{cluster_slug}}_summary.md` (the `_summary.md` file exists at every effort level). The canonical block below carries no effort annotations; all Session Index effort conditionality lives as prose rules in the Phase 5 prompt (`prompts/phase5_final-output.md`): at `min`/`low` the `SYNTHESIS.md` line is deleted (the file does not exist) and the `synthesis/` line ends after "`_summary.md` (always)".
 
 ```markdown
 ---
 project-name: "[Project Name]"
 session-dir: "{{session}}"
 datetime: {{current_datetime}}
-effort: "[min|low|medium|high]"
+effort: "{{effort}}"
 stage: "Phase 5: Final Output"
-model-requested: "opus"
+model-requested: "{{model_requested}}"
 model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
 ---
 
@@ -58,7 +58,7 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
 ## Topic Summaries
 
 ### 1. [Topic Name]
-[Summary of insights for this topic. When the cluster's `_summary.md` carries a categorical reframe — a single declarative sentence reframing the cluster's question — the **first** sentence of this block must quote or closely paraphrase that reframe. **Word target per block:** see "Per-topic block" row, applied to each `### N.` block.]
+[Summary of insights for this topic. When the cluster's `_summary.md` carries a categorical reframe — a single declarative sentence reframing the cluster's question — the **first** sentence of this block must convey that reframe's insight in the block's own voice: the content survives, but do not quote or closely paraphrase the reframe, and do not preserve its noun-pair ("X, not Y") grammar — that rhetorical structure must not propagate across blocks. **Word target per block:** see "Per-topic block" row, applied to each `### N.` block.]
 - See: [synthesis/{{cluster_slug}}_summary.md](synthesis/{{cluster_slug}}_summary.md)
 
 ### 2. [Topic Name]
@@ -80,8 +80,8 @@ model-reported: "[model the subagent self-identifies as, e.g., claude-opus-4-7]"
 
 ### Summaries & Synthesis
 - [SUMMARIES.md](SUMMARIES.md) — Concatenated per-topic summaries
-- [SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses *(omit at `min`/`low`)*
-- [synthesis/](synthesis/) — Individual per-topic files: `_summary.md` (always); `_synthesis.md` and `attributed/` *(`medium`/`high` only)*
+- [SYNTHESIS.md](SYNTHESIS.md) — Concatenated per-topic full syntheses
+- [synthesis/](synthesis/) — Individual per-topic files: `_summary.md` (always); `_synthesis.md` and `attributed/`
 
 ### Session Files
 - [REQUEST.md](REQUEST.md) — Original request and context
